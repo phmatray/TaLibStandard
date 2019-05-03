@@ -1,4 +1,4 @@
-# GLPM.TaLibStandard
+TaLibStandard
 TaLib in C# for .NET Standard
 
-Written by Gregory Leflot and Philippe Matray
+Written by Philippe Matray
