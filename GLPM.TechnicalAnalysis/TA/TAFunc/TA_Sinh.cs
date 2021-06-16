@@ -78,7 +78,7 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             while (i <= endIdx)
             {
-                outReal[outIdx] = Math.Sinh((double)inReal[i]);
+                outReal[outIdx] = Math.Sinh(inReal[i]);
                 i++;
                 outIdx++;
             }

@@ -59,13 +59,13 @@ namespace GLPM.TechnicalAnalysis
                 double tempHT = inHigh[today];
                 double tempCY = inClose[today - 1];
                 double greatest = tempHT - tempLT;
-                double val2 = Math.Abs((double)(tempCY - tempHT));
+                double val2 = Math.Abs(tempCY - tempHT);
                 if (val2 > greatest)
                 {
                     greatest = val2;
                 }
 
-                double val3 = Math.Abs((double)(tempCY - tempLT));
+                double val3 = Math.Abs(tempCY - tempLT);
                 if (val3 > greatest)
                 {
                     greatest = val3;
@@ -136,13 +136,13 @@ namespace GLPM.TechnicalAnalysis
                 double tempHT = inHigh[today];
                 double tempCY = inClose[today - 1];
                 double greatest = tempHT - tempLT;
-                double val2 = Math.Abs((double)(tempCY - tempHT));
+                double val2 = Math.Abs(tempCY - tempHT);
                 if (val2 > greatest)
                 {
                     greatest = val2;
                 }
 
-                double val3 = Math.Abs((double)(tempCY - tempLT));
+                double val3 = Math.Abs(tempCY - tempLT);
                 if (val3 > greatest)
                 {
                     greatest = val3;

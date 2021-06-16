@@ -64,7 +64,7 @@ namespace GLPM.TechnicalAnalysis
                     return RetCode.AllocErr;
                 }
 
-                double k = 2.0 / ((double)(optInTimePeriod + 1));
+                double k = 2.0 / (optInTimePeriod + 1);
                 RetCode retCode = TA_INT_EMA(
                     startIdx - (lookbackEMA * 2),
                     endIdx,
@@ -198,7 +198,7 @@ namespace GLPM.TechnicalAnalysis
                     return RetCode.AllocErr;
                 }
 
-                double k = 2.0 / ((double)(optInTimePeriod + 1));
+                double k = 2.0 / (optInTimePeriod + 1);
                 RetCode retCode = TA_INT_EMA(
                     startIdx - (lookbackEMA * 2),
                     endIdx,

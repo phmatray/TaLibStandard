@@ -78,7 +78,7 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             while (i <= endIdx)
             {
-                outReal[outIdx] = Math.Atan((double)inReal[i]);
+                outReal[outIdx] = Math.Atan(inReal[i]);
                 i++;
                 outIdx++;
             }

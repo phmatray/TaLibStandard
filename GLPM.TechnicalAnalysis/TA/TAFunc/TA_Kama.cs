@@ -90,7 +90,7 @@ namespace GLPM.TechnicalAnalysis
             }
             else
             {
-                tempReal = Math.Abs((double)(periodROC / sumROC1));
+                tempReal = Math.Abs(periodROC / sumROC1);
             }
 
             tempReal = (tempReal * constDiff) + constMax;
@@ -108,8 +108,8 @@ namespace GLPM.TechnicalAnalysis
                 tempReal2 = inReal[trailingIdx];
                 trailingIdx++;
                 periodROC = tempReal - tempReal2;
-                sumROC1 -= Math.Abs((double)(trailingValue - tempReal2));
-                sumROC1 += Math.Abs((double)(tempReal - inReal[today - 1]));
+                sumROC1 -= Math.Abs(trailingValue - tempReal2);
+                sumROC1 += Math.Abs(tempReal - inReal[today - 1]);
                 trailingValue = tempReal2;
                 if ((sumROC1 <= periodROC) || ((-1E-08 < sumROC1) && (sumROC1 < 1E-08)))
                 {
@@ -117,7 +117,7 @@ namespace GLPM.TechnicalAnalysis
                 }
                 else
                 {
-                    tempReal = Math.Abs((double)(periodROC / sumROC1));
+                    tempReal = Math.Abs(periodROC / sumROC1);
                 }
 
                 tempReal = (tempReal * constDiff) + constMax;
@@ -140,8 +140,8 @@ namespace GLPM.TechnicalAnalysis
                 tempReal2 = inReal[trailingIdx];
                 trailingIdx++;
                 periodROC = tempReal - tempReal2;
-                sumROC1 -= Math.Abs((double)(trailingValue - tempReal2));
-                sumROC1 += Math.Abs((double)(tempReal - inReal[today - 1]));
+                sumROC1 -= Math.Abs(trailingValue - tempReal2);
+                sumROC1 += Math.Abs(tempReal - inReal[today - 1]);
                 trailingValue = tempReal2;
                 if ((sumROC1 <= periodROC) || ((-1E-08 < sumROC1) && (sumROC1 < 1E-08)))
                 {
@@ -149,7 +149,7 @@ namespace GLPM.TechnicalAnalysis
                 }
                 else
                 {
-                    tempReal = Math.Abs((double)(periodROC / sumROC1));
+                    tempReal = Math.Abs(periodROC / sumROC1);
                 }
 
                 tempReal = (tempReal * constDiff) + constMax;
@@ -250,7 +250,7 @@ namespace GLPM.TechnicalAnalysis
             }
             else
             {
-                tempReal = Math.Abs((double)(periodROC / sumROC1));
+                tempReal = Math.Abs(periodROC / sumROC1);
             }
 
             tempReal = (tempReal * constDiff) + constMax;
@@ -268,8 +268,8 @@ namespace GLPM.TechnicalAnalysis
                 tempReal2 = inReal[trailingIdx];
                 trailingIdx++;
                 periodROC = tempReal - tempReal2;
-                sumROC1 -= Math.Abs((double)(trailingValue - tempReal2));
-                sumROC1 += Math.Abs((double)(tempReal - inReal[today - 1]));
+                sumROC1 -= Math.Abs(trailingValue - tempReal2);
+                sumROC1 += Math.Abs(tempReal - inReal[today - 1]);
                 trailingValue = tempReal2;
                 if ((sumROC1 <= periodROC) || ((-1E-08 < sumROC1) && (sumROC1 < 1E-08)))
                 {
@@ -277,7 +277,7 @@ namespace GLPM.TechnicalAnalysis
                 }
                 else
                 {
-                    tempReal = Math.Abs((double)(periodROC / sumROC1));
+                    tempReal = Math.Abs(periodROC / sumROC1);
                 }
 
                 tempReal = (tempReal * constDiff) + constMax;
@@ -300,8 +300,8 @@ namespace GLPM.TechnicalAnalysis
                 tempReal2 = inReal[trailingIdx];
                 trailingIdx++;
                 periodROC = tempReal - tempReal2;
-                sumROC1 -= Math.Abs((double)(trailingValue - tempReal2));
-                sumROC1 += Math.Abs((double)(tempReal - inReal[today - 1]));
+                sumROC1 -= Math.Abs(trailingValue - tempReal2);
+                sumROC1 += Math.Abs(tempReal - inReal[today - 1]);
                 trailingValue = tempReal2;
                 if ((sumROC1 <= periodROC) || ((-1E-08 < sumROC1) && (sumROC1 < 1E-08)))
                 {
@@ -309,7 +309,7 @@ namespace GLPM.TechnicalAnalysis
                 }
                 else
                 {
-                    tempReal = Math.Abs((double)(periodROC / sumROC1));
+                    tempReal = Math.Abs(periodROC / sumROC1);
                 }
 
                 tempReal = (tempReal * constDiff) + constMax;

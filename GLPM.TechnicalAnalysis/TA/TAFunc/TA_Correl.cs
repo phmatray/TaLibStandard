@@ -86,11 +86,11 @@ namespace GLPM.TechnicalAnalysis
             double trailingX = inReal0[trailingIdx];
             double trailingY = inReal1[trailingIdx];
             trailingIdx++;
-            double tempReal = (sumX2 - ((sumX * sumX) / ((double)optInTimePeriod)))
-                              * (sumY2 - ((sumY * sumY) / ((double)optInTimePeriod)));
+            double tempReal = (sumX2 - ((sumX * sumX) / optInTimePeriod))
+                              * (sumY2 - ((sumY * sumY) / optInTimePeriod));
             if (tempReal >= 1E-08)
             {
-                outReal[0] = (sumXY - ((sumX * sumY) / ((double)optInTimePeriod))) / Math.Sqrt(tempReal);
+                outReal[0] = (sumXY - ((sumX * sumY) / optInTimePeriod)) / Math.Sqrt(tempReal);
             }
             else
             {
@@ -116,11 +116,11 @@ namespace GLPM.TechnicalAnalysis
                 trailingX = inReal0[trailingIdx];
                 trailingY = inReal1[trailingIdx];
                 trailingIdx++;
-                tempReal = (sumX2 - ((sumX * sumX) / ((double)optInTimePeriod)))
-                           * (sumY2 - ((sumY * sumY) / ((double)optInTimePeriod)));
+                tempReal = (sumX2 - ((sumX * sumX) / optInTimePeriod))
+                           * (sumY2 - ((sumY * sumY) / optInTimePeriod));
                 if (tempReal >= 1E-08)
                 {
-                    outReal[outIdx] = (sumXY - ((sumX * sumY) / ((double)optInTimePeriod))) / Math.Sqrt(tempReal);
+                    outReal[outIdx] = (sumXY - ((sumX * sumY) / optInTimePeriod)) / Math.Sqrt(tempReal);
                     outIdx++;
                 }
                 else
@@ -216,11 +216,11 @@ namespace GLPM.TechnicalAnalysis
             double trailingX = inReal0[trailingIdx];
             double trailingY = inReal1[trailingIdx];
             trailingIdx++;
-            double tempReal = (sumX2 - ((sumX * sumX) / ((double)optInTimePeriod)))
-                              * (sumY2 - ((sumY * sumY) / ((double)optInTimePeriod)));
+            double tempReal = (sumX2 - ((sumX * sumX) / optInTimePeriod))
+                              * (sumY2 - ((sumY * sumY) / optInTimePeriod));
             if (tempReal >= 1E-08)
             {
-                outReal[0] = (sumXY - ((sumX * sumY) / ((double)optInTimePeriod))) / Math.Sqrt(tempReal);
+                outReal[0] = (sumXY - ((sumX * sumY) / optInTimePeriod)) / Math.Sqrt(tempReal);
             }
             else
             {
@@ -246,11 +246,11 @@ namespace GLPM.TechnicalAnalysis
                 trailingX = inReal0[trailingIdx];
                 trailingY = inReal1[trailingIdx];
                 trailingIdx++;
-                tempReal = (sumX2 - ((sumX * sumX) / ((double)optInTimePeriod)))
-                           * (sumY2 - ((sumY * sumY) / ((double)optInTimePeriod)));
+                tempReal = (sumX2 - ((sumX * sumX) / optInTimePeriod))
+                           * (sumY2 - ((sumY * sumY) / optInTimePeriod));
                 if (tempReal >= 1E-08)
                 {
-                    outReal[outIdx] = (sumXY - ((sumX * sumY) / ((double)optInTimePeriod))) / Math.Sqrt(tempReal);
+                    outReal[outIdx] = (sumXY - ((sumX * sumY) / optInTimePeriod)) / Math.Sqrt(tempReal);
                     outIdx++;
                 }
                 else

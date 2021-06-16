@@ -62,7 +62,7 @@ namespace GLPM.TechnicalAnalysis
             int highestIdx = -1;
             double lowest = 0.0;
             double highest = 0.0;
-            double factor = 100.0 / ((double)optInTimePeriod);
+            double factor = 100.0 / optInTimePeriod;
             Label_00AF:
             if (today > endIdx)
             {
@@ -199,7 +199,7 @@ namespace GLPM.TechnicalAnalysis
             int highestIdx = -1;
             double lowest = 0.0;
             double highest = 0.0;
-            double factor = 100.0 / ((double)optInTimePeriod);
+            double factor = 100.0 / optInTimePeriod;
             Label_00AF:
             if (today > endIdx)
             {

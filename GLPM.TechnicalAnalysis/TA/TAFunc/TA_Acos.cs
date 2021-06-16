@@ -78,7 +78,7 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             while (i <= endIdx)
             {
-                outReal[outIdx] = Math.Acos((double)inReal[i]);
+                outReal[outIdx] = Math.Acos(inReal[i]);
                 i++;
                 outIdx++;
             }

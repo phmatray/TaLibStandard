@@ -76,7 +76,7 @@ namespace GLPM.TechnicalAnalysis
                 today++;
             }
 
-            double e1 = tempReal / ((double)optInTimePeriod);
+            double e1 = tempReal / optInTimePeriod;
             tempReal = e1;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
@@ -85,7 +85,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal += e1;
             }
 
-            double e2 = tempReal / ((double)optInTimePeriod);
+            double e2 = tempReal / optInTimePeriod;
             tempReal = e2;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
@@ -95,7 +95,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal += e2;
             }
 
-            double e3 = tempReal / ((double)optInTimePeriod);
+            double e3 = tempReal / optInTimePeriod;
             tempReal = e3;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
@@ -106,7 +106,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal += e3;
             }
 
-            double e4 = tempReal / ((double)optInTimePeriod);
+            double e4 = tempReal / optInTimePeriod;
             tempReal = e4;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
@@ -118,7 +118,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal += e4;
             }
 
-            double e5 = tempReal / ((double)optInTimePeriod);
+            double e5 = tempReal / optInTimePeriod;
             tempReal = e5;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
@@ -131,7 +131,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal += e5;
             }
 
-            double e6 = tempReal / ((double)optInTimePeriod);
+            double e6 = tempReal / optInTimePeriod;
             while (true)
             {
                 if (today > startIdx)
@@ -252,7 +252,7 @@ namespace GLPM.TechnicalAnalysis
                 today++;
             }
 
-            double e1 = tempReal / ((double)optInTimePeriod);
+            double e1 = tempReal / optInTimePeriod;
             tempReal = e1;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
@@ -261,7 +261,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal += e1;
             }
 
-            double e2 = tempReal / ((double)optInTimePeriod);
+            double e2 = tempReal / optInTimePeriod;
             tempReal = e2;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
@@ -271,7 +271,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal += e2;
             }
 
-            double e3 = tempReal / ((double)optInTimePeriod);
+            double e3 = tempReal / optInTimePeriod;
             tempReal = e3;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
@@ -282,7 +282,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal += e3;
             }
 
-            double e4 = tempReal / ((double)optInTimePeriod);
+            double e4 = tempReal / optInTimePeriod;
             tempReal = e4;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
@@ -294,7 +294,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal += e4;
             }
 
-            double e5 = tempReal / ((double)optInTimePeriod);
+            double e5 = tempReal / optInTimePeriod;
             tempReal = e5;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
@@ -307,7 +307,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal += e5;
             }
 
-            double e6 = tempReal / ((double)optInTimePeriod);
+            double e6 = tempReal / optInTimePeriod;
             while (true)
             {
                 if (today > startIdx)

@@ -78,7 +78,7 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             while (i <= endIdx)
             {
-                outReal[outIdx] = Math.Log((double)inReal[i]);
+                outReal[outIdx] = Math.Log(inReal[i]);
                 i++;
                 outIdx++;
             }

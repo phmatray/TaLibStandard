@@ -123,13 +123,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num7;
                         closeMinusTrueLow = inClose[i] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -161,13 +161,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num6;
                         closeMinusTrueLow = inClose[i] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -199,13 +199,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num5;
                         closeMinusTrueLow = inClose[i] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -241,13 +241,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num4;
                         closeMinusTrueLow = inClose[today] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -290,13 +290,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num3;
                         closeMinusTrueLow = inClose[trailingIdx1] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -319,13 +319,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num2;
                         closeMinusTrueLow = inClose[trailingIdx2] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -348,13 +348,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num;
                         closeMinusTrueLow = inClose[trailingIdx3] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -512,13 +512,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num7;
                         closeMinusTrueLow = inClose[i] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -550,13 +550,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num6;
                         closeMinusTrueLow = inClose[i] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -588,13 +588,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num5;
                         closeMinusTrueLow = inClose[i] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -630,13 +630,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num4;
                         closeMinusTrueLow = inClose[today] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -679,13 +679,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num3;
                         closeMinusTrueLow = inClose[trailingIdx1] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -708,13 +708,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num2;
                         closeMinusTrueLow = inClose[trailingIdx2] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
@@ -737,13 +737,13 @@ namespace GLPM.TechnicalAnalysis
                         trueLow = num;
                         closeMinusTrueLow = inClose[trailingIdx3] - trueLow;
                         trueRange = tempHT - tempLT;
-                        tempDouble = Math.Abs((double)(tempCY - tempHT));
+                        tempDouble = Math.Abs(tempCY - tempHT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;
                         }
 
-                        tempDouble = Math.Abs((double)(tempCY - tempLT));
+                        tempDouble = Math.Abs(tempCY - tempLT);
                         if (tempDouble > trueRange)
                         {
                             trueRange = tempDouble;

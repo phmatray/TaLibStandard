@@ -99,13 +99,13 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 tempReal = prevHigh - prevLow;
-                tempReal2 = Math.Abs((double)(prevHigh - prevClose));
+                tempReal2 = Math.Abs(prevHigh - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                tempReal2 = Math.Abs((double)(prevLow - prevClose));
+                tempReal2 = Math.Abs(prevLow - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
@@ -132,8 +132,8 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = inLow[today];
                 diffM = prevLow - tempReal;
                 prevLow = tempReal;
-                prevMinusDM -= prevMinusDM / ((double)optInTimePeriod);
-                prevPlusDM -= prevPlusDM / ((double)optInTimePeriod);
+                prevMinusDM -= prevMinusDM / optInTimePeriod;
+                prevPlusDM -= prevPlusDM / optInTimePeriod;
                 if ((diffM > 0.0) && (diffP < diffM))
                 {
                     prevMinusDM += diffM;
@@ -144,19 +144,19 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 tempReal = prevHigh - prevLow;
-                tempReal2 = Math.Abs((double)(prevHigh - prevClose));
+                tempReal2 = Math.Abs(prevHigh - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                tempReal2 = Math.Abs((double)(prevLow - prevClose));
+                tempReal2 = Math.Abs(prevLow - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                prevTR = (prevTR - (prevTR / ((double)optInTimePeriod))) + tempReal;
+                prevTR = (prevTR - (prevTR / optInTimePeriod)) + tempReal;
                 prevClose = inClose[today];
                 if ((-1E-08 >= prevTR) || (prevTR >= 1E-08))
                 {
@@ -165,12 +165,12 @@ namespace GLPM.TechnicalAnalysis
                     tempReal = minusDI + plusDI;
                     if ((-1E-08 >= tempReal) || (tempReal >= 1E-08))
                     {
-                        sumDX += 100.0 * (Math.Abs((double)(minusDI - plusDI)) / tempReal);
+                        sumDX += 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
                     }
                 }
             }
 
-            double prevADX = sumDX / ((double)optInTimePeriod);
+            double prevADX = sumDX / optInTimePeriod;
             i = (int)Globals.unstablePeriod[0];
             while (true)
             {
@@ -187,8 +187,8 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = inLow[today];
                 diffM = prevLow - tempReal;
                 prevLow = tempReal;
-                prevMinusDM -= prevMinusDM / ((double)optInTimePeriod);
-                prevPlusDM -= prevPlusDM / ((double)optInTimePeriod);
+                prevMinusDM -= prevMinusDM / optInTimePeriod;
+                prevPlusDM -= prevPlusDM / optInTimePeriod;
                 if ((diffM > 0.0) && (diffP < diffM))
                 {
                     prevMinusDM += diffM;
@@ -199,19 +199,19 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 tempReal = prevHigh - prevLow;
-                tempReal2 = Math.Abs((double)(prevHigh - prevClose));
+                tempReal2 = Math.Abs(prevHigh - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                tempReal2 = Math.Abs((double)(prevLow - prevClose));
+                tempReal2 = Math.Abs(prevLow - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                prevTR = (prevTR - (prevTR / ((double)optInTimePeriod))) + tempReal;
+                prevTR = (prevTR - (prevTR / optInTimePeriod)) + tempReal;
                 prevClose = inClose[today];
                 if ((-1E-08 >= prevTR) || (prevTR >= 1E-08))
                 {
@@ -220,8 +220,8 @@ namespace GLPM.TechnicalAnalysis
                     tempReal = minusDI + plusDI;
                     if ((-1E-08 >= tempReal) || (tempReal >= 1E-08))
                     {
-                        tempReal = 100.0 * (Math.Abs((double)(minusDI - plusDI)) / tempReal);
-                        prevADX = ((prevADX * (optInTimePeriod - 1)) + tempReal) / ((double)optInTimePeriod);
+                        tempReal = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
+                        prevADX = ((prevADX * (optInTimePeriod - 1)) + tempReal) / optInTimePeriod;
                     }
                 }
             }
@@ -242,8 +242,8 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = inLow[today];
                 diffM = prevLow - tempReal;
                 prevLow = tempReal;
-                prevMinusDM -= prevMinusDM / ((double)optInTimePeriod);
-                prevPlusDM -= prevPlusDM / ((double)optInTimePeriod);
+                prevMinusDM -= prevMinusDM / optInTimePeriod;
+                prevPlusDM -= prevPlusDM / optInTimePeriod;
                 if ((diffM > 0.0) && (diffP < diffM))
                 {
                     prevMinusDM += diffM;
@@ -254,19 +254,19 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 tempReal = prevHigh - prevLow;
-                tempReal2 = Math.Abs((double)(prevHigh - prevClose));
+                tempReal2 = Math.Abs(prevHigh - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                tempReal2 = Math.Abs((double)(prevLow - prevClose));
+                tempReal2 = Math.Abs(prevLow - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                prevTR = (prevTR - (prevTR / ((double)optInTimePeriod))) + tempReal;
+                prevTR = (prevTR - (prevTR / optInTimePeriod)) + tempReal;
                 prevClose = inClose[today];
                 if ((-1E-08 >= prevTR) || (prevTR >= 1E-08))
                 {
@@ -275,8 +275,8 @@ namespace GLPM.TechnicalAnalysis
                     tempReal = minusDI + plusDI;
                     if ((-1E-08 >= tempReal) || (tempReal >= 1E-08))
                     {
-                        tempReal = 100.0 * (Math.Abs((double)(minusDI - plusDI)) / tempReal);
-                        prevADX = ((prevADX * (optInTimePeriod - 1)) + tempReal) / ((double)optInTimePeriod);
+                        tempReal = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
+                        prevADX = ((prevADX * (optInTimePeriod - 1)) + tempReal) / optInTimePeriod;
                     }
                 }
 
@@ -383,13 +383,13 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 tempReal = prevHigh - prevLow;
-                tempReal2 = Math.Abs((double)(prevHigh - prevClose));
+                tempReal2 = Math.Abs(prevHigh - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                tempReal2 = Math.Abs((double)(prevLow - prevClose));
+                tempReal2 = Math.Abs(prevLow - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
@@ -416,8 +416,8 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = inLow[today];
                 diffM = prevLow - tempReal;
                 prevLow = tempReal;
-                prevMinusDM -= prevMinusDM / ((double)optInTimePeriod);
-                prevPlusDM -= prevPlusDM / ((double)optInTimePeriod);
+                prevMinusDM -= prevMinusDM / optInTimePeriod;
+                prevPlusDM -= prevPlusDM / optInTimePeriod;
                 if ((diffM > 0.0) && (diffP < diffM))
                 {
                     prevMinusDM += diffM;
@@ -428,19 +428,19 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 tempReal = prevHigh - prevLow;
-                tempReal2 = Math.Abs((double)(prevHigh - prevClose));
+                tempReal2 = Math.Abs(prevHigh - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                tempReal2 = Math.Abs((double)(prevLow - prevClose));
+                tempReal2 = Math.Abs(prevLow - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                prevTR = (prevTR - (prevTR / ((double)optInTimePeriod))) + tempReal;
+                prevTR = (prevTR - (prevTR / optInTimePeriod)) + tempReal;
                 prevClose = inClose[today];
                 if ((-1E-08 >= prevTR) || (prevTR >= 1E-08))
                 {
@@ -449,12 +449,12 @@ namespace GLPM.TechnicalAnalysis
                     tempReal = minusDI + plusDI;
                     if ((-1E-08 >= tempReal) || (tempReal >= 1E-08))
                     {
-                        sumDX += 100.0 * (Math.Abs((double)(minusDI - plusDI)) / tempReal);
+                        sumDX += 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
                     }
                 }
             }
 
-            double prevADX = sumDX / ((double)optInTimePeriod);
+            double prevADX = sumDX / optInTimePeriod;
             i = (int)Globals.unstablePeriod[0];
             while (true)
             {
@@ -471,8 +471,8 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = inLow[today];
                 diffM = prevLow - tempReal;
                 prevLow = tempReal;
-                prevMinusDM -= prevMinusDM / ((double)optInTimePeriod);
-                prevPlusDM -= prevPlusDM / ((double)optInTimePeriod);
+                prevMinusDM -= prevMinusDM / optInTimePeriod;
+                prevPlusDM -= prevPlusDM / optInTimePeriod;
                 if ((diffM > 0.0) && (diffP < diffM))
                 {
                     prevMinusDM += diffM;
@@ -483,19 +483,19 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 tempReal = prevHigh - prevLow;
-                tempReal2 = Math.Abs((double)(prevHigh - prevClose));
+                tempReal2 = Math.Abs(prevHigh - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                tempReal2 = Math.Abs((double)(prevLow - prevClose));
+                tempReal2 = Math.Abs(prevLow - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                prevTR = (prevTR - (prevTR / ((double)optInTimePeriod))) + tempReal;
+                prevTR = (prevTR - (prevTR / optInTimePeriod)) + tempReal;
                 prevClose = inClose[today];
                 if ((-1E-08 >= prevTR) || (prevTR >= 1E-08))
                 {
@@ -504,8 +504,8 @@ namespace GLPM.TechnicalAnalysis
                     tempReal = minusDI + plusDI;
                     if ((-1E-08 >= tempReal) || (tempReal >= 1E-08))
                     {
-                        tempReal = 100.0 * (Math.Abs((double)(minusDI - plusDI)) / tempReal);
-                        prevADX = ((prevADX * (optInTimePeriod - 1)) + tempReal) / ((double)optInTimePeriod);
+                        tempReal = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
+                        prevADX = ((prevADX * (optInTimePeriod - 1)) + tempReal) / optInTimePeriod;
                     }
                 }
             }
@@ -526,8 +526,8 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = inLow[today];
                 diffM = prevLow - tempReal;
                 prevLow = tempReal;
-                prevMinusDM -= prevMinusDM / ((double)optInTimePeriod);
-                prevPlusDM -= prevPlusDM / ((double)optInTimePeriod);
+                prevMinusDM -= prevMinusDM / optInTimePeriod;
+                prevPlusDM -= prevPlusDM / optInTimePeriod;
                 if ((diffM > 0.0) && (diffP < diffM))
                 {
                     prevMinusDM += diffM;
@@ -538,19 +538,19 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 tempReal = prevHigh - prevLow;
-                tempReal2 = Math.Abs((double)(prevHigh - prevClose));
+                tempReal2 = Math.Abs(prevHigh - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                tempReal2 = Math.Abs((double)(prevLow - prevClose));
+                tempReal2 = Math.Abs(prevLow - prevClose);
                 if (tempReal2 > tempReal)
                 {
                     tempReal = tempReal2;
                 }
 
-                prevTR = (prevTR - (prevTR / ((double)optInTimePeriod))) + tempReal;
+                prevTR = (prevTR - (prevTR / optInTimePeriod)) + tempReal;
                 prevClose = inClose[today];
                 if ((-1E-08 >= prevTR) || (prevTR >= 1E-08))
                 {
@@ -559,8 +559,8 @@ namespace GLPM.TechnicalAnalysis
                     tempReal = minusDI + plusDI;
                     if ((-1E-08 >= tempReal) || (tempReal >= 1E-08))
                     {
-                        tempReal = 100.0 * (Math.Abs((double)(minusDI - plusDI)) / tempReal);
-                        prevADX = ((prevADX * (optInTimePeriod - 1)) + tempReal) / ((double)optInTimePeriod);
+                        tempReal = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
+                        prevADX = ((prevADX * (optInTimePeriod - 1)) + tempReal) / optInTimePeriod;
                     }
                 }
 

@@ -45,7 +45,7 @@ namespace GLPM.TechnicalAnalysis
                 endIdx,
                 inReal,
                 optInTimePeriod,
-                2.0 / ((double)(optInTimePeriod + 1)),
+                2.0 / (optInTimePeriod + 1),
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
@@ -94,7 +94,7 @@ namespace GLPM.TechnicalAnalysis
                 endIdx,
                 inReal,
                 optInTimePeriod,
-                2.0 / ((double)(optInTimePeriod + 1)),
+                2.0 / (optInTimePeriod + 1),
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);

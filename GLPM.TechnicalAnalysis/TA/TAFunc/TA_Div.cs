@@ -88,7 +88,7 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             while (i <= endIdx)
             {
-                outReal[outIdx] = ((double)inReal0[i]) / ((double)inReal1[i]);
+                outReal[outIdx] = inReal0[i] / ((double)inReal1[i]);
                 i++;
                 outIdx++;
             }

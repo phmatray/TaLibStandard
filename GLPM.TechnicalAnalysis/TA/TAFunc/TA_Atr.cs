@@ -101,7 +101,7 @@ namespace GLPM.TechnicalAnalysis
                     prevATR *= optInTimePeriod - 1;
                     prevATR += tempBuffer[today];
                     today++;
-                    prevATR /= (double)optInTimePeriod;
+                    prevATR /= optInTimePeriod;
                     outIdx--;
                 }
 
@@ -119,7 +119,7 @@ namespace GLPM.TechnicalAnalysis
                     prevATR *= optInTimePeriod - 1;
                     prevATR += tempBuffer[today];
                     today++;
-                    outReal[outIdx] = prevATR / ((double)optInTimePeriod);
+                    outReal[outIdx] = prevATR / optInTimePeriod;
                     outIdx++;
                 }
 
@@ -229,7 +229,7 @@ namespace GLPM.TechnicalAnalysis
                     prevATR *= optInTimePeriod - 1;
                     prevATR += tempBuffer[today];
                     today++;
-                    prevATR /= (double)optInTimePeriod;
+                    prevATR /= optInTimePeriod;
                     outIdx--;
                 }
 
@@ -247,7 +247,7 @@ namespace GLPM.TechnicalAnalysis
                     prevATR *= optInTimePeriod - 1;
                     prevATR += tempBuffer[today];
                     today++;
-                    outReal[outIdx] = prevATR / ((double)optInTimePeriod);
+                    outReal[outIdx] = prevATR / optInTimePeriod;
                     outIdx++;
                 }
 

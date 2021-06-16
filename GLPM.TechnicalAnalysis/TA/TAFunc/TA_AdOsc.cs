@@ -79,9 +79,9 @@ namespace GLPM.TechnicalAnalysis
             outBegIdx = startIdx;
             int today = startIdx - lookbackTotal;
             double ad = 0.0;
-            double fastk = 2.0 / ((double)(optInFastPeriod + 1));
+            double fastk = 2.0 / (optInFastPeriod + 1);
             double one_minus_fastk = 1.0 - fastk;
-            double slowk = 2.0 / ((double)(optInSlowPeriod + 1));
+            double slowk = 2.0 / (optInSlowPeriod + 1);
             double one_minus_slowk = 1.0 - slowk;
             double high = inHigh[today];
             double low = inLow[today];
@@ -221,9 +221,9 @@ namespace GLPM.TechnicalAnalysis
             outBegIdx = startIdx;
             int today = startIdx - lookbackTotal;
             double ad = 0.0;
-            double fastk = 2.0 / ((double)(optInFastPeriod + 1));
+            double fastk = 2.0 / (optInFastPeriod + 1);
             double one_minus_fastk = 1.0 - fastk;
-            double slowk = 2.0 / ((double)(optInSlowPeriod + 1));
+            double slowk = 2.0 / (optInSlowPeriod + 1);
             double one_minus_slowk = 1.0 - slowk;
             double high = inHigh[today];
             double low = inLow[today];

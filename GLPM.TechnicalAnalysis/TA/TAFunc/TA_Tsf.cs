@@ -84,7 +84,7 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 double m = ((optInTimePeriod * SumXY) - (SumX * SumY)) / Divisor;
-                double b = (SumY - (m * SumX)) / ((double)optInTimePeriod);
+                double b = (SumY - (m * SumX)) / optInTimePeriod;
                 outReal[outIdx] = b + (m * optInTimePeriod);
                 outIdx++;
                 today++;
@@ -173,7 +173,7 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 double m = ((optInTimePeriod * SumXY) - (SumX * SumY)) / Divisor;
-                double b = (SumY - (m * SumX)) / ((double)optInTimePeriod);
+                double b = (SumY - (m * SumX)) / optInTimePeriod;
                 outReal[outIdx] = b + (m * optInTimePeriod);
                 outIdx++;
                 today++;
