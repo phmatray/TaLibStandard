@@ -11,6 +11,9 @@ Written by [Philippe Matray](https://matray.tech)
 
 ## Features
 
+* Double of Float
+* With some basic tests (candles)
+
 ### Library
 
 * target framework : .NET Standard 2.1
