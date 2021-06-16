@@ -18,12 +18,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -56,15 +56,15 @@ namespace GLPM.TechnicalAnalysis
                     break;
                 }
 
-                if (((inHigh[i - 1] < inHigh[i - 2]) && (inLow[i - 1] > inLow[i - 2]))
-                    && (((inHigh[i] < inHigh[i - 1]) && (inLow[i] < inLow[i - 1]))
-                        || ((inHigh[i] > inHigh[i - 1]) && (inLow[i] > inLow[i - 1]))))
+                if (inHigh[i - 1] < inHigh[i - 2] && inLow[i - 1] > inLow[i - 2]
+                                                  && (inHigh[i] < inHigh[i - 1] && inLow[i] < inLow[i - 1]
+                                                      || inHigh[i] > inHigh[i - 1] && inLow[i] > inLow[i - 1]))
                 {
-                    pattern = ((inHigh[i] >= inHigh[i - 1]) ? -1 : 1) * 100;
+                    pattern = (inHigh[i] >= inHigh[i - 1] ? -1 : 1) * 100;
                     patternIdx = i;
                 }
-                else if ((i <= (patternIdx + 3)) && (((pattern > 0) && (inClose[i] > inHigh[patternIdx - 1]))
-                                                     || ((pattern < 0) && (inClose[i] < inLow[patternIdx - 1]))))
+                else if (i <= patternIdx + 3 && (pattern > 0 && inClose[i] > inHigh[patternIdx - 1]
+                                                 || pattern < 0 && inClose[i] < inLow[patternIdx - 1]))
                 {
                     patternIdx = 0;
                 }
@@ -76,17 +76,17 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                if (((inHigh[i - 1] < inHigh[i - 2]) && (inLow[i - 1] > inLow[i - 2]))
-                    && (((inHigh[i] < inHigh[i - 1]) && (inLow[i] < inLow[i - 1]))
-                        || ((inHigh[i] > inHigh[i - 1]) && (inLow[i] > inLow[i - 1]))))
+                if (inHigh[i - 1] < inHigh[i - 2] && inLow[i - 1] > inLow[i - 2]
+                                                  && (inHigh[i] < inHigh[i - 1] && inLow[i] < inLow[i - 1]
+                                                      || inHigh[i] > inHigh[i - 1] && inLow[i] > inLow[i - 1]))
                 {
-                    pattern = ((inHigh[i] >= inHigh[i - 1]) ? -1 : 1) * 100;
+                    pattern = (inHigh[i] >= inHigh[i - 1] ? -1 : 1) * 100;
                     patternIdx = i;
                     outInteger[outIdx] = pattern;
                     outIdx++;
                 }
-                else if ((i <= (patternIdx + 3)) && (((pattern > 0) && (inClose[i] > inHigh[patternIdx - 1]))
-                                                     || ((pattern < 0) && (inClose[i] < inLow[patternIdx - 1]))))
+                else if (i <= patternIdx + 3 && (pattern > 0 && inClose[i] > inHigh[patternIdx - 1]
+                                                 || pattern < 0 && inClose[i] < inLow[patternIdx - 1]))
                 {
                     int num;
                     if (pattern > 0)
@@ -98,7 +98,7 @@ namespace GLPM.TechnicalAnalysis
                         num = -1;
                     }
 
-                    outInteger[outIdx] = pattern + (num * 100);
+                    outInteger[outIdx] = pattern + num * 100;
                     outIdx++;
                     patternIdx = 0;
                 }
@@ -133,12 +133,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -171,15 +171,15 @@ namespace GLPM.TechnicalAnalysis
                     break;
                 }
 
-                if (((inHigh[i - 1] < inHigh[i - 2]) && (inLow[i - 1] > inLow[i - 2]))
-                    && (((inHigh[i] < inHigh[i - 1]) && (inLow[i] < inLow[i - 1]))
-                        || ((inHigh[i] > inHigh[i - 1]) && (inLow[i] > inLow[i - 1]))))
+                if (inHigh[i - 1] < inHigh[i - 2] && inLow[i - 1] > inLow[i - 2]
+                                                  && (inHigh[i] < inHigh[i - 1] && inLow[i] < inLow[i - 1]
+                                                      || inHigh[i] > inHigh[i - 1] && inLow[i] > inLow[i - 1]))
                 {
-                    pattern = ((inHigh[i] >= inHigh[i - 1]) ? -1 : 1) * 100;
+                    pattern = (inHigh[i] >= inHigh[i - 1] ? -1 : 1) * 100;
                     patternIdx = i;
                 }
-                else if ((i <= (patternIdx + 3)) && (((pattern > 0) && (inClose[i] > inHigh[patternIdx - 1]))
-                                                     || ((pattern < 0) && (inClose[i] < inLow[patternIdx - 1]))))
+                else if (i <= patternIdx + 3 && (pattern > 0 && inClose[i] > inHigh[patternIdx - 1]
+                                                 || pattern < 0 && inClose[i] < inLow[patternIdx - 1]))
                 {
                     patternIdx = 0;
                 }
@@ -191,17 +191,17 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                if (((inHigh[i - 1] < inHigh[i - 2]) && (inLow[i - 1] > inLow[i - 2]))
-                    && (((inHigh[i] < inHigh[i - 1]) && (inLow[i] < inLow[i - 1]))
-                        || ((inHigh[i] > inHigh[i - 1]) && (inLow[i] > inLow[i - 1]))))
+                if (inHigh[i - 1] < inHigh[i - 2] && inLow[i - 1] > inLow[i - 2]
+                                                  && (inHigh[i] < inHigh[i - 1] && inLow[i] < inLow[i - 1]
+                                                      || inHigh[i] > inHigh[i - 1] && inLow[i] > inLow[i - 1]))
                 {
-                    pattern = ((inHigh[i] >= inHigh[i - 1]) ? -1 : 1) * 100;
+                    pattern = (inHigh[i] >= inHigh[i - 1] ? -1 : 1) * 100;
                     patternIdx = i;
                     outInteger[outIdx] = pattern;
                     outIdx++;
                 }
-                else if ((i <= (patternIdx + 3)) && (((pattern > 0) && (inClose[i] > inHigh[patternIdx - 1]))
-                                                     || ((pattern < 0) && (inClose[i] < inLow[patternIdx - 1]))))
+                else if (i <= patternIdx + 3 && (pattern > 0 && inClose[i] > inHigh[patternIdx - 1]
+                                                 || pattern < 0 && inClose[i] < inLow[patternIdx - 1]))
                 {
                     int num;
                     if (pattern > 0)
@@ -213,7 +213,7 @@ namespace GLPM.TechnicalAnalysis
                         num = -1;
                     }
 
-                    outInteger[outIdx] = pattern + (num * 100);
+                    outInteger[outIdx] = pattern + num * 100;
                     outIdx++;
                     patternIdx = 0;
                 }

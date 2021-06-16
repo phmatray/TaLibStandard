@@ -21,7 +21,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -40,7 +40,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInMinPeriod = 2;
             }
-            else if ((optInMinPeriod < 2) || (optInMinPeriod > 0x186a0))
+            else if (optInMinPeriod < 2 || optInMinPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -49,7 +49,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInMaxPeriod = 30;
             }
-            else if ((optInMaxPeriod < 2) || (optInMaxPeriod > 0x186a0))
+            else if (optInMaxPeriod < 2 || optInMaxPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -88,7 +88,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            int outputSize = (endIdx - tempInt) + 1;
+            int outputSize = endIdx - tempInt + 1;
             double[] localOutputArray = new double[outputSize];
             int[] localPeriodArray = new int[outputSize];
             for (i = 0; i < outputSize; i++)
@@ -171,7 +171,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -190,7 +190,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInMinPeriod = 2;
             }
-            else if ((optInMinPeriod < 2) || (optInMinPeriod > 0x186a0))
+            else if (optInMinPeriod < 2 || optInMinPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -199,7 +199,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInMaxPeriod = 30;
             }
-            else if ((optInMaxPeriod < 2) || (optInMaxPeriod > 0x186a0))
+            else if (optInMaxPeriod < 2 || optInMaxPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -238,7 +238,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            int outputSize = (endIdx - tempInt) + 1;
+            int outputSize = endIdx - tempInt + 1;
             double[] localOutputArray = new double[outputSize];
             int[] localPeriodArray = new int[outputSize];
             for (i = 0; i < outputSize; i++)
@@ -311,7 +311,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInMinPeriod = 2;
             }
-            else if ((optInMinPeriod < 2) || (optInMinPeriod > 0x186a0))
+            else if (optInMinPeriod < 2 || optInMinPeriod > 0x186a0)
             {
                 return -1;
             }
@@ -320,7 +320,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInMaxPeriod = 30;
             }
-            else if ((optInMaxPeriod < 2) || (optInMaxPeriod > 0x186a0))
+            else if (optInMaxPeriod < 2 || optInMaxPeriod > 0x186a0)
             {
                 return -1;
             }

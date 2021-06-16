@@ -16,7 +16,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -30,7 +30,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 10;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -66,7 +66,7 @@ namespace GLPM.TechnicalAnalysis
                 trailingIdx++;
                 if (tempReal != 0.0)
                 {
-                    outReal[outIdx] = (inReal[inIdx] / tempReal) * 100.0;
+                    outReal[outIdx] = inReal[inIdx] / tempReal * 100.0;
                     outIdx++;
                 }
                 else
@@ -97,7 +97,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -111,7 +111,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 10;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -147,7 +147,7 @@ namespace GLPM.TechnicalAnalysis
                 trailingIdx++;
                 if (tempReal != 0.0)
                 {
-                    outReal[outIdx] = (inReal[inIdx] / tempReal) * 100.0;
+                    outReal[outIdx] = inReal[inIdx] / tempReal * 100.0;
                     outIdx++;
                 }
                 else
@@ -170,7 +170,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 10;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }

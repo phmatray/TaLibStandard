@@ -17,7 +17,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if ((endIdx < 0) | (endIdx < startIdx))
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -59,7 +59,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if((endIdx <0) | (endIdx < startIdx))
             {
                 return RetCode.OutOfRangeEndIndex;
             }

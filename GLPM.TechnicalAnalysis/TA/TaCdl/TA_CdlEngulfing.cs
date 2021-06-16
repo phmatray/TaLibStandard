@@ -18,12 +18,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -50,10 +50,8 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                if ((((inClose[i] >= inOpen[i]) && (((inClose[i - 1] < inOpen[i - 1]) ? -1 : 1) == -1))
-                     && ((inClose[i] > inOpen[i - 1]) && (inOpen[i] < inClose[i - 1])))
-                    || (((((inClose[i] < inOpen[i]) ? -1 : 1) == -1) && (inClose[i - 1] >= inOpen[i - 1]))
-                        && ((inOpen[i] > inClose[i - 1]) && (inClose[i] < inOpen[i - 1]))))
+                if (inClose[i] >= inOpen[i] && (inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1 && inClose[i] > inOpen[i - 1] && inOpen[i] < inClose[i - 1]
+                    || (inClose[i] < inOpen[i] ? -1 : 1) == -1 && inClose[i - 1] >= inOpen[i - 1] && inOpen[i] > inClose[i - 1] && inClose[i] < inOpen[i - 1])
                 {
                     int num;
                     if (inClose[i] >= inOpen[i])
@@ -99,12 +97,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -131,10 +129,8 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                if ((((inClose[i] >= inOpen[i]) && (((inClose[i - 1] < inOpen[i - 1]) ? -1 : 1) == -1))
-                     && ((inClose[i] > inOpen[i - 1]) && (inOpen[i] < inClose[i - 1])))
-                    || (((((inClose[i] < inOpen[i]) ? -1 : 1) == -1) && (inClose[i - 1] >= inOpen[i - 1]))
-                        && ((inOpen[i] > inClose[i - 1]) && (inClose[i] < inOpen[i - 1]))))
+                if (inClose[i] >= inOpen[i] && (inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1 && inClose[i] > inOpen[i - 1] && inOpen[i] < inClose[i - 1]
+                    || (inClose[i] < inOpen[i] ? -1 : 1) == -1 && inClose[i - 1] >= inOpen[i - 1] && inOpen[i] > inClose[i - 1] && inClose[i] < inOpen[i - 1])
                 {
                     int num;
                     if (inClose[i] >= inOpen[i])

@@ -18,12 +18,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -36,7 +36,7 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             for (int i = startIdx; i <= endIdx; i++)
             {
-                outReal[outIdx] = (((inHigh[i] + inLow[i]) + inClose[i]) + inOpen[i]) / 4.0;
+                outReal[outIdx] = (inHigh[i] + inLow[i] + inClose[i] + inOpen[i]) / 4.0;
                 outIdx++;
             }
 
@@ -61,12 +61,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -79,7 +79,7 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             for (int i = startIdx; i <= endIdx; i++)
             {
-                outReal[outIdx] = (((inHigh[i] + inLow[i]) + inClose[i]) + inOpen[i]) / 4.0;
+                outReal[outIdx] = (inHigh[i] + inLow[i] + inClose[i] + inOpen[i]) / 4.0;
                 outIdx++;
             }
 

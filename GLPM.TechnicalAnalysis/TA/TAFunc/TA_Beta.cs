@@ -29,7 +29,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -48,7 +48,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 5;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -86,7 +86,7 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 tmp_real = inReal0[i];
-                if ((-1E-08 >= last_price_x) || (last_price_x >= 1E-08))
+                if (-1E-08 >= last_price_x || last_price_x >= 1E-08)
                 {
                     x = (tmp_real - last_price_x) / last_price_x;
                 }
@@ -98,7 +98,7 @@ namespace GLPM.TechnicalAnalysis
                 last_price_x = tmp_real;
                 tmp_real = inReal1[i];
                 i++;
-                if ((-1E-08 >= last_price_y) || (last_price_y >= 1E-08))
+                if (-1E-08 >= last_price_y || last_price_y >= 1E-08)
                 {
                     y = (tmp_real - last_price_y) / last_price_y;
                 }
@@ -119,7 +119,7 @@ namespace GLPM.TechnicalAnalysis
             do
             {
                 tmp_real = inReal0[i];
-                if ((-1E-08 >= last_price_x) || (last_price_x >= 1E-08))
+                if (-1E-08 >= last_price_x || last_price_x >= 1E-08)
                 {
                     x = (tmp_real - last_price_x) / last_price_x;
                 }
@@ -131,7 +131,7 @@ namespace GLPM.TechnicalAnalysis
                 last_price_x = tmp_real;
                 tmp_real = inReal1[i];
                 i++;
-                if ((-1E-08 >= last_price_y) || (last_price_y >= 1E-08))
+                if (-1E-08 >= last_price_y || last_price_y >= 1E-08)
                 {
                     y = (tmp_real - last_price_y) / last_price_y;
                 }
@@ -146,7 +146,7 @@ namespace GLPM.TechnicalAnalysis
                 S_x += x;
                 S_y += y;
                 tmp_real = inReal0[trailingIdx];
-                if ((-1E-08 >= trailing_last_price_x) || (trailing_last_price_x >= 1E-08))
+                if (-1E-08 >= trailing_last_price_x || trailing_last_price_x >= 1E-08)
                 {
                     x = (tmp_real - trailing_last_price_x) / trailing_last_price_x;
                 }
@@ -158,7 +158,7 @@ namespace GLPM.TechnicalAnalysis
                 trailing_last_price_x = tmp_real;
                 tmp_real = inReal1[trailingIdx];
                 trailingIdx++;
-                if ((-1E-08 >= trailing_last_price_y) || (trailing_last_price_y >= 1E-08))
+                if (-1E-08 >= trailing_last_price_y || trailing_last_price_y >= 1E-08)
                 {
                     y = (tmp_real - trailing_last_price_y) / trailing_last_price_y;
                 }
@@ -168,10 +168,10 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 trailing_last_price_y = tmp_real;
-                tmp_real = (n * S_xx) - (S_x * S_x);
-                if ((-1E-08 >= tmp_real) || (tmp_real >= 1E-08))
+                tmp_real = n * S_xx - S_x * S_x;
+                if (-1E-08 >= tmp_real || tmp_real >= 1E-08)
                 {
-                    outReal[outIdx] = ((n * S_xy) - (S_x * S_y)) / tmp_real;
+                    outReal[outIdx] = (n * S_xy - S_x * S_y) / tmp_real;
                     outIdx++;
                 }
                 else
@@ -219,7 +219,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -238,7 +238,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 5;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -276,7 +276,7 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 tmp_real = inReal0[i];
-                if ((-1E-08 >= last_price_x) || (last_price_x >= 1E-08))
+                if (-1E-08 >= last_price_x || last_price_x >= 1E-08)
                 {
                     x = (tmp_real - last_price_x) / last_price_x;
                 }
@@ -288,7 +288,7 @@ namespace GLPM.TechnicalAnalysis
                 last_price_x = tmp_real;
                 tmp_real = inReal1[i];
                 i++;
-                if ((-1E-08 >= last_price_y) || (last_price_y >= 1E-08))
+                if (-1E-08 >= last_price_y || last_price_y >= 1E-08)
                 {
                     y = (tmp_real - last_price_y) / last_price_y;
                 }
@@ -309,7 +309,7 @@ namespace GLPM.TechnicalAnalysis
             do
             {
                 tmp_real = inReal0[i];
-                if ((-1E-08 >= last_price_x) || (last_price_x >= 1E-08))
+                if (-1E-08 >= last_price_x || last_price_x >= 1E-08)
                 {
                     x = (tmp_real - last_price_x) / last_price_x;
                 }
@@ -321,7 +321,7 @@ namespace GLPM.TechnicalAnalysis
                 last_price_x = tmp_real;
                 tmp_real = inReal1[i];
                 i++;
-                if ((-1E-08 >= last_price_y) || (last_price_y >= 1E-08))
+                if (-1E-08 >= last_price_y || last_price_y >= 1E-08)
                 {
                     y = (tmp_real - last_price_y) / last_price_y;
                 }
@@ -336,7 +336,7 @@ namespace GLPM.TechnicalAnalysis
                 S_x += x;
                 S_y += y;
                 tmp_real = inReal0[trailingIdx];
-                if ((-1E-08 >= trailing_last_price_x) || (trailing_last_price_x >= 1E-08))
+                if (-1E-08 >= trailing_last_price_x || trailing_last_price_x >= 1E-08)
                 {
                     x = (tmp_real - trailing_last_price_x) / trailing_last_price_x;
                 }
@@ -348,7 +348,7 @@ namespace GLPM.TechnicalAnalysis
                 trailing_last_price_x = tmp_real;
                 tmp_real = inReal1[trailingIdx];
                 trailingIdx++;
-                if ((-1E-08 >= trailing_last_price_y) || (trailing_last_price_y >= 1E-08))
+                if (-1E-08 >= trailing_last_price_y || trailing_last_price_y >= 1E-08)
                 {
                     y = (tmp_real - trailing_last_price_y) / trailing_last_price_y;
                 }
@@ -358,10 +358,10 @@ namespace GLPM.TechnicalAnalysis
                 }
 
                 trailing_last_price_y = tmp_real;
-                tmp_real = (n * S_xx) - (S_x * S_x);
-                if ((-1E-08 >= tmp_real) || (tmp_real >= 1E-08))
+                tmp_real = n * S_xx - S_x * S_x;
+                if (-1E-08 >= tmp_real || tmp_real >= 1E-08)
                 {
-                    outReal[outIdx] = ((n * S_xy) - (S_x * S_y)) / tmp_real;
+                    outReal[outIdx] = (n * S_xy - S_x * S_y) / tmp_real;
                     outIdx++;
                 }
                 else
@@ -388,7 +388,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 5;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }

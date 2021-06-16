@@ -19,7 +19,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -33,7 +33,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -59,7 +59,7 @@ namespace GLPM.TechnicalAnalysis
             if (optInTimePeriod == 1)
             {
                 outBegIdx = startIdx;
-                outNBElement = (endIdx - startIdx) + 1;
+                outNBElement = endIdx - startIdx + 1;
                 Array.Copy(inReal, startIdx, outReal, 0, outNBElement);
                 return RetCode.Success;
             }
@@ -125,7 +125,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -139,7 +139,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -165,7 +165,7 @@ namespace GLPM.TechnicalAnalysis
             if (optInTimePeriod == 1)
             {
                 outBegIdx = startIdx;
-                outNBElement = (endIdx - startIdx) + 1;
+                outNBElement = endIdx - startIdx + 1;
                 Array.Copy(inReal, startIdx, outReal, 0, outNBElement);
                 return RetCode.Success;
             }
@@ -222,7 +222,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }

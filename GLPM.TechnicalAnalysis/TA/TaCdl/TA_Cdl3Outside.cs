@@ -18,12 +18,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -50,12 +50,8 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                if ((((inClose[i - 1] >= inOpen[i - 1]) && (((inClose[i - 2] < inOpen[i - 2]) ? -1 : 1) == -1))
-                     && (((inClose[i - 1] > inOpen[i - 2]) && (inOpen[i - 1] < inClose[i - 2]))
-                         && (inClose[i] > inClose[i - 1])))
-                    || ((((((inClose[i - 1] < inOpen[i - 1]) ? -1 : 1) == -1) && (inClose[i - 2] >= inOpen[i - 2]))
-                         && ((inOpen[i - 1] > inClose[i - 2]) && (inClose[i - 1] < inOpen[i - 2])))
-                        && (inClose[i] < inClose[i - 1])))
+                if (inClose[i - 1] >= inOpen[i - 1] && (inClose[i - 2] < inOpen[i - 2] ? -1 : 1) == -1 && inClose[i - 1] > inOpen[i - 2] && inOpen[i - 1] < inClose[i - 2] && inClose[i] > inClose[i - 1]
+                    || (inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1 && inClose[i - 2] >= inOpen[i - 2] && inOpen[i - 1] > inClose[i - 2] && inClose[i - 1] < inOpen[i - 2] && inClose[i] < inClose[i - 1])
                 {
                     int num;
                     if (inClose[i - 1] >= inOpen[i - 1])
@@ -101,12 +97,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -133,12 +129,8 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                if ((((inClose[i - 1] >= inOpen[i - 1]) && (((inClose[i - 2] < inOpen[i - 2]) ? -1 : 1) == -1))
-                     && (((inClose[i - 1] > inOpen[i - 2]) && (inOpen[i - 1] < inClose[i - 2]))
-                         && (inClose[i] > inClose[i - 1])))
-                    || ((((((inClose[i - 1] < inOpen[i - 1]) ? -1 : 1) == -1) && (inClose[i - 2] >= inOpen[i - 2]))
-                         && ((inOpen[i - 1] > inClose[i - 2]) && (inClose[i - 1] < inOpen[i - 2])))
-                        && (inClose[i] < inClose[i - 1])))
+                if (inClose[i - 1] >= inOpen[i - 1] && (inClose[i - 2] < inOpen[i - 2] ? -1 : 1) == -1 && inClose[i - 1] > inOpen[i - 2] && inOpen[i - 1] < inClose[i - 2] && inClose[i] > inClose[i - 1]
+                    || (inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1 && inClose[i - 2] >= inOpen[i - 2] && inOpen[i - 1] > inClose[i - 2] && inClose[i - 1] < inOpen[i - 2] && inClose[i] < inClose[i - 1])
                 {
                     int num;
                     if (inClose[i - 1] >= inOpen[i - 1])

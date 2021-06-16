@@ -18,7 +18,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -32,7 +32,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastPeriod = 12;
             }
-            else if ((optInFastPeriod < 2) || (optInFastPeriod > 0x186a0))
+            else if (optInFastPeriod < 2 || optInFastPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -41,7 +41,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowPeriod = 0x1a;
             }
-            else if ((optInSlowPeriod < 2) || (optInSlowPeriod > 0x186a0))
+            else if (optInSlowPeriod < 2 || optInSlowPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -51,7 +51,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            double[] tempBuffer = new double[(endIdx - startIdx) + 1];
+            double[] tempBuffer = new double[endIdx - startIdx + 1];
             if (tempBuffer == null)
             {
                 return RetCode.AllocErr;
@@ -87,7 +87,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -101,7 +101,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastPeriod = 12;
             }
-            else if ((optInFastPeriod < 2) || (optInFastPeriod > 0x186a0))
+            else if (optInFastPeriod < 2 || optInFastPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -110,7 +110,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowPeriod = 0x1a;
             }
-            else if ((optInSlowPeriod < 2) || (optInSlowPeriod > 0x186a0))
+            else if (optInSlowPeriod < 2 || optInSlowPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -120,7 +120,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            double[] tempBuffer = new double[(endIdx - startIdx) + 1];
+            double[] tempBuffer = new double[endIdx - startIdx + 1];
             if (tempBuffer == null)
             {
                 return RetCode.AllocErr;
@@ -146,7 +146,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastPeriod = 12;
             }
-            else if ((optInFastPeriod < 2) || (optInFastPeriod > 0x186a0))
+            else if (optInFastPeriod < 2 || optInFastPeriod > 0x186a0)
             {
                 return -1;
             }
@@ -155,13 +155,13 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowPeriod = 0x1a;
             }
-            else if ((optInSlowPeriod < 2) || (optInSlowPeriod > 0x186a0))
+            else if (optInSlowPeriod < 2 || optInSlowPeriod > 0x186a0)
             {
                 return -1;
             }
 
             return MovingAverageLookback(
-                (optInSlowPeriod <= optInFastPeriod) ? optInFastPeriod : optInSlowPeriod,
+                optInSlowPeriod <= optInFastPeriod ? optInFastPeriod : optInSlowPeriod,
                 optInMAType);
         }
     }

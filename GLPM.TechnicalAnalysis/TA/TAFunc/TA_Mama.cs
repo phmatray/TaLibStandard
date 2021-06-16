@@ -31,7 +31,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -45,7 +45,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastLimit = 0.5;
             }
-            else if ((optInFastLimit < 0.01) || (optInFastLimit > 0.99))
+            else if (optInFastLimit < 0.01 || optInFastLimit > 0.99)
             {
                 return RetCode.BadParam;
             }
@@ -54,7 +54,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowLimit = 0.05;
             }
-            else if ((optInSlowLimit < 0.01) || (optInSlowLimit > 0.99))
+            else if (optInSlowLimit < 0.01 || optInSlowLimit > 0.99)
             {
                 return RetCode.BadParam;
             }
@@ -70,7 +70,7 @@ namespace GLPM.TechnicalAnalysis
             }
 
             double rad2Deg = 180.0 / (4.0 * Math.Atan(1.0));
-            int lookbackTotal = ((int)Globals.unstablePeriod[13]) + 0x20;
+            int lookbackTotal = (int)Globals.unstablePeriod[13] + 0x20;
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -184,7 +184,7 @@ namespace GLPM.TechnicalAnalysis
                     break;
                 }
 
-                double adjustedPrevPeriod = (0.075 * period) + 0.54;
+                double adjustedPrevPeriod = 0.075 * period + 0.54;
                 double todayValue = inReal[today];
                 periodWMASub += todayValue;
                 periodWMASub -= trailingWMAValue;
@@ -193,7 +193,7 @@ namespace GLPM.TechnicalAnalysis
                 trailingWMAIdx++;
                 smoothedValue = periodWMASum * 0.1;
                 periodWMASum -= periodWMASub;
-                if ((today % 2) == 0)
+                if (today % 2 == 0)
                 {
                     hilbertTempReal = a * smoothedValue;
                     detrender = -detrender_Even[hilbertIdx];
@@ -237,8 +237,8 @@ namespace GLPM.TechnicalAnalysis
                         hilbertIdx = 0;
                     }
 
-                    Q2 = (0.2 * (Q1 + jI)) + (0.8 * prevQ2);
-                    I2 = (0.2 * (I1ForEvenPrev3 - jQ)) + (0.8 * prevI2);
+                    Q2 = 0.2 * (Q1 + jI) + 0.8 * prevQ2;
+                    I2 = 0.2 * (I1ForEvenPrev3 - jQ) + 0.8 * prevI2;
                     I1ForOddPrev3 = I1ForOddPrev2;
                     I1ForOddPrev2 = detrender;
                     if (I1ForEvenPrev3 != 0.0)
@@ -288,8 +288,8 @@ namespace GLPM.TechnicalAnalysis
                     jQ += prev_jQ_Odd;
                     prev_jQ_input_Odd = Q1;
                     jQ *= adjustedPrevPeriod;
-                    Q2 = (0.2 * (Q1 + jI)) + (0.8 * prevQ2);
-                    I2 = (0.2 * (I1ForOddPrev3 - jQ)) + (0.8 * prevI2);
+                    Q2 = 0.2 * (Q1 + jI) + 0.8 * prevQ2;
+                    I2 = 0.2 * (I1ForOddPrev3 - jQ) + 0.8 * prevI2;
                     I1ForEvenPrev3 = I1ForEvenPrev2;
                     I1ForEvenPrev2 = detrender;
                     if (I1ForOddPrev3 != 0.0)
@@ -322,9 +322,9 @@ namespace GLPM.TechnicalAnalysis
                     tempReal = optInFastLimit;
                 }
 
-                mama = (tempReal * todayValue) + ((1.0 - tempReal) * mama);
+                mama = tempReal * todayValue + (1.0 - tempReal) * mama;
                 tempReal *= 0.5;
-                fama = (tempReal * mama) + ((1.0 - tempReal) * fama);
+                fama = tempReal * mama + (1.0 - tempReal) * fama;
                 if (today >= startIdx)
                 {
                     outMAMA[outIdx] = mama;
@@ -332,12 +332,12 @@ namespace GLPM.TechnicalAnalysis
                     outIdx++;
                 }
 
-                Re = (0.2 * ((I2 * prevI2) + (Q2 * prevQ2))) + (0.8 * Re);
-                Im = (0.2 * ((I2 * prevQ2) - (Q2 * prevI2))) + (0.8 * Im);
+                Re = 0.2 * (I2 * prevI2 + Q2 * prevQ2) + 0.8 * Re;
+                Im = 0.2 * (I2 * prevQ2 - Q2 * prevI2) + 0.8 * Im;
                 prevQ2 = Q2;
                 prevI2 = I2;
                 tempReal = period;
-                if ((Im != 0.0) && (Re != 0.0))
+                if (Im != 0.0 && Re != 0.0)
                 {
                     period = 360.0 / (Math.Atan(Im / Re) * rad2Deg);
                 }
@@ -363,7 +363,7 @@ namespace GLPM.TechnicalAnalysis
                     period = 50.0;
                 }
 
-                period = (0.2 * period) + (0.8 * tempReal);
+                period = 0.2 * period + 0.8 * tempReal;
                 today++;
             }
 
@@ -398,7 +398,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -412,7 +412,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastLimit = 0.5;
             }
-            else if ((optInFastLimit < 0.01) || (optInFastLimit > 0.99))
+            else if (optInFastLimit < 0.01 || optInFastLimit > 0.99)
             {
                 return RetCode.BadParam;
             }
@@ -421,7 +421,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowLimit = 0.05;
             }
-            else if ((optInSlowLimit < 0.01) || (optInSlowLimit > 0.99))
+            else if (optInSlowLimit < 0.01 || optInSlowLimit > 0.99)
             {
                 return RetCode.BadParam;
             }
@@ -437,7 +437,7 @@ namespace GLPM.TechnicalAnalysis
             }
 
             double rad2Deg = 180.0 / (4.0 * Math.Atan(1.0));
-            int lookbackTotal = ((int)Globals.unstablePeriod[13]) + 0x20;
+            int lookbackTotal = (int)Globals.unstablePeriod[13] + 0x20;
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -551,7 +551,7 @@ namespace GLPM.TechnicalAnalysis
                     break;
                 }
 
-                double adjustedPrevPeriod = (0.075 * period) + 0.54;
+                double adjustedPrevPeriod = 0.075 * period + 0.54;
                 double todayValue = inReal[today];
                 periodWMASub += todayValue;
                 periodWMASub -= trailingWMAValue;
@@ -560,7 +560,7 @@ namespace GLPM.TechnicalAnalysis
                 trailingWMAIdx++;
                 smoothedValue = periodWMASum * 0.1;
                 periodWMASum -= periodWMASub;
-                if ((today % 2) == 0)
+                if (today % 2 == 0)
                 {
                     hilbertTempReal = a * smoothedValue;
                     detrender = -detrender_Even[hilbertIdx];
@@ -604,8 +604,8 @@ namespace GLPM.TechnicalAnalysis
                         hilbertIdx = 0;
                     }
 
-                    Q2 = (0.2 * (Q1 + jI)) + (0.8 * prevQ2);
-                    I2 = (0.2 * (I1ForEvenPrev3 - jQ)) + (0.8 * prevI2);
+                    Q2 = 0.2 * (Q1 + jI) + 0.8 * prevQ2;
+                    I2 = 0.2 * (I1ForEvenPrev3 - jQ) + 0.8 * prevI2;
                     I1ForOddPrev3 = I1ForOddPrev2;
                     I1ForOddPrev2 = detrender;
                     if (I1ForEvenPrev3 != 0.0)
@@ -655,8 +655,8 @@ namespace GLPM.TechnicalAnalysis
                     jQ += prev_jQ_Odd;
                     prev_jQ_input_Odd = Q1;
                     jQ *= adjustedPrevPeriod;
-                    Q2 = (0.2 * (Q1 + jI)) + (0.8 * prevQ2);
-                    I2 = (0.2 * (I1ForOddPrev3 - jQ)) + (0.8 * prevI2);
+                    Q2 = 0.2 * (Q1 + jI) + 0.8 * prevQ2;
+                    I2 = 0.2 * (I1ForOddPrev3 - jQ) + 0.8 * prevI2;
                     I1ForEvenPrev3 = I1ForEvenPrev2;
                     I1ForEvenPrev2 = detrender;
                     if (I1ForOddPrev3 != 0.0)
@@ -689,9 +689,9 @@ namespace GLPM.TechnicalAnalysis
                     tempReal = optInFastLimit;
                 }
 
-                mama = (tempReal * todayValue) + ((1.0 - tempReal) * mama);
+                mama = tempReal * todayValue + (1.0 - tempReal) * mama;
                 tempReal *= 0.5;
-                fama = (tempReal * mama) + ((1.0 - tempReal) * fama);
+                fama = tempReal * mama + (1.0 - tempReal) * fama;
                 if (today >= startIdx)
                 {
                     outMAMA[outIdx] = mama;
@@ -699,12 +699,12 @@ namespace GLPM.TechnicalAnalysis
                     outIdx++;
                 }
 
-                Re = (0.2 * ((I2 * prevI2) + (Q2 * prevQ2))) + (0.8 * Re);
-                Im = (0.2 * ((I2 * prevQ2) - (Q2 * prevI2))) + (0.8 * Im);
+                Re = 0.2 * (I2 * prevI2 + Q2 * prevQ2) + 0.8 * Re;
+                Im = 0.2 * (I2 * prevQ2 - Q2 * prevI2) + 0.8 * Im;
                 prevQ2 = Q2;
                 prevI2 = I2;
                 tempReal = period;
-                if ((Im != 0.0) && (Re != 0.0))
+                if (Im != 0.0 && Re != 0.0)
                 {
                     period = 360.0 / (Math.Atan(Im / Re) * rad2Deg);
                 }
@@ -730,7 +730,7 @@ namespace GLPM.TechnicalAnalysis
                     period = 50.0;
                 }
 
-                period = (0.2 * period) + (0.8 * tempReal);
+                period = 0.2 * period + 0.8 * tempReal;
                 today++;
             }
 
@@ -744,7 +744,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastLimit = 0.5;
             }
-            else if ((optInFastLimit < 0.01) || (optInFastLimit > 0.99))
+            else if (optInFastLimit < 0.01 || optInFastLimit > 0.99)
             {
                 return -1;
             }
@@ -753,12 +753,12 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowLimit = 0.05;
             }
-            else if ((optInSlowLimit < 0.01) || (optInSlowLimit > 0.99))
+            else if (optInSlowLimit < 0.01 || optInSlowLimit > 0.99)
             {
                 return -1;
             }
 
-            return ((int)Globals.unstablePeriod[13]) + 0x20;
+            return (int)Globals.unstablePeriod[13] + 0x20;
         }
     }
 }

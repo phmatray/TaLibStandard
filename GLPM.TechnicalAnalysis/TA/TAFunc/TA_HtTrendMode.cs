@@ -30,7 +30,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -65,7 +65,7 @@ namespace GLPM.TechnicalAnalysis
             double rad2Deg = 45.0 / tempReal;
             double deg2Rad = 1.0 / rad2Deg;
             double constDeg2RadBy360 = tempReal * 8.0;
-            int lookbackTotal = ((int)Globals.unstablePeriod[11]) + 0x3f;
+            int lookbackTotal = (int)Globals.unstablePeriod[11] + 0x3f;
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -185,7 +185,7 @@ namespace GLPM.TechnicalAnalysis
                     return RetCode.Success;
                 }
 
-                double adjustedPrevPeriod = (0.075 * period) + 0.54;
+                double adjustedPrevPeriod = 0.075 * period + 0.54;
                 double todayValue = inReal[today];
                 periodWMASub += todayValue;
                 periodWMASub -= trailingWMAValue;
@@ -195,7 +195,7 @@ namespace GLPM.TechnicalAnalysis
                 smoothedValue = periodWMASum * 0.1;
                 periodWMASum -= periodWMASub;
                 smoothPrice[smoothPrice_Idx] = smoothedValue;
-                if ((today % 2) == 0)
+                if (today % 2 == 0)
                 {
                     hilbertTempReal = a * smoothedValue;
                     detrender = -detrender_Even[hilbertIdx];
@@ -239,8 +239,8 @@ namespace GLPM.TechnicalAnalysis
                         hilbertIdx = 0;
                     }
 
-                    Q2 = (0.2 * (Q1 + jI)) + (0.8 * prevQ2);
-                    I2 = (0.2 * (I1ForEvenPrev3 - jQ)) + (0.8 * prevI2);
+                    Q2 = 0.2 * (Q1 + jI) + 0.8 * prevQ2;
+                    I2 = 0.2 * (I1ForEvenPrev3 - jQ) + 0.8 * prevI2;
                     I1ForOddPrev3 = I1ForOddPrev2;
                     I1ForOddPrev2 = detrender;
                 }
@@ -282,18 +282,18 @@ namespace GLPM.TechnicalAnalysis
                     jQ += prev_jQ_Odd;
                     prev_jQ_input_Odd = Q1;
                     jQ *= adjustedPrevPeriod;
-                    Q2 = (0.2 * (Q1 + jI)) + (0.8 * prevQ2);
-                    I2 = (0.2 * (I1ForOddPrev3 - jQ)) + (0.8 * prevI2);
+                    Q2 = 0.2 * (Q1 + jI) + 0.8 * prevQ2;
+                    I2 = 0.2 * (I1ForOddPrev3 - jQ) + 0.8 * prevI2;
                     I1ForEvenPrev3 = I1ForEvenPrev2;
                     I1ForEvenPrev2 = detrender;
                 }
 
-                Re = (0.2 * ((I2 * prevI2) + (Q2 * prevQ2))) + (0.8 * Re);
-                Im = (0.2 * ((I2 * prevQ2) - (Q2 * prevI2))) + (0.8 * Im);
+                Re = 0.2 * (I2 * prevI2 + Q2 * prevQ2) + 0.8 * Re;
+                Im = 0.2 * (I2 * prevQ2 - Q2 * prevI2) + 0.8 * Im;
                 prevQ2 = Q2;
                 prevI2 = I2;
                 tempReal = period;
-                if ((Im != 0.0) && (Re != 0.0))
+                if (Im != 0.0 && Re != 0.0)
                 {
                     period = 360.0 / (Math.Atan(Im / Re) * rad2Deg);
                 }
@@ -319,8 +319,8 @@ namespace GLPM.TechnicalAnalysis
                     period = 50.0;
                 }
 
-                period = (0.2 * period) + (0.8 * tempReal);
-                smoothPeriod = (0.33 * period) + (0.67 * smoothPeriod);
+                period = 0.2 * period + 0.8 * tempReal;
+                smoothPeriod = 0.33 * period + 0.67 * smoothPeriod;
                 prevDCPhase = DCPhase;
                 double DCPeriod = smoothPeriod + 0.5;
                 int DCPeriodInt = (int)DCPeriod;
@@ -330,7 +330,7 @@ namespace GLPM.TechnicalAnalysis
                 i = 0;
                 while (i < DCPeriodInt)
                 {
-                    tempReal = (i * constDeg2RadBy360) / DCPeriodInt;
+                    tempReal = i * constDeg2RadBy360 / DCPeriodInt;
                     tempReal2 = smoothPrice[idx];
                     realPart += Math.Sin(tempReal) * tempReal2;
                     imagPart += Math.Cos(tempReal) * tempReal2;
@@ -394,33 +394,33 @@ namespace GLPM.TechnicalAnalysis
                     tempReal /= DCPeriodInt;
                 }
 
-                double trendline = ((((4.0 * tempReal) + (3.0 * iTrend1)) + (2.0 * iTrend2)) + iTrend3) / 10.0;
+                double trendline = (4.0 * tempReal + 3.0 * iTrend1 + 2.0 * iTrend2 + iTrend3) / 10.0;
                 iTrend3 = iTrend2;
                 iTrend2 = iTrend1;
                 iTrend1 = tempReal;
                 int trend = 1;
-                if (((sine > leadSine) && (prevSine <= prevLeadSine))
-                    || ((sine < leadSine) && (prevSine >= prevLeadSine)))
+                if (sine > leadSine && prevSine <= prevLeadSine
+                    || sine < leadSine && prevSine >= prevLeadSine)
                 {
                     daysInTrend = 0;
                     trend = 0;
                 }
 
                 daysInTrend++;
-                if (daysInTrend < (0.5 * smoothPeriod))
+                if (daysInTrend < 0.5 * smoothPeriod)
                 {
                     trend = 0;
                 }
 
                 tempReal = DCPhase - prevDCPhase;
-                if (((smoothPeriod != 0.0) && (tempReal > (241.20000000000002 / smoothPeriod)))
-                    && (tempReal < (540.0 / smoothPeriod)))
+                if (smoothPeriod != 0.0 && tempReal > 241.20000000000002 / smoothPeriod
+                                        && tempReal < 540.0 / smoothPeriod)
                 {
                     trend = 0;
                 }
 
                 tempReal = smoothPrice[smoothPrice_Idx];
-                if ((trendline != 0.0) && (Math.Abs((tempReal - trendline) / trendline) >= 0.015))
+                if (trendline != 0.0 && Math.Abs((tempReal - trendline) / trendline) >= 0.015)
                 {
                     trend = 1;
                 }
@@ -467,7 +467,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -502,7 +502,7 @@ namespace GLPM.TechnicalAnalysis
             double rad2Deg = 45.0 / tempReal;
             double deg2Rad = 1.0 / rad2Deg;
             double constDeg2RadBy360 = tempReal * 8.0;
-            int lookbackTotal = ((int)Globals.unstablePeriod[11]) + 0x3f;
+            int lookbackTotal = (int)Globals.unstablePeriod[11] + 0x3f;
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -622,7 +622,7 @@ namespace GLPM.TechnicalAnalysis
                     return RetCode.Success;
                 }
 
-                double adjustedPrevPeriod = (0.075 * period) + 0.54;
+                double adjustedPrevPeriod = 0.075 * period + 0.54;
                 double todayValue = inReal[today];
                 periodWMASub += todayValue;
                 periodWMASub -= trailingWMAValue;
@@ -632,7 +632,7 @@ namespace GLPM.TechnicalAnalysis
                 smoothedValue = periodWMASum * 0.1;
                 periodWMASum -= periodWMASub;
                 smoothPrice[smoothPrice_Idx] = smoothedValue;
-                if ((today % 2) == 0)
+                if (today % 2 == 0)
                 {
                     hilbertTempReal = a * smoothedValue;
                     detrender = -detrender_Even[hilbertIdx];
@@ -676,8 +676,8 @@ namespace GLPM.TechnicalAnalysis
                         hilbertIdx = 0;
                     }
 
-                    Q2 = (0.2 * (Q1 + jI)) + (0.8 * prevQ2);
-                    I2 = (0.2 * (I1ForEvenPrev3 - jQ)) + (0.8 * prevI2);
+                    Q2 = 0.2 * (Q1 + jI) + 0.8 * prevQ2;
+                    I2 = 0.2 * (I1ForEvenPrev3 - jQ) + 0.8 * prevI2;
                     I1ForOddPrev3 = I1ForOddPrev2;
                     I1ForOddPrev2 = detrender;
                 }
@@ -719,18 +719,18 @@ namespace GLPM.TechnicalAnalysis
                     jQ += prev_jQ_Odd;
                     prev_jQ_input_Odd = Q1;
                     jQ *= adjustedPrevPeriod;
-                    Q2 = (0.2 * (Q1 + jI)) + (0.8 * prevQ2);
-                    I2 = (0.2 * (I1ForOddPrev3 - jQ)) + (0.8 * prevI2);
+                    Q2 = 0.2 * (Q1 + jI) + 0.8 * prevQ2;
+                    I2 = 0.2 * (I1ForOddPrev3 - jQ) + 0.8 * prevI2;
                     I1ForEvenPrev3 = I1ForEvenPrev2;
                     I1ForEvenPrev2 = detrender;
                 }
 
-                Re = (0.2 * ((I2 * prevI2) + (Q2 * prevQ2))) + (0.8 * Re);
-                Im = (0.2 * ((I2 * prevQ2) - (Q2 * prevI2))) + (0.8 * Im);
+                Re = 0.2 * (I2 * prevI2 + Q2 * prevQ2) + 0.8 * Re;
+                Im = 0.2 * (I2 * prevQ2 - Q2 * prevI2) + 0.8 * Im;
                 prevQ2 = Q2;
                 prevI2 = I2;
                 tempReal = period;
-                if ((Im != 0.0) && (Re != 0.0))
+                if (Im != 0.0 && Re != 0.0)
                 {
                     period = 360.0 / (Math.Atan(Im / Re) * rad2Deg);
                 }
@@ -756,8 +756,8 @@ namespace GLPM.TechnicalAnalysis
                     period = 50.0;
                 }
 
-                period = (0.2 * period) + (0.8 * tempReal);
-                smoothPeriod = (0.33 * period) + (0.67 * smoothPeriod);
+                period = 0.2 * period + 0.8 * tempReal;
+                smoothPeriod = 0.33 * period + 0.67 * smoothPeriod;
                 prevDCPhase = DCPhase;
                 double DCPeriod = smoothPeriod + 0.5;
                 int DCPeriodInt = (int)DCPeriod;
@@ -767,7 +767,7 @@ namespace GLPM.TechnicalAnalysis
                 i = 0;
                 while (i < DCPeriodInt)
                 {
-                    tempReal = (i * constDeg2RadBy360) / DCPeriodInt;
+                    tempReal = i * constDeg2RadBy360 / DCPeriodInt;
                     tempReal2 = smoothPrice[idx];
                     realPart += Math.Sin(tempReal) * tempReal2;
                     imagPart += Math.Cos(tempReal) * tempReal2;
@@ -831,33 +831,33 @@ namespace GLPM.TechnicalAnalysis
                     tempReal /= DCPeriodInt;
                 }
 
-                double trendline = ((((4.0 * tempReal) + (3.0 * iTrend1)) + (2.0 * iTrend2)) + iTrend3) / 10.0;
+                double trendline = (4.0 * tempReal + 3.0 * iTrend1 + 2.0 * iTrend2 + iTrend3) / 10.0;
                 iTrend3 = iTrend2;
                 iTrend2 = iTrend1;
                 iTrend1 = tempReal;
                 int trend = 1;
-                if (((sine > leadSine) && (prevSine <= prevLeadSine))
-                    || ((sine < leadSine) && (prevSine >= prevLeadSine)))
+                if (sine > leadSine && prevSine <= prevLeadSine
+                    || sine < leadSine && prevSine >= prevLeadSine)
                 {
                     daysInTrend = 0;
                     trend = 0;
                 }
 
                 daysInTrend++;
-                if (daysInTrend < (0.5 * smoothPeriod))
+                if (daysInTrend < 0.5 * smoothPeriod)
                 {
                     trend = 0;
                 }
 
                 tempReal = DCPhase - prevDCPhase;
-                if (((smoothPeriod != 0.0) && (tempReal > (241.20000000000002 / smoothPeriod)))
-                    && (tempReal < (540.0 / smoothPeriod)))
+                if (smoothPeriod != 0.0 && tempReal > 241.20000000000002 / smoothPeriod
+                                        && tempReal < 540.0 / smoothPeriod)
                 {
                     trend = 0;
                 }
 
                 tempReal = smoothPrice[smoothPrice_Idx];
-                if ((trendline != 0.0) && (Math.Abs((tempReal - trendline) / trendline) >= 0.015))
+                if (trendline != 0.0 && Math.Abs((tempReal - trendline) / trendline) >= 0.015)
                 {
                     trend = 1;
                 }
@@ -880,7 +880,7 @@ namespace GLPM.TechnicalAnalysis
 
         public static int HtTrendModeLookback()
         {
-            return ((int)Globals.unstablePeriod[11]) + 0x3f;
+            return (int)Globals.unstablePeriod[11] + 0x3f;
         }
     }
 }

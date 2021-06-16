@@ -26,12 +26,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || (inClose == null))
+            if (inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -40,7 +40,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod1 = 7;
             }
-            else if ((optInTimePeriod1 < 1) || (optInTimePeriod1 > 0x186a0))
+            else if (optInTimePeriod1 < 1 || optInTimePeriod1 > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -49,7 +49,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod2 = 14;
             }
-            else if ((optInTimePeriod2 < 1) || (optInTimePeriod2 > 0x186a0))
+            else if (optInTimePeriod2 < 1 || optInTimePeriod2 > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -58,7 +58,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod3 = 0x1c;
             }
-            else if ((optInTimePeriod3 < 1) || (optInTimePeriod3 > 0x186a0))
+            else if (optInTimePeriod3 < 1 || optInTimePeriod3 > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -104,7 +104,7 @@ namespace GLPM.TechnicalAnalysis
 
                     double a1Total = 0.0;
                     double b1Total = 0.0;
-                    i = (startIdx - optInTimePeriod1) + 1;
+                    i = startIdx - optInTimePeriod1 + 1;
                     while (i < startIdx)
                     {
                         double num7;
@@ -142,7 +142,7 @@ namespace GLPM.TechnicalAnalysis
 
                     double a2Total = 0.0;
                     double b2Total = 0.0;
-                    i = (startIdx - optInTimePeriod2) + 1;
+                    i = startIdx - optInTimePeriod2 + 1;
                     while (i < startIdx)
                     {
                         double num6;
@@ -180,7 +180,7 @@ namespace GLPM.TechnicalAnalysis
 
                     double a3Total = 0.0;
                     double b3Total = 0.0;
-                    i = (startIdx - optInTimePeriod3) + 1;
+                    i = startIdx - optInTimePeriod3 + 1;
                     while (i < startIdx)
                     {
                         double num5;
@@ -218,9 +218,9 @@ namespace GLPM.TechnicalAnalysis
 
                     int today = startIdx;
                     outIdx = 0;
-                    int trailingIdx1 = (today - optInTimePeriod1) + 1;
-                    int trailingIdx2 = (today - optInTimePeriod2) + 1;
-                    for (int trailingIdx3 = (today - optInTimePeriod3) + 1; today <= endIdx; trailingIdx3++)
+                    int trailingIdx1 = today - optInTimePeriod1 + 1;
+                    int trailingIdx2 = today - optInTimePeriod2 + 1;
+                    for (int trailingIdx3 = today - optInTimePeriod3 + 1; today <= endIdx; trailingIdx3++)
                     {
                         double num;
                         double num2;
@@ -260,17 +260,17 @@ namespace GLPM.TechnicalAnalysis
                         b2Total += trueRange;
                         b3Total += trueRange;
                         double output = 0.0;
-                        if ((-1E-08 >= b1Total) || (b1Total >= 1E-08))
+                        if (-1E-08 >= b1Total || b1Total >= 1E-08)
                         {
                             output += 4.0 * (a1Total / b1Total);
                         }
 
-                        if ((-1E-08 >= b2Total) || (b2Total >= 1E-08))
+                        if (-1E-08 >= b2Total || b2Total >= 1E-08)
                         {
                             output += 2.0 * (a2Total / b2Total);
                         }
 
-                        if ((-1E-08 >= b3Total) || (b3Total >= 1E-08))
+                        if (-1E-08 >= b3Total || b3Total >= 1E-08)
                         {
                             output += a3Total / b3Total;
                         }
@@ -376,7 +376,7 @@ namespace GLPM.TechnicalAnalysis
                 int longestIndex = 0;
                 for (int j = 0; j < 3; j++)
                 {
-                    if ((usedFlag[j] == 0) && (periods[j] > longestPeriod))
+                    if (usedFlag[j] == 0 && periods[j] > longestPeriod)
                     {
                         longestPeriod = periods[j];
                         longestIndex = j;
@@ -415,12 +415,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || (inClose == null))
+            if (inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -429,7 +429,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod1 = 7;
             }
-            else if ((optInTimePeriod1 < 1) || (optInTimePeriod1 > 0x186a0))
+            else if (optInTimePeriod1 < 1 || optInTimePeriod1 > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -438,7 +438,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod2 = 14;
             }
-            else if ((optInTimePeriod2 < 1) || (optInTimePeriod2 > 0x186a0))
+            else if (optInTimePeriod2 < 1 || optInTimePeriod2 > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -447,7 +447,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod3 = 0x1c;
             }
-            else if ((optInTimePeriod3 < 1) || (optInTimePeriod3 > 0x186a0))
+            else if (optInTimePeriod3 < 1 || optInTimePeriod3 > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -493,7 +493,7 @@ namespace GLPM.TechnicalAnalysis
 
                     double a1Total = 0.0;
                     double b1Total = 0.0;
-                    i = (startIdx - optInTimePeriod1) + 1;
+                    i = startIdx - optInTimePeriod1 + 1;
                     while (i < startIdx)
                     {
                         double num7;
@@ -531,7 +531,7 @@ namespace GLPM.TechnicalAnalysis
 
                     double a2Total = 0.0;
                     double b2Total = 0.0;
-                    i = (startIdx - optInTimePeriod2) + 1;
+                    i = startIdx - optInTimePeriod2 + 1;
                     while (i < startIdx)
                     {
                         double num6;
@@ -569,7 +569,7 @@ namespace GLPM.TechnicalAnalysis
 
                     double a3Total = 0.0;
                     double b3Total = 0.0;
-                    i = (startIdx - optInTimePeriod3) + 1;
+                    i = startIdx - optInTimePeriod3 + 1;
                     while (i < startIdx)
                     {
                         double num5;
@@ -607,9 +607,9 @@ namespace GLPM.TechnicalAnalysis
 
                     int today = startIdx;
                     outIdx = 0;
-                    int trailingIdx1 = (today - optInTimePeriod1) + 1;
-                    int trailingIdx2 = (today - optInTimePeriod2) + 1;
-                    for (int trailingIdx3 = (today - optInTimePeriod3) + 1; today <= endIdx; trailingIdx3++)
+                    int trailingIdx1 = today - optInTimePeriod1 + 1;
+                    int trailingIdx2 = today - optInTimePeriod2 + 1;
+                    for (int trailingIdx3 = today - optInTimePeriod3 + 1; today <= endIdx; trailingIdx3++)
                     {
                         double num;
                         double num2;
@@ -649,17 +649,17 @@ namespace GLPM.TechnicalAnalysis
                         b2Total += trueRange;
                         b3Total += trueRange;
                         double output = 0.0;
-                        if ((-1E-08 >= b1Total) || (b1Total >= 1E-08))
+                        if (-1E-08 >= b1Total || b1Total >= 1E-08)
                         {
                             output += 4.0 * (a1Total / b1Total);
                         }
 
-                        if ((-1E-08 >= b2Total) || (b2Total >= 1E-08))
+                        if (-1E-08 >= b2Total || b2Total >= 1E-08)
                         {
                             output += 2.0 * (a2Total / b2Total);
                         }
 
-                        if ((-1E-08 >= b3Total) || (b3Total >= 1E-08))
+                        if (-1E-08 >= b3Total || b3Total >= 1E-08)
                         {
                             output += a3Total / b3Total;
                         }
@@ -765,7 +765,7 @@ namespace GLPM.TechnicalAnalysis
                 int longestIndex = 0;
                 for (int j = 0; j < 3; j++)
                 {
-                    if ((usedFlag[j] == 0) && (periods[j] > longestPeriod))
+                    if (usedFlag[j] == 0 && periods[j] > longestPeriod)
                     {
                         longestPeriod = periods[j];
                         longestIndex = j;
@@ -789,7 +789,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod1 = 7;
             }
-            else if ((optInTimePeriod1 < 1) || (optInTimePeriod1 > 0x186a0))
+            else if (optInTimePeriod1 < 1 || optInTimePeriod1 > 0x186a0)
             {
                 return -1;
             }
@@ -798,7 +798,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod2 = 14;
             }
-            else if ((optInTimePeriod2 < 1) || (optInTimePeriod2 > 0x186a0))
+            else if (optInTimePeriod2 < 1 || optInTimePeriod2 > 0x186a0)
             {
                 return -1;
             }
@@ -807,14 +807,14 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod3 = 0x1c;
             }
-            else if ((optInTimePeriod3 < 1) || (optInTimePeriod3 > 0x186a0))
+            else if (optInTimePeriod3 < 1 || optInTimePeriod3 > 0x186a0)
             {
                 return -1;
             }
 
-            if (((optInTimePeriod1 <= optInTimePeriod2) ? optInTimePeriod2 : optInTimePeriod1) > optInTimePeriod3)
+            if ((optInTimePeriod1 <= optInTimePeriod2 ? optInTimePeriod2 : optInTimePeriod1) > optInTimePeriod3)
             {
-                num2 = (optInTimePeriod1 <= optInTimePeriod2) ? optInTimePeriod2 : optInTimePeriod1;
+                num2 = optInTimePeriod1 <= optInTimePeriod2 ? optInTimePeriod2 : optInTimePeriod1;
             }
             else
             {

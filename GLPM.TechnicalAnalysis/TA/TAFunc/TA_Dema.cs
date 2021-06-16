@@ -16,7 +16,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -30,7 +30,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -62,7 +62,7 @@ namespace GLPM.TechnicalAnalysis
                 }
                 else
                 {
-                    int tempInt = (lookbackTotal + (endIdx - startIdx)) + 1;
+                    int tempInt = lookbackTotal + (endIdx - startIdx) + 1;
                     firstEMA = new double[tempInt];
                     if (firstEMA == null)
                     {
@@ -80,7 +80,7 @@ namespace GLPM.TechnicalAnalysis
                     ref firstEMABegIdx,
                     ref firstEMANbElement,
                     firstEMA);
-                if ((retCode != RetCode.Success) || (firstEMANbElement == 0))
+                if (retCode != RetCode.Success || firstEMANbElement == 0)
                 {
                     return retCode;
                 }
@@ -100,7 +100,7 @@ namespace GLPM.TechnicalAnalysis
                     ref secondEMABegIdx,
                     ref secondEMANbElement,
                     secondEMA);
-                if ((retCode != RetCode.Success) || (secondEMANbElement == 0))
+                if (retCode != RetCode.Success || secondEMANbElement == 0)
                 {
                     return retCode;
                 }
@@ -114,7 +114,7 @@ namespace GLPM.TechnicalAnalysis
                         break;
                     }
 
-                    outReal[outIdx] = (2.0 * firstEMA[firstEMAIdx]) - secondEMA[outIdx];
+                    outReal[outIdx] = 2.0 * firstEMA[firstEMAIdx] - secondEMA[outIdx];
                     firstEMAIdx++;
                     outIdx++;
                 }
@@ -140,7 +140,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -154,7 +154,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -179,7 +179,7 @@ namespace GLPM.TechnicalAnalysis
                 int secondEMANbElement = 0;
                 int secondEMABegIdx = 0;
                 int firstEMABegIdx = 0;
-                int tempInt = (lookbackTotal + (endIdx - startIdx)) + 1;
+                int tempInt = lookbackTotal + (endIdx - startIdx) + 1;
                 double[] firstEMA = new double[tempInt];
                 if (firstEMA == null)
                 {
@@ -196,7 +196,7 @@ namespace GLPM.TechnicalAnalysis
                     ref firstEMABegIdx,
                     ref firstEMANbElement,
                     firstEMA);
-                if ((retCode != RetCode.Success) || (firstEMANbElement == 0))
+                if (retCode != RetCode.Success || firstEMANbElement == 0)
                 {
                     return retCode;
                 }
@@ -216,7 +216,7 @@ namespace GLPM.TechnicalAnalysis
                     ref secondEMABegIdx,
                     ref secondEMANbElement,
                     secondEMA);
-                if ((retCode != RetCode.Success) || (secondEMANbElement == 0))
+                if (retCode != RetCode.Success || secondEMANbElement == 0)
                 {
                     return retCode;
                 }
@@ -230,7 +230,7 @@ namespace GLPM.TechnicalAnalysis
                         break;
                     }
 
-                    outReal[outIdx] = (2.0 * firstEMA[firstEMAIdx]) - secondEMA[outIdx];
+                    outReal[outIdx] = 2.0 * firstEMA[firstEMAIdx] - secondEMA[outIdx];
                     firstEMAIdx++;
                     outIdx++;
                 }
@@ -248,7 +248,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }

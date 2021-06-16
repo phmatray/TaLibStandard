@@ -30,12 +30,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if ((inHigh == null) || (inLow == null))
+            if (inHigh == null || inLow == null)
             {
                 return RetCode.BadParam;
             }
@@ -44,7 +44,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInStartValue = 0.0;
             }
-            else if ((optInStartValue < -3E+37) || (optInStartValue > 3E+37))
+            else if (optInStartValue < -3E+37 || optInStartValue > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -53,7 +53,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInOffsetOnReverse = 0.0;
             }
-            else if ((optInOffsetOnReverse < 0.0) || (optInOffsetOnReverse > 3E+37))
+            else if (optInOffsetOnReverse < 0.0 || optInOffsetOnReverse > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -62,7 +62,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationInitLong = 0.02;
             }
-            else if ((optInAccelerationInitLong < 0.0) || (optInAccelerationInitLong > 3E+37))
+            else if (optInAccelerationInitLong < 0.0 || optInAccelerationInitLong > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -71,7 +71,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationLong = 0.02;
             }
-            else if ((optInAccelerationLong < 0.0) || (optInAccelerationLong > 3E+37))
+            else if (optInAccelerationLong < 0.0 || optInAccelerationLong > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -80,7 +80,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationMaxLong = 0.2;
             }
-            else if ((optInAccelerationMaxLong < 0.0) || (optInAccelerationMaxLong > 3E+37))
+            else if (optInAccelerationMaxLong < 0.0 || optInAccelerationMaxLong > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -89,7 +89,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationInitShort = 0.02;
             }
-            else if ((optInAccelerationInitShort < 0.0) || (optInAccelerationInitShort > 3E+37))
+            else if (optInAccelerationInitShort < 0.0 || optInAccelerationInitShort > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -98,7 +98,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationShort = 0.02;
             }
-            else if ((optInAccelerationShort < 0.0) || (optInAccelerationShort > 3E+37))
+            else if (optInAccelerationShort < 0.0 || optInAccelerationShort > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -107,7 +107,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationMaxShort = 0.2;
             }
-            else if ((optInAccelerationMaxShort < 0.0) || (optInAccelerationMaxShort > 3E+37))
+            else if (optInAccelerationMaxShort < 0.0 || optInAccelerationMaxShort > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -373,12 +373,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if ((inHigh == null) || (inLow == null))
+            if (inHigh == null || inLow == null)
             {
                 return RetCode.BadParam;
             }
@@ -387,7 +387,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInStartValue = 0.0;
             }
-            else if ((optInStartValue < -3E+37) || (optInStartValue > 3E+37))
+            else if (optInStartValue < -3E+37 || optInStartValue > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -396,7 +396,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInOffsetOnReverse = 0.0;
             }
-            else if ((optInOffsetOnReverse < 0.0) || (optInOffsetOnReverse > 3E+37))
+            else if (optInOffsetOnReverse < 0.0 || optInOffsetOnReverse > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -405,7 +405,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationInitLong = 0.02;
             }
-            else if ((optInAccelerationInitLong < 0.0) || (optInAccelerationInitLong > 3E+37))
+            else if (optInAccelerationInitLong < 0.0 || optInAccelerationInitLong > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -414,7 +414,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationLong = 0.02;
             }
-            else if ((optInAccelerationLong < 0.0) || (optInAccelerationLong > 3E+37))
+            else if (optInAccelerationLong < 0.0 || optInAccelerationLong > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -423,7 +423,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationMaxLong = 0.2;
             }
-            else if ((optInAccelerationMaxLong < 0.0) || (optInAccelerationMaxLong > 3E+37))
+            else if (optInAccelerationMaxLong < 0.0 || optInAccelerationMaxLong > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -432,7 +432,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationInitShort = 0.02;
             }
-            else if ((optInAccelerationInitShort < 0.0) || (optInAccelerationInitShort > 3E+37))
+            else if (optInAccelerationInitShort < 0.0 || optInAccelerationInitShort > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -441,7 +441,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationShort = 0.02;
             }
-            else if ((optInAccelerationShort < 0.0) || (optInAccelerationShort > 3E+37))
+            else if (optInAccelerationShort < 0.0 || optInAccelerationShort > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -450,7 +450,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationMaxShort = 0.2;
             }
-            else if ((optInAccelerationMaxShort < 0.0) || (optInAccelerationMaxShort > 3E+37))
+            else if (optInAccelerationMaxShort < 0.0 || optInAccelerationMaxShort > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -704,7 +704,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInStartValue = 0.0;
             }
-            else if ((optInStartValue < -3E+37) || (optInStartValue > 3E+37))
+            else if (optInStartValue < -3E+37 || optInStartValue > 3E+37)
             {
                 return -1;
             }
@@ -713,7 +713,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInOffsetOnReverse = 0.0;
             }
-            else if ((optInOffsetOnReverse < 0.0) || (optInOffsetOnReverse > 3E+37))
+            else if (optInOffsetOnReverse < 0.0 || optInOffsetOnReverse > 3E+37)
             {
                 return -1;
             }
@@ -722,7 +722,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationInitLong = 0.02;
             }
-            else if ((optInAccelerationInitLong < 0.0) || (optInAccelerationInitLong > 3E+37))
+            else if (optInAccelerationInitLong < 0.0 || optInAccelerationInitLong > 3E+37)
             {
                 return -1;
             }
@@ -731,7 +731,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationLong = 0.02;
             }
-            else if ((optInAccelerationLong < 0.0) || (optInAccelerationLong > 3E+37))
+            else if (optInAccelerationLong < 0.0 || optInAccelerationLong > 3E+37)
             {
                 return -1;
             }
@@ -740,7 +740,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationMaxLong = 0.2;
             }
-            else if ((optInAccelerationMaxLong < 0.0) || (optInAccelerationMaxLong > 3E+37))
+            else if (optInAccelerationMaxLong < 0.0 || optInAccelerationMaxLong > 3E+37)
             {
                 return -1;
             }
@@ -749,7 +749,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationInitShort = 0.02;
             }
-            else if ((optInAccelerationInitShort < 0.0) || (optInAccelerationInitShort > 3E+37))
+            else if (optInAccelerationInitShort < 0.0 || optInAccelerationInitShort > 3E+37)
             {
                 return -1;
             }
@@ -758,7 +758,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationShort = 0.02;
             }
-            else if ((optInAccelerationShort < 0.0) || (optInAccelerationShort > 3E+37))
+            else if (optInAccelerationShort < 0.0 || optInAccelerationShort > 3E+37)
             {
                 return -1;
             }
@@ -767,7 +767,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAccelerationMaxShort = 0.2;
             }
-            else if ((optInAccelerationMaxShort < 0.0) || (optInAccelerationMaxShort > 3E+37))
+            else if (optInAccelerationMaxShort < 0.0 || optInAccelerationMaxShort > 3E+37)
             {
                 return -1;
             }
