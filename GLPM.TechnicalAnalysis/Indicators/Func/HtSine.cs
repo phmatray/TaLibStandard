@@ -13,23 +13,23 @@ namespace GLPM.TechnicalAnalysis
     {
         public static HtSine HtSine(int startIdx, int endIdx, double[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outSine = new double[endIdx - startIdx + 1];
             double[] outLeadSine = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outSine, outLeadSine);
+            RetCode retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outSine, outLeadSine);
             return new HtSine(retCode, outBegIdx, outNBElement, outSine, outLeadSine);
         }
 
         public static HtSine HtSine(int startIdx, int endIdx, float[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outSine = new double[endIdx - startIdx + 1];
             double[] outLeadSine = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outSine, outLeadSine);
+            RetCode retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outSine, outLeadSine);
             return new HtSine(retCode, outBegIdx, outNBElement, outSine, outLeadSine);
         }
     }

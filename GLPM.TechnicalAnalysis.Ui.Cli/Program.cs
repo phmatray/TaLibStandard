@@ -1,12 +1,9 @@
 ﻿using System;
+using System.Linq;
+using GLPM.TechnicalAnalysis.Business;
 
 namespace GLPM.TechnicalAnalysis.Ui.Cli
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using GLPM.TechnicalAnalysis.Business;
-
     class Program
     {
         static void Main()
@@ -19,9 +16,6 @@ namespace GLPM.TechnicalAnalysis.Ui.Cli
                 .ComputeMovingAverage()
                 .ComputeBbands()
                 .ComputeRsi();
-
-
-
 
             var dataAIndicator = dataA.Indicators[Indicator.Macd];
 
@@ -40,7 +34,7 @@ namespace GLPM.TechnicalAnalysis.Ui.Cli
             for (int i = 0; i < data.Count; i++)
             {
                 Console.WriteLine(
-                    $"Candle {i}   O: {data.Open[i]:N8}  "
+                    $"Candle {i:000}   O: {data.Open[i]:N8}  "
                     + $"H: {data.High[i]:N8}  "
                     + $"L: {data.Low[i]:N8}  "
                     + $"C: {data.Close[i]:N8}  ");
@@ -58,7 +52,7 @@ namespace GLPM.TechnicalAnalysis.Ui.Cli
                 //    Console.WriteLine($"  MovAvg: {movingAverageResult.Real[i - movingAverageResult.BegIdx]:N8}");
                 //}
 
-                Console.WriteLine();
+                // Console.WriteLine();
             }
 
             Console.ReadLine();

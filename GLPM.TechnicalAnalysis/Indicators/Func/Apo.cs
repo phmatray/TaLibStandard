@@ -19,11 +19,11 @@ namespace GLPM.TechnicalAnalysis
             int slowPeriod = 26,
             MAType mAType = MAType.Sma)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Apo(
+            RetCode retCode = TACore.Apo(
                 startIdx,
                 endIdx,
                 real,
@@ -44,11 +44,11 @@ namespace GLPM.TechnicalAnalysis
             int slowPeriod = 26,
             MAType mAType = MAType.Sma)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Apo(
+            RetCode retCode = TACore.Apo(
                 startIdx,
                 endIdx,
                 real,

@@ -13,21 +13,21 @@ namespace GLPM.TechnicalAnalysis
     {
         public static Cosh Cosh(int startIdx, int endIdx, double[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Cosh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Cosh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
             return new Cosh(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Cosh Cosh(int startIdx, int endIdx, float[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Cosh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Cosh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
             return new Cosh(retCode, outBegIdx, outNBElement, outReal);
         }
     }

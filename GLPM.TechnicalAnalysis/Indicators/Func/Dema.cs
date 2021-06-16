@@ -13,21 +13,21 @@ namespace GLPM.TechnicalAnalysis
     {
         public static Dema Dema(int startIdx, int endIdx, double[] real, int timePeriod = 30)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Dema(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Dema(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
             return new Dema(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Dema Dema(int startIdx, int endIdx, float[] real, int timePeriod = 30)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Dema(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Dema(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
             return new Dema(retCode, outBegIdx, outNBElement, outReal);
         }
     }

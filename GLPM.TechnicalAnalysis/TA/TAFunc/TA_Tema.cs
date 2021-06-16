@@ -16,7 +16,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -30,7 +30,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -57,16 +57,16 @@ namespace GLPM.TechnicalAnalysis
                 int secondEMANbElement = 0;
                 int secondEMABegIdx = 0;
                 int firstEMABegIdx = 0;
-                int tempInt = (lookbackTotal + (endIdx - startIdx)) + 1;
+                int tempInt = lookbackTotal + (endIdx - startIdx) + 1;
                 double[] firstEMA = new double[tempInt];
                 if (firstEMA == null)
                 {
                     return RetCode.AllocErr;
                 }
 
-                double k = 2.0 / ((double)(optInTimePeriod + 1));
+                double k = 2.0 / (optInTimePeriod + 1);
                 RetCode retCode = TA_INT_EMA(
-                    startIdx - (lookbackEMA * 2),
+                    startIdx - lookbackEMA * 2,
                     endIdx,
                     inReal,
                     optInTimePeriod,
@@ -74,7 +74,7 @@ namespace GLPM.TechnicalAnalysis
                     ref firstEMABegIdx,
                     ref firstEMANbElement,
                     firstEMA);
-                if ((retCode != RetCode.Success) || (firstEMANbElement == 0))
+                if (retCode != RetCode.Success || firstEMANbElement == 0)
                 {
                     return retCode;
                 }
@@ -94,7 +94,7 @@ namespace GLPM.TechnicalAnalysis
                     ref secondEMABegIdx,
                     ref secondEMANbElement,
                     secondEMA);
-                if ((retCode != RetCode.Success) || (secondEMANbElement == 0))
+                if (retCode != RetCode.Success || secondEMANbElement == 0)
                 {
                     return retCode;
                 }
@@ -108,7 +108,7 @@ namespace GLPM.TechnicalAnalysis
                     ref thirdEMABegIdx,
                     ref thirdEMANbElement,
                     outReal);
-                if ((retCode != RetCode.Success) || (thirdEMANbElement == 0))
+                if (retCode != RetCode.Success || thirdEMANbElement == 0)
                 {
                     return retCode;
                 }
@@ -124,7 +124,7 @@ namespace GLPM.TechnicalAnalysis
                         break;
                     }
 
-                    outReal[outIdx] += (3.0 * firstEMA[firstEMAIdx]) - (3.0 * secondEMA[secondEMAIdx]);
+                    outReal[outIdx] += 3.0 * firstEMA[firstEMAIdx] - 3.0 * secondEMA[secondEMAIdx];
                     secondEMAIdx++;
                     firstEMAIdx++;
                     outIdx++;
@@ -150,7 +150,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -164,7 +164,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -191,16 +191,16 @@ namespace GLPM.TechnicalAnalysis
                 int secondEMANbElement = 0;
                 int secondEMABegIdx = 0;
                 int firstEMABegIdx = 0;
-                int tempInt = (lookbackTotal + (endIdx - startIdx)) + 1;
+                int tempInt = lookbackTotal + (endIdx - startIdx) + 1;
                 double[] firstEMA = new double[tempInt];
                 if (firstEMA == null)
                 {
                     return RetCode.AllocErr;
                 }
 
-                double k = 2.0 / ((double)(optInTimePeriod + 1));
+                double k = 2.0 / (optInTimePeriod + 1);
                 RetCode retCode = TA_INT_EMA(
-                    startIdx - (lookbackEMA * 2),
+                    startIdx - lookbackEMA * 2,
                     endIdx,
                     inReal,
                     optInTimePeriod,
@@ -208,7 +208,7 @@ namespace GLPM.TechnicalAnalysis
                     ref firstEMABegIdx,
                     ref firstEMANbElement,
                     firstEMA);
-                if ((retCode != RetCode.Success) || (firstEMANbElement == 0))
+                if (retCode != RetCode.Success || firstEMANbElement == 0)
                 {
                     return retCode;
                 }
@@ -228,7 +228,7 @@ namespace GLPM.TechnicalAnalysis
                     ref secondEMABegIdx,
                     ref secondEMANbElement,
                     secondEMA);
-                if ((retCode != RetCode.Success) || (secondEMANbElement == 0))
+                if (retCode != RetCode.Success || secondEMANbElement == 0)
                 {
                     return retCode;
                 }
@@ -242,7 +242,7 @@ namespace GLPM.TechnicalAnalysis
                     ref thirdEMABegIdx,
                     ref thirdEMANbElement,
                     outReal);
-                if ((retCode != RetCode.Success) || (thirdEMANbElement == 0))
+                if (retCode != RetCode.Success || thirdEMANbElement == 0)
                 {
                     return retCode;
                 }
@@ -258,7 +258,7 @@ namespace GLPM.TechnicalAnalysis
                         break;
                     }
 
-                    outReal[outIdx] += (3.0 * firstEMA[firstEMAIdx]) - (3.0 * secondEMA[secondEMAIdx]);
+                    outReal[outIdx] += 3.0 * firstEMA[firstEMAIdx] - 3.0 * secondEMA[secondEMAIdx];
                     secondEMAIdx++;
                     firstEMAIdx++;
                     outIdx++;
@@ -276,7 +276,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }

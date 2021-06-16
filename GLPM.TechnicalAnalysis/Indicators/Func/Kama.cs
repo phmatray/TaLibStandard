@@ -17,7 +17,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = 0;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Kama(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Kama(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
             return new Kama(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -27,7 +27,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = 0;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Kama(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Kama(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
             return new Kama(retCode, outBegIdx, outNBElement, outReal);
         }
     }

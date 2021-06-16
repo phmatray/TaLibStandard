@@ -18,12 +18,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || ((inClose == null) || (inVolume == null)))
+            if (inHigh == null || inLow == null || inClose == null || inVolume == null)
             {
                 return RetCode.BadParam;
             }
@@ -33,7 +33,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            int nbBar = (endIdx - startIdx) + 1;
+            int nbBar = endIdx - startIdx + 1;
             outNBElement = nbBar;
             outBegIdx = startIdx;
             int currentBar = startIdx;
@@ -52,7 +52,7 @@ namespace GLPM.TechnicalAnalysis
                 double close = inClose[currentBar];
                 if (tmp > 0.0)
                 {
-                    ad += (((close - low) - (high - close)) / tmp) * inVolume[currentBar];
+                    ad += (close - low - (high - close)) / tmp * inVolume[currentBar];
                 }
 
                 outReal[outIdx] = ad;
@@ -80,12 +80,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || ((inClose == null) || (inVolume == null)))
+            if (inHigh == null || inLow == null || inClose == null || inVolume == null)
             {
                 return RetCode.BadParam;
             }
@@ -95,7 +95,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            int nbBar = (endIdx - startIdx) + 1;
+            int nbBar = endIdx - startIdx + 1;
             outNBElement = nbBar;
             outBegIdx = startIdx;
             int currentBar = startIdx;
@@ -114,7 +114,7 @@ namespace GLPM.TechnicalAnalysis
                 double close = inClose[currentBar];
                 if (tmp > 0.0)
                 {
-                    ad += (((close - low) - (high - close)) / tmp) * inVolume[currentBar];
+                    ad += (close - low - (high - close)) / tmp * inVolume[currentBar];
                 }
 
                 outReal[outIdx] = ad;

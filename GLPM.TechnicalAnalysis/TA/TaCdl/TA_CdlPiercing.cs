@@ -22,12 +22,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -65,7 +65,7 @@ namespace GLPM.TechnicalAnalysis
 
                 if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                 {
-                    num34 = Math.Abs((double)(inClose[i - 1] - inOpen[i - 1]));
+                    num34 = Math.Abs(inClose[i - 1] - inOpen[i - 1]);
                 }
                 else
                 {
@@ -99,7 +99,7 @@ namespace GLPM.TechnicalAnalysis
                                 num31 = inClose[i - 1];
                             }
 
-                            num30 = (inHigh[i - 1] - num32) + (num31 - inLow[i - 1]);
+                            num30 = inHigh[i - 1] - num32 + (num31 - inLow[i - 1]);
                         }
                         else
                         {
@@ -115,7 +115,7 @@ namespace GLPM.TechnicalAnalysis
                 BodyLongPeriodTotal[1] += num34;
                 if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                 {
-                    num29 = Math.Abs((double)(inClose[i] - inOpen[i]));
+                    num29 = Math.Abs(inClose[i] - inOpen[i]);
                 }
                 else
                 {
@@ -149,7 +149,7 @@ namespace GLPM.TechnicalAnalysis
                                 num26 = inClose[i];
                             }
 
-                            num25 = (inHigh[i] - num27) + (num26 - inLow[i]);
+                            num25 = inHigh[i] - num27 + (num26 - inLow[i]);
                         }
                         else
                         {
@@ -169,20 +169,20 @@ namespace GLPM.TechnicalAnalysis
             i = startIdx;
             int outIdx = 0;
             Label_0237:
-            if (((inClose[i - 1] < inOpen[i - 1]) ? -1 : 1) == -1)
+            if ((inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1)
             {
                 double num18;
                 double num24;
                 if (Globals.candleSettings[0].avgPeriod != 0.0)
                 {
-                    num24 = BodyLongPeriodTotal[1] / ((double)Globals.candleSettings[0].avgPeriod);
+                    num24 = BodyLongPeriodTotal[1] / Globals.candleSettings[0].avgPeriod;
                 }
                 else
                 {
                     double num23;
                     if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                     {
-                        num23 = Math.Abs((double)(inClose[i - 1] - inOpen[i - 1]));
+                        num23 = Math.Abs(inClose[i - 1] - inOpen[i - 1]);
                     }
                     else
                     {
@@ -216,7 +216,7 @@ namespace GLPM.TechnicalAnalysis
                                     num20 = inClose[i - 1];
                                 }
 
-                                num19 = (inHigh[i - 1] - num21) + (num20 - inLow[i - 1]);
+                                num19 = inHigh[i - 1] - num21 + (num20 - inLow[i - 1]);
                             }
                             else
                             {
@@ -241,21 +241,21 @@ namespace GLPM.TechnicalAnalysis
                     num18 = 1.0;
                 }
 
-                if ((Math.Abs((double)(inClose[i - 1] - inOpen[i - 1]))
-                     > ((Globals.candleSettings[0].factor * num24) / num18)) && (inClose[i] >= inOpen[i]))
+                if (Math.Abs(inClose[i - 1] - inOpen[i - 1])
+                    > Globals.candleSettings[0].factor * num24 / num18 && inClose[i] >= inOpen[i])
                 {
                     double num11;
                     double num17;
                     if (Globals.candleSettings[0].avgPeriod != 0.0)
                     {
-                        num17 = BodyLongPeriodTotal[0] / ((double)Globals.candleSettings[0].avgPeriod);
+                        num17 = BodyLongPeriodTotal[0] / Globals.candleSettings[0].avgPeriod;
                     }
                     else
                     {
                         double num16;
                         if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                         {
-                            num16 = Math.Abs((double)(inClose[i] - inOpen[i]));
+                            num16 = Math.Abs(inClose[i] - inOpen[i]);
                         }
                         else
                         {
@@ -289,7 +289,7 @@ namespace GLPM.TechnicalAnalysis
                                         num13 = inClose[i];
                                     }
 
-                                    num12 = (inHigh[i] - num14) + (num13 - inLow[i]);
+                                    num12 = inHigh[i] - num14 + (num13 - inLow[i]);
                                 }
                                 else
                                 {
@@ -314,11 +314,9 @@ namespace GLPM.TechnicalAnalysis
                         num11 = 1.0;
                     }
 
-                    if (((Math.Abs((double)(inClose[i] - inOpen[i]))
-                          > ((Globals.candleSettings[0].factor * num17) / num11)) && (inOpen[i] < inLow[i - 1]))
-                        && ((inClose[i] < inOpen[i - 1])
-                            && (inClose[i] > (inClose[i - 1]
-                                              + (Math.Abs((double)(inClose[i - 1] - inOpen[i - 1])) * 0.5)))))
+                    if (Math.Abs(inClose[i] - inOpen[i])
+                        > Globals.candleSettings[0].factor * num17 / num11 && inOpen[i] < inLow[i - 1] && inClose[i] < inOpen[i - 1] && inClose[i] > inClose[i - 1]
+                        + Math.Abs(inClose[i - 1] - inOpen[i - 1]) * 0.5)
                     {
                         outInteger[outIdx] = 100;
                         outIdx++;
@@ -337,7 +335,7 @@ namespace GLPM.TechnicalAnalysis
                 double num10;
                 if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                 {
-                    num10 = Math.Abs((double)(inClose[i - totIdx] - inOpen[i - totIdx]));
+                    num10 = Math.Abs(inClose[i - totIdx] - inOpen[i - totIdx]);
                 }
                 else
                 {
@@ -371,7 +369,7 @@ namespace GLPM.TechnicalAnalysis
                                 num7 = inClose[i - totIdx];
                             }
 
-                            num6 = (inHigh[i - totIdx] - num8) + (num7 - inLow[i - totIdx]);
+                            num6 = inHigh[i - totIdx] - num8 + (num7 - inLow[i - totIdx]);
                         }
                         else
                         {
@@ -387,7 +385,7 @@ namespace GLPM.TechnicalAnalysis
                 if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                 {
                     num5 = Math.Abs(
-                        (double)(inClose[BodyLongTrailingIdx - totIdx] - inOpen[BodyLongTrailingIdx - totIdx]));
+                        inClose[BodyLongTrailingIdx - totIdx] - inOpen[BodyLongTrailingIdx - totIdx]);
                 }
                 else
                 {
@@ -421,7 +419,7 @@ namespace GLPM.TechnicalAnalysis
                                 num2 = inClose[BodyLongTrailingIdx - totIdx];
                             }
 
-                            num = (inHigh[BodyLongTrailingIdx - totIdx] - num3)
+                            num = inHigh[BodyLongTrailingIdx - totIdx] - num3
                                   + (num2 - inLow[BodyLongTrailingIdx - totIdx]);
                         }
                         else
@@ -469,12 +467,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -512,7 +510,7 @@ namespace GLPM.TechnicalAnalysis
 
                 if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                 {
-                    num34 = Math.Abs((float)(inClose[i - 1] - inOpen[i - 1]));
+                    num34 = Math.Abs(inClose[i - 1] - inOpen[i - 1]);
                 }
                 else
                 {
@@ -546,7 +544,7 @@ namespace GLPM.TechnicalAnalysis
                                 num31 = inClose[i - 1];
                             }
 
-                            num30 = (inHigh[i - 1] - num32) + (num31 - inLow[i - 1]);
+                            num30 = inHigh[i - 1] - num32 + (num31 - inLow[i - 1]);
                         }
                         else
                         {
@@ -562,7 +560,7 @@ namespace GLPM.TechnicalAnalysis
                 BodyLongPeriodTotal[1] += num34;
                 if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                 {
-                    num29 = Math.Abs((float)(inClose[i] - inOpen[i]));
+                    num29 = Math.Abs(inClose[i] - inOpen[i]);
                 }
                 else
                 {
@@ -596,7 +594,7 @@ namespace GLPM.TechnicalAnalysis
                                 num26 = inClose[i];
                             }
 
-                            num25 = (inHigh[i] - num27) + (num26 - inLow[i]);
+                            num25 = inHigh[i] - num27 + (num26 - inLow[i]);
                         }
                         else
                         {
@@ -616,20 +614,20 @@ namespace GLPM.TechnicalAnalysis
             i = startIdx;
             int outIdx = 0;
             Label_0253:
-            if (((inClose[i - 1] < inOpen[i - 1]) ? -1 : 1) == -1)
+            if ((inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1)
             {
                 double num18;
                 double num24;
                 if (Globals.candleSettings[0].avgPeriod != 0.0)
                 {
-                    num24 = BodyLongPeriodTotal[1] / ((double)Globals.candleSettings[0].avgPeriod);
+                    num24 = BodyLongPeriodTotal[1] / Globals.candleSettings[0].avgPeriod;
                 }
                 else
                 {
                     float num23;
                     if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                     {
-                        num23 = Math.Abs((float)(inClose[i - 1] - inOpen[i - 1]));
+                        num23 = Math.Abs(inClose[i - 1] - inOpen[i - 1]);
                     }
                     else
                     {
@@ -663,7 +661,7 @@ namespace GLPM.TechnicalAnalysis
                                     num20 = inClose[i - 1];
                                 }
 
-                                num19 = (inHigh[i - 1] - num21) + (num20 - inLow[i - 1]);
+                                num19 = inHigh[i - 1] - num21 + (num20 - inLow[i - 1]);
                             }
                             else
                             {
@@ -688,21 +686,21 @@ namespace GLPM.TechnicalAnalysis
                     num18 = 1.0;
                 }
 
-                if ((Math.Abs((float)(inClose[i - 1] - inOpen[i - 1]))
-                     > ((Globals.candleSettings[0].factor * num24) / num18)) && (inClose[i] >= inOpen[i]))
+                if (Math.Abs(inClose[i - 1] - inOpen[i - 1])
+                    > Globals.candleSettings[0].factor * num24 / num18 && inClose[i] >= inOpen[i])
                 {
                     double num11;
                     double num17;
                     if (Globals.candleSettings[0].avgPeriod != 0.0)
                     {
-                        num17 = BodyLongPeriodTotal[0] / ((double)Globals.candleSettings[0].avgPeriod);
+                        num17 = BodyLongPeriodTotal[0] / Globals.candleSettings[0].avgPeriod;
                     }
                     else
                     {
                         float num16;
                         if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                         {
-                            num16 = Math.Abs((float)(inClose[i] - inOpen[i]));
+                            num16 = Math.Abs(inClose[i] - inOpen[i]);
                         }
                         else
                         {
@@ -736,7 +734,7 @@ namespace GLPM.TechnicalAnalysis
                                         num13 = inClose[i];
                                     }
 
-                                    num12 = (inHigh[i] - num14) + (num13 - inLow[i]);
+                                    num12 = inHigh[i] - num14 + (num13 - inLow[i]);
                                 }
                                 else
                                 {
@@ -761,11 +759,9 @@ namespace GLPM.TechnicalAnalysis
                         num11 = 1.0;
                     }
 
-                    if (((Math.Abs((float)(inClose[i] - inOpen[i]))
-                          > ((Globals.candleSettings[0].factor * num17) / num11)) && (inOpen[i] < inLow[i - 1]))
-                        && ((inClose[i] < inOpen[i - 1])
-                            && (inClose[i]
-                                > (inClose[i - 1] + (Math.Abs((float)(inClose[i - 1] - inOpen[i - 1])) * 0.5)))))
+                    if (Math.Abs(inClose[i] - inOpen[i])
+                        > Globals.candleSettings[0].factor * num17 / num11 && inOpen[i] < inLow[i - 1] && inClose[i] < inOpen[i - 1] && inClose[i]
+                        > inClose[i - 1] + Math.Abs(inClose[i - 1] - inOpen[i - 1]) * 0.5)
                     {
                         outInteger[outIdx] = 100;
                         outIdx++;
@@ -784,7 +780,7 @@ namespace GLPM.TechnicalAnalysis
                 float num10;
                 if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                 {
-                    num10 = Math.Abs((float)(inClose[i - totIdx] - inOpen[i - totIdx]));
+                    num10 = Math.Abs(inClose[i - totIdx] - inOpen[i - totIdx]);
                 }
                 else
                 {
@@ -818,7 +814,7 @@ namespace GLPM.TechnicalAnalysis
                                 num7 = inClose[i - totIdx];
                             }
 
-                            num6 = (inHigh[i - totIdx] - num8) + (num7 - inLow[i - totIdx]);
+                            num6 = inHigh[i - totIdx] - num8 + (num7 - inLow[i - totIdx]);
                         }
                         else
                         {
@@ -834,7 +830,7 @@ namespace GLPM.TechnicalAnalysis
                 if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
                 {
                     num5 = Math.Abs(
-                        (float)(inClose[BodyLongTrailingIdx - totIdx] - inOpen[BodyLongTrailingIdx - totIdx]));
+                        inClose[BodyLongTrailingIdx - totIdx] - inOpen[BodyLongTrailingIdx - totIdx]);
                 }
                 else
                 {
@@ -868,7 +864,7 @@ namespace GLPM.TechnicalAnalysis
                                 num2 = inClose[BodyLongTrailingIdx - totIdx];
                             }
 
-                            num = (inHigh[BodyLongTrailingIdx - totIdx] - num3)
+                            num = inHigh[BodyLongTrailingIdx - totIdx] - num3
                                   + (num2 - inLow[BodyLongTrailingIdx - totIdx]);
                         }
                         else

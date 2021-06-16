@@ -13,21 +13,21 @@ namespace GLPM.TechnicalAnalysis
     {
         public static Div Div(int startIdx, int endIdx, double[] real0, double[] real1)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Div(startIdx, endIdx, real0, real1, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Div(startIdx, endIdx, real0, real1, ref outBegIdx, ref outNBElement, outReal);
             return new Div(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Div Div(int startIdx, int endIdx, float[] real0, float[] real1)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Div(startIdx, endIdx, real0, real1, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Div(startIdx, endIdx, real0, real1, ref outBegIdx, ref outNBElement, outReal);
             return new Div(retCode, outBegIdx, outNBElement, outReal);
         }
     }

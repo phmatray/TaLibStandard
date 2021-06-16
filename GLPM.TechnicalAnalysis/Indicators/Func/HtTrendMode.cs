@@ -13,21 +13,21 @@ namespace GLPM.TechnicalAnalysis
     {
         public static HtTrendMode HtTrendMode(int startIdx, int endIdx, double[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.HtTrendMode(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outInteger);
+            RetCode retCode = TACore.HtTrendMode(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outInteger);
             return new HtTrendMode(retCode, outBegIdx, outNBElement, outInteger);
         }
 
         public static HtTrendMode HtTrendMode(int startIdx, int endIdx, float[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.HtTrendMode(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outInteger);
+            RetCode retCode = TACore.HtTrendMode(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outInteger);
             return new HtTrendMode(retCode, outBegIdx, outNBElement, outInteger);
         }
     }

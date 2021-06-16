@@ -21,12 +21,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || ((inClose == null) || (inVolume == null)))
+            if (inHigh == null || inLow == null || inClose == null || inVolume == null)
             {
                 return RetCode.BadParam;
             }
@@ -35,7 +35,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastPeriod = 3;
             }
-            else if ((optInFastPeriod < 2) || (optInFastPeriod > 0x186a0))
+            else if (optInFastPeriod < 2 || optInFastPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -44,7 +44,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowPeriod = 10;
             }
-            else if ((optInSlowPeriod < 2) || (optInSlowPeriod > 0x186a0))
+            else if (optInSlowPeriod < 2 || optInSlowPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -79,9 +79,9 @@ namespace GLPM.TechnicalAnalysis
             outBegIdx = startIdx;
             int today = startIdx - lookbackTotal;
             double ad = 0.0;
-            double fastk = 2.0 / ((double)(optInFastPeriod + 1));
+            double fastk = 2.0 / (optInFastPeriod + 1);
             double one_minus_fastk = 1.0 - fastk;
-            double slowk = 2.0 / ((double)(optInSlowPeriod + 1));
+            double slowk = 2.0 / (optInSlowPeriod + 1);
             double one_minus_slowk = 1.0 - slowk;
             double high = inHigh[today];
             double low = inLow[today];
@@ -89,7 +89,7 @@ namespace GLPM.TechnicalAnalysis
             double close = inClose[today];
             if (tmp > 0.0)
             {
-                ad += (((close - low) - (high - close)) / tmp) * inVolume[today];
+                ad += (close - low - (high - close)) / tmp * inVolume[today];
             }
 
             today++;
@@ -108,12 +108,12 @@ namespace GLPM.TechnicalAnalysis
                 close = inClose[today];
                 if (tmp > 0.0)
                 {
-                    ad += (((close - low) - (high - close)) / tmp) * inVolume[today];
+                    ad += (close - low - (high - close)) / tmp * inVolume[today];
                 }
 
                 today++;
-                fastEMA = (fastk * ad) + (one_minus_fastk * fastEMA);
-                slowEMA = (slowk * ad) + (one_minus_slowk * slowEMA);
+                fastEMA = fastk * ad + one_minus_fastk * fastEMA;
+                slowEMA = slowk * ad + one_minus_slowk * slowEMA;
             }
 
             int outIdx = 0;
@@ -130,12 +130,12 @@ namespace GLPM.TechnicalAnalysis
                 close = inClose[today];
                 if (tmp > 0.0)
                 {
-                    ad += (((close - low) - (high - close)) / tmp) * inVolume[today];
+                    ad += (close - low - (high - close)) / tmp * inVolume[today];
                 }
 
                 today++;
-                fastEMA = (fastk * ad) + (one_minus_fastk * fastEMA);
-                slowEMA = (slowk * ad) + (one_minus_slowk * slowEMA);
+                fastEMA = fastk * ad + one_minus_fastk * fastEMA;
+                slowEMA = slowk * ad + one_minus_slowk * slowEMA;
                 outReal[outIdx] = fastEMA - slowEMA;
                 outIdx++;
             }
@@ -163,12 +163,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || ((inClose == null) || (inVolume == null)))
+            if (inHigh == null || inLow == null || inClose == null || inVolume == null)
             {
                 return RetCode.BadParam;
             }
@@ -177,7 +177,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastPeriod = 3;
             }
-            else if ((optInFastPeriod < 2) || (optInFastPeriod > 0x186a0))
+            else if (optInFastPeriod < 2 || optInFastPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -186,7 +186,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowPeriod = 10;
             }
-            else if ((optInSlowPeriod < 2) || (optInSlowPeriod > 0x186a0))
+            else if (optInSlowPeriod < 2 || optInSlowPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -221,9 +221,9 @@ namespace GLPM.TechnicalAnalysis
             outBegIdx = startIdx;
             int today = startIdx - lookbackTotal;
             double ad = 0.0;
-            double fastk = 2.0 / ((double)(optInFastPeriod + 1));
+            double fastk = 2.0 / (optInFastPeriod + 1);
             double one_minus_fastk = 1.0 - fastk;
-            double slowk = 2.0 / ((double)(optInSlowPeriod + 1));
+            double slowk = 2.0 / (optInSlowPeriod + 1);
             double one_minus_slowk = 1.0 - slowk;
             double high = inHigh[today];
             double low = inLow[today];
@@ -231,7 +231,7 @@ namespace GLPM.TechnicalAnalysis
             double close = inClose[today];
             if (tmp > 0.0)
             {
-                ad += (((close - low) - (high - close)) / tmp) * inVolume[today];
+                ad += (close - low - (high - close)) / tmp * inVolume[today];
             }
 
             today++;
@@ -250,12 +250,12 @@ namespace GLPM.TechnicalAnalysis
                 close = inClose[today];
                 if (tmp > 0.0)
                 {
-                    ad += (((close - low) - (high - close)) / tmp) * inVolume[today];
+                    ad += (close - low - (high - close)) / tmp * inVolume[today];
                 }
 
                 today++;
-                fastEMA = (fastk * ad) + (one_minus_fastk * fastEMA);
-                slowEMA = (slowk * ad) + (one_minus_slowk * slowEMA);
+                fastEMA = fastk * ad + one_minus_fastk * fastEMA;
+                slowEMA = slowk * ad + one_minus_slowk * slowEMA;
             }
 
             int outIdx = 0;
@@ -272,12 +272,12 @@ namespace GLPM.TechnicalAnalysis
                 close = inClose[today];
                 if (tmp > 0.0)
                 {
-                    ad += (((close - low) - (high - close)) / tmp) * inVolume[today];
+                    ad += (close - low - (high - close)) / tmp * inVolume[today];
                 }
 
                 today++;
-                fastEMA = (fastk * ad) + (one_minus_fastk * fastEMA);
-                slowEMA = (slowk * ad) + (one_minus_slowk * slowEMA);
+                fastEMA = fastk * ad + one_minus_fastk * fastEMA;
+                slowEMA = slowk * ad + one_minus_slowk * slowEMA;
                 outReal[outIdx] = fastEMA - slowEMA;
                 outIdx++;
             }
@@ -293,7 +293,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastPeriod = 3;
             }
-            else if ((optInFastPeriod < 2) || (optInFastPeriod > 0x186a0))
+            else if (optInFastPeriod < 2 || optInFastPeriod > 0x186a0)
             {
                 return -1;
             }
@@ -302,7 +302,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowPeriod = 10;
             }
-            else if ((optInSlowPeriod < 2) || (optInSlowPeriod > 0x186a0))
+            else if (optInSlowPeriod < 2 || optInSlowPeriod > 0x186a0)
             {
                 return -1;
             }

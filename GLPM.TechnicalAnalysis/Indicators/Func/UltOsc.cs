@@ -21,11 +21,11 @@ namespace GLPM.TechnicalAnalysis
             int timePeriod2 = 14,
             int timePeriod3 = 28)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.UltOsc(
+            RetCode retCode = TACore.UltOsc(
                 startIdx,
                 endIdx,
                 high,
@@ -50,11 +50,11 @@ namespace GLPM.TechnicalAnalysis
             int timePeriod2 = 14,
             int timePeriod3 = 28)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.UltOsc(
+            RetCode retCode = TACore.UltOsc(
                 startIdx,
                 endIdx,
                 high,

@@ -13,13 +13,13 @@ namespace GLPM.TechnicalAnalysis
     {
         public static MacdFix MacdFix(int startIdx, int endIdx, double[] real, int signalPeriod = 9)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outMACD = new double[endIdx - startIdx + 1];
             double[] outMACDSignal = new double[endIdx - startIdx + 1];
             double[] outMACDHist = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.MacdFix(
+            RetCode retCode = TACore.MacdFix(
                 startIdx,
                 endIdx,
                 real,
@@ -34,13 +34,13 @@ namespace GLPM.TechnicalAnalysis
 
         public static MacdFix MacdFix(int startIdx, int endIdx, float[] real, int signalPeriod = 9)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outMACD = new double[endIdx - startIdx + 1];
             double[] outMACDSignal = new double[endIdx - startIdx + 1];
             double[] outMACDHist = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.MacdFix(
+            RetCode retCode = TACore.MacdFix(
                 startIdx,
                 endIdx,
                 real,

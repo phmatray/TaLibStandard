@@ -13,11 +13,11 @@ namespace GLPM.TechnicalAnalysis
     {
         public static Beta Beta(int startIdx, int endIdx, double[] real0, double[] real1, int timePeriod = 5)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Beta(
+            RetCode retCode = TACore.Beta(
                 startIdx,
                 endIdx,
                 real0,
@@ -31,11 +31,11 @@ namespace GLPM.TechnicalAnalysis
 
         public static Beta Beta(int startIdx, int endIdx, float[] real0, float[] real1, int timePeriod = 5)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Beta(
+            RetCode retCode = TACore.Beta(
                 startIdx,
                 endIdx,
                 real0,

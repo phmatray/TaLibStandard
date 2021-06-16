@@ -1,4 +1,5 @@
 using System;
+
 namespace GLPM.TechnicalAnalysis
 {
     internal partial class TACore
@@ -156,11 +157,11 @@ namespace GLPM.TechnicalAnalysis
                     tempReal += inReal_0[today];
                     today++;
                 }
-                prevMA = tempReal / ((double)optInTimePeriod_0);
+                prevMA = tempReal / optInTimePeriod_0;
             }
             while (today <= startIdx)
             {
-                prevMA = ((inReal_0[today] - prevMA) * optInK_1) + prevMA;
+                prevMA = (inReal_0[today] - prevMA) * optInK_1 + prevMA;
                 today++;
             }
             outReal_0[0] = prevMA;
@@ -171,7 +172,7 @@ namespace GLPM.TechnicalAnalysis
                 {
                     break;
                 }
-                prevMA = ((inReal_0[today] - prevMA) * optInK_1) + prevMA;
+                prevMA = (inReal_0[today] - prevMA) * optInK_1 + prevMA;
                 today++;
                 outReal_0[outIdx] = prevMA;
                 outIdx++;
@@ -215,11 +216,11 @@ namespace GLPM.TechnicalAnalysis
                     tempReal += inReal_0[today];
                     today++;
                 }
-                prevMA = tempReal / ((double)optInTimePeriod_0);
+                prevMA = tempReal / optInTimePeriod_0;
             }
             while (today <= startIdx)
             {
-                prevMA = ((inReal_0[today] - prevMA) * optInK_1) + prevMA;
+                prevMA = (inReal_0[today] - prevMA) * optInK_1 + prevMA;
                 today++;
             }
             outReal_0[0] = prevMA;
@@ -230,7 +231,7 @@ namespace GLPM.TechnicalAnalysis
                 {
                     break;
                 }
-                prevMA = ((inReal_0[today] - prevMA) * optInK_1) + prevMA;
+                prevMA = (inReal_0[today] - prevMA) * optInK_1 + prevMA;
                 today++;
                 outReal_0[outIdx] = prevMA;
                 outIdx++;
@@ -256,7 +257,7 @@ namespace GLPM.TechnicalAnalysis
             }
             if (optInSlowPeriod_1 != 0)
             {
-                k1 = 2.0 / ((double)(optInSlowPeriod_1 + 1));
+                k1 = 2.0 / (optInSlowPeriod_1 + 1);
             }
             else
             {
@@ -265,7 +266,7 @@ namespace GLPM.TechnicalAnalysis
             }
             if (optInFastPeriod_0 != 0)
             {
-                k2 = 2.0 / ((double)(optInFastPeriod_0 + 1));
+                k2 = 2.0 / (optInFastPeriod_0 + 1);
             }
             else
             {
@@ -285,7 +286,7 @@ namespace GLPM.TechnicalAnalysis
                 outNbElement = 0;
                 return RetCode.Success;
             }
-            tempInteger = ((endIdx - startIdx) + 1) + lookbackSignal;
+            tempInteger = endIdx - startIdx + 1 + lookbackSignal;
             double[] fastEMABuffer = new double[tempInteger];
             if (fastEMABuffer == null)
             {
@@ -315,7 +316,7 @@ namespace GLPM.TechnicalAnalysis
                 outNbElement = 0;
                 return retCode;
             }
-            if (((outBegIdx1 != tempInteger) || (outBegIdx2 != tempInteger)) || ((outNbElement1 != outNbElement2) || (outNbElement1 != (((endIdx - startIdx) + 1) + lookbackSignal))))
+            if (outBegIdx1 != tempInteger || outBegIdx2 != tempInteger || outNbElement1 != outNbElement2 || outNbElement1 != endIdx - startIdx + 1 + lookbackSignal)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
@@ -325,8 +326,8 @@ namespace GLPM.TechnicalAnalysis
             {
                 fastEMABuffer[i] -= slowEMABuffer[i];
             }
-            Array.Copy(fastEMABuffer, lookbackSignal, outMACD_0, 0, (endIdx - startIdx) + 1);
-            retCode = TA_INT_EMA(0, outNbElement1 - 1, fastEMABuffer, optInSignalPeriod_2, 2.0 / ((double)(optInSignalPeriod_2 + 1)), ref outBegIdx2, ref outNbElement2, outMACDSignal_1);
+            Array.Copy(fastEMABuffer, lookbackSignal, outMACD_0, 0, endIdx - startIdx + 1);
+            retCode = TA_INT_EMA(0, outNbElement1 - 1, fastEMABuffer, optInSignalPeriod_2, 2.0 / (optInSignalPeriod_2 + 1), ref outBegIdx2, ref outNbElement2, outMACDSignal_1);
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
@@ -359,7 +360,7 @@ namespace GLPM.TechnicalAnalysis
             }
             if (optInSlowPeriod_1 != 0)
             {
-                k1 = 2.0 / ((double)(optInSlowPeriod_1 + 1));
+                k1 = 2.0 / (optInSlowPeriod_1 + 1);
             }
             else
             {
@@ -368,7 +369,7 @@ namespace GLPM.TechnicalAnalysis
             }
             if (optInFastPeriod_0 != 0)
             {
-                k2 = 2.0 / ((double)(optInFastPeriod_0 + 1));
+                k2 = 2.0 / (optInFastPeriod_0 + 1);
             }
             else
             {
@@ -388,7 +389,7 @@ namespace GLPM.TechnicalAnalysis
                 outNbElement = 0;
                 return RetCode.Success;
             }
-            tempInteger = ((endIdx - startIdx) + 1) + lookbackSignal;
+            tempInteger = endIdx - startIdx + 1 + lookbackSignal;
             double[] fastEMABuffer = new double[tempInteger];
             if (fastEMABuffer == null)
             {
@@ -418,7 +419,7 @@ namespace GLPM.TechnicalAnalysis
                 outNbElement = 0;
                 return retCode;
             }
-            if (((outBegIdx1 != tempInteger) || (outBegIdx2 != tempInteger)) || ((outNbElement1 != outNbElement2) || (outNbElement1 != (((endIdx - startIdx) + 1) + lookbackSignal))))
+            if (outBegIdx1 != tempInteger || outBegIdx2 != tempInteger || outNbElement1 != outNbElement2 || outNbElement1 != endIdx - startIdx + 1 + lookbackSignal)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
@@ -428,8 +429,8 @@ namespace GLPM.TechnicalAnalysis
             {
                 fastEMABuffer[i] -= slowEMABuffer[i];
             }
-            Array.Copy(fastEMABuffer, lookbackSignal, outMACD_0, 0, (endIdx - startIdx) + 1);
-            retCode = TA_INT_EMA(0, outNbElement1 - 1, fastEMABuffer, optInSignalPeriod_2, 2.0 / ((double)(optInSignalPeriod_2 + 1)), ref outBegIdx2, ref outNbElement2, outMACDSignal_1);
+            Array.Copy(fastEMABuffer, lookbackSignal, outMACD_0, 0, endIdx - startIdx + 1);
+            retCode = TA_INT_EMA(0, outNbElement1 - 1, fastEMABuffer, optInSignalPeriod_2, 2.0 / (optInSignalPeriod_2 + 1), ref outBegIdx2, ref outNbElement2, outMACDSignal_1);
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
@@ -483,9 +484,9 @@ namespace GLPM.TechnicalAnalysis
                         for (j = tempInteger; i < outNbElement1; j++)
                         {
                             double tempReal = outReal_0[i];
-                            if ((-1E-08 >= tempReal) || (tempReal >= 1E-08))
+                            if (-1E-08 >= tempReal || tempReal >= 1E-08)
                             {
-                                outReal_0[i] = ((tempBuffer[j] - tempReal) / tempReal) * 100.0;
+                                outReal_0[i] = (tempBuffer[j] - tempReal) / tempReal * 100.0;
                             }
                             else
                             {
@@ -544,9 +545,9 @@ namespace GLPM.TechnicalAnalysis
                         for (j = tempInteger; i < outNbElement1; j++)
                         {
                             double tempReal = outReal_0[i];
-                            if ((-1E-08 >= tempReal) || (tempReal >= 1E-08))
+                            if (-1E-08 >= tempReal || tempReal >= 1E-08)
                             {
-                                outReal_0[i] = ((tempBuffer[j] - tempReal) / tempReal) * 100.0;
+                                outReal_0[i] = (tempBuffer[j] - tempReal) / tempReal * 100.0;
                             }
                             else
                             {
@@ -598,7 +599,7 @@ namespace GLPM.TechnicalAnalysis
                 double tempReal = periodTotal;
                 periodTotal -= inReal_0[trailingIdx];
                 trailingIdx++;
-                outReal_0[outIdx] = tempReal / ((double)optInTimePeriod_0);
+                outReal_0[outIdx] = tempReal / optInTimePeriod_0;
                 outIdx++;
             }
             while (i <= endIdx);
@@ -638,7 +639,7 @@ namespace GLPM.TechnicalAnalysis
                 double tempReal = periodTotal;
                 periodTotal -= inReal_0[trailingIdx];
                 trailingIdx++;
-                outReal_0[outIdx] = tempReal / ((double)optInTimePeriod_0);
+                outReal_0[outIdx] = tempReal / optInTimePeriod_0;
                 outIdx++;
             }
             while (i <= endIdx);
@@ -650,7 +651,7 @@ namespace GLPM.TechnicalAnalysis
         {
             double tempReal;
             int outIdx;
-            int startSum = (inMovAvgBegIdx + 1) - timePeriod;
+            int startSum = inMovAvgBegIdx + 1 - timePeriod;
             int endSum = inMovAvgBegIdx;
             double periodTotal2 = 0.0;
             for (outIdx = startSum; outIdx < endSum; outIdx++)
@@ -665,7 +666,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = inReal[endSum];
                 tempReal *= tempReal;
                 periodTotal2 += tempReal;
-                double meanValue2 = periodTotal2 / ((double)timePeriod);
+                double meanValue2 = periodTotal2 / timePeriod;
                 tempReal = inReal[startSum];
                 tempReal *= tempReal;
                 periodTotal2 -= tempReal;
@@ -689,7 +690,7 @@ namespace GLPM.TechnicalAnalysis
         {
             double tempReal;
             int outIdx;
-            int startSum = (inMovAvgBegIdx + 1) - timePeriod;
+            int startSum = inMovAvgBegIdx + 1 - timePeriod;
             int endSum = inMovAvgBegIdx;
             double periodTotal2 = 0.0;
             for (outIdx = startSum; outIdx < endSum; outIdx++)
@@ -704,7 +705,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = inReal[endSum];
                 tempReal *= tempReal;
                 periodTotal2 += tempReal;
-                double meanValue2 = periodTotal2 / ((double)timePeriod);
+                double meanValue2 = periodTotal2 / timePeriod;
                 tempReal = inReal[startSum];
                 tempReal *= tempReal;
                 periodTotal2 -= tempReal;
@@ -761,14 +762,14 @@ namespace GLPM.TechnicalAnalysis
                 periodTotal1 += tempReal;
                 tempReal *= tempReal;
                 periodTotal2 += tempReal;
-                double meanValue1 = periodTotal1 / ((double)optInTimePeriod_0);
-                double meanValue2 = periodTotal2 / ((double)optInTimePeriod_0);
+                double meanValue1 = periodTotal1 / optInTimePeriod_0;
+                double meanValue2 = periodTotal2 / optInTimePeriod_0;
                 tempReal = inReal_0[trailingIdx];
                 trailingIdx++;
                 periodTotal1 -= tempReal;
                 tempReal *= tempReal;
                 periodTotal2 -= tempReal;
-                outReal_0[outIdx] = meanValue2 - (meanValue1 * meanValue1);
+                outReal_0[outIdx] = meanValue2 - meanValue1 * meanValue1;
                 outIdx++;
             }
             while (i <= endIdx);
@@ -813,14 +814,14 @@ namespace GLPM.TechnicalAnalysis
                 periodTotal1 += tempReal;
                 tempReal *= tempReal;
                 periodTotal2 += tempReal;
-                double meanValue1 = periodTotal1 / ((double)optInTimePeriod_0);
-                double meanValue2 = periodTotal2 / ((double)optInTimePeriod_0);
+                double meanValue1 = periodTotal1 / optInTimePeriod_0;
+                double meanValue2 = periodTotal2 / optInTimePeriod_0;
                 tempReal = inReal_0[trailingIdx];
                 trailingIdx++;
                 periodTotal1 -= tempReal;
                 tempReal *= tempReal;
                 periodTotal2 -= tempReal;
-                outReal_0[outIdx] = meanValue2 - (meanValue1 * meanValue1);
+                outReal_0[outIdx] = meanValue2 - meanValue1 * meanValue1;
                 outIdx++;
             }
             while (i <= endIdx);

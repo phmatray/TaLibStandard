@@ -23,7 +23,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -37,7 +37,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -46,7 +46,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastK_Period = 5;
             }
-            else if ((optInFastK_Period < 1) || (optInFastK_Period > 0x186a0))
+            else if (optInFastK_Period < 1 || optInFastK_Period > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -55,7 +55,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastD_Period = 3;
             }
-            else if ((optInFastD_Period < 1) || (optInFastD_Period > 0x186a0))
+            else if (optInFastD_Period < 1 || optInFastD_Period > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -87,7 +87,7 @@ namespace GLPM.TechnicalAnalysis
             }
 
             outBegIdx = startIdx;
-            int tempArraySize = ((endIdx - startIdx) + 1) + lookbackSTOCHF;
+            int tempArraySize = endIdx - startIdx + 1 + lookbackSTOCHF;
             double[] tempRSIBuffer = new double[tempArraySize];
             RetCode retCode = Rsi(
                 startIdx - lookbackSTOCHF,
@@ -97,7 +97,7 @@ namespace GLPM.TechnicalAnalysis
                 ref outBegIdx1,
                 ref outNbElement1,
                 tempRSIBuffer);
-            if ((retCode != RetCode.Success) || (outNbElement1 == 0))
+            if (retCode != RetCode.Success || outNbElement1 == 0)
             {
                 outBegIdx = 0;
                 outNBElement = 0;
@@ -117,7 +117,7 @@ namespace GLPM.TechnicalAnalysis
                 ref outNBElement,
                 outFastK,
                 outFastD);
-            if ((retCode != RetCode.Success) || (outNBElement == 0))
+            if (retCode != RetCode.Success || outNBElement == 0)
             {
                 outBegIdx = 0;
                 outNBElement = 0;
@@ -148,7 +148,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -162,7 +162,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -171,7 +171,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastK_Period = 5;
             }
-            else if ((optInFastK_Period < 1) || (optInFastK_Period > 0x186a0))
+            else if (optInFastK_Period < 1 || optInFastK_Period > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -180,7 +180,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastD_Period = 3;
             }
-            else if ((optInFastD_Period < 1) || (optInFastD_Period > 0x186a0))
+            else if (optInFastD_Period < 1 || optInFastD_Period > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -212,7 +212,7 @@ namespace GLPM.TechnicalAnalysis
             }
 
             outBegIdx = startIdx;
-            int tempArraySize = ((endIdx - startIdx) + 1) + lookbackSTOCHF;
+            int tempArraySize = endIdx - startIdx + 1 + lookbackSTOCHF;
             double[] tempRSIBuffer = new double[tempArraySize];
             RetCode retCode = Rsi(
                 startIdx - lookbackSTOCHF,
@@ -222,7 +222,7 @@ namespace GLPM.TechnicalAnalysis
                 ref outBegIdx1,
                 ref outNbElement1,
                 tempRSIBuffer);
-            if ((retCode != RetCode.Success) || (outNbElement1 == 0))
+            if (retCode != RetCode.Success || outNbElement1 == 0)
             {
                 outBegIdx = 0;
                 outNBElement = 0;
@@ -242,7 +242,7 @@ namespace GLPM.TechnicalAnalysis
                 ref outNBElement,
                 outFastK,
                 outFastD);
-            if ((retCode != RetCode.Success) || (outNBElement == 0))
+            if (retCode != RetCode.Success || outNBElement == 0)
             {
                 outBegIdx = 0;
                 outNBElement = 0;
@@ -262,7 +262,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }
@@ -271,7 +271,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastK_Period = 5;
             }
-            else if ((optInFastK_Period < 1) || (optInFastK_Period > 0x186a0))
+            else if (optInFastK_Period < 1 || optInFastK_Period > 0x186a0)
             {
                 return -1;
             }
@@ -280,7 +280,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastD_Period = 3;
             }
-            else if ((optInFastD_Period < 1) || (optInFastD_Period > 0x186a0))
+            else if (optInFastD_Period < 1 || optInFastD_Period > 0x186a0)
             {
                 return -1;
             }

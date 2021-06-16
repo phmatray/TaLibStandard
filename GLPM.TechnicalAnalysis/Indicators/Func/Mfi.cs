@@ -20,11 +20,11 @@ namespace GLPM.TechnicalAnalysis
             double[] volume,
             int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Mfi(
+            RetCode retCode = TACore.Mfi(
                 startIdx,
                 endIdx,
                 high,
@@ -47,11 +47,11 @@ namespace GLPM.TechnicalAnalysis
             float[] volume,
             int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Mfi(
+            RetCode retCode = TACore.Mfi(
                 startIdx,
                 endIdx,
                 high,

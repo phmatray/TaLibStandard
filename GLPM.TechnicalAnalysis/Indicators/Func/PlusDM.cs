@@ -13,11 +13,11 @@ namespace GLPM.TechnicalAnalysis
     {
         public static PlusDM PlusDM(int startIdx, int endIdx, double[] high, double[] low, int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.PlusDM(
+            RetCode retCode = TACore.PlusDM(
                 startIdx,
                 endIdx,
                 high,
@@ -31,11 +31,11 @@ namespace GLPM.TechnicalAnalysis
 
         public static PlusDM PlusDM(int startIdx, int endIdx, float[] high, float[] low, int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.PlusDM(
+            RetCode retCode = TACore.PlusDM(
                 startIdx,
                 endIdx,
                 high,

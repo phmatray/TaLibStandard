@@ -23,12 +23,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if ((inHigh == null) || (inLow == null))
+            if (inHigh == null || inLow == null)
             {
                 return RetCode.BadParam;
             }
@@ -37,7 +37,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAcceleration = 0.02;
             }
-            else if ((optInAcceleration < 0.0) || (optInAcceleration > 3E+37))
+            else if (optInAcceleration < 0.0 || optInAcceleration > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -46,7 +46,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInMaximum = 0.2;
             }
-            else if ((optInMaximum < 0.0) || (optInMaximum > 3E+37))
+            else if (optInMaximum < 0.0 || optInMaximum > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -255,12 +255,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if ((inHigh == null) || (inLow == null))
+            if (inHigh == null || inLow == null)
             {
                 return RetCode.BadParam;
             }
@@ -269,7 +269,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAcceleration = 0.02;
             }
-            else if ((optInAcceleration < 0.0) || (optInAcceleration > 3E+37))
+            else if (optInAcceleration < 0.0 || optInAcceleration > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -278,7 +278,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInMaximum = 0.2;
             }
-            else if ((optInMaximum < 0.0) || (optInMaximum > 3E+37))
+            else if (optInMaximum < 0.0 || optInMaximum > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -472,7 +472,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInAcceleration = 0.02;
             }
-            else if ((optInAcceleration < 0.0) || (optInAcceleration > 3E+37))
+            else if (optInAcceleration < 0.0 || optInAcceleration > 3E+37)
             {
                 return -1;
             }
@@ -481,7 +481,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInMaximum = 0.2;
             }
-            else if ((optInMaximum < 0.0) || (optInMaximum > 3E+37))
+            else if (optInMaximum < 0.0 || optInMaximum > 3E+37)
             {
                 return -1;
             }

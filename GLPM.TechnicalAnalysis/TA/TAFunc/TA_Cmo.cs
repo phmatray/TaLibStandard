@@ -18,7 +18,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -32,7 +32,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -61,7 +61,7 @@ namespace GLPM.TechnicalAnalysis
                 if (optInTimePeriod == 1)
                 {
                     outBegIdx = startIdx;
-                    i = (endIdx - startIdx) + 1;
+                    i = endIdx - startIdx + 1;
                     outNBElement = i;
                     Array.Copy(inReal, startIdx, outReal, 0, i);
                     return RetCode.Success;
@@ -69,7 +69,7 @@ namespace GLPM.TechnicalAnalysis
 
                 int today = startIdx - lookbackTotal;
                 double prevValue = inReal[today];
-                if ((Globals.unstablePeriod[3] == 0) && (Globals.compatibility == Compatibility.Metastock))
+                if (Globals.unstablePeriod[3] == 0 && Globals.compatibility == Compatibility.Metastock)
                 {
                     double savePrevValue = prevValue;
                     prevGain = 0.0;
@@ -90,11 +90,11 @@ namespace GLPM.TechnicalAnalysis
                         }
                     }
 
-                    tempValue1 = prevLoss / ((double)optInTimePeriod);
-                    tempValue2 = prevGain / ((double)optInTimePeriod);
+                    tempValue1 = prevLoss / optInTimePeriod;
+                    tempValue2 = prevGain / optInTimePeriod;
                     double tempValue3 = tempValue2 - tempValue1;
                     double tempValue4 = tempValue1 + tempValue2;
-                    if ((-1E-08 >= tempValue4) || (tempValue4 >= 1E-08))
+                    if (-1E-08 >= tempValue4 || tempValue4 >= 1E-08)
                     {
                         outReal[outIdx] = 100.0 * (tempValue3 / tempValue4);
                         outIdx++;
@@ -135,12 +135,12 @@ namespace GLPM.TechnicalAnalysis
                     }
                 }
 
-                prevLoss /= (double)optInTimePeriod;
-                prevGain /= (double)optInTimePeriod;
+                prevLoss /= optInTimePeriod;
+                prevGain /= optInTimePeriod;
                 if (today > startIdx)
                 {
                     tempValue1 = prevGain + prevLoss;
-                    if ((-1E-08 >= tempValue1) || (tempValue1 >= 1E-08))
+                    if (-1E-08 >= tempValue1 || tempValue1 >= 1E-08)
                     {
                         outReal[outIdx] = 100.0 * ((prevGain - prevLoss) / tempValue1);
                         outIdx++;
@@ -169,8 +169,8 @@ namespace GLPM.TechnicalAnalysis
                             prevGain += tempValue2;
                         }
 
-                        prevLoss /= (double)optInTimePeriod;
-                        prevGain /= (double)optInTimePeriod;
+                        prevLoss /= optInTimePeriod;
+                        prevGain /= optInTimePeriod;
                         today++;
                     }
                 }
@@ -192,10 +192,10 @@ namespace GLPM.TechnicalAnalysis
                         prevGain += tempValue2;
                     }
 
-                    prevLoss /= (double)optInTimePeriod;
-                    prevGain /= (double)optInTimePeriod;
+                    prevLoss /= optInTimePeriod;
+                    prevGain /= optInTimePeriod;
                     tempValue1 = prevGain + prevLoss;
-                    if ((-1E-08 >= tempValue1) || (tempValue1 >= 1E-08))
+                    if (-1E-08 >= tempValue1 || tempValue1 >= 1E-08)
                     {
                         outReal[outIdx] = 100.0 * ((prevGain - prevLoss) / tempValue1);
                         outIdx++;
@@ -228,7 +228,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -242,7 +242,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -271,7 +271,7 @@ namespace GLPM.TechnicalAnalysis
                 if (optInTimePeriod == 1)
                 {
                     outBegIdx = startIdx;
-                    i = (endIdx - startIdx) + 1;
+                    i = endIdx - startIdx + 1;
                     outNBElement = i;
                     Array.Copy(inReal, startIdx, outReal, 0, i);
                     return RetCode.Success;
@@ -279,7 +279,7 @@ namespace GLPM.TechnicalAnalysis
 
                 int today = startIdx - lookbackTotal;
                 double prevValue = inReal[today];
-                if ((Globals.unstablePeriod[3] == 0) && (Globals.compatibility == Compatibility.Metastock))
+                if (Globals.unstablePeriod[3] == 0 && Globals.compatibility == Compatibility.Metastock)
                 {
                     double savePrevValue = prevValue;
                     prevGain = 0.0;
@@ -300,11 +300,11 @@ namespace GLPM.TechnicalAnalysis
                         }
                     }
 
-                    tempValue1 = prevLoss / ((double)optInTimePeriod);
-                    tempValue2 = prevGain / ((double)optInTimePeriod);
+                    tempValue1 = prevLoss / optInTimePeriod;
+                    tempValue2 = prevGain / optInTimePeriod;
                     double tempValue3 = tempValue2 - tempValue1;
                     double tempValue4 = tempValue1 + tempValue2;
-                    if ((-1E-08 >= tempValue4) || (tempValue4 >= 1E-08))
+                    if (-1E-08 >= tempValue4 || tempValue4 >= 1E-08)
                     {
                         outReal[outIdx] = 100.0 * (tempValue3 / tempValue4);
                         outIdx++;
@@ -345,12 +345,12 @@ namespace GLPM.TechnicalAnalysis
                     }
                 }
 
-                prevLoss /= (double)optInTimePeriod;
-                prevGain /= (double)optInTimePeriod;
+                prevLoss /= optInTimePeriod;
+                prevGain /= optInTimePeriod;
                 if (today > startIdx)
                 {
                     tempValue1 = prevGain + prevLoss;
-                    if ((-1E-08 >= tempValue1) || (tempValue1 >= 1E-08))
+                    if (-1E-08 >= tempValue1 || tempValue1 >= 1E-08)
                     {
                         outReal[outIdx] = 100.0 * ((prevGain - prevLoss) / tempValue1);
                         outIdx++;
@@ -379,8 +379,8 @@ namespace GLPM.TechnicalAnalysis
                             prevGain += tempValue2;
                         }
 
-                        prevLoss /= (double)optInTimePeriod;
-                        prevGain /= (double)optInTimePeriod;
+                        prevLoss /= optInTimePeriod;
+                        prevGain /= optInTimePeriod;
                         today++;
                     }
                 }
@@ -402,10 +402,10 @@ namespace GLPM.TechnicalAnalysis
                         prevGain += tempValue2;
                     }
 
-                    prevLoss /= (double)optInTimePeriod;
-                    prevGain /= (double)optInTimePeriod;
+                    prevLoss /= optInTimePeriod;
+                    prevGain /= optInTimePeriod;
                     tempValue1 = prevGain + prevLoss;
-                    if ((-1E-08 >= tempValue1) || (tempValue1 >= 1E-08))
+                    if (-1E-08 >= tempValue1 || tempValue1 >= 1E-08)
                     {
                         outReal[outIdx] = 100.0 * ((prevGain - prevLoss) / tempValue1);
                         outIdx++;
@@ -430,12 +430,12 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }
 
-            int retValue = optInTimePeriod + ((int)Globals.unstablePeriod[3]);
+            int retValue = optInTimePeriod + (int)Globals.unstablePeriod[3];
             if (Globals.compatibility == Compatibility.Metastock)
             {
                 retValue--;

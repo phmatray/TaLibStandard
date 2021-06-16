@@ -25,7 +25,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -39,7 +39,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -63,13 +63,13 @@ namespace GLPM.TechnicalAnalysis
             }
 
             int outIdx = 0;
-            if ((optInTimePeriod % 2) != 1)
+            if (optInTimePeriod % 2 != 1)
             {
                 i = optInTimePeriod >> 1;
                 factor = i * (i + 1);
                 factor = 1.0 / factor;
                 trailingIdx = startIdx - lookbackTotal;
-                middleIdx = (trailingIdx + i) - 1;
+                middleIdx = trailingIdx + i - 1;
                 todayIdx = middleIdx + i;
                 numerator = 0.0;
                 numeratorSub = 0.0;
@@ -196,7 +196,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -210,7 +210,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -234,13 +234,13 @@ namespace GLPM.TechnicalAnalysis
             }
 
             int outIdx = 0;
-            if ((optInTimePeriod % 2) != 1)
+            if (optInTimePeriod % 2 != 1)
             {
                 i = optInTimePeriod >> 1;
                 factor = i * (i + 1);
                 factor = 1.0 / factor;
                 trailingIdx = startIdx - lookbackTotal;
-                middleIdx = (trailingIdx + i) - 1;
+                middleIdx = trailingIdx + i - 1;
                 todayIdx = middleIdx + i;
                 numerator = 0.0f;
                 numeratorSub = 0.0f;
@@ -350,7 +350,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }

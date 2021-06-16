@@ -16,7 +16,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -30,7 +30,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -45,7 +45,7 @@ namespace GLPM.TechnicalAnalysis
                 endIdx,
                 inReal,
                 optInTimePeriod,
-                2.0 / ((double)(optInTimePeriod + 1)),
+                2.0 / (optInTimePeriod + 1),
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
@@ -65,7 +65,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -79,7 +79,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -94,7 +94,7 @@ namespace GLPM.TechnicalAnalysis
                 endIdx,
                 inReal,
                 optInTimePeriod,
-                2.0 / ((double)(optInTimePeriod + 1)),
+                2.0 / (optInTimePeriod + 1),
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
@@ -106,12 +106,12 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }
 
-            return (optInTimePeriod - 1) + ((int)Globals.unstablePeriod[5]);
+            return optInTimePeriod - 1 + (int)Globals.unstablePeriod[5];
         }
     }
 }

@@ -13,21 +13,21 @@ namespace GLPM.TechnicalAnalysis
     {
         public static WclPrice WclPrice(int startIdx, int endIdx, double[] high, double[] low, double[] close)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.WclPrice(startIdx, endIdx, high, low, close, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.WclPrice(startIdx, endIdx, high, low, close, ref outBegIdx, ref outNBElement, outReal);
             return new WclPrice(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static WclPrice WclPrice(int startIdx, int endIdx, float[] high, float[] low, float[] close)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.WclPrice(startIdx, endIdx, high, low, close, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.WclPrice(startIdx, endIdx, high, low, close, ref outBegIdx, ref outNBElement, outReal);
             return new WclPrice(retCode, outBegIdx, outNBElement, outReal);
         }
     }

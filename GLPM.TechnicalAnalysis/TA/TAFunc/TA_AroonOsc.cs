@@ -19,12 +19,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if ((inHigh == null) || (inLow == null))
+            if (inHigh == null || inLow == null)
             {
                 return RetCode.BadParam;
             }
@@ -33,7 +33,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -62,7 +62,7 @@ namespace GLPM.TechnicalAnalysis
             int highestIdx = -1;
             double lowest = 0.0;
             double highest = 0.0;
-            double factor = 100.0 / ((double)optInTimePeriod);
+            double factor = 100.0 / optInTimePeriod;
             Label_00AF:
             if (today > endIdx)
             {
@@ -156,12 +156,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if ((inHigh == null) || (inLow == null))
+            if (inHigh == null || inLow == null)
             {
                 return RetCode.BadParam;
             }
@@ -170,7 +170,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -199,7 +199,7 @@ namespace GLPM.TechnicalAnalysis
             int highestIdx = -1;
             double lowest = 0.0;
             double highest = 0.0;
-            double factor = 100.0 / ((double)optInTimePeriod);
+            double factor = 100.0 / optInTimePeriod;
             Label_00AF:
             if (today > endIdx)
             {
@@ -282,7 +282,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }

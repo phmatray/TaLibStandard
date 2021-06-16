@@ -20,13 +20,13 @@ namespace GLPM.TechnicalAnalysis
             double nbDevDn = 2.0,
             MAType mAType = MAType.Sma)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outRealUpperBand = new double[endIdx - startIdx + 1];
             double[] outRealMiddleBand = new double[endIdx - startIdx + 1];
             double[] outRealLowerBand = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Bbands(
+            RetCode retCode = TACore.Bbands(
                 startIdx,
                 endIdx,
                 real,
@@ -57,13 +57,13 @@ namespace GLPM.TechnicalAnalysis
             double nbDevDn = 2.0,
             MAType mAType = MAType.Sma)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outRealUpperBand = new double[endIdx - startIdx + 1];
             double[] outRealMiddleBand = new double[endIdx - startIdx + 1];
             double[] outRealLowerBand = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Bbands(
+            RetCode retCode = TACore.Bbands(
                 startIdx,
                 endIdx,
                 real,

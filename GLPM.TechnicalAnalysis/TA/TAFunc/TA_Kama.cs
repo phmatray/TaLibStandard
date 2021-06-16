@@ -21,7 +21,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -35,7 +35,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -47,7 +47,7 @@ namespace GLPM.TechnicalAnalysis
 
             outBegIdx = 0;
             outNBElement = 0;
-            int lookbackTotal = optInTimePeriod + ((int)Globals.unstablePeriod[12]);
+            int lookbackTotal = optInTimePeriod + (int)Globals.unstablePeriod[12];
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -84,18 +84,18 @@ namespace GLPM.TechnicalAnalysis
             trailingIdx++;
             double periodROC = tempReal - tempReal2;
             double trailingValue = tempReal2;
-            if ((sumROC1 <= periodROC) || ((-1E-08 < sumROC1) && (sumROC1 < 1E-08)))
+            if (sumROC1 <= periodROC || -1E-08 < sumROC1 && sumROC1 < 1E-08)
             {
                 tempReal = 1.0;
             }
             else
             {
-                tempReal = Math.Abs((double)(periodROC / sumROC1));
+                tempReal = Math.Abs(periodROC / sumROC1);
             }
 
-            tempReal = (tempReal * constDiff) + constMax;
+            tempReal = tempReal * constDiff + constMax;
             tempReal *= tempReal;
-            prevKAMA = ((inReal[today] - prevKAMA) * tempReal) + prevKAMA;
+            prevKAMA = (inReal[today] - prevKAMA) * tempReal + prevKAMA;
             today++;
             while (true)
             {
@@ -108,21 +108,21 @@ namespace GLPM.TechnicalAnalysis
                 tempReal2 = inReal[trailingIdx];
                 trailingIdx++;
                 periodROC = tempReal - tempReal2;
-                sumROC1 -= Math.Abs((double)(trailingValue - tempReal2));
-                sumROC1 += Math.Abs((double)(tempReal - inReal[today - 1]));
+                sumROC1 -= Math.Abs(trailingValue - tempReal2);
+                sumROC1 += Math.Abs(tempReal - inReal[today - 1]);
                 trailingValue = tempReal2;
-                if ((sumROC1 <= periodROC) || ((-1E-08 < sumROC1) && (sumROC1 < 1E-08)))
+                if (sumROC1 <= periodROC || -1E-08 < sumROC1 && sumROC1 < 1E-08)
                 {
                     tempReal = 1.0;
                 }
                 else
                 {
-                    tempReal = Math.Abs((double)(periodROC / sumROC1));
+                    tempReal = Math.Abs(periodROC / sumROC1);
                 }
 
-                tempReal = (tempReal * constDiff) + constMax;
+                tempReal = tempReal * constDiff + constMax;
                 tempReal *= tempReal;
-                prevKAMA = ((inReal[today] - prevKAMA) * tempReal) + prevKAMA;
+                prevKAMA = (inReal[today] - prevKAMA) * tempReal + prevKAMA;
                 today++;
             }
 
@@ -140,21 +140,21 @@ namespace GLPM.TechnicalAnalysis
                 tempReal2 = inReal[trailingIdx];
                 trailingIdx++;
                 periodROC = tempReal - tempReal2;
-                sumROC1 -= Math.Abs((double)(trailingValue - tempReal2));
-                sumROC1 += Math.Abs((double)(tempReal - inReal[today - 1]));
+                sumROC1 -= Math.Abs(trailingValue - tempReal2);
+                sumROC1 += Math.Abs(tempReal - inReal[today - 1]);
                 trailingValue = tempReal2;
-                if ((sumROC1 <= periodROC) || ((-1E-08 < sumROC1) && (sumROC1 < 1E-08)))
+                if (sumROC1 <= periodROC || -1E-08 < sumROC1 && sumROC1 < 1E-08)
                 {
                     tempReal = 1.0;
                 }
                 else
                 {
-                    tempReal = Math.Abs((double)(periodROC / sumROC1));
+                    tempReal = Math.Abs(periodROC / sumROC1);
                 }
 
-                tempReal = (tempReal * constDiff) + constMax;
+                tempReal = tempReal * constDiff + constMax;
                 tempReal *= tempReal;
-                prevKAMA = ((inReal[today] - prevKAMA) * tempReal) + prevKAMA;
+                prevKAMA = (inReal[today] - prevKAMA) * tempReal + prevKAMA;
                 today++;
                 outReal[outIdx] = prevKAMA;
                 outIdx++;
@@ -181,7 +181,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -195,7 +195,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -207,7 +207,7 @@ namespace GLPM.TechnicalAnalysis
 
             outBegIdx = 0;
             outNBElement = 0;
-            int lookbackTotal = optInTimePeriod + ((int)Globals.unstablePeriod[12]);
+            int lookbackTotal = optInTimePeriod + (int)Globals.unstablePeriod[12];
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -244,18 +244,18 @@ namespace GLPM.TechnicalAnalysis
             trailingIdx++;
             double periodROC = tempReal - tempReal2;
             double trailingValue = tempReal2;
-            if ((sumROC1 <= periodROC) || ((-1E-08 < sumROC1) && (sumROC1 < 1E-08)))
+            if (sumROC1 <= periodROC || -1E-08 < sumROC1 && sumROC1 < 1E-08)
             {
                 tempReal = 1.0;
             }
             else
             {
-                tempReal = Math.Abs((double)(periodROC / sumROC1));
+                tempReal = Math.Abs(periodROC / sumROC1);
             }
 
-            tempReal = (tempReal * constDiff) + constMax;
+            tempReal = tempReal * constDiff + constMax;
             tempReal *= tempReal;
-            prevKAMA = ((inReal[today] - prevKAMA) * tempReal) + prevKAMA;
+            prevKAMA = (inReal[today] - prevKAMA) * tempReal + prevKAMA;
             today++;
             while (true)
             {
@@ -268,21 +268,21 @@ namespace GLPM.TechnicalAnalysis
                 tempReal2 = inReal[trailingIdx];
                 trailingIdx++;
                 periodROC = tempReal - tempReal2;
-                sumROC1 -= Math.Abs((double)(trailingValue - tempReal2));
-                sumROC1 += Math.Abs((double)(tempReal - inReal[today - 1]));
+                sumROC1 -= Math.Abs(trailingValue - tempReal2);
+                sumROC1 += Math.Abs(tempReal - inReal[today - 1]);
                 trailingValue = tempReal2;
-                if ((sumROC1 <= periodROC) || ((-1E-08 < sumROC1) && (sumROC1 < 1E-08)))
+                if (sumROC1 <= periodROC || -1E-08 < sumROC1 && sumROC1 < 1E-08)
                 {
                     tempReal = 1.0;
                 }
                 else
                 {
-                    tempReal = Math.Abs((double)(periodROC / sumROC1));
+                    tempReal = Math.Abs(periodROC / sumROC1);
                 }
 
-                tempReal = (tempReal * constDiff) + constMax;
+                tempReal = tempReal * constDiff + constMax;
                 tempReal *= tempReal;
-                prevKAMA = ((inReal[today] - prevKAMA) * tempReal) + prevKAMA;
+                prevKAMA = (inReal[today] - prevKAMA) * tempReal + prevKAMA;
                 today++;
             }
 
@@ -300,21 +300,21 @@ namespace GLPM.TechnicalAnalysis
                 tempReal2 = inReal[trailingIdx];
                 trailingIdx++;
                 periodROC = tempReal - tempReal2;
-                sumROC1 -= Math.Abs((double)(trailingValue - tempReal2));
-                sumROC1 += Math.Abs((double)(tempReal - inReal[today - 1]));
+                sumROC1 -= Math.Abs(trailingValue - tempReal2);
+                sumROC1 += Math.Abs(tempReal - inReal[today - 1]);
                 trailingValue = tempReal2;
-                if ((sumROC1 <= periodROC) || ((-1E-08 < sumROC1) && (sumROC1 < 1E-08)))
+                if (sumROC1 <= periodROC || -1E-08 < sumROC1 && sumROC1 < 1E-08)
                 {
                     tempReal = 1.0;
                 }
                 else
                 {
-                    tempReal = Math.Abs((double)(periodROC / sumROC1));
+                    tempReal = Math.Abs(periodROC / sumROC1);
                 }
 
-                tempReal = (tempReal * constDiff) + constMax;
+                tempReal = tempReal * constDiff + constMax;
                 tempReal *= tempReal;
-                prevKAMA = ((inReal[today] - prevKAMA) * tempReal) + prevKAMA;
+                prevKAMA = (inReal[today] - prevKAMA) * tempReal + prevKAMA;
                 today++;
                 outReal[outIdx] = prevKAMA;
                 outIdx++;
@@ -330,12 +330,12 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }
 
-            return optInTimePeriod + ((int)Globals.unstablePeriod[12]);
+            return optInTimePeriod + (int)Globals.unstablePeriod[12];
         }
     }
 }

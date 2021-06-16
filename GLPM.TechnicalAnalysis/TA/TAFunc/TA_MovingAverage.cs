@@ -17,7 +17,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -31,7 +31,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -96,7 +96,7 @@ namespace GLPM.TechnicalAnalysis
 
                     case MAType.Mama:
                         {
-                            double[] dummyBuffer = new double[(endIdx - startIdx) + 1];
+                            double[] dummyBuffer = new double[endIdx - startIdx + 1];
                             if (dummyBuffer != null)
                             {
                                 return Mama(
@@ -129,7 +129,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            int nbElement = (endIdx - startIdx) + 1;
+            int nbElement = endIdx - startIdx + 1;
             outNBElement = nbElement;
             int todayIdx = startIdx;
             int outIdx = 0;
@@ -159,7 +159,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -173,7 +173,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -238,7 +238,7 @@ namespace GLPM.TechnicalAnalysis
 
                     case MAType.Mama:
                         {
-                            double[] dummyBuffer = new double[(endIdx - startIdx) + 1];
+                            double[] dummyBuffer = new double[endIdx - startIdx + 1];
                             if (dummyBuffer != null)
                             {
                                 return Mama(
@@ -271,7 +271,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            int nbElement = (endIdx - startIdx) + 1;
+            int nbElement = endIdx - startIdx + 1;
             outNBElement = nbElement;
             int todayIdx = startIdx;
             int outIdx = 0;
@@ -292,7 +292,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }

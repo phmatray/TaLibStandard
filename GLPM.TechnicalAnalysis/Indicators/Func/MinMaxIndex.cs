@@ -13,12 +13,12 @@ namespace GLPM.TechnicalAnalysis
     {
         public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, double[] real, int timePeriod = 30)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             int[] outMinIdx = new int[endIdx - startIdx + 1];
             int[] outMaxIdx = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.MinMaxIndex(
+            RetCode retCode = TACore.MinMaxIndex(
                 startIdx,
                 endIdx,
                 real,
@@ -32,12 +32,12 @@ namespace GLPM.TechnicalAnalysis
 
         public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, float[] real, int timePeriod = 30)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             int[] outMinIdx = new int[endIdx - startIdx + 1];
             int[] outMaxIdx = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.MinMaxIndex(
+            RetCode retCode = TACore.MinMaxIndex(
                 startIdx,
                 endIdx,
                 real,

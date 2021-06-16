@@ -19,12 +19,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || (inClose == null))
+            if (inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -59,13 +59,13 @@ namespace GLPM.TechnicalAnalysis
                 double tempHT = inHigh[today];
                 double tempCY = inClose[today - 1];
                 double greatest = tempHT - tempLT;
-                double val2 = Math.Abs((double)(tempCY - tempHT));
+                double val2 = Math.Abs(tempCY - tempHT);
                 if (val2 > greatest)
                 {
                     greatest = val2;
                 }
 
-                double val3 = Math.Abs((double)(tempCY - tempLT));
+                double val3 = Math.Abs(tempCY - tempLT);
                 if (val3 > greatest)
                 {
                     greatest = val3;
@@ -96,12 +96,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || (inClose == null))
+            if (inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -136,13 +136,13 @@ namespace GLPM.TechnicalAnalysis
                 double tempHT = inHigh[today];
                 double tempCY = inClose[today - 1];
                 double greatest = tempHT - tempLT;
-                double val2 = Math.Abs((double)(tempCY - tempHT));
+                double val2 = Math.Abs(tempCY - tempHT);
                 if (val2 > greatest)
                 {
                     greatest = val2;
                 }
 
-                double val3 = Math.Abs((double)(tempCY - tempLT));
+                double val3 = Math.Abs(tempCY - tempLT);
                 if (val3 > greatest)
                 {
                     greatest = val3;

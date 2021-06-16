@@ -13,21 +13,21 @@ namespace GLPM.TechnicalAnalysis
     {
         public static Exp Exp(int startIdx, int endIdx, double[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Exp(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Exp(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
             return new Exp(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Exp Exp(int startIdx, int endIdx, float[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Exp(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Exp(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
             return new Exp(retCode, outBegIdx, outNBElement, outReal);
         }
     }

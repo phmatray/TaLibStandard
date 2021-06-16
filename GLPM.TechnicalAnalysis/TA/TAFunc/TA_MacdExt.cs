@@ -31,7 +31,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -45,7 +45,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastPeriod = 12;
             }
-            else if ((optInFastPeriod < 2) || (optInFastPeriod > 0x186a0))
+            else if (optInFastPeriod < 2 || optInFastPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -54,7 +54,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowPeriod = 0x1a;
             }
-            else if ((optInSlowPeriod < 2) || (optInSlowPeriod > 0x186a0))
+            else if (optInSlowPeriod < 2 || optInSlowPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -63,7 +63,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSignalPeriod = 9;
             }
-            else if ((optInSignalPeriod < 1) || (optInSignalPeriod > 0x186a0))
+            else if (optInSignalPeriod < 1 || optInSignalPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -114,7 +114,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            tempInteger = ((endIdx - startIdx) + 1) + lookbackSignal;
+            tempInteger = endIdx - startIdx + 1 + lookbackSignal;
             double[] fastMABuffer = new double[tempInteger];
             if (fastMABuffer == null)
             {
@@ -164,9 +164,7 @@ namespace GLPM.TechnicalAnalysis
                 return retCode;
             }
 
-            if (((outBegIdx1 != tempInteger) || (outBegIdx2 != tempInteger))
-                || ((outNbElement1 != outNbElement2)
-                    || (outNbElement1 != (((endIdx - startIdx) + 1) + lookbackSignal))))
+            if (outBegIdx1 != tempInteger || outBegIdx2 != tempInteger || outNbElement1 != outNbElement2 || outNbElement1 != endIdx - startIdx + 1 + lookbackSignal)
             {
                 outBegIdx = 0;
                 outNBElement = 0;
@@ -178,7 +176,7 @@ namespace GLPM.TechnicalAnalysis
                 fastMABuffer[i] -= slowMABuffer[i];
             }
 
-            Array.Copy(fastMABuffer, lookbackSignal, outMACD, 0, (endIdx - startIdx) + 1);
+            Array.Copy(fastMABuffer, lookbackSignal, outMACD, 0, endIdx - startIdx + 1);
             retCode = MovingAverage(
                 0,
                 outNbElement1 - 1,
@@ -232,7 +230,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -246,7 +244,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastPeriod = 12;
             }
-            else if ((optInFastPeriod < 2) || (optInFastPeriod > 0x186a0))
+            else if (optInFastPeriod < 2 || optInFastPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -255,7 +253,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowPeriod = 0x1a;
             }
-            else if ((optInSlowPeriod < 2) || (optInSlowPeriod > 0x186a0))
+            else if (optInSlowPeriod < 2 || optInSlowPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -264,7 +262,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSignalPeriod = 9;
             }
-            else if ((optInSignalPeriod < 1) || (optInSignalPeriod > 0x186a0))
+            else if (optInSignalPeriod < 1 || optInSignalPeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -315,7 +313,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            tempInteger = ((endIdx - startIdx) + 1) + lookbackSignal;
+            tempInteger = endIdx - startIdx + 1 + lookbackSignal;
             double[] fastMABuffer = new double[tempInteger];
             if (fastMABuffer == null)
             {
@@ -365,9 +363,7 @@ namespace GLPM.TechnicalAnalysis
                 return retCode;
             }
 
-            if (((outBegIdx1 != tempInteger) || (outBegIdx2 != tempInteger))
-                || ((outNbElement1 != outNbElement2)
-                    || (outNbElement1 != (((endIdx - startIdx) + 1) + lookbackSignal))))
+            if (outBegIdx1 != tempInteger || outBegIdx2 != tempInteger || outNbElement1 != outNbElement2 || outNbElement1 != endIdx - startIdx + 1 + lookbackSignal)
             {
                 outBegIdx = 0;
                 outNBElement = 0;
@@ -379,7 +375,7 @@ namespace GLPM.TechnicalAnalysis
                 fastMABuffer[i] -= slowMABuffer[i];
             }
 
-            Array.Copy(fastMABuffer, lookbackSignal, outMACD, 0, (endIdx - startIdx) + 1);
+            Array.Copy(fastMABuffer, lookbackSignal, outMACD, 0, endIdx - startIdx + 1);
             retCode = MovingAverage(
                 0,
                 outNbElement1 - 1,
@@ -418,7 +414,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInFastPeriod = 12;
             }
-            else if ((optInFastPeriod < 2) || (optInFastPeriod > 0x186a0))
+            else if (optInFastPeriod < 2 || optInFastPeriod > 0x186a0)
             {
                 return -1;
             }
@@ -427,7 +423,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSlowPeriod = 0x1a;
             }
-            else if ((optInSlowPeriod < 2) || (optInSlowPeriod > 0x186a0))
+            else if (optInSlowPeriod < 2 || optInSlowPeriod > 0x186a0)
             {
                 return -1;
             }
@@ -436,7 +432,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInSignalPeriod = 9;
             }
-            else if ((optInSignalPeriod < 1) || (optInSignalPeriod > 0x186a0))
+            else if (optInSignalPeriod < 1 || optInSignalPeriod > 0x186a0)
             {
                 return -1;
             }

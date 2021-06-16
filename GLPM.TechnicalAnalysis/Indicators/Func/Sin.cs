@@ -13,21 +13,21 @@ namespace GLPM.TechnicalAnalysis
     {
         public static Sin Sin(int startIdx, int endIdx, double[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Sin(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Sin(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
             return new Sin(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Sin Sin(int startIdx, int endIdx, float[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Sin(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Sin(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
             return new Sin(retCode, outBegIdx, outNBElement, outReal);
         }
     }

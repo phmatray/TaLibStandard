@@ -28,7 +28,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -42,7 +42,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 5;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -51,7 +51,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInNbDevUp = 2.0;
             }
-            else if ((optInNbDevUp < -3E+37) || (optInNbDevUp > 3E+37))
+            else if (optInNbDevUp < -3E+37 || optInNbDevUp > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -60,7 +60,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInNbDevDn = 2.0;
             }
-            else if ((optInNbDevDn < -3E+37) || (optInNbDevDn > 3E+37))
+            else if (optInNbDevDn < -3E+37 || optInNbDevDn > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -101,7 +101,7 @@ namespace GLPM.TechnicalAnalysis
                 tempBuffer2 = outRealUpperBand;
             }
 
-            if ((tempBuffer1 == inReal) || (tempBuffer2 == inReal))
+            if (tempBuffer1 == inReal || tempBuffer2 == inReal)
             {
                 return RetCode.BadParam;
             }
@@ -115,7 +115,7 @@ namespace GLPM.TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 tempBuffer1);
-            if ((retCode != RetCode.Success) || (outNBElement == 0))
+            if (retCode != RetCode.Success || outNBElement == 0)
             {
                 outNBElement = 0;
                 return retCode;
@@ -165,8 +165,8 @@ namespace GLPM.TechnicalAnalysis
                         {
                             tempReal = tempBuffer2[i];
                             tempReal2 = outRealMiddleBand[i];
-                            outRealUpperBand[i] = tempReal2 + (tempReal * optInNbDevUp);
-                            outRealLowerBand[i] = tempReal2 - (tempReal * optInNbDevDn);
+                            outRealUpperBand[i] = tempReal2 + tempReal * optInNbDevUp;
+                            outRealLowerBand[i] = tempReal2 - tempReal * optInNbDevDn;
                             i++;
                         }
 
@@ -222,7 +222,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = tempBuffer2[i];
                 tempReal2 = outRealMiddleBand[i];
                 outRealUpperBand[i] = tempReal2 + tempReal;
-                outRealLowerBand[i] = tempReal2 - (tempReal * optInNbDevDn);
+                outRealLowerBand[i] = tempReal2 - tempReal * optInNbDevDn;
                 i++;
             }
 
@@ -232,7 +232,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = tempBuffer2[i];
                 tempReal2 = outRealMiddleBand[i];
                 outRealLowerBand[i] = tempReal2 - tempReal;
-                outRealUpperBand[i] = tempReal2 + (tempReal * optInNbDevUp);
+                outRealUpperBand[i] = tempReal2 + tempReal * optInNbDevUp;
                 i++;
             }
 
@@ -262,7 +262,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -276,7 +276,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 5;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -285,7 +285,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInNbDevUp = 2.0;
             }
-            else if ((optInNbDevUp < -3E+37) || (optInNbDevUp > 3E+37))
+            else if (optInNbDevUp < -3E+37 || optInNbDevUp > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -294,7 +294,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInNbDevDn = 2.0;
             }
-            else if ((optInNbDevDn < -3E+37) || (optInNbDevDn > 3E+37))
+            else if (optInNbDevDn < -3E+37 || optInNbDevDn > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -325,7 +325,7 @@ namespace GLPM.TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 tempBuffer1);
-            if ((retCode != RetCode.Success) || (outNBElement == 0))
+            if (retCode != RetCode.Success || outNBElement == 0)
             {
                 outNBElement = 0;
                 return retCode;
@@ -370,8 +370,8 @@ namespace GLPM.TechnicalAnalysis
                         {
                             tempReal = tempBuffer2[i];
                             tempReal2 = outRealMiddleBand[i];
-                            outRealUpperBand[i] = tempReal2 + (tempReal * optInNbDevUp);
-                            outRealLowerBand[i] = tempReal2 - (tempReal * optInNbDevDn);
+                            outRealUpperBand[i] = tempReal2 + tempReal * optInNbDevUp;
+                            outRealLowerBand[i] = tempReal2 - tempReal * optInNbDevDn;
                             i++;
                         }
 
@@ -427,7 +427,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = tempBuffer2[i];
                 tempReal2 = outRealMiddleBand[i];
                 outRealUpperBand[i] = tempReal2 + tempReal;
-                outRealLowerBand[i] = tempReal2 - (tempReal * optInNbDevDn);
+                outRealLowerBand[i] = tempReal2 - tempReal * optInNbDevDn;
                 i++;
             }
 
@@ -437,7 +437,7 @@ namespace GLPM.TechnicalAnalysis
                 tempReal = tempBuffer2[i];
                 tempReal2 = outRealMiddleBand[i];
                 outRealLowerBand[i] = tempReal2 - tempReal;
-                outRealUpperBand[i] = tempReal2 + (tempReal * optInNbDevUp);
+                outRealUpperBand[i] = tempReal2 + tempReal * optInNbDevUp;
                 i++;
             }
 
@@ -455,7 +455,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 5;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }
@@ -464,7 +464,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInNbDevUp = 2.0;
             }
-            else if ((optInNbDevUp < -3E+37) || (optInNbDevUp > 3E+37))
+            else if (optInNbDevUp < -3E+37 || optInNbDevUp > 3E+37)
             {
                 return -1;
             }
@@ -473,7 +473,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInNbDevDn = 2.0;
             }
-            else if ((optInNbDevDn < -3E+37) || (optInNbDevDn > 3E+37))
+            else if (optInNbDevDn < -3E+37 || optInNbDevDn > 3E+37)
             {
                 return -1;
             }

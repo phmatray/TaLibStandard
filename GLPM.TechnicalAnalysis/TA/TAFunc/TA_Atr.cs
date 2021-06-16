@@ -21,12 +21,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || (inClose == null))
+            if (inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -35,7 +35,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -63,9 +63,9 @@ namespace GLPM.TechnicalAnalysis
                 return TrueRange(startIdx, endIdx, inHigh, inLow, inClose, ref outBegIdx, ref outNBElement, outReal);
             }
 
-            double[] tempBuffer = new double[(lookbackTotal + (endIdx - startIdx)) + 1];
+            double[] tempBuffer = new double[lookbackTotal + (endIdx - startIdx) + 1];
             RetCode retCode = TrueRange(
-                (startIdx - lookbackTotal) + 1,
+                startIdx - lookbackTotal + 1,
                 endIdx,
                 inHigh,
                 inLow,
@@ -101,13 +101,13 @@ namespace GLPM.TechnicalAnalysis
                     prevATR *= optInTimePeriod - 1;
                     prevATR += tempBuffer[today];
                     today++;
-                    prevATR /= (double)optInTimePeriod;
+                    prevATR /= optInTimePeriod;
                     outIdx--;
                 }
 
                 outIdx = 1;
                 outReal[0] = prevATR;
-                int nbATR = (endIdx - startIdx) + 1;
+                int nbATR = endIdx - startIdx + 1;
                 while (true)
                 {
                     nbATR--;
@@ -119,7 +119,7 @@ namespace GLPM.TechnicalAnalysis
                     prevATR *= optInTimePeriod - 1;
                     prevATR += tempBuffer[today];
                     today++;
-                    outReal[outIdx] = prevATR / ((double)optInTimePeriod);
+                    outReal[outIdx] = prevATR / optInTimePeriod;
                     outIdx++;
                 }
 
@@ -149,12 +149,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || (inClose == null))
+            if (inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -163,7 +163,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -191,9 +191,9 @@ namespace GLPM.TechnicalAnalysis
                 return TrueRange(startIdx, endIdx, inHigh, inLow, inClose, ref outBegIdx, ref outNBElement, outReal);
             }
 
-            double[] tempBuffer = new double[(lookbackTotal + (endIdx - startIdx)) + 1];
+            double[] tempBuffer = new double[lookbackTotal + (endIdx - startIdx) + 1];
             RetCode retCode = TrueRange(
-                (startIdx - lookbackTotal) + 1,
+                startIdx - lookbackTotal + 1,
                 endIdx,
                 inHigh,
                 inLow,
@@ -229,13 +229,13 @@ namespace GLPM.TechnicalAnalysis
                     prevATR *= optInTimePeriod - 1;
                     prevATR += tempBuffer[today];
                     today++;
-                    prevATR /= (double)optInTimePeriod;
+                    prevATR /= optInTimePeriod;
                     outIdx--;
                 }
 
                 outIdx = 1;
                 outReal[0] = prevATR;
-                int nbATR = (endIdx - startIdx) + 1;
+                int nbATR = endIdx - startIdx + 1;
                 while (true)
                 {
                     nbATR--;
@@ -247,7 +247,7 @@ namespace GLPM.TechnicalAnalysis
                     prevATR *= optInTimePeriod - 1;
                     prevATR += tempBuffer[today];
                     today++;
-                    outReal[outIdx] = prevATR / ((double)optInTimePeriod);
+                    outReal[outIdx] = prevATR / optInTimePeriod;
                     outIdx++;
                 }
 
@@ -264,12 +264,12 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }
 
-            return optInTimePeriod + ((int)Globals.unstablePeriod[2]);
+            return optInTimePeriod + (int)Globals.unstablePeriod[2];
         }
     }
 }

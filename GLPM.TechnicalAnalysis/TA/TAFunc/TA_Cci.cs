@@ -22,12 +22,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || (inClose == null))
+            if (inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -36,7 +36,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -76,7 +76,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 while (i < startIdx)
                 {
-                    circBuffer[circBuffer_Idx] = ((inHigh[i] + inLow[i]) + inClose[i]) / 3.0;
+                    circBuffer[circBuffer_Idx] = (inHigh[i] + inLow[i] + inClose[i]) / 3.0;
                     i++;
                     circBuffer_Idx++;
                     if (circBuffer_Idx > maxIdx_circBuffer)
@@ -89,7 +89,7 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                double lastValue = ((inHigh[i] + inLow[i]) + inClose[i]) / 3.0;
+                double lastValue = (inHigh[i] + inLow[i] + inClose[i]) / 3.0;
                 circBuffer[circBuffer_Idx] = lastValue;
                 double theAverage = 0.0;
                 int j = 0;
@@ -99,17 +99,17 @@ namespace GLPM.TechnicalAnalysis
                     j++;
                 }
 
-                theAverage /= (double)optInTimePeriod;
+                theAverage /= optInTimePeriod;
                 double tempReal2 = 0.0;
                 for (j = 0; j < optInTimePeriod; j++)
                 {
-                    tempReal2 += Math.Abs((double)(circBuffer[j] - theAverage));
+                    tempReal2 += Math.Abs(circBuffer[j] - theAverage);
                 }
 
                 double tempReal = lastValue - theAverage;
-                if ((tempReal != 0.0) && (tempReal2 != 0.0))
+                if (tempReal != 0.0 && tempReal2 != 0.0)
                 {
-                    outReal[outIdx] = tempReal / (0.015 * (tempReal2 / ((double)optInTimePeriod)));
+                    outReal[outIdx] = tempReal / (0.015 * (tempReal2 / optInTimePeriod));
                     outIdx++;
                 }
                 else
@@ -151,12 +151,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inHigh == null) || (inLow == null)) || (inClose == null))
+            if (inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -165,7 +165,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -205,7 +205,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 while (i < startIdx)
                 {
-                    circBuffer[circBuffer_Idx] = ((inHigh[i] + inLow[i]) + inClose[i]) / 3.0;
+                    circBuffer[circBuffer_Idx] = (inHigh[i] + inLow[i] + inClose[i]) / 3.0;
                     i++;
                     circBuffer_Idx++;
                     if (circBuffer_Idx > maxIdx_circBuffer)
@@ -218,7 +218,7 @@ namespace GLPM.TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                double lastValue = ((inHigh[i] + inLow[i]) + inClose[i]) / 3.0;
+                double lastValue = (inHigh[i] + inLow[i] + inClose[i]) / 3.0;
                 circBuffer[circBuffer_Idx] = lastValue;
                 double theAverage = 0.0;
                 int j = 0;
@@ -228,17 +228,17 @@ namespace GLPM.TechnicalAnalysis
                     j++;
                 }
 
-                theAverage /= (double)optInTimePeriod;
+                theAverage /= optInTimePeriod;
                 double tempReal2 = 0.0;
                 for (j = 0; j < optInTimePeriod; j++)
                 {
-                    tempReal2 += Math.Abs((double)(circBuffer[j] - theAverage));
+                    tempReal2 += Math.Abs(circBuffer[j] - theAverage);
                 }
 
                 double tempReal = lastValue - theAverage;
-                if ((tempReal != 0.0) && (tempReal2 != 0.0))
+                if (tempReal != 0.0 && tempReal2 != 0.0)
                 {
-                    outReal[outIdx] = tempReal / (0.015 * (tempReal2 / ((double)optInTimePeriod)));
+                    outReal[outIdx] = tempReal / (0.015 * (tempReal2 / optInTimePeriod));
                     outIdx++;
                 }
                 else
@@ -268,7 +268,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }

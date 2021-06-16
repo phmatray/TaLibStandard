@@ -20,11 +20,11 @@ namespace GLPM.TechnicalAnalysis
             double[] close,
             double penetration = 0.3)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.CdlEveningDojiStar(
+            RetCode retCode = TACore.CdlEveningDojiStar(
                 startIdx,
                 endIdx,
                 open,
@@ -47,11 +47,11 @@ namespace GLPM.TechnicalAnalysis
             float[] close,
             double penetration = 0.3)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.CdlEveningDojiStar(
+            RetCode retCode = TACore.CdlEveningDojiStar(
                 startIdx,
                 endIdx,
                 open,

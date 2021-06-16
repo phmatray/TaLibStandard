@@ -21,11 +21,11 @@ namespace GLPM.TechnicalAnalysis
             int fastPeriod = 3,
             int slowPeriod = 10)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.AdOsc(
+            RetCode retCode = TACore.AdOsc(
                 startIdx,
                 endIdx,
                 high,
@@ -50,11 +50,11 @@ namespace GLPM.TechnicalAnalysis
             int fastPeriod = 3,
             int slowPeriod = 10)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.AdOsc(
+            RetCode retCode = TACore.AdOsc(
                 startIdx,
                 endIdx,
                 high,

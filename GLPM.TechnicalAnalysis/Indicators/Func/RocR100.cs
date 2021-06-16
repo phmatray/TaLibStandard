@@ -13,21 +13,21 @@ namespace GLPM.TechnicalAnalysis
     {
         public static RocR100 RocR100(int startIdx, int endIdx, double[] real, int timePeriod = 10)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.RocR100(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.RocR100(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
             return new RocR100(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static RocR100 RocR100(int startIdx, int endIdx, float[] real, int timePeriod = 10)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.RocR100(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.RocR100(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
             return new RocR100(retCode, outBegIdx, outNBElement, outReal);
         }
     }

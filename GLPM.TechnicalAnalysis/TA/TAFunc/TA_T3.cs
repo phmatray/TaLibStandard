@@ -18,7 +18,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -32,7 +32,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 5;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -41,7 +41,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInVFactor = 0.7;
             }
-            else if ((optInVFactor < 0.0) || (optInVFactor > 1.0))
+            else if (optInVFactor < 0.0 || optInVFactor > 1.0)
             {
                 return RetCode.BadParam;
             }
@@ -51,7 +51,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            int lookbackTotal = ((optInTimePeriod - 1) * 6) + ((int)Globals.unstablePeriod[0x16]);
+            int lookbackTotal = (optInTimePeriod - 1) * 6 + (int)Globals.unstablePeriod[0x16];
             if (startIdx <= lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -76,62 +76,62 @@ namespace GLPM.TechnicalAnalysis
                 today++;
             }
 
-            double e1 = tempReal / ((double)optInTimePeriod);
+            double e1 = tempReal / optInTimePeriod;
             tempReal = e1;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
                 tempReal += e1;
             }
 
-            double e2 = tempReal / ((double)optInTimePeriod);
+            double e2 = tempReal / optInTimePeriod;
             tempReal = e2;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
+                e2 = k * e1 + one_minus_k * e2;
                 tempReal += e2;
             }
 
-            double e3 = tempReal / ((double)optInTimePeriod);
+            double e3 = tempReal / optInTimePeriod;
             tempReal = e3;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
-                e3 = (k * e2) + (one_minus_k * e3);
+                e2 = k * e1 + one_minus_k * e2;
+                e3 = k * e2 + one_minus_k * e3;
                 tempReal += e3;
             }
 
-            double e4 = tempReal / ((double)optInTimePeriod);
+            double e4 = tempReal / optInTimePeriod;
             tempReal = e4;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
-                e3 = (k * e2) + (one_minus_k * e3);
-                e4 = (k * e3) + (one_minus_k * e4);
+                e2 = k * e1 + one_minus_k * e2;
+                e3 = k * e2 + one_minus_k * e3;
+                e4 = k * e3 + one_minus_k * e4;
                 tempReal += e4;
             }
 
-            double e5 = tempReal / ((double)optInTimePeriod);
+            double e5 = tempReal / optInTimePeriod;
             tempReal = e5;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
-                e3 = (k * e2) + (one_minus_k * e3);
-                e4 = (k * e3) + (one_minus_k * e4);
-                e5 = (k * e4) + (one_minus_k * e5);
+                e2 = k * e1 + one_minus_k * e2;
+                e3 = k * e2 + one_minus_k * e3;
+                e4 = k * e3 + one_minus_k * e4;
+                e5 = k * e4 + one_minus_k * e5;
                 tempReal += e5;
             }
 
-            double e6 = tempReal / ((double)optInTimePeriod);
+            double e6 = tempReal / optInTimePeriod;
             while (true)
             {
                 if (today > startIdx)
@@ -139,22 +139,22 @@ namespace GLPM.TechnicalAnalysis
                     break;
                 }
 
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
-                e3 = (k * e2) + (one_minus_k * e3);
-                e4 = (k * e3) + (one_minus_k * e4);
-                e5 = (k * e4) + (one_minus_k * e5);
-                e6 = (k * e5) + (one_minus_k * e6);
+                e2 = k * e1 + one_minus_k * e2;
+                e3 = k * e2 + one_minus_k * e3;
+                e4 = k * e3 + one_minus_k * e4;
+                e5 = k * e4 + one_minus_k * e5;
+                e6 = k * e5 + one_minus_k * e6;
             }
 
             tempReal = optInVFactor * optInVFactor;
             double c1 = -(tempReal * optInVFactor);
             double c2 = 3.0 * (tempReal - c1);
-            double c3 = (-6.0 * tempReal) - (3.0 * (optInVFactor - c1));
-            double c4 = ((1.0 + (3.0 * optInVFactor)) - c1) + (3.0 * tempReal);
+            double c3 = -6.0 * tempReal - 3.0 * (optInVFactor - c1);
+            double c4 = 1.0 + 3.0 * optInVFactor - c1 + 3.0 * tempReal;
             int outIdx = 0;
-            outReal[outIdx] = (((c1 * e6) + (c2 * e5)) + (c3 * e4)) + (c4 * e3);
+            outReal[outIdx] = c1 * e6 + c2 * e5 + c3 * e4 + c4 * e3;
             outIdx++;
             while (true)
             {
@@ -163,14 +163,14 @@ namespace GLPM.TechnicalAnalysis
                     break;
                 }
 
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
-                e3 = (k * e2) + (one_minus_k * e3);
-                e4 = (k * e3) + (one_minus_k * e4);
-                e5 = (k * e4) + (one_minus_k * e5);
-                e6 = (k * e5) + (one_minus_k * e6);
-                outReal[outIdx] = (((c1 * e6) + (c2 * e5)) + (c3 * e4)) + (c4 * e3);
+                e2 = k * e1 + one_minus_k * e2;
+                e3 = k * e2 + one_minus_k * e3;
+                e4 = k * e3 + one_minus_k * e4;
+                e5 = k * e4 + one_minus_k * e5;
+                e6 = k * e5 + one_minus_k * e6;
+                outReal[outIdx] = c1 * e6 + c2 * e5 + c3 * e4 + c4 * e3;
                 outIdx++;
             }
 
@@ -194,7 +194,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -208,7 +208,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 5;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -217,7 +217,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInVFactor = 0.7;
             }
-            else if ((optInVFactor < 0.0) || (optInVFactor > 1.0))
+            else if (optInVFactor < 0.0 || optInVFactor > 1.0)
             {
                 return RetCode.BadParam;
             }
@@ -227,7 +227,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            int lookbackTotal = ((optInTimePeriod - 1) * 6) + ((int)Globals.unstablePeriod[0x16]);
+            int lookbackTotal = (optInTimePeriod - 1) * 6 + (int)Globals.unstablePeriod[0x16];
             if (startIdx <= lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -252,62 +252,62 @@ namespace GLPM.TechnicalAnalysis
                 today++;
             }
 
-            double e1 = tempReal / ((double)optInTimePeriod);
+            double e1 = tempReal / optInTimePeriod;
             tempReal = e1;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
                 tempReal += e1;
             }
 
-            double e2 = tempReal / ((double)optInTimePeriod);
+            double e2 = tempReal / optInTimePeriod;
             tempReal = e2;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
+                e2 = k * e1 + one_minus_k * e2;
                 tempReal += e2;
             }
 
-            double e3 = tempReal / ((double)optInTimePeriod);
+            double e3 = tempReal / optInTimePeriod;
             tempReal = e3;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
-                e3 = (k * e2) + (one_minus_k * e3);
+                e2 = k * e1 + one_minus_k * e2;
+                e3 = k * e2 + one_minus_k * e3;
                 tempReal += e3;
             }
 
-            double e4 = tempReal / ((double)optInTimePeriod);
+            double e4 = tempReal / optInTimePeriod;
             tempReal = e4;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
-                e3 = (k * e2) + (one_minus_k * e3);
-                e4 = (k * e3) + (one_minus_k * e4);
+                e2 = k * e1 + one_minus_k * e2;
+                e3 = k * e2 + one_minus_k * e3;
+                e4 = k * e3 + one_minus_k * e4;
                 tempReal += e4;
             }
 
-            double e5 = tempReal / ((double)optInTimePeriod);
+            double e5 = tempReal / optInTimePeriod;
             tempReal = e5;
             for (i = optInTimePeriod - 1; i > 0; i--)
             {
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
-                e3 = (k * e2) + (one_minus_k * e3);
-                e4 = (k * e3) + (one_minus_k * e4);
-                e5 = (k * e4) + (one_minus_k * e5);
+                e2 = k * e1 + one_minus_k * e2;
+                e3 = k * e2 + one_minus_k * e3;
+                e4 = k * e3 + one_minus_k * e4;
+                e5 = k * e4 + one_minus_k * e5;
                 tempReal += e5;
             }
 
-            double e6 = tempReal / ((double)optInTimePeriod);
+            double e6 = tempReal / optInTimePeriod;
             while (true)
             {
                 if (today > startIdx)
@@ -315,22 +315,22 @@ namespace GLPM.TechnicalAnalysis
                     break;
                 }
 
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
-                e3 = (k * e2) + (one_minus_k * e3);
-                e4 = (k * e3) + (one_minus_k * e4);
-                e5 = (k * e4) + (one_minus_k * e5);
-                e6 = (k * e5) + (one_minus_k * e6);
+                e2 = k * e1 + one_minus_k * e2;
+                e3 = k * e2 + one_minus_k * e3;
+                e4 = k * e3 + one_minus_k * e4;
+                e5 = k * e4 + one_minus_k * e5;
+                e6 = k * e5 + one_minus_k * e6;
             }
 
             tempReal = optInVFactor * optInVFactor;
             double c1 = -(tempReal * optInVFactor);
             double c2 = 3.0 * (tempReal - c1);
-            double c3 = (-6.0 * tempReal) - (3.0 * (optInVFactor - c1));
-            double c4 = ((1.0 + (3.0 * optInVFactor)) - c1) + (3.0 * tempReal);
+            double c3 = -6.0 * tempReal - 3.0 * (optInVFactor - c1);
+            double c4 = 1.0 + 3.0 * optInVFactor - c1 + 3.0 * tempReal;
             int outIdx = 0;
-            outReal[outIdx] = (((c1 * e6) + (c2 * e5)) + (c3 * e4)) + (c4 * e3);
+            outReal[outIdx] = c1 * e6 + c2 * e5 + c3 * e4 + c4 * e3;
             outIdx++;
             while (true)
             {
@@ -339,14 +339,14 @@ namespace GLPM.TechnicalAnalysis
                     break;
                 }
 
-                e1 = (k * inReal[today]) + (one_minus_k * e1);
+                e1 = k * inReal[today] + one_minus_k * e1;
                 today++;
-                e2 = (k * e1) + (one_minus_k * e2);
-                e3 = (k * e2) + (one_minus_k * e3);
-                e4 = (k * e3) + (one_minus_k * e4);
-                e5 = (k * e4) + (one_minus_k * e5);
-                e6 = (k * e5) + (one_minus_k * e6);
-                outReal[outIdx] = (((c1 * e6) + (c2 * e5)) + (c3 * e4)) + (c4 * e3);
+                e2 = k * e1 + one_minus_k * e2;
+                e3 = k * e2 + one_minus_k * e3;
+                e4 = k * e3 + one_minus_k * e4;
+                e5 = k * e4 + one_minus_k * e5;
+                e6 = k * e5 + one_minus_k * e6;
+                outReal[outIdx] = c1 * e6 + c2 * e5 + c3 * e4 + c4 * e3;
                 outIdx++;
             }
 
@@ -360,7 +360,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 5;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }
@@ -369,12 +369,12 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInVFactor = 0.7;
             }
-            else if ((optInVFactor < 0.0) || (optInVFactor > 1.0))
+            else if (optInVFactor < 0.0 || optInVFactor > 1.0)
             {
                 return -1;
             }
 
-            return ((optInTimePeriod - 1) * 6) + ((int)Globals.unstablePeriod[0x16]);
+            return (optInTimePeriod - 1) * 6 + (int)Globals.unstablePeriod[0x16];
         }
     }
 }

@@ -13,11 +13,11 @@ namespace GLPM.TechnicalAnalysis
     {
         public static TrueRange TrueRange(int startIdx, int endIdx, double[] high, double[] low, double[] close)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.TrueRange(
+            RetCode retCode = TACore.TrueRange(
                 startIdx,
                 endIdx,
                 high,
@@ -31,11 +31,11 @@ namespace GLPM.TechnicalAnalysis
 
         public static TrueRange TrueRange(int startIdx, int endIdx, float[] high, float[] low, float[] close)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.TrueRange(
+            RetCode retCode = TACore.TrueRange(
                 startIdx,
                 endIdx,
                 high,

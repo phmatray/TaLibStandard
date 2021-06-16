@@ -27,12 +27,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -67,7 +67,7 @@ namespace GLPM.TechnicalAnalysis
                 num11 = -1;
             }
 
-            if (((inClose[i - 2] < inOpen[i - 2]) ? -1 : 1) != num11)
+            if ((inClose[i - 2] < inOpen[i - 2] ? -1 : 1) != num11)
             {
                 goto Label_0229;
             }
@@ -81,7 +81,7 @@ namespace GLPM.TechnicalAnalysis
                 num10 = -1;
             }
 
-            if (((inClose[i - 1] < inOpen[i - 1]) ? -1 : 1) != -num10)
+            if ((inClose[i - 1] < inOpen[i - 1] ? -1 : 1) != -num10)
             {
                 goto Label_0229;
             }
@@ -170,7 +170,7 @@ namespace GLPM.TechnicalAnalysis
                 }
             }
 
-            if (((inClose[i - 2] < inOpen[i - 2]) ? -1 : 1) != -1)
+            if ((inClose[i - 2] < inOpen[i - 2] ? -1 : 1) != -1)
             {
                 goto Label_0229;
             }
@@ -251,12 +251,12 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
-            if (((inOpen == null) || (inHigh == null)) || ((inLow == null) || (inClose == null)))
+            if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
             }
@@ -291,7 +291,7 @@ namespace GLPM.TechnicalAnalysis
                 num11 = -1;
             }
 
-            if (((inClose[i - 2] < inOpen[i - 2]) ? -1 : 1) != num11)
+            if ((inClose[i - 2] < inOpen[i - 2] ? -1 : 1) != num11)
             {
                 goto Label_0263;
             }
@@ -305,7 +305,7 @@ namespace GLPM.TechnicalAnalysis
                 num10 = -1;
             }
 
-            if (((inClose[i - 1] < inOpen[i - 1]) ? -1 : 1) != -num10)
+            if ((inClose[i - 1] < inOpen[i - 1] ? -1 : 1) != -num10)
             {
                 goto Label_0263;
             }
@@ -394,7 +394,7 @@ namespace GLPM.TechnicalAnalysis
                 }
             }
 
-            if (((inClose[i - 2] < inOpen[i - 2]) ? -1 : 1) != -1)
+            if ((inClose[i - 2] < inOpen[i - 2] ? -1 : 1) != -1)
             {
                 goto Label_0263;
             }

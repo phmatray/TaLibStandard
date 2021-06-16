@@ -18,7 +18,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -32,7 +32,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -44,7 +44,7 @@ namespace GLPM.TechnicalAnalysis
 
             int emaLookback = EmaLookback(optInTimePeriod);
             int rocLookback = RocRLookback(1);
-            int totalLookback = (emaLookback * 3) + rocLookback;
+            int totalLookback = emaLookback * 3 + rocLookback;
             if (startIdx < totalLookback)
             {
                 startIdx = totalLookback;
@@ -58,7 +58,7 @@ namespace GLPM.TechnicalAnalysis
             }
 
             outBegIdx = startIdx;
-            int nbElementToOutput = ((endIdx - startIdx) + 1) + totalLookback;
+            int nbElementToOutput = endIdx - startIdx + 1 + totalLookback;
             double[] tempBuffer = new double[nbElementToOutput];
             if (tempBuffer == null)
             {
@@ -67,7 +67,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.AllocErr;
             }
 
-            double k = 2.0 / ((double)(optInTimePeriod + 1));
+            double k = 2.0 / (optInTimePeriod + 1);
             RetCode retCode = TA_INT_EMA(
                 startIdx - totalLookback,
                 endIdx,
@@ -77,7 +77,7 @@ namespace GLPM.TechnicalAnalysis
                 ref begIdx,
                 ref nbElement,
                 tempBuffer);
-            if ((retCode != RetCode.Success) || (nbElement == 0))
+            if (retCode != RetCode.Success || nbElement == 0)
             {
                 outNBElement = 0;
                 outBegIdx = 0;
@@ -95,7 +95,7 @@ namespace GLPM.TechnicalAnalysis
                 ref begIdx,
                 ref nbElement,
                 tempBuffer);
-            if ((retCode != RetCode.Success) || (nbElement == 0))
+            if (retCode != RetCode.Success || nbElement == 0)
             {
                 outNBElement = 0;
                 outBegIdx = 0;
@@ -112,7 +112,7 @@ namespace GLPM.TechnicalAnalysis
                 ref begIdx,
                 ref nbElement,
                 tempBuffer);
-            if ((retCode != RetCode.Success) || (nbElement == 0))
+            if (retCode != RetCode.Success || nbElement == 0)
             {
                 outNBElement = 0;
                 outBegIdx = 0;
@@ -121,7 +121,7 @@ namespace GLPM.TechnicalAnalysis
 
             nbElementToOutput -= emaLookback;
             retCode = Roc(0, nbElementToOutput, tempBuffer, 1, ref begIdx, ref outNBElement, outReal);
-            if ((retCode != RetCode.Success) || (outNBElement == 0))
+            if (retCode != RetCode.Success || outNBElement == 0)
             {
                 outNBElement = 0;
                 outBegIdx = 0;
@@ -147,7 +147,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -161,7 +161,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -173,7 +173,7 @@ namespace GLPM.TechnicalAnalysis
 
             int emaLookback = EmaLookback(optInTimePeriod);
             int rocLookback = RocRLookback(1);
-            int totalLookback = (emaLookback * 3) + rocLookback;
+            int totalLookback = emaLookback * 3 + rocLookback;
             if (startIdx < totalLookback)
             {
                 startIdx = totalLookback;
@@ -187,7 +187,7 @@ namespace GLPM.TechnicalAnalysis
             }
 
             outBegIdx = startIdx;
-            int nbElementToOutput = ((endIdx - startIdx) + 1) + totalLookback;
+            int nbElementToOutput = endIdx - startIdx + 1 + totalLookback;
             double[] tempBuffer = new double[nbElementToOutput];
             if (tempBuffer == null)
             {
@@ -196,7 +196,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.AllocErr;
             }
 
-            double k = 2.0 / ((double)(optInTimePeriod + 1));
+            double k = 2.0 / (optInTimePeriod + 1);
             RetCode retCode = TA_INT_EMA(
                 startIdx - totalLookback,
                 endIdx,
@@ -206,7 +206,7 @@ namespace GLPM.TechnicalAnalysis
                 ref begIdx,
                 ref nbElement,
                 tempBuffer);
-            if ((retCode != RetCode.Success) || (nbElement == 0))
+            if (retCode != RetCode.Success || nbElement == 0)
             {
                 outNBElement = 0;
                 outBegIdx = 0;
@@ -224,7 +224,7 @@ namespace GLPM.TechnicalAnalysis
                 ref begIdx,
                 ref nbElement,
                 tempBuffer);
-            if ((retCode != RetCode.Success) || (nbElement == 0))
+            if (retCode != RetCode.Success || nbElement == 0)
             {
                 outNBElement = 0;
                 outBegIdx = 0;
@@ -241,7 +241,7 @@ namespace GLPM.TechnicalAnalysis
                 ref begIdx,
                 ref nbElement,
                 tempBuffer);
-            if ((retCode != RetCode.Success) || (nbElement == 0))
+            if (retCode != RetCode.Success || nbElement == 0)
             {
                 outNBElement = 0;
                 outBegIdx = 0;
@@ -250,7 +250,7 @@ namespace GLPM.TechnicalAnalysis
 
             nbElementToOutput -= emaLookback;
             retCode = Roc(0, nbElementToOutput, tempBuffer, 1, ref begIdx, ref outNBElement, outReal);
-            if ((retCode != RetCode.Success) || (outNBElement == 0))
+            if (retCode != RetCode.Success || outNBElement == 0)
             {
                 outNBElement = 0;
                 outBegIdx = 0;
@@ -266,12 +266,12 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 30;
             }
-            else if ((optInTimePeriod < 1) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }
 
-            return (EmaLookback(optInTimePeriod) * 3) + RocRLookback(1);
+            return EmaLookback(optInTimePeriod) * 3 + RocRLookback(1);
         }
     }
 }

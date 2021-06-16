@@ -19,11 +19,11 @@ namespace GLPM.TechnicalAnalysis
             double[] low,
             double[] close)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.CdlTristar(
+            RetCode retCode = TACore.CdlTristar(
                 startIdx,
                 endIdx,
                 open,
@@ -44,11 +44,11 @@ namespace GLPM.TechnicalAnalysis
             float[] low,
             float[] close)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.CdlTristar(
+            RetCode retCode = TACore.CdlTristar(
                 startIdx,
                 endIdx,
                 open,

@@ -18,7 +18,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -32,7 +32,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -57,9 +57,9 @@ namespace GLPM.TechnicalAnalysis
 
             int outIdx = 0;
             int today = startIdx;
-            double SumX = (optInTimePeriod * (optInTimePeriod - 1)) * 0.5;
-            double SumXSqr = ((optInTimePeriod * (optInTimePeriod - 1)) * ((optInTimePeriod * 2) - 1)) / 6;
-            double Divisor = (SumX * SumX) - (optInTimePeriod * SumXSqr);
+            double SumX = optInTimePeriod * (optInTimePeriod - 1) * 0.5;
+            double SumXSqr = optInTimePeriod * (optInTimePeriod - 1) * (optInTimePeriod * 2 - 1) / 6;
+            double Divisor = SumX * SumX - optInTimePeriod * SumXSqr;
             while (true)
             {
                 if (today > endIdx)
@@ -85,7 +85,7 @@ namespace GLPM.TechnicalAnalysis
                     SumXY += i * tempValue1;
                 }
 
-                double m = ((optInTimePeriod * SumXY) - (SumX * SumY)) / Divisor;
+                double m = (optInTimePeriod * SumXY - SumX * SumY) / Divisor;
                 outReal[outIdx] = Math.Atan(m) * 57.295779513082323;
                 outIdx++;
                 today++;
@@ -106,7 +106,7 @@ namespace GLPM.TechnicalAnalysis
                 return RetCode.OutOfRangeStartIndex;
             }
 
-            if ((endIdx < 0) || (endIdx < startIdx))
+            if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
@@ -120,7 +120,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -145,9 +145,9 @@ namespace GLPM.TechnicalAnalysis
 
             int outIdx = 0;
             int today = startIdx;
-            double SumX = (optInTimePeriod * (optInTimePeriod - 1)) * 0.5;
-            double SumXSqr = ((optInTimePeriod * (optInTimePeriod - 1)) * ((optInTimePeriod * 2) - 1)) / 6;
-            double Divisor = (SumX * SumX) - (optInTimePeriod * SumXSqr);
+            double SumX = optInTimePeriod * (optInTimePeriod - 1) * 0.5;
+            double SumXSqr = optInTimePeriod * (optInTimePeriod - 1) * (optInTimePeriod * 2 - 1) / 6;
+            double Divisor = SumX * SumX - optInTimePeriod * SumXSqr;
             while (true)
             {
                 if (today > endIdx)
@@ -173,7 +173,7 @@ namespace GLPM.TechnicalAnalysis
                     SumXY += i * tempValue1;
                 }
 
-                double m = ((optInTimePeriod * SumXY) - (SumX * SumY)) / Divisor;
+                double m = (optInTimePeriod * SumXY - SumX * SumY) / Divisor;
                 outReal[outIdx] = Math.Atan(m) * 57.295779513082323;
                 outIdx++;
                 today++;
@@ -186,7 +186,7 @@ namespace GLPM.TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if ((optInTimePeriod < 2) || (optInTimePeriod > 0x186a0))
+            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
             {
                 return -1;
             }

@@ -13,21 +13,21 @@ namespace GLPM.TechnicalAnalysis
     {
         public static MidPoint MidPoint(int startIdx, int endIdx, double[] real, int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.MidPoint(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.MidPoint(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
             return new MidPoint(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static MidPoint MidPoint(int startIdx, int endIdx, float[] real, int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.MidPoint(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.MidPoint(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
             return new MidPoint(retCode, outBegIdx, outNBElement, outReal);
         }
     }

@@ -13,21 +13,21 @@ namespace GLPM.TechnicalAnalysis
     {
         public static Sqrt Sqrt(int startIdx, int endIdx, double[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Sqrt(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Sqrt(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
             return new Sqrt(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Sqrt Sqrt(int startIdx, int endIdx, float[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Sqrt(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Sqrt(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
             return new Sqrt(retCode, outBegIdx, outNBElement, outReal);
         }
     }
