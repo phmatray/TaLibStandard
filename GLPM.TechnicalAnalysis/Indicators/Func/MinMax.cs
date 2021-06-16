@@ -13,8 +13,8 @@ namespace GLPM.TechnicalAnalysis
     {
         public static MinMax MinMax(int startIdx, int endIdx, double[] real, int timePeriod = 30)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outMin = new double[endIdx - startIdx + 1];
             double[] outMax = new double[endIdx - startIdx + 1];
 
@@ -32,8 +32,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static MinMax MinMax(int startIdx, int endIdx, float[] real, int timePeriod = 30)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outMin = new double[endIdx - startIdx + 1];
             double[] outMax = new double[endIdx - startIdx + 1];
 

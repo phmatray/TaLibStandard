@@ -19,8 +19,8 @@ namespace GLPM.TechnicalAnalysis
             double[] low,
             double[] close)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Bop(
@@ -38,8 +38,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static Bop Bop(int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Bop(

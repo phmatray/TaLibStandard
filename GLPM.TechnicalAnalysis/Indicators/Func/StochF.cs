@@ -21,8 +21,8 @@ namespace GLPM.TechnicalAnalysis
             int fastD_Period = 3,
             MAType fastD_MAType = MAType.Sma)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outFastK = new double[endIdx - startIdx + 1];
             double[] outFastD = new double[endIdx - startIdx + 1];
 
@@ -52,8 +52,8 @@ namespace GLPM.TechnicalAnalysis
             int fastD_Period = 3,
             MAType fastD_MAType = MAType.Sma)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outFastK = new double[endIdx - startIdx + 1];
             double[] outFastD = new double[endIdx - startIdx + 1];
 

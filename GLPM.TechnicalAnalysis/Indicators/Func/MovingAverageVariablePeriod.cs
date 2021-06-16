@@ -20,8 +20,8 @@ namespace GLPM.TechnicalAnalysis
             int maxPeriod = 30,
             MAType mAType = MAType.Sma)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.MovingAverageVariablePeriod(
@@ -47,8 +47,8 @@ namespace GLPM.TechnicalAnalysis
             int maxPeriod = 30,
             MAType mAType = MAType.Sma)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.MovingAverageVariablePeriod(

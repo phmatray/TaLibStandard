@@ -19,8 +19,8 @@ namespace GLPM.TechnicalAnalysis
             double[] low,
             double[] close)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.AvgPrice(
@@ -44,8 +44,8 @@ namespace GLPM.TechnicalAnalysis
             float[] low,
             float[] close)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.AvgPrice(

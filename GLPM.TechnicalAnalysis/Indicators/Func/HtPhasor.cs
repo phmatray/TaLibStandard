@@ -13,8 +13,8 @@ namespace GLPM.TechnicalAnalysis
     {
         public static HtPhasor HtPhasor(int startIdx, int endIdx, double[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outInPhase = new double[endIdx - startIdx + 1];
             double[] outQuadrature = new double[endIdx - startIdx + 1];
 
@@ -31,8 +31,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static HtPhasor HtPhasor(int startIdx, int endIdx, float[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outInPhase = new double[endIdx - startIdx + 1];
             double[] outQuadrature = new double[endIdx - startIdx + 1];
 

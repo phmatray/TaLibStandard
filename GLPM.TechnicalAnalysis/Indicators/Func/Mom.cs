@@ -13,8 +13,8 @@ namespace GLPM.TechnicalAnalysis
     {
         public static Mom Mom(int startIdx, int endIdx, double[] real, int timePeriod = 10)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Mom(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
@@ -23,8 +23,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static Mom Mom(int startIdx, int endIdx, float[] real, int timePeriod = 10)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Mom(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);

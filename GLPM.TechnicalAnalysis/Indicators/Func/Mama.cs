@@ -18,8 +18,8 @@ namespace GLPM.TechnicalAnalysis
             double fastLimit = 0.5,
             double slowLimit = 0.05)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outMAMA = new double[endIdx - startIdx + 1];
             double[] outFAMA = new double[endIdx - startIdx + 1];
 
@@ -43,8 +43,8 @@ namespace GLPM.TechnicalAnalysis
             double fastLimit = 0.5,
             double slowLimit = 0.05)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outMAMA = new double[endIdx - startIdx + 1];
             double[] outFAMA = new double[endIdx - startIdx + 1];
 

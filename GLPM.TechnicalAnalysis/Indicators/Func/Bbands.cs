@@ -20,8 +20,8 @@ namespace GLPM.TechnicalAnalysis
             double nbDevDn = 2.0,
             MAType mAType = MAType.Sma)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outRealUpperBand = new double[endIdx - startIdx + 1];
             double[] outRealMiddleBand = new double[endIdx - startIdx + 1];
             double[] outRealLowerBand = new double[endIdx - startIdx + 1];
@@ -57,8 +57,8 @@ namespace GLPM.TechnicalAnalysis
             double nbDevDn = 2.0,
             MAType mAType = MAType.Sma)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outRealUpperBand = new double[endIdx - startIdx + 1];
             double[] outRealMiddleBand = new double[endIdx - startIdx + 1];
             double[] outRealLowerBand = new double[endIdx - startIdx + 1];

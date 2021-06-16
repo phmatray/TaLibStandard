@@ -19,8 +19,8 @@ namespace GLPM.TechnicalAnalysis
             double acceleration = 0.02,
             double maximum = 0.2)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Sar(
@@ -44,8 +44,8 @@ namespace GLPM.TechnicalAnalysis
             double acceleration = 0.02,
             double maximum = 0.2)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Sar(

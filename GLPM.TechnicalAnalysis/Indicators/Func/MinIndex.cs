@@ -13,8 +13,8 @@ namespace GLPM.TechnicalAnalysis
     {
         public static MinIndex MinIndex(int startIdx, int endIdx, double[] real, int timePeriod = 30)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
             var retCode = TACore.MinIndex(
@@ -30,8 +30,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static MinIndex MinIndex(int startIdx, int endIdx, float[] real, int timePeriod = 30)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
             var retCode = TACore.MinIndex(

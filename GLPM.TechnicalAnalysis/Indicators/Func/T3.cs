@@ -13,8 +13,8 @@ namespace GLPM.TechnicalAnalysis
     {
         public static T3 T3(int startIdx, int endIdx, double[] real, int timePeriod = 5, double vFactor = 0.7)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.T3(
@@ -31,8 +31,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static T3 T3(int startIdx, int endIdx, float[] real, int timePeriod = 5, double vFactor = 0.7)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.T3(

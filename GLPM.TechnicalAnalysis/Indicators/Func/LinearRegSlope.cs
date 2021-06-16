@@ -13,8 +13,8 @@ namespace GLPM.TechnicalAnalysis
     {
         public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, double[] real, int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.LinearRegSlope(
@@ -30,8 +30,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, float[] real, int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.LinearRegSlope(

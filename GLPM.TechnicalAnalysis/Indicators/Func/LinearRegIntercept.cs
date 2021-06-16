@@ -17,8 +17,8 @@ namespace GLPM.TechnicalAnalysis
             double[] real,
             int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.LinearRegIntercept(
@@ -38,8 +38,8 @@ namespace GLPM.TechnicalAnalysis
             float[] real,
             int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.LinearRegIntercept(

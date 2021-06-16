@@ -13,8 +13,8 @@ namespace GLPM.TechnicalAnalysis
     {
         public static Aroon Aroon(int startIdx, int endIdx, double[] high, double[] low, int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outAroonDown = new double[endIdx - startIdx + 1];
             double[] outAroonUp = new double[endIdx - startIdx + 1];
 
@@ -33,8 +33,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static Aroon Aroon(int startIdx, int endIdx, float[] high, float[] low, int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outAroonDown = new double[endIdx - startIdx + 1];
             double[] outAroonUp = new double[endIdx - startIdx + 1];
 

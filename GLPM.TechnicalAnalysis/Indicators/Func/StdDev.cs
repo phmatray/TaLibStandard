@@ -18,8 +18,8 @@ namespace GLPM.TechnicalAnalysis
             int timePeriod = 5,
             double nbDev = 1.0)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.StdDev(
@@ -41,8 +41,8 @@ namespace GLPM.TechnicalAnalysis
             int timePeriod = 5,
             double nbDev = 1.0)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.StdDev(

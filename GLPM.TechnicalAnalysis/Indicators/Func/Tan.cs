@@ -13,8 +13,8 @@ namespace GLPM.TechnicalAnalysis
     {
         public static Tan Tan(int startIdx, int endIdx, double[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Tan(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
@@ -23,8 +23,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static Tan Tan(int startIdx, int endIdx, float[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Tan(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);

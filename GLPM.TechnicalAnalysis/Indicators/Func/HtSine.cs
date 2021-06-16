@@ -13,8 +13,8 @@ namespace GLPM.TechnicalAnalysis
     {
         public static HtSine HtSine(int startIdx, int endIdx, double[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outSine = new double[endIdx - startIdx + 1];
             double[] outLeadSine = new double[endIdx - startIdx + 1];
 
@@ -24,8 +24,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static HtSine HtSine(int startIdx, int endIdx, float[] real)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outSine = new double[endIdx - startIdx + 1];
             double[] outLeadSine = new double[endIdx - startIdx + 1];
 

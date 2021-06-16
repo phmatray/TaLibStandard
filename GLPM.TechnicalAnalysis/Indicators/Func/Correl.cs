@@ -13,8 +13,8 @@ namespace GLPM.TechnicalAnalysis
     {
         public static Correl Correl(int startIdx, int endIdx, double[] real0, double[] real1, int timePeriod = 30)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Correl(
@@ -31,8 +31,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static Correl Correl(int startIdx, int endIdx, float[] real0, float[] real1, int timePeriod = 30)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Correl(

@@ -19,8 +19,8 @@ namespace GLPM.TechnicalAnalysis
             double[] close,
             int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.PlusDI(
@@ -44,8 +44,8 @@ namespace GLPM.TechnicalAnalysis
             float[] close,
             int timePeriod = 14)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.PlusDI(

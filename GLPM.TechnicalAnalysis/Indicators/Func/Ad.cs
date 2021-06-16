@@ -19,8 +19,8 @@ namespace GLPM.TechnicalAnalysis
             double[] close,
             double[] volume)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Ad(
@@ -38,8 +38,8 @@ namespace GLPM.TechnicalAnalysis
 
         public static Ad Ad(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume)
         {
-            int outBegIdx = default(int);
-            int outNBElement = default(int);
+            int outBegIdx = default;
+            int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
             var retCode = TACore.Ad(
