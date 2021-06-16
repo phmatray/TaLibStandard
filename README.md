@@ -1,7 +1,13 @@
 # TaLibStandard
 TaLib in C# for .NET Standard
 
-Written by Philippe Matray
+Written by [Philippe Matray](https://matray.tech)
+
+## Introduction
+
+## Goal
+
+## Getting started
 
 ## Features
 
@@ -14,3 +20,9 @@ Written by Philippe Matray
 
 * target framework : .NET 5
 * language version : C# 9
+
+## Installation
+
+## Release notes
+
+## Licence
