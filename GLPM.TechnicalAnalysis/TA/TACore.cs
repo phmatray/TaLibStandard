@@ -1,4 +1,5 @@
 using System;
+
 namespace GLPM.TechnicalAnalysis
 {
     internal partial class TACore
