@@ -10,9 +10,10 @@
     {
         public static DataHistory GetDataHistoryFromFile(string fromSymbol, string toSymbol, string interval)
         {
-            var currentDirectory = Directory.GetCurrentDirectory();
-            var path = $@"{currentDirectory}\bin\Debug\netcoreapp2.0\Data\{fromSymbol}-{toSymbol}-{interval}.json";
-            var jsonRaw = File.ReadAllText(path);
+            string[] paths = {AppContext.BaseDirectory, "Data", $"{fromSymbol}-{toSymbol}-{interval}.json"};
+            string fullPath = Path.Combine(paths);
+            
+            var jsonRaw = File.ReadAllText(fullPath);
             var dataHistory = ParseJson(jsonRaw);
             return dataHistory;
         }
