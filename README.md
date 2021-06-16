@@ -26,6 +26,12 @@ Written by [Philippe Matray](https://matray.tech)
 
 ## Installation
 
+
+## Issues and Feature Requests
+
+Please submit bugs and feature requests as an issue to the [TaLibStandard Repository](https://github.com/phmatray/TaLibStandard/issues).
+Before submitting an issue please read others to ensure it is not a duplicate.
+
 ## Release notes
 
 ## Licence
