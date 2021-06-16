@@ -18,7 +18,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outSine = new double[endIdx - startIdx + 1];
             double[] outLeadSine = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outSine, outLeadSine);
+            RetCode retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outSine, outLeadSine);
             return new HtSine(retCode, outBegIdx, outNBElement, outSine, outLeadSine);
         }
 
@@ -29,7 +29,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outSine = new double[endIdx - startIdx + 1];
             double[] outLeadSine = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outSine, outLeadSine);
+            RetCode retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outSine, outLeadSine);
             return new HtSine(retCode, outBegIdx, outNBElement, outSine, outLeadSine);
         }
     }

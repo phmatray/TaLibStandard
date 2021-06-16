@@ -22,7 +22,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Variance(
+            RetCode retCode = TACore.Variance(
                 startIdx,
                 endIdx,
                 real,
@@ -45,7 +45,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Variance(
+            RetCode retCode = TACore.Variance(
                 startIdx,
                 endIdx,
                 real,

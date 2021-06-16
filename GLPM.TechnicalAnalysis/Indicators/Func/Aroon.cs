@@ -18,7 +18,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outAroonDown = new double[endIdx - startIdx + 1];
             double[] outAroonUp = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Aroon(
+            RetCode retCode = TACore.Aroon(
                 startIdx,
                 endIdx,
                 high,
@@ -38,7 +38,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outAroonDown = new double[endIdx - startIdx + 1];
             double[] outAroonUp = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Aroon(
+            RetCode retCode = TACore.Aroon(
                 startIdx,
                 endIdx,
                 high,

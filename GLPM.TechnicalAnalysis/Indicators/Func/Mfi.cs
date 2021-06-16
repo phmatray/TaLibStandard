@@ -24,7 +24,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Mfi(
+            RetCode retCode = TACore.Mfi(
                 startIdx,
                 endIdx,
                 high,
@@ -51,7 +51,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Mfi(
+            RetCode retCode = TACore.Mfi(
                 startIdx,
                 endIdx,
                 high,

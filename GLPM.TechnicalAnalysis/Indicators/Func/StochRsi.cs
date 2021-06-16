@@ -25,7 +25,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outFastK = new double[endIdx - startIdx + 1];
             double[] outFastD = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.StochRsi(
+            RetCode retCode = TACore.StochRsi(
                 startIdx,
                 endIdx,
                 real,
@@ -54,7 +54,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outFastK = new double[endIdx - startIdx + 1];
             double[] outFastD = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.StochRsi(
+            RetCode retCode = TACore.StochRsi(
                 startIdx,
                 endIdx,
                 real,

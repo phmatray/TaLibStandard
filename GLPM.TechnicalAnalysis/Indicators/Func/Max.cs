@@ -17,7 +17,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Max(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Max(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
             return new Max(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -27,7 +27,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Max(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Max(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
             return new Max(retCode, outBegIdx, outNBElement, outReal);
         }
     }

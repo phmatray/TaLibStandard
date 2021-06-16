@@ -24,7 +24,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.MovingAverageVariablePeriod(
+            RetCode retCode = TACore.MovingAverageVariablePeriod(
                 startIdx,
                 endIdx,
                 real,
@@ -51,7 +51,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.MovingAverageVariablePeriod(
+            RetCode retCode = TACore.MovingAverageVariablePeriod(
                 startIdx,
                 endIdx,
                 real,

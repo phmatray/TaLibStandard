@@ -25,7 +25,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outMACDSignal = new double[endIdx - startIdx + 1];
             double[] outMACDHist = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Macd(
+            RetCode retCode = TACore.Macd(
                 startIdx,
                 endIdx,
                 real,
@@ -54,7 +54,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outMACDSignal = new double[endIdx - startIdx + 1];
             double[] outMACDHist = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Macd(
+            RetCode retCode = TACore.Macd(
                 startIdx,
                 endIdx,
                 real,

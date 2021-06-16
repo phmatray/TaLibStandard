@@ -23,7 +23,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Bop(
+            RetCode retCode = TACore.Bop(
                 startIdx,
                 endIdx,
                 open,
@@ -42,7 +42,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Bop(
+            RetCode retCode = TACore.Bop(
                 startIdx,
                 endIdx,
                 open,

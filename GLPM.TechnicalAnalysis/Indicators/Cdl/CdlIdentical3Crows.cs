@@ -23,7 +23,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.CdlIdentical3Crows(
+            RetCode retCode = TACore.CdlIdentical3Crows(
                 startIdx,
                 endIdx,
                 open,
@@ -48,7 +48,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.CdlIdentical3Crows(
+            RetCode retCode = TACore.CdlIdentical3Crows(
                 startIdx,
                 endIdx,
                 open,

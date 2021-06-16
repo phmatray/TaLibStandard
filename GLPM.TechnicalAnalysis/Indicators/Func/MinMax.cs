@@ -18,7 +18,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outMin = new double[endIdx - startIdx + 1];
             double[] outMax = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.MinMax(
+            RetCode retCode = TACore.MinMax(
                 startIdx,
                 endIdx,
                 real,
@@ -37,7 +37,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outMin = new double[endIdx - startIdx + 1];
             double[] outMax = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.MinMax(
+            RetCode retCode = TACore.MinMax(
                 startIdx,
                 endIdx,
                 real,

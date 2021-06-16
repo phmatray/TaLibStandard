@@ -18,7 +18,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outInPhase = new double[endIdx - startIdx + 1];
             double[] outQuadrature = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.HtPhasor(
+            RetCode retCode = TACore.HtPhasor(
                 startIdx,
                 endIdx,
                 real,
@@ -36,7 +36,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outInPhase = new double[endIdx - startIdx + 1];
             double[] outQuadrature = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.HtPhasor(
+            RetCode retCode = TACore.HtPhasor(
                 startIdx,
                 endIdx,
                 real,

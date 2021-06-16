@@ -17,7 +17,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Correl(
+            RetCode retCode = TACore.Correl(
                 startIdx,
                 endIdx,
                 real0,
@@ -35,7 +35,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Correl(
+            RetCode retCode = TACore.Correl(
                 startIdx,
                 endIdx,
                 real0,

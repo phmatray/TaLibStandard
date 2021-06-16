@@ -26,7 +26,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outRealMiddleBand = new double[endIdx - startIdx + 1];
             double[] outRealLowerBand = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Bbands(
+            RetCode retCode = TACore.Bbands(
                 startIdx,
                 endIdx,
                 real,
@@ -63,7 +63,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outRealMiddleBand = new double[endIdx - startIdx + 1];
             double[] outRealLowerBand = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Bbands(
+            RetCode retCode = TACore.Bbands(
                 startIdx,
                 endIdx,
                 real,

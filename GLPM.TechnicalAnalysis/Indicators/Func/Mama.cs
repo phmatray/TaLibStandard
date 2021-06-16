@@ -23,7 +23,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outMAMA = new double[endIdx - startIdx + 1];
             double[] outFAMA = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Mama(
+            RetCode retCode = TACore.Mama(
                 startIdx,
                 endIdx,
                 real,
@@ -48,7 +48,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outMAMA = new double[endIdx - startIdx + 1];
             double[] outFAMA = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Mama(
+            RetCode retCode = TACore.Mama(
                 startIdx,
                 endIdx,
                 real,

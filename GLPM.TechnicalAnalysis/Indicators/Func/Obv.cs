@@ -17,7 +17,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Obv(startIdx, endIdx, real, volume, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Obv(startIdx, endIdx, real, volume, ref outBegIdx, ref outNBElement, outReal);
             return new Obv(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -27,7 +27,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Obv(startIdx, endIdx, real, volume, ref outBegIdx, ref outNBElement, outReal);
+            RetCode retCode = TACore.Obv(startIdx, endIdx, real, volume, ref outBegIdx, ref outNBElement, outReal);
             return new Obv(retCode, outBegIdx, outNBElement, outReal);
         }
     }

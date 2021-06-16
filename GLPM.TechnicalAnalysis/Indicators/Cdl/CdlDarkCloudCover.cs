@@ -24,7 +24,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.CdlDarkCloudCover(
+            RetCode retCode = TACore.CdlDarkCloudCover(
                 startIdx,
                 endIdx,
                 open,
@@ -51,7 +51,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.CdlDarkCloudCover(
+            RetCode retCode = TACore.CdlDarkCloudCover(
                 startIdx,
                 endIdx,
                 open,

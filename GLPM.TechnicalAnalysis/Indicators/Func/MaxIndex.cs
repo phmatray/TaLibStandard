@@ -17,7 +17,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.MaxIndex(
+            RetCode retCode = TACore.MaxIndex(
                 startIdx,
                 endIdx,
                 real,
@@ -34,7 +34,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            var retCode = TACore.MaxIndex(
+            RetCode retCode = TACore.MaxIndex(
                 startIdx,
                 endIdx,
                 real,

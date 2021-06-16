@@ -21,7 +21,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.LinearRegIntercept(
+            RetCode retCode = TACore.LinearRegIntercept(
                 startIdx,
                 endIdx,
                 real,
@@ -42,7 +42,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.LinearRegIntercept(
+            RetCode retCode = TACore.LinearRegIntercept(
                 startIdx,
                 endIdx,
                 real,

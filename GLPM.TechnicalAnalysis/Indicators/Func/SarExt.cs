@@ -29,7 +29,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.SarExt(
+            RetCode retCode = TACore.SarExt(
                 startIdx,
                 endIdx,
                 high,
@@ -66,7 +66,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.SarExt(
+            RetCode retCode = TACore.SarExt(
                 startIdx,
                 endIdx,
                 high,

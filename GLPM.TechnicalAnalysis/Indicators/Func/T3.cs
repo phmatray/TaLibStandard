@@ -17,7 +17,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.T3(
+            RetCode retCode = TACore.T3(
                 startIdx,
                 endIdx,
                 real,
@@ -35,7 +35,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.T3(
+            RetCode retCode = TACore.T3(
                 startIdx,
                 endIdx,
                 real,

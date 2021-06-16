@@ -22,7 +22,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.MidPrice(
+            RetCode retCode = TACore.MidPrice(
                 startIdx,
                 endIdx,
                 high,
@@ -40,7 +40,7 @@ namespace GLPM.TechnicalAnalysis
             int outNBElement = default;
             double[] outReal = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.MidPrice(
+            RetCode retCode = TACore.MidPrice(
                 startIdx,
                 endIdx,
                 high,

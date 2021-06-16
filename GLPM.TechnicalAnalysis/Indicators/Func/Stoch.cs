@@ -28,7 +28,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outSlowK = new double[endIdx - startIdx + 1];
             double[] outSlowD = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Stoch(
+            RetCode retCode = TACore.Stoch(
                 startIdx,
                 endIdx,
                 high,
@@ -63,7 +63,7 @@ namespace GLPM.TechnicalAnalysis
             double[] outSlowK = new double[endIdx - startIdx + 1];
             double[] outSlowD = new double[endIdx - startIdx + 1];
 
-            var retCode = TACore.Stoch(
+            RetCode retCode = TACore.Stoch(
                 startIdx,
                 endIdx,
                 high,
