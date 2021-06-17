@@ -12,14 +12,14 @@ Written by [Philippe Matray](https://matray.tech)
 ## Features
 
 * Double of Float
-* With some basic tests (candles)
+* With some basic tests (coverage: 54%)
 
 ### Library
 
 * target framework : .NET Standard 2.1
 * language version : C# 9
 
-### Executables
+### Demo Console App and Tests
 
 * target framework : .NET 5
 * language version : C# 9
