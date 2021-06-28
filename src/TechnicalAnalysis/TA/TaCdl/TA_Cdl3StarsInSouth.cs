@@ -89,26 +89,8 @@ namespace TechnicalAnalysis
                         double num107;
                         if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                         {
-                            double num108;
-                            double num109;
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num109 = inClose[i - 2];
-                            }
-                            else
-                            {
-                                num109 = inOpen[i - 2];
-                            }
-
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num108 = inOpen[i - 2];
-                            }
-                            else
-                            {
-                                num108 = inClose[i - 2];
-                            }
-
+                            double num109 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                            double num108 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                             num107 = inHigh[i - 2] - num109 + (num108 - inLow[i - 2]);
                         }
                         else
@@ -151,26 +133,8 @@ namespace TechnicalAnalysis
                         double num102;
                         if (Globals.candleSettings[4].rangeType == RangeType.Shadows)
                         {
-                            double num103;
-                            double num104;
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num104 = inClose[i - 2];
-                            }
-                            else
-                            {
-                                num104 = inOpen[i - 2];
-                            }
-
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num103 = inOpen[i - 2];
-                            }
-                            else
-                            {
-                                num103 = inClose[i - 2];
-                            }
-
+                            double num104 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                            double num103 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                             num102 = inHigh[i - 2] - num104 + (num103 - inLow[i - 2]);
                         }
                         else
@@ -214,26 +178,8 @@ namespace TechnicalAnalysis
                         double num97;
                         if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                         {
-                            double num98;
-                            double num99;
-                            if (inClose[i - 1] >= inOpen[i - 1])
-                            {
-                                num99 = inClose[i - 1];
-                            }
-                            else
-                            {
-                                num99 = inOpen[i - 1];
-                            }
-
-                            if (inClose[i - 1] >= inOpen[i - 1])
-                            {
-                                num98 = inOpen[i - 1];
-                            }
-                            else
-                            {
-                                num98 = inClose[i - 1];
-                            }
-
+                            double num99 = inClose[i - 1] >= inOpen[i - 1] ? inClose[i - 1] : inOpen[i - 1];
+                            double num98 = inClose[i - 1] >= inOpen[i - 1] ? inOpen[i - 1] : inClose[i - 1];
                             num97 = inHigh[i - 1] - num99 + (num98 - inLow[i - 1]);
                         }
                         else
@@ -264,26 +210,8 @@ namespace TechnicalAnalysis
                         double num92;
                         if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                         {
-                            double num93;
-                            double num94;
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num94 = inClose[i];
-                            }
-                            else
-                            {
-                                num94 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num93 = inOpen[i];
-                            }
-                            else
-                            {
-                                num93 = inClose[i];
-                            }
-
+                            double num94 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                            double num93 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                             num92 = inHigh[i] - num94 + (num93 - inLow[i]);
                         }
                         else
@@ -326,26 +254,8 @@ namespace TechnicalAnalysis
                         double num87;
                         if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
                         {
-                            double num88;
-                            double num89;
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num89 = inClose[i];
-                            }
-                            else
-                            {
-                                num89 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num88 = inOpen[i];
-                            }
-                            else
-                            {
-                                num88 = inClose[i];
-                            }
-
+                            double num89 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                            double num88 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                             num87 = inHigh[i] - num89 + (num88 - inLow[i]);
                         }
                         else
@@ -369,7 +279,6 @@ namespace TechnicalAnalysis
             if ((inClose[i - 2] < inOpen[i - 2] ? -1 : 1) == -1
                 && (inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1 && (inClose[i] < inOpen[i] ? -1 : 1) == -1)
             {
-                double num80;
                 double num86;
                 if (Globals.candleSettings[0].avgPeriod != 0.0)
                 {
@@ -394,26 +303,8 @@ namespace TechnicalAnalysis
                             double num81;
                             if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                             {
-                                double num82;
-                                double num83;
-                                if (inClose[i - 2] >= inOpen[i - 2])
-                                {
-                                    num83 = inClose[i - 2];
-                                }
-                                else
-                                {
-                                    num83 = inOpen[i - 2];
-                                }
-
-                                if (inClose[i - 2] >= inOpen[i - 2])
-                                {
-                                    num82 = inOpen[i - 2];
-                                }
-                                else
-                                {
-                                    num82 = inClose[i - 2];
-                                }
-
+                                double num83 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                                double num82 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                                 num81 = inHigh[i - 2] - num83 + (num82 - inLow[i - 2]);
                             }
                             else
@@ -430,29 +321,13 @@ namespace TechnicalAnalysis
                     num86 = num85;
                 }
 
-                if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
-                {
-                    num80 = 2.0;
-                }
-                else
-                {
-                    num80 = 1.0;
-                }
+                double num80 = Globals.candleSettings[0].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                 if (Math.Abs(inClose[i - 2] - inOpen[i - 2])
                     > Globals.candleSettings[0].factor * num86 / num80)
                 {
-                    double num72;
                     double num78;
-                    double num79;
-                    if (inClose[i - 2] >= inOpen[i - 2])
-                    {
-                        num79 = inOpen[i - 2];
-                    }
-                    else
-                    {
-                        num79 = inClose[i - 2];
-                    }
+                    double num79 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
 
                     if (Globals.candleSettings[4].avgPeriod != 0.0)
                     {
@@ -477,26 +352,8 @@ namespace TechnicalAnalysis
                                 double num73;
                                 if (Globals.candleSettings[4].rangeType == RangeType.Shadows)
                                 {
-                                    double num74;
-                                    double num75;
-                                    if (inClose[i - 2] >= inOpen[i - 2])
-                                    {
-                                        num75 = inClose[i - 2];
-                                    }
-                                    else
-                                    {
-                                        num75 = inOpen[i - 2];
-                                    }
-
-                                    if (inClose[i - 2] >= inOpen[i - 2])
-                                    {
-                                        num74 = inOpen[i - 2];
-                                    }
-                                    else
-                                    {
-                                        num74 = inClose[i - 2];
-                                    }
-
+                                    double num75 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                                    double num74 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                                     num73 = inHigh[i - 2] - num75 + (num74 - inLow[i - 2]);
                                 }
                                 else
@@ -513,30 +370,14 @@ namespace TechnicalAnalysis
                         num78 = num77;
                     }
 
-                    if (Globals.candleSettings[4].rangeType == RangeType.Shadows)
-                    {
-                        num72 = 2.0;
-                    }
-                    else
-                    {
-                        num72 = 1.0;
-                    }
+                    double num72 = Globals.candleSettings[4].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                     if (num79 - inLow[i - 2] > Globals.candleSettings[4].factor * num78 / num72
                         && Math.Abs(inClose[i - 1] - inOpen[i - 1])
                         < Math.Abs(inClose[i - 2] - inOpen[i - 2]) && inOpen[i - 1] > inClose[i - 2] && inOpen[i - 1] <= inHigh[i - 2] && inLow[i - 1] < inClose[i - 2] && inLow[i - 1] >= inLow[i - 2])
                     {
-                        double num64;
                         double num70;
-                        double num71;
-                        if (inClose[i - 1] >= inOpen[i - 1])
-                        {
-                            num71 = inOpen[i - 1];
-                        }
-                        else
-                        {
-                            num71 = inClose[i - 1];
-                        }
+                        double num71 = inClose[i - 1] >= inOpen[i - 1] ? inOpen[i - 1] : inClose[i - 1];
 
                         if (Globals.candleSettings[7].avgPeriod != 0.0)
                         {
@@ -561,26 +402,8 @@ namespace TechnicalAnalysis
                                     double num65;
                                     if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                                     {
-                                        double num66;
-                                        double num67;
-                                        if (inClose[i - 1] >= inOpen[i - 1])
-                                        {
-                                            num67 = inClose[i - 1];
-                                        }
-                                        else
-                                        {
-                                            num67 = inOpen[i - 1];
-                                        }
-
-                                        if (inClose[i - 1] >= inOpen[i - 1])
-                                        {
-                                            num66 = inOpen[i - 1];
-                                        }
-                                        else
-                                        {
-                                            num66 = inClose[i - 1];
-                                        }
-
+                                        double num67 = inClose[i - 1] >= inOpen[i - 1] ? inClose[i - 1] : inOpen[i - 1];
+                                        double num66 = inClose[i - 1] >= inOpen[i - 1] ? inOpen[i - 1] : inClose[i - 1];
                                         num65 = inHigh[i - 1] - num67 + (num66 - inLow[i - 1]);
                                     }
                                     else
@@ -597,18 +420,10 @@ namespace TechnicalAnalysis
                             num70 = num69;
                         }
 
-                        if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
-                        {
-                            num64 = 2.0;
-                        }
-                        else
-                        {
-                            num64 = 1.0;
-                        }
+                        double num64 = Globals.candleSettings[7].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                         if (num71 - inLow[i - 1] > Globals.candleSettings[7].factor * num70 / num64)
                         {
-                            double num57;
                             double num63;
                             if (Globals.candleSettings[2].avgPeriod != 0.0)
                             {
@@ -633,26 +448,8 @@ namespace TechnicalAnalysis
                                         double num58;
                                         if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
                                         {
-                                            double num59;
-                                            double num60;
-                                            if (inClose[i] >= inOpen[i])
-                                            {
-                                                num60 = inClose[i];
-                                            }
-                                            else
-                                            {
-                                                num60 = inOpen[i];
-                                            }
-
-                                            if (inClose[i] >= inOpen[i])
-                                            {
-                                                num59 = inOpen[i];
-                                            }
-                                            else
-                                            {
-                                                num59 = inClose[i];
-                                            }
-
+                                            double num60 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                                            double num59 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                                             num58 = inHigh[i] - num60 + (num59 - inLow[i]);
                                         }
                                         else
@@ -669,29 +466,13 @@ namespace TechnicalAnalysis
                                 num63 = num62;
                             }
 
-                            if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
-                            {
-                                num57 = 2.0;
-                            }
-                            else
-                            {
-                                num57 = 1.0;
-                            }
+                            double num57 = Globals.candleSettings[2].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                             if (Math.Abs(inClose[i] - inOpen[i])
                                 < Globals.candleSettings[2].factor * num63 / num57)
                             {
-                                double num49;
                                 double num55;
-                                double num56;
-                                if (inClose[i] >= inOpen[i])
-                                {
-                                    num56 = inOpen[i];
-                                }
-                                else
-                                {
-                                    num56 = inClose[i];
-                                }
+                                double num56 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
 
                                 if (Globals.candleSettings[7].avgPeriod != 0.0)
                                 {
@@ -717,26 +498,8 @@ namespace TechnicalAnalysis
                                             double num50;
                                             if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                                             {
-                                                double num51;
-                                                double num52;
-                                                if (inClose[i] >= inOpen[i])
-                                                {
-                                                    num52 = inClose[i];
-                                                }
-                                                else
-                                                {
-                                                    num52 = inOpen[i];
-                                                }
-
-                                                if (inClose[i] >= inOpen[i])
-                                                {
-                                                    num51 = inOpen[i];
-                                                }
-                                                else
-                                                {
-                                                    num51 = inClose[i];
-                                                }
-
+                                                double num52 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                                                double num51 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                                                 num50 = inHigh[i] - num52 + (num51 - inLow[i]);
                                             }
                                             else
@@ -753,28 +516,12 @@ namespace TechnicalAnalysis
                                     num55 = num54;
                                 }
 
-                                if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
-                                {
-                                    num49 = 2.0;
-                                }
-                                else
-                                {
-                                    num49 = 1.0;
-                                }
+                                double num49 = Globals.candleSettings[7].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                                 if (num56 - inLow[i] < Globals.candleSettings[7].factor * num55 / num49)
                                 {
-                                    double num41;
                                     double num47;
-                                    double num48;
-                                    if (inClose[i] >= inOpen[i])
-                                    {
-                                        num48 = inClose[i];
-                                    }
-                                    else
-                                    {
-                                        num48 = inOpen[i];
-                                    }
+                                    double num48 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
 
                                     if (Globals.candleSettings[7].avgPeriod != 0.0)
                                     {
@@ -800,26 +547,8 @@ namespace TechnicalAnalysis
                                                 double num42;
                                                 if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                                                 {
-                                                    double num43;
-                                                    double num44;
-                                                    if (inClose[i] >= inOpen[i])
-                                                    {
-                                                        num44 = inClose[i];
-                                                    }
-                                                    else
-                                                    {
-                                                        num44 = inOpen[i];
-                                                    }
-
-                                                    if (inClose[i] >= inOpen[i])
-                                                    {
-                                                        num43 = inOpen[i];
-                                                    }
-                                                    else
-                                                    {
-                                                        num43 = inClose[i];
-                                                    }
-
+                                                    double num44 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                                                    double num43 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                                                     num42 = inHigh[i] - num44 + (num43 - inLow[i]);
                                                 }
                                                 else
@@ -836,14 +565,7 @@ namespace TechnicalAnalysis
                                         num47 = num46;
                                     }
 
-                                    if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
-                                    {
-                                        num41 = 2.0;
-                                    }
-                                    else
-                                    {
-                                        num41 = 1.0;
-                                    }
+                                    double num41 = Globals.candleSettings[7].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                                     if (inHigh[i] - num48 < Globals.candleSettings[7].factor * num47 / num41
                                         && inLow[i] > inLow[i - 1] && inHigh[i] < inHigh[i - 1])
@@ -878,26 +600,8 @@ namespace TechnicalAnalysis
                     double num36;
                     if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                     {
-                        double num37;
-                        double num38;
-                        if (inClose[i - 2] >= inOpen[i - 2])
-                        {
-                            num38 = inClose[i - 2];
-                        }
-                        else
-                        {
-                            num38 = inOpen[i - 2];
-                        }
-
-                        if (inClose[i - 2] >= inOpen[i - 2])
-                        {
-                            num37 = inOpen[i - 2];
-                        }
-                        else
-                        {
-                            num37 = inClose[i - 2];
-                        }
-
+                        double num38 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                        double num37 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                         num36 = inHigh[i - 2] - num38 + (num37 - inLow[i - 2]);
                     }
                     else
@@ -927,26 +631,8 @@ namespace TechnicalAnalysis
                     double num31;
                     if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                     {
-                        double num32;
-                        double num33;
-                        if (inClose[bodyLongTrailingIdx - 2] >= inOpen[bodyLongTrailingIdx - 2])
-                        {
-                            num33 = inClose[bodyLongTrailingIdx - 2];
-                        }
-                        else
-                        {
-                            num33 = inOpen[bodyLongTrailingIdx - 2];
-                        }
-
-                        if (inClose[bodyLongTrailingIdx - 2] >= inOpen[bodyLongTrailingIdx - 2])
-                        {
-                            num32 = inOpen[bodyLongTrailingIdx - 2];
-                        }
-                        else
-                        {
-                            num32 = inClose[bodyLongTrailingIdx - 2];
-                        }
-
+                        double num33 = inClose[bodyLongTrailingIdx - 2] >= inOpen[bodyLongTrailingIdx - 2] ? inClose[bodyLongTrailingIdx - 2] : inOpen[bodyLongTrailingIdx - 2];
+                        double num32 = inClose[bodyLongTrailingIdx - 2] >= inOpen[bodyLongTrailingIdx - 2] ? inOpen[bodyLongTrailingIdx - 2] : inClose[bodyLongTrailingIdx - 2];
                         num31 = inHigh[bodyLongTrailingIdx - 2] - num33 + (num32 - inLow[bodyLongTrailingIdx - 2]);
                     }
                     else
@@ -977,26 +663,8 @@ namespace TechnicalAnalysis
                     double num26;
                     if (Globals.candleSettings[4].rangeType == RangeType.Shadows)
                     {
-                        double num27;
-                        double num28;
-                        if (inClose[i - 2] >= inOpen[i - 2])
-                        {
-                            num28 = inClose[i - 2];
-                        }
-                        else
-                        {
-                            num28 = inOpen[i - 2];
-                        }
-
-                        if (inClose[i - 2] >= inOpen[i - 2])
-                        {
-                            num27 = inOpen[i - 2];
-                        }
-                        else
-                        {
-                            num27 = inClose[i - 2];
-                        }
-
+                        double num28 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                        double num27 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                         num26 = inHigh[i - 2] - num28 + (num27 - inLow[i - 2]);
                     }
                     else
@@ -1026,28 +694,9 @@ namespace TechnicalAnalysis
                     double num21;
                     if (Globals.candleSettings[4].rangeType == RangeType.Shadows)
                     {
-                        double num22;
-                        double num23;
-                        if (inClose[shadowLongTrailingIdx - 2] >= inOpen[shadowLongTrailingIdx - 2])
-                        {
-                            num23 = inClose[shadowLongTrailingIdx - 2];
-                        }
-                        else
-                        {
-                            num23 = inOpen[shadowLongTrailingIdx - 2];
-                        }
-
-                        if (inClose[shadowLongTrailingIdx - 2] >= inOpen[shadowLongTrailingIdx - 2])
-                        {
-                            num22 = inOpen[shadowLongTrailingIdx - 2];
-                        }
-                        else
-                        {
-                            num22 = inClose[shadowLongTrailingIdx - 2];
-                        }
-
-                        num21 = inHigh[shadowLongTrailingIdx - 2] - num23
-                                + (num22 - inLow[shadowLongTrailingIdx - 2]);
+                        double num23 = inClose[shadowLongTrailingIdx - 2] >= inOpen[shadowLongTrailingIdx - 2] ? inClose[shadowLongTrailingIdx - 2] : inOpen[shadowLongTrailingIdx - 2];
+                        double num22 = inClose[shadowLongTrailingIdx - 2] >= inOpen[shadowLongTrailingIdx - 2] ? inOpen[shadowLongTrailingIdx - 2] : inClose[shadowLongTrailingIdx - 2];
+                        num21 = inHigh[shadowLongTrailingIdx - 2] - num23 + (num22 - inLow[shadowLongTrailingIdx - 2]);
                     }
                     else
                     {
@@ -1081,26 +730,8 @@ namespace TechnicalAnalysis
                         double num16;
                         if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                         {
-                            double num17;
-                            double num18;
-                            if (inClose[i - totIdx] >= inOpen[i - totIdx])
-                            {
-                                num18 = inClose[i - totIdx];
-                            }
-                            else
-                            {
-                                num18 = inOpen[i - totIdx];
-                            }
-
-                            if (inClose[i - totIdx] >= inOpen[i - totIdx])
-                            {
-                                num17 = inOpen[i - totIdx];
-                            }
-                            else
-                            {
-                                num17 = inClose[i - totIdx];
-                            }
-
+                            double num18 = inClose[i - totIdx] >= inOpen[i - totIdx] ? inClose[i - totIdx] : inOpen[i - totIdx];
+                            double num17 = inClose[i - totIdx] >= inOpen[i - totIdx] ? inOpen[i - totIdx] : inClose[i - totIdx];
                             num16 = inHigh[i - totIdx] - num18 + (num17 - inLow[i - totIdx]);
                         }
                         else
@@ -1133,27 +764,13 @@ namespace TechnicalAnalysis
                         double num11;
                         if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                         {
-                            double num12;
-                            double num13;
-                            if (inClose[shadowVeryShortTrailingIdx - totIdx]
-                                >= inOpen[shadowVeryShortTrailingIdx - totIdx])
-                            {
-                                num13 = inClose[shadowVeryShortTrailingIdx - totIdx];
-                            }
-                            else
-                            {
-                                num13 = inOpen[shadowVeryShortTrailingIdx - totIdx];
-                            }
+                            double num13 = inClose[shadowVeryShortTrailingIdx - totIdx] >= inOpen[shadowVeryShortTrailingIdx - totIdx]
+                                ? inClose[shadowVeryShortTrailingIdx - totIdx]
+                                : inOpen[shadowVeryShortTrailingIdx - totIdx];
 
-                            if (inClose[shadowVeryShortTrailingIdx - totIdx]
-                                >= inOpen[shadowVeryShortTrailingIdx - totIdx])
-                            {
-                                num12 = inOpen[shadowVeryShortTrailingIdx - totIdx];
-                            }
-                            else
-                            {
-                                num12 = inClose[shadowVeryShortTrailingIdx - totIdx];
-                            }
+                            double num12 = inClose[shadowVeryShortTrailingIdx - totIdx] >= inOpen[shadowVeryShortTrailingIdx - totIdx]
+                                ? inOpen[shadowVeryShortTrailingIdx - totIdx]
+                                : inClose[shadowVeryShortTrailingIdx - totIdx];
 
                             num11 = inHigh[shadowVeryShortTrailingIdx - totIdx] - num13
                                     + (num12 - inLow[shadowVeryShortTrailingIdx - totIdx]);
@@ -1188,26 +805,8 @@ namespace TechnicalAnalysis
                     double num6;
                     if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
                     {
-                        double num7;
-                        double num8;
-                        if (inClose[i] >= inOpen[i])
-                        {
-                            num8 = inClose[i];
-                        }
-                        else
-                        {
-                            num8 = inOpen[i];
-                        }
-
-                        if (inClose[i] >= inOpen[i])
-                        {
-                            num7 = inOpen[i];
-                        }
-                        else
-                        {
-                            num7 = inClose[i];
-                        }
-
+                        double num8 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                        double num7 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                         num6 = inHigh[i] - num8 + (num7 - inLow[i]);
                     }
                     else
@@ -1237,26 +836,8 @@ namespace TechnicalAnalysis
                     double num;
                     if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
                     {
-                        double num2;
-                        double num3;
-                        if (inClose[bodyShortTrailingIdx] >= inOpen[bodyShortTrailingIdx])
-                        {
-                            num3 = inClose[bodyShortTrailingIdx];
-                        }
-                        else
-                        {
-                            num3 = inOpen[bodyShortTrailingIdx];
-                        }
-
-                        if (inClose[bodyShortTrailingIdx] >= inOpen[bodyShortTrailingIdx])
-                        {
-                            num2 = inOpen[bodyShortTrailingIdx];
-                        }
-                        else
-                        {
-                            num2 = inClose[bodyShortTrailingIdx];
-                        }
-
+                        double num3 = inClose[bodyShortTrailingIdx] >= inOpen[bodyShortTrailingIdx] ? inClose[bodyShortTrailingIdx] : inOpen[bodyShortTrailingIdx];
+                        double num2 = inClose[bodyShortTrailingIdx] >= inOpen[bodyShortTrailingIdx] ? inOpen[bodyShortTrailingIdx] : inClose[bodyShortTrailingIdx];
                         num = inHigh[bodyShortTrailingIdx] - num3 + (num2 - inLow[bodyShortTrailingIdx]);
                     }
                     else
@@ -1371,26 +952,8 @@ namespace TechnicalAnalysis
                         float num107;
                         if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                         {
-                            float num108;
-                            float num109;
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num109 = inClose[i - 2];
-                            }
-                            else
-                            {
-                                num109 = inOpen[i - 2];
-                            }
-
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num108 = inOpen[i - 2];
-                            }
-                            else
-                            {
-                                num108 = inClose[i - 2];
-                            }
-
+                            float num109 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                            float num108 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                             num107 = inHigh[i - 2] - num109 + (num108 - inLow[i - 2]);
                         }
                         else
@@ -1433,26 +996,8 @@ namespace TechnicalAnalysis
                         float num102;
                         if (Globals.candleSettings[4].rangeType == RangeType.Shadows)
                         {
-                            float num103;
-                            float num104;
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num104 = inClose[i - 2];
-                            }
-                            else
-                            {
-                                num104 = inOpen[i - 2];
-                            }
-
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num103 = inOpen[i - 2];
-                            }
-                            else
-                            {
-                                num103 = inClose[i - 2];
-                            }
-
+                            float num104 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                            float num103 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                             num102 = inHigh[i - 2] - num104 + (num103 - inLow[i - 2]);
                         }
                         else
@@ -1496,26 +1041,8 @@ namespace TechnicalAnalysis
                         float num97;
                         if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                         {
-                            float num98;
-                            float num99;
-                            if (inClose[i - 1] >= inOpen[i - 1])
-                            {
-                                num99 = inClose[i - 1];
-                            }
-                            else
-                            {
-                                num99 = inOpen[i - 1];
-                            }
-
-                            if (inClose[i - 1] >= inOpen[i - 1])
-                            {
-                                num98 = inOpen[i - 1];
-                            }
-                            else
-                            {
-                                num98 = inClose[i - 1];
-                            }
-
+                            float num99 = inClose[i - 1] >= inOpen[i - 1] ? inClose[i - 1] : inOpen[i - 1];
+                            float num98 = inClose[i - 1] >= inOpen[i - 1] ? inOpen[i - 1] : inClose[i - 1];
                             num97 = inHigh[i - 1] - num99 + (num98 - inLow[i - 1]);
                         }
                         else
@@ -1546,26 +1073,8 @@ namespace TechnicalAnalysis
                         float num92;
                         if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                         {
-                            float num93;
-                            float num94;
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num94 = inClose[i];
-                            }
-                            else
-                            {
-                                num94 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num93 = inOpen[i];
-                            }
-                            else
-                            {
-                                num93 = inClose[i];
-                            }
-
+                            float num94 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                            float num93 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                             num92 = inHigh[i] - num94 + (num93 - inLow[i]);
                         }
                         else
@@ -1608,26 +1117,8 @@ namespace TechnicalAnalysis
                         float num87;
                         if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
                         {
-                            float num88;
-                            float num89;
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num89 = inClose[i];
-                            }
-                            else
-                            {
-                                num89 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num88 = inOpen[i];
-                            }
-                            else
-                            {
-                                num88 = inClose[i];
-                            }
-
+                            float num89 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                            float num88 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                             num87 = inHigh[i] - num89 + (num88 - inLow[i]);
                         }
                         else
@@ -1651,7 +1142,6 @@ namespace TechnicalAnalysis
             if ((inClose[i - 2] < inOpen[i - 2] ? -1 : 1) == -1
                 && (inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1 && (inClose[i] < inOpen[i] ? -1 : 1) == -1)
             {
-                double num80;
                 double num86;
                 if (Globals.candleSettings[0].avgPeriod != 0.0)
                 {
@@ -1676,26 +1166,8 @@ namespace TechnicalAnalysis
                             float num81;
                             if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                             {
-                                float num82;
-                                float num83;
-                                if (inClose[i - 2] >= inOpen[i - 2])
-                                {
-                                    num83 = inClose[i - 2];
-                                }
-                                else
-                                {
-                                    num83 = inOpen[i - 2];
-                                }
-
-                                if (inClose[i - 2] >= inOpen[i - 2])
-                                {
-                                    num82 = inOpen[i - 2];
-                                }
-                                else
-                                {
-                                    num82 = inClose[i - 2];
-                                }
-
+                                float num83 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                                float num82 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                                 num81 = inHigh[i - 2] - num83 + (num82 - inLow[i - 2]);
                             }
                             else
@@ -1712,29 +1184,13 @@ namespace TechnicalAnalysis
                     num86 = num85;
                 }
 
-                if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
-                {
-                    num80 = 2.0;
-                }
-                else
-                {
-                    num80 = 1.0;
-                }
+                double num80 = Globals.candleSettings[0].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                 if (Math.Abs(inClose[i - 2] - inOpen[i - 2])
                     > Globals.candleSettings[0].factor * num86 / num80)
                 {
-                    double num72;
                     double num78;
-                    float num79;
-                    if (inClose[i - 2] >= inOpen[i - 2])
-                    {
-                        num79 = inOpen[i - 2];
-                    }
-                    else
-                    {
-                        num79 = inClose[i - 2];
-                    }
+                    float num79 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
 
                     if (Globals.candleSettings[4].avgPeriod != 0.0)
                     {
@@ -1759,26 +1215,8 @@ namespace TechnicalAnalysis
                                 float num73;
                                 if (Globals.candleSettings[4].rangeType == RangeType.Shadows)
                                 {
-                                    float num74;
-                                    float num75;
-                                    if (inClose[i - 2] >= inOpen[i - 2])
-                                    {
-                                        num75 = inClose[i - 2];
-                                    }
-                                    else
-                                    {
-                                        num75 = inOpen[i - 2];
-                                    }
-
-                                    if (inClose[i - 2] >= inOpen[i - 2])
-                                    {
-                                        num74 = inOpen[i - 2];
-                                    }
-                                    else
-                                    {
-                                        num74 = inClose[i - 2];
-                                    }
-
+                                    float num75 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                                    float num74 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                                     num73 = inHigh[i - 2] - num75 + (num74 - inLow[i - 2]);
                                 }
                                 else
@@ -1795,30 +1233,14 @@ namespace TechnicalAnalysis
                         num78 = num77;
                     }
 
-                    if (Globals.candleSettings[4].rangeType == RangeType.Shadows)
-                    {
-                        num72 = 2.0;
-                    }
-                    else
-                    {
-                        num72 = 1.0;
-                    }
+                    double num72 = Globals.candleSettings[4].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                     if (num79 - inLow[i - 2] > Globals.candleSettings[4].factor * num78 / num72
                         && Math.Abs(inClose[i - 1] - inOpen[i - 1])
                         < Math.Abs(inClose[i - 2] - inOpen[i - 2]) && inOpen[i - 1] > inClose[i - 2] && inOpen[i - 1] <= inHigh[i - 2] && inLow[i - 1] < inClose[i - 2] && inLow[i - 1] >= inLow[i - 2])
                     {
-                        double num64;
                         double num70;
-                        float num71;
-                        if (inClose[i - 1] >= inOpen[i - 1])
-                        {
-                            num71 = inOpen[i - 1];
-                        }
-                        else
-                        {
-                            num71 = inClose[i - 1];
-                        }
+                        float num71 = inClose[i - 1] >= inOpen[i - 1] ? inOpen[i - 1] : inClose[i - 1];
 
                         if (Globals.candleSettings[7].avgPeriod != 0.0)
                         {
@@ -1843,26 +1265,8 @@ namespace TechnicalAnalysis
                                     float num65;
                                     if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                                     {
-                                        float num66;
-                                        float num67;
-                                        if (inClose[i - 1] >= inOpen[i - 1])
-                                        {
-                                            num67 = inClose[i - 1];
-                                        }
-                                        else
-                                        {
-                                            num67 = inOpen[i - 1];
-                                        }
-
-                                        if (inClose[i - 1] >= inOpen[i - 1])
-                                        {
-                                            num66 = inOpen[i - 1];
-                                        }
-                                        else
-                                        {
-                                            num66 = inClose[i - 1];
-                                        }
-
+                                        float num67 = inClose[i - 1] >= inOpen[i - 1] ? inClose[i - 1] : inOpen[i - 1];
+                                        float num66 = inClose[i - 1] >= inOpen[i - 1] ? inOpen[i - 1] : inClose[i - 1];
                                         num65 = inHigh[i - 1] - num67 + (num66 - inLow[i - 1]);
                                     }
                                     else
@@ -1879,18 +1283,10 @@ namespace TechnicalAnalysis
                             num70 = num69;
                         }
 
-                        if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
-                        {
-                            num64 = 2.0;
-                        }
-                        else
-                        {
-                            num64 = 1.0;
-                        }
+                        double num64 = Globals.candleSettings[7].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                         if (num71 - inLow[i - 1] > Globals.candleSettings[7].factor * num70 / num64)
                         {
-                            double num57;
                             double num63;
                             if (Globals.candleSettings[2].avgPeriod != 0.0)
                             {
@@ -1915,26 +1311,8 @@ namespace TechnicalAnalysis
                                         float num58;
                                         if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
                                         {
-                                            float num59;
-                                            float num60;
-                                            if (inClose[i] >= inOpen[i])
-                                            {
-                                                num60 = inClose[i];
-                                            }
-                                            else
-                                            {
-                                                num60 = inOpen[i];
-                                            }
-
-                                            if (inClose[i] >= inOpen[i])
-                                            {
-                                                num59 = inOpen[i];
-                                            }
-                                            else
-                                            {
-                                                num59 = inClose[i];
-                                            }
-
+                                            float num60 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                                            float num59 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                                             num58 = inHigh[i] - num60 + (num59 - inLow[i]);
                                         }
                                         else
@@ -1951,29 +1329,13 @@ namespace TechnicalAnalysis
                                 num63 = num62;
                             }
 
-                            if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
-                            {
-                                num57 = 2.0;
-                            }
-                            else
-                            {
-                                num57 = 1.0;
-                            }
+                            double num57 = Globals.candleSettings[2].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                             if (Math.Abs(inClose[i] - inOpen[i])
                                 < Globals.candleSettings[2].factor * num63 / num57)
                             {
-                                double num49;
                                 double num55;
-                                float num56;
-                                if (inClose[i] >= inOpen[i])
-                                {
-                                    num56 = inOpen[i];
-                                }
-                                else
-                                {
-                                    num56 = inClose[i];
-                                }
+                                float num56 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
 
                                 if (Globals.candleSettings[7].avgPeriod != 0.0)
                                 {
@@ -1999,26 +1361,8 @@ namespace TechnicalAnalysis
                                             float num50;
                                             if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                                             {
-                                                float num51;
-                                                float num52;
-                                                if (inClose[i] >= inOpen[i])
-                                                {
-                                                    num52 = inClose[i];
-                                                }
-                                                else
-                                                {
-                                                    num52 = inOpen[i];
-                                                }
-
-                                                if (inClose[i] >= inOpen[i])
-                                                {
-                                                    num51 = inOpen[i];
-                                                }
-                                                else
-                                                {
-                                                    num51 = inClose[i];
-                                                }
-
+                                                float num52 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                                                float num51 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                                                 num50 = inHigh[i] - num52 + (num51 - inLow[i]);
                                             }
                                             else
@@ -2035,28 +1379,12 @@ namespace TechnicalAnalysis
                                     num55 = num54;
                                 }
 
-                                if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
-                                {
-                                    num49 = 2.0;
-                                }
-                                else
-                                {
-                                    num49 = 1.0;
-                                }
+                                double num49 = Globals.candleSettings[7].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                                 if (num56 - inLow[i] < Globals.candleSettings[7].factor * num55 / num49)
                                 {
-                                    double num41;
                                     double num47;
-                                    float num48;
-                                    if (inClose[i] >= inOpen[i])
-                                    {
-                                        num48 = inClose[i];
-                                    }
-                                    else
-                                    {
-                                        num48 = inOpen[i];
-                                    }
+                                    float num48 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
 
                                     if (Globals.candleSettings[7].avgPeriod != 0.0)
                                     {
@@ -2082,26 +1410,8 @@ namespace TechnicalAnalysis
                                                 float num42;
                                                 if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                                                 {
-                                                    float num43;
-                                                    float num44;
-                                                    if (inClose[i] >= inOpen[i])
-                                                    {
-                                                        num44 = inClose[i];
-                                                    }
-                                                    else
-                                                    {
-                                                        num44 = inOpen[i];
-                                                    }
-
-                                                    if (inClose[i] >= inOpen[i])
-                                                    {
-                                                        num43 = inOpen[i];
-                                                    }
-                                                    else
-                                                    {
-                                                        num43 = inClose[i];
-                                                    }
-
+                                                    float num44 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                                                    float num43 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                                                     num42 = inHigh[i] - num44 + (num43 - inLow[i]);
                                                 }
                                                 else
@@ -2118,14 +1428,7 @@ namespace TechnicalAnalysis
                                         num47 = num46;
                                     }
 
-                                    if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
-                                    {
-                                        num41 = 2.0;
-                                    }
-                                    else
-                                    {
-                                        num41 = 1.0;
-                                    }
+                                    double num41 = Globals.candleSettings[7].rangeType == RangeType.Shadows ? 2.0 : 1.0;
 
                                     if (inHigh[i] - num48 < Globals.candleSettings[7].factor * num47 / num41
                                         && inLow[i] > inLow[i - 1] && inHigh[i] < inHigh[i - 1])
@@ -2160,26 +1463,8 @@ namespace TechnicalAnalysis
                     float num36;
                     if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                     {
-                        float num37;
-                        float num38;
-                        if (inClose[i - 2] >= inOpen[i - 2])
-                        {
-                            num38 = inClose[i - 2];
-                        }
-                        else
-                        {
-                            num38 = inOpen[i - 2];
-                        }
-
-                        if (inClose[i - 2] >= inOpen[i - 2])
-                        {
-                            num37 = inOpen[i - 2];
-                        }
-                        else
-                        {
-                            num37 = inClose[i - 2];
-                        }
-
+                        float num38 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                        float num37 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                         num36 = inHigh[i - 2] - num38 + (num37 - inLow[i - 2]);
                     }
                     else
@@ -2209,26 +1494,8 @@ namespace TechnicalAnalysis
                     float num31;
                     if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                     {
-                        float num32;
-                        float num33;
-                        if (inClose[bodyLongTrailingIdx - 2] >= inOpen[bodyLongTrailingIdx - 2])
-                        {
-                            num33 = inClose[bodyLongTrailingIdx - 2];
-                        }
-                        else
-                        {
-                            num33 = inOpen[bodyLongTrailingIdx - 2];
-                        }
-
-                        if (inClose[bodyLongTrailingIdx - 2] >= inOpen[bodyLongTrailingIdx - 2])
-                        {
-                            num32 = inOpen[bodyLongTrailingIdx - 2];
-                        }
-                        else
-                        {
-                            num32 = inClose[bodyLongTrailingIdx - 2];
-                        }
-
+                        float num33 = inClose[bodyLongTrailingIdx - 2] >= inOpen[bodyLongTrailingIdx - 2] ? inClose[bodyLongTrailingIdx - 2] : inOpen[bodyLongTrailingIdx - 2];
+                        float num32 = inClose[bodyLongTrailingIdx - 2] >= inOpen[bodyLongTrailingIdx - 2] ? inOpen[bodyLongTrailingIdx - 2] : inClose[bodyLongTrailingIdx - 2];
                         num31 = inHigh[bodyLongTrailingIdx - 2] - num33 + (num32 - inLow[bodyLongTrailingIdx - 2]);
                     }
                     else
@@ -2259,26 +1526,8 @@ namespace TechnicalAnalysis
                     float num26;
                     if (Globals.candleSettings[4].rangeType == RangeType.Shadows)
                     {
-                        float num27;
-                        float num28;
-                        if (inClose[i - 2] >= inOpen[i - 2])
-                        {
-                            num28 = inClose[i - 2];
-                        }
-                        else
-                        {
-                            num28 = inOpen[i - 2];
-                        }
-
-                        if (inClose[i - 2] >= inOpen[i - 2])
-                        {
-                            num27 = inOpen[i - 2];
-                        }
-                        else
-                        {
-                            num27 = inClose[i - 2];
-                        }
-
+                        float num28 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
+                        float num27 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
                         num26 = inHigh[i - 2] - num28 + (num27 - inLow[i - 2]);
                     }
                     else
@@ -2308,28 +1557,9 @@ namespace TechnicalAnalysis
                     float num21;
                     if (Globals.candleSettings[4].rangeType == RangeType.Shadows)
                     {
-                        float num22;
-                        float num23;
-                        if (inClose[shadowLongTrailingIdx - 2] >= inOpen[shadowLongTrailingIdx - 2])
-                        {
-                            num23 = inClose[shadowLongTrailingIdx - 2];
-                        }
-                        else
-                        {
-                            num23 = inOpen[shadowLongTrailingIdx - 2];
-                        }
-
-                        if (inClose[shadowLongTrailingIdx - 2] >= inOpen[shadowLongTrailingIdx - 2])
-                        {
-                            num22 = inOpen[shadowLongTrailingIdx - 2];
-                        }
-                        else
-                        {
-                            num22 = inClose[shadowLongTrailingIdx - 2];
-                        }
-
-                        num21 = inHigh[shadowLongTrailingIdx - 2] - num23
-                                + (num22 - inLow[shadowLongTrailingIdx - 2]);
+                        float num23 = inClose[shadowLongTrailingIdx - 2] >= inOpen[shadowLongTrailingIdx - 2] ? inClose[shadowLongTrailingIdx - 2] : inOpen[shadowLongTrailingIdx - 2];
+                        float num22 = inClose[shadowLongTrailingIdx - 2] >= inOpen[shadowLongTrailingIdx - 2] ? inOpen[shadowLongTrailingIdx - 2] : inClose[shadowLongTrailingIdx - 2];
+                        num21 = inHigh[shadowLongTrailingIdx - 2] - num23 + (num22 - inLow[shadowLongTrailingIdx - 2]);
                     }
                     else
                     {
@@ -2363,26 +1593,8 @@ namespace TechnicalAnalysis
                         float num16;
                         if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                         {
-                            float num17;
-                            float num18;
-                            if (inClose[i - totIdx] >= inOpen[i - totIdx])
-                            {
-                                num18 = inClose[i - totIdx];
-                            }
-                            else
-                            {
-                                num18 = inOpen[i - totIdx];
-                            }
-
-                            if (inClose[i - totIdx] >= inOpen[i - totIdx])
-                            {
-                                num17 = inOpen[i - totIdx];
-                            }
-                            else
-                            {
-                                num17 = inClose[i - totIdx];
-                            }
-
+                            float num18 = inClose[i - totIdx] >= inOpen[i - totIdx] ? inClose[i - totIdx] : inOpen[i - totIdx];
+                            float num17 = inClose[i - totIdx] >= inOpen[i - totIdx] ? inOpen[i - totIdx] : inClose[i - totIdx];
                             num16 = inHigh[i - totIdx] - num18 + (num17 - inLow[i - totIdx]);
                         }
                         else
@@ -2415,30 +1627,15 @@ namespace TechnicalAnalysis
                         float num11;
                         if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                         {
-                            float num12;
-                            float num13;
-                            if (inClose[shadowVeryShortTrailingIdx - totIdx]
-                                >= inOpen[shadowVeryShortTrailingIdx - totIdx])
-                            {
-                                num13 = inClose[shadowVeryShortTrailingIdx - totIdx];
-                            }
-                            else
-                            {
-                                num13 = inOpen[shadowVeryShortTrailingIdx - totIdx];
-                            }
+                            float num13 = inClose[shadowVeryShortTrailingIdx - totIdx] >= inOpen[shadowVeryShortTrailingIdx - totIdx]
+                                ? inClose[shadowVeryShortTrailingIdx - totIdx]
+                                : inOpen[shadowVeryShortTrailingIdx - totIdx];
 
-                            if (inClose[shadowVeryShortTrailingIdx - totIdx]
-                                >= inOpen[shadowVeryShortTrailingIdx - totIdx])
-                            {
-                                num12 = inOpen[shadowVeryShortTrailingIdx - totIdx];
-                            }
-                            else
-                            {
-                                num12 = inClose[shadowVeryShortTrailingIdx - totIdx];
-                            }
+                            float num12 = inClose[shadowVeryShortTrailingIdx - totIdx] >= inOpen[shadowVeryShortTrailingIdx - totIdx]
+                                ? inOpen[shadowVeryShortTrailingIdx - totIdx]
+                                : inClose[shadowVeryShortTrailingIdx - totIdx];
 
-                            num11 = inHigh[shadowVeryShortTrailingIdx - totIdx] - num13
-                                    + (num12 - inLow[shadowVeryShortTrailingIdx - totIdx]);
+                            num11 = inHigh[shadowVeryShortTrailingIdx - totIdx] - num13 + (num12 - inLow[shadowVeryShortTrailingIdx - totIdx]);
                         }
                         else
                         {
@@ -2470,26 +1667,8 @@ namespace TechnicalAnalysis
                     float num6;
                     if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
                     {
-                        float num7;
-                        float num8;
-                        if (inClose[i] >= inOpen[i])
-                        {
-                            num8 = inClose[i];
-                        }
-                        else
-                        {
-                            num8 = inOpen[i];
-                        }
-
-                        if (inClose[i] >= inOpen[i])
-                        {
-                            num7 = inOpen[i];
-                        }
-                        else
-                        {
-                            num7 = inClose[i];
-                        }
-
+                        float num8 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                        float num7 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                         num6 = inHigh[i] - num8 + (num7 - inLow[i]);
                     }
                     else
@@ -2519,26 +1698,8 @@ namespace TechnicalAnalysis
                     float num;
                     if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
                     {
-                        float num2;
-                        float num3;
-                        if (inClose[bodyShortTrailingIdx] >= inOpen[bodyShortTrailingIdx])
-                        {
-                            num3 = inClose[bodyShortTrailingIdx];
-                        }
-                        else
-                        {
-                            num3 = inOpen[bodyShortTrailingIdx];
-                        }
-
-                        if (inClose[bodyShortTrailingIdx] >= inOpen[bodyShortTrailingIdx])
-                        {
-                            num2 = inOpen[bodyShortTrailingIdx];
-                        }
-                        else
-                        {
-                            num2 = inClose[bodyShortTrailingIdx];
-                        }
-
+                        float num3 = inClose[bodyShortTrailingIdx] >= inOpen[bodyShortTrailingIdx] ? inClose[bodyShortTrailingIdx] : inOpen[bodyShortTrailingIdx];
+                        float num2 = inClose[bodyShortTrailingIdx] >= inOpen[bodyShortTrailingIdx] ? inOpen[bodyShortTrailingIdx] : inClose[bodyShortTrailingIdx];
                         num = inHigh[bodyShortTrailingIdx] - num3 + (num2 - inLow[bodyShortTrailingIdx]);
                     }
                     else
@@ -2571,29 +1732,23 @@ namespace TechnicalAnalysis
         public static int Cdl3StarsInSouthLookback()
         {
             int num;
-            int avgPeriod;
-            if (Globals.candleSettings[0].avgPeriod > Globals.candleSettings[2].avgPeriod)
-            {
-                avgPeriod = Globals.candleSettings[0].avgPeriod;
-            }
-            else
-            {
-                avgPeriod = Globals.candleSettings[2].avgPeriod;
-            }
+            int avgPeriod = Globals.candleSettings[0].avgPeriod > Globals.candleSettings[2].avgPeriod
+                ? Globals.candleSettings[0].avgPeriod
+                : Globals.candleSettings[2].avgPeriod;
 
             if ((Globals.candleSettings[7].avgPeriod <= Globals.candleSettings[4].avgPeriod
                      ? Globals.candleSettings[4].avgPeriod
                      : Globals.candleSettings[7].avgPeriod) > avgPeriod)
             {
                 num = Globals.candleSettings[7].avgPeriod <= Globals.candleSettings[4].avgPeriod
-                          ? Globals.candleSettings[4].avgPeriod
-                          : Globals.candleSettings[7].avgPeriod;
+                    ? Globals.candleSettings[4].avgPeriod
+                    : Globals.candleSettings[7].avgPeriod;
             }
             else
             {
                 num = Globals.candleSettings[0].avgPeriod <= Globals.candleSettings[2].avgPeriod
-                          ? Globals.candleSettings[2].avgPeriod
-                          : Globals.candleSettings[0].avgPeriod;
+                    ? Globals.candleSettings[2].avgPeriod
+                    : Globals.candleSettings[0].avgPeriod;
             }
 
             return num + 2;

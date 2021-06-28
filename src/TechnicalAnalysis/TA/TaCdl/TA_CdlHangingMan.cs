@@ -91,26 +91,8 @@ namespace TechnicalAnalysis
                         double num87;
                         if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
                         {
-                            double num88;
-                            double num89;
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num89 = inClose[i];
-                            }
-                            else
-                            {
-                                num89 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num88 = inOpen[i];
-                            }
-                            else
-                            {
-                                num88 = inClose[i];
-                            }
-
+                            double num89 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                            double num88 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                             num87 = inHigh[i] - num89 + (num88 - inLow[i]);
                         }
                         else
@@ -215,26 +197,8 @@ namespace TechnicalAnalysis
                         double num77;
                         if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
                         {
-                            double num78;
-                            double num79;
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num79 = inClose[i];
-                            }
-                            else
-                            {
-                                num79 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num78 = inOpen[i];
-                            }
-                            else
-                            {
-                                num78 = inClose[i];
-                            }
-
+                            double num79 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
+                            double num78 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
                             num77 = inHigh[i] - num79 + (num78 - inLow[i]);
                         }
                         else

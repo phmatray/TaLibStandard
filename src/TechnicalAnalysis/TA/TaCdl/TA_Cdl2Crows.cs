@@ -154,7 +154,8 @@ namespace TechnicalAnalysis
                     double num12 = inOpen[i - 1] < inClose[i - 1] ? inOpen[i - 1] : inClose[i - 1];
                     double num11 = inOpen[i - 2] > inClose[i - 2] ? inOpen[i - 2] : inClose[i - 2];
 
-                    if (num12 > num11 && (inClose[i] < inOpen[i] ? -1 : 1) == -1 && inOpen[i] < inOpen[i - 1] && inOpen[i] > inClose[i - 1] && inClose[i] > inOpen[i - 2] && inClose[i] < inClose[i - 2])
+                    if (num12 > num11 && (inClose[i] < inOpen[i] ? -1 : 1) == -1 && inOpen[i] < inOpen[i - 1] &&
+                        inOpen[i] > inClose[i - 1] && inClose[i] > inOpen[i - 2] && inClose[i] < inClose[i - 2])
                     {
                         outInteger[outIdx] = -100;
                         outIdx++;
@@ -214,8 +215,12 @@ namespace TechnicalAnalysis
                     double num;
                     if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                     {
-                        double num3 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx] ? inClose[bodyLongTrailingIdx] : inOpen[bodyLongTrailingIdx];
-                        double num2 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx] ? inOpen[bodyLongTrailingIdx] : inClose[bodyLongTrailingIdx];
+                        double num3 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx]
+                            ? inClose[bodyLongTrailingIdx]
+                            : inOpen[bodyLongTrailingIdx];
+                        double num2 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx]
+                            ? inOpen[bodyLongTrailingIdx]
+                            : inClose[bodyLongTrailingIdx];
 
                         num = inHigh[bodyLongTrailingIdx] - num3 + (num2 - inLow[bodyLongTrailingIdx]);
                     }
@@ -393,7 +398,8 @@ namespace TechnicalAnalysis
                     float num12 = inOpen[i - 1] < inClose[i - 1] ? inOpen[i - 1] : inClose[i - 1];
                     float num11 = inOpen[i - 2] > inClose[i - 2] ? inOpen[i - 2] : inClose[i - 2];
 
-                    if (num12 > num11 && (inClose[i] < inOpen[i] ? -1 : 1) == -1 && inOpen[i] < inOpen[i - 1] && inOpen[i] > inClose[i - 1] && inClose[i] > inOpen[i - 2] && inClose[i] < inClose[i - 2])
+                    if (num12 > num11 && (inClose[i] < inOpen[i] ? -1 : 1) == -1 && inOpen[i] < inOpen[i - 1] &&
+                        inOpen[i] > inClose[i - 1] && inClose[i] > inOpen[i - 2] && inClose[i] < inClose[i - 2])
                     {
                         outInteger[outIdx] = -100;
                         outIdx++;
@@ -453,8 +459,12 @@ namespace TechnicalAnalysis
                     float num;
                     if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                     {
-                        float num3 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx] ? inClose[bodyLongTrailingIdx] : inOpen[bodyLongTrailingIdx];
-                        float num2 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx] ? inOpen[bodyLongTrailingIdx] : inClose[bodyLongTrailingIdx];
+                        float num3 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx]
+                            ? inClose[bodyLongTrailingIdx]
+                            : inOpen[bodyLongTrailingIdx];
+                        float num2 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx]
+                            ? inOpen[bodyLongTrailingIdx]
+                            : inClose[bodyLongTrailingIdx];
 
                         num = inHigh[bodyLongTrailingIdx] - num3 + (num2 - inLow[bodyLongTrailingIdx]);
                     }
