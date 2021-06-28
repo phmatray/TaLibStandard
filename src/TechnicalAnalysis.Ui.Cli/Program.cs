@@ -8,7 +8,7 @@ namespace GLPM.TechnicalAnalysis.Ui.Cli
     {
         static void Main()
         {
-            Console.WriteLine("GLPM.TechnicalAnalysis");
+            Console.WriteLine("TechnicalAnalysis");
 
             var dataA = DataHistoryRepository
                 .GetDataHistoryFromFile("btc", "eur", "day")

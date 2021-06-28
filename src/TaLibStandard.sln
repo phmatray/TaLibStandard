@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GLPM.TechnicalAnalysis", "GLPM.TechnicalAnalysis\GLPM.TechnicalAnalysis.csproj", "{AE28059B-2495-4229-A90E-5CE9D70334D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechnicalAnalysis", "TechnicalAnalysis\TechnicalAnalysis.csproj", "{AE28059B-2495-4229-A90E-5CE9D70334D3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GLPM.TechnicalAnalysis.Tests", "GLPM.TechnicalAnalysis.Tests\GLPM.TechnicalAnalysis.Tests.csproj", "{C97086EA-24C1-4910-85DE-E6BB3628643D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechnicalAnalysis.Tests", "TechnicalAnalysis.Tests\TechnicalAnalysis.Tests.csproj", "{C97086EA-24C1-4910-85DE-E6BB3628643D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GLPM.TechnicalAnalysis.Business", "GLPM.TechnicalAnalysis.Business\GLPM.TechnicalAnalysis.Business.csproj", "{1B502872-CE67-4944-B363-D3EF980F9C8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechnicalAnalysis.Business", "TechnicalAnalysis.Business\TechnicalAnalysis.Business.csproj", "{1B502872-CE67-4944-B363-D3EF980F9C8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLPM.TechnicalAnalysis.Ui.Cli", "GLPM.TechnicalAnalysis.Ui.Cli\GLPM.TechnicalAnalysis.Ui.Cli.csproj", "{C63CB755-A44D-46D9-84BC-A3CE68D17359}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalAnalysis.Ui.Cli", "TechnicalAnalysis.Ui.Cli\TechnicalAnalysis.Ui.Cli.csproj", "{C63CB755-A44D-46D9-84BC-A3CE68D17359}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

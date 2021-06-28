@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>9</LangVersion>
+    <RootNamespace>GLPM.TechnicalAnalysis.Business</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -15,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GLPM.TechnicalAnalysis\GLPM.TechnicalAnalysis.csproj" />
+    <ProjectReference Include="..\TechnicalAnalysis\TechnicalAnalysis.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>9</LangVersion>
+    <RootNamespace>GLPM.TechnicalAnalysis</RootNamespace>
   </PropertyGroup>
   
   <PropertyGroup>

@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <LangVersion>9</LangVersion>
+    <RootNamespace>GLPM.TechnicalAnalysis.Ui.Cli</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -12,8 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GLPM.TechnicalAnalysis.Business\GLPM.TechnicalAnalysis.Business.csproj" />
-    <ProjectReference Include="..\GLPM.TechnicalAnalysis\GLPM.TechnicalAnalysis.csproj" />
+    <ProjectReference Include="..\TechnicalAnalysis.Business\TechnicalAnalysis.Business.csproj" />
+    <ProjectReference Include="..\TechnicalAnalysis\TechnicalAnalysis.csproj" />
   </ItemGroup>
 
 </Project>

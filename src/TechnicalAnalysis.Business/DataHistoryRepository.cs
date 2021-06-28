@@ -29,7 +29,7 @@
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
-            client.DefaultRequestHeaders.Add("User-Agent", "GLPM.TechnicalAnalysis");
+            client.DefaultRequestHeaders.Add("User-Agent", "TechnicalAnalysis");
 
             var endpoint = $@"https://min-api.cryptocompare.com/data/histo{interval}?fsym={fromSymbol.ToUpper()}&tsym={toSymbol.ToUpper()}&limit={limit}&aggregate=1&e=CCCAGG";
             var jsonRaw = client.GetStringAsync(endpoint).GetAwaiter().GetResult();
