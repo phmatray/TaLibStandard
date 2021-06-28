@@ -1,18 +1,21 @@
 using System;
 
-namespace GLPM.TechnicalAnalysis
+namespace TechnicalAnalysis
 {
     internal partial class TACore
     {
         private static GlobalsType Globals = new GlobalsType();
+        
         static TACore()
         {
             RestoreCandleDefaultSettings(CandleSettingType.AllCandleSettings);
         }
+        
         public static Compatibility GetCompatibility()
         {
             return Globals.compatibility;
         }
+        
         public static Int64 GetUnstablePeriod(FuncUnstId id)
         {
             if (id >= FuncUnstId.FuncUnstAll)
@@ -21,6 +24,7 @@ namespace GLPM.TechnicalAnalysis
             }
             return Globals.unstablePeriod[(int)id];
         }
+        
         public static RetCode RestoreCandleDefaultSettings(CandleSettingType settingType)
         {
             switch (settingType)
@@ -85,6 +89,7 @@ namespace GLPM.TechnicalAnalysis
             }
             return RetCode.Success;
         }
+        
         public static RetCode SetCandleSettings(CandleSettingType settingType, RangeType rangeType, int avgPeriod, double factor)
         {
             if (settingType >= CandleSettingType.AllCandleSettings)
@@ -97,11 +102,13 @@ namespace GLPM.TechnicalAnalysis
             Globals.candleSettings[(int)settingType].factor = factor;
             return RetCode.Success;
         }
+        
         public static RetCode SetCompatibility(Compatibility value)
         {
             Globals.compatibility = value;
             return RetCode.Success;
         }
+        
         public static RetCode SetUnstablePeriod(FuncUnstId id, Int64 unstablePeriod)
         {
             if (id > FuncUnstId.FuncUnstAll)
@@ -121,6 +128,7 @@ namespace GLPM.TechnicalAnalysis
             }
             return RetCode.Success;
         }
+        
         private static RetCode TA_INT_EMA(int startIdx, int endIdx, double[] inReal_0, int optInTimePeriod_0, double optInK_1, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
         {
             int today;
@@ -180,6 +188,7 @@ namespace GLPM.TechnicalAnalysis
             outNbElement = outIdx;
             return RetCode.Success;
         }
+        
         private static RetCode TA_INT_EMA(int startIdx, int endIdx, float[] inReal_0, int optInTimePeriod_0, double optInK_1, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
         {
             int today;
@@ -239,6 +248,7 @@ namespace GLPM.TechnicalAnalysis
             outNbElement = outIdx;
             return RetCode.Success;
         }
+        
         private static RetCode TA_INT_MACD(int startIdx, int endIdx, double[] inReal_0, int optInFastPeriod_0, int optInSlowPeriod_1, int optInSignalPeriod_2, ref int outBegIdx, ref int outNbElement, double[] outMACD_0, double[] outMACDSignal_1, double[] outMACDHist_2)
         {
             int i;
@@ -342,6 +352,7 @@ namespace GLPM.TechnicalAnalysis
             outNbElement = outNbElement2;
             return RetCode.Success;
         }
+        
         private static RetCode TA_INT_MACD(int startIdx, int endIdx, float[] inReal_0, int optInFastPeriod_0, int optInSlowPeriod_1, int optInSignalPeriod_2, ref int outBegIdx, ref int outNbElement, double[] outMACD_0, double[] outMACDSignal_1, double[] outMACDHist_2)
         {
             int i;
@@ -445,6 +456,7 @@ namespace GLPM.TechnicalAnalysis
             outNbElement = outNbElement2;
             return RetCode.Success;
         }
+        
         private static RetCode TA_INT_PO(int startIdx, int endIdx, double[] inReal_0, int optInFastPeriod_0, int optInSlowPeriod_1, MAType optInMethod_2, ref int outBegIdx, ref int outNbElement, double[] outReal_0, double[] tempBuffer, int doPercentageOutput)
         {
             int tempInteger = 0;
@@ -506,6 +518,7 @@ namespace GLPM.TechnicalAnalysis
             }
             return retCode;
         }
+        
         private static RetCode TA_INT_PO(int startIdx, int endIdx, float[] inReal_0, int optInFastPeriod_0, int optInSlowPeriod_1, MAType optInMethod_2, ref int outBegIdx, ref int outNbElement, double[] outReal_0, double[] tempBuffer, int doPercentageOutput)
         {
             int tempInteger = 0;
@@ -567,6 +580,7 @@ namespace GLPM.TechnicalAnalysis
             }
             return retCode;
         }
+        
         private static RetCode TA_INT_SMA(int startIdx, int endIdx, double[] inReal_0, int optInTimePeriod_0, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
         {
             int lookbackTotal = optInTimePeriod_0 - 1;
@@ -607,6 +621,7 @@ namespace GLPM.TechnicalAnalysis
             outBegIdx = startIdx;
             return RetCode.Success;
         }
+        
         private static RetCode TA_INT_SMA(int startIdx, int endIdx, float[] inReal_0, int optInTimePeriod_0, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
         {
             int lookbackTotal = optInTimePeriod_0 - 1;
@@ -647,6 +662,7 @@ namespace GLPM.TechnicalAnalysis
             outBegIdx = startIdx;
             return RetCode.Success;
         }
+        
         private static void TA_INT_stddev_using_precalc_ma(double[] inReal, double[] inMovAvg, int inMovAvgBegIdx, int inMovAvgNbElement, int timePeriod, double[] output)
         {
             double tempReal;
@@ -686,6 +702,7 @@ namespace GLPM.TechnicalAnalysis
                 endSum++;
             }
         }
+        
         private static void TA_INT_stddev_using_precalc_ma(float[] inReal, double[] inMovAvg, int inMovAvgBegIdx, int inMovAvgNbElement, int timePeriod, double[] output)
         {
             double tempReal;
@@ -725,6 +742,7 @@ namespace GLPM.TechnicalAnalysis
                 endSum++;
             }
         }
+        
         private static RetCode TA_INT_VAR(int startIdx, int endIdx, double[] inReal_0, int optInTimePeriod_0, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
         {
             double tempReal;
@@ -777,6 +795,7 @@ namespace GLPM.TechnicalAnalysis
             outBegIdx = startIdx;
             return RetCode.Success;
         }
+        
         private static RetCode TA_INT_VAR(int startIdx, int endIdx, float[] inReal_0, int optInTimePeriod_0, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
         {
             double tempReal;
@@ -829,6 +848,7 @@ namespace GLPM.TechnicalAnalysis
             outBegIdx = startIdx;
             return RetCode.Success;
         }
+        
         private sealed class CandleSetting
         {
             public int avgPeriod;
@@ -836,6 +856,7 @@ namespace GLPM.TechnicalAnalysis
             public RangeType rangeType;
             public TACore.CandleSettingType settingType;
         }
+        
         public enum CandleSettingType
         {
             BodyLong,
@@ -851,11 +872,13 @@ namespace GLPM.TechnicalAnalysis
             Equal,
             AllCandleSettings
         }
+        
         public enum Compatibility
         {
             Default,
             Metastock
         }
+        
         public enum FuncUnstId
         {
             Adx = 0,
@@ -884,12 +907,14 @@ namespace GLPM.TechnicalAnalysis
             StochRsi = 0x15,
             T3 = 0x16
         }
+        
         public enum RangeType
         {
             RealBody,
             HighLow,
             Shadows
         }
+        
         private sealed class GlobalsType
         {
             public TACore.CandleSetting[] candleSettings;
@@ -909,6 +934,7 @@ namespace GLPM.TechnicalAnalysis
                 }
             }
         }
+        
         internal class MoneyFlow
         {
             public double negative;

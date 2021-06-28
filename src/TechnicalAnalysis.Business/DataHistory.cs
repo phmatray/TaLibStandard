@@ -1,9 +1,9 @@
-﻿namespace GLPM.TechnicalAnalysis.Business
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
+namespace TechnicalAnalysis.Business
+{
     public class DataHistory
     {
         private readonly List<Candle> candles;

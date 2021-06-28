@@ -1,11 +1,11 @@
-﻿namespace GLPM.TechnicalAnalysis.Business
-{
-    using System;
-    using System.IO;
-    using System.Linq;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
+namespace TechnicalAnalysis.Business
+{
     public static class DataHistoryRepository
     {
         public static DataHistory GetDataHistoryFromFile(string fromSymbol, string toSymbol, string interval)

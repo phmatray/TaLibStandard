@@ -3,7 +3,7 @@ using AutoFixture;
 using FluentAssertions;
 using Xunit;
 
-namespace GLPM.TechnicalAnalysis.Tests.Indicators.Func
+namespace TechnicalAnalysis.Tests.Indicators.Func
 {
     public class TypPriceTests
     {

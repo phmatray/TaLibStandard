@@ -1,11 +1,10 @@
-﻿namespace GLPM.TechnicalAnalysis.Business
+﻿using System.Collections.Generic;
+using System.Globalization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace TechnicalAnalysis.Business
 {
-    using System.Collections.Generic;
-    using System.Globalization;
-
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-
     public partial class DataHistoryResponse
     {
         [JsonProperty("Aggregated")]

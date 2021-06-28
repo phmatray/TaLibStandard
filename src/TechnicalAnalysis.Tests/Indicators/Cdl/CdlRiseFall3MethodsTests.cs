@@ -3,7 +3,7 @@ using AutoFixture;
 using FluentAssertions;
 using Xunit;
 
-namespace GLPM.TechnicalAnalysis.Tests.Indicators.Cdl
+namespace TechnicalAnalysis.Tests.Indicators.Cdl
 {
     public class CdlRiseFall3MethodsTests
     {

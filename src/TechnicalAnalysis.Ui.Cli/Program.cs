@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using GLPM.TechnicalAnalysis.Business;
+using  GLPM.TechnicalAnalysis.Business;
 
-namespace GLPM.TechnicalAnalysis.Ui.Cli
+namespace TechnicalAnalysis.Ui.Cli
 {
     class Program
     {

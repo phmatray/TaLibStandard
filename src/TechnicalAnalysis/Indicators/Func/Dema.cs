@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GLPM.TechnicalAnalysis
+namespace TechnicalAnalysis
 {
     public partial class TAMath
     {

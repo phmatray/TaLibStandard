@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace GLPM.TechnicalAnalysis.Tests
+namespace TechnicalAnalysis.Tests
 {
     public class SmaTest
     {

@@ -1,4 +1,4 @@
-﻿namespace GLPM.TechnicalAnalysis.Business
+﻿namespace TechnicalAnalysis.Business
 {
     /// <summary>
     /// Price bars are composed of an open, a high, a low and a close. 
@@ -8,13 +8,9 @@
     public enum PriceDataPoint
     {
         Open,
-
         High,
-
         Low,
-
         Close,
-
         Average
     }
 }

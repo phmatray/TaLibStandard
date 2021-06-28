@@ -1,7 +1,7 @@
-﻿namespace GLPM.TechnicalAnalysis.Business
-{
-    using System;
+﻿using System;
 
+namespace TechnicalAnalysis.Business
+{
     public static class DataHistoryExtension
     {
         public static DataHistory ComputeAcos(

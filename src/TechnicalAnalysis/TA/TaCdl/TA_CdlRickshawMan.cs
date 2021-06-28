@@ -1,4 +1,4 @@
-namespace GLPM.TechnicalAnalysis
+namespace TechnicalAnalysis
 {
     using System;
 
