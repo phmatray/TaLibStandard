@@ -50,9 +50,9 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            double BodyLongPeriodTotal = 0.0;
-            int BodyLongTrailingIdx = startIdx - 2 - Globals.candleSettings[0].avgPeriod;
-            int i = BodyLongTrailingIdx;
+            double bodyLongPeriodTotal = 0.0;
+            int bodyLongTrailingIdx = startIdx - 2 - Globals.candleSettings[0].avgPeriod;
+            int i = bodyLongTrailingIdx;
             while (true)
             {
                 double num24;
@@ -93,7 +93,7 @@ namespace TechnicalAnalysis
                     num24 = num23;
                 }
 
-                BodyLongPeriodTotal += num24;
+                bodyLongPeriodTotal += num24;
                 i++;
             }
 
@@ -105,7 +105,7 @@ namespace TechnicalAnalysis
                 double num19;
                 if (Globals.candleSettings[0].avgPeriod != 0.0)
                 {
-                    num19 = BodyLongPeriodTotal / Globals.candleSettings[0].avgPeriod;
+                    num19 = bodyLongPeriodTotal / Globals.candleSettings[0].avgPeriod;
                 }
                 else
                 {
@@ -200,24 +200,24 @@ namespace TechnicalAnalysis
 
             if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
             {
-                num5 = Math.Abs(inClose[BodyLongTrailingIdx] - inOpen[BodyLongTrailingIdx]);
+                num5 = Math.Abs(inClose[bodyLongTrailingIdx] - inOpen[bodyLongTrailingIdx]);
             }
             else
             {
                 double num4;
                 if (Globals.candleSettings[0].rangeType == RangeType.HighLow)
                 {
-                    num4 = inHigh[BodyLongTrailingIdx] - inLow[BodyLongTrailingIdx];
+                    num4 = inHigh[bodyLongTrailingIdx] - inLow[bodyLongTrailingIdx];
                 }
                 else
                 {
                     double num;
                     if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                     {
-                        double num3 = inClose[BodyLongTrailingIdx] >= inOpen[BodyLongTrailingIdx] ? inClose[BodyLongTrailingIdx] : inOpen[BodyLongTrailingIdx];
-                        double num2 = inClose[BodyLongTrailingIdx] >= inOpen[BodyLongTrailingIdx] ? inOpen[BodyLongTrailingIdx] : inClose[BodyLongTrailingIdx];
+                        double num3 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx] ? inClose[bodyLongTrailingIdx] : inOpen[bodyLongTrailingIdx];
+                        double num2 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx] ? inOpen[bodyLongTrailingIdx] : inClose[bodyLongTrailingIdx];
 
-                        num = inHigh[BodyLongTrailingIdx] - num3 + (num2 - inLow[BodyLongTrailingIdx]);
+                        num = inHigh[bodyLongTrailingIdx] - num3 + (num2 - inLow[bodyLongTrailingIdx]);
                     }
                     else
                     {
@@ -230,9 +230,9 @@ namespace TechnicalAnalysis
                 num5 = num4;
             }
 
-            BodyLongPeriodTotal += num10 - num5;
+            bodyLongPeriodTotal += num10 - num5;
             i++;
-            BodyLongTrailingIdx++;
+            bodyLongTrailingIdx++;
             if (i <= endIdx)
             {
                 goto Label_014D;
@@ -289,9 +289,9 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            double BodyLongPeriodTotal = 0.0;
-            int BodyLongTrailingIdx = startIdx - 2 - Globals.candleSettings[0].avgPeriod;
-            int i = BodyLongTrailingIdx;
+            double bodyLongPeriodTotal = 0.0;
+            int bodyLongTrailingIdx = startIdx - 2 - Globals.candleSettings[0].avgPeriod;
+            int i = bodyLongTrailingIdx;
             while (true)
             {
                 float num24;
@@ -332,7 +332,7 @@ namespace TechnicalAnalysis
                     num24 = num23;
                 }
 
-                BodyLongPeriodTotal += num24;
+                bodyLongPeriodTotal += num24;
                 i++;
             }
 
@@ -344,7 +344,7 @@ namespace TechnicalAnalysis
                 double num19;
                 if (Globals.candleSettings[0].avgPeriod != 0.0)
                 {
-                    num19 = BodyLongPeriodTotal / Globals.candleSettings[0].avgPeriod;
+                    num19 = bodyLongPeriodTotal / Globals.candleSettings[0].avgPeriod;
                 }
                 else
                 {
@@ -439,24 +439,24 @@ namespace TechnicalAnalysis
 
             if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
             {
-                num5 = Math.Abs(inClose[BodyLongTrailingIdx] - inOpen[BodyLongTrailingIdx]);
+                num5 = Math.Abs(inClose[bodyLongTrailingIdx] - inOpen[bodyLongTrailingIdx]);
             }
             else
             {
                 float num4;
                 if (Globals.candleSettings[0].rangeType == RangeType.HighLow)
                 {
-                    num4 = inHigh[BodyLongTrailingIdx] - inLow[BodyLongTrailingIdx];
+                    num4 = inHigh[bodyLongTrailingIdx] - inLow[bodyLongTrailingIdx];
                 }
                 else
                 {
                     float num;
                     if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
                     {
-                        float num3 = inClose[BodyLongTrailingIdx] >= inOpen[BodyLongTrailingIdx] ? inClose[BodyLongTrailingIdx] : inOpen[BodyLongTrailingIdx];
-                        float num2 = inClose[BodyLongTrailingIdx] >= inOpen[BodyLongTrailingIdx] ? inOpen[BodyLongTrailingIdx] : inClose[BodyLongTrailingIdx];
+                        float num3 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx] ? inClose[bodyLongTrailingIdx] : inOpen[bodyLongTrailingIdx];
+                        float num2 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx] ? inOpen[bodyLongTrailingIdx] : inClose[bodyLongTrailingIdx];
 
-                        num = inHigh[BodyLongTrailingIdx] - num3 + (num2 - inLow[BodyLongTrailingIdx]);
+                        num = inHigh[bodyLongTrailingIdx] - num3 + (num2 - inLow[bodyLongTrailingIdx]);
                     }
                     else
                     {
@@ -469,9 +469,9 @@ namespace TechnicalAnalysis
                 num5 = num4;
             }
 
-            BodyLongPeriodTotal += num10 - num5;
+            bodyLongPeriodTotal += num10 - num5;
             i++;
-            BodyLongTrailingIdx++;
+            bodyLongTrailingIdx++;
             if (i <= endIdx)
             {
                 goto Label_015B;

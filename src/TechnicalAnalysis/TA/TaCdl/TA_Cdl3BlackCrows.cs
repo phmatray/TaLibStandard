@@ -16,7 +16,7 @@ namespace TechnicalAnalysis
             int[] outInteger)
         {
             int totIdx;
-            double[] ShadowVeryShortPeriodTotal = new double[3];
+            double[] shadowVeryShortPeriodTotal = new double[3];
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -50,11 +50,11 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            ShadowVeryShortPeriodTotal[2] = 0.0;
-            ShadowVeryShortPeriodTotal[1] = 0.0;
-            ShadowVeryShortPeriodTotal[0] = 0.0;
-            int ShadowVeryShortTrailingIdx = startIdx - Globals.candleSettings[7].avgPeriod;
-            int i = ShadowVeryShortTrailingIdx;
+            shadowVeryShortPeriodTotal[2] = 0.0;
+            shadowVeryShortPeriodTotal[1] = 0.0;
+            shadowVeryShortPeriodTotal[0] = 0.0;
+            int shadowVeryShortTrailingIdx = startIdx - Globals.candleSettings[7].avgPeriod;
+            int i = shadowVeryShortTrailingIdx;
             while (true)
             {
                 double num39;
@@ -114,7 +114,7 @@ namespace TechnicalAnalysis
                     num49 = num48;
                 }
 
-                ShadowVeryShortPeriodTotal[2] += num49;
+                shadowVeryShortPeriodTotal[2] += num49;
                 if (Globals.candleSettings[7].rangeType == RangeType.RealBody)
                 {
                     num44 = Math.Abs(inClose[i - 1] - inOpen[i - 1]);
@@ -164,7 +164,7 @@ namespace TechnicalAnalysis
                     num44 = num43;
                 }
 
-                ShadowVeryShortPeriodTotal[1] += num44;
+                shadowVeryShortPeriodTotal[1] += num44;
                 if (Globals.candleSettings[7].rangeType == RangeType.RealBody)
                 {
                     num39 = Math.Abs(inClose[i] - inOpen[i]);
@@ -214,7 +214,7 @@ namespace TechnicalAnalysis
                     num39 = num38;
                 }
 
-                ShadowVeryShortPeriodTotal[0] += num39;
+                shadowVeryShortPeriodTotal[0] += num39;
                 i++;
             }
 
@@ -237,7 +237,7 @@ namespace TechnicalAnalysis
 
                 if (Globals.candleSettings[7].avgPeriod != 0.0)
                 {
-                    num33 = ShadowVeryShortPeriodTotal[2] / Globals.candleSettings[7].avgPeriod;
+                    num33 = shadowVeryShortPeriodTotal[2] / Globals.candleSettings[7].avgPeriod;
                 }
                 else
                 {
@@ -320,7 +320,7 @@ namespace TechnicalAnalysis
 
                     if (Globals.candleSettings[7].avgPeriod != 0.0)
                     {
-                        num25 = ShadowVeryShortPeriodTotal[1] / Globals.candleSettings[7].avgPeriod;
+                        num25 = shadowVeryShortPeriodTotal[1] / Globals.candleSettings[7].avgPeriod;
                     }
                     else
                     {
@@ -403,7 +403,7 @@ namespace TechnicalAnalysis
 
                         if (Globals.candleSettings[7].avgPeriod != 0.0)
                         {
-                            num17 = ShadowVeryShortPeriodTotal[0] / Globals.candleSettings[7].avgPeriod;
+                            num17 = shadowVeryShortPeriodTotal[0] / Globals.candleSettings[7].avgPeriod;
                         }
                         else
                         {
@@ -540,15 +540,15 @@ namespace TechnicalAnalysis
                 if (Globals.candleSettings[7].rangeType == RangeType.RealBody)
                 {
                     num5 = Math.Abs(
-                        inClose[ShadowVeryShortTrailingIdx - totIdx]
-                        - inOpen[ShadowVeryShortTrailingIdx - totIdx]);
+                        inClose[shadowVeryShortTrailingIdx - totIdx]
+                        - inOpen[shadowVeryShortTrailingIdx - totIdx]);
                 }
                 else
                 {
                     double num4;
                     if (Globals.candleSettings[7].rangeType == RangeType.HighLow)
                     {
-                        num4 = inHigh[ShadowVeryShortTrailingIdx - totIdx] - inLow[ShadowVeryShortTrailingIdx - totIdx];
+                        num4 = inHigh[shadowVeryShortTrailingIdx - totIdx] - inLow[shadowVeryShortTrailingIdx - totIdx];
                     }
                     else
                     {
@@ -557,28 +557,28 @@ namespace TechnicalAnalysis
                         {
                             double num2;
                             double num3;
-                            if (inClose[ShadowVeryShortTrailingIdx - totIdx]
-                                >= inOpen[ShadowVeryShortTrailingIdx - totIdx])
+                            if (inClose[shadowVeryShortTrailingIdx - totIdx]
+                                >= inOpen[shadowVeryShortTrailingIdx - totIdx])
                             {
-                                num3 = inClose[ShadowVeryShortTrailingIdx - totIdx];
+                                num3 = inClose[shadowVeryShortTrailingIdx - totIdx];
                             }
                             else
                             {
-                                num3 = inOpen[ShadowVeryShortTrailingIdx - totIdx];
+                                num3 = inOpen[shadowVeryShortTrailingIdx - totIdx];
                             }
 
-                            if (inClose[ShadowVeryShortTrailingIdx - totIdx]
-                                >= inOpen[ShadowVeryShortTrailingIdx - totIdx])
+                            if (inClose[shadowVeryShortTrailingIdx - totIdx]
+                                >= inOpen[shadowVeryShortTrailingIdx - totIdx])
                             {
-                                num2 = inOpen[ShadowVeryShortTrailingIdx - totIdx];
+                                num2 = inOpen[shadowVeryShortTrailingIdx - totIdx];
                             }
                             else
                             {
-                                num2 = inClose[ShadowVeryShortTrailingIdx - totIdx];
+                                num2 = inClose[shadowVeryShortTrailingIdx - totIdx];
                             }
 
-                            num = inHigh[ShadowVeryShortTrailingIdx - totIdx] - num3
-                                  + (num2 - inLow[ShadowVeryShortTrailingIdx - totIdx]);
+                            num = inHigh[shadowVeryShortTrailingIdx - totIdx] - num3
+                                  + (num2 - inLow[shadowVeryShortTrailingIdx - totIdx]);
                         }
                         else
                         {
@@ -591,12 +591,12 @@ namespace TechnicalAnalysis
                     num5 = num4;
                 }
 
-                ShadowVeryShortPeriodTotal[totIdx] += num10 - num5;
+                shadowVeryShortPeriodTotal[totIdx] += num10 - num5;
                 totIdx--;
             }
 
             i++;
-            ShadowVeryShortTrailingIdx++;
+            shadowVeryShortTrailingIdx++;
             if (i <= endIdx)
             {
                 goto Label_0317;
@@ -619,7 +619,7 @@ namespace TechnicalAnalysis
             int[] outInteger)
         {
             int totIdx;
-            double[] ShadowVeryShortPeriodTotal = new double[3];
+            double[] shadowVeryShortPeriodTotal = new double[3];
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -653,11 +653,11 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            ShadowVeryShortPeriodTotal[2] = 0.0;
-            ShadowVeryShortPeriodTotal[1] = 0.0;
-            ShadowVeryShortPeriodTotal[0] = 0.0;
-            int ShadowVeryShortTrailingIdx = startIdx - Globals.candleSettings[7].avgPeriod;
-            int i = ShadowVeryShortTrailingIdx;
+            shadowVeryShortPeriodTotal[2] = 0.0;
+            shadowVeryShortPeriodTotal[1] = 0.0;
+            shadowVeryShortPeriodTotal[0] = 0.0;
+            int shadowVeryShortTrailingIdx = startIdx - Globals.candleSettings[7].avgPeriod;
+            int i = shadowVeryShortTrailingIdx;
             while (true)
             {
                 float num39;
@@ -717,7 +717,7 @@ namespace TechnicalAnalysis
                     num49 = num48;
                 }
 
-                ShadowVeryShortPeriodTotal[2] += num49;
+                shadowVeryShortPeriodTotal[2] += num49;
                 if (Globals.candleSettings[7].rangeType == RangeType.RealBody)
                 {
                     num44 = Math.Abs(inClose[i - 1] - inOpen[i - 1]);
@@ -767,7 +767,7 @@ namespace TechnicalAnalysis
                     num44 = num43;
                 }
 
-                ShadowVeryShortPeriodTotal[1] += num44;
+                shadowVeryShortPeriodTotal[1] += num44;
                 if (Globals.candleSettings[7].rangeType == RangeType.RealBody)
                 {
                     num39 = Math.Abs(inClose[i] - inOpen[i]);
@@ -817,7 +817,7 @@ namespace TechnicalAnalysis
                     num39 = num38;
                 }
 
-                ShadowVeryShortPeriodTotal[0] += num39;
+                shadowVeryShortPeriodTotal[0] += num39;
                 i++;
             }
 
@@ -840,7 +840,7 @@ namespace TechnicalAnalysis
 
                 if (Globals.candleSettings[7].avgPeriod != 0.0)
                 {
-                    num33 = ShadowVeryShortPeriodTotal[2] / Globals.candleSettings[7].avgPeriod;
+                    num33 = shadowVeryShortPeriodTotal[2] / Globals.candleSettings[7].avgPeriod;
                 }
                 else
                 {
@@ -923,7 +923,7 @@ namespace TechnicalAnalysis
 
                     if (Globals.candleSettings[7].avgPeriod != 0.0)
                     {
-                        num25 = ShadowVeryShortPeriodTotal[1] / Globals.candleSettings[7].avgPeriod;
+                        num25 = shadowVeryShortPeriodTotal[1] / Globals.candleSettings[7].avgPeriod;
                     }
                     else
                     {
@@ -1006,7 +1006,7 @@ namespace TechnicalAnalysis
 
                         if (Globals.candleSettings[7].avgPeriod != 0.0)
                         {
-                            num17 = ShadowVeryShortPeriodTotal[0] / Globals.candleSettings[7].avgPeriod;
+                            num17 = shadowVeryShortPeriodTotal[0] / Globals.candleSettings[7].avgPeriod;
                         }
                         else
                         {
@@ -1143,15 +1143,15 @@ namespace TechnicalAnalysis
                 if (Globals.candleSettings[7].rangeType == RangeType.RealBody)
                 {
                     num5 = Math.Abs(
-                        inClose[ShadowVeryShortTrailingIdx - totIdx]
-                        - inOpen[ShadowVeryShortTrailingIdx - totIdx]);
+                        inClose[shadowVeryShortTrailingIdx - totIdx]
+                        - inOpen[shadowVeryShortTrailingIdx - totIdx]);
                 }
                 else
                 {
                     float num4;
                     if (Globals.candleSettings[7].rangeType == RangeType.HighLow)
                     {
-                        num4 = inHigh[ShadowVeryShortTrailingIdx - totIdx] - inLow[ShadowVeryShortTrailingIdx - totIdx];
+                        num4 = inHigh[shadowVeryShortTrailingIdx - totIdx] - inLow[shadowVeryShortTrailingIdx - totIdx];
                     }
                     else
                     {
@@ -1160,28 +1160,28 @@ namespace TechnicalAnalysis
                         {
                             float num2;
                             float num3;
-                            if (inClose[ShadowVeryShortTrailingIdx - totIdx]
-                                >= inOpen[ShadowVeryShortTrailingIdx - totIdx])
+                            if (inClose[shadowVeryShortTrailingIdx - totIdx]
+                                >= inOpen[shadowVeryShortTrailingIdx - totIdx])
                             {
-                                num3 = inClose[ShadowVeryShortTrailingIdx - totIdx];
+                                num3 = inClose[shadowVeryShortTrailingIdx - totIdx];
                             }
                             else
                             {
-                                num3 = inOpen[ShadowVeryShortTrailingIdx - totIdx];
+                                num3 = inOpen[shadowVeryShortTrailingIdx - totIdx];
                             }
 
-                            if (inClose[ShadowVeryShortTrailingIdx - totIdx]
-                                >= inOpen[ShadowVeryShortTrailingIdx - totIdx])
+                            if (inClose[shadowVeryShortTrailingIdx - totIdx]
+                                >= inOpen[shadowVeryShortTrailingIdx - totIdx])
                             {
-                                num2 = inOpen[ShadowVeryShortTrailingIdx - totIdx];
+                                num2 = inOpen[shadowVeryShortTrailingIdx - totIdx];
                             }
                             else
                             {
-                                num2 = inClose[ShadowVeryShortTrailingIdx - totIdx];
+                                num2 = inClose[shadowVeryShortTrailingIdx - totIdx];
                             }
 
-                            num = inHigh[ShadowVeryShortTrailingIdx - totIdx] - num3
-                                  + (num2 - inLow[ShadowVeryShortTrailingIdx - totIdx]);
+                            num = inHigh[shadowVeryShortTrailingIdx - totIdx] - num3
+                                  + (num2 - inLow[shadowVeryShortTrailingIdx - totIdx]);
                         }
                         else
                         {
@@ -1194,12 +1194,12 @@ namespace TechnicalAnalysis
                     num5 = num4;
                 }
 
-                ShadowVeryShortPeriodTotal[totIdx] += num10 - num5;
+                shadowVeryShortPeriodTotal[totIdx] += num10 - num5;
                 totIdx--;
             }
 
             i++;
-            ShadowVeryShortTrailingIdx++;
+            shadowVeryShortTrailingIdx++;
             if (i <= endIdx)
             {
                 goto Label_0341;

@@ -6,4 +6,6 @@
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=MA/@EntryIndexedValue">MA</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=MACD/@EntryIndexedValue">MACD</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=NB/@EntryIndexedValue">NB</s:String>
-	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=TA/@EntryIndexedValue">TA</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=TA/@EntryIndexedValue">TA</s:String>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Doji/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=lookback/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

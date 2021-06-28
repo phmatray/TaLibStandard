@@ -48,9 +48,9 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            double BodyDojiPeriodTotal = 0.0;
-            int BodyDojiTrailingIdx = startIdx - Globals.candleSettings[3].avgPeriod;
-            int i = BodyDojiTrailingIdx;
+            double bodyDojiPeriodTotal = 0.0;
+            int bodyDojiTrailingIdx = startIdx - Globals.candleSettings[3].avgPeriod;
+            int i = bodyDojiTrailingIdx;
             while (true)
             {
                 double num22;
@@ -108,7 +108,7 @@ namespace TechnicalAnalysis
                     num22 = num21;
                 }
 
-                BodyDojiPeriodTotal += num22;
+                bodyDojiPeriodTotal += num22;
                 i++;
             }
 
@@ -121,7 +121,7 @@ namespace TechnicalAnalysis
                 double num17;
                 if (Globals.candleSettings[3].avgPeriod != 0.0)
                 {
-                    num17 = BodyDojiPeriodTotal / Globals.candleSettings[3].avgPeriod;
+                    num17 = bodyDojiPeriodTotal / Globals.candleSettings[3].avgPeriod;
                 }
                 else
                 {
@@ -249,14 +249,14 @@ namespace TechnicalAnalysis
 
                 if (Globals.candleSettings[3].rangeType == RangeType.RealBody)
                 {
-                    num5 = Math.Abs(inClose[BodyDojiTrailingIdx] - inOpen[BodyDojiTrailingIdx]);
+                    num5 = Math.Abs(inClose[bodyDojiTrailingIdx] - inOpen[bodyDojiTrailingIdx]);
                 }
                 else
                 {
                     double num4;
                     if (Globals.candleSettings[3].rangeType == RangeType.HighLow)
                     {
-                        num4 = inHigh[BodyDojiTrailingIdx] - inLow[BodyDojiTrailingIdx];
+                        num4 = inHigh[bodyDojiTrailingIdx] - inLow[bodyDojiTrailingIdx];
                     }
                     else
                     {
@@ -265,25 +265,25 @@ namespace TechnicalAnalysis
                         {
                             double num2;
                             double num3;
-                            if (inClose[BodyDojiTrailingIdx] >= inOpen[BodyDojiTrailingIdx])
+                            if (inClose[bodyDojiTrailingIdx] >= inOpen[bodyDojiTrailingIdx])
                             {
-                                num3 = inClose[BodyDojiTrailingIdx];
+                                num3 = inClose[bodyDojiTrailingIdx];
                             }
                             else
                             {
-                                num3 = inOpen[BodyDojiTrailingIdx];
+                                num3 = inOpen[bodyDojiTrailingIdx];
                             }
 
-                            if (inClose[BodyDojiTrailingIdx] >= inOpen[BodyDojiTrailingIdx])
+                            if (inClose[bodyDojiTrailingIdx] >= inOpen[bodyDojiTrailingIdx])
                             {
-                                num2 = inOpen[BodyDojiTrailingIdx];
+                                num2 = inOpen[bodyDojiTrailingIdx];
                             }
                             else
                             {
-                                num2 = inClose[BodyDojiTrailingIdx];
+                                num2 = inClose[bodyDojiTrailingIdx];
                             }
 
-                            num = inHigh[BodyDojiTrailingIdx] - num3 + (num2 - inLow[BodyDojiTrailingIdx]);
+                            num = inHigh[bodyDojiTrailingIdx] - num3 + (num2 - inLow[bodyDojiTrailingIdx]);
                         }
                         else
                         {
@@ -296,9 +296,9 @@ namespace TechnicalAnalysis
                     num5 = num4;
                 }
 
-                BodyDojiPeriodTotal += num10 - num5;
+                bodyDojiPeriodTotal += num10 - num5;
                 i++;
-                BodyDojiTrailingIdx++;
+                bodyDojiTrailingIdx++;
             }
             while (i <= endIdx);
 
@@ -351,9 +351,9 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            double BodyDojiPeriodTotal = 0.0;
-            int BodyDojiTrailingIdx = startIdx - Globals.candleSettings[3].avgPeriod;
-            int i = BodyDojiTrailingIdx;
+            double bodyDojiPeriodTotal = 0.0;
+            int bodyDojiTrailingIdx = startIdx - Globals.candleSettings[3].avgPeriod;
+            int i = bodyDojiTrailingIdx;
             while (true)
             {
                 float num22;
@@ -411,7 +411,7 @@ namespace TechnicalAnalysis
                     num22 = num21;
                 }
 
-                BodyDojiPeriodTotal += num22;
+                bodyDojiPeriodTotal += num22;
                 i++;
             }
 
@@ -424,7 +424,7 @@ namespace TechnicalAnalysis
                 double num17;
                 if (Globals.candleSettings[3].avgPeriod != 0.0)
                 {
-                    num17 = BodyDojiPeriodTotal / Globals.candleSettings[3].avgPeriod;
+                    num17 = bodyDojiPeriodTotal / Globals.candleSettings[3].avgPeriod;
                 }
                 else
                 {
@@ -552,14 +552,14 @@ namespace TechnicalAnalysis
 
                 if (Globals.candleSettings[3].rangeType == RangeType.RealBody)
                 {
-                    num5 = Math.Abs(inClose[BodyDojiTrailingIdx] - inOpen[BodyDojiTrailingIdx]);
+                    num5 = Math.Abs(inClose[bodyDojiTrailingIdx] - inOpen[bodyDojiTrailingIdx]);
                 }
                 else
                 {
                     float num4;
                     if (Globals.candleSettings[3].rangeType == RangeType.HighLow)
                     {
-                        num4 = inHigh[BodyDojiTrailingIdx] - inLow[BodyDojiTrailingIdx];
+                        num4 = inHigh[bodyDojiTrailingIdx] - inLow[bodyDojiTrailingIdx];
                     }
                     else
                     {
@@ -568,25 +568,25 @@ namespace TechnicalAnalysis
                         {
                             float num2;
                             float num3;
-                            if (inClose[BodyDojiTrailingIdx] >= inOpen[BodyDojiTrailingIdx])
+                            if (inClose[bodyDojiTrailingIdx] >= inOpen[bodyDojiTrailingIdx])
                             {
-                                num3 = inClose[BodyDojiTrailingIdx];
+                                num3 = inClose[bodyDojiTrailingIdx];
                             }
                             else
                             {
-                                num3 = inOpen[BodyDojiTrailingIdx];
+                                num3 = inOpen[bodyDojiTrailingIdx];
                             }
 
-                            if (inClose[BodyDojiTrailingIdx] >= inOpen[BodyDojiTrailingIdx])
+                            if (inClose[bodyDojiTrailingIdx] >= inOpen[bodyDojiTrailingIdx])
                             {
-                                num2 = inOpen[BodyDojiTrailingIdx];
+                                num2 = inOpen[bodyDojiTrailingIdx];
                             }
                             else
                             {
-                                num2 = inClose[BodyDojiTrailingIdx];
+                                num2 = inClose[bodyDojiTrailingIdx];
                             }
 
-                            num = inHigh[BodyDojiTrailingIdx] - num3 + (num2 - inLow[BodyDojiTrailingIdx]);
+                            num = inHigh[bodyDojiTrailingIdx] - num3 + (num2 - inLow[bodyDojiTrailingIdx]);
                         }
                         else
                         {
@@ -599,9 +599,9 @@ namespace TechnicalAnalysis
                     num5 = num4;
                 }
 
-                BodyDojiPeriodTotal += num10 - num5;
+                bodyDojiPeriodTotal += num10 - num5;
                 i++;
-                BodyDojiTrailingIdx++;
+                bodyDojiTrailingIdx++;
             }
             while (i <= endIdx);
 

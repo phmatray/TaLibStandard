@@ -50,9 +50,9 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            double ShadowVeryShortPeriodTotal = 0.0;
-            int ShadowVeryShortTrailingIdx = startIdx - Globals.candleSettings[7].avgPeriod;
-            int i = ShadowVeryShortTrailingIdx;
+            double shadowVeryShortPeriodTotal = 0.0;
+            int shadowVeryShortTrailingIdx = startIdx - Globals.candleSettings[7].avgPeriod;
+            int i = shadowVeryShortTrailingIdx;
             while (true)
             {
                 double num23;
@@ -110,7 +110,7 @@ namespace TechnicalAnalysis
                     num23 = num22;
                 }
 
-                ShadowVeryShortPeriodTotal += num23;
+                shadowVeryShortPeriodTotal += num23;
                 i++;
             }
 
@@ -135,7 +135,7 @@ namespace TechnicalAnalysis
 
                 if (Globals.candleSettings[7].avgPeriod != 0.0)
                 {
-                    num17 = ShadowVeryShortPeriodTotal / Globals.candleSettings[7].avgPeriod;
+                    num17 = shadowVeryShortPeriodTotal / Globals.candleSettings[7].avgPeriod;
                 }
                 else
                 {
@@ -265,14 +265,14 @@ namespace TechnicalAnalysis
             if (Globals.candleSettings[7].rangeType == RangeType.RealBody)
             {
                 num5 = Math.Abs(
-                    inClose[ShadowVeryShortTrailingIdx - 1] - inOpen[ShadowVeryShortTrailingIdx - 1]);
+                    inClose[shadowVeryShortTrailingIdx - 1] - inOpen[shadowVeryShortTrailingIdx - 1]);
             }
             else
             {
                 double num4;
                 if (Globals.candleSettings[7].rangeType == RangeType.HighLow)
                 {
-                    num4 = inHigh[ShadowVeryShortTrailingIdx - 1] - inLow[ShadowVeryShortTrailingIdx - 1];
+                    num4 = inHigh[shadowVeryShortTrailingIdx - 1] - inLow[shadowVeryShortTrailingIdx - 1];
                 }
                 else
                 {
@@ -281,26 +281,26 @@ namespace TechnicalAnalysis
                     {
                         double num2;
                         double num3;
-                        if (inClose[ShadowVeryShortTrailingIdx - 1] >= inOpen[ShadowVeryShortTrailingIdx - 1])
+                        if (inClose[shadowVeryShortTrailingIdx - 1] >= inOpen[shadowVeryShortTrailingIdx - 1])
                         {
-                            num3 = inClose[ShadowVeryShortTrailingIdx - 1];
+                            num3 = inClose[shadowVeryShortTrailingIdx - 1];
                         }
                         else
                         {
-                            num3 = inOpen[ShadowVeryShortTrailingIdx - 1];
+                            num3 = inOpen[shadowVeryShortTrailingIdx - 1];
                         }
 
-                        if (inClose[ShadowVeryShortTrailingIdx - 1] >= inOpen[ShadowVeryShortTrailingIdx - 1])
+                        if (inClose[shadowVeryShortTrailingIdx - 1] >= inOpen[shadowVeryShortTrailingIdx - 1])
                         {
-                            num2 = inOpen[ShadowVeryShortTrailingIdx - 1];
+                            num2 = inOpen[shadowVeryShortTrailingIdx - 1];
                         }
                         else
                         {
-                            num2 = inClose[ShadowVeryShortTrailingIdx - 1];
+                            num2 = inClose[shadowVeryShortTrailingIdx - 1];
                         }
 
-                        num = inHigh[ShadowVeryShortTrailingIdx - 1] - num3
-                              + (num2 - inLow[ShadowVeryShortTrailingIdx - 1]);
+                        num = inHigh[shadowVeryShortTrailingIdx - 1] - num3
+                              + (num2 - inLow[shadowVeryShortTrailingIdx - 1]);
                     }
                     else
                     {
@@ -313,9 +313,9 @@ namespace TechnicalAnalysis
                 num5 = num4;
             }
 
-            ShadowVeryShortPeriodTotal += num10 - num5;
+            shadowVeryShortPeriodTotal += num10 - num5;
             i++;
-            ShadowVeryShortTrailingIdx++;
+            shadowVeryShortTrailingIdx++;
             if (i <= endIdx)
             {
                 goto Label_0168;
@@ -372,9 +372,9 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            double ShadowVeryShortPeriodTotal = 0.0;
-            int ShadowVeryShortTrailingIdx = startIdx - Globals.candleSettings[7].avgPeriod;
-            int i = ShadowVeryShortTrailingIdx;
+            double shadowVeryShortPeriodTotal = 0.0;
+            int shadowVeryShortTrailingIdx = startIdx - Globals.candleSettings[7].avgPeriod;
+            int i = shadowVeryShortTrailingIdx;
             while (true)
             {
                 float num23;
@@ -432,7 +432,7 @@ namespace TechnicalAnalysis
                     num23 = num22;
                 }
 
-                ShadowVeryShortPeriodTotal += num23;
+                shadowVeryShortPeriodTotal += num23;
                 i++;
             }
 
@@ -457,7 +457,7 @@ namespace TechnicalAnalysis
 
                 if (Globals.candleSettings[7].avgPeriod != 0.0)
                 {
-                    num17 = ShadowVeryShortPeriodTotal / Globals.candleSettings[7].avgPeriod;
+                    num17 = shadowVeryShortPeriodTotal / Globals.candleSettings[7].avgPeriod;
                 }
                 else
                 {
@@ -587,14 +587,14 @@ namespace TechnicalAnalysis
             if (Globals.candleSettings[7].rangeType == RangeType.RealBody)
             {
                 num5 = Math.Abs(
-                    inClose[ShadowVeryShortTrailingIdx - 1] - inOpen[ShadowVeryShortTrailingIdx - 1]);
+                    inClose[shadowVeryShortTrailingIdx - 1] - inOpen[shadowVeryShortTrailingIdx - 1]);
             }
             else
             {
                 float num4;
                 if (Globals.candleSettings[7].rangeType == RangeType.HighLow)
                 {
-                    num4 = inHigh[ShadowVeryShortTrailingIdx - 1] - inLow[ShadowVeryShortTrailingIdx - 1];
+                    num4 = inHigh[shadowVeryShortTrailingIdx - 1] - inLow[shadowVeryShortTrailingIdx - 1];
                 }
                 else
                 {
@@ -603,26 +603,26 @@ namespace TechnicalAnalysis
                     {
                         float num2;
                         float num3;
-                        if (inClose[ShadowVeryShortTrailingIdx - 1] >= inOpen[ShadowVeryShortTrailingIdx - 1])
+                        if (inClose[shadowVeryShortTrailingIdx - 1] >= inOpen[shadowVeryShortTrailingIdx - 1])
                         {
-                            num3 = inClose[ShadowVeryShortTrailingIdx - 1];
+                            num3 = inClose[shadowVeryShortTrailingIdx - 1];
                         }
                         else
                         {
-                            num3 = inOpen[ShadowVeryShortTrailingIdx - 1];
+                            num3 = inOpen[shadowVeryShortTrailingIdx - 1];
                         }
 
-                        if (inClose[ShadowVeryShortTrailingIdx - 1] >= inOpen[ShadowVeryShortTrailingIdx - 1])
+                        if (inClose[shadowVeryShortTrailingIdx - 1] >= inOpen[shadowVeryShortTrailingIdx - 1])
                         {
-                            num2 = inOpen[ShadowVeryShortTrailingIdx - 1];
+                            num2 = inOpen[shadowVeryShortTrailingIdx - 1];
                         }
                         else
                         {
-                            num2 = inClose[ShadowVeryShortTrailingIdx - 1];
+                            num2 = inClose[shadowVeryShortTrailingIdx - 1];
                         }
 
-                        num = inHigh[ShadowVeryShortTrailingIdx - 1] - num3
-                              + (num2 - inLow[ShadowVeryShortTrailingIdx - 1]);
+                        num = inHigh[shadowVeryShortTrailingIdx - 1] - num3
+                              + (num2 - inLow[shadowVeryShortTrailingIdx - 1]);
                     }
                     else
                     {
@@ -635,9 +635,9 @@ namespace TechnicalAnalysis
                 num5 = num4;
             }
 
-            ShadowVeryShortPeriodTotal += num10 - num5;
+            shadowVeryShortPeriodTotal += num10 - num5;
             i++;
-            ShadowVeryShortTrailingIdx++;
+            shadowVeryShortTrailingIdx++;
             if (i <= endIdx)
             {
                 goto Label_0176;
