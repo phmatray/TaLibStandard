@@ -5,6 +5,8 @@ Written by [Philippe Matray](https://matray.tech)
 
 ## Introduction
 
+This library is a modern port written in C# and based on the original [TA-Lib](https://ta-lib.org), an open-source library by Mario Fortier.
+
 ## Goal
 
 ## Getting started
