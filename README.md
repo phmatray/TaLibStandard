@@ -9,6 +9,8 @@ Written by [Philippe Matray](https://matray.tech)
 
 ## Getting started
 
+You can consult the list of [available functions](./docs/functions.md) from the documentation.
+
 ## Features
 
 * Double of Float
