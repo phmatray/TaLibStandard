@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using  GLPM.TechnicalAnalysis.Business;
+using TechnicalAnalysis.Business;
 
 namespace TechnicalAnalysis.Ui.Cli
 {

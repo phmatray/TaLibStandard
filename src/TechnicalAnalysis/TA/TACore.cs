@@ -4,7 +4,7 @@ namespace TechnicalAnalysis
 {
     internal partial class TACore
     {
-        private static GlobalsType Globals = new GlobalsType();
+        private static readonly GlobalsType Globals = new();
         
         static TACore()
         {
@@ -16,13 +16,9 @@ namespace TechnicalAnalysis
             return Globals.compatibility;
         }
         
-        public static Int64 GetUnstablePeriod(FuncUnstId id)
+        public static long GetUnstablePeriod(FuncUnstId id)
         {
-            if (id >= FuncUnstId.FuncUnstAll)
-            {
-                return 0;
-            }
-            return Globals.unstablePeriod[(int)id];
+            return id >= FuncUnstId.FuncUnstAll ? 0 : Globals.unstablePeriod[(int)id];
         }
         
         public static RetCode RestoreCandleDefaultSettings(CandleSettingType settingType)
@@ -86,6 +82,9 @@ namespace TechnicalAnalysis
                     SetCandleSettings(CandleSettingType.Far, RangeType.HighLow, 5, 0.6);
                     SetCandleSettings(CandleSettingType.Equal, RangeType.HighLow, 5, 0.05);
                     break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(settingType), settingType, null);
             }
             return RetCode.Success;
         }
@@ -96,10 +95,12 @@ namespace TechnicalAnalysis
             {
                 return RetCode.BadParam;
             }
+            
             Globals.candleSettings[(int)settingType].settingType = settingType;
             Globals.candleSettings[(int)settingType].rangeType = rangeType;
             Globals.candleSettings[(int)settingType].avgPeriod = avgPeriod;
             Globals.candleSettings[(int)settingType].factor = factor;
+            
             return RetCode.Success;
         }
         
@@ -109,12 +110,13 @@ namespace TechnicalAnalysis
             return RetCode.Success;
         }
         
-        public static RetCode SetUnstablePeriod(FuncUnstId id, Int64 unstablePeriod)
+        public static RetCode SetUnstablePeriod(FuncUnstId id, long unstablePeriod)
         {
             if (id > FuncUnstId.FuncUnstAll)
             {
                 return RetCode.BadParam;
             }
+            
             if (id != FuncUnstId.FuncUnstAll)
             {
                 Globals.unstablePeriod[(int)id] = unstablePeriod;
@@ -126,6 +128,7 @@ namespace TechnicalAnalysis
                     Globals.unstablePeriod[i] = unstablePeriod;
                 }
             }
+            
             return RetCode.Success;
         }
         
@@ -134,17 +137,21 @@ namespace TechnicalAnalysis
             int today;
             double prevMA;
             int lookbackTotal = EmaLookback(optInTimePeriod_0);
+            
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
+            
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.Success;
             }
+            
             outBegIdx = startIdx;
+            
             if (Globals.compatibility != Compatibility.Default)
             {
                 prevMA = inReal_0[0];
@@ -158,33 +165,40 @@ namespace TechnicalAnalysis
                 while (true)
                 {
                     i--;
+                    
                     if (i <= 0)
                     {
                         break;
                     }
+                    
                     tempReal += inReal_0[today];
                     today++;
                 }
                 prevMA = tempReal / optInTimePeriod_0;
             }
+            
             while (today <= startIdx)
             {
                 prevMA = (inReal_0[today] - prevMA) * optInK_1 + prevMA;
                 today++;
             }
+            
             outReal_0[0] = prevMA;
             int outIdx = 1;
+            
             while (true)
             {
                 if (today > endIdx)
                 {
                     break;
                 }
+                
                 prevMA = (inReal_0[today] - prevMA) * optInK_1 + prevMA;
                 today++;
                 outReal_0[outIdx] = prevMA;
                 outIdx++;
             }
+            
             outNbElement = outIdx;
             return RetCode.Success;
         }
@@ -194,17 +208,21 @@ namespace TechnicalAnalysis
             int today;
             double prevMA;
             int lookbackTotal = EmaLookback(optInTimePeriod_0);
+            
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
+            
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.Success;
             }
+            
             outBegIdx = startIdx;
+            
             if (Globals.compatibility != Compatibility.Default)
             {
                 prevMA = inReal_0[0];
@@ -218,33 +236,40 @@ namespace TechnicalAnalysis
                 while (true)
                 {
                     i--;
+                    
                     if (i <= 0)
                     {
                         break;
                     }
+                    
                     tempReal += inReal_0[today];
                     today++;
                 }
                 prevMA = tempReal / optInTimePeriod_0;
             }
+            
             while (today <= startIdx)
             {
                 prevMA = (inReal_0[today] - prevMA) * optInK_1 + prevMA;
                 today++;
             }
+            
             outReal_0[0] = prevMA;
             int outIdx = 1;
+            
             while (true)
             {
                 if (today > endIdx)
                 {
                     break;
                 }
+                
                 prevMA = (inReal_0[today] - prevMA) * optInK_1 + prevMA;
                 today++;
                 outReal_0[outIdx] = prevMA;
                 outIdx++;
             }
+            
             outNbElement = outIdx;
             return RetCode.Success;
         }
@@ -259,12 +284,14 @@ namespace TechnicalAnalysis
             double k1;
             int outBegIdx2 = 0;
             int outBegIdx1 = 0;
+            
             if (optInSlowPeriod_1 < optInFastPeriod_0)
             {
                 tempInteger = optInSlowPeriod_1;
                 optInSlowPeriod_1 = optInFastPeriod_0;
                 optInFastPeriod_0 = tempInteger;
             }
+            
             if (optInSlowPeriod_1 != 0)
             {
                 k1 = 2.0 / (optInSlowPeriod_1 + 1);
@@ -274,6 +301,7 @@ namespace TechnicalAnalysis
                 optInSlowPeriod_1 = 0x1a;
                 k1 = 0.075;
             }
+            
             if (optInFastPeriod_0 != 0)
             {
                 k2 = 2.0 / (optInFastPeriod_0 + 1);
@@ -283,71 +311,89 @@ namespace TechnicalAnalysis
                 optInFastPeriod_0 = 12;
                 k2 = 0.15;
             }
+            
             int lookbackSignal = EmaLookback(optInSignalPeriod_2);
             int lookbackTotal = lookbackSignal;
             lookbackTotal += EmaLookback(optInSlowPeriod_1);
+            
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
+            
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.Success;
             }
+            
             tempInteger = endIdx - startIdx + 1 + lookbackSignal;
+            
             double[] fastEMABuffer = new double[tempInteger];
+            
             if (fastEMABuffer == null)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.AllocErr;
             }
+            
             double[] slowEMABuffer = new double[tempInteger];
+            
             if (slowEMABuffer == null)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.AllocErr;
             }
+            
             tempInteger = startIdx - lookbackSignal;
             RetCode retCode = TA_INT_EMA(tempInteger, endIdx, inReal_0, optInSlowPeriod_1, k1, ref outBegIdx1, ref outNbElement1, slowEMABuffer);
+            
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return retCode;
             }
+            
             retCode = TA_INT_EMA(tempInteger, endIdx, inReal_0, optInFastPeriod_0, k2, ref outBegIdx2, ref outNbElement2, fastEMABuffer);
+            
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return retCode;
             }
+            
             if (outBegIdx1 != tempInteger || outBegIdx2 != tempInteger || outNbElement1 != outNbElement2 || outNbElement1 != endIdx - startIdx + 1 + lookbackSignal)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.InternalError;
             }
+            
             for (i = 0; i < outNbElement1; i++)
             {
                 fastEMABuffer[i] -= slowEMABuffer[i];
             }
+            
             Array.Copy(fastEMABuffer, lookbackSignal, outMACD_0, 0, endIdx - startIdx + 1);
             retCode = TA_INT_EMA(0, outNbElement1 - 1, fastEMABuffer, optInSignalPeriod_2, 2.0 / (optInSignalPeriod_2 + 1), ref outBegIdx2, ref outNbElement2, outMACDSignal_1);
+            
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return retCode;
             }
+            
             for (i = 0; i < outNbElement2; i++)
             {
                 outMACDHist_2[i] = outMACD_0[i] - outMACDSignal_1[i];
             }
+            
             outBegIdx = startIdx;
             outNbElement = outNbElement2;
             return RetCode.Success;
@@ -363,12 +409,14 @@ namespace TechnicalAnalysis
             double k1;
             int outBegIdx2 = 0;
             int outBegIdx1 = 0;
+            
             if (optInSlowPeriod_1 < optInFastPeriod_0)
             {
                 tempInteger = optInSlowPeriod_1;
                 optInSlowPeriod_1 = optInFastPeriod_0;
                 optInFastPeriod_0 = tempInteger;
             }
+            
             if (optInSlowPeriod_1 != 0)
             {
                 k1 = 2.0 / (optInSlowPeriod_1 + 1);
@@ -378,6 +426,7 @@ namespace TechnicalAnalysis
                 optInSlowPeriod_1 = 0x1a;
                 k1 = 0.075;
             }
+            
             if (optInFastPeriod_0 != 0)
             {
                 k2 = 2.0 / (optInFastPeriod_0 + 1);
@@ -387,71 +436,88 @@ namespace TechnicalAnalysis
                 optInFastPeriod_0 = 12;
                 k2 = 0.15;
             }
+            
             int lookbackSignal = EmaLookback(optInSignalPeriod_2);
             int lookbackTotal = lookbackSignal;
             lookbackTotal += EmaLookback(optInSlowPeriod_1);
+            
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
+            
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.Success;
             }
+            
             tempInteger = endIdx - startIdx + 1 + lookbackSignal;
             double[] fastEMABuffer = new double[tempInteger];
+            
             if (fastEMABuffer == null)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.AllocErr;
             }
+            
             double[] slowEMABuffer = new double[tempInteger];
+            
             if (slowEMABuffer == null)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.AllocErr;
             }
+            
             tempInteger = startIdx - lookbackSignal;
             RetCode retCode = TA_INT_EMA(tempInteger, endIdx, inReal_0, optInSlowPeriod_1, k1, ref outBegIdx1, ref outNbElement1, slowEMABuffer);
+            
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return retCode;
             }
+            
             retCode = TA_INT_EMA(tempInteger, endIdx, inReal_0, optInFastPeriod_0, k2, ref outBegIdx2, ref outNbElement2, fastEMABuffer);
+            
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return retCode;
             }
+            
             if (outBegIdx1 != tempInteger || outBegIdx2 != tempInteger || outNbElement1 != outNbElement2 || outNbElement1 != endIdx - startIdx + 1 + lookbackSignal)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.InternalError;
             }
+            
             for (i = 0; i < outNbElement1; i++)
             {
                 fastEMABuffer[i] -= slowEMABuffer[i];
             }
+            
             Array.Copy(fastEMABuffer, lookbackSignal, outMACD_0, 0, endIdx - startIdx + 1);
             retCode = TA_INT_EMA(0, outNbElement1 - 1, fastEMABuffer, optInSignalPeriod_2, 2.0 / (optInSignalPeriod_2 + 1), ref outBegIdx2, ref outNbElement2, outMACDSignal_1);
+            
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return retCode;
             }
+            
             for (i = 0; i < outNbElement2; i++)
             {
                 outMACDHist_2[i] = outMACD_0[i] - outMACDSignal_1[i];
             }
+            
             outBegIdx = startIdx;
             outNbElement = outNbElement2;
             return RetCode.Success;
@@ -462,23 +528,28 @@ namespace TechnicalAnalysis
             int tempInteger = 0;
             int outBegIdx2 = 0;
             int outNbElement2 = 0;
+            
             if (optInSlowPeriod_1 < optInFastPeriod_0)
             {
                 tempInteger = optInSlowPeriod_1;
                 optInSlowPeriod_1 = optInFastPeriod_0;
                 optInFastPeriod_0 = tempInteger;
             }
+            
             RetCode retCode = MovingAverage(startIdx, endIdx, inReal_0, optInFastPeriod_0, optInMethod_2, ref outBegIdx2, ref outNbElement2, tempBuffer);
+            
             if (retCode == RetCode.Success)
             {
                 int outNbElement1 = 0;
                 int outBegIdx1 = 0;
                 retCode = MovingAverage(startIdx, endIdx, inReal_0, optInSlowPeriod_1, optInMethod_2, ref outBegIdx1, ref outNbElement1, outReal_0);
+                
                 if (retCode == RetCode.Success)
                 {
                     int i;
                     int j;
                     tempInteger = outBegIdx1 - outBegIdx2;
+                    
                     if (doPercentageOutput == 0)
                     {
                         i = 0;
@@ -496,14 +567,11 @@ namespace TechnicalAnalysis
                         for (j = tempInteger; i < outNbElement1; j++)
                         {
                             double tempReal = outReal_0[i];
-                            if (-1E-08 >= tempReal || tempReal >= 1E-08)
-                            {
-                                outReal_0[i] = (tempBuffer[j] - tempReal) / tempReal * 100.0;
-                            }
-                            else
-                            {
-                                outReal_0[i] = 0.0;
-                            }
+                            
+                            outReal_0[i] = tempReal is >= -1E-08 or >= 1E-08
+                                ? (tempBuffer[j] - tempReal) / tempReal * 100.0
+                                : 0.0;
+                            
                             i++;
                         }
                     }
@@ -511,11 +579,13 @@ namespace TechnicalAnalysis
                     outNbElement = outNbElement1;
                 }
             }
+            
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
             }
+            
             return retCode;
         }
         
@@ -524,18 +594,22 @@ namespace TechnicalAnalysis
             int tempInteger = 0;
             int outBegIdx2 = 0;
             int outNbElement2 = 0;
+            
             if (optInSlowPeriod_1 < optInFastPeriod_0)
             {
                 tempInteger = optInSlowPeriod_1;
                 optInSlowPeriod_1 = optInFastPeriod_0;
                 optInFastPeriod_0 = tempInteger;
             }
+            
             RetCode retCode = MovingAverage(startIdx, endIdx, inReal_0, optInFastPeriod_0, optInMethod_2, ref outBegIdx2, ref outNbElement2, tempBuffer);
+            
             if (retCode == RetCode.Success)
             {
                 int outNbElement1 = 0;
                 int outBegIdx1 = 0;
                 retCode = MovingAverage(startIdx, endIdx, inReal_0, optInSlowPeriod_1, optInMethod_2, ref outBegIdx1, ref outNbElement1, outReal_0);
+                
                 if (retCode == RetCode.Success)
                 {
                     int i;
@@ -558,14 +632,11 @@ namespace TechnicalAnalysis
                         for (j = tempInteger; i < outNbElement1; j++)
                         {
                             double tempReal = outReal_0[i];
-                            if (-1E-08 >= tempReal || tempReal >= 1E-08)
-                            {
-                                outReal_0[i] = (tempBuffer[j] - tempReal) / tempReal * 100.0;
-                            }
-                            else
-                            {
-                                outReal_0[i] = 0.0;
-                            }
+                            
+                            outReal_0[i] = tempReal is >= -1E-08 or >= 1E-08
+                                ? (tempBuffer[j] - tempReal) / tempReal * 100.0
+                                : 0.0;
+                            
                             i++;
                         }
                     }
@@ -573,30 +644,36 @@ namespace TechnicalAnalysis
                     outNbElement = outNbElement1;
                 }
             }
+            
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
             }
+            
             return retCode;
         }
         
         private static RetCode TA_INT_SMA(int startIdx, int endIdx, double[] inReal_0, int optInTimePeriod_0, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
         {
             int lookbackTotal = optInTimePeriod_0 - 1;
+            
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
+            
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.Success;
             }
+            
             double periodTotal = 0.0;
             int trailingIdx = startIdx - lookbackTotal;
             int i = trailingIdx;
+            
             if (optInTimePeriod_0 > 1)
             {
                 while (i < startIdx)
@@ -605,7 +682,9 @@ namespace TechnicalAnalysis
                     i++;
                 }
             }
+            
             int outIdx = 0;
+            
             do
             {
                 periodTotal += inReal_0[i];
@@ -617,6 +696,7 @@ namespace TechnicalAnalysis
                 outIdx++;
             }
             while (i <= endIdx);
+            
             outNbElement = outIdx;
             outBegIdx = startIdx;
             return RetCode.Success;
@@ -625,19 +705,23 @@ namespace TechnicalAnalysis
         private static RetCode TA_INT_SMA(int startIdx, int endIdx, float[] inReal_0, int optInTimePeriod_0, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
         {
             int lookbackTotal = optInTimePeriod_0 - 1;
+            
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
+            
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.Success;
             }
+            
             double periodTotal = 0.0;
             int trailingIdx = startIdx - lookbackTotal;
             int i = trailingIdx;
+            
             if (optInTimePeriod_0 > 1)
             {
                 while (i < startIdx)
@@ -646,7 +730,9 @@ namespace TechnicalAnalysis
                     i++;
                 }
             }
+            
             int outIdx = 0;
+            
             do
             {
                 periodTotal += inReal_0[i];
@@ -658,6 +744,7 @@ namespace TechnicalAnalysis
                 outIdx++;
             }
             while (i <= endIdx);
+            
             outNbElement = outIdx;
             outBegIdx = startIdx;
             return RetCode.Success;
@@ -670,13 +757,16 @@ namespace TechnicalAnalysis
             int startSum = inMovAvgBegIdx + 1 - timePeriod;
             int endSum = inMovAvgBegIdx;
             double periodTotal2 = 0.0;
+            
             for (outIdx = startSum; outIdx < endSum; outIdx++)
             {
                 tempReal = inReal[outIdx];
                 tempReal *= tempReal;
                 periodTotal2 += tempReal;
             }
+            
             outIdx = 0;
+            
             while (outIdx < inMovAvgNbElement)
             {
                 tempReal = inReal[endSum];
@@ -689,14 +779,7 @@ namespace TechnicalAnalysis
                 tempReal = inMovAvg[outIdx];
                 tempReal *= tempReal;
                 meanValue2 -= tempReal;
-                if (meanValue2 >= 1E-08)
-                {
-                    output[outIdx] = Math.Sqrt(meanValue2);
-                }
-                else
-                {
-                    output[outIdx] = 0.0;
-                }
+                output[outIdx] = meanValue2 >= 1E-08 ? Math.Sqrt(meanValue2) : 0.0;
                 outIdx++;
                 startSum++;
                 endSum++;
@@ -710,13 +793,16 @@ namespace TechnicalAnalysis
             int startSum = inMovAvgBegIdx + 1 - timePeriod;
             int endSum = inMovAvgBegIdx;
             double periodTotal2 = 0.0;
+            
             for (outIdx = startSum; outIdx < endSum; outIdx++)
             {
                 tempReal = inReal[outIdx];
                 tempReal *= tempReal;
                 periodTotal2 += tempReal;
             }
+            
             outIdx = 0;
+            
             while (outIdx < inMovAvgNbElement)
             {
                 tempReal = inReal[endSum];
@@ -729,14 +815,7 @@ namespace TechnicalAnalysis
                 tempReal = inMovAvg[outIdx];
                 tempReal *= tempReal;
                 meanValue2 -= tempReal;
-                if (meanValue2 >= 1E-08)
-                {
-                    output[outIdx] = Math.Sqrt(meanValue2);
-                }
-                else
-                {
-                    output[outIdx] = 0.0;
-                }
+                output[outIdx] = meanValue2 >= 1E-08 ? Math.Sqrt(meanValue2) : 0.0;
                 outIdx++;
                 startSum++;
                 endSum++;
@@ -747,20 +826,24 @@ namespace TechnicalAnalysis
         {
             double tempReal;
             int nbInitialElementNeeded = optInTimePeriod_0 - 1;
+            
             if (startIdx < nbInitialElementNeeded)
             {
                 startIdx = nbInitialElementNeeded;
             }
+            
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.Success;
             }
+            
             double periodTotal1 = 0.0;
             double periodTotal2 = 0.0;
             int trailingIdx = startIdx - nbInitialElementNeeded;
             int i = trailingIdx;
+            
             if (optInTimePeriod_0 > 1)
             {
                 while (i < startIdx)
@@ -772,7 +855,9 @@ namespace TechnicalAnalysis
                     periodTotal2 += tempReal;
                 }
             }
+            
             int outIdx = 0;
+            
             do
             {
                 tempReal = inReal_0[i];
@@ -791,6 +876,7 @@ namespace TechnicalAnalysis
                 outIdx++;
             }
             while (i <= endIdx);
+            
             outNbElement = outIdx;
             outBegIdx = startIdx;
             return RetCode.Success;
@@ -800,20 +886,24 @@ namespace TechnicalAnalysis
         {
             double tempReal;
             int nbInitialElementNeeded = optInTimePeriod_0 - 1;
+            
             if (startIdx < nbInitialElementNeeded)
             {
                 startIdx = nbInitialElementNeeded;
             }
+            
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
                 outNbElement = 0;
                 return RetCode.Success;
             }
+            
             double periodTotal1 = 0.0;
             double periodTotal2 = 0.0;
             int trailingIdx = startIdx - nbInitialElementNeeded;
             int i = trailingIdx;
+            
             if (optInTimePeriod_0 > 1)
             {
                 while (i < startIdx)
@@ -825,7 +915,9 @@ namespace TechnicalAnalysis
                     periodTotal2 += tempReal;
                 }
             }
+            
             int outIdx = 0;
+            
             do
             {
                 tempReal = inReal_0[i];
@@ -844,6 +936,7 @@ namespace TechnicalAnalysis
                 outIdx++;
             }
             while (i <= endIdx);
+            
             outNbElement = outIdx;
             outBegIdx = startIdx;
             return RetCode.Success;
@@ -854,7 +947,7 @@ namespace TechnicalAnalysis
             public int avgPeriod;
             public double factor;
             public RangeType rangeType;
-            public TACore.CandleSettingType settingType;
+            public CandleSettingType settingType;
         }
         
         public enum CandleSettingType
@@ -917,9 +1010,9 @@ namespace TechnicalAnalysis
         
         private sealed class GlobalsType
         {
-            public TACore.CandleSetting[] candleSettings;
-            public TACore.Compatibility compatibility = TACore.Compatibility.Default;
-            public Int64[] unstablePeriod = new Int64[0x17];
+            public CandleSetting[] candleSettings;
+            public Compatibility compatibility = Compatibility.Default;
+            public long[] unstablePeriod = new long[0x17];
 
             public GlobalsType()
             {
@@ -927,10 +1020,12 @@ namespace TechnicalAnalysis
                 {
                     this.unstablePeriod[i] = 0;
                 }
-                this.candleSettings = new TACore.CandleSetting[11];
+                
+                this.candleSettings = new CandleSetting[11];
+                
                 for (int j = 0; j < this.candleSettings.Length; j++)
                 {
-                    this.candleSettings[j] = new TACore.CandleSetting();
+                    this.candleSettings[j] = new CandleSetting();
                 }
             }
         }
