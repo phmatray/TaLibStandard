@@ -1,4 +1,7 @@
 # TaLibStandard
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/84e2475f22a04bc1bed551f081029e82)](https://www.codacy.com/gh/phmatray/TaLibStandard/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=phmatray/TaLibStandard&amp;utm_campaign=Badge_Grade)
+
 TaLib in C# for .NET Standard
 
 Written by [Philippe Matray](https://matray.tech)
