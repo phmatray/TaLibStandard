@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CdlHignWave.cs" company="GLPM">
+// <copyright file="CdlHighWave.cs" company="GLPM">
 //   Copyright (c) GLPM. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines CdlHignWave.
+//   Defines CdlHighWave.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -11,8 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        // TODO: rename to HighWave
-        public static CdlHignWave CdlHignWave(
+        public static CdlHighWave CdlHighWave(
             int startIdx,
             int endIdx,
             double[] open,
@@ -24,7 +23,7 @@ namespace TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            RetCode retCode = TACore.CdlHignWave(
+            RetCode retCode = TACore.CdlHighWave(
                 startIdx,
                 endIdx,
                 open,
@@ -35,22 +34,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 outInteger);
             
-            return new CdlHignWave(retCode, outBegIdx, outNBElement, outInteger);
+            return new CdlHighWave(retCode, outBegIdx, outNBElement, outInteger);
         }
 
-        public static CdlHignWave CdlHignWave(
+        public static CdlHighWave CdlHighWave(
             int startIdx,
             int endIdx,
             float[] open,
             float[] high,
             float[] low,
             float[] close)
-            => CdlHignWave(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+            => CdlHighWave(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
-    public class CdlHignWave : IndicatorBase
+    public class CdlHighWave : IndicatorBase
     {
-        public CdlHignWave(RetCode retCode, int begIdx, int nbElement, int[] integer)
+        public CdlHighWave(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)
         {
             this.Integer = integer;

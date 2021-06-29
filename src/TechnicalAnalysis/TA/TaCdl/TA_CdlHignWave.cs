@@ -4,7 +4,7 @@ namespace TechnicalAnalysis
 
     internal partial class TACore
     {
-        public static RetCode CdlHignWave(
+        public static RetCode CdlHighWave(
             int startIdx,
             int endIdx,
             double[] inOpen,
@@ -41,7 +41,7 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            int lookbackTotal = CdlHignWaveLookback();
+            int lookbackTotal = CdlHighWaveLookback();
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -649,7 +649,7 @@ namespace TechnicalAnalysis
             return RetCode.Success;
         }
 
-        public static int CdlHignWaveLookback()
+        public static int CdlHighWaveLookback()
         {
             return Globals.candleSettings[2].avgPeriod <= Globals.candleSettings[5].avgPeriod
                         ? Globals.candleSettings[5].avgPeriod

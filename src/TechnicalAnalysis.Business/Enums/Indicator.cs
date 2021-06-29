@@ -46,7 +46,7 @@
         CdlHangingMan,
         CdlHarami,
         CdlHaramiCross,
-        CdlHignWave,
+        CdlHighWave,
         CdlHikkake,
         CdlHikkakeMod,
         CdlHomingPigeon,

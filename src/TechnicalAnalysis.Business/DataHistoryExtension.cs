@@ -224,10 +224,10 @@ namespace TechnicalAnalysis.Business
             PriceDataPoint priceDataPoint = PriceDataPoint.Close) =>
             dataHistory.ComputeIndicator(Indicator.CdlHaramiCross, priceDataPoint);
 
-        public static DataHistory ComputeCdlHignWave(
+        public static DataHistory ComputeCdlHighWave(
             this DataHistory dataHistory,
             PriceDataPoint priceDataPoint = PriceDataPoint.Close) =>
-            dataHistory.ComputeIndicator(Indicator.CdlHignWave, priceDataPoint);
+            dataHistory.ComputeIndicator(Indicator.CdlHighWave, priceDataPoint);
 
         public static DataHistory ComputeCdlHikkake(
             this DataHistory dataHistory,
@@ -927,8 +927,8 @@ namespace TechnicalAnalysis.Business
                     return TAMath.CdlHarami(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlHaramiCross:
                     return TAMath.CdlHaramiCross(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlHignWave:
-                    return TAMath.CdlHignWave(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
+                case Indicator.CdlHighWave:
+                    return TAMath.CdlHighWave(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlHikkake:
                     return TAMath.CdlHikkake(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlHikkakeMod:
