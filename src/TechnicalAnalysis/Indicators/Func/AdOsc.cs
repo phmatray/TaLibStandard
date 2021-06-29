@@ -36,7 +36,7 @@ namespace TechnicalAnalysis
                 slowPeriod,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new AdOsc(retCode, outBegIdx, outNBElement, outReal);
         }

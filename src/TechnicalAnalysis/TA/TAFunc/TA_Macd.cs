@@ -5,15 +5,15 @@ namespace TechnicalAnalysis
         public static RetCode Macd(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInFastPeriod,
-            int optInSlowPeriod,
-            int optInSignalPeriod,
+            in double[] inReal,
+            in int optInFastPeriod,
+            in int optInSlowPeriod,
+            in int optInSignalPeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outMACD,
-            double[] outMACDSignal,
-            double[] outMACDHist)
+            ref double[] outMACD,
+            ref double[] outMACDSignal,
+            ref double[] outMACDHist)
         {
             if (startIdx < 0)
             {

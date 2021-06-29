@@ -506,13 +506,13 @@ namespace TechnicalAnalysis
                 optInFastPeriod_0 = tempInteger;
             }
             
-            RetCode retCode = MovingAverage(startIdx, endIdx, inReal_0, optInFastPeriod_0, optInMethod_2, ref outBegIdx2, ref outNbElement2, tempBuffer);
+            RetCode retCode = MovingAverage(startIdx, endIdx, inReal_0, optInFastPeriod_0, optInMethod_2, ref outBegIdx2, ref outNbElement2, ref tempBuffer);
             
             if (retCode == RetCode.Success)
             {
                 int outNbElement1 = 0;
                 int outBegIdx1 = 0;
-                retCode = MovingAverage(startIdx, endIdx, inReal_0, optInSlowPeriod_1, optInMethod_2, ref outBegIdx1, ref outNbElement1, outReal_0);
+                retCode = MovingAverage(startIdx, endIdx, inReal_0, optInSlowPeriod_1, optInMethod_2, ref outBegIdx1, ref outNbElement1, ref outReal_0);
                 
                 if (retCode == RetCode.Success)
                 {

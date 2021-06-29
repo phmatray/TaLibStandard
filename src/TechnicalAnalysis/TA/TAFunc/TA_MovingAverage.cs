@@ -7,12 +7,12 @@ namespace TechnicalAnalysis
         public static RetCode MovingAverage(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
-            MAType optInMAType,
+            in double[] inReal,
+            in int optInTimePeriod,
+            in MAType optInMAType,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {
@@ -44,13 +44,34 @@ namespace TechnicalAnalysis
                 switch (optInMAType)
                 {
                     case MAType.Sma:
-                        return Sma(startIdx, endIdx, inReal, optInTimePeriod, ref outBegIdx, ref outNBElement, outReal);
+                        return Sma(
+                            startIdx,
+                            endIdx,
+                            inReal,
+                            optInTimePeriod,
+                            ref outBegIdx,
+                            ref outNBElement,
+                            ref outReal);
 
                     case MAType.Ema:
-                        return Ema(startIdx, endIdx, inReal, optInTimePeriod, ref outBegIdx, ref outNBElement, outReal);
+                        return Ema(
+                            startIdx,
+                            endIdx,
+                            inReal,
+                            optInTimePeriod,
+                            ref outBegIdx,
+                            ref outNBElement,
+                            ref outReal);
 
                     case MAType.Wma:
-                        return Wma(startIdx, endIdx, inReal, optInTimePeriod, ref outBegIdx, ref outNBElement, outReal);
+                        return Wma(
+                            startIdx,
+                            endIdx,
+                            inReal,
+                            optInTimePeriod,
+                            ref outBegIdx,
+                            ref outNBElement,
+                            ref outReal);
 
                     case MAType.Dema:
                         return Dema(
@@ -60,7 +81,7 @@ namespace TechnicalAnalysis
                             optInTimePeriod,
                             ref outBegIdx,
                             ref outNBElement,
-                            outReal);
+                            ref outReal);
 
                     case MAType.Tema:
                         return Tema(
@@ -70,7 +91,7 @@ namespace TechnicalAnalysis
                             optInTimePeriod,
                             ref outBegIdx,
                             ref outNBElement,
-                            outReal);
+                            ref outReal);
 
                     case MAType.Trima:
                         return Trima(
@@ -80,7 +101,7 @@ namespace TechnicalAnalysis
                             optInTimePeriod,
                             ref outBegIdx,
                             ref outNBElement,
-                            outReal);
+                            ref outReal);
 
                     case MAType.Kama:
                         return Kama(
@@ -90,7 +111,7 @@ namespace TechnicalAnalysis
                             optInTimePeriod,
                             ref outBegIdx,
                             ref outNBElement,
-                            outReal);
+                            ref outReal);
 
                     case MAType.Mama:
                         {
@@ -104,8 +125,8 @@ namespace TechnicalAnalysis
                                 0.05,
                                 ref outBegIdx,
                                 ref outNBElement,
-                                outReal,
-                                dummyBuffer);
+                                ref outReal,
+                                ref dummyBuffer);
                         }
 
                     case MAType.T3:
@@ -117,7 +138,7 @@ namespace TechnicalAnalysis
                             0.7,
                             ref outBegIdx,
                             ref outNBElement,
-                            outReal);
+                            ref outReal);
                 }
 
                 return RetCode.BadParam;

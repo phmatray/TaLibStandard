@@ -25,7 +25,7 @@ namespace TechnicalAnalysis
                 timePeriod,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new PlusDM(retCode, outBegIdx, outNBElement, outReal);
         }

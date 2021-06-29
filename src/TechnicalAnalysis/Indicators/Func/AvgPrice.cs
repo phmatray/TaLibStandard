@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
                 close,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new AvgPrice(retCode, outBegIdx, outNBElement, outReal);
         }

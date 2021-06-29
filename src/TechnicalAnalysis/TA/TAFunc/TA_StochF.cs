@@ -7,16 +7,16 @@ namespace TechnicalAnalysis
         public static RetCode StochF(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
-            int optInFastK_Period,
-            int optInFastD_Period,
-            MAType optInFastD_MAType,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
+            in int optInFastK_Period,
+            in int optInFastD_Period,
+            in MAType optInFastD_MAType,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outFastK,
-            double[] outFastD)
+            ref double[] outFastK,
+            ref double[] outFastD)
         {
             double[] tempBuffer;
             if (startIdx < 0)
@@ -101,7 +101,8 @@ namespace TechnicalAnalysis
                     optInFastD_MAType,
                     ref outBegIdx,
                     ref outNBElement,
-                    outFastD);
+                    ref outFastD);
+                
                 if (retCode != RetCode.Success || outNBElement == 0)
                 {
                     outBegIdx = 0;

@@ -26,8 +26,8 @@ namespace TechnicalAnalysis
                 timePeriod,
                 ref outBegIdx,
                 ref outNBElement,
-                outAroonDown,
-                outAroonUp);
+                ref outAroonDown,
+                ref outAroonUp);
             
             return new Aroon(retCode, outBegIdx, outNBElement, outAroonDown, outAroonUp);
         }

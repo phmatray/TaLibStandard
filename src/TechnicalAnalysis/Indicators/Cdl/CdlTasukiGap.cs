@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
                 close,
                 ref outBegIdx,
                 ref outNBElement,
-                outInteger);
+                ref outInteger);
             
             return new CdlTasukiGap(retCode, outBegIdx, outNBElement, outInteger);
         }

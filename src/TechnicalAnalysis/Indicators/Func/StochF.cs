@@ -37,8 +37,8 @@ namespace TechnicalAnalysis
                 fastD_MAType,
                 ref outBegIdx,
                 ref outNBElement,
-                outFastK,
-                outFastD);
+                ref outFastK,
+                ref outFastD);
             
             return new StochF(retCode, outBegIdx, outNBElement, outFastK, outFastD);
         }

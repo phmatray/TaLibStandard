@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
                 close,
                 ref outBegIdx,
                 ref outNBElement,
-                outInteger);
+                ref outInteger);
             
             return new CdlXSideGap3Methods(retCode, outBegIdx, outNBElement, outInteger);
         }

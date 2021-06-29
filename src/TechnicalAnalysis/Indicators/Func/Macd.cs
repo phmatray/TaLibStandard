@@ -34,9 +34,9 @@ namespace TechnicalAnalysis
                 optInSignalPeriod,
                 ref outBegIdx,
                 ref outNBElement,
-                outMACD,
-                outMACDSignal,
-                outMACDHist);
+                ref outMACD,
+                ref outMACDSignal,
+                ref outMACDHist);
             
             return new Macd(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
         }

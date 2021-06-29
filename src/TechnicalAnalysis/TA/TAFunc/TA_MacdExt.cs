@@ -7,18 +7,18 @@ namespace TechnicalAnalysis
         public static RetCode MacdExt(
             int startIdx,
             int endIdx,
-            double[] inReal,
+            in double[] inReal,
             int optInFastPeriod,
             MAType optInFastMAType,
             int optInSlowPeriod,
             MAType optInSlowMAType,
-            int optInSignalPeriod,
-            MAType optInSignalMAType,
+            in int optInSignalPeriod,
+            in MAType optInSignalMAType,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outMACD,
-            double[] outMACDSignal,
-            double[] outMACDHist)
+            ref double[] outMACD,
+            ref double[] outMACDSignal,
+            ref double[] outMACDHist)
         {
             int i;
             int tempInteger = 0;
@@ -115,7 +115,8 @@ namespace TechnicalAnalysis
                 optInSlowMAType,
                 ref outBegIdx1,
                 ref outNbElement1,
-                slowMABuffer);
+                ref slowMABuffer);
+            
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
@@ -131,7 +132,8 @@ namespace TechnicalAnalysis
                 optInFastMAType,
                 ref outBegIdx2,
                 ref outNbElement2,
-                fastMABuffer);
+                ref fastMABuffer);
+            
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;
@@ -160,7 +162,8 @@ namespace TechnicalAnalysis
                 optInSignalMAType,
                 ref outBegIdx2,
                 ref outNbElement2,
-                outMACDSignal);
+                ref outMACDSignal);
+            
             if (retCode != RetCode.Success)
             {
                 outBegIdx = 0;

@@ -7,10 +7,10 @@ namespace TechnicalAnalysis
         public static RetCode HtTrendMode(
             int startIdx,
             int endIdx,
-            double[] inReal,
+            in double[] inReal,
             ref int outBegIdx,
             ref int outNBElement,
-            int[] outInteger)
+            ref int[] outInteger)
         {
             double smoothedValue;
             const double a = 0.0962;

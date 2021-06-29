@@ -5,15 +5,14 @@ namespace TechnicalAnalysis
         public static RetCode AroonOsc(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            int optInTimePeriod,
+            in double[] inHigh,
+            in double[] inLow,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             int i;
-            double aroon;
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -127,7 +126,7 @@ namespace TechnicalAnalysis
             }
 
             Label_012A:
-            aroon = factor * (highestIdx - lowestIdx);
+            double aroon = factor * (highestIdx - lowestIdx);
             outReal[outIdx] = aroon;
             outIdx++;
             trailingIdx++;

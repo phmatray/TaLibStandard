@@ -34,7 +34,7 @@ namespace TechnicalAnalysis
                 penetration,
                 ref outBegIdx,
                 ref outNBElement,
-                outInteger);
+                ref outInteger);
             
             return new CdlMorningDojiStar(retCode, outBegIdx, outNBElement, outInteger);
         }

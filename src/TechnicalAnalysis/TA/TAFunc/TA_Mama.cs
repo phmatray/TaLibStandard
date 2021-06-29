@@ -7,13 +7,13 @@ namespace TechnicalAnalysis
         public static RetCode Mama(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            double optInFastLimit,
-            double optInSlowLimit,
+            in double[] inReal,
+            in double optInFastLimit,
+            in double optInSlowLimit,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outMAMA,
-            double[] outFAMA)
+            ref double[] outMAMA,
+            ref double[] outFAMA)
         {
             double smoothedValue;
             const double a = 0.0962;

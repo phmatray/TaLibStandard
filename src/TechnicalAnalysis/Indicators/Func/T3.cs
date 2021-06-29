@@ -25,7 +25,7 @@ namespace TechnicalAnalysis
                 vFactor,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new T3(retCode, outBegIdx, outNBElement, outReal);
         }

@@ -5,13 +5,13 @@ namespace TechnicalAnalysis
         public static RetCode Ppo(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInFastPeriod,
-            int optInSlowPeriod,
-            MAType optInMAType,
+            in double[] inReal,
+            in int optInFastPeriod,
+            in int optInSlowPeriod,
+            in MAType optInMAType,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {

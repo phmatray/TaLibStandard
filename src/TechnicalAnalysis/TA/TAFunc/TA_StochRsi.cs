@@ -5,15 +5,15 @@ namespace TechnicalAnalysis
         public static RetCode StochRsi(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
-            int optInFastK_Period,
-            int optInFastD_Period,
-            MAType optInFastD_MAType,
+            in double[] inReal,
+            in int optInTimePeriod,
+            in int optInFastK_Period,
+            in int optInFastD_Period,
+            in MAType optInFastD_MAType,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outFastK,
-            double[] outFastD)
+            ref double[] outFastK,
+            ref double[] outFastD)
         {
             int outNbElement1 = 0;
             int outBegIdx2 = 0;
@@ -84,7 +84,8 @@ namespace TechnicalAnalysis
                 optInTimePeriod,
                 ref outBegIdx1,
                 ref outNbElement1,
-                tempRSIBuffer);
+                ref tempRSIBuffer);
+            
             if (retCode != RetCode.Success || outNbElement1 == 0)
             {
                 outBegIdx = 0;
@@ -103,8 +104,9 @@ namespace TechnicalAnalysis
                 optInFastD_MAType,
                 ref outBegIdx2,
                 ref outNBElement,
-                outFastK,
-                outFastD);
+                ref outFastK,
+                ref outFastD);
+            
             if (retCode != RetCode.Success || outNBElement == 0)
             {
                 outBegIdx = 0;

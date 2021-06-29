@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
                 timePeriod,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new Adx(retCode, outBegIdx, outNBElement, outReal);
         }

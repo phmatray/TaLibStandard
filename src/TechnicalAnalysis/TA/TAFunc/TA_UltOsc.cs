@@ -7,15 +7,15 @@ namespace TechnicalAnalysis
         public static RetCode UltOsc(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
             int optInTimePeriod1,
             int optInTimePeriod2,
             int optInTimePeriod3,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             int outIdx;
             int[] usedFlag = new int[3];

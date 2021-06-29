@@ -26,8 +26,8 @@ namespace TechnicalAnalysis
                 slowLimit,
                 ref outBegIdx,
                 ref outNBElement,
-                outMAMA,
-                outFAMA);
+                ref outMAMA,
+                ref outFAMA);
             
             return new Mama(retCode, outBegIdx, outNBElement, outMAMA, outFAMA);
         }

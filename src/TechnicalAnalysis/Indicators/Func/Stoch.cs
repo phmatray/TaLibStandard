@@ -41,8 +41,8 @@ namespace TechnicalAnalysis
                 slowD_MAType,
                 ref outBegIdx,
                 ref outNBElement,
-                outSlowK,
-                outSlowD);
+                ref outSlowK,
+                ref outSlowD);
             
             return new Stoch(retCode, outBegIdx, outNBElement, outSlowK, outSlowD);
         }

@@ -36,9 +36,9 @@ namespace TechnicalAnalysis
                 maType,
                 ref outBegIdx,
                 ref outNBElement,
-                outRealUpperBand,
-                outRealMiddleBand,
-                outRealLowerBand);
+                ref outRealUpperBand,
+                ref outRealMiddleBand,
+                ref outRealLowerBand);
             
             return new BollingerBands(
                 retCode,

@@ -5,12 +5,12 @@ namespace TechnicalAnalysis
         public static RetCode MinMaxIndex(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
+            in double[] inReal,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            int[] outMinIdx,
-            int[] outMaxIdx)
+            ref int[] outMinIdx,
+            ref int[] outMaxIdx)
         {
             int i;
             if (startIdx < 0)

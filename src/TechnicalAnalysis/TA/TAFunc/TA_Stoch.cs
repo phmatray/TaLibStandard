@@ -7,18 +7,18 @@ namespace TechnicalAnalysis
         public static RetCode Stoch(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
-            int optInFastK_Period,
-            int optInSlowK_Period,
-            MAType optInSlowK_MAType,
-            int optInSlowD_Period,
-            MAType optInSlowD_MAType,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
+            in int optInFastK_Period,
+            in int optInSlowK_Period,
+            in MAType optInSlowK_MAType,
+            in int optInSlowD_Period,
+            in MAType optInSlowD_MAType,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outSlowK,
-            double[] outSlowD)
+            ref double[] outSlowK,
+            ref double[] outSlowD)
         {
             double[] tempBuffer;
             if (startIdx < 0)
@@ -109,7 +109,8 @@ namespace TechnicalAnalysis
                     optInSlowK_MAType,
                     ref outBegIdx,
                     ref outNBElement,
-                    tempBuffer);
+                    ref tempBuffer);
+                
                 if (retCode != RetCode.Success || outNBElement == 0)
                 {
                     outBegIdx = 0;
@@ -125,7 +126,8 @@ namespace TechnicalAnalysis
                     optInSlowD_MAType,
                     ref outBegIdx,
                     ref outNBElement,
-                    outSlowD);
+                    ref outSlowD);
+                
                 Array.Copy(tempBuffer, lookbackDSlow, outSlowK, 0, outNBElement);
                 if (retCode != RetCode.Success)
                 {

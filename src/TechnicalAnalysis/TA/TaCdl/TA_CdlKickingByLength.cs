@@ -7,13 +7,13 @@ namespace TechnicalAnalysis
         public static RetCode CdlKickingByLength(
             int startIdx,
             int endIdx,
-            double[] inOpen,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
+            in double[] inOpen,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
             ref int outBegIdx,
             ref int outNBElement,
-            int[] outInteger)
+            ref int[] outInteger)
         {
             int totIdx;
             int num70;

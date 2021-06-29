@@ -24,7 +24,7 @@ namespace TechnicalAnalysis
                 timePeriod,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new LinearRegAngle(retCode, outBegIdx, outNBElement, outReal);
         }

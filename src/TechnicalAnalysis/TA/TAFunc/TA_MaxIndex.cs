@@ -5,11 +5,11 @@ namespace TechnicalAnalysis
         public static RetCode MaxIndex(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
+            in double[] inReal,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            int[] outInteger)
+            ref int[] outInteger)
         {
             if (startIdx < 0)
             {

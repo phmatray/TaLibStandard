@@ -7,11 +7,11 @@ namespace TechnicalAnalysis
         public static RetCode HtSine(
             int startIdx,
             int endIdx,
-            double[] inReal,
+            in double[] inReal,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outSine,
-            double[] outLeadSine)
+            ref double[] outSine,
+            ref double[] outLeadSine)
         {
             double smoothedValue;
             const double a = 0.0962;

@@ -5,11 +5,11 @@ namespace TechnicalAnalysis
         public static RetCode Tema(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
+            in double[] inReal,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {

@@ -44,7 +44,7 @@ namespace TechnicalAnalysis
                 accelerationMaxShort,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new SarExt(retCode, outBegIdx, outNBElement, outReal);
         }

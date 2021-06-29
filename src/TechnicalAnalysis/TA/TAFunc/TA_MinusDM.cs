@@ -5,12 +5,12 @@ namespace TechnicalAnalysis
         public static RetCode MinusDM(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            int optInTimePeriod,
+            in double[] inHigh,
+            in double[] inLow,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             double tempReal;
             int today;

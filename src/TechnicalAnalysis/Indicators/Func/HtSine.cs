@@ -18,7 +18,7 @@ namespace TechnicalAnalysis
             double[] outSine = new double[endIdx - startIdx + 1];
             double[] outLeadSine = new double[endIdx - startIdx + 1];
 
-            RetCode retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outSine, outLeadSine);
+            RetCode retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outSine, ref outLeadSine);
             
             return new HtSine(retCode, outBegIdx, outNBElement, outSine, outLeadSine);
         }

@@ -5,11 +5,11 @@ namespace TechnicalAnalysis
         public static RetCode Obv(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            double[] inVolume,
+            in double[] inReal,
+            in double[] inVolume,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {

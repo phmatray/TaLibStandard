@@ -7,13 +7,13 @@ namespace TechnicalAnalysis
         public static RetCode PlusDI(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
-            int optInTimePeriod,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             double tempReal;
             int today;

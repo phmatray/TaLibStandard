@@ -5,11 +5,11 @@ namespace TechnicalAnalysis
         public static RetCode Trima(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
+            in double[] inReal,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             int i;
             double tempReal;

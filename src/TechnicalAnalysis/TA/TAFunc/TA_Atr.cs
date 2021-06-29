@@ -5,13 +5,13 @@ namespace TechnicalAnalysis
         public static RetCode Atr(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
-            int optInTimePeriod,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             int outNbElement1 = 0;
             int outBegIdx1 = 0;
@@ -56,7 +56,7 @@ namespace TechnicalAnalysis
 
             if (optInTimePeriod <= 1)
             {
-                return TrueRange(startIdx, endIdx, inHigh, inLow, inClose, ref outBegIdx, ref outNBElement, outReal);
+                return TrueRange(startIdx, endIdx, inHigh, inLow, inClose, ref outBegIdx, ref outNBElement, ref outReal);
             }
 
             double[] tempBuffer = new double[lookbackTotal + (endIdx - startIdx) + 1];
@@ -68,7 +68,7 @@ namespace TechnicalAnalysis
                 inClose,
                 ref outBegIdx1,
                 ref outNbElement1,
-                tempBuffer);
+                ref tempBuffer);
             if (retCode == RetCode.Success)
             {
                 retCode = TA_INT_SMA(

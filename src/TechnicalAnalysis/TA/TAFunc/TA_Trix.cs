@@ -5,11 +5,11 @@ namespace TechnicalAnalysis
         public static RetCode Trix(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
+            in double[] inReal,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             int nbElement = 0;
             int begIdx = 0;
@@ -110,7 +110,8 @@ namespace TechnicalAnalysis
             }
 
             nbElementToOutput -= emaLookback;
-            retCode = Roc(0, nbElementToOutput, tempBuffer, 1, ref begIdx, ref outNBElement, outReal);
+            retCode = Roc(0, nbElementToOutput, tempBuffer, 1, ref begIdx, ref outNBElement, ref outReal);
+            
             if (retCode != RetCode.Success || outNBElement == 0)
             {
                 outNBElement = 0;

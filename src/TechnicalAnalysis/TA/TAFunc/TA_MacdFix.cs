@@ -5,13 +5,13 @@ namespace TechnicalAnalysis
         public static RetCode MacdFix(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInSignalPeriod,
+            in double[] inReal,
+            in int optInSignalPeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outMACD,
-            double[] outMACDSignal,
-            double[] outMACDHist)
+            ref double[] outMACD,
+            ref double[] outMACDSignal,
+            ref double[] outMACDHist)
         {
             if (startIdx < 0)
             {

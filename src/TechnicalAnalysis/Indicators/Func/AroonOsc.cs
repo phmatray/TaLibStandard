@@ -25,7 +25,7 @@ namespace TechnicalAnalysis
                 timePeriod,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new AroonOsc(retCode, outBegIdx, outNBElement, outReal);
         }

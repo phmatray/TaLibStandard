@@ -5,14 +5,14 @@ namespace TechnicalAnalysis
         public static RetCode MovingAverageVariablePeriod(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            double[] inPeriods,
-            int optInMinPeriod,
-            int optInMaxPeriod,
-            MAType optInMAType,
+            in double[] inReal,
+            in double[] inPeriods,
+            in int optInMinPeriod,
+            in int optInMaxPeriod,
+            in MAType optInMAType,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             int i;
             int tempInt = 0;
@@ -121,7 +121,7 @@ namespace TechnicalAnalysis
                         optInMAType,
                         ref localBegIdx,
                         ref localNbElement,
-                        localOutputArray);
+                        ref localOutputArray);
                     if (retCode != RetCode.Success)
                     {
                         outBegIdx = 0;

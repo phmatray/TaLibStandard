@@ -34,7 +34,7 @@ namespace TechnicalAnalysis
                 penetration,
                 ref outBegIdx,
                 ref outNBElement,
-                outInteger);
+                ref outInteger);
             
             return new CdlDarkCloudCover(retCode, outBegIdx, outNBElement, outInteger);
         }

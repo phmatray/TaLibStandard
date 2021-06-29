@@ -25,7 +25,7 @@ namespace TechnicalAnalysis
                 nbDev,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new Variance(retCode, outBegIdx, outNBElement, outReal);
         }

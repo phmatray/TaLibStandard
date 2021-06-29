@@ -5,13 +5,13 @@ namespace TechnicalAnalysis
         public static RetCode Aroon(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            int optInTimePeriod,
+            in double[] inHigh,
+            in double[] inLow,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outAroonDown,
-            double[] outAroonUp)
+            ref double[] outAroonDown,
+            ref double[] outAroonUp)
         {
             int i;
             if (startIdx < 0)

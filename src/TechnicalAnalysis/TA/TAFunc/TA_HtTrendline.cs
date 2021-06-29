@@ -7,10 +7,10 @@ namespace TechnicalAnalysis
         public static RetCode HtTrendline(
             int startIdx,
             int endIdx,
-            double[] inReal,
+            in double[] inReal,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             double smoothedValue;
             const double a = 0.0962;

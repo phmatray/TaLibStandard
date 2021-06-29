@@ -25,7 +25,7 @@ namespace TechnicalAnalysis
                 close,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new TrueRange(retCode, outBegIdx, outNBElement, outReal);
         }

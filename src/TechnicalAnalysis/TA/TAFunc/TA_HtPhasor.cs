@@ -7,11 +7,11 @@ namespace TechnicalAnalysis
         public static RetCode HtPhasor(
             int startIdx,
             int endIdx,
-            double[] inReal,
+            in double[] inReal,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outInPhase,
-            double[] outQuadrature)
+            ref double[] outInPhase,
+            ref double[] outQuadrature)
         {
             double smoothedValue;
             const double a = 0.0962;

@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
                 volume,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
 
             return new Ad(retCode, outBegIdx, outNBElement, outReal);
         }

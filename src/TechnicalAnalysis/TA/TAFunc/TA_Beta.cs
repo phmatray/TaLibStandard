@@ -5,24 +5,24 @@ namespace TechnicalAnalysis
         public static RetCode Beta(
             int startIdx,
             int endIdx,
-            double[] inReal0,
-            double[] inReal1,
-            int optInTimePeriod,
+            in double[] inReal0,
+            in double[] inReal1,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             double x;
             double y;
-            double S_xx = 0.0;
-            double S_xy = 0.0;
-            double S_x = 0.0;
-            double S_y = 0.0;
-            double last_price_x = 0.0;
-            double last_price_y = 0.0;
-            double trailing_last_price_x = 0.0;
-            double trailing_last_price_y = 0.0;
-            double tmp_real = 0.0;
+            double sXX = 0.0;
+            double sXY = 0.0;
+            double sX = 0.0;
+            double sY = 0.0;
+            double lastPriceX = 0.0;
+            double lastPriceY = 0.0;
+            double trailingLastPriceX = 0.0;
+            double trailingLastPriceY = 0.0;
+            double tmpReal = 0.0;
             double n = 0.0;
             if (startIdx < 0)
             {
@@ -68,10 +68,10 @@ namespace TechnicalAnalysis
             }
 
             int trailingIdx = startIdx - nbInitialElementNeeded;
-            trailing_last_price_x = inReal0[trailingIdx];
-            last_price_x = trailing_last_price_x;
-            trailing_last_price_y = inReal1[trailingIdx];
-            last_price_y = trailing_last_price_y;
+            trailingLastPriceX = inReal0[trailingIdx];
+            lastPriceX = trailingLastPriceX;
+            trailingLastPriceY = inReal1[trailingIdx];
+            lastPriceY = trailingLastPriceY;
             trailingIdx++;
             int i = trailingIdx;
             while (true)
@@ -81,93 +81,93 @@ namespace TechnicalAnalysis
                     break;
                 }
 
-                tmp_real = inReal0[i];
-                if (last_price_x is >= -1E-08 or >= 1E-08)
+                tmpReal = inReal0[i];
+                if (lastPriceX is >= -1E-08 or >= 1E-08)
                 {
-                    x = (tmp_real - last_price_x) / last_price_x;
+                    x = (tmpReal - lastPriceX) / lastPriceX;
                 }
                 else
                 {
                     x = 0.0;
                 }
 
-                last_price_x = tmp_real;
-                tmp_real = inReal1[i];
+                lastPriceX = tmpReal;
+                tmpReal = inReal1[i];
                 i++;
-                if (last_price_y is >= -1E-08 or >= 1E-08)
+                if (lastPriceY is >= -1E-08 or >= 1E-08)
                 {
-                    y = (tmp_real - last_price_y) / last_price_y;
+                    y = (tmpReal - lastPriceY) / lastPriceY;
                 }
                 else
                 {
                     y = 0.0;
                 }
 
-                last_price_y = tmp_real;
-                S_xx += x * x;
-                S_xy += x * y;
-                S_x += x;
-                S_y += y;
+                lastPriceY = tmpReal;
+                sXX += x * x;
+                sXY += x * y;
+                sX += x;
+                sY += y;
             }
 
             int outIdx = 0;
             n = optInTimePeriod;
             do
             {
-                tmp_real = inReal0[i];
-                if (last_price_x is >= -1E-08 or >= 1E-08)
+                tmpReal = inReal0[i];
+                if (lastPriceX is >= -1E-08 or >= 1E-08)
                 {
-                    x = (tmp_real - last_price_x) / last_price_x;
+                    x = (tmpReal - lastPriceX) / lastPriceX;
                 }
                 else
                 {
                     x = 0.0;
                 }
 
-                last_price_x = tmp_real;
-                tmp_real = inReal1[i];
+                lastPriceX = tmpReal;
+                tmpReal = inReal1[i];
                 i++;
-                if (last_price_y is >= -1E-08 or >= 1E-08)
+                if (lastPriceY is >= -1E-08 or >= 1E-08)
                 {
-                    y = (tmp_real - last_price_y) / last_price_y;
+                    y = (tmpReal - lastPriceY) / lastPriceY;
                 }
                 else
                 {
                     y = 0.0;
                 }
 
-                last_price_y = tmp_real;
-                S_xx += x * x;
-                S_xy += x * y;
-                S_x += x;
-                S_y += y;
-                tmp_real = inReal0[trailingIdx];
-                if (trailing_last_price_x is >= -1E-08 or >= 1E-08)
+                lastPriceY = tmpReal;
+                sXX += x * x;
+                sXY += x * y;
+                sX += x;
+                sY += y;
+                tmpReal = inReal0[trailingIdx];
+                if (trailingLastPriceX is >= -1E-08 or >= 1E-08)
                 {
-                    x = (tmp_real - trailing_last_price_x) / trailing_last_price_x;
+                    x = (tmpReal - trailingLastPriceX) / trailingLastPriceX;
                 }
                 else
                 {
                     x = 0.0;
                 }
 
-                trailing_last_price_x = tmp_real;
-                tmp_real = inReal1[trailingIdx];
+                trailingLastPriceX = tmpReal;
+                tmpReal = inReal1[trailingIdx];
                 trailingIdx++;
-                if (trailing_last_price_y is >= -1E-08 or >= 1E-08)
+                if (trailingLastPriceY is >= -1E-08 or >= 1E-08)
                 {
-                    y = (tmp_real - trailing_last_price_y) / trailing_last_price_y;
+                    y = (tmpReal - trailingLastPriceY) / trailingLastPriceY;
                 }
                 else
                 {
                     y = 0.0;
                 }
 
-                trailing_last_price_y = tmp_real;
-                tmp_real = n * S_xx - S_x * S_x;
-                if (tmp_real is >= -1E-08 or >= 1E-08)
+                trailingLastPriceY = tmpReal;
+                tmpReal = n * sXX - sX * sX;
+                if (tmpReal is >= -1E-08 or >= 1E-08)
                 {
-                    outReal[outIdx] = (n * S_xy - S_x * S_y) / tmp_real;
+                    outReal[outIdx] = (n * sXY - sX * sY) / tmpReal;
                     outIdx++;
                 }
                 else
@@ -176,10 +176,10 @@ namespace TechnicalAnalysis
                     outIdx++;
                 }
 
-                S_xx -= x * x;
-                S_xy -= x * y;
-                S_x -= x;
-                S_y -= y;
+                sXX -= x * x;
+                sXY -= x * y;
+                sX -= x;
+                sY -= y;
             }
             while (i <= endIdx);
 

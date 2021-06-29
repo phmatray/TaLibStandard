@@ -5,13 +5,13 @@ namespace TechnicalAnalysis
         public static RetCode Ad(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
-            double[] inVolume,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
+            in double[] inVolume,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {

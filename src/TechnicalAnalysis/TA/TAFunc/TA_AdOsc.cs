@@ -5,15 +5,15 @@ namespace TechnicalAnalysis
         public static RetCode AdOsc(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
-            double[] inVolume,
-            int optInFastPeriod,
-            int optInSlowPeriod,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
+            in double[] inVolume,
+            in int optInFastPeriod,
+            in int optInSlowPeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {
@@ -65,10 +65,10 @@ namespace TechnicalAnalysis
             outBegIdx = startIdx;
             int today = startIdx - lookbackTotal;
             double ad = 0.0;
-            double fastk = 2.0 / (optInFastPeriod + 1);
-            double one_minus_fastk = 1.0 - fastk;
-            double slowk = 2.0 / (optInSlowPeriod + 1);
-            double one_minus_slowk = 1.0 - slowk;
+            double fastK = 2.0 / (optInFastPeriod + 1);
+            double oneMinusFastK = 1.0 - fastK;
+            double slowK = 2.0 / (optInSlowPeriod + 1);
+            double oneMinusSlowK = 1.0 - slowK;
             double high = inHigh[today];
             double low = inLow[today];
             double tmp = high - low;
@@ -98,8 +98,8 @@ namespace TechnicalAnalysis
                 }
 
                 today++;
-                fastEMA = fastk * ad + one_minus_fastk * fastEMA;
-                slowEMA = slowk * ad + one_minus_slowk * slowEMA;
+                fastEMA = fastK * ad + oneMinusFastK * fastEMA;
+                slowEMA = slowK * ad + oneMinusSlowK * slowEMA;
             }
 
             int outIdx = 0;
@@ -120,8 +120,8 @@ namespace TechnicalAnalysis
                 }
 
                 today++;
-                fastEMA = fastk * ad + one_minus_fastk * fastEMA;
-                slowEMA = slowk * ad + one_minus_slowk * slowEMA;
+                fastEMA = fastK * ad + oneMinusFastK * fastEMA;
+                slowEMA = slowK * ad + oneMinusSlowK * slowEMA;
                 outReal[outIdx] = fastEMA - slowEMA;
                 outIdx++;
             }

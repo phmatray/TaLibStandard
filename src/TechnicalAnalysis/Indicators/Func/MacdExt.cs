@@ -40,9 +40,9 @@ namespace TechnicalAnalysis
                 signalMAType,
                 ref outBegIdx,
                 ref outNBElement,
-                outMACD,
-                outMACDSignal,
-                outMACDHist);
+                ref outMACD,
+                ref outMACDSignal,
+                ref outMACDHist);
             
             return new MacdExt(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
         }

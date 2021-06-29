@@ -5,11 +5,11 @@ namespace TechnicalAnalysis
         public static RetCode MedPrice(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
+            in double[] inHigh,
+            in double[] inLow,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {

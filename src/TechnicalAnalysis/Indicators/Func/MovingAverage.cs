@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
                 maType,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
 
             return new MovingAverage(retCode, outBegIdx, outNBElement, outReal);
         }

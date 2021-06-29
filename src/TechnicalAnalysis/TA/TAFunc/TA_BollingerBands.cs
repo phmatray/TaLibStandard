@@ -7,16 +7,16 @@ namespace TechnicalAnalysis
         public static RetCode BollingerBands(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
-            double optInNbDevUp,
-            double optInNbDevDn,
-            MAType optInMAType,
+            in double[] inReal,
+            in int optInTimePeriod,
+            in double optInNbDevUp,
+            in double optInNbDevDn,
+            in MAType optInMAType,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outRealUpperBand,
-            double[] outRealMiddleBand,
-            double[] outRealLowerBand)
+            ref double[] outRealUpperBand,
+            ref double[] outRealMiddleBand,
+            ref double[] outRealLowerBand)
         {
             int i;
             double tempReal2;
@@ -92,7 +92,7 @@ namespace TechnicalAnalysis
                 optInMAType,
                 ref outBegIdx,
                 ref outNBElement,
-                tempBuffer1);
+                ref tempBuffer1);
             if (retCode != RetCode.Success || outNBElement == 0)
             {
                 outNBElement = 0;
@@ -119,7 +119,8 @@ namespace TechnicalAnalysis
                     1.0,
                     ref outBegIdx,
                     ref outNBElement,
-                    tempBuffer2);
+                    ref tempBuffer2);
+                
                 if (retCode != RetCode.Success)
                 {
                     outNBElement = 0;

@@ -7,19 +7,19 @@ namespace TechnicalAnalysis
         public static RetCode SarExt(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            double optInStartValue,
-            double optInOffsetOnReverse,
+            in double[] inHigh,
+            in double[] inLow,
+            in double optInStartValue,
+            in double optInOffsetOnReverse,
             double optInAccelerationInitLong,
             double optInAccelerationLong,
-            double optInAccelerationMaxLong,
+            in double optInAccelerationMaxLong,
             double optInAccelerationInitShort,
             double optInAccelerationShort,
-            double optInAccelerationMaxShort,
+            in double optInAccelerationMaxShort,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             double sar;
             double ep;
@@ -119,7 +119,7 @@ namespace TechnicalAnalysis
             if (optInStartValue == 0.0)
             {
                 int tempInt = 0;
-                RetCode retCode = MinusDM(startIdx, startIdx, inHigh, inLow, 1, ref tempInt, ref tempInt, ep_temp);
+                RetCode retCode = MinusDM(startIdx, startIdx, inHigh, inLow, 1, ref tempInt, ref tempInt, ref ep_temp);
                 if (ep_temp[0] > 0.0)
                 {
                     isLong = 0;

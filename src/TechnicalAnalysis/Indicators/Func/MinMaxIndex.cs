@@ -25,8 +25,8 @@ namespace TechnicalAnalysis
                 timePeriod,
                 ref outBegIdx,
                 ref outNBElement,
-                outMinIdx,
-                outMaxIdx);
+                ref outMinIdx,
+                ref outMaxIdx);
             
             return new MinMaxIndex(retCode, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
         }

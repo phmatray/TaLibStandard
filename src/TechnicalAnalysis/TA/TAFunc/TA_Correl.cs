@@ -7,12 +7,12 @@ namespace TechnicalAnalysis
         public static RetCode Correl(
             int startIdx,
             int endIdx,
-            double[] inReal0,
-            double[] inReal1,
-            int optInTimePeriod,
+            in double[] inReal0,
+            in double[] inReal1,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             double y;
             double x;

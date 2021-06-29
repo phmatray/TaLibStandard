@@ -26,9 +26,9 @@ namespace TechnicalAnalysis
                 signalPeriod,
                 ref outBegIdx,
                 ref outNBElement,
-                outMACD,
-                outMACDSignal,
-                outMACDHist);
+                ref outMACD,
+                ref outMACDSignal,
+                ref outMACDHist);
             
             return new MacdFix(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
         }

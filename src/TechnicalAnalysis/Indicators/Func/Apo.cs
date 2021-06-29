@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
                 maType,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new Apo(retCode, outBegIdx, outNBElement, outReal);
         }

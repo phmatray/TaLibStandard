@@ -7,11 +7,11 @@ namespace TechnicalAnalysis
         public static RetCode Kama(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
+            in double[] inReal,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             double tempReal;
             const double constMax = 0.064516129032258063;

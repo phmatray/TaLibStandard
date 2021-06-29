@@ -5,11 +5,11 @@ namespace TechnicalAnalysis
         public static RetCode Add(
             int startIdx,
             int endIdx,
-            double[] inReal0,
-            double[] inReal1,
+            in double[] inReal0,
+            in double[] inReal1,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {

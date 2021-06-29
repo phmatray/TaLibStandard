@@ -5,12 +5,12 @@ namespace TechnicalAnalysis
         public static RetCode Variance(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
-            double optInNbDev,
+            in double[] inReal,
+            in int optInTimePeriod,
+            in double optInNbDev,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {

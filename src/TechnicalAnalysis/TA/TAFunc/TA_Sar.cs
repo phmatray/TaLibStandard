@@ -5,13 +5,13 @@ namespace TechnicalAnalysis
         public static RetCode Sar(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
+            in double[] inHigh,
+            in double[] inLow,
             double optInAcceleration,
-            double optInMaximum,
+            in double optInMaximum,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             double sar;
             double ep;
@@ -67,7 +67,7 @@ namespace TechnicalAnalysis
                 af = optInAcceleration;
             }
 
-            RetCode retCode = MinusDM(startIdx, startIdx, inHigh, inLow, 1, ref tempInt, ref tempInt, ep_temp);
+            RetCode retCode = MinusDM(startIdx, startIdx, inHigh, inLow, 1, ref tempInt, ref tempInt, ref ep_temp);
             if (ep_temp[0] > 0.0)
             {
                 isLong = 0;

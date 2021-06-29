@@ -7,14 +7,14 @@ namespace TechnicalAnalysis
         public static RetCode CdlDarkCloudCover(
             int startIdx,
             int endIdx,
-            double[] inOpen,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
-            double optInPenetration,
+            in double[] inOpen,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
+            in double optInPenetration,
             ref int outBegIdx,
             ref int outNBElement,
-            int[] outInteger)
+            ref int[] outInteger)
         {
             double num5;
             double num10;

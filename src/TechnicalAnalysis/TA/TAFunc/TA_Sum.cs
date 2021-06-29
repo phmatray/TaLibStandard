@@ -5,11 +5,11 @@ namespace TechnicalAnalysis
         public static RetCode Sum(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
+            in double[] inReal,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {
@@ -52,13 +52,10 @@ namespace TechnicalAnalysis
             double periodTotal = 0.0;
             int trailingIdx = startIdx - lookbackTotal;
             int i = trailingIdx;
-            if (optInTimePeriod > 1)
+            while (i < startIdx)
             {
-                while (i < startIdx)
-                {
-                    periodTotal += inReal[i];
-                    i++;
-                }
+                periodTotal += inReal[i];
+                i++;
             }
 
             int outIdx = 0;

@@ -5,14 +5,14 @@ namespace TechnicalAnalysis
         public static RetCode Mfi(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
-            double[] inVolume,
-            int optInTimePeriod,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
+            in double[] inVolume,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             int mflow_Idx = 0;
             int maxIdx_mflow = 49;

@@ -7,16 +7,16 @@ namespace TechnicalAnalysis
         public static RetCode Cci(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
-            int optInTimePeriod,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
+            in int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
-            int circBuffer_Idx = 0;
-            int maxIdx_circBuffer = 29;
+            int circBufferIdx = 0;
+            int maxIdxCircBuffer = 29;
             
             if (startIdx < 0)
             {
@@ -58,16 +58,16 @@ namespace TechnicalAnalysis
 
             double[] circBuffer = new double[optInTimePeriod];
 
-            maxIdx_circBuffer = optInTimePeriod - 1;
+            maxIdxCircBuffer = optInTimePeriod - 1;
             int i = startIdx - lookbackTotal;
             while (i < startIdx)
             {
-                circBuffer[circBuffer_Idx] = (inHigh[i] + inLow[i] + inClose[i]) / 3.0;
+                circBuffer[circBufferIdx] = (inHigh[i] + inLow[i] + inClose[i]) / 3.0;
                 i++;
-                circBuffer_Idx++;
-                if (circBuffer_Idx > maxIdx_circBuffer)
+                circBufferIdx++;
+                if (circBufferIdx > maxIdxCircBuffer)
                 {
-                    circBuffer_Idx = 0;
+                    circBufferIdx = 0;
                 }
             }
 
@@ -75,7 +75,7 @@ namespace TechnicalAnalysis
             do
             {
                 double lastValue = (inHigh[i] + inLow[i] + inClose[i]) / 3.0;
-                circBuffer[circBuffer_Idx] = lastValue;
+                circBuffer[circBufferIdx] = lastValue;
                 double theAverage = 0.0;
                 int j = 0;
                 while (j < optInTimePeriod)
@@ -103,10 +103,10 @@ namespace TechnicalAnalysis
                     outIdx++;
                 }
 
-                circBuffer_Idx++;
-                if (circBuffer_Idx > maxIdx_circBuffer)
+                circBufferIdx++;
+                if (circBufferIdx > maxIdxCircBuffer)
                 {
-                    circBuffer_Idx = 0;
+                    circBufferIdx = 0;
                 }
 
                 i++;

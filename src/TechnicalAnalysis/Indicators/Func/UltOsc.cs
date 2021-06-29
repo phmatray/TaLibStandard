@@ -36,7 +36,7 @@ namespace TechnicalAnalysis
                 timePeriod3,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new UltOsc(retCode, outBegIdx, outNBElement, outReal);
         }

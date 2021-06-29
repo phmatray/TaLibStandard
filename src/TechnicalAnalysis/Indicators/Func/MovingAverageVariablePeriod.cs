@@ -34,7 +34,7 @@ namespace TechnicalAnalysis
                 maType,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new MovingAverageVariablePeriod(retCode, outBegIdx, outNBElement, outReal);
         }

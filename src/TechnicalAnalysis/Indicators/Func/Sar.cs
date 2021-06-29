@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
                 maximum,
                 ref outBegIdx,
                 ref outNBElement,
-                outReal);
+                ref outReal);
             
             return new Sar(retCode, outBegIdx, outNBElement, outReal);
         }

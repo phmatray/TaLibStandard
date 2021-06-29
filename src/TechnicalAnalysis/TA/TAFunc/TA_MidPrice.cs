@@ -5,12 +5,12 @@ namespace TechnicalAnalysis
         public static RetCode MidPrice(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
+            in double[] inHigh,
+            in double[] inLow,
             int optInTimePeriod,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {

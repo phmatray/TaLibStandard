@@ -5,12 +5,12 @@ namespace TechnicalAnalysis
         public static RetCode T3(
             int startIdx,
             int endIdx,
-            double[] inReal,
-            int optInTimePeriod,
-            double optInVFactor,
+            in double[] inReal,
+            in int optInTimePeriod,
+            in double optInVFactor,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             int i;
             if (startIdx < 0)

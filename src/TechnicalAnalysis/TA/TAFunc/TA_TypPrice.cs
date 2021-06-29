@@ -5,12 +5,12 @@ namespace TechnicalAnalysis
         public static RetCode TypPrice(
             int startIdx,
             int endIdx,
-            double[] inHigh,
-            double[] inLow,
-            double[] inClose,
+            in double[] inHigh,
+            in double[] inLow,
+            in double[] inClose,
             ref int outBegIdx,
             ref int outNBElement,
-            double[] outReal)
+            ref double[] outReal)
         {
             if (startIdx < 0)
             {
