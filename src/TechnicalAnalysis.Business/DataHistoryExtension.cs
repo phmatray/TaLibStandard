@@ -898,7 +898,7 @@ namespace TechnicalAnalysis.Business
                 case Indicator.CdlClosingMarubozu:
                     return TAMath.CdlClosingMarubozu(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlConcealBabysWall:
-                    return TAMath.CdlConcealBabysWall(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
+                    return TAMath.CdlConcealBabySwallow(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlCounterAttack:
                     return TAMath.CdlCounterAttack(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlDarkCloudCover:

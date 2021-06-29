@@ -4,7 +4,7 @@ namespace TechnicalAnalysis
 
     internal partial class TACore
     {
-        public static RetCode CdlConcealBabysWall(
+        public static RetCode CdlConcealBabySwallow(
             int startIdx,
             int endIdx,
             double[] inOpen,

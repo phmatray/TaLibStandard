@@ -11,8 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        // TODO: rename to ConcealBabySwallow
-        public static CdlConcealBabysWall CdlConcealBabysWall(
+        public static CdlConcealBabySwallow CdlConcealBabySwallow(
             int startIdx,
             int endIdx,
             double[] open,
@@ -24,7 +23,7 @@ namespace TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            RetCode retCode = TACore.CdlConcealBabysWall(
+            RetCode retCode = TACore.CdlConcealBabySwallow(
                 startIdx,
                 endIdx,
                 open,
@@ -35,17 +34,17 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 outInteger);
             
-            return new CdlConcealBabysWall(retCode, outBegIdx, outNBElement, outInteger);
+            return new CdlConcealBabySwallow(retCode, outBegIdx, outNBElement, outInteger);
         }
 
-        public static CdlConcealBabysWall CdlConcealBabysWall(
+        public static CdlConcealBabySwallow CdlConcealBabySwallow(
             int startIdx,
             int endIdx,
             float[] open,
             float[] high,
             float[] low,
             float[] close)
-            => CdlConcealBabysWall(
+            => CdlConcealBabySwallow(
                 startIdx,
                 endIdx,
                 open.ToDouble(),
@@ -54,9 +53,9 @@ namespace TechnicalAnalysis
                 close.ToDouble());
     }
 
-    public class CdlConcealBabysWall : IndicatorBase
+    public class CdlConcealBabySwallow : IndicatorBase
     {
-        public CdlConcealBabysWall(RetCode retCode, int begIdx, int nbElement, int[] integer)
+        public CdlConcealBabySwallow(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)
         {
             this.Integer = integer;
