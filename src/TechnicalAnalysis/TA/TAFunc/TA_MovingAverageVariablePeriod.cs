@@ -36,20 +36,12 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInMinPeriod == -2147483648)
-            {
-                optInMinPeriod = 2;
-            }
-            else if (optInMinPeriod is < 2 or > 100000)
+            if (optInMinPeriod is < 2 or > 100000)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInMaxPeriod == -2147483648)
-            {
-                optInMaxPeriod = 30;
-            }
-            else if (optInMaxPeriod is < 2 or > 100000)
+            if (optInMaxPeriod is < 2 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -157,20 +149,12 @@ namespace TechnicalAnalysis
             int optInMaxPeriod,
             MAType optInMAType)
         {
-            if (optInMinPeriod == -2147483648)
-            {
-                optInMinPeriod = 2;
-            }
-            else if (optInMinPeriod is < 2 or > 100000)
+            if (optInMinPeriod is < 2 or > 100000)
             {
                 return -1;
             }
 
-            if (optInMaxPeriod == -2147483648)
-            {
-                optInMaxPeriod = 30;
-            }
-            else if (optInMaxPeriod is < 2 or > 100000)
+            if (optInMaxPeriod is < 2 or > 100000)
             {
                 return -1;
             }

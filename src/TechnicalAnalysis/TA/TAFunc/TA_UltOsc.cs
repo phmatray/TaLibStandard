@@ -36,29 +36,17 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInTimePeriod1 == -2147483648)
-            {
-                optInTimePeriod1 = 7;
-            }
-            else if (optInTimePeriod1 is < 1 or > 100000)
+            if (optInTimePeriod1 is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInTimePeriod2 == -2147483648)
-            {
-                optInTimePeriod2 = 14;
-            }
-            else if (optInTimePeriod2 is < 1 or > 100000)
+            if (optInTimePeriod2 is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInTimePeriod3 == -2147483648)
-            {
-                optInTimePeriod3 = 28;
-            }
-            else if (optInTimePeriod3 is < 1 or > 100000)
+            if (optInTimePeriod3 is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -396,29 +384,17 @@ namespace TechnicalAnalysis
         public static int UltOscLookback(int optInTimePeriod1, int optInTimePeriod2, int optInTimePeriod3)
         {
             int num2;
-            if (optInTimePeriod1 == -2147483648)
-            {
-                optInTimePeriod1 = 7;
-            }
-            else if (optInTimePeriod1 is < 1 or > 100000)
+            if (optInTimePeriod1 is < 1 or > 100000)
             {
                 return -1;
             }
 
-            if (optInTimePeriod2 == -2147483648)
-            {
-                optInTimePeriod2 = 14;
-            }
-            else if (optInTimePeriod2 is < 1 or > 100000)
+            if (optInTimePeriod2 is < 1 or > 100000)
             {
                 return -1;
             }
 
-            if (optInTimePeriod3 == -2147483648)
-            {
-                optInTimePeriod3 = 28;
-            }
-            else if (optInTimePeriod3 is < 1 or > 100000)
+            if (optInTimePeriod3 is < 1 or > 100000)
             {
                 return -1;
             }

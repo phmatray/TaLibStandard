@@ -30,29 +30,17 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInFastPeriod == -2147483648)
-            {
-                optInFastPeriod = 12;
-            }
-            else if (optInFastPeriod is < 2 or > 100000)
+            if (optInFastPeriod is < 2 or > 100000)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInSlowPeriod == -2147483648)
-            {
-                optInSlowPeriod = 26;
-            }
-            else if (optInSlowPeriod is < 2 or > 100000)
+            if (optInSlowPeriod is < 2 or > 100000)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInSignalPeriod == -2147483648)
-            {
-                optInSignalPeriod = 9;
-            }
-            else if (optInSignalPeriod is < 1 or > 100000)
+            if (optInSignalPeriod is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -88,29 +76,17 @@ namespace TechnicalAnalysis
 
         public static int MacdLookback(int optInFastPeriod, int optInSlowPeriod, int optInSignalPeriod)
         {
-            if (optInFastPeriod == -2147483648)
-            {
-                optInFastPeriod = 12;
-            }
-            else if (optInFastPeriod is < 2 or > 100000)
+            if (optInFastPeriod is < 2 or > 100000)
             {
                 return -1;
             }
 
-            if (optInSlowPeriod == -2147483648)
-            {
-                optInSlowPeriod = 26;
-            }
-            else if (optInSlowPeriod is < 2 or > 100000)
+            if (optInSlowPeriod is < 2 or > 100000)
             {
                 return -1;
             }
 
-            if (optInSignalPeriod == -2147483648)
-            {
-                optInSignalPeriod = 9;
-            }
-            else if (optInSignalPeriod is < 1 or > 100000)
+            if (optInSignalPeriod is < 1 or > 100000)
             {
                 return -1;
             }

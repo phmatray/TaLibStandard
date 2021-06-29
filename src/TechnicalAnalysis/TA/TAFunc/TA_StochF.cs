@@ -34,20 +34,12 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInFastK_Period == -2147483648)
-            {
-                optInFastK_Period = 5;
-            }
-            else if (optInFastK_Period is < 1 or > 100000)
+            if (optInFastK_Period is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInFastD_Period == -2147483648)
-            {
-                optInFastD_Period = 3;
-            }
-            else if (optInFastD_Period is < 1 or > 100000)
+            if (optInFastD_Period is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -211,20 +203,12 @@ namespace TechnicalAnalysis
 
         public static int StochFLookback(int optInFastK_Period, int optInFastD_Period, MAType optInFastD_MAType)
         {
-            if (optInFastK_Period == -2147483648)
-            {
-                optInFastK_Period = 5;
-            }
-            else if (optInFastK_Period is < 1 or > 100000)
+            if (optInFastK_Period is < 1 or > 100000)
             {
                 return -1;
             }
 
-            if (optInFastD_Period == -2147483648)
-            {
-                optInFastD_Period = 3;
-            }
-            else if (optInFastD_Period is < 1 or > 100000)
+            if (optInFastD_Period is < 1 or > 100000)
             {
                 return -1;
             }

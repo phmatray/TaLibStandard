@@ -15,7 +15,6 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             double[] outReal)
         {
-            int slowestPeriod;
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -31,20 +30,12 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInFastPeriod == -2147483648)
-            {
-                optInFastPeriod = 3;
-            }
-            else if (optInFastPeriod is < 2 or > 100000)
+            if (optInFastPeriod is < 2 or > 100000)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInSlowPeriod == -2147483648)
-            {
-                optInSlowPeriod = 10;
-            }
-            else if (optInSlowPeriod is < 2 or > 100000)
+            if (optInSlowPeriod is < 2 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -54,14 +45,9 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInFastPeriod < optInSlowPeriod)
-            {
-                slowestPeriod = optInSlowPeriod;
-            }
-            else
-            {
-                slowestPeriod = optInFastPeriod;
-            }
+            int slowestPeriod = optInFastPeriod < optInSlowPeriod
+                ? optInSlowPeriod
+                : optInFastPeriod;
 
             int lookbackTotal = EmaLookback(slowestPeriod);
             if (startIdx < lookbackTotal)
@@ -146,33 +132,19 @@ namespace TechnicalAnalysis
 
         public static int AdOscLookback(int optInFastPeriod, int optInSlowPeriod)
         {
-            int slowestPeriod;
-            if (optInFastPeriod == -2147483648)
-            {
-                optInFastPeriod = 3;
-            }
-            else if (optInFastPeriod is < 2 or > 100000)
+            if (optInFastPeriod is < 2 or > 100000)
             {
                 return -1;
             }
 
-            if (optInSlowPeriod == -2147483648)
-            {
-                optInSlowPeriod = 10;
-            }
-            else if (optInSlowPeriod is < 2 or > 100000)
+            if (optInSlowPeriod is < 2 or > 100000)
             {
                 return -1;
             }
 
-            if (optInFastPeriod < optInSlowPeriod)
-            {
-                slowestPeriod = optInSlowPeriod;
-            }
-            else
-            {
-                slowestPeriod = optInFastPeriod;
-            }
+            int slowestPeriod = optInFastPeriod < optInSlowPeriod
+                ? optInSlowPeriod
+                : optInFastPeriod;
 
             return EmaLookback(slowestPeriod);
         }

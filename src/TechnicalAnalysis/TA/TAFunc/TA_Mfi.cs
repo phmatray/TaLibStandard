@@ -31,11 +31,7 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInTimePeriod == -2147483648)
-            {
-                optInTimePeriod = 14;
-            }
-            else if (optInTimePeriod is < 2 or > 100000)
+            if (optInTimePeriod is < 2 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -218,11 +214,7 @@ namespace TechnicalAnalysis
 
         public static int MfiLookback(int optInTimePeriod)
         {
-            if (optInTimePeriod == -2147483648)
-            {
-                optInTimePeriod = 14;
-            }
-            else if (optInTimePeriod is < 2 or > 100000)
+            if (optInTimePeriod is < 2 or > 100000)
             {
                 return -1;
             }

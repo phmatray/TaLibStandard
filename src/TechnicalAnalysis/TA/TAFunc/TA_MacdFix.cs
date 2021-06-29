@@ -28,11 +28,7 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInSignalPeriod == -2147483648)
-            {
-                optInSignalPeriod = 9;
-            }
-            else if (optInSignalPeriod is < 1 or > 100000)
+            if (optInSignalPeriod is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -68,11 +64,7 @@ namespace TechnicalAnalysis
 
         public static int MacdFixLookback(int optInSignalPeriod)
         {
-            if (optInSignalPeriod == -2147483648)
-            {
-                optInSignalPeriod = 9;
-            }
-            else if (optInSignalPeriod is < 1 or > 100000)
+            if (optInSignalPeriod is < 1 or > 100000)
             {
                 return -1;
             }

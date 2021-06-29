@@ -36,29 +36,17 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInFastK_Period == -2147483648)
-            {
-                optInFastK_Period = 5;
-            }
-            else if (optInFastK_Period is < 1 or > 100000)
+            if (optInFastK_Period is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInSlowK_Period == -2147483648)
-            {
-                optInSlowK_Period = 3;
-            }
-            else if (optInSlowK_Period is < 1 or > 100000)
+            if (optInSlowK_Period is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInSlowD_Period == -2147483648)
-            {
-                optInSlowD_Period = 3;
-            }
-            else if (optInSlowD_Period is < 1 or > 100000)
+            if (optInSlowD_Period is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -237,29 +225,17 @@ namespace TechnicalAnalysis
             int optInSlowD_Period,
             MAType optInSlowD_MAType)
         {
-            if (optInFastK_Period == -2147483648)
-            {
-                optInFastK_Period = 5;
-            }
-            else if (optInFastK_Period is < 1 or > 100000)
+            if (optInFastK_Period is < 1 or > 100000)
             {
                 return -1;
             }
 
-            if (optInSlowK_Period == -2147483648)
-            {
-                optInSlowK_Period = 3;
-            }
-            else if (optInSlowK_Period is < 1 or > 100000)
+            if (optInSlowK_Period is < 1 or > 100000)
             {
                 return -1;
             }
 
-            if (optInSlowD_Period == -2147483648)
-            {
-                optInSlowD_Period = 3;
-            }
-            else if (optInSlowD_Period is < 1 or > 100000)
+            if (optInSlowD_Period is < 1 or > 100000)
             {
                 return -1;
             }
