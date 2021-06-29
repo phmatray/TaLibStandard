@@ -52,10 +52,6 @@ namespace TechnicalAnalysis
             }
 
             double[] adx = new double[endIdx - startIdx + optInTimePeriod];
-            if (adx == null)
-            {
-                return RetCode.AllocErr;
-            }
 
             RetCode retCode = Adx(
                 startIdx - (optInTimePeriod - 1),

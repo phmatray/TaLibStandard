@@ -331,22 +331,7 @@ namespace TechnicalAnalysis
             tempInteger = endIdx - startIdx + 1 + lookbackSignal;
             
             double[] fastEMABuffer = new double[tempInteger];
-            
-            if (fastEMABuffer == null)
-            {
-                outBegIdx = 0;
-                outNbElement = 0;
-                return RetCode.AllocErr;
-            }
-            
             double[] slowEMABuffer = new double[tempInteger];
-            
-            if (slowEMABuffer == null)
-            {
-                outBegIdx = 0;
-                outNbElement = 0;
-                return RetCode.AllocErr;
-            }
             
             tempInteger = startIdx - lookbackSignal;
             RetCode retCode = TA_INT_EMA(tempInteger, endIdx, inReal_0, optInSlowPeriod_1, k1, ref outBegIdx1, ref outNbElement1, slowEMABuffer);
@@ -455,22 +440,7 @@ namespace TechnicalAnalysis
             
             tempInteger = endIdx - startIdx + 1 + lookbackSignal;
             double[] fastEMABuffer = new double[tempInteger];
-            
-            if (fastEMABuffer == null)
-            {
-                outBegIdx = 0;
-                outNbElement = 0;
-                return RetCode.AllocErr;
-            }
-            
             double[] slowEMABuffer = new double[tempInteger];
-            
-            if (slowEMABuffer == null)
-            {
-                outBegIdx = 0;
-                outNbElement = 0;
-                return RetCode.AllocErr;
-            }
             
             tempInteger = startIdx - lookbackSignal;
             RetCode retCode = TA_INT_EMA(tempInteger, endIdx, inReal_0, optInSlowPeriod_1, k1, ref outBegIdx1, ref outNbElement1, slowEMABuffer);

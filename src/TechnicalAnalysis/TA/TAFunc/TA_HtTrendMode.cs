@@ -46,10 +46,6 @@ namespace TechnicalAnalysis
             }
 
             double[] smoothPrice = new double[maxIdx_smoothPrice + 1];
-            if (smoothPrice == null)
-            {
-                return RetCode.AllocErr;
-            }
 
             double iTrend3 = 0.0;
             double iTrend2 = iTrend3;

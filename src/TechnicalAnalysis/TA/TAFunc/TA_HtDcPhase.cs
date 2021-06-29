@@ -46,10 +46,6 @@ namespace TechnicalAnalysis
             }
 
             double[] smoothPrice = new double[maxIdx_smoothPrice + 1];
-            if (smoothPrice == null)
-            {
-                return RetCode.AllocErr;
-            }
 
             double tempReal = Math.Atan(1.0);
             double rad2Deg = 45.0 / tempReal;

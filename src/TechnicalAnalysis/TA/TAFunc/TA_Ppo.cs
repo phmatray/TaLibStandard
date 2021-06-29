@@ -44,10 +44,6 @@ namespace TechnicalAnalysis
             }
 
             double[] tempBuffer = new double[endIdx - startIdx + 1];
-            if (tempBuffer == null)
-            {
-                return RetCode.AllocErr;
-            }
 
             return TA_INT_PO(
                 startIdx,

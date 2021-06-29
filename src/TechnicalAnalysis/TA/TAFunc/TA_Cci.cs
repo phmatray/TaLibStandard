@@ -55,16 +55,7 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
-            if (optInTimePeriod <= 0)
-            {
-                return RetCode.AllocErr;
-            }
-
             double[] circBuffer = new double[optInTimePeriod];
-            if (circBuffer == null)
-            {
-                return RetCode.AllocErr;
-            }
 
             maxIdx_circBuffer = optInTimePeriod - 1;
             int i = startIdx - lookbackTotal;

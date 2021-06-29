@@ -55,10 +55,6 @@ namespace TechnicalAnalysis
                 int firstEMABegIdx = 0;
                 int tempInt = lookbackTotal + (endIdx - startIdx) + 1;
                 double[] firstEMA = new double[tempInt];
-                if (firstEMA == null)
-                {
-                    return RetCode.AllocErr;
-                }
 
                 double k = 2.0 / (optInTimePeriod + 1);
                 RetCode retCode = TA_INT_EMA(
@@ -76,10 +72,6 @@ namespace TechnicalAnalysis
                 }
 
                 double[] secondEMA = new double[firstEMANbElement];
-                if (secondEMA == null)
-                {
-                    return RetCode.AllocErr;
-                }
 
                 retCode = TA_INT_EMA(
                     0,

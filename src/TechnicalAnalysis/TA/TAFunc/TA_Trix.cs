@@ -56,12 +56,6 @@ namespace TechnicalAnalysis
             outBegIdx = startIdx;
             int nbElementToOutput = endIdx - startIdx + 1 + totalLookback;
             double[] tempBuffer = new double[nbElementToOutput];
-            if (tempBuffer == null)
-            {
-                outNBElement = 0;
-                outBegIdx = 0;
-                return RetCode.AllocErr;
-            }
 
             double k = 2.0 / (optInTimePeriod + 1);
             RetCode retCode = TA_INT_EMA(

@@ -95,21 +95,17 @@ namespace TechnicalAnalysis
                     case MAType.Mama:
                         {
                             double[] dummyBuffer = new double[endIdx - startIdx + 1];
-                            if (dummyBuffer != null)
-                            {
-                                return Mama(
-                                    startIdx,
-                                    endIdx,
-                                    inReal,
-                                    0.5,
-                                    0.05,
-                                    ref outBegIdx,
-                                    ref outNBElement,
-                                    outReal,
-                                    dummyBuffer);
-                            }
-
-                            return RetCode.AllocErr;
+                            
+                            return Mama(
+                                startIdx,
+                                endIdx,
+                                inReal,
+                                0.5,
+                                0.05,
+                                ref outBegIdx,
+                                ref outNBElement,
+                                outReal,
+                                dummyBuffer);
                         }
 
                     case MAType.T3:

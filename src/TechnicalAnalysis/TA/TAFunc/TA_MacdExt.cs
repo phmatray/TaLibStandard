@@ -104,20 +104,7 @@ namespace TechnicalAnalysis
 
             tempInteger = endIdx - startIdx + 1 + lookbackSignal;
             double[] fastMABuffer = new double[tempInteger];
-            if (fastMABuffer == null)
-            {
-                outBegIdx = 0;
-                outNBElement = 0;
-                return RetCode.AllocErr;
-            }
-
             double[] slowMABuffer = new double[tempInteger];
-            if (slowMABuffer == null)
-            {
-                outBegIdx = 0;
-                outNBElement = 0;
-                return RetCode.AllocErr;
-            }
 
             tempInteger = startIdx - lookbackSignal;
             RetCode retCode = MovingAverage(
