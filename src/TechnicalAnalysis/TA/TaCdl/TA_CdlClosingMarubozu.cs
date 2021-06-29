@@ -92,18 +92,11 @@ namespace TechnicalAnalysis
                             if (inClose[i] >= inOpen[i])
                             {
                                 num52 = inClose[i];
-                            }
-                            else
-                            {
-                                num52 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
                                 num51 = inOpen[i];
                             }
                             else
                             {
+                                num52 = inOpen[i];
                                 num51 = inClose[i];
                             }
 
@@ -154,18 +147,11 @@ namespace TechnicalAnalysis
                             if (inClose[i] >= inOpen[i])
                             {
                                 num47 = inClose[i];
-                            }
-                            else
-                            {
-                                num47 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
                                 num46 = inOpen[i];
                             }
                             else
                             {
+                                num47 = inOpen[i];
                                 num46 = inClose[i];
                             }
 
@@ -216,18 +202,11 @@ namespace TechnicalAnalysis
                             if (inClose[i] >= inOpen[i])
                             {
                                 num41 = inClose[i];
-                            }
-                            else
-                            {
-                                num41 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
                                 num40 = inOpen[i];
                             }
                             else
                             {
+                                num41 = inOpen[i];
                                 num40 = inClose[i];
                             }
 
@@ -303,18 +282,11 @@ namespace TechnicalAnalysis
                                 if (inClose[i] >= inOpen[i])
                                 {
                                     num33 = inClose[i];
-                                }
-                                else
-                                {
-                                    num33 = inOpen[i];
-                                }
-
-                                if (inClose[i] >= inOpen[i])
-                                {
                                     num32 = inOpen[i];
                                 }
                                 else
                                 {
+                                    num33 = inOpen[i];
                                     num32 = inClose[i];
                                 }
 
@@ -391,18 +363,11 @@ namespace TechnicalAnalysis
                             if (inClose[i] >= inOpen[i])
                             {
                                 num25 = inClose[i];
-                            }
-                            else
-                            {
-                                num25 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
                                 num24 = inOpen[i];
                             }
                             else
                             {
+                                num25 = inOpen[i];
                                 num24 = inClose[i];
                             }
 
@@ -474,18 +439,11 @@ namespace TechnicalAnalysis
                         if (inClose[i] >= inOpen[i])
                         {
                             num18 = inClose[i];
-                        }
-                        else
-                        {
-                            num18 = inOpen[i];
-                        }
-
-                        if (inClose[i] >= inOpen[i])
-                        {
                             num17 = inOpen[i];
                         }
                         else
                         {
+                            num18 = inOpen[i];
                             num17 = inClose[i];
                         }
 
@@ -523,18 +481,11 @@ namespace TechnicalAnalysis
                         if (inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx])
                         {
                             num13 = inClose[bodyLongTrailingIdx];
-                        }
-                        else
-                        {
-                            num13 = inOpen[bodyLongTrailingIdx];
-                        }
-
-                        if (inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx])
-                        {
                             num12 = inOpen[bodyLongTrailingIdx];
                         }
                         else
                         {
+                            num13 = inOpen[bodyLongTrailingIdx];
                             num12 = inClose[bodyLongTrailingIdx];
                         }
 
@@ -573,18 +524,11 @@ namespace TechnicalAnalysis
                         if (inClose[i] >= inOpen[i])
                         {
                             num8 = inClose[i];
-                        }
-                        else
-                        {
-                            num8 = inOpen[i];
-                        }
-
-                        if (inClose[i] >= inOpen[i])
-                        {
                             num7 = inOpen[i];
                         }
                         else
                         {
+                            num8 = inOpen[i];
                             num7 = inClose[i];
                         }
 
@@ -622,18 +566,11 @@ namespace TechnicalAnalysis
                         if (inClose[shadowVeryShortTrailingIdx] >= inOpen[shadowVeryShortTrailingIdx])
                         {
                             num3 = inClose[shadowVeryShortTrailingIdx];
-                        }
-                        else
-                        {
-                            num3 = inOpen[shadowVeryShortTrailingIdx];
-                        }
-
-                        if (inClose[shadowVeryShortTrailingIdx] >= inOpen[shadowVeryShortTrailingIdx])
-                        {
                             num2 = inOpen[shadowVeryShortTrailingIdx];
                         }
                         else
                         {
+                            num3 = inOpen[shadowVeryShortTrailingIdx];
                             num2 = inClose[shadowVeryShortTrailingIdx];
                         }
 
