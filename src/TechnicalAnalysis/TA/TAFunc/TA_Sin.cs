@@ -1,7 +1,7 @@
+using System;
+
 namespace TechnicalAnalysis
 {
-    using System;
-
     internal static partial class TACore
     {
         public static RetCode Sin(

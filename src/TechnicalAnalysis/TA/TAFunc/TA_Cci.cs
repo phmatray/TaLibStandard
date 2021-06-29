@@ -1,7 +1,7 @@
+using System;
+
 namespace TechnicalAnalysis
 {
-    using System;
-
     internal static partial class TACore
     {
         public static RetCode Cci(
@@ -17,6 +17,7 @@ namespace TechnicalAnalysis
         {
             int circBuffer_Idx = 0;
             int maxIdx_circBuffer = 29;
+            
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -59,17 +60,14 @@ namespace TechnicalAnalysis
 
             maxIdx_circBuffer = optInTimePeriod - 1;
             int i = startIdx - lookbackTotal;
-            if (optInTimePeriod > 1)
+            while (i < startIdx)
             {
-                while (i < startIdx)
+                circBuffer[circBuffer_Idx] = (inHigh[i] + inLow[i] + inClose[i]) / 3.0;
+                i++;
+                circBuffer_Idx++;
+                if (circBuffer_Idx > maxIdx_circBuffer)
                 {
-                    circBuffer[circBuffer_Idx] = (inHigh[i] + inLow[i] + inClose[i]) / 3.0;
-                    i++;
-                    circBuffer_Idx++;
-                    if (circBuffer_Idx > maxIdx_circBuffer)
-                    {
-                        circBuffer_Idx = 0;
-                    }
+                    circBuffer_Idx = 0;
                 }
             }
 
