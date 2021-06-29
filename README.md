@@ -15,21 +15,26 @@ You can consult the list of [available functions](./docs/functions.md) from the 
 
 ## Features
 
-* Double of Float
-* With some basic tests (coverage: 54%)
+  * Double of Float
+  * With some basic tests (coverage: 54%)
 
 ### Library
 
-* target framework : .NET Standard 2.1
-* language version : C# 9
+  * target framework : .NET Standard 2.1
+  * language version : C# 9
 
 ### Demo Console App and Tests
 
-* target framework : .NET 5
-* language version : C# 9
+  * target framework : .NET 5
+  * language version : C# 9
 
 ## Installation
 
+## Code Quality
+
+Codacy is an automated code analysis/quality tool that helps developers ship better software, faster. With Codacy, you get static analysis, cyclomatic complexity, duplication and code unit test coverage changes in every commit and pull request.
+
+https://app.codacy.com/gh/phmatray/TaLibStandard
 
 ## Issues and Feature Requests
 
