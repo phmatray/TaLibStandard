@@ -18,7 +18,7 @@ namespace TechnicalAnalysis
             double[] high,
             double[] low,
             double[] close,
-            double penetration = 0.3)
+            double penetration)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -42,11 +42,20 @@ namespace TechnicalAnalysis
         public static CdlEveningStar CdlEveningStar(
             int startIdx,
             int endIdx,
+            double[] open,
+            double[] high,
+            double[] low,
+            double[] close)
+            => CdlEveningStar(startIdx, endIdx, open, high, low, close, 0.3);
+
+        public static CdlEveningStar CdlEveningStar(
+            int startIdx,
+            int endIdx,
             float[] open,
             float[] high,
             float[] low,
             float[] close,
-            double penetration = 0.3)
+            double penetration)
             => CdlEveningStar(
                 startIdx,
                 endIdx,
@@ -55,6 +64,15 @@ namespace TechnicalAnalysis
                 low.ToDouble(),
                 close.ToDouble(),
                 penetration);
+        
+        public static CdlEveningStar CdlEveningStar(
+            int startIdx,
+            int endIdx,
+            float[] open,
+            float[] high,
+            float[] low,
+            float[] close)
+            => CdlEveningStar(startIdx, endIdx, open, high, low, close, 0.3);
     }
 
     public class CdlEveningStar : IndicatorBase

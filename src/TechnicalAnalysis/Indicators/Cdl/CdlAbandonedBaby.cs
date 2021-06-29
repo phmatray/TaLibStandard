@@ -18,7 +18,7 @@ namespace TechnicalAnalysis
             double[] high,
             double[] low,
             double[] close,
-            double penetration = 0.3)
+            double penetration)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -38,6 +38,15 @@ namespace TechnicalAnalysis
             
             return new CdlAbandonedBaby(retCode, outBegIdx, outNBElement, outInteger);
         }
+        
+        public static CdlAbandonedBaby CdlAbandonedBaby(
+            int startIdx,
+            int endIdx,
+            double[] open,
+            double[] high,
+            double[] low,
+            double[] close)
+            => CdlAbandonedBaby(startIdx, endIdx, open, high, low, close, 0.3);
 
         public static CdlAbandonedBaby CdlAbandonedBaby(
             int startIdx,
@@ -46,7 +55,7 @@ namespace TechnicalAnalysis
             float[] high,
             float[] low,
             float[] close,
-            double penetration = 0.3)
+            double penetration)
             => CdlAbandonedBaby(
                 startIdx,
                 endIdx,
@@ -55,6 +64,15 @@ namespace TechnicalAnalysis
                 low.ToDouble(),
                 close.ToDouble(),
                 penetration);
+        
+        public static CdlAbandonedBaby CdlAbandonedBaby(
+            int startIdx,
+            int endIdx,
+            float[] open,
+            float[] high,
+            float[] low,
+            float[] close)
+            => CdlAbandonedBaby(startIdx, endIdx, open, high, low, close, 0.3);
     }
 
     public class CdlAbandonedBaby : IndicatorBase

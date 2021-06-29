@@ -18,7 +18,7 @@ namespace TechnicalAnalysis
             double[] high,
             double[] low,
             double[] close,
-            double penetration = 0.5)
+            double penetration)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -42,11 +42,20 @@ namespace TechnicalAnalysis
         public static CdlDarkCloudCover CdlDarkCloudCover(
             int startIdx,
             int endIdx,
+            double[] open,
+            double[] high,
+            double[] low,
+            double[] close)
+            => CdlDarkCloudCover(startIdx, endIdx, open, high, low, close, 0.5);
+
+        public static CdlDarkCloudCover CdlDarkCloudCover(
+            int startIdx,
+            int endIdx,
             float[] open,
             float[] high,
             float[] low,
             float[] close,
-            double penetration = 0.5)
+            double penetration)
             => CdlDarkCloudCover(
                 startIdx,
                 endIdx,
@@ -55,6 +64,15 @@ namespace TechnicalAnalysis
                 low.ToDouble(),
                 close.ToDouble(),
                 penetration);
+        
+        public static CdlDarkCloudCover CdlDarkCloudCover(
+            int startIdx,
+            int endIdx,
+            float[] open,
+            float[] high,
+            float[] low,
+            float[] close)
+            => CdlDarkCloudCover(startIdx, endIdx, open, high, low, close, 0.5);
     }
 
     public class CdlDarkCloudCover : IndicatorBase
