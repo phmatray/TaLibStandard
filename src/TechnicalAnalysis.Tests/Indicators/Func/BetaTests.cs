@@ -38,8 +38,6 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             const int EndIdx = 99;
             float[] real0 = fixture.CreateMany<float>(count: 100).ToArray();
             float[] real1 = fixture.CreateMany<float>(count: 100).ToArray();
-            float[] close = fixture.CreateMany<float>(count: 100).ToArray();
-            float[] volume = fixture.CreateMany<float>(count: 100).ToArray();
             
             // Act
             var actualResult = TAMath.Beta(
