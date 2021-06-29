@@ -1,6 +1,6 @@
 namespace TechnicalAnalysis
 {
-    internal partial class TACore
+    internal static partial class TACore
     {
         public static RetCode Adxr(
             int startIdx,

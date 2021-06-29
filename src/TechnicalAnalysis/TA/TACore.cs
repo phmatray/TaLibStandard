@@ -2,7 +2,7 @@ using System;
 
 namespace TechnicalAnalysis
 {
-    internal partial class TACore
+    internal static partial class TACore
     {
         private static readonly GlobalsType Globals = new();
         

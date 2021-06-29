@@ -2,7 +2,7 @@ namespace TechnicalAnalysis
 {
     using System;
 
-    internal partial class TACore
+    internal static partial class TACore
     {
         public static RetCode CdlIdentical3Crows(
             int startIdx,
