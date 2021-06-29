@@ -37,7 +37,7 @@ namespace TechnicalAnalysis
             {
                 optInPenetration = 0.5;
             }
-            else if (optInPenetration < 0.0 || optInPenetration > 3E+37)
+            else if (optInPenetration is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -330,7 +330,7 @@ namespace TechnicalAnalysis
             {
                 optInPenetration = 0.5;
             }
-            else if (optInPenetration < 0.0 || optInPenetration > 3E+37)
+            else if (optInPenetration is < 0.0 or > 3E+37)
             {
                 return -1;
             }

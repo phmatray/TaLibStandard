@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
+            else if (optInTimePeriod is < 2 or > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -93,7 +93,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
+            else if (optInTimePeriod is < 2 or > 0x186a0)
             {
                 return -1;
             }

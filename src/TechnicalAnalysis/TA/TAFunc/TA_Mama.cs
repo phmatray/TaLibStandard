@@ -45,7 +45,7 @@ namespace TechnicalAnalysis
             {
                 optInFastLimit = 0.5;
             }
-            else if (optInFastLimit < 0.01 || optInFastLimit > 0.99)
+            else if (optInFastLimit is < 0.01 or > 0.99)
             {
                 return RetCode.BadParam;
             }
@@ -54,7 +54,7 @@ namespace TechnicalAnalysis
             {
                 optInSlowLimit = 0.05;
             }
-            else if (optInSlowLimit < 0.01 || optInSlowLimit > 0.99)
+            else if (optInSlowLimit is < 0.01 or > 0.99)
             {
                 return RetCode.BadParam;
             }
@@ -377,7 +377,7 @@ namespace TechnicalAnalysis
             {
                 optInFastLimit = 0.5;
             }
-            else if (optInFastLimit < 0.01 || optInFastLimit > 0.99)
+            else if (optInFastLimit is < 0.01 or > 0.99)
             {
                 return -1;
             }
@@ -386,7 +386,7 @@ namespace TechnicalAnalysis
             {
                 optInSlowLimit = 0.05;
             }
-            else if (optInSlowLimit < 0.01 || optInSlowLimit > 0.99)
+            else if (optInSlowLimit is < 0.01 or > 0.99)
             {
                 return -1;
             }

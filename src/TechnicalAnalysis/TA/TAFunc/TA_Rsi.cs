@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
+            else if (optInTimePeriod is < 2 or > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -93,7 +93,7 @@ namespace TechnicalAnalysis
                     tempValue1 = prevLoss / optInTimePeriod;
                     tempValue2 = prevGain / optInTimePeriod;
                     tempValue1 = tempValue2 + tempValue1;
-                    if (-1E-08 >= tempValue1 || tempValue1 >= 1E-08)
+                    if (tempValue1 is >= -1E-08 or >= 1E-08)
                     {
                         outReal[outIdx] = 100.0 * (tempValue2 / tempValue1);
                         outIdx++;
@@ -139,7 +139,7 @@ namespace TechnicalAnalysis
                 if (today > startIdx)
                 {
                     tempValue1 = prevGain + prevLoss;
-                    if (-1E-08 >= tempValue1 || tempValue1 >= 1E-08)
+                    if (tempValue1 is >= -1E-08 or >= 1E-08)
                     {
                         outReal[outIdx] = 100.0 * (prevGain / tempValue1);
                         outIdx++;
@@ -194,7 +194,7 @@ namespace TechnicalAnalysis
                     prevLoss /= optInTimePeriod;
                     prevGain /= optInTimePeriod;
                     tempValue1 = prevGain + prevLoss;
-                    if (-1E-08 >= tempValue1 || tempValue1 >= 1E-08)
+                    if (tempValue1 is >= -1E-08 or >= 1E-08)
                     {
                         outReal[outIdx] = 100.0 * (prevGain / tempValue1);
                         outIdx++;
@@ -219,7 +219,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
+            else if (optInTimePeriod is < 2 or > 0x186a0)
             {
                 return -1;
             }

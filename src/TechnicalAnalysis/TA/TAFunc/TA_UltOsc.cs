@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod1 = 7;
             }
-            else if (optInTimePeriod1 < 1 || optInTimePeriod1 > 0x186a0)
+            else if (optInTimePeriod1 is < 1 or > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -49,7 +49,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod2 = 14;
             }
-            else if (optInTimePeriod2 < 1 || optInTimePeriod2 > 0x186a0)
+            else if (optInTimePeriod2 is < 1 or > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -58,7 +58,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod3 = 0x1c;
             }
-            else if (optInTimePeriod3 < 1 || optInTimePeriod3 > 0x186a0)
+            else if (optInTimePeriod3 is < 1 or > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -260,17 +260,17 @@ namespace TechnicalAnalysis
                         b2Total += trueRange;
                         b3Total += trueRange;
                         double output = 0.0;
-                        if (-1E-08 >= b1Total || b1Total >= 1E-08)
+                        if (b1Total is >= -1E-08 or >= 1E-08)
                         {
                             output += 4.0 * (a1Total / b1Total);
                         }
 
-                        if (-1E-08 >= b2Total || b2Total >= 1E-08)
+                        if (b2Total is >= -1E-08 or >= 1E-08)
                         {
                             output += 2.0 * (a2Total / b2Total);
                         }
 
-                        if (-1E-08 >= b3Total || b3Total >= 1E-08)
+                        if (b3Total is >= -1E-08 or >= 1E-08)
                         {
                             output += a3Total / b3Total;
                         }
@@ -400,7 +400,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod1 = 7;
             }
-            else if (optInTimePeriod1 < 1 || optInTimePeriod1 > 0x186a0)
+            else if (optInTimePeriod1 is < 1 or > 0x186a0)
             {
                 return -1;
             }
@@ -409,7 +409,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod2 = 14;
             }
-            else if (optInTimePeriod2 < 1 || optInTimePeriod2 > 0x186a0)
+            else if (optInTimePeriod2 is < 1 or > 0x186a0)
             {
                 return -1;
             }
@@ -418,7 +418,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod3 = 0x1c;
             }
-            else if (optInTimePeriod3 < 1 || optInTimePeriod3 > 0x186a0)
+            else if (optInTimePeriod3 is < 1 or > 0x186a0)
             {
                 return -1;
             }

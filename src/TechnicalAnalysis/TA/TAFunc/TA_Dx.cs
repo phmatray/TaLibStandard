@@ -41,7 +41,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
+            else if (optInTimePeriod is < 2 or > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -168,12 +168,12 @@ namespace TechnicalAnalysis
                 prevClose = inClose[today];
             }
 
-            if (-1E-08 >= prevTR || prevTR >= 1E-08)
+            if (prevTR is >= -1E-08 or >= 1E-08)
             {
                 minusDI = 100.0 * (prevMinusDM / prevTR);
                 plusDI = 100.0 * (prevPlusDM / prevTR);
                 tempReal = minusDI + plusDI;
-                if (-1E-08 >= tempReal || tempReal >= 1E-08)
+                if (tempReal is >= -1E-08 or >= 1E-08)
                 {
                     outReal[0] = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
                 }
@@ -228,12 +228,12 @@ namespace TechnicalAnalysis
 
                 prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
                 prevClose = inClose[today];
-                if (-1E-08 >= prevTR || prevTR >= 1E-08)
+                if (prevTR is >= -1E-08 or >= 1E-08)
                 {
                     minusDI = 100.0 * (prevMinusDM / prevTR);
                     plusDI = 100.0 * (prevPlusDM / prevTR);
                     tempReal = minusDI + plusDI;
-                    if (-1E-08 >= tempReal || tempReal >= 1E-08)
+                    if (tempReal is >= -1E-08 or >= 1E-08)
                     {
                         outReal[outIdx] = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
                     }
@@ -260,7 +260,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod < 2 || optInTimePeriod > 0x186a0)
+            else if (optInTimePeriod is < 2 or > 0x186a0)
             {
                 return -1;
             }

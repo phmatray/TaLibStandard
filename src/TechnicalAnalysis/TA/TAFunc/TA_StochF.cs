@@ -38,7 +38,7 @@ namespace TechnicalAnalysis
             {
                 optInFastK_Period = 5;
             }
-            else if (optInFastK_Period < 1 || optInFastK_Period > 0x186a0)
+            else if (optInFastK_Period is < 1 or > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -47,7 +47,7 @@ namespace TechnicalAnalysis
             {
                 optInFastD_Period = 3;
             }
-            else if (optInFastD_Period < 1 || optInFastD_Period > 0x186a0)
+            else if (optInFastD_Period is < 1 or > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -215,7 +215,7 @@ namespace TechnicalAnalysis
             {
                 optInFastK_Period = 5;
             }
-            else if (optInFastK_Period < 1 || optInFastK_Period > 0x186a0)
+            else if (optInFastK_Period is < 1 or > 0x186a0)
             {
                 return -1;
             }
@@ -224,7 +224,7 @@ namespace TechnicalAnalysis
             {
                 optInFastD_Period = 3;
             }
-            else if (optInFastD_Period < 1 || optInFastD_Period > 0x186a0)
+            else if (optInFastD_Period is < 1 or > 0x186a0)
             {
                 return -1;
             }

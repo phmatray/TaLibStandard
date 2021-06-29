@@ -43,7 +43,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
+            else if (optInTimePeriod is < 1 or > 0x186a0)
             {
                 return RetCode.BadParam;
             }
@@ -133,7 +133,7 @@ namespace TechnicalAnalysis
                             prevClose = inClose[today];
                         }
 
-                        if (-1E-08 >= prevTR || prevTR >= 1E-08)
+                        if (prevTR is >= -1E-08 or >= 1E-08)
                         {
                             outReal[0] = 100.0 * (prevPlusDM / prevTR);
                         }
@@ -176,7 +176,7 @@ namespace TechnicalAnalysis
 
                             prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
                             prevClose = inClose[today];
-                            if (-1E-08 >= prevTR || prevTR >= 1E-08)
+                            if (prevTR is >= -1E-08 or >= 1E-08)
                             {
                                 outReal[outIdx] = 100.0 * (prevPlusDM / prevTR);
                                 outIdx++;
@@ -286,7 +286,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod < 1 || optInTimePeriod > 0x186a0)
+            else if (optInTimePeriod is < 1 or > 0x186a0)
             {
                 return -1;
             }

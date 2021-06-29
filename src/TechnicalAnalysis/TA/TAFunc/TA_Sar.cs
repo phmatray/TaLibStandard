@@ -37,7 +37,7 @@ namespace TechnicalAnalysis
             {
                 optInAcceleration = 0.02;
             }
-            else if (optInAcceleration < 0.0 || optInAcceleration > 3E+37)
+            else if (optInAcceleration is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -46,7 +46,7 @@ namespace TechnicalAnalysis
             {
                 optInMaximum = 0.2;
             }
-            else if (optInMaximum < 0.0 || optInMaximum > 3E+37)
+            else if (optInMaximum is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -240,7 +240,7 @@ namespace TechnicalAnalysis
             {
                 optInAcceleration = 0.02;
             }
-            else if (optInAcceleration < 0.0 || optInAcceleration > 3E+37)
+            else if (optInAcceleration is < 0.0 or > 3E+37)
             {
                 return -1;
             }
@@ -249,7 +249,7 @@ namespace TechnicalAnalysis
             {
                 optInMaximum = 0.2;
             }
-            else if (optInMaximum < 0.0 || optInMaximum > 3E+37)
+            else if (optInMaximum is < 0.0 or > 3E+37)
             {
                 return -1;
             }
