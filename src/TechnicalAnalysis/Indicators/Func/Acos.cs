@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Acos(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Acos(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Acos Acos(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = 0;
-            int outNBElement = 0;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Acos(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new Acos(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Acos(startIdx, endIdx, real.ToDouble());
     }
 
     public class Acos : IndicatorBase

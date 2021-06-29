@@ -22,14 +22,7 @@ namespace TechnicalAnalysis
         }
 
         public static MidPoint MidPoint(int startIdx, int endIdx, float[] real, int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.MidPoint(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new MidPoint(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => MidPoint(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class MidPoint : IndicatorBase

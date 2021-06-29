@@ -31,26 +31,12 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new MidPrice(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static MidPrice MidPrice(int startIdx, int endIdx, float[] high, float[] low, int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.MidPrice(
-                startIdx,
-                endIdx,
-                high,
-                low,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new MidPrice(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => MidPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble(), timePeriod);
     }
 
     public class MidPrice : IndicatorBase

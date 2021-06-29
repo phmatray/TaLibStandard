@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Trix(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Trix(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Trix Trix(int startIdx, int endIdx, float[] real, int timePeriod = 30)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Trix(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new Trix(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Trix(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class Trix : IndicatorBase

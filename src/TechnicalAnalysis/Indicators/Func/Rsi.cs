@@ -22,14 +22,7 @@ namespace TechnicalAnalysis
         }
 
         public static Rsi Rsi(int startIdx, int endIdx, float[] real, int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Rsi(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new Rsi(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Rsi(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class Rsi : IndicatorBase

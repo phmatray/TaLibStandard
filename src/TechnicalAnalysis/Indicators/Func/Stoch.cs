@@ -43,6 +43,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 outSlowK,
                 outSlowD);
+            
             return new Stoch(retCode, outBegIdx, outNBElement, outSlowK, outSlowD);
         }
 
@@ -57,29 +58,17 @@ namespace TechnicalAnalysis
             MAType slowK_MAType = MAType.Sma,
             int slowD_Period = 3,
             MAType slowD_MAType = MAType.Sma)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outSlowK = new double[endIdx - startIdx + 1];
-            double[] outSlowD = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Stoch(
+            => Stoch(
                 startIdx,
                 endIdx,
-                high,
-                low,
-                close,
+                high.ToDouble(),
+                low.ToDouble(),
+                close.ToDouble(),
                 fastK_Period,
                 slowK_Period,
                 slowK_MAType,
                 slowD_Period,
-                slowD_MAType,
-                ref outBegIdx,
-                ref outNBElement,
-                outSlowK,
-                outSlowD);
-            return new Stoch(retCode, outBegIdx, outNBElement, outSlowK, outSlowD);
-        }
+                slowD_MAType);
     }
 
     public class Stoch : IndicatorBase

@@ -26,26 +26,12 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new MinusDM(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static MinusDM MinusDM(int startIdx, int endIdx, float[] high, float[] low, int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.MinusDM(
-                startIdx,
-                endIdx,
-                high,
-                low,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new MinusDM(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => MinusDM(startIdx, endIdx, high.ToDouble(), low.ToDouble(), timePeriod);
     }
 
     public class MinusDM : IndicatorBase

@@ -31,6 +31,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new StdDev(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -40,22 +41,7 @@ namespace TechnicalAnalysis
             float[] real,
             int timePeriod = 5,
             double nbDev = 1.0)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.StdDev(
-                startIdx,
-                endIdx,
-                real,
-                timePeriod,
-                nbDev,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new StdDev(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => StdDev(startIdx, endIdx, real.ToDouble(), timePeriod, nbDev);
     }
 
     public class StdDev : IndicatorBase

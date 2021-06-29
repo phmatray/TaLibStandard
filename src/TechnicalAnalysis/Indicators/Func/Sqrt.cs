@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Sqrt(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Sqrt(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Sqrt Sqrt(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Sqrt(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new Sqrt(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Sqrt(startIdx, endIdx, real.ToDouble());
     }
 
     public class Sqrt : IndicatorBase

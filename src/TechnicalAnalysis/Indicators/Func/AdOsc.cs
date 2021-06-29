@@ -37,6 +37,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new AdOsc(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -49,25 +50,15 @@ namespace TechnicalAnalysis
             float[] volume,
             int fastPeriod = 3,
             int slowPeriod = 10)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.AdOsc(
+            => AdOsc(
                 startIdx,
                 endIdx,
-                high,
-                low,
-                close,
-                volume,
+                high.ToDouble(),
+                low.ToDouble(),
+                close.ToDouble(),
+                volume.ToDouble(),
                 fastPeriod,
-                slowPeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new AdOsc(retCode, outBegIdx, outNBElement, outReal);
-        }
+                slowPeriod);
     }
 
     public class AdOsc : IndicatorBase

@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Sinh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Sinh(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Sinh Sinh(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Sinh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new Sinh(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Sinh(startIdx, endIdx, real.ToDouble());
     }
 
     public class Sinh : IndicatorBase

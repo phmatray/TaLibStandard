@@ -29,29 +29,12 @@ namespace TechnicalAnalysis
                 outMACD,
                 outMACDSignal,
                 outMACDHist);
+            
             return new MacdFix(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
         }
 
         public static MacdFix MacdFix(int startIdx, int endIdx, float[] real, int signalPeriod = 9)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outMACD = new double[endIdx - startIdx + 1];
-            double[] outMACDSignal = new double[endIdx - startIdx + 1];
-            double[] outMACDHist = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.MacdFix(
-                startIdx,
-                endIdx,
-                real,
-                signalPeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outMACD,
-                outMACDSignal,
-                outMACDHist);
-            return new MacdFix(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
-        }
+            => MacdFix(startIdx, endIdx, real.ToDouble(), signalPeriod);
     }
 
     public class MacdFix : IndicatorBase
@@ -60,14 +43,14 @@ namespace TechnicalAnalysis
             RetCode retCode,
             int begIdx,
             int nbElement,
-            double[] mACD,
-            double[] mACDSignal,
-            double[] mACDHist)
+            double[] macd,
+            double[] macdSignal,
+            double[] macdHist)
             : base(retCode, begIdx, nbElement)
         {
-            this.MACD = mACD;
-            this.MACDSignal = mACDSignal;
-            this.MACDHist = mACDHist;
+            this.MACD = macd;
+            this.MACDSignal = macdSignal;
+            this.MACDHist = macdHist;
         }
 
         public double[] MACD { get; }

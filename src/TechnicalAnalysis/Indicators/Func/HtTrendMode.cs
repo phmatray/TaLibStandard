@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             int[] outInteger = new int[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.HtTrendMode(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outInteger);
+            
             return new HtTrendMode(retCode, outBegIdx, outNBElement, outInteger);
         }
 
         public static HtTrendMode HtTrendMode(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.HtTrendMode(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outInteger);
-            return new HtTrendMode(retCode, outBegIdx, outNBElement, outInteger);
-        }
+            => HtTrendMode(startIdx, endIdx, real.ToDouble());
     }
 
     public class HtTrendMode : IndicatorBase

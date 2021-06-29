@@ -27,27 +27,12 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 outMinIdx,
                 outMaxIdx);
+            
             return new MinMaxIndex(retCode, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
         }
 
         public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, float[] real, int timePeriod = 30)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outMinIdx = new int[endIdx - startIdx + 1];
-            int[] outMaxIdx = new int[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.MinMaxIndex(
-                startIdx,
-                endIdx,
-                real,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outMinIdx,
-                outMaxIdx);
-            return new MinMaxIndex(retCode, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
-        }
+            => MinMaxIndex(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class MinMaxIndex : IndicatorBase

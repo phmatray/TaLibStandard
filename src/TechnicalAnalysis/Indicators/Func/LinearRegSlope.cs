@@ -25,25 +25,12 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new LinearRegSlope(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, float[] real, int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.LinearRegSlope(
-                startIdx,
-                endIdx,
-                real,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new LinearRegSlope(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => LinearRegSlope(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class LinearRegSlope : IndicatorBase

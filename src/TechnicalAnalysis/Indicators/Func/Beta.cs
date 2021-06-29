@@ -26,26 +26,12 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new Beta(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Beta Beta(int startIdx, int endIdx, float[] real0, float[] real1, int timePeriod = 5)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Beta(
-                startIdx,
-                endIdx,
-                real0,
-                real1,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new Beta(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Beta(startIdx, endIdx, real0.ToDouble(), real1.ToDouble(), timePeriod);
     }
 
     public class Beta : IndicatorBase

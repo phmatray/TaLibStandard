@@ -11,6 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
+        // TODO: rename to SeparatingLines
         public static CdlSeperatingLines CdlSeperatingLines(
             int startIdx,
             int endIdx,
@@ -33,6 +34,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outInteger);
+            
             return new CdlSeperatingLines(retCode, outBegIdx, outNBElement, outInteger);
         }
 
@@ -43,23 +45,7 @@ namespace TechnicalAnalysis
             float[] high,
             float[] low,
             float[] close)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.CdlSeperatingLines(
-                startIdx,
-                endIdx,
-                open,
-                high,
-                low,
-                close,
-                ref outBegIdx,
-                ref outNBElement,
-                outInteger);
-            return new CdlSeperatingLines(retCode, outBegIdx, outNBElement, outInteger);
-        }
+            => CdlSeperatingLines(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
     public class CdlSeperatingLines : IndicatorBase

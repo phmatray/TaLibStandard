@@ -11,6 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
+        // TODO: rename to BBands or BollingerBands
         public static Bbands Bbands(
             int startIdx,
             int endIdx,
@@ -18,7 +19,7 @@ namespace TechnicalAnalysis
             int timePeriod = 5,
             double nbDevUp = 2.0,
             double nbDevDn = 2.0,
-            MAType mAType = MAType.Sma)
+            MAType maType = MAType.Sma)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -33,12 +34,13 @@ namespace TechnicalAnalysis
                 timePeriod,
                 nbDevUp,
                 nbDevDn,
-                mAType,
+                maType,
                 ref outBegIdx,
                 ref outNBElement,
                 outRealUpperBand,
                 outRealMiddleBand,
                 outRealLowerBand);
+            
             return new Bbands(
                 retCode,
                 outBegIdx,
@@ -55,35 +57,8 @@ namespace TechnicalAnalysis
             int timePeriod = 5,
             double nbDevUp = 2.0,
             double nbDevDn = 2.0,
-            MAType mAType = MAType.Sma)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outRealUpperBand = new double[endIdx - startIdx + 1];
-            double[] outRealMiddleBand = new double[endIdx - startIdx + 1];
-            double[] outRealLowerBand = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Bbands(
-                startIdx,
-                endIdx,
-                real,
-                timePeriod,
-                nbDevUp,
-                nbDevDn,
-                mAType,
-                ref outBegIdx,
-                ref outNBElement,
-                outRealUpperBand,
-                outRealMiddleBand,
-                outRealLowerBand);
-            return new Bbands(
-                retCode,
-                outBegIdx,
-                outNBElement,
-                outRealUpperBand,
-                outRealMiddleBand,
-                outRealLowerBand);
-        }
+            MAType maType = MAType.Sma)
+            => Bbands(startIdx, endIdx, real.ToDouble(), timePeriod, nbDevUp, nbDevDn, maType);
     }
 
     public class Bbands : IndicatorBase

@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Tanh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Tanh(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Tanh Tanh(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Tanh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new Tanh(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Tanh(startIdx, endIdx, real.ToDouble());
     }
 
     public class Tanh : IndicatorBase

@@ -28,28 +28,12 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 outAroonDown,
                 outAroonUp);
+            
             return new Aroon(retCode, outBegIdx, outNBElement, outAroonDown, outAroonUp);
         }
 
         public static Aroon Aroon(int startIdx, int endIdx, float[] high, float[] low, int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outAroonDown = new double[endIdx - startIdx + 1];
-            double[] outAroonUp = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Aroon(
-                startIdx,
-                endIdx,
-                high,
-                low,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outAroonDown,
-                outAroonUp);
-            return new Aroon(retCode, outBegIdx, outNBElement, outAroonDown, outAroonUp);
-        }
+            => Aroon(startIdx, endIdx, high.ToDouble(), low.ToDouble(), timePeriod);
     }
 
     public class Aroon : IndicatorBase

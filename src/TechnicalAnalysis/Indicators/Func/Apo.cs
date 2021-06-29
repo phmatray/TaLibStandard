@@ -17,7 +17,7 @@ namespace TechnicalAnalysis
             double[] real,
             int fastPeriod = 12,
             int slowPeriod = 26,
-            MAType mAType = MAType.Sma)
+            MAType maType = MAType.Sma)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -29,10 +29,11 @@ namespace TechnicalAnalysis
                 real,
                 fastPeriod,
                 slowPeriod,
-                mAType,
+                maType,
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new Apo(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -42,24 +43,8 @@ namespace TechnicalAnalysis
             float[] real,
             int fastPeriod = 12,
             int slowPeriod = 26,
-            MAType mAType = MAType.Sma)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Apo(
-                startIdx,
-                endIdx,
-                real,
-                fastPeriod,
-                slowPeriod,
-                mAType,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new Apo(retCode, outBegIdx, outNBElement, outReal);
-        }
+            MAType maType = MAType.Sma)
+            => Apo(startIdx, endIdx, real.ToDouble(), fastPeriod, slowPeriod, maType);
     }
 
     public class Apo : IndicatorBase

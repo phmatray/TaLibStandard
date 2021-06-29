@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Obv(startIdx, endIdx, real, volume, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Obv(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Obv Obv(int startIdx, int endIdx, float[] real, float[] volume)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Obv(startIdx, endIdx, real, volume, ref outBegIdx, ref outNBElement, outReal);
-            return new Obv(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Obv(startIdx, endIdx, real.ToDouble(), volume.ToDouble());
     }
 
     public class Obv : IndicatorBase

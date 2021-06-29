@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Tsf(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Tsf(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Tsf Tsf(int startIdx, int endIdx, float[] real, int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Tsf(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new Tsf(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Tsf(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class Tsf : IndicatorBase

@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.RocP(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            
             return new RocP(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static RocP RocP(int startIdx, int endIdx, float[] real, int timePeriod = 10)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.RocP(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new RocP(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => RocP(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class RocP : IndicatorBase

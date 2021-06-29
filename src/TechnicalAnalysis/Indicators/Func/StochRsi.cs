@@ -16,9 +16,9 @@ namespace TechnicalAnalysis
             int endIdx,
             double[] real,
             int timePeriod = 14,
-            int fastKPeriod = 5,
-            int fastDPeriod = 3,
-            MAType fastDMAType = MAType.Sma)
+            int fastK_Period = 5,
+            int fastD_Period = 3,
+            MAType fastD_MAType = MAType.Sma)
         {
             int outBegIdx = 0;
             int outNBElement = 0;
@@ -30,13 +30,14 @@ namespace TechnicalAnalysis
                 endIdx,
                 real,
                 timePeriod,
-                fastKPeriod,
-                fastDPeriod,
-                fastDMAType,
+                fastK_Period,
+                fastD_Period,
+                fastD_MAType,
                 ref outBegIdx,
                 ref outNBElement,
                 outFastK,
                 outFastD);
+            
             return new StochRsi(retCode, outBegIdx, outNBElement, outFastK, outFastD);
         }
 
@@ -45,29 +46,10 @@ namespace TechnicalAnalysis
             int endIdx,
             float[] real,
             int timePeriod = 14,
-            int fastKPeriod = 5,
-            int fastDPeriod = 3,
-            MAType fastDMAType = MAType.Sma)
-        {
-            int outBegIdx = 0;
-            int outNBElement = 0;
-            double[] outFastK = new double[endIdx - startIdx + 1];
-            double[] outFastD = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.StochRsi(
-                startIdx,
-                endIdx,
-                real,
-                timePeriod,
-                fastKPeriod,
-                fastDPeriod,
-                fastDMAType,
-                ref outBegIdx,
-                ref outNBElement,
-                outFastK,
-                outFastD);
-            return new StochRsi(retCode, outBegIdx, outNBElement, outFastK, outFastD);
-        }
+            int fastK_Period = 5,
+            int fastD_Period = 3,
+            MAType fastD_MAType = MAType.Sma)
+            => StochRsi(startIdx, endIdx, real.ToDouble(), timePeriod, fastK_Period, fastD_Period, fastD_MAType);
     }
 
     public class StochRsi : IndicatorBase

@@ -33,6 +33,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outInteger);
+            
             return new Cdl2Crows(retCode, outBegIdx, outNBElement, outInteger);
         }
 
@@ -43,23 +44,7 @@ namespace TechnicalAnalysis
             float[] high,
             float[] low,
             float[] close)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Cdl2Crows(
-                startIdx,
-                endIdx,
-                open,
-                high,
-                low,
-                close,
-                ref outBegIdx,
-                ref outNBElement,
-                outInteger);
-            return new Cdl2Crows(retCode, outBegIdx, outNBElement, outInteger);
-        }
+            => Cdl2Crows(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
     public class Cdl2Crows : IndicatorBase

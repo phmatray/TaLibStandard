@@ -22,14 +22,7 @@ namespace TechnicalAnalysis
         }
 
         public static Wma Wma(int startIdx, int endIdx, float[] real, int timePeriod = 30)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Wma(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new Wma(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Wma(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class Wma : IndicatorBase

@@ -33,6 +33,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outInteger);
+            
             return new CdlDojiStar(retCode, outBegIdx, outNBElement, outInteger);
         }
 
@@ -43,23 +44,7 @@ namespace TechnicalAnalysis
             float[] high,
             float[] low,
             float[] close)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.CdlDojiStar(
-                startIdx,
-                endIdx,
-                open,
-                high,
-                low,
-                close,
-                ref outBegIdx,
-                ref outNBElement,
-                outInteger);
-            return new CdlDojiStar(retCode, outBegIdx, outNBElement, outInteger);
-        }
+            => CdlDojiStar(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
     public class CdlDojiStar : IndicatorBase

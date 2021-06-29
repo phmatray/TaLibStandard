@@ -25,25 +25,12 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new LinearReg(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static LinearReg LinearReg(int startIdx, int endIdx, float[] real, int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.LinearReg(
-                startIdx,
-                endIdx,
-                real,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new LinearReg(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => LinearReg(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class LinearReg : IndicatorBase

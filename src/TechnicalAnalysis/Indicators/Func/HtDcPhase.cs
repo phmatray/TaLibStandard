@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.HtDcPhase(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            
             return new HtDcPhase(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static HtDcPhase HtDcPhase(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.HtDcPhase(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new HtDcPhase(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => HtDcPhase(startIdx, endIdx, real.ToDouble());
     }
 
     public class HtDcPhase : IndicatorBase

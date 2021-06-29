@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Sum(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Sum(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Sum Sum(int startIdx, int endIdx, float[] real, int timePeriod = 30)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Sum(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new Sum(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Sum(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class Sum : IndicatorBase

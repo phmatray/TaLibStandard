@@ -35,6 +35,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outInteger);
+            
             return new CdlEveningStar(retCode, outBegIdx, outNBElement, outInteger);
         }
 
@@ -46,24 +47,14 @@ namespace TechnicalAnalysis
             float[] low,
             float[] close,
             double penetration = 0.3)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.CdlEveningStar(
+            => CdlEveningStar(
                 startIdx,
                 endIdx,
-                open,
-                high,
-                low,
-                close,
-                penetration,
-                ref outBegIdx,
-                ref outNBElement,
-                outInteger);
-            return new CdlEveningStar(retCode, outBegIdx, outNBElement, outInteger);
-        }
+                open.ToDouble(),
+                high.ToDouble(),
+                low.ToDouble(),
+                close.ToDouble(),
+                penetration);
     }
 
     public class CdlEveningStar : IndicatorBase

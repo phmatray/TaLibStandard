@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.WclPrice(startIdx, endIdx, high, low, close, ref outBegIdx, ref outNBElement, outReal);
+            
             return new WclPrice(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static WclPrice WclPrice(int startIdx, int endIdx, float[] high, float[] low, float[] close)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.WclPrice(startIdx, endIdx, high, low, close, ref outBegIdx, ref outNBElement, outReal);
-            return new WclPrice(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => WclPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
     public class WclPrice : IndicatorBase

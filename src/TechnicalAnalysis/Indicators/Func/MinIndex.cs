@@ -25,25 +25,12 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outInteger);
+            
             return new MinIndex(retCode, outBegIdx, outNBElement, outInteger);
         }
 
         public static MinIndex MinIndex(int startIdx, int endIdx, float[] real, int timePeriod = 30)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.MinIndex(
-                startIdx,
-                endIdx,
-                real,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outInteger);
-            return new MinIndex(retCode, outBegIdx, outNBElement, outInteger);
-        }
+            => MinIndex(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class MinIndex : IndicatorBase

@@ -11,6 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
+        // TODO: rename to ConcealBabySwallow
         public static CdlConcealBabysWall CdlConcealBabysWall(
             int startIdx,
             int endIdx,
@@ -33,6 +34,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outInteger);
+            
             return new CdlConcealBabysWall(retCode, outBegIdx, outNBElement, outInteger);
         }
 
@@ -43,23 +45,13 @@ namespace TechnicalAnalysis
             float[] high,
             float[] low,
             float[] close)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.CdlConcealBabysWall(
+            => CdlConcealBabysWall(
                 startIdx,
                 endIdx,
-                open,
-                high,
-                low,
-                close,
-                ref outBegIdx,
-                ref outNBElement,
-                outInteger);
-            return new CdlConcealBabysWall(retCode, outBegIdx, outNBElement, outInteger);
-        }
+                open.ToDouble(),
+                high.ToDouble(),
+                low.ToDouble(),
+                close.ToDouble());
     }
 
     public class CdlConcealBabysWall : IndicatorBase

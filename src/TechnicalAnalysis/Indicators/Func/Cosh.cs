@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Cosh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Cosh(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Cosh Cosh(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Cosh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new Cosh(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Cosh(startIdx, endIdx, real.ToDouble());
     }
 
     public class Cosh : IndicatorBase

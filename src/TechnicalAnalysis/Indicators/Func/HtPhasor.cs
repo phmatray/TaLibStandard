@@ -26,26 +26,12 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 outInPhase,
                 outQuadrature);
+            
             return new HtPhasor(retCode, outBegIdx, outNBElement, outInPhase, outQuadrature);
         }
 
         public static HtPhasor HtPhasor(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outInPhase = new double[endIdx - startIdx + 1];
-            double[] outQuadrature = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.HtPhasor(
-                startIdx,
-                endIdx,
-                real,
-                ref outBegIdx,
-                ref outNBElement,
-                outInPhase,
-                outQuadrature);
-            return new HtPhasor(retCode, outBegIdx, outNBElement, outInPhase, outQuadrature);
-        }
+            => HtPhasor(startIdx, endIdx, real.ToDouble());
     }
 
     public class HtPhasor : IndicatorBase

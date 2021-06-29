@@ -22,14 +22,7 @@ namespace TechnicalAnalysis
         }
 
         public static TypPrice TypPrice(int startIdx, int endIdx, float[] high, float[] low, float[] close)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.TypPrice(startIdx, endIdx, high, low, close, ref outBegIdx, ref outNBElement, outReal);
-            return new TypPrice(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => TypPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
     public class TypPrice : IndicatorBase

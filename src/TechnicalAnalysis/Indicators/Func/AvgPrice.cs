@@ -33,6 +33,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new AvgPrice(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -43,23 +44,7 @@ namespace TechnicalAnalysis
             float[] high,
             float[] low,
             float[] close)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.AvgPrice(
-                startIdx,
-                endIdx,
-                open,
-                high,
-                low,
-                close,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new AvgPrice(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => AvgPrice(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
     public class AvgPrice : IndicatorBase

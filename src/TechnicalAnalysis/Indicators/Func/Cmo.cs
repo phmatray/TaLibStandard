@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Cmo(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Cmo(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Cmo Cmo(int startIdx, int endIdx, float[] real, int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Cmo(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new Cmo(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Cmo(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class Cmo : IndicatorBase

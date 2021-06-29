@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Min(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Min(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Min Min(int startIdx, int endIdx, float[] real, int timePeriod = 30)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Min(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new Min(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Min(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class Min : IndicatorBase

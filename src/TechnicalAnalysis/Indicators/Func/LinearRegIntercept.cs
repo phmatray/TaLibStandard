@@ -29,6 +29,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new LinearRegIntercept(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -37,21 +38,7 @@ namespace TechnicalAnalysis
             int endIdx,
             float[] real,
             int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.LinearRegIntercept(
-                startIdx,
-                endIdx,
-                real,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new LinearRegIntercept(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => LinearRegIntercept(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class LinearRegIntercept : IndicatorBase

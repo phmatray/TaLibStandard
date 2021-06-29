@@ -39,6 +39,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 outFastK,
                 outFastD);
+            
             return new StochF(retCode, outBegIdx, outNBElement, outFastK, outFastD);
         }
 
@@ -51,27 +52,15 @@ namespace TechnicalAnalysis
             int fastK_Period = 5,
             int fastD_Period = 3,
             MAType fastD_MAType = MAType.Sma)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outFastK = new double[endIdx - startIdx + 1];
-            double[] outFastD = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.StochF(
+            => StochF(
                 startIdx,
                 endIdx,
-                high,
-                low,
-                close,
+                high.ToDouble(),
+                low.ToDouble(),
+                close.ToDouble(),
                 fastK_Period,
                 fastD_Period,
-                fastD_MAType,
-                ref outBegIdx,
-                ref outNBElement,
-                outFastK,
-                outFastD);
-            return new StochF(retCode, outBegIdx, outNBElement, outFastK, outFastD);
-        }
+                fastD_MAType);
     }
 
     public class StochF : IndicatorBase

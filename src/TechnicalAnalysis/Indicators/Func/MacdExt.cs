@@ -43,6 +43,7 @@ namespace TechnicalAnalysis
                 outMACD,
                 outMACDSignal,
                 outMACDHist);
+            
             return new MacdExt(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
         }
 
@@ -56,30 +57,16 @@ namespace TechnicalAnalysis
             MAType slowMAType = MAType.Sma,
             int signalPeriod = 9,
             MAType signalMAType = MAType.Sma)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outMACD = new double[endIdx - startIdx + 1];
-            double[] outMACDSignal = new double[endIdx - startIdx + 1];
-            double[] outMACDHist = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.MacdExt(
+            => MacdExt(
                 startIdx,
                 endIdx,
-                real,
+                real.ToDouble(),
                 fastPeriod,
                 fastMAType,
                 slowPeriod,
                 slowMAType,
                 signalPeriod,
-                signalMAType,
-                ref outBegIdx,
-                ref outNBElement,
-                outMACD,
-                outMACDSignal,
-                outMACDHist);
-            return new MacdExt(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
-        }
+                signalMAType);
     }
 
     public class MacdExt : IndicatorBase
@@ -88,14 +75,14 @@ namespace TechnicalAnalysis
             RetCode retCode,
             int begIdx,
             int nbElement,
-            double[] mACD,
-            double[] mACDSignal,
-            double[] mACDHist)
+            double[] macd,
+            double[] macdSignal,
+            double[] macdHist)
             : base(retCode, begIdx, nbElement)
         {
-            this.MACD = mACD;
-            this.MACDSignal = mACDSignal;
-            this.MACDHist = mACDHist;
+            this.MACD = macd;
+            this.MACDSignal = macdSignal;
+            this.MACDHist = macdHist;
         }
 
         public double[] MACD { get; }

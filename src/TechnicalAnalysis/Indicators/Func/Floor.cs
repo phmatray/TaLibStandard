@@ -22,14 +22,7 @@ namespace TechnicalAnalysis
         }
 
         public static Floor Floor(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Floor(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new Floor(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Floor(startIdx, endIdx, real.ToDouble());
     }
 
     public class Floor : IndicatorBase

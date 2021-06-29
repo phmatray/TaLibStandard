@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Ln(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Ln(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Ln Ln(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Ln(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new Ln(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Ln(startIdx, endIdx, real.ToDouble());
     }
 
     public class Ln : IndicatorBase

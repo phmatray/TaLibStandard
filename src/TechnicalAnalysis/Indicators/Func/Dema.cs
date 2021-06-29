@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Dema(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Dema(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Dema Dema(int startIdx, int endIdx, float[] real, int timePeriod = 30)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Dema(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new Dema(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Dema(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class Dema : IndicatorBase

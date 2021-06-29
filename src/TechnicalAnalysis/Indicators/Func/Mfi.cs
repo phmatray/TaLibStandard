@@ -35,6 +35,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new Mfi(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -46,24 +47,7 @@ namespace TechnicalAnalysis
             float[] close,
             float[] volume,
             int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Mfi(
-                startIdx,
-                endIdx,
-                high,
-                low,
-                close,
-                volume,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new Mfi(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Mfi(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), volume.ToDouble(), timePeriod);
     }
 
     public class Mfi : IndicatorBase

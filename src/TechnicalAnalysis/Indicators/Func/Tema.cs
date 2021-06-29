@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Tema(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Tema(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Tema Tema(int startIdx, int endIdx, float[] real, int timePeriod = 30)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Tema(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new Tema(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Tema(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class Tema : IndicatorBase

@@ -18,7 +18,7 @@ namespace TechnicalAnalysis
             double[] periods,
             int minPeriod = 2,
             int maxPeriod = 30,
-            MAType mAType = MAType.Sma)
+            MAType maType = MAType.Sma)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -31,10 +31,11 @@ namespace TechnicalAnalysis
                 periods,
                 minPeriod,
                 maxPeriod,
-                mAType,
+                maType,
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new MovingAverageVariablePeriod(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -45,25 +46,15 @@ namespace TechnicalAnalysis
             float[] periods,
             int minPeriod = 2,
             int maxPeriod = 30,
-            MAType mAType = MAType.Sma)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.MovingAverageVariablePeriod(
+            MAType maType = MAType.Sma)
+            => MovingAverageVariablePeriod(
                 startIdx,
                 endIdx,
-                real,
-                periods,
+                real.ToDouble(),
+                periods.ToDouble(),
                 minPeriod,
                 maxPeriod,
-                mAType,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new MovingAverageVariablePeriod(retCode, outBegIdx, outNBElement, outReal);
-        }
+                maType);
     }
 
     public class MovingAverageVariablePeriod : IndicatorBase

@@ -33,6 +33,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new Sar(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -43,23 +44,7 @@ namespace TechnicalAnalysis
             float[] low,
             double acceleration = 0.02,
             double maximum = 0.2)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Sar(
-                startIdx,
-                endIdx,
-                high,
-                low,
-                acceleration,
-                maximum,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new Sar(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Sar(startIdx, endIdx, high.ToDouble(), low.ToDouble(), acceleration, maximum);
     }
 
     public class Sar : IndicatorBase

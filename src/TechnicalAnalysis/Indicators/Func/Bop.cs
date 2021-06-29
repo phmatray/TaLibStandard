@@ -33,27 +33,12 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new Bop(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Bop Bop(int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Bop(
-                startIdx,
-                endIdx,
-                open,
-                high,
-                low,
-                close,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new Bop(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Bop(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
     public class Bop : IndicatorBase

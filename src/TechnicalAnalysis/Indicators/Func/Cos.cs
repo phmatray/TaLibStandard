@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Cos(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Cos(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Cos Cos(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Cos(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new Cos(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Cos(startIdx, endIdx, real.ToDouble());
     }
 
     public class Cos : IndicatorBase

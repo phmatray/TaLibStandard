@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Asin(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Asin(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Asin Asin(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Asin(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new Asin(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Asin(startIdx, endIdx, real.ToDouble());
     }
 
     public class Asin : IndicatorBase

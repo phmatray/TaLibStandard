@@ -45,6 +45,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new SarExt(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -61,16 +62,11 @@ namespace TechnicalAnalysis
             double accelerationInitShort = 0.02,
             double accelerationShort = 0.02,
             double accelerationMaxShort = 0.2)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.SarExt(
+            => SarExt(
                 startIdx,
                 endIdx,
-                high,
-                low,
+                high.ToDouble(),
+                low.ToDouble(),
                 startValue,
                 offsetOnReverse,
                 accelerationInitLong,
@@ -78,12 +74,7 @@ namespace TechnicalAnalysis
                 accelerationMaxLong,
                 accelerationInitShort,
                 accelerationShort,
-                accelerationMaxShort,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new SarExt(retCode, outBegIdx, outNBElement, outReal);
-        }
+                accelerationMaxShort);
     }
 
     public class SarExt : IndicatorBase

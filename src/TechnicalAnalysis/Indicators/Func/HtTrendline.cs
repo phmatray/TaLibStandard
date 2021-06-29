@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.HtTrendline(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            
             return new HtTrendline(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static HtTrendline HtTrendline(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.HtTrendline(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new HtTrendline(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => HtTrendline(startIdx, endIdx, real.ToDouble());
     }
 
     public class HtTrendline : IndicatorBase

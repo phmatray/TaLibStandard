@@ -25,25 +25,12 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new LinearRegAngle(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static LinearRegAngle LinearRegAngle(int startIdx, int endIdx, float[] real, int timePeriod = 14)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.LinearRegAngle(
-                startIdx,
-                endIdx,
-                real,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new LinearRegAngle(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => LinearRegAngle(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class LinearRegAngle : IndicatorBase

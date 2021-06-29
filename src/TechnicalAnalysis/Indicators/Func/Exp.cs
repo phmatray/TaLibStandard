@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Exp(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Exp(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Exp Exp(int startIdx, int endIdx, float[] real)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Exp(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, outReal);
-            return new Exp(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Exp(startIdx, endIdx, real.ToDouble());
     }
 
     public class Exp : IndicatorBase

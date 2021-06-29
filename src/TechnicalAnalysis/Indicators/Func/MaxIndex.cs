@@ -25,25 +25,12 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outInteger);
+            
             return new MaxIndex(retCode, outBegIdx, outNBElement, outInteger);
         }
 
         public static MaxIndex MaxIndex(int startIdx, int endIdx, float[] real, int timePeriod = 30)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.MaxIndex(
-                startIdx,
-                endIdx,
-                real,
-                timePeriod,
-                ref outBegIdx,
-                ref outNBElement,
-                outInteger);
-            return new MaxIndex(retCode, outBegIdx, outNBElement, outInteger);
-        }
+            => MaxIndex(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class MaxIndex : IndicatorBase

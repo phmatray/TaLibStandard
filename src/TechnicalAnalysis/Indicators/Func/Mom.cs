@@ -18,18 +18,12 @@ namespace TechnicalAnalysis
             double[] outReal = new double[endIdx - startIdx + 1];
 
             RetCode retCode = TACore.Mom(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
+            
             return new Mom(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static Mom Mom(int startIdx, int endIdx, float[] real, int timePeriod = 10)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.Mom(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, outReal);
-            return new Mom(retCode, outBegIdx, outNBElement, outReal);
-        }
+            => Mom(startIdx, endIdx, real.ToDouble(), timePeriod);
     }
 
     public class Mom : IndicatorBase

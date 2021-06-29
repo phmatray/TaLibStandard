@@ -37,6 +37,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
+            
             return new UltOsc(retCode, outBegIdx, outNBElement, outReal);
         }
 
@@ -49,25 +50,15 @@ namespace TechnicalAnalysis
             int timePeriod1 = 7,
             int timePeriod2 = 14,
             int timePeriod3 = 28)
-        {
-            int outBegIdx = default;
-            int outNBElement = default;
-            double[] outReal = new double[endIdx - startIdx + 1];
-
-            RetCode retCode = TACore.UltOsc(
+            => UltOsc(
                 startIdx,
                 endIdx,
-                high,
-                low,
-                close,
+                high.ToDouble(),
+                low.ToDouble(),
+                close.ToDouble(),
                 timePeriod1,
                 timePeriod2,
-                timePeriod3,
-                ref outBegIdx,
-                ref outNBElement,
-                outReal);
-            return new UltOsc(retCode, outBegIdx, outNBElement, outReal);
-        }
+                timePeriod3);
     }
 
     public class UltOsc : IndicatorBase
