@@ -33,11 +33,7 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInVFactor == -4E+37)
-            {
-                optInVFactor = 0.7;
-            }
-            else if (optInVFactor is < 0.0 or > 1.0)
+            if (optInVFactor is < 0.0 or > 1.0)
             {
                 return RetCode.BadParam;
             }
@@ -181,11 +177,7 @@ namespace TechnicalAnalysis
                 return -1;
             }
 
-            if (optInVFactor == -4E+37)
-            {
-                optInVFactor = 0.7;
-            }
-            else if (optInVFactor is < 0.0 or > 1.0)
+            if (optInVFactor is < 0.0 or > 1.0)
             {
                 return -1;
             }

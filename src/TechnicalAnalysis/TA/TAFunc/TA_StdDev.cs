@@ -36,11 +36,7 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInNbDev == -4E+37)
-            {
-                optInNbDev = 1.0;
-            }
-            else if (optInNbDev is < -3E+37 or > 3E+37)
+            if (optInNbDev is < -3E+37 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -107,11 +103,7 @@ namespace TechnicalAnalysis
                 return -1;
             }
 
-            if (optInNbDev == -4E+37)
-            {
-                optInNbDev = 1.0;
-            }
-            else if (optInNbDev is < -3E+37 or > 3E+37)
+            if (optInNbDev is < -3E+37 or > 3E+37)
             {
                 return -1;
             }

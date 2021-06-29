@@ -39,11 +39,7 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInPenetration == -4E+37)
-            {
-                optInPenetration = 0.3;
-            }
-            else if (optInPenetration is < 0.0 or > 3E+37)
+            if (optInPenetration is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -830,11 +826,7 @@ namespace TechnicalAnalysis
         public static int CdlMorningDojiStarLookback(double optInPenetration)
         {
             int avgPeriod;
-            if (optInPenetration == -4E+37)
-            {
-                optInPenetration = 0.3;
-            }
-            else if (optInPenetration is < 0.0 or > 3E+37)
+            if (optInPenetration is < 0.0 or > 3E+37)
             {
                 return -1;
             }

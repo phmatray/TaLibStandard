@@ -41,20 +41,12 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInFastLimit == -4E+37)
-            {
-                optInFastLimit = 0.5;
-            }
-            else if (optInFastLimit is < 0.01 or > 0.99)
+            if (optInFastLimit is < 0.01 or > 0.99)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInSlowLimit == -4E+37)
-            {
-                optInSlowLimit = 0.05;
-            }
-            else if (optInSlowLimit is < 0.01 or > 0.99)
+            if (optInSlowLimit is < 0.01 or > 0.99)
             {
                 return RetCode.BadParam;
             }
@@ -373,20 +365,12 @@ namespace TechnicalAnalysis
 
         public static int MamaLookback(double optInFastLimit, double optInSlowLimit)
         {
-            if (optInFastLimit == -4E+37)
-            {
-                optInFastLimit = 0.5;
-            }
-            else if (optInFastLimit is < 0.01 or > 0.99)
+            if (optInFastLimit is < 0.01 or > 0.99)
             {
                 return -1;
             }
 
-            if (optInSlowLimit == -4E+37)
-            {
-                optInSlowLimit = 0.05;
-            }
-            else if (optInSlowLimit is < 0.01 or > 0.99)
+            if (optInSlowLimit is < 0.01 or > 0.99)
             {
                 return -1;
             }

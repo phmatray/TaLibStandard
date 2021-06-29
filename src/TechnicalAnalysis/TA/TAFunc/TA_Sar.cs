@@ -33,20 +33,12 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInAcceleration == -4E+37)
-            {
-                optInAcceleration = 0.02;
-            }
-            else if (optInAcceleration is < 0.0 or > 3E+37)
+            if (optInAcceleration is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInMaximum == -4E+37)
-            {
-                optInMaximum = 0.2;
-            }
-            else if (optInMaximum is < 0.0 or > 3E+37)
+            if (optInMaximum is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -236,20 +228,12 @@ namespace TechnicalAnalysis
 
         public static int SarLookback(double optInAcceleration, double optInMaximum)
         {
-            if (optInAcceleration == -4E+37)
-            {
-                optInAcceleration = 0.02;
-            }
-            else if (optInAcceleration is < 0.0 or > 3E+37)
+            if (optInAcceleration is < 0.0 or > 3E+37)
             {
                 return -1;
             }
 
-            if (optInMaximum == -4E+37)
-            {
-                optInMaximum = 0.2;
-            }
-            else if (optInMaximum is < 0.0 or > 3E+37)
+            if (optInMaximum is < 0.0 or > 3E+37)
             {
                 return -1;
             }

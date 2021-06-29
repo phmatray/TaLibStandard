@@ -40,74 +40,42 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInStartValue == -4E+37)
-            {
-                optInStartValue = 0.0;
-            }
-            else if (optInStartValue is < -3E+37 or > 3E+37)
+            if (optInStartValue is < -3E+37 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInOffsetOnReverse == -4E+37)
-            {
-                optInOffsetOnReverse = 0.0;
-            }
-            else if (optInOffsetOnReverse is < 0.0 or > 3E+37)
+            if (optInOffsetOnReverse is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInAccelerationInitLong == -4E+37)
-            {
-                optInAccelerationInitLong = 0.02;
-            }
-            else if (optInAccelerationInitLong is < 0.0 or > 3E+37)
+            if (optInAccelerationInitLong is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInAccelerationLong == -4E+37)
-            {
-                optInAccelerationLong = 0.02;
-            }
-            else if (optInAccelerationLong is < 0.0 or > 3E+37)
+            if (optInAccelerationLong is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInAccelerationMaxLong == -4E+37)
-            {
-                optInAccelerationMaxLong = 0.2;
-            }
-            else if (optInAccelerationMaxLong is < 0.0 or > 3E+37)
+            if (optInAccelerationMaxLong is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInAccelerationInitShort == -4E+37)
-            {
-                optInAccelerationInitShort = 0.02;
-            }
-            else if (optInAccelerationInitShort is < 0.0 or > 3E+37)
+            if (optInAccelerationInitShort is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInAccelerationShort == -4E+37)
-            {
-                optInAccelerationShort = 0.02;
-            }
-            else if (optInAccelerationShort is < 0.0 or > 3E+37)
+            if (optInAccelerationShort is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInAccelerationMaxShort == -4E+37)
-            {
-                optInAccelerationMaxShort = 0.2;
-            }
-            else if (optInAccelerationMaxShort is < 0.0 or > 3E+37)
+            if (optInAccelerationMaxShort is < 0.0 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -357,74 +325,42 @@ namespace TechnicalAnalysis
             double optInAccelerationShort,
             double optInAccelerationMaxShort)
         {
-            if (optInStartValue == -4E+37)
-            {
-                optInStartValue = 0.0;
-            }
-            else if (optInStartValue is < -3E+37 or > 3E+37)
+            if (optInStartValue is < -3E+37 or > 3E+37)
             {
                 return -1;
             }
 
-            if (optInOffsetOnReverse == -4E+37)
-            {
-                optInOffsetOnReverse = 0.0;
-            }
-            else if (optInOffsetOnReverse is < 0.0 or > 3E+37)
+            if (optInOffsetOnReverse is < 0.0 or > 3E+37)
             {
                 return -1;
             }
 
-            if (optInAccelerationInitLong == -4E+37)
-            {
-                optInAccelerationInitLong = 0.02;
-            }
-            else if (optInAccelerationInitLong is < 0.0 or > 3E+37)
+            if (optInAccelerationInitLong is < 0.0 or > 3E+37)
             {
                 return -1;
             }
 
-            if (optInAccelerationLong == -4E+37)
-            {
-                optInAccelerationLong = 0.02;
-            }
-            else if (optInAccelerationLong is < 0.0 or > 3E+37)
+            if (optInAccelerationLong is < 0.0 or > 3E+37)
             {
                 return -1;
             }
 
-            if (optInAccelerationMaxLong == -4E+37)
-            {
-                optInAccelerationMaxLong = 0.2;
-            }
-            else if (optInAccelerationMaxLong is < 0.0 or > 3E+37)
+            if (optInAccelerationMaxLong is < 0.0 or > 3E+37)
             {
                 return -1;
             }
 
-            if (optInAccelerationInitShort == -4E+37)
-            {
-                optInAccelerationInitShort = 0.02;
-            }
-            else if (optInAccelerationInitShort is < 0.0 or > 3E+37)
+            if (optInAccelerationInitShort is < 0.0 or > 3E+37)
             {
                 return -1;
             }
 
-            if (optInAccelerationShort == -4E+37)
-            {
-                optInAccelerationShort = 0.02;
-            }
-            else if (optInAccelerationShort is < 0.0 or > 3E+37)
+            if (optInAccelerationShort is < 0.0 or > 3E+37)
             {
                 return -1;
             }
 
-            if (optInAccelerationMaxShort == -4E+37)
-            {
-                optInAccelerationMaxShort = 0.2;
-            }
-            else if (optInAccelerationMaxShort is < 0.0 or > 3E+37)
+            if (optInAccelerationMaxShort is < 0.0 or > 3E+37)
             {
                 return -1;
             }

@@ -43,20 +43,12 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInNbDevUp == -4E+37)
-            {
-                optInNbDevUp = 2.0;
-            }
-            else if (optInNbDevUp is < -3E+37 or > 3E+37)
+            if (optInNbDevUp is < -3E+37 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInNbDevDn == -4E+37)
-            {
-                optInNbDevDn = 2.0;
-            }
-            else if (optInNbDevDn is < -3E+37 or > 3E+37)
+            if (optInNbDevDn is < -3E+37 or > 3E+37)
             {
                 return RetCode.BadParam;
             }
@@ -247,20 +239,12 @@ namespace TechnicalAnalysis
                 return -1;
             }
 
-            if (optInNbDevUp == -4E+37)
-            {
-                optInNbDevUp = 2.0;
-            }
-            else if (optInNbDevUp is < -3E+37 or > 3E+37)
+            if (optInNbDevUp is < -3E+37 or > 3E+37)
             {
                 return -1;
             }
 
-            if (optInNbDevDn == -4E+37)
-            {
-                optInNbDevDn = 2.0;
-            }
-            else if (optInNbDevDn is < -3E+37 or > 3E+37)
+            if (optInNbDevDn is < -3E+37 or > 3E+37)
             {
                 return -1;
             }
