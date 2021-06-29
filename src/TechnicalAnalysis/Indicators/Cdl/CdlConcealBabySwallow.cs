@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CdlConcealBabysWall.cs" company="GLPM">
+// <copyright file="CdlConcealBabySwallow.cs" company="GLPM">
 //   Copyright (c) GLPM. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines CdlConcealBabysWall.
+//   Defines CdlConcealBabySwallow.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 

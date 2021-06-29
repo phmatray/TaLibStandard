@@ -5,10 +5,10 @@ using Xunit;
 
 namespace TechnicalAnalysis.Tests.Indicators.Cdl
 {
-    public class CdlSeperatingLinesTests
+    public class CdlConcealBabySwallowTests
     {
         [Fact]
-        public void CdlSeperatingLinesDouble()
+        public void CdlConcealBabySwallowDouble()
         {
             // Arrange
             Fixture fixture = new();
@@ -20,7 +20,7 @@ namespace TechnicalAnalysis.Tests.Indicators.Cdl
             double[] close = fixture.CreateMany<double>(count: 100).ToArray();
             
             // Act
-            var actualResult = TAMath.CdlSeperatingLines(
+            var actualResult = TAMath.CdlConcealBabySwallow(
                 StartIdx,
                 EndIdx,
                 open,
@@ -34,7 +34,7 @@ namespace TechnicalAnalysis.Tests.Indicators.Cdl
         }
         
         [Fact]
-        public void CdlSeperatingLinesFloat()
+        public void CdlConcealBabySwallowFloat()
         {
             // Arrange
             Fixture fixture = new();
@@ -46,7 +46,7 @@ namespace TechnicalAnalysis.Tests.Indicators.Cdl
             float[] close = fixture.CreateMany<float>(count: 100).ToArray();
             
             // Act
-            var actualResult = TAMath.CdlSeperatingLines(
+            var actualResult = TAMath.CdlConcealBabySwallow(
                 StartIdx,
                 EndIdx,
                 open,

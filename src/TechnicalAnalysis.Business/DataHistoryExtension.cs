@@ -149,10 +149,10 @@ namespace TechnicalAnalysis.Business
             PriceDataPoint priceDataPoint = PriceDataPoint.Close) =>
             dataHistory.ComputeIndicator(Indicator.CdlClosingMarubozu, priceDataPoint);
 
-        public static DataHistory ComputeCdlConcealBabysWall(
+        public static DataHistory ComputeCdlConcealBabySwallow(
             this DataHistory dataHistory,
             PriceDataPoint priceDataPoint = PriceDataPoint.Close) =>
-            dataHistory.ComputeIndicator(Indicator.CdlConcealBabysWall, priceDataPoint);
+            dataHistory.ComputeIndicator(Indicator.CdlConcealBabySwallow, priceDataPoint);
 
         public static DataHistory ComputeCdlCounterAttack(
             this DataHistory dataHistory,
@@ -329,10 +329,10 @@ namespace TechnicalAnalysis.Business
             PriceDataPoint priceDataPoint = PriceDataPoint.Close) =>
             dataHistory.ComputeIndicator(Indicator.CdlRiseFall3Methods, priceDataPoint);
 
-        public static DataHistory ComputeCdlSeperatingLines(
+        public static DataHistory ComputeCdlSeparatingLines(
             this DataHistory dataHistory,
             PriceDataPoint priceDataPoint = PriceDataPoint.Close) =>
-            dataHistory.ComputeIndicator(Indicator.CdlSeperatingLines, priceDataPoint);
+            dataHistory.ComputeIndicator(Indicator.CdlSeparatingLines, priceDataPoint);
 
         public static DataHistory ComputeCdlShootingStar(
             this DataHistory dataHistory,
@@ -897,7 +897,7 @@ namespace TechnicalAnalysis.Business
                     return TAMath.CdlBreakaway(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlClosingMarubozu:
                     return TAMath.CdlClosingMarubozu(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlConcealBabysWall:
+                case Indicator.CdlConcealBabySwallow:
                     return TAMath.CdlConcealBabySwallow(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlCounterAttack:
                     return TAMath.CdlCounterAttack(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
@@ -969,8 +969,8 @@ namespace TechnicalAnalysis.Business
                     return TAMath.CdlRickshawMan(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlRiseFall3Methods:
                     return TAMath.CdlRiseFall3Methods(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlSeperatingLines:
-                    return TAMath.CdlSeperatingLines(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
+                case Indicator.CdlSeparatingLines:
+                    return TAMath.CdlSeparatingLines(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlShootingStar:
                     return TAMath.CdlShootingStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlShortLine:

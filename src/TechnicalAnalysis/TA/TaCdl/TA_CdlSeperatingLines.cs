@@ -4,7 +4,7 @@ namespace TechnicalAnalysis
 
     internal partial class TACore
     {
-        public static RetCode CdlSeperatingLines(
+        public static RetCode CdlSeparatingLines(
             int startIdx,
             int endIdx,
             double[] inOpen,
@@ -52,7 +52,7 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            int lookbackTotal = CdlSeperatingLinesLookback();
+            int lookbackTotal = CdlSeparatingLinesLookback();
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -997,7 +997,7 @@ namespace TechnicalAnalysis
             return RetCode.Success;
         }
 
-        public static int CdlSeperatingLinesLookback()
+        public static int CdlSeparatingLinesLookback()
         {
             int avgPeriod;
             if ((Globals.candleSettings[7].avgPeriod <= Globals.candleSettings[0].avgPeriod

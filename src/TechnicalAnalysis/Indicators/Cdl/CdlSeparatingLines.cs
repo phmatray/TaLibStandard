@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CdlSeperatingLines.cs" company="GLPM">
+// <copyright file="CdlSeparatingLines.cs" company="GLPM">
 //   Copyright (c) GLPM. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines CdlSeperatingLines.
+//   Defines CdlSeparatingLines.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -11,8 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        // TODO: rename to SeparatingLines
-        public static CdlSeperatingLines CdlSeperatingLines(
+        public static CdlSeparatingLines CdlSeparatingLines(
             int startIdx,
             int endIdx,
             double[] open,
@@ -24,7 +23,7 @@ namespace TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            RetCode retCode = TACore.CdlSeperatingLines(
+            RetCode retCode = TACore.CdlSeparatingLines(
                 startIdx,
                 endIdx,
                 open,
@@ -35,22 +34,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 outInteger);
             
-            return new CdlSeperatingLines(retCode, outBegIdx, outNBElement, outInteger);
+            return new CdlSeparatingLines(retCode, outBegIdx, outNBElement, outInteger);
         }
 
-        public static CdlSeperatingLines CdlSeperatingLines(
+        public static CdlSeparatingLines CdlSeparatingLines(
             int startIdx,
             int endIdx,
             float[] open,
             float[] high,
             float[] low,
             float[] close)
-            => CdlSeperatingLines(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+            => CdlSeparatingLines(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
-    public class CdlSeperatingLines : IndicatorBase
+    public class CdlSeparatingLines : IndicatorBase
     {
-        public CdlSeperatingLines(RetCode retCode, int begIdx, int nbElement, int[] integer)
+        public CdlSeparatingLines(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)
         {
             this.Integer = integer;

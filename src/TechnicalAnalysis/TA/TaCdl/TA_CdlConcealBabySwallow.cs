@@ -37,7 +37,7 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            int lookbackTotal = CdlConcealBabysWallLookback();
+            int lookbackTotal = CdlConcealBabySwallowLookback();
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -798,7 +798,7 @@ namespace TechnicalAnalysis
             return RetCode.Success;
         }
 
-        public static int CdlConcealBabysWallLookback()
+        public static int CdlConcealBabySwallowLookback()
         {
             return Globals.candleSettings[7].avgPeriod + 3;
         }
