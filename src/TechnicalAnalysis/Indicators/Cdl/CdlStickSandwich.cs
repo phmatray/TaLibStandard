@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CdlStickSandwhich.cs" company="GLPM">
+// <copyright file="CdlStickSandwich.cs" company="GLPM">
 //   Copyright (c) GLPM. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines CdlStickSandwhich.
+//   Defines CdlStickSandwich.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -11,8 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        // TODO: rename to StickSandwich
-        public static CdlStickSandwhich CdlStickSandwhich(
+        public static CdlStickSandwich CdlStickSandwich(
             int startIdx,
             int endIdx,
             double[] open,
@@ -24,7 +23,7 @@ namespace TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            RetCode retCode = TACore.CdlStickSandwhich(
+            RetCode retCode = TACore.CdlStickSandwich(
                 startIdx,
                 endIdx,
                 open,
@@ -35,22 +34,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 outInteger);
             
-            return new CdlStickSandwhich(retCode, outBegIdx, outNBElement, outInteger);
+            return new CdlStickSandwich(retCode, outBegIdx, outNBElement, outInteger);
         }
 
-        public static CdlStickSandwhich CdlStickSandwhich(
+        public static CdlStickSandwich CdlStickSandwich(
             int startIdx,
             int endIdx,
             float[] open,
             float[] high,
             float[] low,
             float[] close)
-            => CdlStickSandwhich(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+            => CdlStickSandwich(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
-    public class CdlStickSandwhich : IndicatorBase
+    public class CdlStickSandwich : IndicatorBase
     {
-        public CdlStickSandwhich(RetCode retCode, int begIdx, int nbElement, int[] integer)
+        public CdlStickSandwich(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)
         {
             this.Integer = integer;

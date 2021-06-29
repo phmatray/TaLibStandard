@@ -4,7 +4,7 @@ namespace TechnicalAnalysis
 
     internal partial class TACore
     {
-        public static RetCode CdlStickSandwhich(
+        public static RetCode CdlStickSandwich(
             int startIdx,
             int endIdx,
             double[] inOpen,
@@ -37,7 +37,7 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            int lookbackTotal = CdlStickSandwhichLookback();
+            int lookbackTotal = CdlStickSandwichLookback();
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -385,7 +385,7 @@ namespace TechnicalAnalysis
             return RetCode.Success;
         }
 
-        public static int CdlStickSandwhichLookback()
+        public static int CdlStickSandwichLookback()
         {
             return Globals.candleSettings[10].avgPeriod + 2;
         }

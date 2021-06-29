@@ -354,10 +354,10 @@ namespace TechnicalAnalysis.Business
             PriceDataPoint priceDataPoint = PriceDataPoint.Close) =>
             dataHistory.ComputeIndicator(Indicator.CdlStalledPattern, priceDataPoint);
 
-        public static DataHistory ComputeCdlStickSandwhich(
+        public static DataHistory ComputeCdlStickSandwich(
             this DataHistory dataHistory,
             PriceDataPoint priceDataPoint = PriceDataPoint.Close) =>
-            dataHistory.ComputeIndicator(Indicator.CdlStickSandwhich, priceDataPoint);
+            dataHistory.ComputeIndicator(Indicator.CdlStickSandwich, priceDataPoint);
 
         public static DataHistory ComputeCdlTakuri(
             this DataHistory dataHistory,
@@ -979,8 +979,8 @@ namespace TechnicalAnalysis.Business
                     return TAMath.CdlSpinningTop(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlStalledPattern:
                     return TAMath.CdlStalledPattern(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlStickSandwhich:
-                    return TAMath.CdlStickSandwhich(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
+                case Indicator.CdlStickSandwich:
+                    return TAMath.CdlStickSandwich(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlTakuri:
                     return TAMath.CdlTakuri(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
                 case Indicator.CdlTasukiGap:

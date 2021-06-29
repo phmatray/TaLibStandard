@@ -72,7 +72,7 @@
         CdlShortLine,
         CdlSpinningTop,
         CdlStalledPattern,
-        CdlStickSandwhich,
+        CdlStickSandwich,
         CdlTakuri,
         CdlTasukiGap,
         CdlThrusting,
