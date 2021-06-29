@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Ui.Cli
                 .GetDataHistoryFromFile("btc", "eur", "day")
                 .ComputeMacd()
                 .ComputeMovingAverage()
-                .ComputeBbands()
+                .ComputeBollingerBands()
                 .ComputeRsi();
 
             var dataAIndicator = dataA.Indicators[Indicator.Macd];
@@ -27,7 +27,7 @@ namespace TechnicalAnalysis.Ui.Cli
 
             // var historicalDataB = DataHistoryRepository.GetDataHistoryFromService("btc", "eur", "day");
             // var rsiResult = historicalDataB.ComputeIndicator(Indicator.Rsi);
-            // var bbandsResult = historicalDataB.ComputeIndicator(Indicator.Bbands);
+            // var bollingerBandsResult = historicalDataB.ComputeIndicator(Indicator.BollingerBands);
             // var kamaResult = historicalDataB.ComputeIndicator(Indicator.Kama);
             // var stochRsiResult = historicalDataB.ComputeIndicator(Indicator.StochRsi);
 

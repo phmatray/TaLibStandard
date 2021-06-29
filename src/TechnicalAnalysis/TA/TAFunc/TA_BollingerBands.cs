@@ -4,7 +4,7 @@ namespace TechnicalAnalysis
 
     internal partial class TACore
     {
-        public static RetCode Bbands(
+        public static RetCode BollingerBands(
             int startIdx,
             int endIdx,
             double[] inReal,
@@ -240,7 +240,7 @@ namespace TechnicalAnalysis
             return RetCode.Success;
         }
 
-        public static int BbandsLookback(
+        public static int BollingerBandsLookback(
             int optInTimePeriod,
             double optInNbDevUp,
             double optInNbDevDn,

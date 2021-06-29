@@ -69,10 +69,10 @@ namespace TechnicalAnalysis.Business
             PriceDataPoint priceDataPoint = PriceDataPoint.Close) =>
             dataHistory.ComputeIndicator(Indicator.AvgPrice, priceDataPoint);
 
-        public static DataHistory ComputeBbands(
+        public static DataHistory ComputeBollingerBands(
             this DataHistory dataHistory,
             PriceDataPoint priceDataPoint = PriceDataPoint.Close) =>
-            dataHistory.ComputeIndicator(Indicator.Bbands, priceDataPoint);
+            dataHistory.ComputeIndicator(Indicator.BollingerBands, priceDataPoint);
 
         public static DataHistory ComputeBeta(
             this DataHistory dataHistory,
@@ -864,8 +864,8 @@ namespace TechnicalAnalysis.Business
                     return TAMath.Atr(startIdx, endIdx, dh.High, dh.Low, dh.Close);
                 case Indicator.AvgPrice:
                     return TAMath.AvgPrice(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.Bbands:
-                    return TAMath.Bbands(startIdx, endIdx, real);
+                case Indicator.BollingerBands:
+                    return TAMath.BollingerBands(startIdx, endIdx, real);
 
                 // case Indicator.Beta:
                 // return TAMath.Beta(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1);

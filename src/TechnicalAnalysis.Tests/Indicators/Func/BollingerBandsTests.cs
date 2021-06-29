@@ -5,10 +5,10 @@ using Xunit;
 
 namespace TechnicalAnalysis.Tests.Indicators.Func
 {
-    public class BbandsTests
+    public class BollingerBandsTests
     {
         [Fact]
-        public void BbandsDouble()
+        public void BollingerBandsDouble()
         {
             // Arrange
             Fixture fixture = new();
@@ -17,7 +17,7 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             double[] real = fixture.CreateMany<double>(count: 100).ToArray();
             
             // Act
-            var actualResult = TAMath.Bbands(
+            var actualResult = TAMath.BollingerBands(
                 StartIdx,
                 EndIdx,
                 real);
@@ -28,7 +28,7 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
         }
         
         [Fact]
-        public void BbandsFloat()
+        public void BollingerBandsFloat()
         {
             // Arrange
             Fixture fixture = new();
@@ -37,7 +37,7 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             float[] real = fixture.CreateMany<float>(count: 100).ToArray();
             
             // Act
-            var actualResult = TAMath.Bbands(
+            var actualResult = TAMath.BollingerBands(
                 StartIdx,
                 EndIdx,
                 real);

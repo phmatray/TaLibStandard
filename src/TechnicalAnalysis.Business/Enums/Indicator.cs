@@ -15,7 +15,7 @@
         Atan,
         Atr,
         AvgPrice,
-        Bbands,
+        BollingerBands,
         Beta,
         Bop,
         Cci,

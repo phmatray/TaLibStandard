@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Bbands.cs" company="GLPM">
+// <copyright file="BollingerBands.cs" company="GLPM">
 //   Copyright (c) GLPM. All rights reserved.
 // </copyright>
 // <summary>
-//   Defines Bbands.
+//   Defines BollingerBands.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -11,8 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        // TODO: rename to BBands or BollingerBands
-        public static Bbands Bbands(
+        public static BollingerBands BollingerBands(
             int startIdx,
             int endIdx,
             double[] real,
@@ -27,7 +26,7 @@ namespace TechnicalAnalysis
             double[] outRealMiddleBand = new double[endIdx - startIdx + 1];
             double[] outRealLowerBand = new double[endIdx - startIdx + 1];
 
-            RetCode retCode = TACore.Bbands(
+            RetCode retCode = TACore.BollingerBands(
                 startIdx,
                 endIdx,
                 real,
@@ -41,7 +40,7 @@ namespace TechnicalAnalysis
                 outRealMiddleBand,
                 outRealLowerBand);
             
-            return new Bbands(
+            return new BollingerBands(
                 retCode,
                 outBegIdx,
                 outNBElement,
@@ -50,7 +49,7 @@ namespace TechnicalAnalysis
                 outRealLowerBand);
         }
 
-        public static Bbands Bbands(
+        public static BollingerBands BollingerBands(
             int startIdx,
             int endIdx,
             float[] real,
@@ -58,12 +57,12 @@ namespace TechnicalAnalysis
             double nbDevUp = 2.0,
             double nbDevDn = 2.0,
             MAType maType = MAType.Sma)
-            => Bbands(startIdx, endIdx, real.ToDouble(), timePeriod, nbDevUp, nbDevDn, maType);
+            => BollingerBands(startIdx, endIdx, real.ToDouble(), timePeriod, nbDevUp, nbDevDn, maType);
     }
 
-    public class Bbands : IndicatorBase
+    public class BollingerBands : IndicatorBase
     {
-        public Bbands(
+        public BollingerBands(
             RetCode retCode,
             int begIdx,
             int nbElement,
