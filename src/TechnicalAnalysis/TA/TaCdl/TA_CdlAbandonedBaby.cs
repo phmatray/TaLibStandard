@@ -38,7 +38,7 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInPenetration is < 0.0 or > 3E+37)
+            if (optInPenetration < 0.0)
             {
                 return RetCode.BadParam;
             }
@@ -594,7 +594,7 @@ namespace TechnicalAnalysis
         public static int CdlAbandonedBabyLookback(double optInPenetration)
         {
             int avgPeriod;
-            if (optInPenetration is < 0.0 or > 3E+37)
+            if (optInPenetration < 0.0)
             {
                 return -1;
             }

@@ -33,12 +33,12 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInAcceleration is < 0.0 or > 3E+37)
+            if (optInAcceleration < 0.0)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInMaximum is < 0.0 or > 3E+37)
+            if (optInMaximum < 0.0)
             {
                 return RetCode.BadParam;
             }
@@ -228,12 +228,12 @@ namespace TechnicalAnalysis
 
         public static int SarLookback(double optInAcceleration, double optInMaximum)
         {
-            if (optInAcceleration is < 0.0 or > 3E+37)
+            if (optInAcceleration < 0.0)
             {
                 return -1;
             }
 
-            if (optInMaximum is < 0.0 or > 3E+37)
+            if (optInMaximum < 0.0)
             {
                 return -1;
             }

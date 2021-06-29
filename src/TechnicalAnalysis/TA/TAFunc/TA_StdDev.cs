@@ -36,11 +36,6 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInNbDev is < -3E+37 or > 3E+37)
-            {
-                return RetCode.BadParam;
-            }
-
             if (outReal == null)
             {
                 return RetCode.BadParam;
@@ -99,11 +94,6 @@ namespace TechnicalAnalysis
         public static int StdDevLookback(int optInTimePeriod, double optInNbDev)
         {
             if (optInTimePeriod is < 2 or > 100000)
-            {
-                return -1;
-            }
-
-            if (optInNbDev is < -3E+37 or > 3E+37)
             {
                 return -1;
             }

@@ -40,42 +40,37 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInStartValue is < -3E+37 or > 3E+37)
+            if (optInOffsetOnReverse < 0.0)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInOffsetOnReverse is < 0.0 or > 3E+37)
+            if (optInAccelerationInitLong < 0.0)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInAccelerationInitLong is < 0.0 or > 3E+37)
+            if (optInAccelerationLong < 0.0)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInAccelerationLong is < 0.0 or > 3E+37)
+            if (optInAccelerationMaxLong < 0.0)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInAccelerationMaxLong is < 0.0 or > 3E+37)
+            if (optInAccelerationInitShort < 0.0)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInAccelerationInitShort is < 0.0 or > 3E+37)
+            if (optInAccelerationShort < 0.0)
             {
                 return RetCode.BadParam;
             }
 
-            if (optInAccelerationShort is < 0.0 or > 3E+37)
-            {
-                return RetCode.BadParam;
-            }
-
-            if (optInAccelerationMaxShort is < 0.0 or > 3E+37)
+            if (optInAccelerationMaxShort < 0.0)
             {
                 return RetCode.BadParam;
             }
@@ -325,42 +320,37 @@ namespace TechnicalAnalysis
             double optInAccelerationShort,
             double optInAccelerationMaxShort)
         {
-            if (optInStartValue is < -3E+37 or > 3E+37)
+            if (optInOffsetOnReverse < 0.0)
             {
                 return -1;
             }
 
-            if (optInOffsetOnReverse is < 0.0 or > 3E+37)
+            if (optInAccelerationInitLong < 0.0)
             {
                 return -1;
             }
 
-            if (optInAccelerationInitLong is < 0.0 or > 3E+37)
+            if (optInAccelerationLong < 0.0)
             {
                 return -1;
             }
 
-            if (optInAccelerationLong is < 0.0 or > 3E+37)
+            if (optInAccelerationMaxLong < 0.0)
             {
                 return -1;
             }
 
-            if (optInAccelerationMaxLong is < 0.0 or > 3E+37)
+            if (optInAccelerationInitShort < 0.0)
             {
                 return -1;
             }
 
-            if (optInAccelerationInitShort is < 0.0 or > 3E+37)
+            if (optInAccelerationShort < 0.0)
             {
                 return -1;
             }
 
-            if (optInAccelerationShort is < 0.0 or > 3E+37)
-            {
-                return -1;
-            }
-
-            if (optInAccelerationMaxShort is < 0.0 or > 3E+37)
+            if (optInAccelerationMaxShort < 0.0)
             {
                 return -1;
             }

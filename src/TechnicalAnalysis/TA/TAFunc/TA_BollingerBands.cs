@@ -43,16 +43,6 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            if (optInNbDevUp is < -3E+37 or > 3E+37)
-            {
-                return RetCode.BadParam;
-            }
-
-            if (optInNbDevDn is < -3E+37 or > 3E+37)
-            {
-                return RetCode.BadParam;
-            }
-
             if (outRealUpperBand == null)
             {
                 return RetCode.BadParam;
@@ -235,16 +225,6 @@ namespace TechnicalAnalysis
             MAType optInMAType)
         {
             if (optInTimePeriod is < 2 or > 100000)
-            {
-                return -1;
-            }
-
-            if (optInNbDevUp is < -3E+37 or > 3E+37)
-            {
-                return -1;
-            }
-
-            if (optInNbDevDn is < -3E+37 or > 3E+37)
             {
                 return -1;
             }
