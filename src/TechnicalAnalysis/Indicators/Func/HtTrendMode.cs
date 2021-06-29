@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static HtTrendMode HtTrendMode(int startIdx, int endIdx, double[] real)
         {

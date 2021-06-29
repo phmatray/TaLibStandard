@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static RocR100 RocR100(int startIdx, int endIdx, double[] real, int timePeriod)
         {

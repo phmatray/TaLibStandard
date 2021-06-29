@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, double[] real, int timePeriod)
         {

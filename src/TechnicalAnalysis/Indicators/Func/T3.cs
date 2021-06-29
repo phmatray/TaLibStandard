@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static T3 T3(int startIdx, int endIdx, double[] real, int timePeriod, double vFactor)
         {

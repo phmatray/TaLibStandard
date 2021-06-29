@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static HtPhasor HtPhasor(int startIdx, int endIdx, double[] real)
         {

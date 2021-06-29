@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static CdlXSideGap3Methods CdlXSideGap3Methods(
             int startIdx,

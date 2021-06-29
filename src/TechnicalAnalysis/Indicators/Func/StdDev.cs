@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static StdDev StdDev(int startIdx, int endIdx, double[] real, int timePeriod, double nbDev)
         {

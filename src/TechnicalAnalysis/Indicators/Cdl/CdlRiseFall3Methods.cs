@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static CdlRiseFall3Methods CdlRiseFall3Methods(
             int startIdx,

@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Tsf Tsf(int startIdx, int endIdx, double[] real, int timePeriod)
         {

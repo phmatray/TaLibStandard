@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Mama Mama(int startIdx, int endIdx, double[] real, double fastLimit, double slowLimit)
         {

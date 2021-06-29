@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Cdl3BlackCrows Cdl3BlackCrows(
             int startIdx,

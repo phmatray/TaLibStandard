@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Cdl3LineStrike Cdl3LineStrike(
             int startIdx,

@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Apo Apo(int startIdx, int endIdx, double[] real, int fastPeriod, int slowPeriod, MAType maType)
         {

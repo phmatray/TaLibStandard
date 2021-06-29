@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static MacdFix MacdFix(int startIdx, int endIdx, double[] real, int signalPeriod)
         {

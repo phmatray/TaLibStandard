@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Trix Trix(int startIdx, int endIdx, double[] real, int timePeriod)
         {

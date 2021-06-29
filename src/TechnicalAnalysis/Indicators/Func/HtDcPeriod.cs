@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static HtDcPeriod HtDcPeriod(int startIdx, int endIdx, double[] real)
         {

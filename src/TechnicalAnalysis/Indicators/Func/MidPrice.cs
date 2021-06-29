@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static MidPrice MidPrice(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
         {

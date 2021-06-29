@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Natr Natr(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod)
         {

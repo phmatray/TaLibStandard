@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Sub Sub(int startIdx, int endIdx, double[] real0, double[] real1)
         {

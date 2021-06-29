@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Ceil Ceil(int startIdx, int endIdx, double[] real)
         {

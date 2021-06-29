@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static LinearRegIntercept LinearRegIntercept(int startIdx, int endIdx, double[] real, int timePeriod)
         {

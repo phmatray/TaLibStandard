@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Correl Correl(int startIdx, int endIdx, double[] real0, double[] real1, int timePeriod)
         {

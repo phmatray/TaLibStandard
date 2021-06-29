@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Kama Kama(int startIdx, int endIdx, double[] real, int timePeriod)
         {

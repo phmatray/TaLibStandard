@@ -9,7 +9,7 @@
 
 namespace TechnicalAnalysis
 {
-    public partial class TAMath
+    public static partial class TAMath
     {
         public static Tanh Tanh(int startIdx, int endIdx, double[] real)
         {
