@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, double[] real, int timePeriod = 30)
+        public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -30,9 +30,15 @@ namespace TechnicalAnalysis
             
             return new MinMaxIndex(retCode, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
         }
+        
+        public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, double[] real)
+            => MinMaxIndex(startIdx, endIdx, real, 30);
 
-        public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, float[] real, int timePeriod = 30)
-            => MinMaxIndex(startIdx, endIdx, real.ToDouble(), timePeriod);
+        public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, float[] real, int timePeriod)
+            => MinMaxIndex(startIdx, endIdx, real.ToDouble(), timePeriod);        
+
+        public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, float[] real)
+            => MinMaxIndex(startIdx, endIdx, real, 30);
     }
 
     public class MinMaxIndex : IndicatorBase

@@ -17,7 +17,7 @@ namespace TechnicalAnalysis
             double[] high,
             double[] low,
             double[] close,
-            int timePeriod = 14)
+            int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -37,14 +37,14 @@ namespace TechnicalAnalysis
             return new PlusDI(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static PlusDI PlusDI(
-            int startIdx,
-            int endIdx,
-            float[] high,
-            float[] low,
-            float[] close,
-            int timePeriod = 14)
+        public static PlusDI PlusDI(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+            => PlusDI(startIdx, endIdx, high, low, close, 14);
+
+        public static PlusDI PlusDI(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod)
             => PlusDI(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), timePeriod);
+        
+        public static PlusDI PlusDI(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+            => PlusDI(startIdx, endIdx, high, low, close, 14);
     }
 
     public class PlusDI : IndicatorBase

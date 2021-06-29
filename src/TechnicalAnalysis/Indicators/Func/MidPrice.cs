@@ -11,12 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static MidPrice MidPrice(
-            int startIdx,
-            int endIdx,
-            double[] high,
-            double[] low,
-            int timePeriod = 14)
+        public static MidPrice MidPrice(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -35,8 +30,14 @@ namespace TechnicalAnalysis
             return new MidPrice(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static MidPrice MidPrice(int startIdx, int endIdx, float[] high, float[] low, int timePeriod = 14)
+        public static MidPrice MidPrice(int startIdx, int endIdx, double[] high, double[] low)
+            => MidPrice(startIdx, endIdx, high, low, 14);
+
+        public static MidPrice MidPrice(int startIdx, int endIdx, float[] high, float[] low, int timePeriod)
             => MidPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble(), timePeriod);
+        
+        public static MidPrice MidPrice(int startIdx, int endIdx, float[] high, float[] low)
+            => MidPrice(startIdx, endIdx, high, low, 14);
     }
 
     public class MidPrice : IndicatorBase

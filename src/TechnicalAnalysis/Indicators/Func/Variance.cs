@@ -11,12 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Variance Variance(
-            int startIdx,
-            int endIdx,
-            double[] real,
-            int timePeriod = 5,
-            double nbDev = 1.0)
+        public static Variance Variance(int startIdx, int endIdx, double[] real, int timePeriod, double nbDev)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -35,13 +30,14 @@ namespace TechnicalAnalysis
             return new Variance(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Variance Variance(
-            int startIdx,
-            int endIdx,
-            float[] real,
-            int timePeriod = 5,
-            double nbDev = 1.0)
+        public static Variance Variance(int startIdx, int endIdx, double[] real)
+            => Variance(startIdx, endIdx, real, 5, 1.0);
+
+        public static Variance Variance(int startIdx, int endIdx, float[] real, int timePeriod, double nbDev)
             => Variance(startIdx, endIdx, real.ToDouble(), timePeriod, nbDev);
+        
+        public static Variance Variance(int startIdx, int endIdx, float[] real)
+            => Variance(startIdx, endIdx, real, 5, 1.0);
     }
 
     public class Variance : IndicatorBase

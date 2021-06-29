@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Correl Correl(int startIdx, int endIdx, double[] real0, double[] real1, int timePeriod = 30)
+        public static Correl Correl(int startIdx, int endIdx, double[] real0, double[] real1, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -29,9 +29,15 @@ namespace TechnicalAnalysis
             
             return new Correl(retCode, outBegIdx, outNBElement, outReal);
         }
+        
+        public static Correl Correl(int startIdx, int endIdx, double[] real0, double[] real1)
+            => Correl(startIdx, endIdx, real0, real1, 30);
 
-        public static Correl Correl(int startIdx, int endIdx, float[] real0, float[] real1, int timePeriod = 30)
+        public static Correl Correl(int startIdx, int endIdx, float[] real0, float[] real1, int timePeriod)
             => Correl(startIdx, endIdx, real0.ToDouble(), real1.ToDouble(), timePeriod);
+        
+        public static Correl Correl(int startIdx, int endIdx, float[] real0, float[] real1)
+            => Correl(startIdx, endIdx, real0, real1, 30);
     }
 
     public class Correl : IndicatorBase

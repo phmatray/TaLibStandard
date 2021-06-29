@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Dema Dema(int startIdx, int endIdx, double[] real, int timePeriod = 30)
+        public static Dema Dema(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -22,8 +22,14 @@ namespace TechnicalAnalysis
             return new Dema(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Dema Dema(int startIdx, int endIdx, float[] real, int timePeriod = 30)
+        public static Dema Dema(int startIdx, int endIdx, double[] real)
+            => Dema(startIdx, endIdx, real, 30);
+
+        public static Dema Dema(int startIdx, int endIdx, float[] real, int timePeriod)
             => Dema(startIdx, endIdx, real.ToDouble(), timePeriod);
+
+        public static Dema Dema(int startIdx, int endIdx, float[] real)
+            => Dema(startIdx, endIdx, real, 30);
     }
 
     public class Dema : IndicatorBase

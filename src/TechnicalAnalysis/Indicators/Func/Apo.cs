@@ -11,13 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Apo Apo(
-            int startIdx,
-            int endIdx,
-            double[] real,
-            int fastPeriod = 12,
-            int slowPeriod = 26,
-            MAType maType = MAType.Sma)
+        public static Apo Apo(int startIdx, int endIdx, double[] real, int fastPeriod, int slowPeriod, MAType maType)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -37,14 +31,14 @@ namespace TechnicalAnalysis
             return new Apo(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Apo Apo(
-            int startIdx,
-            int endIdx,
-            float[] real,
-            int fastPeriod = 12,
-            int slowPeriod = 26,
-            MAType maType = MAType.Sma)
+        public static Apo Apo(int startIdx, int endIdx, double[] real)
+            => Apo(startIdx, endIdx, real, 12, 26, MAType.Sma);
+
+        public static Apo Apo(int startIdx, int endIdx, float[] real, int fastPeriod, int slowPeriod, MAType maType)
             => Apo(startIdx, endIdx, real.ToDouble(), fastPeriod, slowPeriod, maType);
+
+        public static Apo Apo(int startIdx, int endIdx, float[] real)
+            => Apo(startIdx, endIdx, real, 12, 26, MAType.Sma);
     }
 
     public class Apo : IndicatorBase

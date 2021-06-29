@@ -11,12 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Mama Mama(
-            int startIdx,
-            int endIdx,
-            double[] real,
-            double fastLimit = 0.5,
-            double slowLimit = 0.05)
+        public static Mama Mama(int startIdx, int endIdx, double[] real, double fastLimit, double slowLimit)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -36,14 +31,15 @@ namespace TechnicalAnalysis
             
             return new Mama(retCode, outBegIdx, outNBElement, outMAMA, outFAMA);
         }
+        
+        public static Mama Mama(int startIdx, int endIdx, double[] real)
+            => Mama(startIdx, endIdx, real, 0.5, 0.05);
 
-        public static Mama Mama(
-            int startIdx,
-            int endIdx,
-            float[] real,
-            double fastLimit = 0.5,
-            double slowLimit = 0.05)
+        public static Mama Mama(int startIdx, int endIdx, float[] real, double fastLimit, double slowLimit)
             => Mama(startIdx, endIdx, real.ToDouble(), fastLimit, slowLimit);
+        
+        public static Mama Mama(int startIdx, int endIdx, float[] real)
+            => Mama(startIdx, endIdx, real, 0.5, 0.05);
     }
 
     public class Mama : IndicatorBase

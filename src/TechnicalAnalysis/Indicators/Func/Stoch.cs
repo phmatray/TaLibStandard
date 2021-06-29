@@ -11,17 +11,17 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Stoch Stoch(
+       public static Stoch Stoch(
             int startIdx,
             int endIdx,
             double[] high,
             double[] low,
             double[] close,
-            int fastK_Period = 5,
-            int slowK_Period = 3,
-            MAType slowK_MAType = MAType.Sma,
-            int slowD_Period = 3,
-            MAType slowD_MAType = MAType.Sma)
+            int fastK_Period,
+            int slowK_Period,
+            MAType slowK_MAType,
+            int slowD_Period,
+            MAType slowD_MAType)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -47,17 +47,20 @@ namespace TechnicalAnalysis
             return new Stoch(retCode, outBegIdx, outNBElement, outSlowK, outSlowD);
         }
 
+       public static Stoch Stoch(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+           => Stoch(startIdx, endIdx, high, low, close, 5, 3, MAType.Sma, 3, MAType.Sma);
+
         public static Stoch Stoch(
             int startIdx,
             int endIdx,
             float[] high,
             float[] low,
             float[] close,
-            int fastK_Period = 5,
-            int slowK_Period = 3,
-            MAType slowK_MAType = MAType.Sma,
-            int slowD_Period = 3,
-            MAType slowD_MAType = MAType.Sma)
+            int fastK_Period,
+            int slowK_Period,
+            MAType slowK_MAType,
+            int slowD_Period,
+            MAType slowD_MAType)
             => Stoch(
                 startIdx,
                 endIdx,
@@ -69,6 +72,9 @@ namespace TechnicalAnalysis
                 slowK_MAType,
                 slowD_Period,
                 slowD_MAType);
+        
+        public static Stoch Stoch(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+            => Stoch(startIdx, endIdx, high, low, close, 5, 3, MAType.Sma, 3, MAType.Sma);
     }
 
     public class Stoch : IndicatorBase

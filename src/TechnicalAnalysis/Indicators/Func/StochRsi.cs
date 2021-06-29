@@ -15,10 +15,10 @@ namespace TechnicalAnalysis
             int startIdx,
             int endIdx,
             double[] real,
-            int timePeriod = 14,
-            int fastK_Period = 5,
-            int fastD_Period = 3,
-            MAType fastD_MAType = MAType.Sma)
+            int timePeriod,
+            int fastK_Period,
+            int fastD_Period,
+            MAType fastD_MAType)
         {
             int outBegIdx = 0;
             int outNBElement = 0;
@@ -41,15 +41,21 @@ namespace TechnicalAnalysis
             return new StochRsi(retCode, outBegIdx, outNBElement, outFastK, outFastD);
         }
 
+        public static StochRsi StochRsi(int startIdx, int endIdx, double[] real)
+            => StochRsi(startIdx, endIdx, real, 14, 5, 3, MAType.Sma);
+
         public static StochRsi StochRsi(
             int startIdx,
             int endIdx,
             float[] real,
-            int timePeriod = 14,
-            int fastK_Period = 5,
-            int fastD_Period = 3,
-            MAType fastD_MAType = MAType.Sma)
+            int timePeriod,
+            int fastK_Period,
+            int fastD_Period,
+            MAType fastD_MAType)
             => StochRsi(startIdx, endIdx, real.ToDouble(), timePeriod, fastK_Period, fastD_Period, fastD_MAType);
+        
+        public static StochRsi StochRsi(int startIdx, int endIdx, float[] real)
+            => StochRsi(startIdx, endIdx, real, 14, 5, 3, MAType.Sma);
     }
 
     public class StochRsi : IndicatorBase

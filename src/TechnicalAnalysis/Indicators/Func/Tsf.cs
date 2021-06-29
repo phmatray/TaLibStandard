@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Tsf Tsf(int startIdx, int endIdx, double[] real, int timePeriod = 14)
+        public static Tsf Tsf(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -22,8 +22,14 @@ namespace TechnicalAnalysis
             return new Tsf(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Tsf Tsf(int startIdx, int endIdx, float[] real, int timePeriod = 14)
+        public static Tsf Tsf(int startIdx, int endIdx, double[] real)
+            => Tsf(startIdx, endIdx, real, 14);
+
+        public static Tsf Tsf(int startIdx, int endIdx, float[] real, int timePeriod)
             => Tsf(startIdx, endIdx, real.ToDouble(), timePeriod);
+            
+        public static Tsf Tsf(int startIdx, int endIdx, float[] real)
+            => Tsf(startIdx, endIdx, real, 14);
     }
 
     public class Tsf : IndicatorBase

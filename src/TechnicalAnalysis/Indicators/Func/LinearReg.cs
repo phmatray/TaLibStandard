@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static LinearReg LinearReg(int startIdx, int endIdx, double[] real, int timePeriod = 14)
+        public static LinearReg LinearReg(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -28,9 +28,15 @@ namespace TechnicalAnalysis
             
             return new LinearReg(retCode, outBegIdx, outNBElement, outReal);
         }
+        
+        public static LinearReg LinearReg(int startIdx, int endIdx, double[] real)
+            => LinearReg(startIdx, endIdx, real, 14);
 
-        public static LinearReg LinearReg(int startIdx, int endIdx, float[] real, int timePeriod = 14)
+        public static LinearReg LinearReg(int startIdx, int endIdx, float[] real, int timePeriod)
             => LinearReg(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static LinearReg LinearReg(int startIdx, int endIdx, float[] real)
+            => LinearReg(startIdx, endIdx, real, 14);
     }
 
     public class LinearReg : IndicatorBase

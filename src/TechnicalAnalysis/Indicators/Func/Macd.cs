@@ -15,9 +15,9 @@ namespace TechnicalAnalysis
             int startIdx,
             int endIdx,
             double[] real,
-            int optInFastPeriod = 12,
-            int optInSlowPeriod = 26,
-            int optInSignalPeriod = 9)
+            int optInFastPeriod,
+            int optInSlowPeriod,
+            int optInSignalPeriod)
         {
             int outBegIdx = 0;
             int outNBElement = 0;
@@ -41,14 +41,20 @@ namespace TechnicalAnalysis
             return new Macd(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
         }
 
+        public static Macd Macd(int startIdx, int endIdx, double[] real)
+            => Macd(startIdx, endIdx, real, 12, 26, 9);
+
         public static Macd Macd(
             int startIdx,
             int endIdx,
             float[] real,
-            int optInFastPeriod = 12,
-            int optInSlowPeriod = 26,
-            int optInSignalPeriod = 9)
+            int optInFastPeriod,
+            int optInSlowPeriod,
+            int optInSignalPeriod)
             => Macd(startIdx, endIdx, real.ToDouble(), optInFastPeriod, optInSlowPeriod, optInSignalPeriod);
+        
+        public static Macd Macd(int startIdx, int endIdx, float[] real)
+            => Macd(startIdx, endIdx, real, 12, 26, 9);
     }
 
     public class Macd : IndicatorBase

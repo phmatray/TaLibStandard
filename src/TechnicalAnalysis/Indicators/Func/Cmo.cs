@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Cmo Cmo(int startIdx, int endIdx, double[] real, int timePeriod = 14)
+        public static Cmo Cmo(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,9 +21,15 @@ namespace TechnicalAnalysis
             
             return new Cmo(retCode, outBegIdx, outNBElement, outReal);
         }
+        
+        public static Cmo Cmo(int startIdx, int endIdx, double[] real)
+            => Cmo(startIdx, endIdx, real, 14);
 
-        public static Cmo Cmo(int startIdx, int endIdx, float[] real, int timePeriod = 14)
+        public static Cmo Cmo(int startIdx, int endIdx, float[] real, int timePeriod)
             => Cmo(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static Cmo Cmo(int startIdx, int endIdx, float[] real)
+            => Cmo(startIdx, endIdx, real, 14);
     }
 
     public class Cmo : IndicatorBase

@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Wma Wma(int startIdx, int endIdx, double[] real, int timePeriod = 30)
+        public static Wma Wma(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,8 +21,14 @@ namespace TechnicalAnalysis
             return new Wma(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Wma Wma(int startIdx, int endIdx, float[] real, int timePeriod = 30)
+        public static Wma Wma(int startIdx, int endIdx, double[] real)
+            => Wma(startIdx, endIdx, real, 30);
+
+        public static Wma Wma(int startIdx, int endIdx, float[] real, int timePeriod)
             => Wma(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static Wma Wma(int startIdx, int endIdx, float[] real)
+            => Wma(startIdx, endIdx, real, 30);
     }
 
     public class Wma : IndicatorBase

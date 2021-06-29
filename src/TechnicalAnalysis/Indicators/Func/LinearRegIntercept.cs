@@ -11,11 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static LinearRegIntercept LinearRegIntercept(
-            int startIdx,
-            int endIdx,
-            double[] real,
-            int timePeriod = 14)
+        public static LinearRegIntercept LinearRegIntercept(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -33,12 +29,14 @@ namespace TechnicalAnalysis
             return new LinearRegIntercept(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static LinearRegIntercept LinearRegIntercept(
-            int startIdx,
-            int endIdx,
-            float[] real,
-            int timePeriod = 14)
+        public static LinearRegIntercept LinearRegIntercept(int startIdx, int endIdx, double[] real)
+            => LinearRegIntercept(startIdx, endIdx, real, 14);
+
+        public static LinearRegIntercept LinearRegIntercept(int startIdx, int endIdx, float[] real, int timePeriod)
             => LinearRegIntercept(startIdx, endIdx, real.ToDouble(), timePeriod);
+
+        public static LinearRegIntercept LinearRegIntercept(int startIdx, int endIdx, float[] real)
+            => LinearRegIntercept(startIdx, endIdx, real, 14);
     }
 
     public class LinearRegIntercept : IndicatorBase

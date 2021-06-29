@@ -16,9 +16,9 @@ namespace TechnicalAnalysis
             int endIdx,
             double[] real,
             double[] periods,
-            int minPeriod = 2,
-            int maxPeriod = 30,
-            MAType maType = MAType.Sma)
+            int minPeriod,
+            int maxPeriod,
+            MAType maType)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -38,15 +38,22 @@ namespace TechnicalAnalysis
             
             return new MovingAverageVariablePeriod(retCode, outBegIdx, outNBElement, outReal);
         }
+        
+        public static MovingAverageVariablePeriod MovingAverageVariablePeriod(
+            int startIdx,
+            int endIdx,
+            double[] real,
+            double[] periods)
+            => MovingAverageVariablePeriod(startIdx, endIdx, real, periods, 2, 30, MAType.Sma);
 
         public static MovingAverageVariablePeriod MovingAverageVariablePeriod(
             int startIdx,
             int endIdx,
             float[] real,
             float[] periods,
-            int minPeriod = 2,
-            int maxPeriod = 30,
-            MAType maType = MAType.Sma)
+            int minPeriod,
+            int maxPeriod,
+            MAType maType)
             => MovingAverageVariablePeriod(
                 startIdx,
                 endIdx,
@@ -55,6 +62,13 @@ namespace TechnicalAnalysis
                 minPeriod,
                 maxPeriod,
                 maType);
+        
+        public static MovingAverageVariablePeriod MovingAverageVariablePeriod(
+            int startIdx,
+            int endIdx,
+            float[] real,
+            float[] periods)
+            => MovingAverageVariablePeriod(startIdx, endIdx, real, periods, 2, 30, MAType.Sma);
     }
 
     public class MovingAverageVariablePeriod : IndicatorBase

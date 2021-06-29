@@ -11,13 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Adxr Adxr(
-            int startIdx,
-            int endIdx,
-            double[] high,
-            double[] low,
-            double[] close,
-            int timePeriod = 14)
+        public static Adxr Adxr(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -37,14 +31,14 @@ namespace TechnicalAnalysis
             return new Adxr(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Adxr Adxr(
-            int startIdx,
-            int endIdx,
-            float[] high,
-            float[] low,
-            float[] close,
-            int timePeriod = 14)
+        public static Adxr Adxr(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+            => Adxr(startIdx, endIdx, high, low, close, 14);
+
+        public static Adxr Adxr(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod)
             => Adxr(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), timePeriod);
+        
+        public static Adxr Adxr(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+            => Adxr(startIdx, endIdx, high, low, close, 14);
     }
 
     public class Adxr : IndicatorBase

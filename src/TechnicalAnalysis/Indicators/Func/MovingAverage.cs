@@ -15,8 +15,8 @@ namespace TechnicalAnalysis
             int startIdx,
             int endIdx,
             double[] real,
-            int timePeriod = 30,
-            MAType maType = MAType.Sma)
+            int timePeriod,
+            MAType maType)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -31,17 +31,18 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
-            
+
             return new MovingAverage(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static MovingAverage MovingAverage(
-            int startIdx,
-            int endIdx,
-            float[] real,
-            int timePeriod = 30,
-            MAType maType = MAType.Sma)
+        public static MovingAverage MovingAverage(int startIdx, int endIdx, double[] real)
+            => MovingAverage(startIdx, endIdx, real, 30, MAType.Sma);
+
+        public static MovingAverage MovingAverage(int startIdx, int endIdx, float[] real, int timePeriod, MAType maType)
             => MovingAverage(startIdx, endIdx, real.ToDouble(), timePeriod, maType);
+
+        public static MovingAverage MovingAverage(int startIdx, int endIdx, float[] real)
+            => MovingAverage(startIdx, endIdx, real, 30, MAType.Sma);
     }
 
     public class MovingAverage : IndicatorBase

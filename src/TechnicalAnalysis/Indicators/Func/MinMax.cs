@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static MinMax MinMax(int startIdx, int endIdx, double[] real, int timePeriod = 30)
+        public static MinMax MinMax(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -31,8 +31,14 @@ namespace TechnicalAnalysis
             return new MinMax(retCode, outBegIdx, outNBElement, outMin, outMax);
         }
 
-        public static MinMax MinMax(int startIdx, int endIdx, float[] real, int timePeriod = 30)
+        public static MinMax MinMax(int startIdx, int endIdx, double[] real)
+            => MinMax(startIdx, endIdx, real, 30);
+
+        public static MinMax MinMax(int startIdx, int endIdx, float[] real, int timePeriod)
             => MinMax(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static MinMax MinMax(int startIdx, int endIdx, float[] real)
+            => MinMax(startIdx, endIdx, real, 30);
     }
 
     public class MinMax : IndicatorBase

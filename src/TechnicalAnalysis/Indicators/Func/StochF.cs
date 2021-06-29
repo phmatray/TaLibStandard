@@ -17,9 +17,9 @@ namespace TechnicalAnalysis
             double[] high,
             double[] low,
             double[] close,
-            int fastK_Period = 5,
-            int fastD_Period = 3,
-            MAType fastD_MAType = MAType.Sma)
+            int fastK_Period,
+            int fastD_Period,
+            MAType fastD_MAType)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -43,15 +43,18 @@ namespace TechnicalAnalysis
             return new StochF(retCode, outBegIdx, outNBElement, outFastK, outFastD);
         }
 
+        public static StochF StochF(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+            => StochF(startIdx, endIdx, high, low, close, 5, 3, MAType.Sma);
+
         public static StochF StochF(
             int startIdx,
             int endIdx,
             float[] high,
             float[] low,
             float[] close,
-            int fastK_Period = 5,
-            int fastD_Period = 3,
-            MAType fastD_MAType = MAType.Sma)
+            int fastK_Period,
+            int fastD_Period,
+            MAType fastD_MAType)
             => StochF(
                 startIdx,
                 endIdx,
@@ -61,6 +64,9 @@ namespace TechnicalAnalysis
                 fastK_Period,
                 fastD_Period,
                 fastD_MAType);
+        
+        public static StochF StochF(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+            => StochF(startIdx, endIdx, high, low, close, 5, 3, MAType.Sma);
     }
 
     public class StochF : IndicatorBase

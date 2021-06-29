@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Kama Kama(int startIdx, int endIdx, double[] real, int timePeriod = 30)
+        public static Kama Kama(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = 0;
             int outNBElement = 0;
@@ -21,9 +21,15 @@ namespace TechnicalAnalysis
             
             return new Kama(retCode, outBegIdx, outNBElement, outReal);
         }
+        
+        public static Kama Kama(int startIdx, int endIdx, double[] real)
+            => Kama(startIdx, endIdx, real, 30);
 
-        public static Kama Kama(int startIdx, int endIdx, float[] real, int timePeriod = 30)
+        public static Kama Kama(int startIdx, int endIdx, float[] real, int timePeriod)
             => Kama(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static Kama Kama(int startIdx, int endIdx, float[] real)
+            => Kama(startIdx, endIdx, real, 30);
     }
 
     public class Kama : IndicatorBase

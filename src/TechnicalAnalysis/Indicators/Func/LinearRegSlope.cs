@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, double[] real, int timePeriod = 14)
+        public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -29,8 +29,14 @@ namespace TechnicalAnalysis
             return new LinearRegSlope(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, float[] real, int timePeriod = 14)
+        public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, double[] real)
+            => LinearRegSlope(startIdx, endIdx, real, 14);
+
+        public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, float[] real, int timePeriod)
             => LinearRegSlope(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, float[] real)
+            => LinearRegSlope(startIdx, endIdx, real, 14);
     }
 
     public class LinearRegSlope : IndicatorBase

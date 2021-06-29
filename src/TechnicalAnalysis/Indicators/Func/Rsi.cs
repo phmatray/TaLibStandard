@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Rsi Rsi(int startIdx, int endIdx, double[] real, int timePeriod = 14)
+        public static Rsi Rsi(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,8 +21,14 @@ namespace TechnicalAnalysis
             return new Rsi(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Rsi Rsi(int startIdx, int endIdx, float[] real, int timePeriod = 14)
+        public static Rsi Rsi(int startIdx, int endIdx, double[] real)
+            => Rsi(startIdx, endIdx, real, 14);
+
+        public static Rsi Rsi(int startIdx, int endIdx, float[] real, int timePeriod)
             => Rsi(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static Rsi Rsi(int startIdx, int endIdx, float[] real)
+            => Rsi(startIdx, endIdx, real, 14);
     }
 
     public class Rsi : IndicatorBase

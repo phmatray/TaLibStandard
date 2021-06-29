@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Trix Trix(int startIdx, int endIdx, double[] real, int timePeriod = 30)
+        public static Trix Trix(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -22,8 +22,14 @@ namespace TechnicalAnalysis
             return new Trix(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Trix Trix(int startIdx, int endIdx, float[] real, int timePeriod = 30)
+        public static Trix Trix(int startIdx, int endIdx, double[] real)
+            => Trix(startIdx, endIdx, real, 30);
+
+        public static Trix Trix(int startIdx, int endIdx, float[] real, int timePeriod)
             => Trix(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static Trix Trix(int startIdx, int endIdx, float[] real)
+            => Trix(startIdx, endIdx, real, 30);
     }
 
     public class Trix : IndicatorBase

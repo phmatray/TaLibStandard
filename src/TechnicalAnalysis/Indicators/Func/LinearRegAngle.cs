@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static LinearRegAngle LinearRegAngle(int startIdx, int endIdx, double[] real, int timePeriod = 14)
+        public static LinearRegAngle LinearRegAngle(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -29,8 +29,14 @@ namespace TechnicalAnalysis
             return new LinearRegAngle(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static LinearRegAngle LinearRegAngle(int startIdx, int endIdx, float[] real, int timePeriod = 14)
+        public static LinearRegAngle LinearRegAngle(int startIdx, int endIdx, double[] real)
+            => LinearRegAngle(startIdx, endIdx, real, 14);
+
+        public static LinearRegAngle LinearRegAngle(int startIdx, int endIdx, float[] real, int timePeriod)
             => LinearRegAngle(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static LinearRegAngle LinearRegAngle(int startIdx, int endIdx, float[] real)
+            => LinearRegAngle(startIdx, endIdx, real, 14);
     }
 
     public class LinearRegAngle : IndicatorBase

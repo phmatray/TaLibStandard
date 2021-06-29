@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static T3 T3(int startIdx, int endIdx, double[] real, int timePeriod = 5, double vFactor = 0.7)
+        public static T3 T3(int startIdx, int endIdx, double[] real, int timePeriod, double vFactor)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -30,8 +30,14 @@ namespace TechnicalAnalysis
             return new T3(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static T3 T3(int startIdx, int endIdx, float[] real, int timePeriod = 5, double vFactor = 0.7)
+        public static T3 T3(int startIdx, int endIdx, double[] real)
+            => T3(startIdx, endIdx, real, 5, 0.7);
+
+        public static T3 T3(int startIdx, int endIdx, float[] real, int timePeriod, double vFactor)
             => T3(startIdx, endIdx, real.ToDouble(), timePeriod, vFactor);
+        
+        public static T3 T3(int startIdx, int endIdx, float[] real)
+            => T3(startIdx, endIdx, real, 5, 0.7);
     }
 
     public class T3 : IndicatorBase

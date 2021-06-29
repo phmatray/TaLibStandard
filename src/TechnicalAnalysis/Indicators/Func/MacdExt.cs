@@ -15,12 +15,12 @@ namespace TechnicalAnalysis
             int startIdx,
             int endIdx,
             double[] real,
-            int fastPeriod = 12,
-            MAType fastMAType = MAType.Sma,
-            int slowPeriod = 26,
-            MAType slowMAType = MAType.Sma,
-            int signalPeriod = 9,
-            MAType signalMAType = MAType.Sma)
+            int fastPeriod,
+            MAType fastMAType,
+            int slowPeriod,
+            MAType slowMAType,
+            int signalPeriod,
+            MAType signalMAType)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -46,17 +46,20 @@ namespace TechnicalAnalysis
             
             return new MacdExt(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
         }
+        
+        public static MacdExt MacdExt(int startIdx, int endIdx, double[] real)
+            => MacdExt(startIdx, endIdx, real, 12, MAType.Sma, 26, MAType.Sma, 9, MAType.Sma);
 
         public static MacdExt MacdExt(
             int startIdx,
             int endIdx,
             float[] real,
-            int fastPeriod = 12,
-            MAType fastMAType = MAType.Sma,
-            int slowPeriod = 26,
-            MAType slowMAType = MAType.Sma,
-            int signalPeriod = 9,
-            MAType signalMAType = MAType.Sma)
+            int fastPeriod,
+            MAType fastMAType,
+            int slowPeriod,
+            MAType slowMAType,
+            int signalPeriod,
+            MAType signalMAType)
             => MacdExt(
                 startIdx,
                 endIdx,
@@ -67,6 +70,9 @@ namespace TechnicalAnalysis
                 slowMAType,
                 signalPeriod,
                 signalMAType);
+        
+        public static MacdExt MacdExt(int startIdx, int endIdx, float[] real)
+            => MacdExt(startIdx, endIdx, real, 12, MAType.Sma, 26, MAType.Sma, 9, MAType.Sma);
     }
 
     public class MacdExt : IndicatorBase

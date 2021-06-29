@@ -11,12 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static StdDev StdDev(
-            int startIdx,
-            int endIdx,
-            double[] real,
-            int timePeriod = 5,
-            double nbDev = 1.0)
+        public static StdDev StdDev(int startIdx, int endIdx, double[] real, int timePeriod, double nbDev)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -35,13 +30,14 @@ namespace TechnicalAnalysis
             return new StdDev(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static StdDev StdDev(
-            int startIdx,
-            int endIdx,
-            float[] real,
-            int timePeriod = 5,
-            double nbDev = 1.0)
+        public static StdDev StdDev(int startIdx, int endIdx, double[] real)
+            => StdDev(startIdx, endIdx, real, 5, 1.0);
+
+        public static StdDev StdDev(int startIdx, int endIdx, float[] real, int timePeriod, double nbDev)
             => StdDev(startIdx, endIdx, real.ToDouble(), timePeriod, nbDev);
+        
+        public static StdDev StdDev(int startIdx, int endIdx, float[] real)
+            => StdDev(startIdx, endIdx, real, 5, 1.0);
     }
 
     public class StdDev : IndicatorBase

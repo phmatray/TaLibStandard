@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Aroon Aroon(int startIdx, int endIdx, double[] high, double[] low, int timePeriod = 14)
+        public static Aroon Aroon(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -32,8 +32,14 @@ namespace TechnicalAnalysis
             return new Aroon(retCode, outBegIdx, outNBElement, outAroonDown, outAroonUp);
         }
 
-        public static Aroon Aroon(int startIdx, int endIdx, float[] high, float[] low, int timePeriod = 14)
+        public static Aroon Aroon(int startIdx, int endIdx, double[] high, double[] low)
+            => Aroon(startIdx, endIdx, high, low, 14);
+
+        public static Aroon Aroon(int startIdx, int endIdx, float[] high, float[] low, int timePeriod)
             => Aroon(startIdx, endIdx, high.ToDouble(), low.ToDouble(), timePeriod);
+
+        public static Aroon Aroon(int startIdx, int endIdx, float[] high, float[] low)
+            => Aroon(startIdx, endIdx, high, low, 14);
     }
 
     public class Aroon : IndicatorBase

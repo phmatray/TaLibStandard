@@ -17,7 +17,7 @@ namespace TechnicalAnalysis
             double[] high,
             double[] low,
             double[] close,
-            int timePeriod = 14)
+            int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -37,14 +37,14 @@ namespace TechnicalAnalysis
             return new WillR(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static WillR WillR(
-            int startIdx,
-            int endIdx,
-            float[] high,
-            float[] low,
-            float[] close,
-            int timePeriod = 14)
+        public static WillR WillR(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+            => WillR(startIdx, endIdx, high, low, close, 14);
+
+        public static WillR WillR(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod)
             => WillR(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), timePeriod);
+        
+        public static WillR WillR(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+            => WillR(startIdx, endIdx, high, low, close, 14);
     }
 
     public class WillR : IndicatorBase

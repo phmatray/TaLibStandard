@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static MidPoint MidPoint(int startIdx, int endIdx, double[] real, int timePeriod = 14)
+        public static MidPoint MidPoint(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,8 +21,14 @@ namespace TechnicalAnalysis
             return new MidPoint(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static MidPoint MidPoint(int startIdx, int endIdx, float[] real, int timePeriod = 14)
+        public static MidPoint MidPoint(int startIdx, int endIdx, double[] real)
+            => MidPoint(startIdx, endIdx, real, 14);
+
+        public static MidPoint MidPoint(int startIdx, int endIdx, float[] real, int timePeriod)
             => MidPoint(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static MidPoint MidPoint(int startIdx, int endIdx, float[] real)
+            => MidPoint(startIdx, endIdx, real, 14);
     }
 
     public class MidPoint : IndicatorBase

@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Roc Roc(int startIdx, int endIdx, double[] real, int timePeriod = 10)
+        public static Roc Roc(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -22,8 +22,14 @@ namespace TechnicalAnalysis
             return new Roc(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Roc Roc(int startIdx, int endIdx, float[] real, int timePeriod = 10)
+        public static Roc Roc(int startIdx, int endIdx, double[] real)
+            => Roc(startIdx, endIdx, real, 10);
+
+        public static Roc Roc(int startIdx, int endIdx, float[] real, int timePeriod)
             => Roc(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static Roc Roc(int startIdx, int endIdx, float[] real)
+            => Roc(startIdx, endIdx, real, 10);
     }
 
     public class Roc : IndicatorBase

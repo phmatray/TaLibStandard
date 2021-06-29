@@ -18,8 +18,8 @@ namespace TechnicalAnalysis
             double[] low,
             double[] close,
             double[] volume,
-            int fastPeriod = 3,
-            int slowPeriod = 10)
+            int fastPeriod,
+            int slowPeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -40,6 +40,15 @@ namespace TechnicalAnalysis
             
             return new AdOsc(retCode, outBegIdx, outNBElement, outReal);
         }
+        
+        public static AdOsc AdOsc(
+            int startIdx,
+            int endIdx,
+            double[] high,
+            double[] low,
+            double[] close,
+            double[] volume)
+            => AdOsc(startIdx, endIdx, high, low, close, volume, 3, 10);
 
         public static AdOsc AdOsc(
             int startIdx,
@@ -48,8 +57,8 @@ namespace TechnicalAnalysis
             float[] low,
             float[] close,
             float[] volume,
-            int fastPeriod = 3,
-            int slowPeriod = 10)
+            int fastPeriod,
+            int slowPeriod)
             => AdOsc(
                 startIdx,
                 endIdx,
@@ -59,6 +68,9 @@ namespace TechnicalAnalysis
                 volume.ToDouble(),
                 fastPeriod,
                 slowPeriod);
+        
+        public static AdOsc AdOsc(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume)
+            => AdOsc(startIdx, endIdx, high, low, close, volume, 3, 10);
     }
 
     public class AdOsc : IndicatorBase

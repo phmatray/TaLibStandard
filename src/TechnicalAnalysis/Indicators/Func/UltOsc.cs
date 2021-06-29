@@ -17,9 +17,9 @@ namespace TechnicalAnalysis
             double[] high,
             double[] low,
             double[] close,
-            int timePeriod1 = 7,
-            int timePeriod2 = 14,
-            int timePeriod3 = 28)
+            int timePeriod1,
+            int timePeriod2,
+            int timePeriod3)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -41,15 +41,18 @@ namespace TechnicalAnalysis
             return new UltOsc(retCode, outBegIdx, outNBElement, outReal);
         }
 
+        public static UltOsc UltOsc(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+            => UltOsc(startIdx, endIdx, high, low, close, 7, 14, 28);
+
         public static UltOsc UltOsc(
             int startIdx,
             int endIdx,
             float[] high,
             float[] low,
             float[] close,
-            int timePeriod1 = 7,
-            int timePeriod2 = 14,
-            int timePeriod3 = 28)
+            int timePeriod1,
+            int timePeriod2,
+            int timePeriod3)
             => UltOsc(
                 startIdx,
                 endIdx,
@@ -59,6 +62,9 @@ namespace TechnicalAnalysis
                 timePeriod1,
                 timePeriod2,
                 timePeriod3);
+        
+        public static UltOsc UltOsc(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+            => UltOsc(startIdx, endIdx, high, low, close, 7, 14, 28);
     }
 
     public class UltOsc : IndicatorBase

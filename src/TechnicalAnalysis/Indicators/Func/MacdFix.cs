@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static MacdFix MacdFix(int startIdx, int endIdx, double[] real, int signalPeriod = 9)
+        public static MacdFix MacdFix(int startIdx, int endIdx, double[] real, int signalPeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -33,8 +33,14 @@ namespace TechnicalAnalysis
             return new MacdFix(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
         }
 
-        public static MacdFix MacdFix(int startIdx, int endIdx, float[] real, int signalPeriod = 9)
+        public static MacdFix MacdFix(int startIdx, int endIdx, double[] real)
+            => MacdFix(startIdx, endIdx, real, 9);
+
+        public static MacdFix MacdFix(int startIdx, int endIdx, float[] real, int signalPeriod)
             => MacdFix(startIdx, endIdx, real.ToDouble(), signalPeriod);
+        
+        public static MacdFix MacdFix(int startIdx, int endIdx, float[] real)
+            => MacdFix(startIdx, endIdx, real, 9);
     }
 
     public class MacdFix : IndicatorBase

@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Beta Beta(int startIdx, int endIdx, double[] real0, double[] real1, int timePeriod = 5)
+        public static Beta Beta(int startIdx, int endIdx, double[] real0, double[] real1, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -30,8 +30,14 @@ namespace TechnicalAnalysis
             return new Beta(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Beta Beta(int startIdx, int endIdx, float[] real0, float[] real1, int timePeriod = 5)
+        public static Beta Beta(int startIdx, int endIdx, double[] real0, double[] real1)
+            => Beta(startIdx, endIdx, real0, real1, 5);
+
+        public static Beta Beta(int startIdx, int endIdx, float[] real0, float[] real1, int timePeriod)
             => Beta(startIdx, endIdx, real0.ToDouble(), real1.ToDouble(), timePeriod);
+        
+        public static Beta Beta(int startIdx, int endIdx, float[] real0, float[] real1)
+            => Beta(startIdx, endIdx, real0, real1, 5);
     }
 
     public class Beta : IndicatorBase

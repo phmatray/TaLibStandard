@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Ema Ema(int startIdx, int endIdx, double[] real, int timePeriod = 30)
+        public static Ema Ema(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -22,8 +22,14 @@ namespace TechnicalAnalysis
             return new Ema(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Ema Ema(int startIdx, int endIdx, float[] real, int timePeriod = 30)
+        public static Ema Ema(int startIdx, int endIdx, double[] real)
+            => Ema(startIdx, endIdx, real, 30);
+
+        public static Ema Ema(int startIdx, int endIdx, float[] real, int timePeriod)
             => Ema(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static Ema Ema(int startIdx, int endIdx, float[] real)
+            => Ema(startIdx, endIdx, real, 30);
     }
 
     public class Ema : IndicatorBase

@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Sma Sma(int startIdx, int endIdx, double[] real, int timePeriod = 30)
+        public static Sma Sma(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = 0;
             int outNBElement = 0;
@@ -22,8 +22,14 @@ namespace TechnicalAnalysis
             return new Sma(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Sma Sma(int startIdx, int endIdx, float[] real, int timePeriod = 30)
+        public static Sma Sma(int startIdx, int endIdx, double[] real)
+            => Sma(startIdx, endIdx, real, 30);
+
+        public static Sma Sma(int startIdx, int endIdx, float[] real, int timePeriod)
             => Sma(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static Sma Sma(int startIdx, int endIdx, float[] real)
+            => Sma(startIdx, endIdx, real, 30);
     }
 
     public class Sma : IndicatorBase

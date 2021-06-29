@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static PlusDM PlusDM(int startIdx, int endIdx, double[] high, double[] low, int timePeriod = 14)
+        public static PlusDM PlusDM(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -30,8 +30,14 @@ namespace TechnicalAnalysis
             return new PlusDM(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static PlusDM PlusDM(int startIdx, int endIdx, float[] high, float[] low, int timePeriod = 14)
+        public static PlusDM PlusDM(int startIdx, int endIdx, double[] high, double[] low)
+            => PlusDM(startIdx, endIdx, high, low, 14);
+
+        public static PlusDM PlusDM(int startIdx, int endIdx, float[] high, float[] low, int timePeriod)
             => PlusDM(startIdx, endIdx, high.ToDouble(), low.ToDouble(), timePeriod);
+
+        public static PlusDM PlusDM(int startIdx, int endIdx, float[] high, float[] low)
+            => PlusDM(startIdx, endIdx, high, low, 14);
     }
 
     public class PlusDM : IndicatorBase

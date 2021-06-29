@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static MaxIndex MaxIndex(int startIdx, int endIdx, double[] real, int timePeriod = 30)
+        public static MaxIndex MaxIndex(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -28,9 +28,15 @@ namespace TechnicalAnalysis
             
             return new MaxIndex(retCode, outBegIdx, outNBElement, outInteger);
         }
+        
+        public static MaxIndex MaxIndex(int startIdx, int endIdx, double[] real)
+            => MaxIndex(startIdx, endIdx, real, 30);
 
-        public static MaxIndex MaxIndex(int startIdx, int endIdx, float[] real, int timePeriod = 30)
+        public static MaxIndex MaxIndex(int startIdx, int endIdx, float[] real, int timePeriod)
             => MaxIndex(startIdx, endIdx, real.ToDouble(), timePeriod);
+
+        public static MaxIndex MaxIndex(int startIdx, int endIdx, float[] real)
+            => MaxIndex(startIdx, endIdx, real, 30);
     }
 
     public class MaxIndex : IndicatorBase

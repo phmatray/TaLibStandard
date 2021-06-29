@@ -15,10 +15,10 @@ namespace TechnicalAnalysis
             int startIdx,
             int endIdx,
             double[] real,
-            int timePeriod = 5,
-            double nbDevUp = 2.0,
-            double nbDevDn = 2.0,
-            MAType maType = MAType.Sma)
+            int timePeriod,
+            double nbDevUp,
+            double nbDevDn,
+            MAType maType)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -48,16 +48,22 @@ namespace TechnicalAnalysis
                 outRealMiddleBand,
                 outRealLowerBand);
         }
+        
+        public static BollingerBands BollingerBands(int startIdx, int endIdx, double[] real)
+            => BollingerBands(startIdx, endIdx, real, 5, 2.0, 2.0, MAType.Sma);
 
         public static BollingerBands BollingerBands(
             int startIdx,
             int endIdx,
             float[] real,
-            int timePeriod = 5,
-            double nbDevUp = 2.0,
-            double nbDevDn = 2.0,
-            MAType maType = MAType.Sma)
+            int timePeriod,
+            double nbDevUp,
+            double nbDevDn,
+            MAType maType)
             => BollingerBands(startIdx, endIdx, real.ToDouble(), timePeriod, nbDevUp, nbDevDn, maType);
+        
+        public static BollingerBands BollingerBands(int startIdx, int endIdx, float[] real)
+            => BollingerBands(startIdx, endIdx, real, 5, 2.0, 2.0, MAType.Sma);
     }
 
     public class BollingerBands : IndicatorBase

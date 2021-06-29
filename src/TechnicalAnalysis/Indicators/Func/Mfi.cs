@@ -18,7 +18,7 @@ namespace TechnicalAnalysis
             double[] low,
             double[] close,
             double[] volume,
-            int timePeriod = 14)
+            int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -39,6 +39,9 @@ namespace TechnicalAnalysis
             return new Mfi(retCode, outBegIdx, outNBElement, outReal);
         }
 
+        public static Mfi Mfi(int startIdx, int endIdx, double[] high, double[] low, double[] close, double[] volume)
+            => Mfi(startIdx, endIdx, high, low, close, volume, 14);
+
         public static Mfi Mfi(
             int startIdx,
             int endIdx,
@@ -46,8 +49,11 @@ namespace TechnicalAnalysis
             float[] low,
             float[] close,
             float[] volume,
-            int timePeriod = 14)
+            int timePeriod)
             => Mfi(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), volume.ToDouble(), timePeriod);
+        
+        public static Mfi Mfi(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume)
+            => Mfi(startIdx, endIdx, high, low, close, volume, 14);
     }
 
     public class Mfi : IndicatorBase

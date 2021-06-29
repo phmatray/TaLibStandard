@@ -16,8 +16,8 @@ namespace TechnicalAnalysis
             int endIdx,
             double[] high,
             double[] low,
-            double acceleration = 0.02,
-            double maximum = 0.2)
+            double acceleration,
+            double maximum)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -37,14 +37,14 @@ namespace TechnicalAnalysis
             return new Sar(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Sar Sar(
-            int startIdx,
-            int endIdx,
-            float[] high,
-            float[] low,
-            double acceleration = 0.02,
-            double maximum = 0.2)
+        public static Sar Sar(int startIdx, int endIdx, double[] high, double[] low)
+            => Sar(startIdx, endIdx, high, low, 0.02, 0.2);
+
+        public static Sar Sar(int startIdx, int endIdx, float[] high, float[] low, double acceleration, double maximum)
             => Sar(startIdx, endIdx, high.ToDouble(), low.ToDouble(), acceleration, maximum);
+        
+        public static Sar Sar(int startIdx, int endIdx, float[] high, float[] low)
+            => Sar(startIdx, endIdx, high, low, 0.02, 0.2);
     }
 
     public class Sar : IndicatorBase

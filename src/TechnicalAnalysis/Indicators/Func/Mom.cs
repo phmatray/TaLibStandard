@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Mom Mom(int startIdx, int endIdx, double[] real, int timePeriod = 10)
+        public static Mom Mom(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -22,8 +22,14 @@ namespace TechnicalAnalysis
             return new Mom(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Mom Mom(int startIdx, int endIdx, float[] real, int timePeriod = 10)
+        public static Mom Mom(int startIdx, int endIdx, double[] real)
+            => Mom(startIdx, endIdx, real, 10);
+
+        public static Mom Mom(int startIdx, int endIdx, float[] real, int timePeriod)
             => Mom(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static Mom Mom(int startIdx, int endIdx, float[] real)
+            => Mom(startIdx, endIdx, real, 10);
     }
 
     public class Mom : IndicatorBase

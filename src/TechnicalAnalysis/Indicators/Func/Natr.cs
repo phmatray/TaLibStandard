@@ -11,13 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Natr Natr(
-            int startIdx,
-            int endIdx,
-            double[] high,
-            double[] low,
-            double[] close,
-            int timePeriod = 14)
+        public static Natr Natr(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -36,15 +30,15 @@ namespace TechnicalAnalysis
             
             return new Natr(retCode, outBegIdx, outNBElement, outReal);
         }
+        
+        public static Natr Natr(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+            => Natr(startIdx, endIdx, high, low, close, 14);
 
-        public static Natr Natr(
-            int startIdx,
-            int endIdx,
-            float[] high,
-            float[] low,
-            float[] close,
-            int timePeriod = 14)
+        public static Natr Natr(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod)
             => Natr(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), timePeriod);
+        
+        public static Natr Natr(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+            => Natr(startIdx, endIdx, high, low, close, 14);
     }
 
     public class Natr : IndicatorBase

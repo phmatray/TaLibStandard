@@ -11,13 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Ppo Ppo(
-            int startIdx,
-            int endIdx,
-            double[] real,
-            int fastPeriod = 12,
-            int slowPeriod = 26,
-            MAType maType = MAType.Sma)
+        public static Ppo Ppo(int startIdx, int endIdx, double[] real, int fastPeriod, int slowPeriod, MAType maType)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -37,14 +31,14 @@ namespace TechnicalAnalysis
             return new Ppo(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Ppo Ppo(
-            int startIdx,
-            int endIdx,
-            float[] real,
-            int fastPeriod = 12,
-            int slowPeriod = 26,
-            MAType maType = MAType.Sma)
+        public static Ppo Ppo(int startIdx, int endIdx, double[] real)
+            => Ppo(startIdx, endIdx, real, 12, 26, MAType.Sma);
+
+        public static Ppo Ppo(int startIdx, int endIdx, float[] real, int fastPeriod, int slowPeriod, MAType maType)
             => Ppo(startIdx, endIdx, real.ToDouble(), fastPeriod, slowPeriod, maType);
+        
+        public static Ppo Ppo(int startIdx, int endIdx, float[] real)
+            => Ppo(startIdx, endIdx, real, 12, 26, MAType.Sma);
     }
 
     public class Ppo : IndicatorBase

@@ -16,14 +16,14 @@ namespace TechnicalAnalysis
             int endIdx,
             double[] high,
             double[] low,
-            double startValue = 0.0,
-            double offsetOnReverse = 0.0,
-            double accelerationInitLong = 0.02,
-            double accelerationLong = 0.02,
-            double accelerationMaxLong = 0.2,
-            double accelerationInitShort = 0.02,
-            double accelerationShort = 0.02,
-            double accelerationMaxShort = 0.2)
+            double startValue,
+            double offsetOnReverse,
+            double accelerationInitLong,
+            double accelerationLong,
+            double accelerationMaxLong,
+            double accelerationInitShort,
+            double accelerationShort,
+            double accelerationMaxShort)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -49,19 +49,22 @@ namespace TechnicalAnalysis
             return new SarExt(retCode, outBegIdx, outNBElement, outReal);
         }
 
+        public static SarExt SarExt(int startIdx, int endIdx, double[] high, double[] low)
+            => SarExt(startIdx, endIdx, high, low, 0.0, 0.0, 0.02, 0.02, 0.2, 0.02, 0.02, 0.2);
+
         public static SarExt SarExt(
             int startIdx,
             int endIdx,
             float[] high,
             float[] low,
-            double startValue = 0.0,
-            double offsetOnReverse = 0.0,
-            double accelerationInitLong = 0.02,
-            double accelerationLong = 0.02,
-            double accelerationMaxLong = 0.2,
-            double accelerationInitShort = 0.02,
-            double accelerationShort = 0.02,
-            double accelerationMaxShort = 0.2)
+            double startValue,
+            double offsetOnReverse,
+            double accelerationInitLong,
+            double accelerationLong,
+            double accelerationMaxLong,
+            double accelerationInitShort,
+            double accelerationShort,
+            double accelerationMaxShort)
             => SarExt(
                 startIdx,
                 endIdx,
@@ -75,6 +78,9 @@ namespace TechnicalAnalysis
                 accelerationInitShort,
                 accelerationShort,
                 accelerationMaxShort);
+        
+        public static SarExt SarExt(int startIdx, int endIdx, float[] high, float[] low)
+            => SarExt(startIdx, endIdx, high, low, 0.0, 0.0, 0.02, 0.02, 0.2, 0.02, 0.02, 0.2);
     }
 
     public class SarExt : IndicatorBase

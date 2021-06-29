@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Sum Sum(int startIdx, int endIdx, double[] real, int timePeriod = 30)
+        public static Sum Sum(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -22,8 +22,14 @@ namespace TechnicalAnalysis
             return new Sum(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Sum Sum(int startIdx, int endIdx, float[] real, int timePeriod = 30)
+        public static Sum Sum(int startIdx, int endIdx, double[] real)
+            => Sum(startIdx, endIdx, real, 30);
+
+        public static Sum Sum(int startIdx, int endIdx, float[] real, int timePeriod)
             => Sum(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static Sum Sum(int startIdx, int endIdx, float[] real)
+            => Sum(startIdx, endIdx, real, 30);
     }
 
     public class Sum : IndicatorBase

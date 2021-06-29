@@ -11,13 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Ad Ad(
-            int startIdx,
-            int endIdx,
-            double[] high,
-            double[] low,
-            double[] close,
-            double[] volume)
+        public static Ad Ad(int startIdx, int endIdx, double[] high, double[] low, double[] close, double[] volume)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -33,7 +27,7 @@ namespace TechnicalAnalysis
                 ref outBegIdx,
                 ref outNBElement,
                 outReal);
-            
+
             return new Ad(retCode, outBegIdx, outNBElement, outReal);
         }
 

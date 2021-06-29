@@ -11,7 +11,7 @@ namespace TechnicalAnalysis
 {
     public partial class TAMath
     {
-        public static Trima Trima(int startIdx, int endIdx, double[] real, int timePeriod = 30)
+        public static Trima Trima(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -22,8 +22,14 @@ namespace TechnicalAnalysis
             return new Trima(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Trima Trima(int startIdx, int endIdx, float[] real, int timePeriod = 30)
+        public static Trima Trima(int startIdx, int endIdx, double[] real)
+            => Trima(startIdx, endIdx, real, 30);
+
+        public static Trima Trima(int startIdx, int endIdx, float[] real, int timePeriod)
             => Trima(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+        public static Trima Trima(int startIdx, int endIdx, float[] real)
+            => Trima(startIdx, endIdx, real, 30);
     }
 
     public class Trima : IndicatorBase
