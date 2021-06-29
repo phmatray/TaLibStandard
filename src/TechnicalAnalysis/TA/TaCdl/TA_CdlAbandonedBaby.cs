@@ -38,13 +38,13 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
-            switch (optInPenetration)
+            if (optInPenetration == -4E+37)
             {
-                case -4E+37:
-                    optInPenetration = 0.3;
-                    break;
-                case < 0.0 or > 3E+37:
-                    return RetCode.BadParam;
+                optInPenetration = 0.3;
+            }
+            else if (optInPenetration is < 0.0 or > 3E+37)
+            {
+                return RetCode.BadParam;
             }
 
             if (outInteger == null)

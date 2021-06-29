@@ -1,3 +1,5 @@
+using System;
+
 namespace TechnicalAnalysis
 {
     internal static partial class TACore
@@ -157,35 +159,19 @@ namespace TechnicalAnalysis
 
             if (optInTimePeriod > 1)
             {
-                switch (optInMAType)
+                return optInMAType switch
                 {
-                    case MAType.Sma:
-                        return SmaLookback(optInTimePeriod);
-
-                    case MAType.Ema:
-                        return EmaLookback(optInTimePeriod);
-
-                    case MAType.Wma:
-                        return WmaLookback(optInTimePeriod);
-
-                    case MAType.Dema:
-                        return DemaLookback(optInTimePeriod);
-
-                    case MAType.Tema:
-                        return TemaLookback(optInTimePeriod);
-
-                    case MAType.Trima:
-                        return TrimaLookback(optInTimePeriod);
-
-                    case MAType.Kama:
-                        return KamaLookback(optInTimePeriod);
-
-                    case MAType.Mama:
-                        return MamaLookback(0.5, 0.05);
-
-                    case MAType.T3:
-                        return T3Lookback(optInTimePeriod, 0.7);
-                }
+                    MAType.Sma => SmaLookback(optInTimePeriod),
+                    MAType.Ema => EmaLookback(optInTimePeriod),
+                    MAType.Wma => WmaLookback(optInTimePeriod),
+                    MAType.Dema => DemaLookback(optInTimePeriod),
+                    MAType.Tema => TemaLookback(optInTimePeriod),
+                    MAType.Trima => TrimaLookback(optInTimePeriod),
+                    MAType.Kama => KamaLookback(optInTimePeriod),
+                    MAType.Mama => MamaLookback(0.5, 0.05),
+                    MAType.T3 => T3Lookback(optInTimePeriod, 0.7),
+                    _ => throw new ArgumentOutOfRangeException(nameof(optInMAType), optInMAType, null)
+                };
             }
 
             return 0;
