@@ -37,7 +37,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod is < 2 or > 0x186a0)
+            else if (optInTimePeriod is < 2 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -46,7 +46,7 @@ namespace TechnicalAnalysis
             {
                 optInFastK_Period = 5;
             }
-            else if (optInFastK_Period is < 1 or > 0x186a0)
+            else if (optInFastK_Period is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -55,7 +55,7 @@ namespace TechnicalAnalysis
             {
                 optInFastD_Period = 3;
             }
-            else if (optInFastD_Period is < 1 or > 0x186a0)
+            else if (optInFastD_Period is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -137,7 +137,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod is < 2 or > 0x186a0)
+            else if (optInTimePeriod is < 2 or > 100000)
             {
                 return -1;
             }
@@ -146,7 +146,7 @@ namespace TechnicalAnalysis
             {
                 optInFastK_Period = 5;
             }
-            else if (optInFastK_Period is < 1 or > 0x186a0)
+            else if (optInFastK_Period is < 1 or > 100000)
             {
                 return -1;
             }
@@ -155,7 +155,7 @@ namespace TechnicalAnalysis
             {
                 optInFastD_Period = 3;
             }
-            else if (optInFastD_Period is < 1 or > 0x186a0)
+            else if (optInFastD_Period is < 1 or > 100000)
             {
                 return -1;
             }

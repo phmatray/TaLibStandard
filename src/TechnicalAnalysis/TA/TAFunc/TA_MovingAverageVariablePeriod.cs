@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
             {
                 optInMinPeriod = 2;
             }
-            else if (optInMinPeriod is < 2 or > 0x186a0)
+            else if (optInMinPeriod is < 2 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -49,7 +49,7 @@ namespace TechnicalAnalysis
             {
                 optInMaxPeriod = 30;
             }
-            else if (optInMaxPeriod is < 2 or > 0x186a0)
+            else if (optInMaxPeriod is < 2 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -161,7 +161,7 @@ namespace TechnicalAnalysis
             {
                 optInMinPeriod = 2;
             }
-            else if (optInMinPeriod is < 2 or > 0x186a0)
+            else if (optInMinPeriod is < 2 or > 100000)
             {
                 return -1;
             }
@@ -170,7 +170,7 @@ namespace TechnicalAnalysis
             {
                 optInMaxPeriod = 30;
             }
-            else if (optInMaxPeriod is < 2 or > 0x186a0)
+            else if (optInMaxPeriod is < 2 or > 100000)
             {
                 return -1;
             }

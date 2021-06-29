@@ -35,7 +35,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod is < 1 or > 0x186a0)
+            else if (optInTimePeriod is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -90,7 +90,7 @@ namespace TechnicalAnalysis
 
                 double prevATR = prevATRTemp[0];
                 int today = optInTimePeriod;
-                int outIdx = (int)Globals.unstablePeriod[0x11];
+                int outIdx = (int)Globals.unstablePeriod[17];
                 while (true)
                 {
                     if (outIdx == 0)
@@ -155,12 +155,12 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod is < 1 or > 0x186a0)
+            else if (optInTimePeriod is < 1 or > 100000)
             {
                 return -1;
             }
 
-            return optInTimePeriod + (int)Globals.unstablePeriod[0x11];
+            return optInTimePeriod + (int)Globals.unstablePeriod[17];
         }
     }
 }

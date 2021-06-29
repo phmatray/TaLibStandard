@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             {
                 optInSignalPeriod = 9;
             }
-            else if (optInSignalPeriod is < 1 or > 0x186a0)
+            else if (optInSignalPeriod is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -72,12 +72,12 @@ namespace TechnicalAnalysis
             {
                 optInSignalPeriod = 9;
             }
-            else if (optInSignalPeriod is < 1 or > 0x186a0)
+            else if (optInSignalPeriod is < 1 or > 100000)
             {
                 return -1;
             }
 
-            return EmaLookback(0x1a) + EmaLookback(optInSignalPeriod);
+            return EmaLookback(26) + EmaLookback(optInSignalPeriod);
         }
     }
 }

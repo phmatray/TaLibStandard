@@ -123,7 +123,7 @@ namespace TechnicalAnalysis
             }
             else
             {
-                for (int i = 0; i < 0x17; i++)
+                for (int i = 0; i < 23; i++)
                 {
                     Globals.unstablePeriod[i] = unstablePeriod;
                 }
@@ -298,7 +298,7 @@ namespace TechnicalAnalysis
             }
             else
             {
-                optInSlowPeriod_1 = 0x1a;
+                optInSlowPeriod_1 = 26;
                 k1 = 0.075;
             }
             
@@ -423,7 +423,7 @@ namespace TechnicalAnalysis
             }
             else
             {
-                optInSlowPeriod_1 = 0x1a;
+                optInSlowPeriod_1 = 26;
                 k1 = 0.075;
             }
             
@@ -915,7 +915,7 @@ namespace TechnicalAnalysis
             Cmo = 3,
             Dx = 4,
             Ema = 5,
-            FuncUnstAll = 0x17,
+            FuncUnstAll = 23,
             FuncUnstNone = -1,
             HtDcPeriod = 6,
             HtDcPhase = 7,
@@ -927,13 +927,13 @@ namespace TechnicalAnalysis
             Mama = 13,
             Mfi = 14,
             MinusDI = 15,
-            MinusDM = 0x10,
-            Natr = 0x11,
-            PlusDI = 0x12,
-            PlusDM = 0x13,
+            MinusDM = 16,
+            Natr = 17,
+            PlusDI = 18,
+            PlusDM = 19,
             Rsi = 20,
-            StochRsi = 0x15,
-            T3 = 0x16
+            StochRsi = 21,
+            T3 = 22
         }
         
         public enum RangeType
@@ -947,11 +947,11 @@ namespace TechnicalAnalysis
         {
             public CandleSetting[] candleSettings;
             public Compatibility compatibility = Compatibility.Default;
-            public long[] unstablePeriod = new long[0x17];
+            public long[] unstablePeriod = new long[23];
 
             public GlobalsType()
             {
-                for (int i = 0; i < 0x17; i++)
+                for (int i = 0; i < 23; i++)
                 {
                     this.unstablePeriod[i] = 0;
                 }

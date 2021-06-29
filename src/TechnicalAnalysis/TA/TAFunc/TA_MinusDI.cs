@@ -43,7 +43,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod is < 1 or > 0x186a0)
+            else if (optInTimePeriod is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -286,7 +286,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod is < 1 or > 0x186a0)
+            else if (optInTimePeriod is < 1 or > 100000)
             {
                 return -1;
             }

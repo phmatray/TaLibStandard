@@ -43,7 +43,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod is < 1 or > 0x186a0)
+            else if (optInTimePeriod is < 1 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -55,7 +55,7 @@ namespace TechnicalAnalysis
 
             if (optInTimePeriod > 1)
             {
-                lookbackTotal = optInTimePeriod + (int)Globals.unstablePeriod[0x12];
+                lookbackTotal = optInTimePeriod + (int)Globals.unstablePeriod[18];
             }
             else
             {
@@ -91,7 +91,7 @@ namespace TechnicalAnalysis
                     i--;
                     if (i <= 0)
                     {
-                        i = (int)Globals.unstablePeriod[0x12] + 1;
+                        i = (int)Globals.unstablePeriod[18] + 1;
                         while (true)
                         {
                             i--;
@@ -286,14 +286,14 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod is < 1 or > 0x186a0)
+            else if (optInTimePeriod is < 1 or > 100000)
             {
                 return -1;
             }
 
             if (optInTimePeriod > 1)
             {
-                return optInTimePeriod + (int)Globals.unstablePeriod[0x12];
+                return optInTimePeriod + (int)Globals.unstablePeriod[18];
             }
 
             return 1;

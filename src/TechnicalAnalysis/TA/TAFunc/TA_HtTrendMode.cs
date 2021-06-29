@@ -24,7 +24,7 @@ namespace TechnicalAnalysis
             double[] jQ_Odd = new double[3];
             double[] jQ_Even = new double[3];
             int smoothPrice_Idx = 0;
-            int maxIdx_smoothPrice = 0x31;
+            int maxIdx_smoothPrice = 49;
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -65,7 +65,7 @@ namespace TechnicalAnalysis
             double rad2Deg = 45.0 / tempReal;
             double deg2Rad = 1.0 / rad2Deg;
             double constDeg2RadBy360 = tempReal * 8.0;
-            int lookbackTotal = (int)Globals.unstablePeriod[11] + 0x3f;
+            int lookbackTotal = (int)Globals.unstablePeriod[11] + 63;
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -94,7 +94,7 @@ namespace TechnicalAnalysis
             periodWMASub += tempReal;
             periodWMASum += tempReal * 3.0;
             double trailingWMAValue = 0.0;
-            int i = 0x22;
+            int i = 34;
             do
             {
                 tempReal = inReal[today];
@@ -336,7 +336,7 @@ namespace TechnicalAnalysis
                     imagPart += Math.Cos(tempReal) * tempReal2;
                     if (idx == 0)
                     {
-                        idx = 0x31;
+                        idx = 49;
                     }
                     else
                     {
@@ -443,7 +443,7 @@ namespace TechnicalAnalysis
 
         public static int HtTrendModeLookback()
         {
-            return (int)Globals.unstablePeriod[11] + 0x3f;
+            return (int)Globals.unstablePeriod[11] + 63;
         }
     }
 }

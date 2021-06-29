@@ -44,7 +44,7 @@ namespace TechnicalAnalysis
             }
 
             double rad2Deg = 180.0 / (4.0 * Math.Atan(1.0));
-            int lookbackTotal = (int)Globals.unstablePeriod[6] + 0x20;
+            int lookbackTotal = (int)Globals.unstablePeriod[6] + 32;
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -305,7 +305,7 @@ namespace TechnicalAnalysis
 
         public static int HtDcPeriodLookback()
         {
-            return (int)Globals.unstablePeriod[6] + 0x20;
+            return (int)Globals.unstablePeriod[6] + 32;
         }
     }
 }

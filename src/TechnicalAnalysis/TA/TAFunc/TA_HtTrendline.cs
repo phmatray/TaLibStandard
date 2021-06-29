@@ -24,7 +24,7 @@ namespace TechnicalAnalysis
             double[] jQ_Odd = new double[3];
             double[] jQ_Even = new double[3];
             int smoothPrice_Idx = 0;
-            int maxIdx_smoothPrice = 0x31;
+            int maxIdx_smoothPrice = 49;
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -56,7 +56,7 @@ namespace TechnicalAnalysis
             double iTrend1 = iTrend2;
             double tempReal = Math.Atan(1.0);
             double rad2Deg = 45.0 / tempReal;
-            int lookbackTotal = (int)Globals.unstablePeriod[10] + 0x3f;
+            int lookbackTotal = (int)Globals.unstablePeriod[10] + 63;
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
@@ -85,7 +85,7 @@ namespace TechnicalAnalysis
             periodWMASub += tempReal;
             periodWMASum += tempReal * 3.0;
             double trailingWMAValue = 0.0;
-            int i = 0x22;
+            int i = 34;
             do
             {
                 tempReal = inReal[today];
@@ -348,7 +348,7 @@ namespace TechnicalAnalysis
 
         public static int HtTrendlineLookback()
         {
-            return (int)Globals.unstablePeriod[10] + 0x3f;
+            return (int)Globals.unstablePeriod[10] + 63;
         }
     }
 }

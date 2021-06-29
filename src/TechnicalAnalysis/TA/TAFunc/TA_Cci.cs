@@ -16,7 +16,7 @@ namespace TechnicalAnalysis
             double[] outReal)
         {
             int circBuffer_Idx = 0;
-            int maxIdx_circBuffer = 0x1d;
+            int maxIdx_circBuffer = 29;
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -36,7 +36,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod is < 2 or > 0x186a0)
+            else if (optInTimePeriod is < 2 or > 100000)
             {
                 return RetCode.BadParam;
             }
@@ -139,7 +139,7 @@ namespace TechnicalAnalysis
             {
                 optInTimePeriod = 14;
             }
-            else if (optInTimePeriod is < 2 or > 0x186a0)
+            else if (optInTimePeriod is < 2 or > 100000)
             {
                 return -1;
             }
