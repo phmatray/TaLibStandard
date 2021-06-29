@@ -835,352 +835,181 @@ namespace TechnicalAnalysis.Business
         {
             double[] real = dh.GetPriceData(priceDataPoint);
 
-            switch (indicator)
+            return indicator switch
             {
-                case Indicator.Acos:
-                    return TAMath.Acos(startIdx, endIdx, real);
-                case Indicator.Ad:
-                    return TAMath.Ad(startIdx, endIdx, dh.High, dh.Low, dh.Close, dh.Volume);
-
-                // case Indicator.Add:
-                // return TAMath.Add(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1);
-                case Indicator.AdOsc:
-                    return TAMath.AdOsc(startIdx, endIdx, dh.High, dh.Low, dh.Close, dh.Volume);
-                case Indicator.Adx:
-                    return TAMath.Adx(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.Adxr:
-                    return TAMath.Adxr(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.Apo:
-                    return TAMath.Apo(startIdx, endIdx, real);
-                case Indicator.Aroon:
-                    return TAMath.Aroon(startIdx, endIdx, dh.High, dh.Low);
-                case Indicator.AroonOsc:
-                    return TAMath.AroonOsc(startIdx, endIdx, dh.High, dh.Low);
-                case Indicator.Asin:
-                    return TAMath.Asin(startIdx, endIdx, real);
-                case Indicator.Atan:
-                    return TAMath.Atan(startIdx, endIdx, real);
-                case Indicator.Atr:
-                    return TAMath.Atr(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.AvgPrice:
-                    return TAMath.AvgPrice(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.BollingerBands:
-                    return TAMath.BollingerBands(startIdx, endIdx, real);
-
-                // case Indicator.Beta:
-                // return TAMath.Beta(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1);
-                case Indicator.Bop:
-                    return TAMath.Bop(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.Cci:
-                    return TAMath.Cci(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.Cdl2Crows:
-                    return TAMath.Cdl2Crows(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.Cdl3BlackCrows:
-                    return TAMath.Cdl3BlackCrows(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.Cdl3Inside:
-                    return TAMath.Cdl3Inside(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.Cdl3LineStrike:
-                    return TAMath.Cdl3LineStrike(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.Cdl3Outside:
-                    return TAMath.Cdl3Outside(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.Cdl3StarsInSouth:
-                    return TAMath.Cdl3StarsInSouth(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.Cdl3WhiteSoldiers:
-                    return TAMath.Cdl3WhiteSoldiers(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlAbandonedBaby:
-                    return TAMath.CdlAbandonedBaby(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlAdvanceBlock:
-                    return TAMath.CdlAdvanceBlock(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlBeltHold:
-                    return TAMath.CdlBeltHold(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlBreakaway:
-                    return TAMath.CdlBreakaway(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlClosingMarubozu:
-                    return TAMath.CdlClosingMarubozu(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlConcealBabySwallow:
-                    return TAMath.CdlConcealBabySwallow(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlCounterAttack:
-                    return TAMath.CdlCounterAttack(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlDarkCloudCover:
-                    return TAMath.CdlDarkCloudCover(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlDoji:
-                    return TAMath.CdlDoji(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlDojiStar:
-                    return TAMath.CdlDojiStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlDragonflyDoji:
-                    return TAMath.CdlDragonflyDoji(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlEngulfing:
-                    return TAMath.CdlEngulfing(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlEveningDojiStar:
-                    return TAMath.CdlEveningDojiStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlEveningStar:
-                    return TAMath.CdlEveningStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlGapSideSideWhite:
-                    return TAMath.CdlGapSideSideWhite(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlGravestoneDoji:
-                    return TAMath.CdlGravestoneDoji(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlHammer:
-                    return TAMath.CdlHammer(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlHangingMan:
-                    return TAMath.CdlHangingMan(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlHarami:
-                    return TAMath.CdlHarami(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlHaramiCross:
-                    return TAMath.CdlHaramiCross(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlHighWave:
-                    return TAMath.CdlHighWave(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlHikkake:
-                    return TAMath.CdlHikkake(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlHikkakeMod:
-                    return TAMath.CdlHikkakeMod(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlHomingPigeon:
-                    return TAMath.CdlHomingPigeon(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlIdentical3Crows:
-                    return TAMath.CdlIdentical3Crows(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlInNeck:
-                    return TAMath.CdlInNeck(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlInvertedHammer:
-                    return TAMath.CdlInvertedHammer(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlKicking:
-                    return TAMath.CdlKicking(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlKickingByLength:
-                    return TAMath.CdlKickingByLength(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlLadderBottom:
-                    return TAMath.CdlLadderBottom(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlLongLeggedDoji:
-                    return TAMath.CdlLongLeggedDoji(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlLongLine:
-                    return TAMath.CdlLongLine(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlMarubozu:
-                    return TAMath.CdlMarubozu(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlMatchingLow:
-                    return TAMath.CdlMatchingLow(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlMatHold:
-                    return TAMath.CdlMatHold(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlMorningDojiStar:
-                    return TAMath.CdlMorningDojiStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlMorningStar:
-                    return TAMath.CdlMorningStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlOnNeck:
-                    return TAMath.CdlOnNeck(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlPiercing:
-                    return TAMath.CdlPiercing(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlRickshawMan:
-                    return TAMath.CdlRickshawMan(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlRiseFall3Methods:
-                    return TAMath.CdlRiseFall3Methods(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlSeparatingLines:
-                    return TAMath.CdlSeparatingLines(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlShootingStar:
-                    return TAMath.CdlShootingStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlShortLine:
-                    return TAMath.CdlShortLine(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlSpinningTop:
-                    return TAMath.CdlSpinningTop(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlStalledPattern:
-                    return TAMath.CdlStalledPattern(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlStickSandwich:
-                    return TAMath.CdlStickSandwich(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlTakuri:
-                    return TAMath.CdlTakuri(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlTasukiGap:
-                    return TAMath.CdlTasukiGap(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlThrusting:
-                    return TAMath.CdlThrusting(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlTristar:
-                    return TAMath.CdlTristar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlUnique3River:
-                    return TAMath.CdlUnique3River(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlUpsideGap2Crows:
-                    return TAMath.CdlUpsideGap2Crows(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.CdlXSideGap3Methods:
-                    return TAMath.CdlXSideGap3Methods(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close);
-                case Indicator.Ceil:
-                    return TAMath.Ceil(startIdx, endIdx, real);
-                case Indicator.Cmo:
-                    return TAMath.Cmo(startIdx, endIdx, real);
-
-                // case Indicator.Correl:
-                // return TAMath.Correl(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1);
-                case Indicator.Cos:
-                    return TAMath.Cos(startIdx, endIdx, real);
-                case Indicator.Cosh:
-                    return TAMath.Cosh(startIdx, endIdx, real);
-                case Indicator.Dema:
-                    return TAMath.Dema(startIdx, endIdx, real);
-
-                // case Indicator.Div:
-                // return TAMath.Div(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1);
-                case Indicator.Dx:
-                    return TAMath.Dx(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.Ema:
-                    return TAMath.Ema(startIdx, endIdx, real);
-                case Indicator.Exp:
-                    return TAMath.Exp(startIdx, endIdx, real);
-                case Indicator.Floor:
-                    return TAMath.Floor(startIdx, endIdx, real);
-                case Indicator.HtDcPeriod:
-                    return TAMath.HtDcPeriod(startIdx, endIdx, real);
-                case Indicator.HtDcPhase:
-                    return TAMath.HtDcPhase(startIdx, endIdx, real);
-                case Indicator.HtPhasor:
-                    return TAMath.HtPhasor(startIdx, endIdx, real);
-                case Indicator.HtSine:
-                    return TAMath.HtSine(startIdx, endIdx, real);
-                case Indicator.HtTrendline:
-                    return TAMath.HtTrendline(startIdx, endIdx, real);
-                case Indicator.HtTrendMode:
-                    return TAMath.HtTrendMode(startIdx, endIdx, real);
-                case Indicator.Kama:
-                    return TAMath.Kama(startIdx, endIdx, real);
-                case Indicator.LinearReg:
-                    return TAMath.LinearReg(startIdx, endIdx, real);
-                case Indicator.LinearRegAngle:
-                    return TAMath.LinearRegAngle(startIdx, endIdx, real);
-                case Indicator.LinearRegIntercept:
-                    return TAMath.LinearRegIntercept(startIdx, endIdx, real);
-                case Indicator.LinearRegSlope:
-                    return TAMath.LinearRegSlope(startIdx, endIdx, real);
-                case Indicator.Ln:
-                    return TAMath.Ln(startIdx, endIdx, real);
-                case Indicator.Log10:
-                    return TAMath.Log10(startIdx, endIdx, real);
-                case Indicator.Macd:
-                    return TAMath.Macd(startIdx, endIdx, real);
-                case Indicator.MacdExt:
-                    return TAMath.MacdExt(startIdx, endIdx, real);
-                case Indicator.MacdFix:
-                    return TAMath.MacdFix(startIdx, endIdx, real);
-                case Indicator.Mama:
-                    return TAMath.Mama(startIdx, endIdx, real);
-                case Indicator.Max:
-                    return TAMath.Max(startIdx, endIdx, real);
-                case Indicator.MaxIndex:
-                    return TAMath.MaxIndex(startIdx, endIdx, real);
-                case Indicator.MedPrice:
-                    return TAMath.MedPrice(startIdx, endIdx, dh.High, dh.Low);
-                case Indicator.Mfi:
-                    return TAMath.Mfi(startIdx, endIdx, dh.High, dh.Low, dh.Close, dh.Volume);
-                case Indicator.MidPoint:
-                    return TAMath.MidPoint(startIdx, endIdx, real);
-                case Indicator.MidPrice:
-                    return TAMath.MidPrice(startIdx, endIdx, dh.High, dh.Low);
-                case Indicator.Min:
-                    return TAMath.Min(startIdx, endIdx, real);
-                case Indicator.MinIndex:
-                    return TAMath.MinIndex(startIdx, endIdx, real);
-                case Indicator.MinMax:
-                    return TAMath.MinMax(startIdx, endIdx, real);
-                case Indicator.MinMaxIndex:
-                    return TAMath.MinMaxIndex(startIdx, endIdx, real);
-                case Indicator.MinusDI:
-                    return TAMath.MinusDI(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.MinusDM:
-                    return TAMath.MinusDM(startIdx, endIdx, dh.High, dh.Low);
-                case Indicator.Mom:
-                    return TAMath.Mom(startIdx, endIdx, real);
-                case Indicator.MovingAverage:
-                    return TAMath.MovingAverage(startIdx, endIdx, real);
-
-                // case Indicator.MovingAverageVariablePeriod:
-                // return TAMath.MovingAverageVariablePeriod(startIdx, endIdx, real, dataHistory.Periods);
-                // case Indicator.Mult:
-                // return TAMath.Mult(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1);
-                case Indicator.Natr:
-                    return TAMath.Natr(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.Obv:
-                    return TAMath.Obv(startIdx, endIdx, real, dh.Volume);
-                case Indicator.PlusDI:
-                    return TAMath.PlusDI(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.PlusDM:
-                    return TAMath.PlusDM(startIdx, endIdx, dh.High, dh.Low);
-                case Indicator.Ppo:
-                    return TAMath.Ppo(startIdx, endIdx, real);
-                case Indicator.Roc:
-                    return TAMath.Roc(startIdx, endIdx, real);
-                case Indicator.RocP:
-                    return TAMath.RocP(startIdx, endIdx, real);
-                case Indicator.RocR:
-                    return TAMath.RocR(startIdx, endIdx, real);
-                case Indicator.RocR100:
-                    return TAMath.RocR100(startIdx, endIdx, real);
-                case Indicator.Rsi:
-                    return TAMath.Rsi(startIdx, endIdx, real);
-                case Indicator.Sar:
-                    return TAMath.Sar(startIdx, endIdx, dh.High, dh.Low);
-                case Indicator.SarExt:
-                    return TAMath.SarExt(startIdx, endIdx, dh.High, dh.Low);
-                case Indicator.Sin:
-                    return TAMath.Sin(startIdx, endIdx, real);
-                case Indicator.Sinh:
-                    return TAMath.Sinh(startIdx, endIdx, real);
-                case Indicator.Sma:
-                    return TAMath.Sma(startIdx, endIdx, real);
-                case Indicator.Sqrt:
-                    return TAMath.Sqrt(startIdx, endIdx, real);
-                case Indicator.StdDev:
-                    return TAMath.StdDev(startIdx, endIdx, real);
-                case Indicator.Stoch:
-                    return TAMath.Stoch(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.StochF:
-                    return TAMath.StochF(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.StochRsi:
-                    return TAMath.StochRsi(startIdx, endIdx, real);
-
-                // case Indicator.Sub:
-                // return TAMath.Sub(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1);
-                case Indicator.Sum:
-                    return TAMath.Sum(startIdx, endIdx, real);
-                case Indicator.T3:
-                    return TAMath.T3(startIdx, endIdx, real);
-                case Indicator.Tan:
-                    return TAMath.Tan(startIdx, endIdx, real);
-                case Indicator.Tanh:
-                    return TAMath.Tanh(startIdx, endIdx, real);
-                case Indicator.Tema:
-                    return TAMath.Tema(startIdx, endIdx, real);
-                case Indicator.Trima:
-                    return TAMath.Trima(startIdx, endIdx, real);
-                case Indicator.Trix:
-                    return TAMath.Trix(startIdx, endIdx, real);
-                case Indicator.TrueRange:
-                    return TAMath.TrueRange(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.Tsf:
-                    return TAMath.Tsf(startIdx, endIdx, real);
-                case Indicator.TypPrice:
-                    return TAMath.TypPrice(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.UltOsc:
-                    return TAMath.UltOsc(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.Variance:
-                    return TAMath.Variance(startIdx, endIdx, real);
-                case Indicator.WclPrice:
-                    return TAMath.WclPrice(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.WillR:
-                    return TAMath.WillR(startIdx, endIdx, dh.High, dh.Low, dh.Close);
-                case Indicator.Wma:
-                    return TAMath.Wma(startIdx, endIdx, real);
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(indicator), indicator, null);
-            }
+                Indicator.Acos => TAMath.Acos(startIdx, endIdx, real),
+                Indicator.Ad => TAMath.Ad(startIdx, endIdx, dh.High, dh.Low, dh.Close, dh.Volume),
+                // Indicator.Add => TAMath.Add(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1),
+                Indicator.AdOsc => TAMath.AdOsc(startIdx, endIdx, dh.High, dh.Low, dh.Close, dh.Volume),
+                Indicator.Adx => TAMath.Adx(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.Adxr => TAMath.Adxr(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.Apo => TAMath.Apo(startIdx, endIdx, real),
+                Indicator.Aroon => TAMath.Aroon(startIdx, endIdx, dh.High, dh.Low),
+                Indicator.AroonOsc => TAMath.AroonOsc(startIdx, endIdx, dh.High, dh.Low),
+                Indicator.Asin => TAMath.Asin(startIdx, endIdx, real),
+                Indicator.Atan => TAMath.Atan(startIdx, endIdx, real),
+                Indicator.Atr => TAMath.Atr(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.AvgPrice => TAMath.AvgPrice(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.BollingerBands => TAMath.BollingerBands(startIdx, endIdx, real),
+                // Indicator.Beta => TAMath.Beta(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1),
+                Indicator.Bop => TAMath.Bop(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.Cci => TAMath.Cci(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.Cdl2Crows => TAMath.Cdl2Crows(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.Cdl3BlackCrows => TAMath.Cdl3BlackCrows(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.Cdl3Inside => TAMath.Cdl3Inside(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.Cdl3LineStrike => TAMath.Cdl3LineStrike(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.Cdl3Outside => TAMath.Cdl3Outside(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.Cdl3StarsInSouth => TAMath.Cdl3StarsInSouth(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.Cdl3WhiteSoldiers => TAMath.Cdl3WhiteSoldiers(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlAbandonedBaby => TAMath.CdlAbandonedBaby(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlAdvanceBlock => TAMath.CdlAdvanceBlock(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlBeltHold => TAMath.CdlBeltHold(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlBreakaway => TAMath.CdlBreakaway(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlClosingMarubozu => TAMath.CdlClosingMarubozu(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlConcealBabySwallow => TAMath.CdlConcealBabySwallow(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlCounterAttack => TAMath.CdlCounterAttack(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlDarkCloudCover => TAMath.CdlDarkCloudCover(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlDoji => TAMath.CdlDoji(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlDojiStar => TAMath.CdlDojiStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlDragonflyDoji => TAMath.CdlDragonflyDoji(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlEngulfing => TAMath.CdlEngulfing(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlEveningDojiStar => TAMath.CdlEveningDojiStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlEveningStar => TAMath.CdlEveningStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlGapSideSideWhite => TAMath.CdlGapSideSideWhite(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlGravestoneDoji => TAMath.CdlGravestoneDoji(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlHammer => TAMath.CdlHammer(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlHangingMan => TAMath.CdlHangingMan(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlHarami => TAMath.CdlHarami(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlHaramiCross => TAMath.CdlHaramiCross(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlHighWave => TAMath.CdlHighWave(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlHikkake => TAMath.CdlHikkake(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlHikkakeMod => TAMath.CdlHikkakeMod(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlHomingPigeon => TAMath.CdlHomingPigeon(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlIdentical3Crows => TAMath.CdlIdentical3Crows(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlInNeck => TAMath.CdlInNeck(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlInvertedHammer => TAMath.CdlInvertedHammer(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlKicking => TAMath.CdlKicking(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlKickingByLength => TAMath.CdlKickingByLength(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlLadderBottom => TAMath.CdlLadderBottom(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlLongLeggedDoji => TAMath.CdlLongLeggedDoji(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlLongLine => TAMath.CdlLongLine(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlMarubozu => TAMath.CdlMarubozu(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlMatchingLow => TAMath.CdlMatchingLow(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlMatHold => TAMath.CdlMatHold(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlMorningDojiStar => TAMath.CdlMorningDojiStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlMorningStar => TAMath.CdlMorningStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlOnNeck => TAMath.CdlOnNeck(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlPiercing => TAMath.CdlPiercing(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlRickshawMan => TAMath.CdlRickshawMan(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlRiseFall3Methods => TAMath.CdlRiseFall3Methods(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlSeparatingLines => TAMath.CdlSeparatingLines(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlShootingStar => TAMath.CdlShootingStar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlShortLine => TAMath.CdlShortLine(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlSpinningTop => TAMath.CdlSpinningTop(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlStalledPattern => TAMath.CdlStalledPattern(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlStickSandwich => TAMath.CdlStickSandwich(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlTakuri => TAMath.CdlTakuri(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlTasukiGap => TAMath.CdlTasukiGap(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlThrusting => TAMath.CdlThrusting(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlTristar => TAMath.CdlTristar(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlUnique3River => TAMath.CdlUnique3River(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlUpsideGap2Crows => TAMath.CdlUpsideGap2Crows(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.CdlXSideGap3Methods => TAMath.CdlXSideGap3Methods(startIdx, endIdx, dh.Open, dh.High, dh.Low, dh.Close),
+                Indicator.Ceil => TAMath.Ceil(startIdx, endIdx, real),
+                Indicator.Cmo => TAMath.Cmo(startIdx, endIdx, real),
+                // Indicator.Correl => TAMath.Correl(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1),
+                Indicator.Cos => TAMath.Cos(startIdx, endIdx, real),
+                Indicator.Cosh => TAMath.Cosh(startIdx, endIdx, real),
+                Indicator.Dema => TAMath.Dema(startIdx, endIdx, real),
+                // Indicator.Div => TAMath.Div(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1),
+                Indicator.Dx => TAMath.Dx(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.Ema => TAMath.Ema(startIdx, endIdx, real),
+                Indicator.Exp => TAMath.Exp(startIdx, endIdx, real),
+                Indicator.Floor => TAMath.Floor(startIdx, endIdx, real),
+                Indicator.HtDcPeriod => TAMath.HtDcPeriod(startIdx, endIdx, real),
+                Indicator.HtDcPhase => TAMath.HtDcPhase(startIdx, endIdx, real),
+                Indicator.HtPhasor => TAMath.HtPhasor(startIdx, endIdx, real),
+                Indicator.HtSine => TAMath.HtSine(startIdx, endIdx, real),
+                Indicator.HtTrendline => TAMath.HtTrendline(startIdx, endIdx, real),
+                Indicator.HtTrendMode => TAMath.HtTrendMode(startIdx, endIdx, real),
+                Indicator.Kama => TAMath.Kama(startIdx, endIdx, real),
+                Indicator.LinearReg => TAMath.LinearReg(startIdx, endIdx, real),
+                Indicator.LinearRegAngle => TAMath.LinearRegAngle(startIdx, endIdx, real),
+                Indicator.LinearRegIntercept => TAMath.LinearRegIntercept(startIdx, endIdx, real),
+                Indicator.LinearRegSlope => TAMath.LinearRegSlope(startIdx, endIdx, real),
+                Indicator.Ln => TAMath.Ln(startIdx, endIdx, real),
+                Indicator.Log10 => TAMath.Log10(startIdx, endIdx, real),
+                Indicator.Macd => TAMath.Macd(startIdx, endIdx, real),
+                Indicator.MacdExt => TAMath.MacdExt(startIdx, endIdx, real),
+                Indicator.MacdFix => TAMath.MacdFix(startIdx, endIdx, real),
+                Indicator.Mama => TAMath.Mama(startIdx, endIdx, real),
+                Indicator.Max => TAMath.Max(startIdx, endIdx, real),
+                Indicator.MaxIndex => TAMath.MaxIndex(startIdx, endIdx, real),
+                Indicator.MedPrice => TAMath.MedPrice(startIdx, endIdx, dh.High, dh.Low),
+                Indicator.Mfi => TAMath.Mfi(startIdx, endIdx, dh.High, dh.Low, dh.Close, dh.Volume),
+                Indicator.MidPoint => TAMath.MidPoint(startIdx, endIdx, real),
+                Indicator.MidPrice => TAMath.MidPrice(startIdx, endIdx, dh.High, dh.Low),
+                Indicator.Min => TAMath.Min(startIdx, endIdx, real),
+                Indicator.MinIndex => TAMath.MinIndex(startIdx, endIdx, real),
+                Indicator.MinMax => TAMath.MinMax(startIdx, endIdx, real),
+                Indicator.MinMaxIndex => TAMath.MinMaxIndex(startIdx, endIdx, real),
+                Indicator.MinusDI => TAMath.MinusDI(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.MinusDM => TAMath.MinusDM(startIdx, endIdx, dh.High, dh.Low),
+                Indicator.Mom => TAMath.Mom(startIdx, endIdx, real),
+                Indicator.MovingAverage => TAMath.MovingAverage(startIdx, endIdx, real),
+                // Indicator.MovingAverageVariablePeriod => TAMath.MovingAverageVariablePeriod(startIdx, endIdx, real, dataHistory.Periods),
+                // Indicator.Mult => TAMath.Mult(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1),
+                Indicator.Natr => TAMath.Natr(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.Obv => TAMath.Obv(startIdx, endIdx, real, dh.Volume),
+                Indicator.PlusDI => TAMath.PlusDI(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.PlusDM => TAMath.PlusDM(startIdx, endIdx, dh.High, dh.Low),
+                Indicator.Ppo => TAMath.Ppo(startIdx, endIdx, real),
+                Indicator.Roc => TAMath.Roc(startIdx, endIdx, real),
+                Indicator.RocP => TAMath.RocP(startIdx, endIdx, real),
+                Indicator.RocR => TAMath.RocR(startIdx, endIdx, real),
+                Indicator.RocR100 => TAMath.RocR100(startIdx, endIdx, real),
+                Indicator.Rsi => TAMath.Rsi(startIdx, endIdx, real),
+                Indicator.Sar => TAMath.Sar(startIdx, endIdx, dh.High, dh.Low),
+                Indicator.SarExt => TAMath.SarExt(startIdx, endIdx, dh.High, dh.Low),
+                Indicator.Sin => TAMath.Sin(startIdx, endIdx, real),
+                Indicator.Sinh => TAMath.Sinh(startIdx, endIdx, real),
+                Indicator.Sma => TAMath.Sma(startIdx, endIdx, real),
+                Indicator.Sqrt => TAMath.Sqrt(startIdx, endIdx, real),
+                Indicator.StdDev => TAMath.StdDev(startIdx, endIdx, real),
+                Indicator.Stoch => TAMath.Stoch(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.StochF => TAMath.StochF(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.StochRsi => TAMath.StochRsi(startIdx, endIdx, real),
+                // Indicator.Sub => TAMath.Sub(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1),
+                Indicator.Sum => TAMath.Sum(startIdx, endIdx, real),
+                Indicator.T3 => TAMath.T3(startIdx, endIdx, real),
+                Indicator.Tan => TAMath.Tan(startIdx, endIdx, real),
+                Indicator.Tanh => TAMath.Tanh(startIdx, endIdx, real),
+                Indicator.Tema => TAMath.Tema(startIdx, endIdx, real),
+                Indicator.Trima => TAMath.Trima(startIdx, endIdx, real),
+                Indicator.Trix => TAMath.Trix(startIdx, endIdx, real),
+                Indicator.TrueRange => TAMath.TrueRange(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.Tsf => TAMath.Tsf(startIdx, endIdx, real),
+                Indicator.TypPrice => TAMath.TypPrice(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.UltOsc => TAMath.UltOsc(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.Variance => TAMath.Variance(startIdx, endIdx, real),
+                Indicator.WclPrice => TAMath.WclPrice(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.WillR => TAMath.WillR(startIdx, endIdx, dh.High, dh.Low, dh.Close),
+                Indicator.Wma => TAMath.Wma(startIdx, endIdx, real),
+                _ => throw new ArgumentOutOfRangeException(nameof(indicator), indicator, null)
+            };
         }
 
         private static double[] GetPriceData(this DataHistory dataHistory, PriceDataPoint priceDataPoint)
         {
-            switch (priceDataPoint)
+            return priceDataPoint switch
             {
-                case PriceDataPoint.Open:
-                    return dataHistory.Open;
-                case PriceDataPoint.High:
-                    return dataHistory.High;
-                case PriceDataPoint.Low:
-                    return dataHistory.Low;
-                case PriceDataPoint.Close:
-                    return dataHistory.Close;
-                case PriceDataPoint.Average:
-                    return dataHistory.Average;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(priceDataPoint), priceDataPoint, null);
-            }
+                PriceDataPoint.Open => dataHistory.Open,
+                PriceDataPoint.High => dataHistory.High,
+                PriceDataPoint.Low => dataHistory.Low,
+                PriceDataPoint.Close => dataHistory.Close,
+                PriceDataPoint.Average => dataHistory.Average,
+                _ => throw new ArgumentOutOfRangeException(nameof(priceDataPoint), priceDataPoint, null)
+            };
         }
     }
 }
