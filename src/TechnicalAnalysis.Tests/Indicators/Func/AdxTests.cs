@@ -41,7 +41,6 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             float[] high = fixture.CreateMany<float>(count: 100).ToArray();
             float[] low = fixture.CreateMany<float>(count: 100).ToArray();
             float[] close = fixture.CreateMany<float>(count: 100).ToArray();
-            float[] volume = fixture.CreateMany<float>(count: 100).ToArray();
             
             // Act
             var actualResult = TAMath.Adx(
