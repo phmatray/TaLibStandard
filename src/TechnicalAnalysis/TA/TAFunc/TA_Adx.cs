@@ -154,16 +154,10 @@ namespace TechnicalAnalysis
 
                 prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
                 prevClose = inClose[today];
-                if (prevTR is >= -1E-08 or >= 1E-08)
-                {
-                    minusDI = 100.0 * (prevMinusDM / prevTR);
-                    plusDI = 100.0 * (prevPlusDM / prevTR);
-                    tempReal = minusDI + plusDI;
-                    if (tempReal is >= -1E-08 or >= 1E-08)
-                    {
-                        sumDX += 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
-                    }
-                }
+                minusDI = 100.0 * (prevMinusDM / prevTR);
+                plusDI = 100.0 * (prevPlusDM / prevTR);
+                tempReal = minusDI + plusDI;
+                sumDX += 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
             }
 
             double prevADX = sumDX / optInTimePeriod;
@@ -209,17 +203,11 @@ namespace TechnicalAnalysis
 
                 prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
                 prevClose = inClose[today];
-                if (prevTR is >= -1E-08 or >= 1E-08)
-                {
-                    minusDI = 100.0 * (prevMinusDM / prevTR);
-                    plusDI = 100.0 * (prevPlusDM / prevTR);
-                    tempReal = minusDI + plusDI;
-                    if (tempReal is >= -1E-08 or >= 1E-08)
-                    {
-                        tempReal = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
-                        prevADX = (prevADX * (optInTimePeriod - 1) + tempReal) / optInTimePeriod;
-                    }
-                }
+                minusDI = 100.0 * (prevMinusDM / prevTR);
+                plusDI = 100.0 * (prevPlusDM / prevTR);
+                tempReal = minusDI + plusDI;
+                tempReal = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
+                prevADX = (prevADX * (optInTimePeriod - 1) + tempReal) / optInTimePeriod;
             }
 
             outReal[0] = prevADX;
@@ -264,17 +252,11 @@ namespace TechnicalAnalysis
 
                 prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
                 prevClose = inClose[today];
-                if (prevTR is >= -1E-08 or >= 1E-08)
-                {
-                    minusDI = 100.0 * (prevMinusDM / prevTR);
-                    plusDI = 100.0 * (prevPlusDM / prevTR);
-                    tempReal = minusDI + plusDI;
-                    if (tempReal is >= -1E-08 or >= 1E-08)
-                    {
-                        tempReal = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
-                        prevADX = (prevADX * (optInTimePeriod - 1) + tempReal) / optInTimePeriod;
-                    }
-                }
+                minusDI = 100.0 * (prevMinusDM / prevTR);
+                plusDI = 100.0 * (prevPlusDM / prevTR);
+                tempReal = minusDI + plusDI;
+                tempReal = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
+                prevADX = (prevADX * (optInTimePeriod - 1) + tempReal) / optInTimePeriod;
 
                 outReal[outIdx] = prevADX;
                 outIdx++;

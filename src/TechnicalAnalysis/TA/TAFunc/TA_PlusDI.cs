@@ -129,14 +129,7 @@ namespace TechnicalAnalysis
                             prevClose = inClose[today];
                         }
 
-                        if (prevTR is >= -1E-08 or >= 1E-08)
-                        {
-                            outReal[0] = 100.0 * (prevPlusDM / prevTR);
-                        }
-                        else
-                        {
-                            outReal[0] = 0.0;
-                        }
+                        outReal[0] = 100.0 * (prevPlusDM / prevTR);
 
                         outIdx = 1;
                         while (today < endIdx)
@@ -172,16 +165,8 @@ namespace TechnicalAnalysis
 
                             prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
                             prevClose = inClose[today];
-                            if (prevTR is >= -1E-08 or >= 1E-08)
-                            {
-                                outReal[outIdx] = 100.0 * (prevPlusDM / prevTR);
-                                outIdx++;
-                            }
-                            else
-                            {
-                                outReal[outIdx] = 0.0;
-                                outIdx++;
-                            }
+                            outReal[outIdx] = 100.0 * (prevPlusDM / prevTR);
+                            outIdx++;
                         }
 
                         outNBElement = outIdx;
@@ -252,16 +237,8 @@ namespace TechnicalAnalysis
                         tempReal = tempReal2;
                     }
 
-                    if (-1E-08 < tempReal && tempReal < 1E-08)
-                    {
-                        outReal[outIdx] = 0.0;
-                        outIdx++;
-                    }
-                    else
-                    {
-                        outReal[outIdx] = diffP / tempReal;
-                        outIdx++;
-                    }
+                    outReal[outIdx] = 0.0;
+                    outIdx++;
                 }
                 else
                 {

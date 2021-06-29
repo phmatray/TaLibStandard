@@ -537,11 +537,7 @@ namespace TechnicalAnalysis
                         for (j = tempInteger; i < outNbElement1; j++)
                         {
                             double tempReal = outReal_0[i];
-                            
-                            outReal_0[i] = tempReal is >= -1E-08 or >= 1E-08
-                                ? (tempBuffer[j] - tempReal) / tempReal * 100.0
-                                : 0.0;
-                            
+                            outReal_0[i] = (tempBuffer[j] - tempReal) / tempReal * 100.0;
                             i++;
                         }
                     }

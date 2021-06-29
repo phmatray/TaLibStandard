@@ -104,14 +104,7 @@ namespace TechnicalAnalysis
 
                 outIdx = 1;
                 double tempValue = inClose[today];
-                if (tempValue is >= -1E-08 or >= 1E-08)
-                {
-                    outReal[0] = prevATR / tempValue * 100.0;
-                }
-                else
-                {
-                    outReal[0] = 0.0;
-                }
+                outReal[0] = prevATR / tempValue * 100.0;
 
                 int nbATR = endIdx - startIdx + 1;
                 while (true)
@@ -127,14 +120,7 @@ namespace TechnicalAnalysis
                     today++;
                     prevATR /= optInTimePeriod;
                     tempValue = inClose[today];
-                    if (tempValue is >= -1E-08 or >= 1E-08)
-                    {
-                        outReal[outIdx] = prevATR / tempValue * 100.0;
-                    }
-                    else
-                    {
-                        outReal[0] = 0.0;
-                    }
+                    outReal[outIdx] = prevATR / tempValue * 100.0;
 
                     outIdx++;
                 }

@@ -82,26 +82,12 @@ namespace TechnicalAnalysis
                 }
 
                 tmpReal = inReal0[i];
-                if (lastPriceX is >= -1E-08 or >= 1E-08)
-                {
-                    x = (tmpReal - lastPriceX) / lastPriceX;
-                }
-                else
-                {
-                    x = 0.0;
-                }
+                x = (tmpReal - lastPriceX) / lastPriceX;
 
                 lastPriceX = tmpReal;
                 tmpReal = inReal1[i];
                 i++;
-                if (lastPriceY is >= -1E-08 or >= 1E-08)
-                {
-                    y = (tmpReal - lastPriceY) / lastPriceY;
-                }
-                else
-                {
-                    y = 0.0;
-                }
+                y = (tmpReal - lastPriceY) / lastPriceY;
 
                 lastPriceY = tmpReal;
                 sXX += x * x;
@@ -115,26 +101,12 @@ namespace TechnicalAnalysis
             do
             {
                 tmpReal = inReal0[i];
-                if (lastPriceX is >= -1E-08 or >= 1E-08)
-                {
-                    x = (tmpReal - lastPriceX) / lastPriceX;
-                }
-                else
-                {
-                    x = 0.0;
-                }
+                x = (tmpReal - lastPriceX) / lastPriceX;
 
                 lastPriceX = tmpReal;
                 tmpReal = inReal1[i];
                 i++;
-                if (lastPriceY is >= -1E-08 or >= 1E-08)
-                {
-                    y = (tmpReal - lastPriceY) / lastPriceY;
-                }
-                else
-                {
-                    y = 0.0;
-                }
+                y = (tmpReal - lastPriceY) / lastPriceY;
 
                 lastPriceY = tmpReal;
                 sXX += x * x;
@@ -142,39 +114,17 @@ namespace TechnicalAnalysis
                 sX += x;
                 sY += y;
                 tmpReal = inReal0[trailingIdx];
-                if (trailingLastPriceX is >= -1E-08 or >= 1E-08)
-                {
-                    x = (tmpReal - trailingLastPriceX) / trailingLastPriceX;
-                }
-                else
-                {
-                    x = 0.0;
-                }
+                x = (tmpReal - trailingLastPriceX) / trailingLastPriceX;
 
                 trailingLastPriceX = tmpReal;
                 tmpReal = inReal1[trailingIdx];
                 trailingIdx++;
-                if (trailingLastPriceY is >= -1E-08 or >= 1E-08)
-                {
-                    y = (tmpReal - trailingLastPriceY) / trailingLastPriceY;
-                }
-                else
-                {
-                    y = 0.0;
-                }
+                y = (tmpReal - trailingLastPriceY) / trailingLastPriceY;
 
                 trailingLastPriceY = tmpReal;
                 tmpReal = n * sXX - sX * sX;
-                if (tmpReal is >= -1E-08 or >= 1E-08)
-                {
-                    outReal[outIdx] = (n * sXY - sX * sY) / tmpReal;
-                    outIdx++;
-                }
-                else
-                {
-                    outReal[outIdx] = 0.0;
-                    outIdx++;
-                }
+                outReal[outIdx] = (n * sXY - sX * sY) / tmpReal;
+                outIdx++;
 
                 sXX -= x * x;
                 sXY -= x * y;

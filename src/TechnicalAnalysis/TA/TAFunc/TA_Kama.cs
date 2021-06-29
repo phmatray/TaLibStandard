@@ -80,7 +80,7 @@ namespace TechnicalAnalysis
             trailingIdx++;
             double periodROC = tempReal - tempReal2;
             double trailingValue = tempReal2;
-            if (sumROC1 <= periodROC || -1E-08 < sumROC1 && sumROC1 < 1E-08)
+            if (sumROC1 <= periodROC)
             {
                 tempReal = 1.0;
             }
@@ -107,14 +107,7 @@ namespace TechnicalAnalysis
                 sumROC1 -= Math.Abs(trailingValue - tempReal2);
                 sumROC1 += Math.Abs(tempReal - inReal[today - 1]);
                 trailingValue = tempReal2;
-                if (sumROC1 <= periodROC || -1E-08 < sumROC1 && sumROC1 < 1E-08)
-                {
-                    tempReal = 1.0;
-                }
-                else
-                {
-                    tempReal = Math.Abs(periodROC / sumROC1);
-                }
+                tempReal = sumROC1 <= periodROC ? 1.0 : Math.Abs(periodROC / sumROC1);
 
                 tempReal = tempReal * constDiff + constMax;
                 tempReal *= tempReal;
@@ -139,14 +132,7 @@ namespace TechnicalAnalysis
                 sumROC1 -= Math.Abs(trailingValue - tempReal2);
                 sumROC1 += Math.Abs(tempReal - inReal[today - 1]);
                 trailingValue = tempReal2;
-                if (sumROC1 <= periodROC || -1E-08 < sumROC1 && sumROC1 < 1E-08)
-                {
-                    tempReal = 1.0;
-                }
-                else
-                {
-                    tempReal = Math.Abs(periodROC / sumROC1);
-                }
+                tempReal = sumROC1 <= periodROC ? 1.0 : Math.Abs(periodROC / sumROC1);
 
                 tempReal = tempReal * constDiff + constMax;
                 tempReal *= tempReal;

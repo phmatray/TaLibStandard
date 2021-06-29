@@ -89,16 +89,8 @@ namespace TechnicalAnalysis
                     tempValue1 = prevLoss / optInTimePeriod;
                     tempValue2 = prevGain / optInTimePeriod;
                     tempValue1 = tempValue2 + tempValue1;
-                    if (tempValue1 is >= -1E-08 or >= 1E-08)
-                    {
-                        outReal[outIdx] = 100.0 * (tempValue2 / tempValue1);
-                        outIdx++;
-                    }
-                    else
-                    {
-                        outReal[outIdx] = 0.0;
-                        outIdx++;
-                    }
+                    outReal[outIdx] = 100.0 * (tempValue2 / tempValue1);
+                    outIdx++;
 
                     if (today > endIdx)
                     {
@@ -135,16 +127,8 @@ namespace TechnicalAnalysis
                 if (today > startIdx)
                 {
                     tempValue1 = prevGain + prevLoss;
-                    if (tempValue1 is >= -1E-08 or >= 1E-08)
-                    {
-                        outReal[outIdx] = 100.0 * (prevGain / tempValue1);
-                        outIdx++;
-                    }
-                    else
-                    {
-                        outReal[outIdx] = 0.0;
-                        outIdx++;
-                    }
+                    outReal[outIdx] = 100.0 * (prevGain / tempValue1);
+                    outIdx++;
                 }
                 else
                 {
@@ -190,16 +174,8 @@ namespace TechnicalAnalysis
                     prevLoss /= optInTimePeriod;
                     prevGain /= optInTimePeriod;
                     tempValue1 = prevGain + prevLoss;
-                    if (tempValue1 is >= -1E-08 or >= 1E-08)
-                    {
-                        outReal[outIdx] = 100.0 * (prevGain / tempValue1);
-                        outIdx++;
-                    }
-                    else
-                    {
-                        outReal[outIdx] = 0.0;
-                        outIdx++;
-                    }
+                    outReal[outIdx] = 100.0 * (prevGain / tempValue1);
+                    outIdx++;
                 }
 
                 outBegIdx = startIdx;

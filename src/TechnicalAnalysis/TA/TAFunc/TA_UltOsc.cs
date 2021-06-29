@@ -248,20 +248,9 @@ namespace TechnicalAnalysis
                         b2Total += trueRange;
                         b3Total += trueRange;
                         double output = 0.0;
-                        if (b1Total is >= -1E-08 or >= 1E-08)
-                        {
-                            output += 4.0 * (a1Total / b1Total);
-                        }
-
-                        if (b2Total is >= -1E-08 or >= 1E-08)
-                        {
-                            output += 2.0 * (a2Total / b2Total);
-                        }
-
-                        if (b3Total is >= -1E-08 or >= 1E-08)
-                        {
-                            output += a3Total / b3Total;
-                        }
+                        output += 4.0 * (a1Total / b1Total);
+                        output += 2.0 * (a2Total / b2Total);
+                        output += a3Total / b3Total;
 
                         tempLT = inLow[trailingIdx1];
                         tempHT = inHigh[trailingIdx1];
