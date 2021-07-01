@@ -1,5 +1,3 @@
-using System;
-
 namespace TechnicalAnalysis
 {
     internal static partial class TACore
@@ -15,8 +13,9 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
-            double num5;
-            double num10;
+            // Local variables
+            const CandleSettingType BodyLong = CandleSettingType.BodyLong;
+
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -37,12 +36,16 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
+            // Identify the minimum number of price bar needed to calculate at least one output.
             int lookbackTotal = Cdl2CrowsLookback();
+
+            // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
 
+            // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
@@ -50,207 +53,75 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
+            // Do the calculation using tight loops.
+            // Add-up the initial period, except for the last value.
             double bodyLongPeriodTotal = 0.0;
-            int bodyLongTrailingIdx = startIdx - 2 - Globals.candleSettings[0].avgPeriod;
+            int bodyLongTrailingIdx = startIdx - 2 - GetCandleAvgPeriod(BodyLong);
+
             int i = bodyLongTrailingIdx;
-            while (true)
+            while (i < startIdx - 2)
             {
-                double num24;
-                if (i >= startIdx - 2)
-                {
-                    break;
-                }
-
-                if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
-                {
-                    num24 = Math.Abs(inClose[i] - inOpen[i]);
-                }
-                else
-                {
-                    double num23;
-                    if (Globals.candleSettings[0].rangeType == RangeType.HighLow)
-                    {
-                        num23 = inHigh[i] - inLow[i];
-                    }
-                    else
-                    {
-                        double num20;
-                        if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
-                        {
-                            double num22 = inClose[i] >= inOpen[i] ? inClose[i] : inOpen[i];
-                            double num21 = inClose[i] >= inOpen[i] ? inOpen[i] : inClose[i];
-
-                            num20 = inHigh[i] - num22 + (num21 - inLow[i]);
-                        }
-                        else
-                        {
-                            num20 = 0.0;
-                        }
-
-                        num23 = num20;
-                    }
-
-                    num24 = num23;
-                }
-
-                bodyLongPeriodTotal += num24;
+                bodyLongPeriodTotal += GetCandleRange(BodyLong, i, inOpen, inHigh, inLow, inClose);
                 i++;
             }
 
             i = startIdx;
+
+            /* Proceed with the calculation for the requested range.
+             * Must have:
+             * - first candle: long white candle
+             * - second candle: black real body
+             * - gap between the first and the second candle's real bodies
+             * - third candle: black candle that opens within the second real body and closes within the first real body
+             * The meaning of "long" is specified with TA_SetCandleSettings
+             * outInteger is negative (-1 to -100): two crows is always bearish; 
+             * the user should consider that two crows is significant when it appears in an uptrend, while this function 
+             * does not consider the trend
+             */
+
             int outIdx = 0;
-            Label_014D:
-            if (inClose[i - 2] >= inOpen[i - 2])
+            do
             {
-                double num19;
-                if (Globals.candleSettings[0].avgPeriod != 0.0)
-                {
-                    num19 = bodyLongPeriodTotal / Globals.candleSettings[0].avgPeriod;
-                }
-                else
-                {
-                    double num18;
-                    if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
-                    {
-                        num18 = Math.Abs(inClose[i - 2] - inOpen[i - 2]);
-                    }
-                    else
-                    {
-                        double num17;
-                        if (Globals.candleSettings[0].rangeType == RangeType.HighLow)
-                        {
-                            num17 = inHigh[i - 2] - inLow[i - 2];
-                        }
-                        else
-                        {
-                            double num14;
-                            if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
-                            {
-                                double num16 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
-                                double num15 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
+                bool is2Crows =
+                    // 1st: white
+                    GetCandleColor(i - 2, inOpen, inClose) == 1 &&
+                    // long
+                    GetRealBody(i - 2, inOpen, inClose) >
+                    GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2, inOpen, inHigh, inLow, inClose) &&
+                    // 2nd: black
+                    GetCandleColor(i - 1, inOpen, inClose) == -1 &&
+                    // gapping up
+                    GetRealBodyGapUp(i - 1, i - 2, inOpen, inClose) &&
+                    // 3rd: black
+                    GetCandleColor(i, inOpen, inClose) == -1 &&
+                    // opening within 2nd rb
+                    inOpen[i] < inOpen[i - 1] && inOpen[i] > inClose[i - 1] &&
+                    // closing within 1st rb
+                    inClose[i] > inOpen[i - 2] && inClose[i] < inClose[i - 2];
 
-                                num14 = inHigh[i - 2] - num16 + (num15 - inLow[i - 2]);
-                            }
-                            else
-                            {
-                                num14 = 0.0;
-                            }
+                outInteger[outIdx++] = is2Crows ? -100 : 0;
 
-                            num17 = num14;
-                        }
+                /* add the current range and subtract the first range: this is done after the pattern recognition 
+                 * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
+                 */
+                bodyLongPeriodTotal +=
+                    GetCandleRange(BodyLong, i - 2, inOpen, inHigh, inLow, inClose)
+                    - GetCandleRange(BodyLong, bodyLongTrailingIdx, inOpen, inHigh, inLow, inClose);
 
-                        num18 = num17;
-                    }
+                i++;
+                bodyLongTrailingIdx++;
+            } while (i <= endIdx);
 
-                    num19 = num18;
-                }
-
-                double num13 = Globals.candleSettings[0].rangeType == RangeType.Shadows ? 2.0 : 1.0;
-
-                if (Math.Abs(inClose[i - 2] - inOpen[i - 2])
-                    > Globals.candleSettings[0].factor * num19 / num13
-                    && (inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1)
-                {
-                    double num12 = inOpen[i - 1] < inClose[i - 1] ? inOpen[i - 1] : inClose[i - 1];
-                    double num11 = inOpen[i - 2] > inClose[i - 2] ? inOpen[i - 2] : inClose[i - 2];
-
-                    if (num12 > num11 && (inClose[i] < inOpen[i] ? -1 : 1) == -1 && inOpen[i] < inOpen[i - 1] &&
-                        inOpen[i] > inClose[i - 1] && inClose[i] > inOpen[i - 2] && inClose[i] < inClose[i - 2])
-                    {
-                        outInteger[outIdx] = -100;
-                        outIdx++;
-                        goto Label_036E;
-                    }
-                }
-            }
-
-            outInteger[outIdx] = 0;
-            outIdx++;
-            Label_036E:
-            if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
-            {
-                num10 = Math.Abs(inClose[i - 2] - inOpen[i - 2]);
-            }
-            else
-            {
-                double num9;
-                if (Globals.candleSettings[0].rangeType == RangeType.HighLow)
-                {
-                    num9 = inHigh[i - 2] - inLow[i - 2];
-                }
-                else
-                {
-                    double num6;
-                    if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
-                    {
-                        double num8 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
-                        double num7 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
-
-                        num6 = inHigh[i - 2] - num8 + (num7 - inLow[i - 2]);
-                    }
-                    else
-                    {
-                        num6 = 0.0;
-                    }
-
-                    num9 = num6;
-                }
-
-                num10 = num9;
-            }
-
-            if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
-            {
-                num5 = Math.Abs(inClose[bodyLongTrailingIdx] - inOpen[bodyLongTrailingIdx]);
-            }
-            else
-            {
-                double num4;
-                if (Globals.candleSettings[0].rangeType == RangeType.HighLow)
-                {
-                    num4 = inHigh[bodyLongTrailingIdx] - inLow[bodyLongTrailingIdx];
-                }
-                else
-                {
-                    double num;
-                    if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
-                    {
-                        double num3 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx]
-                            ? inClose[bodyLongTrailingIdx]
-                            : inOpen[bodyLongTrailingIdx];
-                        double num2 = inClose[bodyLongTrailingIdx] >= inOpen[bodyLongTrailingIdx]
-                            ? inOpen[bodyLongTrailingIdx]
-                            : inClose[bodyLongTrailingIdx];
-
-                        num = inHigh[bodyLongTrailingIdx] - num3 + (num2 - inLow[bodyLongTrailingIdx]);
-                    }
-                    else
-                    {
-                        num = 0.0;
-                    }
-
-                    num4 = num;
-                }
-
-                num5 = num4;
-            }
-
-            bodyLongPeriodTotal += num10 - num5;
-            i++;
-            bodyLongTrailingIdx++;
-            if (i <= endIdx)
-            {
-                goto Label_014D;
-            }
-
+            // All done. Indicate the output limits and return.
             outNBElement = outIdx;
             outBegIdx = startIdx;
+
             return RetCode.Success;
         }
 
         public static int Cdl2CrowsLookback()
         {
-            return Globals.candleSettings[0].avgPeriod + 2;
+            return GetCandleAvgPeriod(CandleSettingType.BodyLong) + 2;
         }
     }
 }

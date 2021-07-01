@@ -60,5 +60,17 @@ namespace TechnicalAnalysis
 
         public static int GetCandleColor(int index, in double[] open, in double[] close)
             => close[index] >= open[index] ? 1 : -1;
+
+        public static bool GetRealBodyGapUp(int index2, int index1, in double[] open, in double[] close)
+            => Math.Min(open[index2], close[index2]) > Math.Max(open[index1], close[index1]);
+
+        public static bool GetRealBodyGapDown(int index2, int index1, in double[] open, in double[] close)
+            => Math.Max(open[index2], close[index2]) < Math.Min(open[index1], close[index1]);
+
+        public static bool GetCandleGapUp(int index2, int index1, in double[] high, in double[] low)
+            => low[index2] > high[index1];
+
+        public static bool GetCandleGapDown(int index2, int index1, in double[] high, in double[] low)
+            => high[index2] < low[index1];
     }
 }

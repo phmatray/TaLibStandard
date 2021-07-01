@@ -77,11 +77,11 @@ namespace TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                bool isRealBodyLowerThanCandleAverage =
+                bool isDoji =
                     GetRealBody(i, inOpen, inClose) <=
                     GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i, inOpen, inHigh, inLow, inClose);
 
-                outInteger[outIdx++] = isRealBodyLowerThanCandleAverage ? 100 : 0;
+                outInteger[outIdx++] = isDoji ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
