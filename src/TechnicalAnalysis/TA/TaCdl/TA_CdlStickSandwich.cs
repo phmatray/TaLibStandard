@@ -1,4 +1,5 @@
 using System;
+using static TechnicalAnalysis.TACore.CandleSettingType;
 
 namespace TechnicalAnalysis
 {
@@ -15,8 +16,11 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
+            // Local variables
             double num5;
             double num10;
+            
+            // Validate the requested output range.
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -27,6 +31,7 @@ namespace TechnicalAnalysis
                 return RetCode.OutOfRangeEndIndex;
             }
 
+            // Verify required price component.
             if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
@@ -37,12 +42,16 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
+            // Identify the minimum number of price bar needed to calculate at least one output.
             int lookbackTotal = CdlStickSandwichLookback();
+
+            // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
 
+            // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
@@ -50,71 +59,30 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
+            // Do the calculation using tight loops.
+            // Add-up the initial period, except for the last value.
             double equalPeriodTotal = 0.0;
-            int equalTrailingIdx = startIdx - Globals.candleSettings[10].avgPeriod;
+            int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
+            
             int i = equalTrailingIdx;
-            while (true)
+            while (i < startIdx)
             {
-                double num29;
-                if (i >= startIdx)
-                {
-                    break;
-                }
-
-                if (Globals.candleSettings[10].rangeType == RangeType.RealBody)
-                {
-                    num29 = Math.Abs(inClose[i - 2] - inOpen[i - 2]);
-                }
-                else
-                {
-                    double num28;
-                    if (Globals.candleSettings[10].rangeType == RangeType.HighLow)
-                    {
-                        num28 = inHigh[i - 2] - inLow[i - 2];
-                    }
-                    else
-                    {
-                        double num25;
-                        if (Globals.candleSettings[10].rangeType == RangeType.Shadows)
-                        {
-                            double num26;
-                            double num27;
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num27 = inClose[i - 2];
-                            }
-                            else
-                            {
-                                num27 = inOpen[i - 2];
-                            }
-
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num26 = inOpen[i - 2];
-                            }
-                            else
-                            {
-                                num26 = inClose[i - 2];
-                            }
-
-                            num25 = inHigh[i - 2] - num27 + (num26 - inLow[i - 2]);
-                        }
-                        else
-                        {
-                            num25 = 0.0;
-                        }
-
-                        num28 = num25;
-                    }
-
-                    num29 = num28;
-                }
-
-                equalPeriodTotal += num29;
+                equalPeriodTotal += GetCandleRange(Equal, i - 2, inOpen, inHigh, inLow, inClose);
                 i++;
             }
 
             i = startIdx;
+
+            /* Proceed with the calculation for the requested range.
+             * Must have:
+             * - first candle: black candle
+             * - second candle: white candle that trades only above the prior close (low > prior close)
+             * - third candle: black candle with the close equal to the first candle's close
+             * The meaning of "equal" is specified with TA_SetCandleSettings
+             * outInteger is always positive (1 to 100): stick sandwich is always bullish;
+             * the user should consider that stick sandwich is significant when coming in a downtrend, 
+             * while this function does not consider it
+             */
             int outIdx = 0;
             Label_016C:
             if ((inClose[i - 2] < inOpen[i - 2] ? -1 : 1) == -1 && inClose[i - 1] >= inOpen[i - 1]
@@ -122,9 +90,9 @@ namespace TechnicalAnalysis
             {
                 double num18;
                 double num24;
-                if (Globals.candleSettings[10].avgPeriod != 0.0)
+                if (GetCandleAvgPeriod(Equal) != 0.0)
                 {
-                    num24 = equalPeriodTotal / Globals.candleSettings[10].avgPeriod;
+                    num24 = equalPeriodTotal / GetCandleAvgPeriod(Equal);
                 }
                 else
                 {
@@ -194,9 +162,9 @@ namespace TechnicalAnalysis
                 {
                     double num11;
                     double num17;
-                    if (Globals.candleSettings[10].avgPeriod != 0.0)
+                    if (GetCandleAvgPeriod(Equal) != 0.0)
                     {
-                        num17 = equalPeriodTotal / Globals.candleSettings[10].avgPeriod;
+                        num17 = equalPeriodTotal / GetCandleAvgPeriod(Equal);
                     }
                     else
                     {
@@ -380,14 +348,16 @@ namespace TechnicalAnalysis
                 goto Label_016C;
             }
 
+            // All done. Indicate the output limits and return.
             outNBElement = outIdx;
             outBegIdx = startIdx;
+            
             return RetCode.Success;
         }
 
         public static int CdlStickSandwichLookback()
         {
-            return Globals.candleSettings[10].avgPeriod + 2;
+            return GetCandleAvgPeriod(Equal) + 2;
         }
     }
 }

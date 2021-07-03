@@ -1,3 +1,5 @@
+using static TechnicalAnalysis.TACore.CandleSettingType;
+
 namespace TechnicalAnalysis
 {
     internal static partial class TACore
@@ -13,16 +15,20 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
+            // Local variables
+
+            // Validate the requested output range.
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
             }
-
+            
             if (endIdx < 0 || endIdx < startIdx)
             {
                 return RetCode.OutOfRangeEndIndex;
             }
 
+            // Verify required price component.
             if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
@@ -33,12 +39,16 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
+            // Identify the minimum number of price bar needed to calculate at least one output.
             int lookbackTotal = Cdl3OutsideLookback();
+
+            // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
 
+            // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
@@ -46,7 +56,19 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
+            // Do the calculation using tight loops.
+            // Add-up the initial period, except for the last value.
             int i = startIdx;
+            
+            /* Proceed with the calculation for the requested range.
+             * Must have:
+             * - first: black (white) real body
+             * - second: white (black) real body that engulfs the prior real body
+             * - third: candle that closes higher (lower) than the second candle
+             * outInteger is positive (1 to 100) for the three outside up or negative (-1 to -100) for the three outside down;
+             * the user should consider that a three outside up must appear in a downtrend and three outside down must appear
+             * in an uptrend, while this function does not consider it
+             */
             int outIdx = 0;
             do
             {
@@ -76,8 +98,10 @@ namespace TechnicalAnalysis
             }
             while (i <= endIdx);
 
+            // All done. Indicate the output limits and return.
             outNBElement = outIdx;
             outBegIdx = startIdx;
+            
             return RetCode.Success;
         }
 

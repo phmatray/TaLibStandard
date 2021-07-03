@@ -1,3 +1,5 @@
+using static TechnicalAnalysis.TACore.CandleSettingType;
+
 namespace TechnicalAnalysis
 {
     internal static partial class TACore
@@ -15,9 +17,8 @@ namespace TechnicalAnalysis
         {
             // Local variables
             double[] shadowVeryShortPeriodTotal = new double[3];
-            const CandleSettingType ShadowVeryShort = CandleSettingType.ShadowVeryShort;
             
-            // Validate parameters
+            // Validate the requested output range.
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -28,6 +29,7 @@ namespace TechnicalAnalysis
                 return RetCode.OutOfRangeEndIndex;
             }
 
+            // Verify required price component.
             if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
@@ -139,7 +141,7 @@ namespace TechnicalAnalysis
 
         public static int Cdl3BlackCrowsLookback()
         {
-            return GetCandleAvgPeriod(CandleSettingType.ShadowVeryShort) + 3;
+            return GetCandleAvgPeriod(ShadowVeryShort) + 3;
         }
     }
 }

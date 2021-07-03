@@ -1,4 +1,5 @@
 using System;
+using static TechnicalAnalysis.TACore.CandleSettingType;
 
 namespace TechnicalAnalysis
 {
@@ -16,6 +17,7 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
+            // Local variables
             double num5;
             double num10;
             double num15;
@@ -24,6 +26,8 @@ namespace TechnicalAnalysis
             double num30;
             double num47;
             double num53;
+            
+            // Validate the requested output range.
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -34,6 +38,7 @@ namespace TechnicalAnalysis
                 return RetCode.OutOfRangeEndIndex;
             }
 
+            // Verify required price component.
             if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
@@ -49,12 +54,16 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
+            // Identify the minimum number of price bar needed to calculate at least one output.
             int lookbackTotal = CdlMorningStarLookback(optInPenetration);
+
+            // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
 
+            // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
@@ -62,192 +71,49 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
+            // Do the calculation using tight loops.
+            // Add-up the initial period, except for the last value.
             double bodyLongPeriodTotal = 0.0;
             double bodyShortPeriodTotal = 0.0;
             double bodyShortPeriodTotal2 = 0.0;
-            int bodyLongTrailingIdx = startIdx - 2 - Globals.candleSettings[0].avgPeriod;
-            int bodyShortTrailingIdx = startIdx - 1 - Globals.candleSettings[2].avgPeriod;
+            int bodyLongTrailingIdx = startIdx - 2 - GetCandleAvgPeriod(BodyLong);
+            int bodyShortTrailingIdx = startIdx - 1 - GetCandleAvgPeriod(BodyShort);
+            
             int i = bodyLongTrailingIdx;
-            while (true)
+            while (i < startIdx - 2)
             {
-                double num68;
-                if (i >= startIdx - 2)
-                {
-                    break;
-                }
-
-                if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
-                {
-                    num68 = Math.Abs(inClose[i] - inOpen[i]);
-                }
-                else
-                {
-                    double num67;
-                    if (Globals.candleSettings[0].rangeType == RangeType.HighLow)
-                    {
-                        num67 = inHigh[i] - inLow[i];
-                    }
-                    else
-                    {
-                        double num64;
-                        if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
-                        {
-                            double num65;
-                            double num66;
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num66 = inClose[i];
-                            }
-                            else
-                            {
-                                num66 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num65 = inOpen[i];
-                            }
-                            else
-                            {
-                                num65 = inClose[i];
-                            }
-
-                            num64 = inHigh[i] - num66 + (num65 - inLow[i]);
-                        }
-                        else
-                        {
-                            num64 = 0.0;
-                        }
-
-                        num67 = num64;
-                    }
-
-                    num68 = num67;
-                }
-
-                bodyLongPeriodTotal += num68;
+                bodyLongPeriodTotal += GetCandleRange(BodyLong, i, inOpen, inHigh, inLow, inClose);
                 i++;
             }
 
             i = bodyShortTrailingIdx;
-            while (true)
+            while (i < startIdx - 1)
             {
-                double num58;
-                double num63;
-                if (i >= startIdx - 1)
-                {
-                    break;
-                }
-
-                if (Globals.candleSettings[2].rangeType == RangeType.RealBody)
-                {
-                    num63 = Math.Abs(inClose[i] - inOpen[i]);
-                }
-                else
-                {
-                    double num62;
-                    if (Globals.candleSettings[2].rangeType == RangeType.HighLow)
-                    {
-                        num62 = inHigh[i] - inLow[i];
-                    }
-                    else
-                    {
-                        double num59;
-                        if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
-                        {
-                            double num60;
-                            double num61;
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num61 = inClose[i];
-                            }
-                            else
-                            {
-                                num61 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num60 = inOpen[i];
-                            }
-                            else
-                            {
-                                num60 = inClose[i];
-                            }
-
-                            num59 = inHigh[i] - num61 + (num60 - inLow[i]);
-                        }
-                        else
-                        {
-                            num59 = 0.0;
-                        }
-
-                        num62 = num59;
-                    }
-
-                    num63 = num62;
-                }
-
-                bodyShortPeriodTotal += num63;
-                if (Globals.candleSettings[2].rangeType == RangeType.RealBody)
-                {
-                    num58 = Math.Abs(inClose[i + 1] - inOpen[i + 1]);
-                }
-                else
-                {
-                    double num57;
-                    if (Globals.candleSettings[2].rangeType == RangeType.HighLow)
-                    {
-                        num57 = inHigh[i + 1] - inLow[i + 1];
-                    }
-                    else
-                    {
-                        double num54;
-                        if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
-                        {
-                            double num55;
-                            double num56;
-                            if (inClose[i + 1] >= inOpen[i + 1])
-                            {
-                                num56 = inClose[i + 1];
-                            }
-                            else
-                            {
-                                num56 = inOpen[i + 1];
-                            }
-
-                            if (inClose[i + 1] >= inOpen[i + 1])
-                            {
-                                num55 = inOpen[i + 1];
-                            }
-                            else
-                            {
-                                num55 = inClose[i + 1];
-                            }
-
-                            num54 = inHigh[i + 1] - num56 + (num55 - inLow[i + 1]);
-                        }
-                        else
-                        {
-                            num54 = 0.0;
-                        }
-
-                        num57 = num54;
-                    }
-
-                    num58 = num57;
-                }
-
-                bodyShortPeriodTotal2 += num58;
+                bodyShortPeriodTotal += GetCandleRange(BodyShort, i, inOpen, inHigh, inLow, inClose);
+                bodyShortPeriodTotal2 += GetCandleRange(BodyShort, i + 1, inOpen, inHigh, inLow, inClose);
                 i++;
             }
 
             i = startIdx;
+
+            /* Proceed with the calculation for the requested range.
+             * Must have:
+             * - first candle: long black real body
+             * - second candle: star (Short real body gapping down)
+             * - third candle: white real body that moves well within the first candle's real body
+             * The meaning of "short" and "long" is specified with TA_SetCandleSettings
+             * The meaning of "moves well within" is specified with optInPenetration and "moves" should mean the real body should
+             * not be short ("short" is specified with TA_SetCandleSettings) - Greg Morris wants it to be long, someone else want
+             * it to be relatively long
+             * outInteger is positive (1 to 100): morning star is always bullish; 
+             * the user should consider that a morning star is significant when it appears in a downtrend, 
+             * while this function does not consider the trend
+             */
             int outIdx = 0;
             Label_0353:
-            if (Globals.candleSettings[0].avgPeriod != 0.0)
+            if (GetCandleAvgPeriod(BodyLong) != 0.0)
             {
-                num53 = bodyLongPeriodTotal / Globals.candleSettings[0].avgPeriod;
+                num53 = bodyLongPeriodTotal / GetCandleAvgPeriod(BodyLong);
             }
             else
             {
@@ -319,9 +185,9 @@ namespace TechnicalAnalysis
             {
                 double num40;
                 double num46;
-                if (Globals.candleSettings[2].avgPeriod != 0.0)
+                if (GetCandleAvgPeriod(BodyShort) != 0.0)
                 {
-                    num46 = bodyShortPeriodTotal / Globals.candleSettings[2].avgPeriod;
+                    num46 = bodyShortPeriodTotal / GetCandleAvgPeriod(BodyShort);
                 }
                 else
                 {
@@ -414,9 +280,9 @@ namespace TechnicalAnalysis
                     {
                         double num31;
                         double num37;
-                        if (Globals.candleSettings[2].avgPeriod != 0.0)
+                        if (GetCandleAvgPeriod(BodyShort) != 0.0)
                         {
-                            num37 = bodyShortPeriodTotal2 / Globals.candleSettings[2].avgPeriod;
+                            num37 = bodyShortPeriodTotal2 / GetCandleAvgPeriod(BodyShort);
                         }
                         else
                         {
@@ -805,8 +671,10 @@ namespace TechnicalAnalysis
                 goto Label_0353;
             }
 
+            // All done. Indicate the output limits and return.
             outNBElement = outIdx;
             outBegIdx = startIdx;
+            
             return RetCode.Success;
         }
 
@@ -817,9 +685,9 @@ namespace TechnicalAnalysis
                 return -1;
             }
 
-            return (Globals.candleSettings[2].avgPeriod <= Globals.candleSettings[0].avgPeriod
-                         ? Globals.candleSettings[0].avgPeriod
-                         : Globals.candleSettings[2].avgPeriod) + 2;
+            return (GetCandleAvgPeriod(BodyShort) <= GetCandleAvgPeriod(BodyLong)
+                         ? GetCandleAvgPeriod(BodyLong)
+                         : GetCandleAvgPeriod(BodyShort)) + 2;
         }
     }
 }

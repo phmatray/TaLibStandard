@@ -1,4 +1,5 @@
 using System;
+using static TechnicalAnalysis.TACore.CandleSettingType;
 
 namespace TechnicalAnalysis
 {
@@ -15,6 +16,7 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
+            // Local variables
             int outIdx;
             double num5;
             double num10;
@@ -22,6 +24,8 @@ namespace TechnicalAnalysis
             double num30;
             double num35;
             double num42;
+            
+            // Validate the requested output range.
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -32,6 +36,7 @@ namespace TechnicalAnalysis
                 return RetCode.OutOfRangeEndIndex;
             }
 
+            // Verify required price component.
             if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
@@ -42,12 +47,16 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
+            // Identify the minimum number of price bar needed to calculate at least one output.
             int lookbackTotal = CdlHikkakeModLookback();
+
+            // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
 
+            // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
@@ -55,55 +64,91 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
+            // Do the calculation using tight loops.
+            // Add-up the initial period, except for the last value.
             double nearPeriodTotal = 0.0;
-            int nearTrailingIdx = startIdx - 3 - Globals.candleSettings[8].avgPeriod;
+            int nearTrailingIdx = startIdx - 3 - GetCandleAvgPeriod(Near);
+            
             int i = nearTrailingIdx;
-            while (true)
+            while (i < startIdx - 3)
             {
-                double num54;
-                if (i >= startIdx - 3)
-                {
-                    break;
-                }
-
-                if (Globals.candleSettings[8].rangeType == RangeType.RealBody)
-                {
-                    num54 = Math.Abs(inClose[i - 2] - inOpen[i - 2]);
-                }
-                else
-                {
-                    double num53;
-                    if (Globals.candleSettings[8].rangeType == RangeType.HighLow)
-                    {
-                        num53 = inHigh[i - 2] - inLow[i - 2];
-                    }
-                    else
-                    {
-                        double num50;
-                        if (Globals.candleSettings[8].rangeType == RangeType.Shadows)
-                        {
-                            double num52 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
-                            double num51 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
-                            num50 = inHigh[i - 2] - num52 + (num51 - inLow[i - 2]);
-                        }
-                        else
-                        {
-                            num50 = 0.0;
-                        }
-
-                        num53 = num50;
-                    }
-
-                    num54 = num53;
-                }
-
-                nearPeriodTotal += num54;
+                nearPeriodTotal += GetCandleRange(Near, i - 2, inOpen, inHigh, inLow, inClose);
                 i++;
             }
 
             int patternIdx = 0;
-            int pattern = 0;
+            int patternResult = 0;
+            
             i = startIdx - 3;
+            while (i < startIdx)
+            {
+                bool patternRecognition =
+                    // 2nd: lower high and higher low than 1st
+                    inHigh[i - 2] < inHigh[i - 3] && inLow[i - 2] > inLow[i - 3] &&
+                    // 3rd: lower high and higher low than 2nd
+                    inHigh[i - 1] < inHigh[i - 2] && inLow[i - 1] > inLow[i - 2] &&
+                    (
+                        // (bull) 4th: lower high and lower low
+                        inHigh[i] < inHigh[i - 1] && inLow[i] < inLow[i - 1] &&
+                        // (bull) 2nd: close near the low
+                        inClose[i - 2] <= inLow[i - 2] + GetCandleAverage(Near, nearPeriodTotal, i - 2, inOpen, inHigh,
+                            inLow, inClose) ||
+                        // (bear) 4th: higher high and higher low
+                        inHigh[i] > inHigh[i - 1] && inLow[i] > inLow[i - 1] &&
+                        // (bull) 2nd: close near the top
+                        inClose[i - 2] >= inHigh[i - 2] - GetCandleAverage(Near, nearPeriodTotal, i - 2, inOpen, inHigh,
+                            inLow, inClose)
+                    );
+                
+                if (patternRecognition)
+                {
+                    patternResult = 100 * (inHigh[i] < inHigh[i - 1] ? 1 : -1);
+                    patternIdx = i;
+                }
+                else
+                {
+                    // search for confirmation if modified hikkake was no more than 3 bars ago
+                    bool confirmation =
+                        i <= patternIdx + 3 &&
+                        (
+                            // close higher than the high of 3rd
+                            patternResult > 0 && inClose[i] > inHigh[patternIdx - 1] ||
+                            // close lower than the low of 3rd
+                            patternResult < 0 && inClose[i] < inLow[patternIdx - 1]
+                        );
+                    
+                    if (confirmation)
+                    {
+                        patternIdx = 0;
+                    }
+                }
+
+                nearPeriodTotal +=
+                    GetCandleRange(Near, i - 2, inOpen, inHigh, inLow, inClose) -
+                    GetCandleRange(Near, nearTrailingIdx - 2, inOpen, inHigh, inLow, inClose);
+                nearTrailingIdx++;
+                i++;
+            }
+
+            i = startIdx;
+
+            /* Proceed with the calculation for the requested range.
+             * Must have:
+             * - first candle
+             * - second candle: candle with range less than first candle and close near the bottom (near the top)
+             * - third candle: lower high and higher low than 2nd
+             * - fourth candle: lower high and lower low (higher high and higher low) than 3rd
+             * outInteger[hikkake bar] is positive (1 to 100) or negative (-1 to -100) meaning bullish or bearish hikkake
+             * Confirmation could come in the next 3 days with:
+             * - a day that closes higher than the high (lower than the low) of the 3rd candle
+             * outInteger[confirmationbar] is equal to 100 + the bullish hikkake result or -100 - the bearish hikkake result
+             * Note: if confirmation and a new hikkake come at the same bar, only the new hikkake is reported (the new hikkake
+             * overwrites the confirmation of the old hikkake);
+             * the user should consider that modified hikkake is a reversal pattern, while hikkake could be both a reversal 
+             * or a continuation pattern, so bullish (bearish) modified hikkake is significant when appearing in a downtrend 
+             * (uptrend)
+             */
+            
             Label_0174:
             if (i >= startIdx)
             {
@@ -120,9 +165,9 @@ namespace TechnicalAnalysis
             if (inHigh[i] < inHigh[i - 1] && inLow[i] < inLow[i - 1])
             {
                 double num49;
-                if (Globals.candleSettings[8].avgPeriod != 0.0)
+                if (GetCandleAvgPeriod(Near) != 0.0)
                 {
-                    num49 = nearPeriodTotal / Globals.candleSettings[8].avgPeriod;
+                    num49 = nearPeriodTotal / GetCandleAvgPeriod(Near);
                 }
                 else
                 {
@@ -174,9 +219,9 @@ namespace TechnicalAnalysis
                 goto Label_04C0;
             }
 
-            if (Globals.candleSettings[8].avgPeriod != 0.0)
+            if (GetCandleAvgPeriod(Near) != 0.0)
             {
-                num42 = nearPeriodTotal / Globals.candleSettings[8].avgPeriod;
+                num42 = nearPeriodTotal / GetCandleAvgPeriod(Near);
             }
             else
             {
@@ -223,12 +268,12 @@ namespace TechnicalAnalysis
             }
 
             Label_04A9:
-            pattern = (inHigh[i] >= inHigh[i - 1] ? -1 : 1) * 100;
+            patternResult = (inHigh[i] >= inHigh[i - 1] ? -1 : 1) * 100;
             patternIdx = i;
             goto Label_04E9;
             Label_04C0:
-            if (i <= patternIdx + 3 && (pattern > 0 && inClose[i] > inHigh[patternIdx - 1]
-                                        || pattern < 0 && inClose[i] < inLow[patternIdx - 1]))
+            if (i <= patternIdx + 3 && (patternResult > 0 && inClose[i] > inHigh[patternIdx - 1]
+                                        || patternResult < 0 && inClose[i] < inLow[patternIdx - 1]))
             {
                 patternIdx = 0;
             }
@@ -309,9 +354,9 @@ namespace TechnicalAnalysis
             if (inHigh[i] < inHigh[i - 1] && inLow[i] < inLow[i - 1])
             {
                 double num25;
-                if (Globals.candleSettings[8].avgPeriod != 0.0)
+                if (GetCandleAvgPeriod(Near) != 0.0)
                 {
-                    num25 = nearPeriodTotal / Globals.candleSettings[8].avgPeriod;
+                    num25 = nearPeriodTotal / GetCandleAvgPeriod(Near);
                 }
                 else
                 {
@@ -363,9 +408,9 @@ namespace TechnicalAnalysis
                 goto Label_09E9;
             }
 
-            if (Globals.candleSettings[8].avgPeriod != 0.0)
+            if (GetCandleAvgPeriod(Near) != 0.0)
             {
-                num18 = nearPeriodTotal / Globals.candleSettings[8].avgPeriod;
+                num18 = nearPeriodTotal / GetCandleAvgPeriod(Near);
             }
             else
             {
@@ -412,17 +457,17 @@ namespace TechnicalAnalysis
             }
 
             Label_09C8:
-            pattern = (inHigh[i] >= inHigh[i - 1] ? -1 : 1) * 100;
+            patternResult = (inHigh[i] >= inHigh[i - 1] ? -1 : 1) * 100;
             patternIdx = i;
-            outInteger[outIdx] = pattern;
+            outInteger[outIdx] = patternResult;
             outIdx++;
             goto Label_0A3A;
             Label_09E9:
-            if (i <= patternIdx + 3 && (pattern > 0 && inClose[i] > inHigh[patternIdx - 1]
-                                        || pattern < 0 && inClose[i] < inLow[patternIdx - 1]))
+            if (i <= patternIdx + 3 && (patternResult > 0 && inClose[i] > inHigh[patternIdx - 1]
+                                        || patternResult < 0 && inClose[i] < inLow[patternIdx - 1]))
             {
                 int num11;
-                if (pattern > 0)
+                if (patternResult > 0)
                 {
                     num11 = 1;
                 }
@@ -431,7 +476,7 @@ namespace TechnicalAnalysis
                     num11 = -1;
                 }
 
-                outInteger[outIdx] = pattern + num11 * 100;
+                outInteger[outIdx] = patternResult + num11 * 100;
                 outIdx++;
                 patternIdx = 0;
             }
@@ -512,14 +557,16 @@ namespace TechnicalAnalysis
                 goto Label_069A;
             }
 
+            // All done. Indicate the output limits and return.
             outNBElement = outIdx;
             outBegIdx = startIdx;
+            
             return RetCode.Success;
         }
 
         public static int CdlHikkakeModLookback()
         {
-            return (1 <= Globals.candleSettings[8].avgPeriod ? Globals.candleSettings[8].avgPeriod : 1) + 5;
+            return (1 <= GetCandleAvgPeriod(Near) ? GetCandleAvgPeriod(Near) : 1) + 5;
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using static TechnicalAnalysis.TACore.CandleSettingType;
 
 namespace TechnicalAnalysis
 {
@@ -15,6 +16,7 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
+            // Local variables
             double num5;
             double num10;
             int num11;
@@ -25,6 +27,8 @@ namespace TechnicalAnalysis
             int num18;
             double num19;
             double num25;
+            
+            // Validate the requested output range.
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -35,6 +39,7 @@ namespace TechnicalAnalysis
                 return RetCode.OutOfRangeEndIndex;
             }
 
+            // Verify required price component.
             if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
@@ -45,12 +50,16 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
+            // Identify the minimum number of price bar needed to calculate at least one output.
             int lookbackTotal = CdlBreakawayLookback();
+
+            // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
 
+            // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
@@ -58,76 +67,37 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
+            // Do the calculation using tight loops.
+            // Add-up the initial period, except for the last value.
             double bodyLongPeriodTotal = 0.0;
-            int bodyLongTrailingIdx = startIdx - Globals.candleSettings[0].avgPeriod;
+            int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
+            
             int i = bodyLongTrailingIdx;
-            while (true)
+            while (i < startIdx)
             {
-                double num30;
-                if (i >= startIdx)
-                {
-                    break;
-                }
-
-                if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
-                {
-                    num30 = Math.Abs(inClose[i - 4] - inOpen[i - 4]);
-                }
-                else
-                {
-                    double num29;
-                    if (Globals.candleSettings[0].rangeType == RangeType.HighLow)
-                    {
-                        num29 = inHigh[i - 4] - inLow[i - 4];
-                    }
-                    else
-                    {
-                        double num26;
-                        if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
-                        {
-                            double num27;
-                            double num28;
-                            if (inClose[i - 4] >= inOpen[i - 4])
-                            {
-                                num28 = inClose[i - 4];
-                            }
-                            else
-                            {
-                                num28 = inOpen[i - 4];
-                            }
-
-                            if (inClose[i - 4] >= inOpen[i - 4])
-                            {
-                                num27 = inOpen[i - 4];
-                            }
-                            else
-                            {
-                                num27 = inClose[i - 4];
-                            }
-
-                            num26 = inHigh[i - 4] - num28 + (num27 - inLow[i - 4]);
-                        }
-                        else
-                        {
-                            num26 = 0.0;
-                        }
-
-                        num29 = num26;
-                    }
-
-                    num30 = num29;
-                }
-
-                bodyLongPeriodTotal += num30;
+                bodyLongPeriodTotal += GetCandleRange(BodyLong, i - 4, inOpen, inHigh, inLow, inClose);
                 i++;
             }
 
             i = startIdx;
+            
+            /* Proceed with the calculation for the requested range.
+             * Must have:
+             * - first candle: long black (white)
+             * - second candle: black (white) day whose body gaps down (up)
+             * - third candle: black or white day with lower (higher) high and lower (higher) low than prior candle's
+             * - fourth candle: black (white) day with lower (higher) high and lower (higher) low than prior candle's
+             * - fifth candle: white (black) day that closes inside the gap, erasing the prior 3 days
+             * The meaning of "long" is specified with TA_SetCandleSettings
+             * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;
+             * the user should consider that breakaway is significant in a trend opposite to the last candle, while this 
+             * function does not consider it
+             */
             int outIdx = 0;
             Label_0168:
-            if (Globals.candleSettings[0].avgPeriod != 0.0)
+            if (GetCandleAvgPeriod(BodyLong) != 0.0)
             {
-                num25 = bodyLongPeriodTotal / Globals.candleSettings[0].avgPeriod;
+                num25 = bodyLongPeriodTotal / GetCandleAvgPeriod(BodyLong);
             }
             else
             {
@@ -420,14 +390,16 @@ namespace TechnicalAnalysis
                 goto Label_0168;
             }
 
+            // All done. Indicate the output limits and return.
             outNBElement = outIdx;
             outBegIdx = startIdx;
+            
             return RetCode.Success;
         }
 
         public static int CdlBreakawayLookback()
         {
-            return Globals.candleSettings[0].avgPeriod + 4;
+            return GetCandleAvgPeriod(BodyLong) + 4;
         }
     }
 }

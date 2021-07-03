@@ -1,4 +1,5 @@
 using System;
+using static TechnicalAnalysis.TACore.CandleSettingType;
 
 namespace TechnicalAnalysis
 {
@@ -16,11 +17,14 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
+            // Local variables
             double num15;
             double num20;
             double num54;
             double num60;
             double[] bodyPeriodTotal = new double[5];
+            
+            // Validate the requested output range.
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -31,6 +35,7 @@ namespace TechnicalAnalysis
                 return RetCode.OutOfRangeEndIndex;
             }
 
+            // Verify required price component.
             if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
@@ -46,12 +51,16 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
+            // Identify the minimum number of price bar needed to calculate at least one output.
             int lookbackTotal = CdlMatHoldLookback(optInPenetration);
+
+            // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
 
+            // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
@@ -59,245 +68,54 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
+            // Do the calculation using tight loops.
+            // Add-up the initial period, except for the last value.
             bodyPeriodTotal[4] = 0.0;
             bodyPeriodTotal[3] = 0.0;
             bodyPeriodTotal[2] = 0.0;
             bodyPeriodTotal[1] = 0.0;
             bodyPeriodTotal[0] = 0.0;
-            int bodyShortTrailingIdx = startIdx - Globals.candleSettings[2].avgPeriod;
-            int bodyLongTrailingIdx = startIdx - Globals.candleSettings[0].avgPeriod;
+            int bodyShortTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
+            int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
+            
             int i = bodyShortTrailingIdx;
-            while (true)
+            while (i < startIdx)
             {
-                double num70;
-                double num75;
-                double num80;
-                if (i >= startIdx)
-                {
-                    break;
-                }
-
-                if (Globals.candleSettings[2].rangeType == RangeType.RealBody)
-                {
-                    num80 = Math.Abs(inClose[i - 3] - inOpen[i - 3]);
-                }
-                else
-                {
-                    double num79;
-                    if (Globals.candleSettings[2].rangeType == RangeType.HighLow)
-                    {
-                        num79 = inHigh[i - 3] - inLow[i - 3];
-                    }
-                    else
-                    {
-                        double num76;
-                        if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
-                        {
-                            double num77;
-                            double num78;
-                            if (inClose[i - 3] >= inOpen[i - 3])
-                            {
-                                num78 = inClose[i - 3];
-                            }
-                            else
-                            {
-                                num78 = inOpen[i - 3];
-                            }
-
-                            if (inClose[i - 3] >= inOpen[i - 3])
-                            {
-                                num77 = inOpen[i - 3];
-                            }
-                            else
-                            {
-                                num77 = inClose[i - 3];
-                            }
-
-                            num76 = inHigh[i - 3] - num78 + (num77 - inLow[i - 3]);
-                        }
-                        else
-                        {
-                            num76 = 0.0;
-                        }
-
-                        num79 = num76;
-                    }
-
-                    num80 = num79;
-                }
-
-                bodyPeriodTotal[3] += num80;
-                if (Globals.candleSettings[2].rangeType == RangeType.RealBody)
-                {
-                    num75 = Math.Abs(inClose[i - 2] - inOpen[i - 2]);
-                }
-                else
-                {
-                    double num74;
-                    if (Globals.candleSettings[2].rangeType == RangeType.HighLow)
-                    {
-                        num74 = inHigh[i - 2] - inLow[i - 2];
-                    }
-                    else
-                    {
-                        double num71;
-                        if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
-                        {
-                            double num72;
-                            double num73;
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num73 = inClose[i - 2];
-                            }
-                            else
-                            {
-                                num73 = inOpen[i - 2];
-                            }
-
-                            if (inClose[i - 2] >= inOpen[i - 2])
-                            {
-                                num72 = inOpen[i - 2];
-                            }
-                            else
-                            {
-                                num72 = inClose[i - 2];
-                            }
-
-                            num71 = inHigh[i - 2] - num73 + (num72 - inLow[i - 2]);
-                        }
-                        else
-                        {
-                            num71 = 0.0;
-                        }
-
-                        num74 = num71;
-                    }
-
-                    num75 = num74;
-                }
-
-                bodyPeriodTotal[2] += num75;
-                if (Globals.candleSettings[2].rangeType == RangeType.RealBody)
-                {
-                    num70 = Math.Abs(inClose[i - 1] - inOpen[i - 1]);
-                }
-                else
-                {
-                    double num69;
-                    if (Globals.candleSettings[2].rangeType == RangeType.HighLow)
-                    {
-                        num69 = inHigh[i - 1] - inLow[i - 1];
-                    }
-                    else
-                    {
-                        double num66;
-                        if (Globals.candleSettings[2].rangeType == RangeType.Shadows)
-                        {
-                            double num67;
-                            double num68;
-                            if (inClose[i - 1] >= inOpen[i - 1])
-                            {
-                                num68 = inClose[i - 1];
-                            }
-                            else
-                            {
-                                num68 = inOpen[i - 1];
-                            }
-
-                            if (inClose[i - 1] >= inOpen[i - 1])
-                            {
-                                num67 = inOpen[i - 1];
-                            }
-                            else
-                            {
-                                num67 = inClose[i - 1];
-                            }
-
-                            num66 = inHigh[i - 1] - num68 + (num67 - inLow[i - 1]);
-                        }
-                        else
-                        {
-                            num66 = 0.0;
-                        }
-
-                        num69 = num66;
-                    }
-
-                    num70 = num69;
-                }
-
-                bodyPeriodTotal[1] += num70;
+                bodyPeriodTotal[3] += GetCandleRange(BodyShort, i - 3, inOpen, inHigh, inLow, inClose);
+                bodyPeriodTotal[2] += GetCandleRange(BodyShort, i - 2, inOpen, inHigh, inLow, inClose);
+                bodyPeriodTotal[1] += GetCandleRange(BodyShort, i - 1, inOpen, inHigh, inLow, inClose);
                 i++;
             }
 
             i = bodyLongTrailingIdx;
-            while (true)
+            while (i < startIdx)
             {
-                double num65;
-                if (i >= startIdx)
-                {
-                    break;
-                }
-
-                if (Globals.candleSettings[0].rangeType == RangeType.RealBody)
-                {
-                    num65 = Math.Abs(inClose[i - 4] - inOpen[i - 4]);
-                }
-                else
-                {
-                    double num64;
-                    if (Globals.candleSettings[0].rangeType == RangeType.HighLow)
-                    {
-                        num64 = inHigh[i - 4] - inLow[i - 4];
-                    }
-                    else
-                    {
-                        double num61;
-                        if (Globals.candleSettings[0].rangeType == RangeType.Shadows)
-                        {
-                            double num62;
-                            double num63;
-                            if (inClose[i - 4] >= inOpen[i - 4])
-                            {
-                                num63 = inClose[i - 4];
-                            }
-                            else
-                            {
-                                num63 = inOpen[i - 4];
-                            }
-
-                            if (inClose[i - 4] >= inOpen[i - 4])
-                            {
-                                num62 = inOpen[i - 4];
-                            }
-                            else
-                            {
-                                num62 = inClose[i - 4];
-                            }
-
-                            num61 = inHigh[i - 4] - num63 + (num62 - inLow[i - 4]);
-                        }
-                        else
-                        {
-                            num61 = 0.0;
-                        }
-
-                        num64 = num61;
-                    }
-
-                    num65 = num64;
-                }
-
-                bodyPeriodTotal[4] += num65;
+                bodyPeriodTotal[4] += GetCandleRange(BodyLong, i - 4, inOpen, inHigh, inLow, inClose);
                 i++;
             }
 
             i = startIdx;
+
+            /* Proceed with the calculation for the requested range.
+             * Must have:
+             * - first candle: long white candle
+             * - upside gap between the first and the second bodies
+             * - second candle: small black candle
+             * - third and fourth candles: falling small real body candlesticks (commonly black) that hold within the long 
+             *   white candle's body and are higher than the reaction days of the rising three methods
+             * - fifth candle: white candle that opens above the previous small candle's close and closes higher than the 
+             *   high of the highest reaction day
+             * The meaning of "short" and "long" is specified with TA_SetCandleSettings; 
+             * "hold within" means "a part of the real body must be within";
+             * optInPenetration is the maximum percentage of the first white body the reaction days can penetrate (it is 
+             * to specify how much the reaction days should be "higher than the reaction days of the rising three methods")
+             * outInteger is positive (1 to 100): mat hold is always bullish
+             */
             int outIdx = 0;
             Label_0488:
-            if (Globals.candleSettings[0].avgPeriod != 0.0)
+            if (GetCandleAvgPeriod(BodyLong) != 0.0)
             {
-                num60 = bodyPeriodTotal[4] / Globals.candleSettings[0].avgPeriod;
+                num60 = bodyPeriodTotal[4] / GetCandleAvgPeriod(BodyLong);
             }
             else
             {
@@ -368,9 +186,9 @@ namespace TechnicalAnalysis
             {
                 double num47;
                 double num53;
-                if (Globals.candleSettings[2].avgPeriod != 0.0)
+                if (GetCandleAvgPeriod(BodyShort) != 0.0)
                 {
-                    num53 = bodyPeriodTotal[3] / Globals.candleSettings[2].avgPeriod;
+                    num53 = bodyPeriodTotal[3] / GetCandleAvgPeriod(BodyShort);
                 }
                 else
                 {
@@ -441,9 +259,9 @@ namespace TechnicalAnalysis
                 {
                     double num40;
                     double num46;
-                    if (Globals.candleSettings[2].avgPeriod != 0.0)
+                    if (GetCandleAvgPeriod(BodyShort) != 0.0)
                     {
-                        num46 = bodyPeriodTotal[2] / Globals.candleSettings[2].avgPeriod;
+                        num46 = bodyPeriodTotal[2] / GetCandleAvgPeriod(BodyShort);
                     }
                     else
                     {
@@ -514,9 +332,9 @@ namespace TechnicalAnalysis
                     {
                         double num33;
                         double num39;
-                        if (Globals.candleSettings[2].avgPeriod != 0.0)
+                        if (GetCandleAvgPeriod(BodyShort) != 0.0)
                         {
-                            num39 = bodyPeriodTotal[1] / Globals.candleSettings[2].avgPeriod;
+                            num39 = bodyPeriodTotal[1] / GetCandleAvgPeriod(BodyShort);
                         }
                         else
                         {
@@ -960,8 +778,10 @@ namespace TechnicalAnalysis
                 goto Label_0488;
             }
 
+            // All done. Indicate the output limits and return.
             outNBElement = outIdx;
             outBegIdx = startIdx;
+            
             return RetCode.Success;
         }
 
@@ -972,9 +792,9 @@ namespace TechnicalAnalysis
                 return -1;
             }
 
-            return (Globals.candleSettings[2].avgPeriod <= Globals.candleSettings[0].avgPeriod
-                         ? Globals.candleSettings[0].avgPeriod
-                         : Globals.candleSettings[2].avgPeriod) + 4;
+            return (GetCandleAvgPeriod(BodyShort) <= GetCandleAvgPeriod(BodyLong)
+                         ? GetCandleAvgPeriod(BodyLong)
+                         : GetCandleAvgPeriod(BodyShort)) + 4;
         }
     }
 }

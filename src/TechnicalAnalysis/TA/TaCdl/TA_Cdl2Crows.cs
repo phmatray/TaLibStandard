@@ -1,3 +1,5 @@
+using static TechnicalAnalysis.TACore.CandleSettingType;
+
 namespace TechnicalAnalysis
 {
     internal static partial class TACore
@@ -14,8 +16,8 @@ namespace TechnicalAnalysis
             ref int[] outInteger)
         {
             // Local variables
-            const CandleSettingType BodyLong = CandleSettingType.BodyLong;
 
+            // Validate the requested output range.
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -26,6 +28,7 @@ namespace TechnicalAnalysis
                 return RetCode.OutOfRangeEndIndex;
             }
 
+            // Verify required price component.
             if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
@@ -121,7 +124,7 @@ namespace TechnicalAnalysis
 
         public static int Cdl2CrowsLookback()
         {
-            return GetCandleAvgPeriod(CandleSettingType.BodyLong) + 2;
+            return GetCandleAvgPeriod(BodyLong) + 2;
         }
     }
 }

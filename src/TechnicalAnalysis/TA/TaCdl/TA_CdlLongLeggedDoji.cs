@@ -1,4 +1,5 @@
 using System;
+using static TechnicalAnalysis.TACore.CandleSettingType;
 
 namespace TechnicalAnalysis
 {
@@ -15,12 +16,15 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
+            // Local variables
             double num5;
             double num10;
             double num15;
             double num20;
             double num37;
             double num43;
+            
+            // Validate the requested output range.
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -31,6 +35,7 @@ namespace TechnicalAnalysis
                 return RetCode.OutOfRangeEndIndex;
             }
 
+            // Verify required price component.
             if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
@@ -41,12 +46,16 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
+            // Identify the minimum number of price bar needed to calculate at least one output.
             int lookbackTotal = CdlLongLeggedDojiLookback();
+
+            // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
 
+            // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
@@ -54,139 +63,40 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
+            // Do the calculation using tight loops.
+            // Add-up the initial period, except for the last value.
             double bodyDojiPeriodTotal = 0.0;
-            int bodyDojiTrailingIdx = startIdx - Globals.candleSettings[3].avgPeriod;
+            int bodyDojiTrailingIdx = startIdx - GetCandleAvgPeriod(BodyDoji);
             double shadowLongPeriodTotal = 0.0;
-            int shadowLongTrailingIdx = startIdx - Globals.candleSettings[4].avgPeriod;
+            int shadowLongTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowLong);
+            
             int i = bodyDojiTrailingIdx;
-            while (true)
+            while (i < startIdx)
             {
-                double num53;
-                if (i >= startIdx)
-                {
-                    break;
-                }
-
-                if (Globals.candleSettings[3].rangeType == RangeType.RealBody)
-                {
-                    num53 = Math.Abs(inClose[i] - inOpen[i]);
-                }
-                else
-                {
-                    double num52;
-                    if (Globals.candleSettings[3].rangeType == RangeType.HighLow)
-                    {
-                        num52 = inHigh[i] - inLow[i];
-                    }
-                    else
-                    {
-                        double num49;
-                        if (Globals.candleSettings[3].rangeType == RangeType.Shadows)
-                        {
-                            double num50;
-                            double num51;
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num51 = inClose[i];
-                            }
-                            else
-                            {
-                                num51 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num50 = inOpen[i];
-                            }
-                            else
-                            {
-                                num50 = inClose[i];
-                            }
-
-                            num49 = inHigh[i] - num51 + (num50 - inLow[i]);
-                        }
-                        else
-                        {
-                            num49 = 0.0;
-                        }
-
-                        num52 = num49;
-                    }
-
-                    num53 = num52;
-                }
-
-                bodyDojiPeriodTotal += num53;
+                bodyDojiPeriodTotal += GetCandleRange(BodyDoji, i, inOpen, inHigh, inLow, inClose);
                 i++;
             }
 
             i = shadowLongTrailingIdx;
-            while (true)
+            while (i < startIdx)
             {
-                double num48;
-                if (i >= startIdx)
-                {
-                    break;
-                }
-
-                if (Globals.candleSettings[4].rangeType == RangeType.RealBody)
-                {
-                    num48 = Math.Abs(inClose[i] - inOpen[i]);
-                }
-                else
-                {
-                    double num47;
-                    if (Globals.candleSettings[4].rangeType == RangeType.HighLow)
-                    {
-                        num47 = inHigh[i] - inLow[i];
-                    }
-                    else
-                    {
-                        double num44;
-                        if (Globals.candleSettings[4].rangeType == RangeType.Shadows)
-                        {
-                            double num45;
-                            double num46;
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num46 = inClose[i];
-                            }
-                            else
-                            {
-                                num46 = inOpen[i];
-                            }
-
-                            if (inClose[i] >= inOpen[i])
-                            {
-                                num45 = inOpen[i];
-                            }
-                            else
-                            {
-                                num45 = inClose[i];
-                            }
-
-                            num44 = inHigh[i] - num46 + (num45 - inLow[i]);
-                        }
-                        else
-                        {
-                            num44 = 0.0;
-                        }
-
-                        num47 = num44;
-                    }
-
-                    num48 = num47;
-                }
-
-                shadowLongPeriodTotal += num48;
+                shadowLongPeriodTotal += GetCandleRange(ShadowLong, i, inOpen, inHigh, inLow, inClose);
                 i++;
             }
 
+            /* Proceed with the calculation for the requested range.
+             *
+             * Must have:
+             * - doji body
+             * - one or two long shadows
+             * The meaning of "doji" is specified with TA_SetCandleSettings
+             * outInteger is always positive (1 to 100) but this does not mean it is bullish: long legged doji shows uncertainty
+             */
             int outIdx = 0;
             Label_022E:
-            if (Globals.candleSettings[3].avgPeriod != 0.0)
+            if (GetCandleAvgPeriod(BodyDoji) != 0.0)
             {
-                num43 = bodyDojiPeriodTotal / Globals.candleSettings[3].avgPeriod;
+                num43 = bodyDojiPeriodTotal / GetCandleAvgPeriod(BodyDoji);
             }
             else
             {
@@ -266,9 +176,9 @@ namespace TechnicalAnalysis
                     num36 = inClose[i];
                 }
 
-                if (Globals.candleSettings[4].avgPeriod != 0.0)
+                if (GetCandleAvgPeriod(ShadowLong) != 0.0)
                 {
-                    num35 = shadowLongPeriodTotal / Globals.candleSettings[4].avgPeriod;
+                    num35 = shadowLongPeriodTotal / GetCandleAvgPeriod(ShadowLong);
                 }
                 else
                 {
@@ -348,9 +258,9 @@ namespace TechnicalAnalysis
                         num28 = inOpen[i];
                     }
 
-                    if (Globals.candleSettings[4].avgPeriod != 0.0)
+                    if (GetCandleAvgPeriod(ShadowLong) != 0.0)
                     {
-                        num27 = shadowLongPeriodTotal / Globals.candleSettings[4].avgPeriod;
+                        num27 = shadowLongPeriodTotal / GetCandleAvgPeriod(ShadowLong);
                     }
                     else
                     {
@@ -637,16 +547,18 @@ namespace TechnicalAnalysis
                 goto Label_022E;
             }
 
+            // All done. Indicate the output limits and return.
             outNBElement = outIdx;
             outBegIdx = startIdx;
+            
             return RetCode.Success;
         }
 
         public static int CdlLongLeggedDojiLookback()
         {
-            return Globals.candleSettings[3].avgPeriod <= Globals.candleSettings[4].avgPeriod
-                        ? Globals.candleSettings[4].avgPeriod
-                        : Globals.candleSettings[3].avgPeriod;
+            return GetCandleAvgPeriod(BodyDoji) <= GetCandleAvgPeriod(ShadowLong)
+                        ? GetCandleAvgPeriod(ShadowLong)
+                        : GetCandleAvgPeriod(BodyDoji);
         }
     }
 }

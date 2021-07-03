@@ -1,3 +1,5 @@
+using static TechnicalAnalysis.TACore.CandleSettingType;
+
 namespace TechnicalAnalysis
 {
     internal static partial class TACore
@@ -13,6 +15,7 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
+            // Local variables
             int num;
             double num2;
             double num3;
@@ -22,6 +25,8 @@ namespace TechnicalAnalysis
             double num9;
             int num10;
             int num11;
+            
+            // Validate the requested output range.
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -32,6 +37,7 @@ namespace TechnicalAnalysis
                 return RetCode.OutOfRangeEndIndex;
             }
 
+            // Verify required price component.
             if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
@@ -42,12 +48,16 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
+            // Identify the minimum number of price bar needed to calculate at least one output.
             int lookbackTotal = CdlXSideGap3MethodsLookback();
+
+            // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
 
+            // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
@@ -55,7 +65,20 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
+            // Do the calculation using tight loops.
+            // Add-up the initial period, except for the last value.
             int i = startIdx;
+
+            /* Proceed with the calculation for the requested range.
+             * Must have:
+             * - first candle: white (black) candle
+             * - second candle: white (black) candle
+             * - upside (downside) gap between the first and the second real bodies
+             * - third candle: black (white) candle that opens within the second real body and closes within the first real body
+             * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;
+             * the user should consider that up/downside gap 3 methods is significant when it appears in a trend, while this 
+             * function does not consider it
+             */
             int outIdx = 0;
             Label_0063:
             if (inClose[i - 1] >= inOpen[i - 1])
@@ -221,8 +244,10 @@ namespace TechnicalAnalysis
                 goto Label_0063;
             }
 
+            // All done. Indicate the output limits and return.
             outNBElement = outIdx;
             outBegIdx = startIdx;
+            
             return RetCode.Success;
         }
 

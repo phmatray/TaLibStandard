@@ -1,4 +1,5 @@
 using System;
+using static TechnicalAnalysis.TACore.CandleSettingType;
 
 namespace TechnicalAnalysis
 {
@@ -15,8 +16,11 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
+            // Local variables
             int num46;
             double[] nearPeriodTotal = new double[4];
+            
+            // Validate the requested output range.
             if (startIdx < 0)
             {
                 return RetCode.OutOfRangeStartIndex;
@@ -27,6 +31,7 @@ namespace TechnicalAnalysis
                 return RetCode.OutOfRangeEndIndex;
             }
 
+            // Verify required price component.
             if (inOpen == null || inHigh == null || inLow == null || inClose == null)
             {
                 return RetCode.BadParam;
@@ -37,12 +42,16 @@ namespace TechnicalAnalysis
                 return RetCode.BadParam;
             }
 
+            // Identify the minimum number of price bar needed to calculate at least one output.
             int lookbackTotal = Cdl3LineStrikeLookback();
+
+            // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
             {
                 startIdx = lookbackTotal;
             }
 
+            // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
                 outBegIdx = 0;
@@ -50,87 +59,33 @@ namespace TechnicalAnalysis
                 return RetCode.Success;
             }
 
+            // Do the calculation using tight loops.
+            // Add-up the initial period, except for the last value.
             nearPeriodTotal[3] = 0.0;
             nearPeriodTotal[2] = 0.0;
-            int nearTrailingIdx = startIdx - Globals.candleSettings[8].avgPeriod;
+            int nearTrailingIdx = startIdx - GetCandleAvgPeriod(Near);
+            
             int i = nearTrailingIdx;
-            while (true)
+            while (i < startIdx)
             {
-                double num51;
-                double num56;
-                if (i >= startIdx)
-                {
-                    break;
-                }
-
-                if (Globals.candleSettings[8].rangeType == RangeType.RealBody)
-                {
-                    num56 = Math.Abs(inClose[i - 3] - inOpen[i - 3]);
-                }
-                else
-                {
-                    double num55;
-                    if (Globals.candleSettings[8].rangeType == RangeType.HighLow)
-                    {
-                        num55 = inHigh[i - 3] - inLow[i - 3];
-                    }
-                    else
-                    {
-                        double num52;
-                        if (Globals.candleSettings[8].rangeType == RangeType.Shadows)
-                        {
-                            double num54 = inClose[i - 3] >= inOpen[i - 3] ? inClose[i - 3] : inOpen[i - 3];
-                            double num53 = inClose[i - 3] >= inOpen[i - 3] ? inOpen[i - 3] : inClose[i - 3];
-                            num52 = inHigh[i - 3] - num54 + (num53 - inLow[i - 3]);
-                        }
-                        else
-                        {
-                            num52 = 0.0;
-                        }
-
-                        num55 = num52;
-                    }
-
-                    num56 = num55;
-                }
-
-                nearPeriodTotal[3] += num56;
-                if (Globals.candleSettings[8].rangeType == RangeType.RealBody)
-                {
-                    num51 = Math.Abs(inClose[i - 2] - inOpen[i - 2]);
-                }
-                else
-                {
-                    double num50;
-                    if (Globals.candleSettings[8].rangeType == RangeType.HighLow)
-                    {
-                        num50 = inHigh[i - 2] - inLow[i - 2];
-                    }
-                    else
-                    {
-                        double num47;
-                        if (Globals.candleSettings[8].rangeType == RangeType.Shadows)
-                        {
-                            double num49 = inClose[i - 2] >= inOpen[i - 2] ? inClose[i - 2] : inOpen[i - 2];
-                            double num48 = inClose[i - 2] >= inOpen[i - 2] ? inOpen[i - 2] : inClose[i - 2];
-                            num47 = inHigh[i - 2] - num49 + (num48 - inLow[i - 2]);
-                        }
-                        else
-                        {
-                            num47 = 0.0;
-                        }
-
-                        num50 = num47;
-                    }
-
-                    num51 = num50;
-                }
-
-                nearPeriodTotal[2] += num51;
+                nearPeriodTotal[3] += GetCandleRange(Near, i - 3, inOpen, inHigh, inLow, inClose);
+                nearPeriodTotal[2] += GetCandleRange(Near, i - 2, inOpen, inHigh, inLow, inClose);
                 i++;
             }
 
             i = startIdx;
+
+            /* Proceed with the calculation for the requested range.
+             * Must have:
+             * - three white soldiers (three black crows): three white (black) candlesticks with consecutively higher (lower) closes,
+             * each opening within or near the previous real body
+             * - fourth candle: black (white) candle that opens above (below) prior candle's close and closes below (above) 
+             * the first candle's open
+             * The meaning of "near" is specified with TA_SetCandleSettings;
+             * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;
+             * the user should consider that 3-line strike is significant when it appears in a trend in the same direction of
+             * the first three candles, while this function does not consider it
+             */
             int outIdx = 0;
             Label_0256:
             if (inClose[i - 2] >= inOpen[i - 2])
@@ -171,9 +126,9 @@ namespace TechnicalAnalysis
                         double num42;
                         double num43 = inOpen[i - 3] < inClose[i - 3] ? inOpen[i - 3] : inClose[i - 3];
 
-                        if (Globals.candleSettings[8].avgPeriod != 0.0)
+                        if (GetCandleAvgPeriod(Near) != 0.0)
                         {
-                            num42 = nearPeriodTotal[3] / Globals.candleSettings[8].avgPeriod;
+                            num42 = nearPeriodTotal[3] / GetCandleAvgPeriod(Near);
                         }
                         else
                         {
@@ -219,9 +174,9 @@ namespace TechnicalAnalysis
                             double num34;
                             double num35 = inOpen[i - 3] > inClose[i - 3] ? inOpen[i - 3] : inClose[i - 3];
 
-                            if (Globals.candleSettings[8].avgPeriod != 0.0)
+                            if (GetCandleAvgPeriod(Near) != 0.0)
                             {
-                                num34 = nearPeriodTotal[3] / Globals.candleSettings[8].avgPeriod;
+                                num34 = nearPeriodTotal[3] / GetCandleAvgPeriod(Near);
                             }
                             else
                             {
@@ -267,9 +222,9 @@ namespace TechnicalAnalysis
                                 double num26;
                                 double num27 = inOpen[i - 2] < inClose[i - 2] ? inOpen[i - 2] : inClose[i - 2];
 
-                                if (Globals.candleSettings[8].avgPeriod != 0.0)
+                                if (GetCandleAvgPeriod(Near) != 0.0)
                                 {
-                                    num26 = nearPeriodTotal[2] / Globals.candleSettings[8].avgPeriod;
+                                    num26 = nearPeriodTotal[2] / GetCandleAvgPeriod(Near);
                                 }
                                 else
                                 {
@@ -315,9 +270,9 @@ namespace TechnicalAnalysis
                                     double num18;
                                     double num19 = inOpen[i - 2] > inClose[i - 2] ? inOpen[i - 2] : inClose[i - 2];
 
-                                    if (Globals.candleSettings[8].avgPeriod != 0.0)
+                                    if (GetCandleAvgPeriod(Near) != 0.0)
                                     {
-                                        num18 = nearPeriodTotal[2] / Globals.candleSettings[8].avgPeriod;
+                                        num18 = nearPeriodTotal[2] / GetCandleAvgPeriod(Near);
                                     }
                                     else
                                     {
@@ -467,14 +422,16 @@ namespace TechnicalAnalysis
                 goto Label_0256;
             }
 
+            // All done. Indicate the output limits and return.
             outNBElement = outIdx;
             outBegIdx = startIdx;
+            
             return RetCode.Success;
         }
 
         public static int Cdl3LineStrikeLookback()
         {
-            return Globals.candleSettings[8].avgPeriod + 3;
+            return GetCandleAvgPeriod(Near) + 3;
         }
     }
 }
