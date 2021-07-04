@@ -15,8 +15,6 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
-            // Local variables
-            
             // Validate the requested output range.
             if (startIdx < 0)
             {
@@ -89,8 +87,8 @@ namespace TechnicalAnalysis
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyDojiPeriodTotal +=
-                    GetCandleRange(BodyDoji, i, inOpen, inHigh, inLow, inClose)
-                    - GetCandleRange(BodyDoji, bodyDojiTrailingIdx, inOpen, inHigh, inLow, inClose);
+                    GetCandleRange(BodyDoji, i, inOpen, inHigh, inLow, inClose) -
+                    GetCandleRange(BodyDoji, bodyDojiTrailingIdx, inOpen, inHigh, inLow, inClose);
 
                 i++;
                 bodyDojiTrailingIdx++;
