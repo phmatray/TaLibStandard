@@ -1,4 +1,4 @@
-using static TechnicalAnalysis.TACore.CandleSettingType;
+using System;
 
 namespace TechnicalAnalysis
 {
@@ -15,17 +15,6 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
-            // Local variables
-            int num;
-            double num2;
-            double num3;
-            double num6;
-            double num7;
-            double num8;
-            double num9;
-            int num10;
-            int num11;
-            
             // Validate the requested output range.
             if (startIdx < 0)
             {
@@ -80,169 +69,40 @@ namespace TechnicalAnalysis
              * function does not consider it
              */
             int outIdx = 0;
-            Label_0063:
-            if (inClose[i - 1] >= inOpen[i - 1])
+            do
             {
-                num11 = 1;
-            }
-            else
-            {
-                num11 = -1;
-            }
+                bool isXSideGap3Methods =
+                    // 1st and 2nd of same color
+                    GetCandleColor(i - 2, inOpen, inClose) == GetCandleColor(i - 1, inOpen, inClose) &&
+                    // 3rd opposite color
+                    GetCandleColor(i - 1, inOpen, inClose) == -GetCandleColor(i, inOpen, inClose) &&
+                    // 3rd opens within 2nd rb
+                    inOpen[i] < Math.Max(inClose[i - 1], inOpen[i - 1]) &&
+                    inOpen[i] > Math.Min(inClose[i - 1], inOpen[i - 1]) &&
+                    // 3rd closes within 1st rb
+                    inClose[i] < Math.Max(inClose[i - 2], inOpen[i - 2]) &&
+                    inClose[i] > Math.Min(inClose[i - 2], inOpen[i - 2]) &&
+                    ((
+                         // when 1st is white
+                         GetCandleColor(i - 2, inOpen, inClose) == 1 &&
+                         // upside gap
+                         GetRealBodyGapUp(i - 1, i - 2, inOpen, inClose)
+                     ) ||
+                     (
+                         // when 1st is black
+                         GetCandleColor(i - 2, inOpen, inClose) == -1 &&
+                         // downside gap
+                         GetRealBodyGapDown(i - 1, i - 2, inOpen, inClose)
+                     )
+                    );
 
-            if ((inClose[i - 2] < inOpen[i - 2] ? -1 : 1) != num11)
-            {
-                goto Label_0229;
-            }
+                outInteger[outIdx++] = isXSideGap3Methods ? GetCandleColor(i - 2, inOpen, inClose) * 100 : 0;
 
-            if (inClose[i] >= inOpen[i])
-            {
-                num10 = 1;
-            }
-            else
-            {
-                num10 = -1;
-            }
-
-            if ((inClose[i - 1] < inOpen[i - 1] ? -1 : 1) != -num10)
-            {
-                goto Label_0229;
-            }
-
-            if (inClose[i - 1] > inOpen[i - 1])
-            {
-                num9 = inClose[i - 1];
-            }
-            else
-            {
-                num9 = inOpen[i - 1];
-            }
-
-            if (inOpen[i] >= num9)
-            {
-                goto Label_0229;
-            }
-
-            if (inClose[i - 1] < inOpen[i - 1])
-            {
-                num8 = inClose[i - 1];
-            }
-            else
-            {
-                num8 = inOpen[i - 1];
-            }
-
-            if (inOpen[i] <= num8)
-            {
-                goto Label_0229;
-            }
-
-            if (inClose[i - 2] > inOpen[i - 2])
-            {
-                num7 = inClose[i - 2];
-            }
-            else
-            {
-                num7 = inOpen[i - 2];
-            }
-
-            if (inClose[i] >= num7)
-            {
-                goto Label_0229;
-            }
-
-            if (inClose[i - 2] < inOpen[i - 2])
-            {
-                num6 = inClose[i - 2];
-            }
-            else
-            {
-                num6 = inOpen[i - 2];
-            }
-
-            if (inClose[i] <= num6)
-            {
-                goto Label_0229;
-            }
-
-            if (inClose[i - 2] >= inOpen[i - 2])
-            {
-                double num4;
-                double num5;
-                if (inOpen[i - 1] < inClose[i - 1])
-                {
-                    num5 = inOpen[i - 1];
-                }
-                else
-                {
-                    num5 = inClose[i - 1];
-                }
-
-                if (inOpen[i - 2] > inClose[i - 2])
-                {
-                    num4 = inOpen[i - 2];
-                }
-                else
-                {
-                    num4 = inClose[i - 2];
-                }
-
-                if (num5 > num4)
-                {
-                    goto Label_0208;
-                }
-            }
-
-            if ((inClose[i - 2] < inOpen[i - 2] ? -1 : 1) != -1)
-            {
-                goto Label_0229;
-            }
-
-            if (inOpen[i - 1] > inClose[i - 1])
-            {
-                num3 = inOpen[i - 1];
-            }
-            else
-            {
-                num3 = inClose[i - 1];
-            }
-
-            if (inOpen[i - 2] < inClose[i - 2])
-            {
-                num2 = inOpen[i - 2];
-            }
-            else
-            {
-                num2 = inClose[i - 2];
-            }
-
-            if (num3 >= num2)
-            {
-                goto Label_0229;
-            }
-
-            Label_0208:
-            if (inClose[i - 2] >= inOpen[i - 2])
-            {
-                num = 1;
-            }
-            else
-            {
-                num = -1;
-            }
-
-            outInteger[outIdx] = num * 100;
-            outIdx++;
-            goto Label_0232;
-            Label_0229:
-            outInteger[outIdx] = 0;
-            outIdx++;
-            Label_0232:
-            i++;
-            if (i <= endIdx)
-            {
-                goto Label_0063;
-            }
+                /* add the current range and subtract the first range: this is done after the pattern recognition 
+                 * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
+                 */
+                i++;
+            } while (i <= endIdx);
 
             // All done. Indicate the output limits and return.
             outNBElement = outIdx;
