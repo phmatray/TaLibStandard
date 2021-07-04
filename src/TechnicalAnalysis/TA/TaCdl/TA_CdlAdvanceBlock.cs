@@ -149,8 +149,7 @@ namespace TechnicalAnalysis
                     inClose[i] > inClose[i - 1] && inClose[i - 1] > inClose[i - 2] &&
                     // 2nd opens within/near 1st real body
                     inOpen[i - 1] > inOpen[i - 2] &&
-                    inOpen[i - 1] <= inClose[i - 2] + GetCandleAverage(Near, nearPeriodTotal[2], i - 2,
-                        inOpen, inHigh, inLow, inClose) &&
+                    inOpen[i - 1] <= inClose[i - 2] + GetCandleAverage(Near, nearPeriodTotal[2], i - 2, inOpen, inHigh, inLow, inClose) &&
                     // 3rd opens within/near 2nd real body
                     inOpen[i] > inOpen[i - 1] &&
                     inOpen[i] <= inClose[i - 1] +
@@ -182,10 +181,10 @@ namespace TechnicalAnalysis
                             GetRealBody(i, inOpen, inClose) < GetRealBody(i - 1, inOpen, inClose) &&
                             GetRealBody(i - 1, inOpen, inClose) < GetRealBody(i - 2, inOpen, inClose) &&
                             (
-                                GetUpperShadow(i, inOpen, inLow, inClose) > GetCandleAverage(ShadowShort,
-                                    shadowShortPeriodTotal[0], i, inOpen, inHigh, inLow, inClose) ||
-                                GetUpperShadow(i - 1, inOpen, inLow, inClose) > GetCandleAverage(ShadowShort,
-                                    shadowShortPeriodTotal[1], i - 1, inOpen, inHigh, inLow, inClose)
+                                GetUpperShadow(i, inOpen, inLow, inClose) > 
+                                GetCandleAverage(ShadowShort, shadowShortPeriodTotal[0], i, inOpen, inHigh, inLow, inClose) ||
+                                GetUpperShadow(i - 1, inOpen, inLow, inClose) > 
+                                GetCandleAverage(ShadowShort, shadowShortPeriodTotal[1], i - 1, inOpen, inHigh, inLow, inClose)
                             )
                         ) ||
                         // ( 3 smaller than 2 && 3 long upper shadow )

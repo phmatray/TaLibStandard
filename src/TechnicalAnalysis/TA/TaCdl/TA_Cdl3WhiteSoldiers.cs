@@ -132,20 +132,17 @@ namespace TechnicalAnalysis
                     GetCandleColor(i - 2, inOpen, inClose) == 1 &&
                     // very short upper shadow
                     GetUpperShadow(i - 2, inOpen, inLow, inClose) <
-                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2,
-                        inOpen, inHigh, inLow, inClose) &&
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2, inOpen, inHigh, inLow, inClose) &&
                     // 2nd white                
                     GetCandleColor(i - 1, inOpen, inClose) == 1 &&
                     // very short upper shadow
                     GetUpperShadow(i - 1, inOpen, inLow, inClose) <
-                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1,
-                        inOpen, inHigh, inLow, inClose) &&
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1, inOpen, inHigh, inLow, inClose) &&
                     // 3rd white   
                     GetCandleColor(i, inOpen, inClose) == 1 &&
                     // very short upper shadow
                     GetUpperShadow(i, inOpen, inLow, inClose) <
-                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i,
-                        inOpen, inHigh, inLow, inClose) &&
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i, inOpen, inHigh, inLow, inClose) &&
                     // consecutive higher closes           
                     inClose[i] > inClose[i - 1] &&
                     inClose[i - 1] > inClose[i - 2] &&
@@ -164,8 +161,8 @@ namespace TechnicalAnalysis
                     GetRealBody(i, inOpen, inClose) > GetRealBody(i - 1, inOpen, inClose) -
                     GetCandleAverage(Far, farPeriodTotal[1], i - 1, inOpen, inHigh, inLow, inClose) &&
                     // not short real body
-                    GetRealBody(i, inOpen, inClose) > GetCandleAverage(BodyShort, bodyShortPeriodTotal, i,
-                        inOpen, inHigh, inLow, inClose);
+                    GetRealBody(i, inOpen, inClose) > 
+                    GetCandleAverage(BodyShort, bodyShortPeriodTotal, i, inOpen, inHigh, inLow, inClose);
 
                 outInteger[outIdx++] = is3WhiteSoldiers ? 100 : 0;
 
@@ -176,8 +173,7 @@ namespace TechnicalAnalysis
                 {
                     shadowVeryShortPeriodTotal[totIdx] +=
                         GetCandleRange(ShadowVeryShort, i - totIdx, inOpen, inHigh, inLow, inClose) -
-                        GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx, inOpen, inHigh, inLow,
-                            inClose);
+                        GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx, inOpen, inHigh, inLow, inClose);
                 }
 
                 for (int totIdx = 2; totIdx >= 1; --totIdx)

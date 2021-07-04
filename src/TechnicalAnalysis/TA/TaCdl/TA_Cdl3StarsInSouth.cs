@@ -139,17 +139,14 @@ namespace TechnicalAnalysis
                     inLow[i - 1] >= inLow[i - 2] &&
                     // and has a lower shadow
                     GetLowerShadow(i - 1, inOpen, inLow, inClose) >
-                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1,
-                        inOpen, inHigh, inLow, inClose) &&
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1, inOpen, inHigh, inLow, inClose) &&
                     // 3rd: small marubozu
                     GetRealBody(i, inOpen, inClose) <
                     GetCandleAverage(BodyShort, bodyShortPeriodTotal, i, inOpen, inHigh, inLow, inClose) &&
                     GetLowerShadow(i, inOpen, inLow, inClose) <
-                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i,
-                        inOpen, inHigh, inLow, inClose) &&
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i, inOpen, inHigh, inLow, inClose) &&
                     GetUpperShadow(i, inOpen, inLow, inClose) <
-                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i,
-                        inOpen, inHigh, inLow, inClose) &&
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i, inOpen, inHigh, inLow, inClose) &&
                     // engulfed by prior candle's range
                     inLow[i] > inLow[i - 1] && inHigh[i] < inHigh[i - 1];
 
@@ -171,8 +168,7 @@ namespace TechnicalAnalysis
                 {
                     shadowVeryShortPeriodTotal[totIdx] +=
                         GetCandleRange(ShadowVeryShort, i - totIdx, inOpen, inHigh, inLow, inClose) -
-                        GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx,
-                            inOpen, inHigh, inLow, inClose);
+                        GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx, inOpen, inHigh, inLow, inClose);
                 }
 
                 bodyShortPeriodTotal +=

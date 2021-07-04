@@ -94,14 +94,12 @@ namespace TechnicalAnalysis
                         ( // white body and very short lower shadow
                             GetCandleColor(i, inOpen, inClose) == 1 &&
                             GetUpperShadow(i, inOpen, inLow, inClose) <
-                            GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i,
-                                inOpen, inHigh, inLow, inClose)
+                            GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i, inOpen, inHigh, inLow, inClose)
                         ) ||
                         ( // black body and very short upper shadow
                             GetCandleColor(i, inOpen, inClose) == -1 &&
                             GetLowerShadow(i, inOpen, inLow, inClose) <
-                            GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i,
-                                inOpen, inHigh, inLow, inClose)
+                            GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i, inOpen, inHigh, inLow, inClose)
                         )
                     );
 
