@@ -1,4 +1,3 @@
-using System;
 using static TechnicalAnalysis.TACore.CandleSettingType;
 
 namespace TechnicalAnalysis
@@ -16,10 +15,6 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
-            // Local variables
-            double num5;
-            double num10;
-            
             // Validate the requested output range.
             if (startIdx < 0)
             {
@@ -84,210 +79,42 @@ namespace TechnicalAnalysis
              * while this function does not consider it
              */
             int outIdx = 0;
-            Label_0168:
-            if ((inClose[i - 4] < inOpen[i - 4] ? -1 : 1) == -1
-                && (inClose[i - 3] < inOpen[i - 3] ? -1 : 1) == -1
-                && (inClose[i - 2] < inOpen[i - 2] ? -1 : 1) == -1 && inOpen[i - 4] > inOpen[i - 3] && inOpen[i - 3] > inOpen[i - 2] && inClose[i - 4] > inClose[i - 3] && inClose[i - 3] > inClose[i - 2] && (inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1)
+            do
             {
-                double num11;
-                double num17;
-                double num18;
-                if (inClose[i - 1] >= inOpen[i - 1])
-                {
-                    num18 = inClose[i - 1];
-                }
-                else
-                {
-                    num18 = inOpen[i - 1];
-                }
+                bool isLadderBottom =
+                    // 3 black candlesticks
+                    GetCandleColor(i - 4, inOpen, inClose) == -1 &&
+                    GetCandleColor(i - 3, inOpen, inClose) == -1 &&
+                    GetCandleColor(i - 2, inOpen, inClose) == -1 &&
+                    // with consecutively lower opens
+                    inOpen[i - 4] > inOpen[i - 3] &&
+                    inOpen[i - 3] > inOpen[i - 2] &&
+                    // and closes
+                    inClose[i - 4] > inClose[i - 3] &&
+                    inClose[i - 3] > inClose[i - 2] &&
+                    // 4th: black with an upper shadow
+                    GetCandleColor(i - 1, inOpen, inClose) == -1 &&
+                    GetUpperShadow(i - 1, inOpen, inLow, inClose) >
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i - 1, inOpen, inHigh, inLow, inClose) &&
+                    // 5th: white
+                    GetCandleColor(i, inOpen, inClose) == 1 &&
+                    // that opens above prior candle's body
+                    inOpen[i] > inOpen[i - 1] &&
+                    // and closes above prior candle's high
+                    inClose[i] > inHigh[i - 1];
 
-                if (GetCandleAvgPeriod(ShadowVeryShort) != 0.0)
-                {
-                    num17 = shadowVeryShortPeriodTotal / GetCandleAvgPeriod(ShadowVeryShort);
-                }
-                else
-                {
-                    double num16;
-                    if (Globals.candleSettings[7].rangeType == RangeType.RealBody)
-                    {
-                        num16 = Math.Abs(inClose[i - 1] - inOpen[i - 1]);
-                    }
-                    else
-                    {
-                        double num15;
-                        if (Globals.candleSettings[7].rangeType == RangeType.HighLow)
-                        {
-                            num15 = inHigh[i - 1] - inLow[i - 1];
-                        }
-                        else
-                        {
-                            double num12;
-                            if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
-                            {
-                                double num13;
-                                double num14;
-                                if (inClose[i - 1] >= inOpen[i - 1])
-                                {
-                                    num14 = inClose[i - 1];
-                                }
-                                else
-                                {
-                                    num14 = inOpen[i - 1];
-                                }
+                outInteger[outIdx++] = isLadderBottom ? 100 : 0;
 
-                                if (inClose[i - 1] >= inOpen[i - 1])
-                                {
-                                    num13 = inOpen[i - 1];
-                                }
-                                else
-                                {
-                                    num13 = inClose[i - 1];
-                                }
+                /* add the current range and subtract the first range: this is done after the pattern recognition 
+                 * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
+                 */
+                shadowVeryShortPeriodTotal +=
+                    GetCandleRange(ShadowVeryShort, i - 1, inOpen, inHigh, inLow, inClose) -
+                    GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - 1, inOpen, inHigh, inLow, inClose);
 
-                                num12 = inHigh[i - 1] - num14 + (num13 - inLow[i - 1]);
-                            }
-                            else
-                            {
-                                num12 = 0.0;
-                            }
-
-                            num15 = num12;
-                        }
-
-                        num16 = num15;
-                    }
-
-                    num17 = num16;
-                }
-
-                if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
-                {
-                    num11 = 2.0;
-                }
-                else
-                {
-                    num11 = 1.0;
-                }
-
-                if (inHigh[i - 1] - num18 > Globals.candleSettings[7].factor * num17 / num11
-                    && (inClose[i] < inOpen[i] ? -1 : 1) == 1 && inOpen[i] > inOpen[i - 1] && inClose[i] > inHigh[i - 1])
-                {
-                    outInteger[outIdx] = 100;
-                    outIdx++;
-                    goto Label_03B0;
-                }
-            }
-
-            outInteger[outIdx] = 0;
-            outIdx++;
-            Label_03B0:
-            if (Globals.candleSettings[7].rangeType == RangeType.RealBody)
-            {
-                num10 = Math.Abs(inClose[i - 1] - inOpen[i - 1]);
-            }
-            else
-            {
-                double num9;
-                if (Globals.candleSettings[7].rangeType == RangeType.HighLow)
-                {
-                    num9 = inHigh[i - 1] - inLow[i - 1];
-                }
-                else
-                {
-                    double num6;
-                    if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
-                    {
-                        double num7;
-                        double num8;
-                        if (inClose[i - 1] >= inOpen[i - 1])
-                        {
-                            num8 = inClose[i - 1];
-                        }
-                        else
-                        {
-                            num8 = inOpen[i - 1];
-                        }
-
-                        if (inClose[i - 1] >= inOpen[i - 1])
-                        {
-                            num7 = inOpen[i - 1];
-                        }
-                        else
-                        {
-                            num7 = inClose[i - 1];
-                        }
-
-                        num6 = inHigh[i - 1] - num8 + (num7 - inLow[i - 1]);
-                    }
-                    else
-                    {
-                        num6 = 0.0;
-                    }
-
-                    num9 = num6;
-                }
-
-                num10 = num9;
-            }
-
-            if (Globals.candleSettings[7].rangeType == RangeType.RealBody)
-            {
-                num5 = Math.Abs(
-                    inClose[shadowVeryShortTrailingIdx - 1] - inOpen[shadowVeryShortTrailingIdx - 1]);
-            }
-            else
-            {
-                double num4;
-                if (Globals.candleSettings[7].rangeType == RangeType.HighLow)
-                {
-                    num4 = inHigh[shadowVeryShortTrailingIdx - 1] - inLow[shadowVeryShortTrailingIdx - 1];
-                }
-                else
-                {
-                    double num;
-                    if (Globals.candleSettings[7].rangeType == RangeType.Shadows)
-                    {
-                        double num2;
-                        double num3;
-                        if (inClose[shadowVeryShortTrailingIdx - 1] >= inOpen[shadowVeryShortTrailingIdx - 1])
-                        {
-                            num3 = inClose[shadowVeryShortTrailingIdx - 1];
-                        }
-                        else
-                        {
-                            num3 = inOpen[shadowVeryShortTrailingIdx - 1];
-                        }
-
-                        if (inClose[shadowVeryShortTrailingIdx - 1] >= inOpen[shadowVeryShortTrailingIdx - 1])
-                        {
-                            num2 = inOpen[shadowVeryShortTrailingIdx - 1];
-                        }
-                        else
-                        {
-                            num2 = inClose[shadowVeryShortTrailingIdx - 1];
-                        }
-
-                        num = inHigh[shadowVeryShortTrailingIdx - 1] - num3
-                              + (num2 - inLow[shadowVeryShortTrailingIdx - 1]);
-                    }
-                    else
-                    {
-                        num = 0.0;
-                    }
-
-                    num4 = num;
-                }
-
-                num5 = num4;
-            }
-
-            shadowVeryShortPeriodTotal += num10 - num5;
-            i++;
-            shadowVeryShortTrailingIdx++;
-            if (i <= endIdx)
-            {
-                goto Label_0168;
-            }
+                i++;
+                shadowVeryShortTrailingIdx++;
+            } while (i <= endIdx);
 
             // All done. Indicate the output limits and return.
             outNBElement = outIdx;
