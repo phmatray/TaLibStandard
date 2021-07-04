@@ -1,5 +1,3 @@
-using static TechnicalAnalysis.TACore.CandleSettingType;
-
 namespace TechnicalAnalysis
 {
     internal static partial class TACore
@@ -15,8 +13,6 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
-            // Local variables
-            
             // Validate the requested output range.
             if (startIdx < 0)
             {
@@ -69,9 +65,9 @@ namespace TechnicalAnalysis
                     inHigh[i - 1] < inHigh[i - 2] && inLow[i - 1] > inLow[i - 2] &&
                     (
                         // (bull) 3rd: lower high and lower low
-                        inHigh[i] < inHigh[i - 1] && inLow[i] < inLow[i - 1] ||
+                        (inHigh[i] < inHigh[i - 1] && inLow[i] < inLow[i - 1]) ||
                         // (bear) 3rd: higher high and higher low
-                        inHigh[i] > inHigh[i - 1] && inLow[i] > inLow[i - 1]
+                        (inHigh[i] > inHigh[i - 1] && inLow[i] > inLow[i - 1])
                     );
 
                 if (patternRecognition)
@@ -86,9 +82,9 @@ namespace TechnicalAnalysis
                         i <= patternIdx + 3 &&
                         (
                             // close higher than the high of 2nd
-                            patternResult > 0 && inClose[i] > inHigh[patternIdx - 1] ||
+                            (patternResult > 0 && inClose[i] > inHigh[patternIdx - 1]) ||
                             // close lower than the low of 2nd
-                            patternResult < 0 && inClose[i] < inLow[patternIdx - 1]
+                            (patternResult < 0 && inClose[i] < inLow[patternIdx - 1])
                         );
 
                     if (confirmation)
@@ -116,41 +112,47 @@ namespace TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                if (inHigh[i - 1] < inHigh[i - 2] && inLow[i - 1] > inLow[i - 2]
-                                                  && (inHigh[i] < inHigh[i - 1] && inLow[i] < inLow[i - 1]
-                                                      || inHigh[i] > inHigh[i - 1] && inLow[i] > inLow[i - 1]))
-                {
-                    patternResult = (inHigh[i] >= inHigh[i - 1] ? -1 : 1) * 100;
-                    patternIdx = i;
-                    outInteger[outIdx] = patternResult;
-                    outIdx++;
-                }
-                else if (i <= patternIdx + 3 && (patternResult > 0 && inClose[i] > inHigh[patternIdx - 1]
-                                                 || patternResult < 0 && inClose[i] < inLow[patternIdx - 1]))
-                {
-                    int num;
-                    if (patternResult > 0)
-                    {
-                        num = 1;
-                    }
-                    else
-                    {
-                        num = -1;
-                    }
+                bool patternRecognition =
+                    // 1st + 2nd: lower high and higher low
+                    inHigh[i - 1] < inHigh[i - 2] && inLow[i - 1] > inLow[i - 2] &&
+                    (
+                        // (bull) 3rd: lower high and lower low
+                        (inHigh[i] < inHigh[i - 1] && inLow[i] < inLow[i - 1]) ||
+                        // (bear) 3rd: higher high and higher low
+                        (inHigh[i] > inHigh[i - 1] && inLow[i] > inLow[i - 1])
+                    );
 
-                    outInteger[outIdx] = patternResult + num * 100;
-                    outIdx++;
-                    patternIdx = 0;
+                if (patternRecognition)
+                {
+                    patternResult = 100 * (inHigh[i] < inHigh[i - 1] ? 1 : -1);
+                    patternIdx = i;
+                    outInteger[outIdx++] = patternResult;
                 }
                 else
                 {
-                    outInteger[outIdx] = 0;
-                    outIdx++;
+                    /* search for confirmation if hikkake was no more than 3 bars ago */
+                    bool confirmation =
+                        i <= patternIdx + 3 &&
+                        (
+                            // close higher than the high of 2nd
+                            (patternResult > 0 && inClose[i] > inHigh[patternIdx - 1]) ||
+                            // close lower than the low of 2nd
+                            (patternResult < 0 && inClose[i] < inLow[patternIdx - 1])
+                        );
+
+                    if (confirmation)
+                    {
+                        outInteger[outIdx++] = patternResult + 100 * (patternResult > 0 ? 1 : -1);
+                        patternIdx = 0;
+                    }
+                    else
+                    {
+                        outInteger[outIdx++] = 0;
+                    }
                 }
 
                 i++;
-            }
-            while (i <= endIdx);
+            } while (i <= endIdx);
 
             // All done. Indicate the output limits and return.
             outNBElement = outIdx;
