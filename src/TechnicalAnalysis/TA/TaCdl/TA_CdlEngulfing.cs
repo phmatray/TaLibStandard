@@ -1,5 +1,3 @@
-using static TechnicalAnalysis.TACore.CandleSettingType;
-
 namespace TechnicalAnalysis
 {
     internal static partial class TACore
@@ -15,8 +13,6 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
-            // Local variables
-            
             // Validate the requested output range.
             if (startIdx < 0)
             {
@@ -71,31 +67,25 @@ namespace TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                if (inClose[i] >= inOpen[i] && (inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1 && inClose[i] > inOpen[i - 1] && inOpen[i] < inClose[i - 1]
-                    || (inClose[i] < inOpen[i] ? -1 : 1) == -1 && inClose[i - 1] >= inOpen[i - 1] && inOpen[i] > inClose[i - 1] && inClose[i] < inOpen[i - 1])
-                {
-                    int num;
-                    if (inClose[i] >= inOpen[i])
-                    {
-                        num = 1;
-                    }
-                    else
-                    {
-                        num = -1;
-                    }
+                bool isEngulfing =
+                    (
+                        // white engulfs black
+                        GetCandleColor(i, inOpen, inClose) == 1 &&
+                        GetCandleColor(i - 1, inOpen, inClose) == -1 &&
+                        inClose[i] > inOpen[i - 1] && inOpen[i] < inClose[i - 1]
+                    )
+                    ||
+                    (
+                        // black engulfs white
+                        GetCandleColor(i, inOpen, inClose) == -1 &&
+                        GetCandleColor(i - 1, inOpen, inClose) == 1 &&
+                        inOpen[i] > inClose[i - 1] && inClose[i] < inOpen[i - 1]
+                    );
 
-                    outInteger[outIdx] = num * 100;
-                    outIdx++;
-                }
-                else
-                {
-                    outInteger[outIdx] = 0;
-                    outIdx++;
-                }
+                outInteger[outIdx++] = isEngulfing ? GetCandleColor(i, inOpen, inClose) * 100 : 0;
 
                 i++;
-            }
-            while (i <= endIdx);
+            } while (i <= endIdx);
 
             // All done. Indicate the output limits and return.
             outNBElement = outIdx;
