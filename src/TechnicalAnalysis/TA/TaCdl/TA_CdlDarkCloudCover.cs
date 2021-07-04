@@ -44,7 +44,7 @@ namespace TechnicalAnalysis
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = CdlDarkCloudCoverLookback(optInPenetration);
+            int lookbackTotal = CdlDarkCloudCoverLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -122,7 +122,7 @@ namespace TechnicalAnalysis
             return RetCode.Success;
         }
 
-        public static int CdlDarkCloudCoverLookback(double optInPenetration)
+        public static int CdlDarkCloudCoverLookback()
         {
             return GetCandleAvgPeriod(BodyLong) + 1;
         }

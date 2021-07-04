@@ -45,7 +45,7 @@ namespace TechnicalAnalysis
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = CdlEveningStarLookback(optInPenetration);
+            int lookbackTotal = CdlEveningStarLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -150,7 +150,7 @@ namespace TechnicalAnalysis
             return RetCode.Success;
         }
 
-        public static int CdlEveningStarLookback(double optInPenetration)
+        public static int CdlEveningStarLookback()
         {
             return Math.Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(BodyLong)) + 2;
         }

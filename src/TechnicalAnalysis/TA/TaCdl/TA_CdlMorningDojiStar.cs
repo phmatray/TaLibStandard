@@ -45,7 +45,7 @@ namespace TechnicalAnalysis
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = CdlMorningDojiStarLookback(optInPenetration);
+            int lookbackTotal = CdlMorningDojiStarLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -158,7 +158,7 @@ namespace TechnicalAnalysis
             return RetCode.Success;
         }
 
-        public static int CdlMorningDojiStarLookback(double optInPenetration)
+        public static int CdlMorningDojiStarLookback()
         {
             return Math.Max(
                 Math.Max(GetCandleAvgPeriod(BodyDoji), GetCandleAvgPeriod(BodyLong)),
