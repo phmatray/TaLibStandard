@@ -1,5 +1,3 @@
-using static TechnicalAnalysis.TACore.CandleSettingType;
-
 namespace TechnicalAnalysis
 {
     internal static partial class TACore
@@ -15,8 +13,6 @@ namespace TechnicalAnalysis
             ref int outNBElement,
             ref int[] outInteger)
         {
-            // Local variables
-
             // Validate the requested output range.
             if (startIdx < 0)
             {
@@ -72,31 +68,31 @@ namespace TechnicalAnalysis
             int outIdx = 0;
             do
             {
-                if (inClose[i - 1] >= inOpen[i - 1] && (inClose[i - 2] < inOpen[i - 2] ? -1 : 1) == -1 && inClose[i - 1] > inOpen[i - 2] && inOpen[i - 1] < inClose[i - 2] && inClose[i] > inClose[i - 1]
-                    || (inClose[i - 1] < inOpen[i - 1] ? -1 : 1) == -1 && inClose[i - 2] >= inOpen[i - 2] && inOpen[i - 1] > inClose[i - 2] && inClose[i - 1] < inOpen[i - 2] && inClose[i] < inClose[i - 1])
-                {
-                    int num;
-                    if (inClose[i - 1] >= inOpen[i - 1])
-                    {
-                        num = 1;
-                    }
-                    else
-                    {
-                        num = -1;
-                    }
+                bool is3Outside =
+                    (
+                        // white engulfs black
+                        GetCandleColor(i - 1, inOpen, inClose) == 1 &&
+                        GetCandleColor(i - 2, inOpen, inClose) == -1 &&
+                        inClose[i - 1] > inOpen[i - 2] &&
+                        inOpen[i - 1] < inClose[i - 2] &&
+                        // third candle higher
+                        inClose[i] > inClose[i - 1]
+                    )
+                    ||
+                    (
+                        // black engulfs white
+                        GetCandleColor(i - 1, inOpen, inClose) == -1 &&
+                        GetCandleColor(i - 2, inOpen, inClose) == 1 &&
+                        inOpen[i - 1] > inClose[i - 2] &&
+                        inClose[i - 1] < inOpen[i - 2] &&
+                        // third candle lower
+                        inClose[i] < inClose[i - 1]
+                    );
 
-                    outInteger[outIdx] = num * 100;
-                    outIdx++;
-                }
-                else
-                {
-                    outInteger[outIdx] = 0;
-                    outIdx++;
-                }
+                outInteger[outIdx++] = is3Outside ? GetCandleColor(i - 1, inOpen, inClose) * 100 : 0;
 
                 i++;
-            }
-            while (i <= endIdx);
+            } while (i <= endIdx);
 
             // All done. Indicate the output limits and return.
             outNBElement = outIdx;

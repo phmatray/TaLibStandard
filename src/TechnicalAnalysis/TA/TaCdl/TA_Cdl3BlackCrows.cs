@@ -93,41 +93,47 @@ namespace TechnicalAnalysis
                     // 1st black
                     GetCandleColor(i - 2, inOpen, inClose) == -1 &&
                     // very short lower shadow
-                    GetLowerShadow(i - 2, inOpen, inLow, inClose) < GetCandleAverage(ShadowVeryShort,
-                        shadowVeryShortPeriodTotal[2], i - 2, inOpen, inHigh, inLow, inClose) &&
+                    GetLowerShadow(i - 2, inOpen, inLow, inClose) <
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2,
+                        inOpen, inHigh, inLow, inClose) &&
                     // 2nd black
                     GetCandleColor(i - 1, inOpen, inClose) == -1 &&
                     // very short lower shadow
-                    GetLowerShadow(i - 1, inOpen, inLow, inClose) < GetCandleAverage(ShadowVeryShort,
-                        shadowVeryShortPeriodTotal[1], i - 1, inOpen, inHigh, inLow, inClose) &&
+                    GetLowerShadow(i - 1, inOpen, inLow, inClose) <
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1,
+                        inOpen, inHigh, inLow, inClose) &&
                     // 3rd black
                     GetCandleColor(i, inOpen, inClose) == -1 &&
                     // very short lower shadow
-                    GetLowerShadow(i, inOpen, inLow, inClose) < GetCandleAverage(ShadowVeryShort,
-                        shadowVeryShortPeriodTotal[0], i, inOpen, inHigh, inLow, inClose) &&
+                    GetLowerShadow(i, inOpen, inLow, inClose) <
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i,
+                        inOpen, inHigh, inLow, inClose) &&
                     // 2nd black opens within 1st black's rb
-                    inOpen[i - 1] < inOpen[i - 2] && inOpen[i - 1] > inClose[i - 2] &&
+                    inOpen[i - 1] < inOpen[i - 2] &&
+                    inOpen[i - 1] > inClose[i - 2] &&
                     // 3rd black opens within 2nd black's rb
-                    inOpen[i] < inOpen[i - 1] && inOpen[i] > inClose[i - 1] &&
+                    inOpen[i] < inOpen[i - 1] &&
+                    inOpen[i] > inClose[i - 1] &&
                     // 1st black closes under prior candle's high
                     inHigh[i - 3] > inClose[i - 2] &&
                     // three declining
                     inClose[i - 2] > inClose[i - 1] &&
                     // three declining
                     inClose[i - 1] > inClose[i];
-                    
+
                 outInteger[outIdx++] = is3BlackCrows ? -100 : 0;
-                    
+
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 for (int totIdx = 2; totIdx >= 0; --totIdx)
                 {
                     shadowVeryShortPeriodTotal[totIdx] +=
-                        GetCandleRange(ShadowVeryShort, i - totIdx, inOpen, inHigh, inLow, inClose)
-                        - GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx, inOpen, inHigh, inLow, inClose);
+                        GetCandleRange(ShadowVeryShort, i - totIdx, inOpen, inHigh, inLow, inClose) -
+                        GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx,
+                            inOpen, inHigh, inLow, inClose);
                 }
-             
+
                 i++;
                 shadowVeryShortTrailingIdx++;
             } while (i <= endIdx);
