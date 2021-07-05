@@ -77,9 +77,9 @@ namespace TechnicalAnalysis
             double[] realLowerBand)
             : base(retCode, begIdx, nbElement)
         {
-            this.RealUpperBand = realUpperBand;
-            this.RealMiddleBand = realMiddleBand;
-            this.RealLowerBand = realLowerBand;
+            RealUpperBand = realUpperBand;
+            RealMiddleBand = realMiddleBand;
+            RealLowerBand = realLowerBand;
         }
 
         public double[] RealLowerBand { get; }

@@ -68,9 +68,9 @@ namespace TechnicalAnalysis
             double[] macdHist)
             : base(retCode, begIdx, nbElement)
         {
-            this.MacdValue = macdValue;
-            this.MacdSignal = macdSignal;
-            this.MacdHist = macdHist;
+            MacdValue = macdValue;
+            MacdSignal = macdSignal;
+            MacdHist = macdHist;
         }
 
         public double[] MacdValue { get; }

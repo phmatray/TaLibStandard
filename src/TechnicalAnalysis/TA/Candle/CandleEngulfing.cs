@@ -28,7 +28,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -39,7 +39,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlEngulfingLookback();
+            int lookbackTotal = CdlEngulfingLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -73,19 +73,21 @@ namespace TechnicalAnalysis.Candle
                 bool isEngulfing =
                     (
                         // white engulfs black
-                        this.GetCandleColor(i, this.open, this.close) == 1 &&
-                        this.GetCandleColor(i - 1, this.open, this.close) == -1 &&
-                        this.close[i] > this.open[i - 1] && this.open[i] < this.close[i - 1]
+                        GetCandleColor(i) == 1 &&
+                        GetCandleColor(i - 1) == -1 &&
+                        close[i] > open[i - 1] &&
+                        open[i] < close[i - 1]
                     )
                     ||
                     (
                         // black engulfs white
-                        this.GetCandleColor(i, this.open, this.close) == -1 &&
-                        this.GetCandleColor(i - 1, this.open, this.close) == 1 &&
-                        this.open[i] > this.close[i - 1] && this.close[i] < this.open[i - 1]
+                        GetCandleColor(i) == -1 &&
+                        GetCandleColor(i - 1) == 1 &&
+                        open[i] > close[i - 1] && 
+                        close[i] < open[i - 1]
                     );
 
-                outInteger[outIdx++] = isEngulfing ? this.GetCandleColor(i, this.open, this.close) * 100 : 0;
+                outInteger[outIdx++] = isEngulfing ? GetCandleColor(i) * 100 : 0;
 
                 i++;
             } while (i <= endIdx);

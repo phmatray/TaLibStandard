@@ -63,8 +63,8 @@ namespace TechnicalAnalysis
         public StochRsi(RetCode retCode, int begIdx, int nbElement, double[] fastK, double[] fastD)
             : base(retCode, begIdx, nbElement)
         {
-            this.FastK = fastK;
-            this.FastD = fastD;
+            FastK = fastK;
+            FastD = fastD;
         }
 
         public double[] FastD { get; }

@@ -896,14 +896,14 @@ namespace TechnicalAnalysis
             {
                 for (int i = 0; i < 23; i++)
                 {
-                    this.unstablePeriod[i] = 0;
+                    unstablePeriod[i] = 0;
                 }
                 
-                this.candleSettings = new CandleSetting[11];
+                candleSettings = new CandleSetting[11];
                 
-                for (int j = 0; j < this.candleSettings.Length; j++)
+                for (int j = 0; j < candleSettings.Length; j++)
                 {
-                    this.candleSettings[j] = new CandleSetting();
+                    candleSettings[j] = new CandleSetting();
                 }
             }
         }

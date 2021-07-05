@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 using static TechnicalAnalysis.CandleSettingType;
 
 namespace TechnicalAnalysis.Candle
@@ -30,7 +30,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -41,7 +41,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlDojiStarLookback();
+            int lookbackTotal = CdlDojiStarLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -61,20 +61,20 @@ namespace TechnicalAnalysis.Candle
             // Add-up the initial period, except for the last value.
             double bodyLongPeriodTotal = 0.0;
             double bodyDojiPeriodTotal = 0.0;
-            int bodyLongTrailingIdx = startIdx - 1 - this.GetCandleAvgPeriod(BodyLong);
-            int bodyDojiTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyDoji);
+            int bodyLongTrailingIdx = startIdx - 1 - GetCandleAvgPeriod(BodyLong);
+            int bodyDojiTrailingIdx = startIdx - GetCandleAvgPeriod(BodyDoji);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx - 1)
             {
-                bodyLongPeriodTotal += this.GetCandleRange(BodyLong, i, this.open, this.high, this.low, this.close);
+                bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
                 i++;
             }
 
             i = bodyDojiTrailingIdx;
             while (i < startIdx)
             {
-                bodyDojiPeriodTotal += this.GetCandleRange(BodyDoji, i, this.open, this.high, this.low, this.close);
+                bodyDojiPeriodTotal += GetCandleRange(BodyDoji, i);
                 i++;
             }
 
@@ -94,37 +94,35 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isDojiStar =
                     // 1st: long real body
-                    this.GetRealBody(i - 1, this.open, this.close) >
-                    this.GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
                     // 2nd: doji
-                    this.GetRealBody(i, this.open, this.close) <=
-                    this.GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
                     (
                         (
                             // that gaps up if 1st is white
-                            this.GetCandleColor(i - 1, this.open, this.close) == 1 &&
-                            this.GetRealBodyGapUp(i, i - 1, this.open, this.close)
+                            GetCandleColor(i - 1) == 1 &&
+                            GetRealBodyGapUp(i, i - 1)
                         )
                         ||
                         (
                             // or down if 1st is black
-                            this.GetCandleColor(i - 1, this.open, this.close) == -1 &&
-                            this.GetRealBodyGapDown(i, i - 1, this.open, this.close)
+                            GetCandleColor(i - 1) == -1 &&
+                            GetRealBodyGapDown(i, i - 1)
                         )
                     );
 
-                outInteger[outIdx++] = isDojiStar ? -this.GetCandleColor(i - 1, this.open, this.close) * 100 : 0;
+                outInteger[outIdx++] = isDojiStar ? -GetCandleColor(i - 1) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyLongPeriodTotal +=
-                    this.GetCandleRange(BodyLong, i - 1, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyLong, bodyLongTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyLong, i - 1) -
+                    GetCandleRange(BodyLong, bodyLongTrailingIdx);
 
                 bodyDojiPeriodTotal +=
-                    this.GetCandleRange(BodyDoji, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyDoji, bodyDojiTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyDoji, i) -
+                    GetCandleRange(BodyDoji, bodyDojiTrailingIdx);
 
                 i++;
                 bodyLongTrailingIdx++;
@@ -140,7 +138,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlDojiStarLookback()
         {
-            return Math.Max(this.GetCandleAvgPeriod(BodyDoji), this.GetCandleAvgPeriod(BodyLong)) + 1;
+            return Max(GetCandleAvgPeriod(BodyDoji), GetCandleAvgPeriod(BodyLong)) + 1;
         }
     }
 }

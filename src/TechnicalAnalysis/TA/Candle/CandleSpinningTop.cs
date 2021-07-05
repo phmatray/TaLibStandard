@@ -29,7 +29,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlSpinningTopLookback();
+            int lookbackTotal = CdlSpinningTopLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -59,12 +59,12 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double bodyPeriodTotal = 0.0;
-            int bodyTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyShort);
+            int bodyTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
             
             int i = bodyTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal += this.GetCandleRange(BodyShort, i, this.open, this.high, this.low, this.close);
+                bodyPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
@@ -80,19 +80,18 @@ namespace TechnicalAnalysis.Candle
             do
             {
                 bool isSpinningTop =
-                    this.GetRealBody(i, this.open, this.close) <
-                    this.GetCandleAverage(BodyShort, bodyPeriodTotal, i, this.open, this.high, this.low, this.close) &&
-                    this.GetUpperShadow(i, this.open, this.low, this.close) > this.GetRealBody(i, this.open, this.close) &&
-                    this.GetLowerShadow(i, this.open, this.low, this.close) > this.GetRealBody(i, this.open, this.close);
+                    GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
+                    GetUpperShadow(i) > GetRealBody(i) &&
+                    GetLowerShadow(i) > GetRealBody(i);
 
-                outInteger[outIdx++] = isSpinningTop ? this.GetCandleColor(i, this.open, this.close) * 100 : 0;
+                outInteger[outIdx++] = isSpinningTop ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyPeriodTotal +=
-                    this.GetCandleRange(BodyShort, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyShort, bodyTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyShort, i) -
+                    GetCandleRange(BodyShort, bodyTrailingIdx);
 
                 i++;
                 bodyTrailingIdx++;
@@ -107,7 +106,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlSpinningTopLookback()
         {
-            return this.GetCandleAvgPeriod(BodyShort);
+            return GetCandleAvgPeriod(BodyShort);
         }
     }
 }

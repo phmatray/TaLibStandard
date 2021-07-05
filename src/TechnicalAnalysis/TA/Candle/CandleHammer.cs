@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 using static TechnicalAnalysis.CandleSettingType;
 
 namespace TechnicalAnalysis.Candle
@@ -30,7 +30,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -41,7 +41,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlHammerLookback();
+            int lookbackTotal = CdlHammerLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -60,39 +60,39 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double bodyPeriodTotal = 0.0;
-            int bodyTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyShort);
+            int bodyTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
             double shadowLongPeriodTotal = 0.0;
-            int shadowLongTrailingIdx = startIdx - this.GetCandleAvgPeriod(ShadowLong);
+            int shadowLongTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowLong);
             double shadowVeryShortPeriodTotal = 0.0;
-            int shadowVeryShortTrailingIdx = startIdx - this.GetCandleAvgPeriod(ShadowVeryShort);
+            int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
             double nearPeriodTotal = 0.0;
-            int nearTrailingIdx = startIdx - 1 - this.GetCandleAvgPeriod(Near);
+            int nearTrailingIdx = startIdx - 1 - GetCandleAvgPeriod(Near);
             
             int i = bodyTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal += this.GetCandleRange(BodyShort, i, this.open, this.high, this.low, this.close);
+                bodyPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
             i = shadowLongTrailingIdx;
             while (i < startIdx)
             {
-                shadowLongPeriodTotal += this.GetCandleRange(ShadowLong, i, this.open, this.high, this.low, this.close);
+                shadowLongPeriodTotal += GetCandleRange(ShadowLong, i);
                 i++;
             }
 
             i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal += this.GetCandleRange(ShadowVeryShort, i, this.open, this.high, this.low, this.close);
+                shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
 
             i = nearTrailingIdx;
             while (i < startIdx - 1)
             {
-                nearPeriodTotal += this.GetCandleRange(Near, i, this.open, this.high, this.low, this.close);
+                nearPeriodTotal += GetCandleRange(Near, i);
                 i++;
             }
 
@@ -113,17 +113,13 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isHammer =
                     // small rb
-                    this.GetRealBody(i, this.open, this.close) <
-                    this.GetCandleAverage(BodyShort, bodyPeriodTotal, i, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
                     // long lower shadow
-                    this.GetLowerShadow(i, this.open, this.low, this.close) >
-                    this.GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i, this.open, this.high, this.low, this.close) &&
+                    GetLowerShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
                     // very short upper shadow
-                    this.GetUpperShadow(i, this.open, this.low, this.close) <
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i, this.open, this.high, this.low, this.close) &&
+                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
                     // rb near the prior candle's lows
-                    Math.Min(this.close[i], this.open[i]) <= this.low[i - 1] +
-                    this.GetCandleAverage(Near, nearPeriodTotal, i - 1, this.open, this.high, this.low, this.close);
+                    Min(close[i], open[i]) <= low[i - 1] + GetCandleAverage(Near, nearPeriodTotal, i - 1);
 
                 outInteger[outIdx++] = isHammer ? 100 : 0;
 
@@ -131,20 +127,20 @@ namespace TechnicalAnalysis.Candle
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyPeriodTotal +=
-                    this.GetCandleRange(BodyShort, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyShort, bodyTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyShort, i) -
+                    GetCandleRange(BodyShort, bodyTrailingIdx);
 
                 shadowLongPeriodTotal +=
-                    this.GetCandleRange(ShadowLong, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(ShadowLong, shadowLongTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(ShadowLong, i) -
+                    GetCandleRange(ShadowLong, shadowLongTrailingIdx);
 
                 shadowVeryShortPeriodTotal +=
-                    this.GetCandleRange(ShadowVeryShort, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(ShadowVeryShort, i) -
+                    GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx);
 
                 nearPeriodTotal +=
-                    this.GetCandleRange(Near, i - 1, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(Near, nearTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(Near, i - 1) -
+                    GetCandleRange(Near, nearTrailingIdx);
 
                 i++;
                 bodyTrailingIdx++;
@@ -162,11 +158,11 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlHammerLookback()
         {
-            return Math.Max(
-                Math.Max(
-                    Math.Max(this.GetCandleAvgPeriod(BodyShort), this.GetCandleAvgPeriod(ShadowLong)),
-                    this.GetCandleAvgPeriod(ShadowVeryShort)),
-                this.GetCandleAvgPeriod(Near)
+            return Max(
+                Max(
+                    Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(ShadowLong)),
+                    GetCandleAvgPeriod(ShadowVeryShort)),
+                GetCandleAvgPeriod(Near)
             ) + 1;
         }
     }

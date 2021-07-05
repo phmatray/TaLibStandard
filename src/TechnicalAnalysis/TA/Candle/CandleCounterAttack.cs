@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 using static TechnicalAnalysis.CandleSettingType;
 
 namespace TechnicalAnalysis.Candle
@@ -33,7 +33,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -44,7 +44,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlCounterAttackLookback();
+            int lookbackTotal = CdlCounterAttackLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -63,23 +63,23 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double equalPeriodTotal = 0.0;
-            int equalTrailingIdx = startIdx - this.GetCandleAvgPeriod(Equal);
+            int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
             bodyLongPeriodTotal[1] = 0.0;
             bodyLongPeriodTotal[0] = 0.0;
-            int bodyLongTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyLong);
+            int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal += this.GetCandleRange(Equal, i - 1, this.open, this.high, this.low, this.close);
+                equalPeriodTotal += GetCandleRange(Equal, i - 1);
                 i++;
             }
 
             i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal[1] += this.GetCandleRange(BodyLong, i - 1, this.open, this.high, this.low, this.close);
-                bodyLongPeriodTotal[0] += this.GetCandleRange(BodyLong, i, this.open, this.high, this.low, this.close);
+                bodyLongPeriodTotal[1] += GetCandleRange(BodyLong, i - 1);
+                bodyLongPeriodTotal[0] += GetCandleRange(BodyLong, i);
                 i++;
             }
 
@@ -98,32 +98,30 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isCounterAttack =
                     // opposite candles
-                    this.GetCandleColor(i - 1, this.open, this.close) == -this.GetCandleColor(i, this.open, this.close) &&
+                    GetCandleColor(i - 1) == -GetCandleColor(i) &&
                     // 1st long
-                    this.GetRealBody(i - 1, this.open, this.close) > 
-                    this.GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
                     // 2nd long
-                    this.GetRealBody(i, this.open, this.close) > 
-                    this.GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i) &&
                     // equal closes
-                    this.close[i] <= this.close[i - 1] + this.GetCandleAverage(Equal, equalPeriodTotal, i - 1, this.open, this.high, this.low, this.close) &&
-                    this.close[i] >= this.close[i - 1] - this.GetCandleAverage(Equal, equalPeriodTotal, i - 1, this.open, this.high, this.low, this.close);
+                    close[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                    close[i] >= close[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1);
 
-                outInteger[outIdx++] = isCounterAttack ? this.GetCandleColor(i, this.open, this.close) * 100 : 0;
+                outInteger[outIdx++] = isCounterAttack ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 equalPeriodTotal +=
-                    this.GetCandleRange(Equal, i - 1, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(Equal, equalTrailingIdx - 1, this.open, this.high, this.low, this.close);
+                    GetCandleRange(Equal, i - 1) -
+                    GetCandleRange(Equal, equalTrailingIdx - 1);
 
                 int totIdx;
                 for (totIdx = 1; totIdx >= 0; --totIdx)
                 {
                     bodyLongPeriodTotal[totIdx] +=
-                        this.GetCandleRange(BodyLong, i - totIdx, this.open, this.high, this.low, this.close) -
-                        this.GetCandleRange(BodyLong, bodyLongTrailingIdx - totIdx, this.open, this.high, this.low, this.close);
+                        GetCandleRange(BodyLong, i - totIdx) -
+                        GetCandleRange(BodyLong, bodyLongTrailingIdx - totIdx);
                 }
 
                 i++;
@@ -140,7 +138,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlCounterAttackLookback()
         {
-            return Math.Max(this.GetCandleAvgPeriod(Equal), this.GetCandleAvgPeriod(BodyLong)) + 1;
+            return Max(GetCandleAvgPeriod(Equal), GetCandleAvgPeriod(BodyLong)) + 1;
         }
     }
 }

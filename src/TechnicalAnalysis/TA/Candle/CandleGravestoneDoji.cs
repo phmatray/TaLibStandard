@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 using static TechnicalAnalysis.CandleSettingType;
 
 namespace TechnicalAnalysis.Candle
@@ -30,7 +30,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -41,7 +41,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlGravestoneDojiLookback();
+            int lookbackTotal = CdlGravestoneDojiLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -60,21 +60,21 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double bodyDojiPeriodTotal = 0.0;
-            int bodyDojiTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyDoji);
+            int bodyDojiTrailingIdx = startIdx - GetCandleAvgPeriod(BodyDoji);
             double shadowVeryShortPeriodTotal = 0.0;
-            int shadowVeryShortTrailingIdx = startIdx - this.GetCandleAvgPeriod(ShadowVeryShort);
+            int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
             
             int i = bodyDojiTrailingIdx;
             while (i < startIdx)
             {
-                bodyDojiPeriodTotal += this.GetCandleRange(BodyDoji, i, this.open, this.high, this.low, this.close);
+                bodyDojiPeriodTotal += GetCandleRange(BodyDoji, i);
                 i++;
             }
 
             i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal += this.GetCandleRange(ShadowVeryShort, i, this.open, this.high, this.low, this.close);
+                shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
 
@@ -92,12 +92,9 @@ namespace TechnicalAnalysis.Candle
             do
             {
                 bool isGravestoneDoji =
-                    this.GetRealBody(i, this.open, this.close) <=
-                    this.GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i, this.open, this.high, this.low, this.close) &&
-                    this.GetLowerShadow(i, this.open, this.low, this.close) <
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i, this.open, this.high, this.low, this.close) &&
-                    this.GetUpperShadow(i, this.open, this.low, this.close) >
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i, this.open, this.high, this.low, this.close);
+                    GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
+                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
+                    GetUpperShadow(i) > GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i);
 
                 outInteger[outIdx++] = isGravestoneDoji ? 100 : 0;
 
@@ -105,12 +102,12 @@ namespace TechnicalAnalysis.Candle
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyDojiPeriodTotal +=
-                    this.GetCandleRange(BodyDoji, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyDoji, bodyDojiTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyDoji, i) -
+                    GetCandleRange(BodyDoji, bodyDojiTrailingIdx);
 
                 shadowVeryShortPeriodTotal +=
-                    this.GetCandleRange(ShadowVeryShort, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(ShadowVeryShort, i) -
+                    GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx);
 
                 i++;
                 bodyDojiTrailingIdx++;
@@ -126,7 +123,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlGravestoneDojiLookback()
         {
-            return Math.Max(this.GetCandleAvgPeriod(BodyDoji), this.GetCandleAvgPeriod(ShadowVeryShort));
+            return Max(GetCandleAvgPeriod(BodyDoji), GetCandleAvgPeriod(ShadowVeryShort));
         }
     }
 }

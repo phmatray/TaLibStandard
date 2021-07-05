@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 using static TechnicalAnalysis.CandleSettingType;
 
 namespace TechnicalAnalysis.Candle
@@ -31,7 +31,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -47,7 +47,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlEveningDojiStarLookback();
+            int lookbackTotal = CdlEveningDojiStarLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -68,28 +68,28 @@ namespace TechnicalAnalysis.Candle
             double bodyLongPeriodTotal = 0.0;
             double bodyDojiPeriodTotal = 0.0;
             double bodyShortPeriodTotal = 0.0;
-            int bodyLongTrailingIdx = startIdx - 2 - this.GetCandleAvgPeriod(BodyLong);
-            int bodyDojiTrailingIdx = startIdx - 1 - this.GetCandleAvgPeriod(BodyDoji);
-            int bodyShortTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyShort);
+            int bodyLongTrailingIdx = startIdx - 2 - GetCandleAvgPeriod(BodyLong);
+            int bodyDojiTrailingIdx = startIdx - 1 - GetCandleAvgPeriod(BodyDoji);
+            int bodyShortTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx - 2)
             {
-                bodyLongPeriodTotal += this.GetCandleRange(BodyLong, i, this.open, this.high, this.low, this.close);
+                bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
                 i++;
             }
 
             i = bodyDojiTrailingIdx;
             while (i < startIdx - 1)
             {
-                bodyDojiPeriodTotal += this.GetCandleRange(BodyDoji, i, this.open, this.high, this.low, this.close);
+                bodyDojiPeriodTotal += GetCandleRange(BodyDoji, i);
                 i++;
             }
 
             i = bodyShortTrailingIdx;
             while (i < startIdx)
             {
-                bodyShortPeriodTotal += this.GetCandleRange(BodyShort, i, this.open, this.high, this.low, this.close);
+                bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
@@ -113,22 +113,19 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isEveningDojiStar =
                     // 1st: long
-                    this.GetRealBody(i - 2, this.open, this.close) >
-                    this.GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
                     // white
-                    this.GetCandleColor(i - 2, this.open, this.close) == 1 &&
+                    GetCandleColor(i - 2) == 1 &&
                     // 2nd: doji
-                    this.GetRealBody(i - 1, this.open, this.close) <= 
-                    this.GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i - 1, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i - 1) &&
                     // gapping up
-                    this.GetRealBodyGapUp(i - 1, i - 2, this.open, this.close) &&
+                    GetRealBodyGapUp(i - 1, i - 2) &&
                     // 3rd: longer than short
-                    this.GetRealBody(i, this.open, this.close) > 
-                    this.GetCandleAverage(BodyShort, bodyShortPeriodTotal, i, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i) > GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
                     // black real body
-                    this.GetCandleColor(i, this.open, this.close) == -1 &&
+                    GetCandleColor(i) == -1 &&
                     // closing well within 1st rb
-                    this.close[i] < this.close[i - 2] - this.GetRealBody(i - 2, this.open, this.close) * optInPenetration;
+                    close[i] < close[i - 2] - GetRealBody(i - 2) * optInPenetration;
 
                 outInteger[outIdx++] = isEveningDojiStar ? -100 : 0;
 
@@ -136,16 +133,16 @@ namespace TechnicalAnalysis.Candle
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyLongPeriodTotal +=
-                    this.GetCandleRange(BodyLong, i - 2, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyLong, bodyLongTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyLong, i - 2) -
+                    GetCandleRange(BodyLong, bodyLongTrailingIdx);
 
                 bodyDojiPeriodTotal +=
-                    this.GetCandleRange(BodyDoji, i - 1, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyDoji, bodyDojiTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyDoji, i - 1) -
+                    GetCandleRange(BodyDoji, bodyDojiTrailingIdx);
 
                 bodyShortPeriodTotal +=
-                    this.GetCandleRange(BodyShort, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyShort, bodyShortTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyShort, i) -
+                    GetCandleRange(BodyShort, bodyShortTrailingIdx);
 
                 i++;
                 bodyLongTrailingIdx++;
@@ -162,9 +159,9 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlEveningDojiStarLookback()
         {
-            return Math.Max(
-                Math.Max(this.GetCandleAvgPeriod(BodyDoji), this.GetCandleAvgPeriod(BodyLong)),
-                this.GetCandleAvgPeriod(BodyShort)
+            return Max(
+                Max(GetCandleAvgPeriod(BodyDoji), GetCandleAvgPeriod(BodyLong)),
+                GetCandleAvgPeriod(BodyShort)
             ) + 2;
         }
     }

@@ -28,7 +28,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -39,7 +39,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlHikkakeLookback();
+            int lookbackTotal = CdlHikkakeLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -65,17 +65,17 @@ namespace TechnicalAnalysis.Candle
             {
                 bool patternRecognition =
                     // 1st + 2nd: lower high and higher low
-                    this.high[i - 1] < this.high[i - 2] && this.low[i - 1] > this.low[i - 2] &&
+                    high[i - 1] < high[i - 2] && low[i - 1] > low[i - 2] &&
                     (
                         // (bull) 3rd: lower high and lower low
-                        (this.high[i] < this.high[i - 1] && this.low[i] < this.low[i - 1]) ||
+                        (high[i] < high[i - 1] && low[i] < low[i - 1]) ||
                         // (bear) 3rd: higher high and higher low
-                        (this.high[i] > this.high[i - 1] && this.low[i] > this.low[i - 1])
+                        (high[i] > high[i - 1] && low[i] > low[i - 1])
                     );
 
                 if (patternRecognition)
                 {
-                    patternResult = 100 * (this.high[i] < this.high[i - 1] ? 1 : -1);
+                    patternResult = 100 * (high[i] < high[i - 1] ? 1 : -1);
                     patternIdx = i;
                 }
                 else
@@ -85,9 +85,9 @@ namespace TechnicalAnalysis.Candle
                         i <= patternIdx + 3 &&
                         (
                             // close higher than the high of 2nd
-                            (patternResult > 0 && this.close[i] > this.high[patternIdx - 1]) ||
+                            (patternResult > 0 && close[i] > high[patternIdx - 1]) ||
                             // close lower than the low of 2nd
-                            (patternResult < 0 && this.close[i] < this.low[patternIdx - 1])
+                            (patternResult < 0 && close[i] < low[patternIdx - 1])
                         );
 
                     if (confirmation)
@@ -117,17 +117,17 @@ namespace TechnicalAnalysis.Candle
             {
                 bool patternRecognition =
                     // 1st + 2nd: lower high and higher low
-                    this.high[i - 1] < this.high[i - 2] && this.low[i - 1] > this.low[i - 2] &&
+                    high[i - 1] < high[i - 2] && low[i - 1] > low[i - 2] &&
                     (
                         // (bull) 3rd: lower high and lower low
-                        (this.high[i] < this.high[i - 1] && this.low[i] < this.low[i - 1]) ||
+                        (high[i] < high[i - 1] && low[i] < low[i - 1]) ||
                         // (bear) 3rd: higher high and higher low
-                        (this.high[i] > this.high[i - 1] && this.low[i] > this.low[i - 1])
+                        (high[i] > high[i - 1] && low[i] > low[i - 1])
                     );
 
                 if (patternRecognition)
                 {
-                    patternResult = 100 * (this.high[i] < this.high[i - 1] ? 1 : -1);
+                    patternResult = 100 * (high[i] < high[i - 1] ? 1 : -1);
                     patternIdx = i;
                     outInteger[outIdx++] = patternResult;
                 }
@@ -138,9 +138,9 @@ namespace TechnicalAnalysis.Candle
                         i <= patternIdx + 3 &&
                         (
                             // close higher than the high of 2nd
-                            (patternResult > 0 && this.close[i] > this.high[patternIdx - 1]) ||
+                            (patternResult > 0 && close[i] > high[patternIdx - 1]) ||
                             // close lower than the low of 2nd
-                            (patternResult < 0 && this.close[i] < this.low[patternIdx - 1])
+                            (patternResult < 0 && close[i] < low[patternIdx - 1])
                         );
 
                     if (confirmation)

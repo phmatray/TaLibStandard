@@ -47,8 +47,8 @@ namespace TechnicalAnalysis
         public Aroon(RetCode retCode, int begIdx, int nbElement, double[] aroonDown, double[] aroonUp)
             : base(retCode, begIdx, nbElement)
         {
-            this.AroonDown = aroonDown;
-            this.AroonUp = aroonUp;
+            AroonDown = aroonDown;
+            AroonUp = aroonUp;
         }
 
         public double[] AroonDown { get; }

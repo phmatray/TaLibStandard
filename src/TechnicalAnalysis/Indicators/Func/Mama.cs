@@ -47,8 +47,8 @@ namespace TechnicalAnalysis
         public Mama(RetCode retCode, int begIdx, int nbElement, double[] mama, double[] fama)
             : base(retCode, begIdx, nbElement)
         {
-            this.MAMA = mama;
-            this.FAMA = fama;
+            MAMA = mama;
+            FAMA = fama;
         }
 
         public double[] FAMA { get; }

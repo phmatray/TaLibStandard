@@ -4,9 +4,9 @@
     {
         public IndicatorBase(RetCode retCode, int begIdx, int nbElement)
         {
-            this.RetCode = retCode;
-            this.BegIdx = begIdx;
-            this.NBElement = nbElement;
+            RetCode = retCode;
+            BegIdx = begIdx;
+            NBElement = nbElement;
         }
 
         public RetCode RetCode { get; }

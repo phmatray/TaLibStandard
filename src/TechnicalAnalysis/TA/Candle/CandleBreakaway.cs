@@ -29,7 +29,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlBreakawayLookback();
+            int lookbackTotal = CdlBreakawayLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -59,12 +59,12 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double bodyLongPeriodTotal = 0.0;
-            int bodyLongTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyLong);
+            int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal += this.GetCandleRange(BodyLong, i - 4, this.open, this.high, this.low, this.close);
+                bodyLongPeriodTotal += GetCandleRange(BodyLong, i - 4);
                 i++;
             }
 
@@ -87,54 +87,53 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isBreakaway =
                     // 1st long
-                    this.GetRealBody(i - 4, this.open, this.close) >
-                    this.GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 4, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i - 4) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 4) &&
                     // 1st, 2nd, 4th same color, 5th opposite
-                    this.GetCandleColor(i - 4, this.open, this.close) == this.GetCandleColor(i - 3, this.open, this.close) &&
-                    this.GetCandleColor(i - 3, this.open, this.close) == this.GetCandleColor(i - 1, this.open, this.close) &&
-                    this.GetCandleColor(i - 1, this.open, this.close) == -this.GetCandleColor(i, this.open, this.close) &&
+                    GetCandleColor(i - 4) == GetCandleColor(i - 3) &&
+                    GetCandleColor(i - 3) == GetCandleColor(i - 1) &&
+                    GetCandleColor(i - 1) == -GetCandleColor(i) &&
                     (
                         (
                             // when 1st is black:
-                            this.GetCandleColor(i - 4, this.open, this.close) == -1 &&
+                            GetCandleColor(i - 4) == -1 &&
                             // 2nd gaps down
-                            this.GetRealBodyGapDown(i - 3, i - 4, this.open, this.close) &&
+                            GetRealBodyGapDown(i - 3, i - 4) &&
                             // 3rd has lower high and low than 2nd
-                            this.high[i - 2] < this.high[i - 3] &&
-                            this.low[i - 2] < this.low[i - 3] &&
+                            high[i - 2] < high[i - 3] &&
+                            low[i - 2] < low[i - 3] &&
                             // 4th has lower high and low than 3rd
-                            this.high[i - 1] < this.high[i - 2] &&
-                            this.low[i - 1] < this.low[i - 2] &&
+                            high[i - 1] < high[i - 2] &&
+                            low[i - 1] < low[i - 2] &&
                             // 5th closes inside the gap
-                            this.close[i] > this.open[i - 3] &&
-                            this.close[i] < this.close[i - 4]
+                            close[i] > open[i - 3] &&
+                            close[i] < close[i - 4]
                         )
                         ||
                         (
                             // when 1st is white:
-                            this.GetCandleColor(i - 4, this.open, this.close) == 1 &&
+                            GetCandleColor(i - 4) == 1 &&
                             // 2nd gaps up
-                            this.GetRealBodyGapUp(i - 3, i - 4, this.open, this.close) &&
+                            GetRealBodyGapUp(i - 3, i - 4) &&
                             // 3rd has higher high and low than 2nd
-                            this.high[i - 2] > this.high[i - 3] &&
-                            this.low[i - 2] > this.low[i - 3] &&
+                            high[i - 2] > high[i - 3] &&
+                            low[i - 2] > low[i - 3] &&
                             // 4th has higher high and low than 3rd
-                            this.high[i - 1] > this.high[i - 2] &&
-                            this.low[i - 1] > this.low[i - 2] &&
+                            high[i - 1] > high[i - 2] &&
+                            low[i - 1] > low[i - 2] &&
                             // 5th closes inside the gap
-                            this.close[i] < this.open[i - 3] &&
-                            this.close[i] > this.close[i - 4]
+                            close[i] < open[i - 3] &&
+                            close[i] > close[i - 4]
                         )
                     );
 
-                outInteger[outIdx++] = isBreakaway ? this.GetCandleColor(i, this.open, this.close) * 100 : 0;
+                outInteger[outIdx++] = isBreakaway ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyLongPeriodTotal +=
-                    this.GetCandleRange(BodyLong, i - 4, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyLong, bodyLongTrailingIdx - 4, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyLong, i - 4) -
+                    GetCandleRange(BodyLong, bodyLongTrailingIdx - 4);
 
                 i++;
                 bodyLongTrailingIdx++;
@@ -149,7 +148,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlBreakawayLookback()
         {
-            return this.GetCandleAvgPeriod(BodyLong) + 4;
+            return GetCandleAvgPeriod(BodyLong) + 4;
         }
     }
 }

@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 using static TechnicalAnalysis.CandleSettingType;
 
 namespace TechnicalAnalysis.Candle
@@ -30,7 +30,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -41,7 +41,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlTristarLookback();
+            int lookbackTotal = CdlTristarLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -60,12 +60,12 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double bodyPeriodTotal = 0.0;
-            int bodyTrailingIdx = startIdx - 2 - this.GetCandleAvgPeriod(BodyDoji);
+            int bodyTrailingIdx = startIdx - 2 - GetCandleAvgPeriod(BodyDoji);
             
             int i = bodyTrailingIdx;
             while (i < startIdx - 2)
             {
-                bodyPeriodTotal += this.GetCandleRange(BodyDoji, i, this.open, this.high, this.low, this.close);
+                bodyPeriodTotal += GetCandleRange(BodyDoji, i);
                 i++;
             }
 
@@ -83,31 +83,28 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isCdlTristar =
                     // 1st: doji
-                    this.GetRealBody(i - 2, this.open, this.close) <=
-                    this.GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i - 2) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2) &&
                     // 2nd: doji
-                    this.GetRealBody(i - 1, this.open, this.close) <=
-                    this.GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2) &&
                     // 3rd: doji
-                    this.GetRealBody(i, this.open, this.close) <=
-                    this.GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2, this.open, this.high, this.low, this.close);
+                    GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2);
 
                 if (isCdlTristar)
                 {
                     outInteger[outIdx] = 0;
 
                     if ( // 2nd gaps up
-                        this.GetRealBodyGapUp(i - 1, i - 2, this.open, this.close) &&
+                        GetRealBodyGapUp(i - 1, i - 2) &&
                         // 3rd is not higher than 2nd
-                        Math.Max(this.open[i], this.close[i]) < Math.Max(this.open[i - 1], this.close[i - 1]))
+                        Max(open[i], close[i]) < Max(open[i - 1], close[i - 1]))
                     {
                         outInteger[outIdx] = -100;
                     }
 
                     if ( // 2nd gaps down 
-                        this.GetRealBodyGapDown(i - 1, i - 2, this.open, this.close) &&
+                        GetRealBodyGapDown(i - 1, i - 2) &&
                         // 3rd is not lower than 2nd
-                        Math.Min(this.open[i], this.close[i]) > Math.Min(this.open[i - 1], this.close[i - 1]))
+                        Min(open[i], close[i]) > Min(open[i - 1], close[i - 1]))
                     {
                         outInteger[outIdx] = +100;
                     }
@@ -123,8 +120,8 @@ namespace TechnicalAnalysis.Candle
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyPeriodTotal +=
-                    this.GetCandleRange(BodyDoji, i - 2, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyDoji, bodyTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyDoji, i - 2) -
+                    GetCandleRange(BodyDoji, bodyTrailingIdx);
 
                 i++;
                 bodyTrailingIdx++;
@@ -139,7 +136,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlTristarLookback()
         {
-            return this.GetCandleAvgPeriod(BodyDoji) + 2;
+            return GetCandleAvgPeriod(BodyDoji) + 2;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlDojiLookback();
+            int lookbackTotal = CdlDojiLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -59,12 +59,12 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double bodyDojiPeriodTotal = 0.0;
-            int bodyDojiTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyDoji);
+            int bodyDojiTrailingIdx = startIdx - GetCandleAvgPeriod(BodyDoji);
 
             int i = bodyDojiTrailingIdx;
             while (i < startIdx)
             {
-                bodyDojiPeriodTotal += this.GetCandleRange(BodyDoji, i, this.open, this.high, this.low, this.close);
+                bodyDojiPeriodTotal += GetCandleRange(BodyDoji, i);
                 i++;
             }
 
@@ -79,9 +79,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isDoji =
-                    this.GetRealBody(i, this.open, this.close) <=
-                    this.GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i, this.open, this.high, this.low, this.close);
+                bool isDoji = GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i);
 
                 outInteger[outIdx++] = isDoji ? 100 : 0;
 
@@ -89,8 +87,8 @@ namespace TechnicalAnalysis.Candle
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyDojiPeriodTotal +=
-                    this.GetCandleRange(BodyDoji, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyDoji, bodyDojiTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyDoji, i) -
+                    GetCandleRange(BodyDoji, bodyDojiTrailingIdx);
 
                 i++;
                 bodyDojiTrailingIdx++;
@@ -105,7 +103,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlDojiLookback()
         {
-            return this.GetCandleAvgPeriod(BodyDoji);
+            return GetCandleAvgPeriod(BodyDoji);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -39,7 +39,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.Cdl3OutsideLookback();
+            int lookbackTotal = Cdl3OutsideLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -74,25 +74,25 @@ namespace TechnicalAnalysis.Candle
                 bool is3Outside =
                     (
                         // white engulfs black
-                        this.GetCandleColor(i - 1, this.open, this.close) == 1 &&
-                        this.GetCandleColor(i - 2, this.open, this.close) == -1 &&
-                        this.close[i - 1] > this.open[i - 2] &&
-                        this.open[i - 1] < this.close[i - 2] &&
+                        GetCandleColor(i - 1) == 1 &&
+                        GetCandleColor(i - 2) == -1 &&
+                        close[i - 1] > open[i - 2] &&
+                        open[i - 1] < close[i - 2] &&
                         // third candle higher
-                        this.close[i] > this.close[i - 1]
+                        close[i] > close[i - 1]
                     )
                     ||
                     (
                         // black engulfs white
-                        this.GetCandleColor(i - 1, this.open, this.close) == -1 &&
-                        this.GetCandleColor(i - 2, this.open, this.close) == 1 &&
-                        this.open[i - 1] > this.close[i - 2] &&
-                        this.close[i - 1] < this.open[i - 2] &&
+                        GetCandleColor(i - 1) == -1 &&
+                        GetCandleColor(i - 2) == 1 &&
+                        open[i - 1] > close[i - 2] &&
+                        close[i - 1] < open[i - 2] &&
                         // third candle lower
-                        this.close[i] < this.close[i - 1]
+                        close[i] < close[i - 1]
                     );
 
-                outInteger[outIdx++] = is3Outside ? this.GetCandleColor(i - 1, this.open, this.close) * 100 : 0;
+                outInteger[outIdx++] = is3Outside ? GetCandleColor(i - 1) * 100 : 0;
 
                 i++;
             } while (i <= endIdx);

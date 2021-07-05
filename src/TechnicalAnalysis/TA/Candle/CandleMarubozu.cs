@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 using static TechnicalAnalysis.CandleSettingType;
 
 namespace TechnicalAnalysis.Candle
@@ -30,7 +30,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -41,7 +41,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlMarubozuLookback();
+            int lookbackTotal = CdlMarubozuLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -60,21 +60,21 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double bodyLongPeriodTotal = 0.0;
-            int bodyLongTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyLong);
+            int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             double shadowVeryShortPeriodTotal = 0.0;
-            int shadowVeryShortTrailingIdx = startIdx - this.GetCandleAvgPeriod(ShadowVeryShort);
+            int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal += this.GetCandleRange(BodyLong, i, this.open, this.high, this.low, this.close);
+                bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
                 i++;
             }
 
             i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal += this.GetCandleRange(ShadowVeryShort, i, this.open, this.high, this.low, this.close);
+                shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
 
@@ -89,25 +89,22 @@ namespace TechnicalAnalysis.Candle
             do
             {
                 bool isMarubozu =
-                    this.GetRealBody(i, this.open, this.close) >
-                    this.GetCandleAverage(BodyLong, bodyLongPeriodTotal, i, this.open, this.high, this.low, this.close) &&
-                    this.GetUpperShadow(i, this.open, this.low, this.close) <
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i, this.open, this.high, this.low, this.close) &&
-                    this.GetLowerShadow(i, this.open, this.low, this.close) <
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i, this.open, this.high, this.low, this.close);
+                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i) &&
+                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
+                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i);
 
-                outInteger[outIdx++] = isMarubozu ? this.GetCandleColor(i, this.open, this.close) * 100 : 0;
+                outInteger[outIdx++] = isMarubozu ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyLongPeriodTotal +=
-                    this.GetCandleRange(BodyLong, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyLong, bodyLongTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyLong, i) -
+                    GetCandleRange(BodyLong, bodyLongTrailingIdx);
 
                 shadowVeryShortPeriodTotal +=
-                    this.GetCandleRange(ShadowVeryShort, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(ShadowVeryShort, i) -
+                    GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx);
 
                 i++;
                 bodyLongTrailingIdx++;
@@ -123,7 +120,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlMarubozuLookback()
         {
-            return Math.Max(this.GetCandleAvgPeriod(BodyLong), this.GetCandleAvgPeriod(ShadowVeryShort));
+            return Max(GetCandleAvgPeriod(BodyLong), GetCandleAvgPeriod(ShadowVeryShort));
         }
     }
 }

@@ -29,7 +29,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlStickSandwichLookback();
+            int lookbackTotal = CdlStickSandwichLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -59,12 +59,12 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double equalPeriodTotal = 0.0;
-            int equalTrailingIdx = startIdx - this.GetCandleAvgPeriod(Equal);
+            int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
             
             int i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal += this.GetCandleRange(Equal, i - 2, this.open, this.high, this.low, this.close);
+                equalPeriodTotal += GetCandleRange(Equal, i - 2);
                 i++;
             }
 
@@ -85,18 +85,16 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isStickSandwich =
                     // first black
-                    this.GetCandleColor(i - 2, this.open, this.close) == -1 &&
+                    GetCandleColor(i - 2) == -1 &&
                     // second white
-                    this.GetCandleColor(i - 1, this.open, this.close) == 1 &&
+                    GetCandleColor(i - 1) == 1 &&
                     // third black
-                    this.GetCandleColor(i, this.open, this.close) == -1 &&
+                    GetCandleColor(i) == -1 &&
                     // 2nd low > prior close
-                    this.low[i - 1] > this.close[i - 2] &&
+                    low[i - 1] > close[i - 2] &&
                     // 1st and 3rd same close
-                    this.close[i] <= this.close[i - 2] +
-                    this.GetCandleAverage(Equal, equalPeriodTotal, i - 2, this.open, this.high, this.low, this.close) &&
-                    this.close[i] >= this.close[i - 2] -
-                    this.GetCandleAverage(Equal, equalPeriodTotal, i - 2, this.open, this.high, this.low, this.close);
+                    close[i] <= close[i - 2] + GetCandleAverage(Equal, equalPeriodTotal, i - 2) &&
+                    close[i] >= close[i - 2] - GetCandleAverage(Equal, equalPeriodTotal, i - 2);
 
                 outInteger[outIdx++] = isStickSandwich ? 100 : 0;
 
@@ -104,8 +102,8 @@ namespace TechnicalAnalysis.Candle
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 equalPeriodTotal +=
-                    this.GetCandleRange(Equal, i - 2, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(Equal, equalTrailingIdx - 2, this.open, this.high, this.low, this.close);
+                    GetCandleRange(Equal, i - 2) -
+                    GetCandleRange(Equal, equalTrailingIdx - 2);
 
                 i++;
                 equalTrailingIdx++;
@@ -120,7 +118,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlStickSandwichLookback()
         {
-            return this.GetCandleAvgPeriod(Equal) + 2;
+            return GetCandleAvgPeriod(Equal) + 2;
         }
     }
 }

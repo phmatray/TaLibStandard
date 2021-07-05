@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 using static TechnicalAnalysis.CandleSettingType;
 
 namespace TechnicalAnalysis.Candle
@@ -30,7 +30,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -41,7 +41,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlSeparatingLinesLookback();
+            int lookbackTotal = CdlSeparatingLinesLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -60,30 +60,30 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double shadowVeryShortPeriodTotal = 0.0;
-            int shadowVeryShortTrailingIdx = startIdx - this.GetCandleAvgPeriod(ShadowVeryShort);
+            int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
             double bodyLongPeriodTotal = 0.0;
-            int bodyLongTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyLong);
+            int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             double equalPeriodTotal = 0.0;
-            int equalTrailingIdx = startIdx - this.GetCandleAvgPeriod(Equal);
+            int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
             
             int i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal += this.GetCandleRange(ShadowVeryShort, i, this.open, this.high, this.low, this.close);
+                shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
 
             i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal += this.GetCandleRange(BodyLong, i, this.open, this.high, this.low, this.close);
+                bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
                 i++;
             }
 
             i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal += this.GetCandleRange(Equal, i - 1, this.open, this.high, this.low, this.close);
+                equalPeriodTotal += GetCandleRange(Equal, i - 1);
                 i++;
             }
 
@@ -103,47 +103,42 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isSeparatingLines =
                     // opposite candles
-                    this.GetCandleColor(i - 1, this.open, this.close) == -this.GetCandleColor(i, this.open, this.close) &&
+                    GetCandleColor(i - 1) == -GetCandleColor(i) &&
                     // same open
-                    this.open[i] <= this.open[i - 1] +
-                    this.GetCandleAverage(Equal, equalPeriodTotal, i - 1, this.open, this.high, this.low, this.close) &&
-                    this.open[i] >= this.open[i - 1] -
-                    this.GetCandleAverage(Equal, equalPeriodTotal, i - 1, this.open, this.high, this.low, this.close) &&
+                    open[i] <= open[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                    open[i] >= open[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
                     // belt hold: long body
-                    this.GetRealBody(i, this.open, this.close) >
-                    this.GetCandleAverage(BodyLong, bodyLongPeriodTotal, i, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i) &&
                     (
                         (
                             // with no lower shadow if bullish
-                            this.GetCandleColor(i, this.open, this.close) == 1 &&
-                            this.GetLowerShadow(i, this.open, this.low, this.close) <
-                            this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i, this.open, this.high, this.low, this.close)
+                            GetCandleColor(i) == 1 &&
+                            GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
                         )
                         ||
                         (
                             // with no upper shadow if bearish
-                            this.GetCandleColor(i, this.open, this.close) == -1 &&
-                            this.GetUpperShadow(i, this.open, this.low, this.close) <
-                            this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i, this.open, this.high, this.low, this.close)
+                            GetCandleColor(i) == -1 &&
+                            GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
                         )
                     );
 
-                outInteger[outIdx++] = isSeparatingLines ? this.GetCandleColor(i, this.open, this.close) * 100 : 0;
+                outInteger[outIdx++] = isSeparatingLines ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 shadowVeryShortPeriodTotal +=
-                    this.GetCandleRange(ShadowVeryShort, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(ShadowVeryShort, i) -
+                    GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx);
 
                 bodyLongPeriodTotal +=
-                    this.GetCandleRange(BodyLong, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyLong, bodyLongTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyLong, i) -
+                    GetCandleRange(BodyLong, bodyLongTrailingIdx);
 
                 equalPeriodTotal +=
-                    this.GetCandleRange(Equal, i - 1, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(Equal, equalTrailingIdx - 1, this.open, this.high, this.low, this.close);
+                    GetCandleRange(Equal, i - 1) -
+                    GetCandleRange(Equal, equalTrailingIdx - 1);
 
                 i++;
                 shadowVeryShortTrailingIdx++;
@@ -160,9 +155,9 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlSeparatingLinesLookback()
         {
-            return Math.Max(
-                Math.Max(this.GetCandleAvgPeriod(ShadowVeryShort), this.GetCandleAvgPeriod(BodyLong)),
-                this.GetCandleAvgPeriod(Equal)
+            return Max(
+                Max(GetCandleAvgPeriod(ShadowVeryShort), GetCandleAvgPeriod(BodyLong)),
+                GetCandleAvgPeriod(Equal)
             ) + 1;
         }
     }

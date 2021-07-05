@@ -30,7 +30,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -46,7 +46,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlDarkCloudCoverLookback();
+            int lookbackTotal = CdlDarkCloudCoverLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -65,12 +65,12 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double bodyLongPeriodTotal = 0.0;
-            int bodyLongTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyLong);
+            int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal += this.GetCandleRange(BodyLong, i - 1, this.open, this.high, this.low, this.close);
+                bodyLongPeriodTotal += GetCandleRange(BodyLong, i - 1);
                 i++;
             }
 
@@ -92,17 +92,16 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isDarkCloudCover =
                     // 1st: white
-                    this.GetCandleColor(i - 1, this.open, this.close) == 1 &&
+                    GetCandleColor(i - 1) == 1 &&
                     // long
-                    this.GetRealBody(i - 1, this.open, this.close) >
-                    this.GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
                     // 2nd: black
-                    this.GetCandleColor(i, this.open, this.close) == -1 &&
+                    GetCandleColor(i) == -1 &&
                     // open above prior high
-                    this.open[i] > this.high[i - 1] &&
+                    open[i] > high[i - 1] &&
                     // close within prior body
-                    this.close[i] > this.open[i - 1] &&
-                    this.close[i] < this.close[i - 1] - this.GetRealBody(i - 1, this.open, this.close) * optInPenetration;
+                    close[i] > open[i - 1] &&
+                    close[i] < close[i - 1] - GetRealBody(i - 1) * optInPenetration;
 
                 outInteger[outIdx++] = isDarkCloudCover ? -100 : 0;
 
@@ -110,8 +109,8 @@ namespace TechnicalAnalysis.Candle
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyLongPeriodTotal +=
-                    this.GetCandleRange(BodyLong, i - 1, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyLong, bodyLongTrailingIdx - 1, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyLong, i - 1) -
+                    GetCandleRange(BodyLong, bodyLongTrailingIdx - 1);
 
                 i++;
                 bodyLongTrailingIdx++;
@@ -126,7 +125,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlDarkCloudCoverLookback()
         {
-            return this.GetCandleAvgPeriod(BodyLong) + 1;
+            return GetCandleAvgPeriod(BodyLong) + 1;
         }
     }
 }

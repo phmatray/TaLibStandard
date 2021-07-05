@@ -64,7 +64,7 @@ namespace TechnicalAnalysis.Candle
             int i = bodyLongTrailingIdx;
             while (i < startIdx - 2)
             {
-                bodyLongPeriodTotal += GetCandleRange(BodyLong, i, open, high, low, close);
+                bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
                 i++;
             }
 
@@ -87,22 +87,19 @@ namespace TechnicalAnalysis.Candle
             {
                 bool is2Crows =
                     // 1st: white
-                    GetCandleColor(i - 2, open, close) == 1 &&
+                    GetCandleColor(i - 2) == 1 &&
                     // long
-                    GetRealBody(i - 2, open, close) >
-                    GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2, open, high, low, close) &&
+                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
                     // 2nd: black
-                    GetCandleColor(i - 1, open, close) == -1 &&
+                    GetCandleColor(i - 1) == -1 &&
                     // gapping up
-                    GetRealBodyGapUp(i - 1, i - 2, open, close) &&
+                    GetRealBodyGapUp(i - 1, i - 2) &&
                     // 3rd: black
-                    GetCandleColor(i, open, close) == -1 &&
+                    GetCandleColor(i) == -1 &&
                     // opening within 2nd rb
-                    open[i] < open[i - 1] &&
-                    open[i] > close[i - 1] &&
+                    open[i] < open[i - 1] && open[i] > close[i - 1] &&
                     // closing within 1st rb
-                    close[i] > open[i - 2] &&
-                    close[i] < close[i - 2];
+                    close[i] > open[i - 2] && close[i] < close[i - 2];
 
                 outInteger[outIdx++] = is2Crows ? -100 : 0;
 
@@ -110,8 +107,8 @@ namespace TechnicalAnalysis.Candle
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyLongPeriodTotal +=
-                    GetCandleRange(BodyLong, i - 2, open, high, low, close) -
-                    GetCandleRange(BodyLong, bodyLongTrailingIdx, open, high, low, close);
+                    GetCandleRange(BodyLong, i - 2) -
+                    GetCandleRange(BodyLong, bodyLongTrailingIdx);
 
                 i++;
                 bodyLongTrailingIdx++;

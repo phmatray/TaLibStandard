@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 using static TechnicalAnalysis.CandleSettingType;
 
 namespace TechnicalAnalysis.Candle
@@ -30,7 +30,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -41,7 +41,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlGapSideSideWhiteLookback();
+            int lookbackTotal = CdlGapSideSideWhiteLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -61,20 +61,20 @@ namespace TechnicalAnalysis.Candle
             // Add-up the initial period, except for the last value.
             double nearPeriodTotal = 0.0;
             double equalPeriodTotal = 0.0;
-            int nearTrailingIdx = startIdx - this.GetCandleAvgPeriod(Near);
-            int equalTrailingIdx = startIdx - this.GetCandleAvgPeriod(Equal);
+            int nearTrailingIdx = startIdx - GetCandleAvgPeriod(Near);
+            int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
             
             int i = nearTrailingIdx;
             while (i < startIdx)
             {
-                nearPeriodTotal += this.GetCandleRange(Near, i - 1, this.open, this.high, this.low, this.close);
+                nearPeriodTotal += GetCandleRange(Near, i - 1);
                 i++;
             }
 
             i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal += this.GetCandleRange(Equal, i - 1, this.open, this.high, this.low, this.close);
+                equalPeriodTotal += GetCandleRange(Equal, i - 1);
                 i++;
             }
 
@@ -98,43 +98,43 @@ namespace TechnicalAnalysis.Candle
                 bool isGapSideSideWhite =
                     ( // upside or downside gap between the 1st candle and both the next 2 candles
                         (
-                            this.GetRealBodyGapUp(i - 1, i - 2, this.open, this.close) &&
-                            this.GetRealBodyGapUp(i, i - 2, this.open, this.close)
+                            GetRealBodyGapUp(i - 1, i - 2) &&
+                            GetRealBodyGapUp(i, i - 2)
                         )
                         ||
                         (
-                            this.GetRealBodyGapDown(i - 1, i - 2, this.open, this.close) &&
-                            this.GetRealBodyGapDown(i, i - 2, this.open, this.close)
+                            GetRealBodyGapDown(i - 1, i - 2) &&
+                            GetRealBodyGapDown(i, i - 2)
                         )
                     ) &&
                     // 2nd: white
-                    this.GetCandleColor(i - 1, this.open, this.close) == 1 &&
+                    GetCandleColor(i - 1) == 1 &&
                     // 3rd: white
-                    this.GetCandleColor(i, this.open, this.close) == 1 &&
+                    GetCandleColor(i) == 1 &&
                     // same size 2 and 3
-                    this.GetRealBody(i, this.open, this.close) >= this.GetRealBody(i - 1, this.open, this.close) -
-                    this.GetCandleAverage(Near, nearPeriodTotal, i - 1, this.open, this.high, this.low, this.close) &&
-                    this.GetRealBody(i, this.open, this.close) <= this.GetRealBody(i - 1, this.open, this.close) +
-                    this.GetCandleAverage(Near, nearPeriodTotal, i - 1, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i) >= GetRealBody(i - 1) -
+                    GetCandleAverage(Near, nearPeriodTotal, i - 1) &&
+                    GetRealBody(i) <= GetRealBody(i - 1) +
+                    GetCandleAverage(Near, nearPeriodTotal, i - 1) &&
                     // same open 2 and 3
-                    this.open[i] >= this.open[i - 1] -
-                    this.GetCandleAverage(Equal, equalPeriodTotal, i - 1, this.open, this.high, this.low, this.close) &&
-                    this.open[i] <= this.open[i - 1] +
-                    this.GetCandleAverage(Equal, equalPeriodTotal, i - 1, this.open, this.high, this.low, this.close);
+                    open[i] >= open[i - 1] -
+                    GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                    open[i] <= open[i - 1] +
+                    GetCandleAverage(Equal, equalPeriodTotal, i - 1);
 
                 outInteger[outIdx++] =
-                    isGapSideSideWhite ? this.GetRealBodyGapUp(i - 1, i - 2, this.open, this.close) ? 100 : -100 : 0;
+                    isGapSideSideWhite ? GetRealBodyGapUp(i - 1, i - 2) ? 100 : -100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 nearPeriodTotal +=
-                    this.GetCandleRange(Near, i - 1, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(Near, nearTrailingIdx - 1, this.open, this.high, this.low, this.close);
+                    GetCandleRange(Near, i - 1) -
+                    GetCandleRange(Near, nearTrailingIdx - 1);
 
                 equalPeriodTotal +=
-                    this.GetCandleRange(Equal, i - 1, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(Equal, equalTrailingIdx - 1, this.open, this.high, this.low, this.close);
+                    GetCandleRange(Equal, i - 1) -
+                    GetCandleRange(Equal, equalTrailingIdx - 1);
 
                 i++;
                 nearTrailingIdx++;
@@ -150,7 +150,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlGapSideSideWhiteLookback()
         {
-            return Math.Max(this.GetCandleAvgPeriod(Near), this.GetCandleAvgPeriod(Equal)) + 2;
+            return Max(GetCandleAvgPeriod(Near), GetCandleAvgPeriod(Equal)) + 2;
         }
     }
 }

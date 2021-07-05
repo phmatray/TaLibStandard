@@ -46,8 +46,8 @@ namespace TechnicalAnalysis
         public MinMax(RetCode retCode, int begIdx, int nbElement, double[] min, double[] max)
             : base(retCode, begIdx, nbElement)
         {
-            this.Min = min;
-            this.Max = max;
+            Min = min;
+            Max = max;
         }
 
         public double[] Max { get; }

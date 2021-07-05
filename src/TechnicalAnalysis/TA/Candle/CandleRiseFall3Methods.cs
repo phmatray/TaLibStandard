@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 using static TechnicalAnalysis.CandleSettingType;
 
 namespace TechnicalAnalysis.Candle
@@ -33,7 +33,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -44,7 +44,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlRiseFall3MethodsLookback();
+            int lookbackTotal = CdlRiseFall3MethodsLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -67,23 +67,23 @@ namespace TechnicalAnalysis.Candle
             bodyPeriodTotal[2] = 0.0;
             bodyPeriodTotal[1] = 0.0;
             bodyPeriodTotal[0] = 0.0;
-            int bodyShortTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyShort);
-            int bodyLongTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyLong);
+            int bodyShortTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
+            int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = bodyShortTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal[3] += this.GetCandleRange(BodyShort, i - 3, this.open, this.high, this.low, this.close);
-                bodyPeriodTotal[2] += this.GetCandleRange(BodyShort, i - 2, this.open, this.high, this.low, this.close);
-                bodyPeriodTotal[1] += this.GetCandleRange(BodyShort, i - 1, this.open, this.high, this.low, this.close);
+                bodyPeriodTotal[3] += GetCandleRange(BodyShort, i - 3);
+                bodyPeriodTotal[2] += GetCandleRange(BodyShort, i - 2);
+                bodyPeriodTotal[1] += GetCandleRange(BodyShort, i - 1);
                 i++;
             }
 
             i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal[4] += this.GetCandleRange(BodyLong, i - 4, this.open, this.high, this.low, this.close);
-                bodyPeriodTotal[0] += this.GetCandleRange(BodyLong, i, this.open, this.high, this.low, this.close);
+                bodyPeriodTotal[4] += GetCandleRange(BodyLong, i - 4);
+                bodyPeriodTotal[0] += GetCandleRange(BodyLong, i);
                 i++;
             }
 
@@ -105,59 +105,50 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isRiseFall3Methods =
                     // 1st long, then 3 small, 5th long
-                    this.GetRealBody(i - 4, this.open, this.close) >
-                    this.GetCandleAverage(BodyLong, bodyPeriodTotal[4], i - 4, this.open, this.high, this.low, this.close) &&
-                    this.GetRealBody(i - 3, this.open, this.close) <
-                    this.GetCandleAverage(BodyShort, bodyPeriodTotal[3], i - 3, this.open, this.high, this.low, this.close) &&
-                    this.GetRealBody(i - 2, this.open, this.close) <
-                    this.GetCandleAverage(BodyShort, bodyPeriodTotal[2], i - 2, this.open, this.high, this.low, this.close) &&
-                    this.GetRealBody(i - 1, this.open, this.close) <
-                    this.GetCandleAverage(BodyShort, bodyPeriodTotal[1], i - 1, this.open, this.high, this.low, this.close) &&
-                    this.GetRealBody(i, this.open, this.close) >
-                    this.GetCandleAverage(BodyLong, bodyPeriodTotal[0], i, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i - 4) > GetCandleAverage(BodyLong, bodyPeriodTotal[4], i - 4) &&
+                    GetRealBody(i - 3) < GetCandleAverage(BodyShort, bodyPeriodTotal[3], i - 3) &&
+                    GetRealBody(i - 2) < GetCandleAverage(BodyShort, bodyPeriodTotal[2], i - 2) &&
+                    GetRealBody(i - 1) < GetCandleAverage(BodyShort, bodyPeriodTotal[1], i - 1) &&
+                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyPeriodTotal[0], i) &&
                     // white, 3 black, white  ||  black, 3 white, black
-                    this.GetCandleColor(i - 4, this.open, this.close) == -this.GetCandleColor(i - 3, this.open, this.close) &&
-                    this.GetCandleColor(i - 3, this.open, this.close) == this.GetCandleColor(i - 2, this.open, this.close) &&
-                    this.GetCandleColor(i - 2, this.open, this.close) == this.GetCandleColor(i - 1, this.open, this.close) &&
-                    this.GetCandleColor(i - 1, this.open, this.close) == -this.GetCandleColor(i, this.open, this.close) &&
+                    GetCandleColor(i - 4) == -GetCandleColor(i - 3) &&
+                    GetCandleColor(i - 3) == GetCandleColor(i - 2) &&
+                    GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
+                    GetCandleColor(i - 1) == -GetCandleColor(i) &&
                     // 2nd to 4th hold within 1st: a part of the real body must be within 1st range
-                    Math.Min(this.open[i - 3], this.close[i - 3]) < this.high[i - 4] &&
-                    Math.Max(this.open[i - 3], this.close[i - 3]) > this.low[i - 4] &&
-                    Math.Min(this.open[i - 2], this.close[i - 2]) < this.high[i - 4] &&
-                    Math.Max(this.open[i - 2], this.close[i - 2]) > this.low[i - 4] &&
-                    Math.Min(this.open[i - 1], this.close[i - 1]) < this.high[i - 4] &&
-                    Math.Max(this.open[i - 1], this.close[i - 1]) > this.low[i - 4] &&
+                    Min(open[i - 3], close[i - 3]) < high[i - 4] &&
+                    Max(open[i - 3], close[i - 3]) > low[i - 4] &&
+                    Min(open[i - 2], close[i - 2]) < high[i - 4] &&
+                    Max(open[i - 2], close[i - 2]) > low[i - 4] &&
+                    Min(open[i - 1], close[i - 1]) < high[i - 4] &&
+                    Max(open[i - 1], close[i - 1]) > low[i - 4] &&
                     // 2nd to 4th are falling (rising)
-                    this.close[i - 2] * this.GetCandleColor(i - 4, this.open, this.close) <
-                    this.close[i - 3] * this.GetCandleColor(i - 4, this.open, this.close) &&
-                    this.close[i - 1] * this.GetCandleColor(i - 4, this.open, this.close) <
-                    this.close[i - 2] * this.GetCandleColor(i - 4, this.open, this.close) &&
+                    close[i - 2] * GetCandleColor(i - 4) < close[i - 3] * GetCandleColor(i - 4) &&
+                    close[i - 1] * GetCandleColor(i - 4) < close[i - 2] * GetCandleColor(i - 4) &&
                     // 5th opens above (below) the prior close
-                    this.open[i] * this.GetCandleColor(i - 4, this.open, this.close) >
-                    this.close[i - 1] * this.GetCandleColor(i - 4, this.open, this.close) &&
+                    open[i] * GetCandleColor(i - 4) > close[i - 1] * GetCandleColor(i - 4) &&
                     // 5th closes above (below) the 1st close
-                    this.close[i] * this.GetCandleColor(i - 4, this.open, this.close) >
-                    this.close[i - 4] * this.GetCandleColor(i - 4, this.open, this.close);
+                    close[i] * GetCandleColor(i - 4) > close[i - 4] * GetCandleColor(i - 4);
 
-                outInteger[outIdx++] = isRiseFall3Methods ? 100 * this.GetCandleColor(i - 4, this.open, this.close) : 0;
+                outInteger[outIdx++] = isRiseFall3Methods ? 100 * GetCandleColor(i - 4) : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyPeriodTotal[4] +=
-                    this.GetCandleRange(BodyLong, i - 4, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyLong, bodyLongTrailingIdx - 4, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyLong, i - 4) -
+                    GetCandleRange(BodyLong, bodyLongTrailingIdx - 4);
 
                 for (int totIdx = 3; totIdx >= 1; --totIdx)
                 {
                     bodyPeriodTotal[totIdx] +=
-                        this.GetCandleRange(BodyShort, i - totIdx, this.open, this.high, this.low, this.close) -
-                        this.GetCandleRange(BodyShort, bodyShortTrailingIdx - totIdx, this.open, this.high, this.low, this.close);
+                        GetCandleRange(BodyShort, i - totIdx) -
+                        GetCandleRange(BodyShort, bodyShortTrailingIdx - totIdx);
                 }
 
                 bodyPeriodTotal[0] +=
-                    this.GetCandleRange(BodyLong, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyLong, bodyLongTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyLong, i) -
+                    GetCandleRange(BodyLong, bodyLongTrailingIdx);
 
                 i++;
                 bodyShortTrailingIdx++;
@@ -173,7 +164,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlRiseFall3MethodsLookback()
         {
-            return Math.Max(this.GetCandleAvgPeriod(BodyShort), this.GetCandleAvgPeriod(BodyLong)) + 4;
+            return Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(BodyLong)) + 4;
         }
     }
 }

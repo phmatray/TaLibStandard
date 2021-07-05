@@ -39,8 +39,8 @@ namespace TechnicalAnalysis
         public HtPhasor(RetCode retCode, int begIdx, int nbElement, double[] inPhase, double[] quadrature)
             : base(retCode, begIdx, nbElement)
         {
-            this.InPhase = inPhase;
-            this.Quadrature = quadrature;
+            InPhase = inPhase;
+            Quadrature = quadrature;
         }
 
         public double[] InPhase { get; }

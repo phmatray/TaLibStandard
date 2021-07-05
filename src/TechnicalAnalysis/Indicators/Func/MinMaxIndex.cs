@@ -46,8 +46,8 @@ namespace TechnicalAnalysis
         public MinMaxIndex(RetCode retCode, int begIdx, int nbElement, int[] minIdx, int[] maxIdx)
             : base(retCode, begIdx, nbElement)
         {
-            this.MinIdx = minIdx;
-            this.MaxIdx = maxIdx;
+            MinIdx = minIdx;
+            MaxIdx = maxIdx;
         }
 
         public int[] MaxIdx { get; }

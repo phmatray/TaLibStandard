@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 using static TechnicalAnalysis.CandleSettingType;
 
 namespace TechnicalAnalysis.Candle
@@ -30,7 +30,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -41,7 +41,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlInvertedHammerLookback();
+            int lookbackTotal = CdlInvertedHammerLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -60,30 +60,30 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double bodyPeriodTotal = 0.0;
-            int bodyTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyShort);
+            int bodyTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
             double shadowLongPeriodTotal = 0.0;
-            int shadowLongTrailingIdx = startIdx - this.GetCandleAvgPeriod(ShadowLong);
+            int shadowLongTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowLong);
             double shadowVeryShortPeriodTotal = 0.0;
-            int shadowVeryShortTrailingIdx = startIdx - this.GetCandleAvgPeriod(ShadowVeryShort);
+            int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
             
             int i = bodyTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal += this.GetCandleRange(BodyShort, i, this.open, this.high, this.low, this.close);
+                bodyPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
             i = shadowLongTrailingIdx;
             while (i < startIdx)
             {
-                shadowLongPeriodTotal += this.GetCandleRange(ShadowLong, i, this.open, this.high, this.low, this.close);
+                shadowLongPeriodTotal += GetCandleRange(ShadowLong, i);
                 i++;
             }
 
             i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal += this.GetCandleRange(ShadowVeryShort, i, this.open, this.high, this.low, this.close);
+                shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
 
@@ -102,16 +102,13 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isInvertedHammer =
                     // small rb
-                    this.GetRealBody(i, this.open, this.close) <
-                    this.GetCandleAverage(BodyShort, bodyPeriodTotal, i, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
                     // long upper shadow
-                    this.GetUpperShadow(i, this.open, this.low, this.close) >
-                    this.GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i, this.open, this.high, this.low, this.close) &&
+                    GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
                     // very short lower shadow
-                    this.GetLowerShadow(i, this.open, this.low, this.close) <
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i, this.open, this.high, this.low, this.close) &&
+                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
                     // gap down
-                    this.GetRealBodyGapDown(i, i - 1, this.open, this.close);
+                    GetRealBodyGapDown(i, i - 1);
 
                 outInteger[outIdx++] = isInvertedHammer ? 100 : 0;
 
@@ -119,16 +116,16 @@ namespace TechnicalAnalysis.Candle
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 bodyPeriodTotal +=
-                    this.GetCandleRange(BodyShort, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(BodyShort, bodyTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(BodyShort, i) -
+                    GetCandleRange(BodyShort, bodyTrailingIdx);
 
                 shadowLongPeriodTotal +=
-                    this.GetCandleRange(ShadowLong, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(ShadowLong, shadowLongTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(ShadowLong, i) -
+                    GetCandleRange(ShadowLong, shadowLongTrailingIdx);
 
                 shadowVeryShortPeriodTotal +=
-                    this.GetCandleRange(ShadowVeryShort, i, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx, this.open, this.high, this.low, this.close);
+                    GetCandleRange(ShadowVeryShort, i) -
+                    GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx);
 
                 i++;
                 bodyTrailingIdx++;
@@ -145,9 +142,9 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlInvertedHammerLookback()
         {
-            return Math.Max(
-                Math.Max(this.GetCandleAvgPeriod(BodyShort), this.GetCandleAvgPeriod(ShadowLong)),
-                this.GetCandleAvgPeriod(ShadowVeryShort)
+            return Max(
+                Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(ShadowLong)),
+                GetCandleAvgPeriod(ShadowVeryShort)
             ) + 1;
         }
     }

@@ -32,7 +32,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -43,7 +43,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlPiercingLookback();
+            int lookbackTotal = CdlPiercingLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -63,13 +63,13 @@ namespace TechnicalAnalysis.Candle
             // Add-up the initial period, except for the last value.
             bodyLongPeriodTotal[1] = 0.0;
             bodyLongPeriodTotal[0] = 0.0;
-            int bodyLongTrailingIdx = startIdx - this.GetCandleAvgPeriod(BodyLong);
+            int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal[1] += this.GetCandleRange(BodyLong, i - 1, this.open, this.high, this.low, this.close);
-                bodyLongPeriodTotal[0] += this.GetCandleRange(BodyLong, i, this.open, this.high, this.low, this.close);
+                bodyLongPeriodTotal[1] += GetCandleRange(BodyLong, i - 1);
+                bodyLongPeriodTotal[0] += GetCandleRange(BodyLong, i);
                 i++;
             }
 
@@ -90,21 +90,19 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isPiercing =
                     // 1st: black
-                    this.GetCandleColor(i - 1, this.open, this.close) == -1 &&
+                    GetCandleColor(i - 1) == -1 &&
                     // long
-                    this.GetRealBody(i - 1, this.open, this.close) >
-                    this.GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
                     // 2nd: white
-                    this.GetCandleColor(i, this.open, this.close) == 1 &&
+                    GetCandleColor(i) == 1 &&
                     // long
-                    this.GetRealBody(i, this.open, this.close) >
-                    this.GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i, this.open, this.high, this.low, this.close) &&
+                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i) &&
                     // open below prior low
-                    this.open[i] < this.low[i - 1] &&
+                    open[i] < low[i - 1] &&
                     // close within prior body
-                    this.close[i] < this.open[i - 1] &&
+                    close[i] < open[i - 1] &&
                     // above midpoint
-                    this.close[i] > this.close[i - 1] + this.GetRealBody(i - 1, this.open, this.close) * 0.5;
+                    close[i] > close[i - 1] + GetRealBody(i - 1) * 0.5;
 
                 outInteger[outIdx++] = isPiercing ? 100 : 0;
 
@@ -114,8 +112,8 @@ namespace TechnicalAnalysis.Candle
                 for (int totIdx = 1; totIdx >= 0; --totIdx)
                 {
                     bodyLongPeriodTotal[totIdx] +=
-                        this.GetCandleRange(BodyLong, i - totIdx, this.open, this.high, this.low, this.close) -
-                        this.GetCandleRange(BodyLong, bodyLongTrailingIdx - totIdx, this.open, this.high, this.low, this.close);
+                        GetCandleRange(BodyLong, i - totIdx) -
+                        GetCandleRange(BodyLong, bodyLongTrailingIdx - totIdx);
                 }
 
                 i++;
@@ -131,7 +129,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlPiercingLookback()
         {
-            return this.GetCandleAvgPeriod(BodyLong) + 1;
+            return GetCandleAvgPeriod(BodyLong) + 1;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlMatchingLowLookback();
+            int lookbackTotal = CdlMatchingLowLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -59,12 +59,12 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double equalPeriodTotal = 0.0;
-            int equalTrailingIdx = startIdx - this.GetCandleAvgPeriod(Equal);
+            int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
             
             int i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal += this.GetCandleRange(Equal, i - 1, this.open, this.high, this.low, this.close);
+                equalPeriodTotal += GetCandleRange(Equal, i - 1);
                 i++;
             }
 
@@ -82,14 +82,12 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isMatchingLow =
                     // first black
-                    this.GetCandleColor(i - 1, this.open, this.close) == -1 &&
+                    GetCandleColor(i - 1) == -1 &&
                     // second black
-                    this.GetCandleColor(i, this.open, this.close) == -1 &&
+                    GetCandleColor(i) == -1 &&
                     // 1st and 2nd same close
-                    this.close[i] <= this.close[i - 1] +
-                    this.GetCandleAverage(Equal, equalPeriodTotal, i - 1, this.open, this.high, this.low, this.close) &&
-                    this.close[i] >= this.close[i - 1] -
-                    this.GetCandleAverage(Equal, equalPeriodTotal, i - 1, this.open, this.high, this.low, this.close);
+                    close[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                    close[i] >= close[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1);
 
                 outInteger[outIdx++] = isMatchingLow ? 100 : 0;
 
@@ -97,8 +95,8 @@ namespace TechnicalAnalysis.Candle
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 equalPeriodTotal +=
-                    this.GetCandleRange(Equal, i - 1, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(Equal, equalTrailingIdx - 1, this.open, this.high, this.low, this.close);
+                    GetCandleRange(Equal, i - 1) -
+                    GetCandleRange(Equal, equalTrailingIdx - 1);
 
                 i++;
                 equalTrailingIdx++;
@@ -113,7 +111,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlMatchingLowLookback()
         {
-            return this.GetCandleAvgPeriod(Equal) + 1;
+            return GetCandleAvgPeriod(Equal) + 1;
         }
     }
 }

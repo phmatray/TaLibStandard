@@ -32,8 +32,8 @@ namespace TechnicalAnalysis
         public HtSine(RetCode retCode, int begIdx, int nbElement, double[] sine, double[] leadSine)
             : base(retCode, begIdx, nbElement)
         {
-            this.Sine = sine;
-            this.LeadSine = leadSine;
+            Sine = sine;
+            LeadSine = leadSine;
         }
 
         public double[] LeadSine { get; }

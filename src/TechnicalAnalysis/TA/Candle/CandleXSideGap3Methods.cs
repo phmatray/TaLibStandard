@@ -1,5 +1,5 @@
-using System;
 using TechnicalAnalysis.Abstractions;
+using static System.Math;
 
 namespace TechnicalAnalysis.Candle
 {
@@ -29,7 +29,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlXSideGap3MethodsLookback();
+            int lookbackTotal = CdlXSideGap3MethodsLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -75,30 +75,31 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isXSideGap3Methods =
                     // 1st and 2nd of same color
-                    this.GetCandleColor(i - 2, this.open, this.close) == this.GetCandleColor(i - 1, this.open, this.close) &&
+                    GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
                     // 3rd opposite color
-                    this.GetCandleColor(i - 1, this.open, this.close) == -this.GetCandleColor(i, this.open, this.close) &&
+                    GetCandleColor(i - 1) == -GetCandleColor(i) &&
                     // 3rd opens within 2nd rb
-                    this.open[i] < Math.Max(this.close[i - 1], this.open[i - 1]) &&
-                    this.open[i] > Math.Min(this.close[i - 1], this.open[i - 1]) &&
+                    open[i] < Max(close[i - 1], open[i - 1]) &&
+                    open[i] > Min(close[i - 1], open[i - 1]) &&
                     // 3rd closes within 1st rb
-                    this.close[i] < Math.Max(this.close[i - 2], this.open[i - 2]) &&
-                    this.close[i] > Math.Min(this.close[i - 2], this.open[i - 2]) &&
-                    ((
-                         // when 1st is white
-                         this.GetCandleColor(i - 2, this.open, this.close) == 1 &&
-                         // upside gap
-                         this.GetRealBodyGapUp(i - 1, i - 2, this.open, this.close)
-                     ) ||
-                     (
-                         // when 1st is black
-                         this.GetCandleColor(i - 2, this.open, this.close) == -1 &&
-                         // downside gap
-                         this.GetRealBodyGapDown(i - 1, i - 2, this.open, this.close)
-                     )
+                    close[i] < Max(close[i - 2], open[i - 2]) &&
+                    close[i] > Min(close[i - 2], open[i - 2]) &&
+                    (
+                        (
+                            // when 1st is white
+                            GetCandleColor(i - 2) == 1 &&
+                            // upside gap
+                            GetRealBodyGapUp(i - 1, i - 2)
+                        ) ||
+                        (
+                            // when 1st is black
+                            GetCandleColor(i - 2) == -1 &&
+                            // downside gap
+                            GetRealBodyGapDown(i - 1, i - 2)
+                        )
                     );
 
-                outInteger[outIdx++] = isXSideGap3Methods ? this.GetCandleColor(i - 2, this.open, this.close) * 100 : 0;
+                outInteger[outIdx++] = isXSideGap3Methods ? GetCandleColor(i - 2) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)

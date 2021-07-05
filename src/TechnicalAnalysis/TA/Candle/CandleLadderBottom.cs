@@ -29,7 +29,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlLadderBottomLookback();
+            int lookbackTotal = CdlLadderBottomLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -59,12 +59,12 @@ namespace TechnicalAnalysis.Candle
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
             double shadowVeryShortPeriodTotal = 0.0;
-            int shadowVeryShortTrailingIdx = startIdx - this.GetCandleAvgPeriod(ShadowVeryShort);
+            int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
             
             int i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal += this.GetCandleRange(ShadowVeryShort, i - 1, this.open, this.high, this.low, this.close);
+                shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i - 1);
                 i++;
             }
 
@@ -85,25 +85,24 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isLadderBottom =
                     // 3 black candlesticks
-                    this.GetCandleColor(i - 4, this.open, this.close) == -1 &&
-                    this.GetCandleColor(i - 3, this.open, this.close) == -1 &&
-                    this.GetCandleColor(i - 2, this.open, this.close) == -1 &&
+                    GetCandleColor(i - 4) == -1 &&
+                    GetCandleColor(i - 3) == -1 &&
+                    GetCandleColor(i - 2) == -1 &&
                     // with consecutively lower opens
-                    this.open[i - 4] > this.open[i - 3] &&
-                    this.open[i - 3] > this.open[i - 2] &&
+                    open[i - 4] > open[i - 3] &&
+                    open[i - 3] > open[i - 2] &&
                     // and closes
-                    this.close[i - 4] > this.close[i - 3] &&
-                    this.close[i - 3] > this.close[i - 2] &&
+                    close[i - 4] > close[i - 3] &&
+                    close[i - 3] > close[i - 2] &&
                     // 4th: black with an upper shadow
-                    this.GetCandleColor(i - 1, this.open, this.close) == -1 &&
-                    this.GetUpperShadow(i - 1, this.open, this.low, this.close) >
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i - 1, this.open, this.high, this.low, this.close) &&
+                    GetCandleColor(i - 1) == -1 &&
+                    GetUpperShadow(i - 1) > GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i - 1) &&
                     // 5th: white
-                    this.GetCandleColor(i, this.open, this.close) == 1 &&
+                    GetCandleColor(i) == 1 &&
                     // that opens above prior candle's body
-                    this.open[i] > this.open[i - 1] &&
+                    open[i] > open[i - 1] &&
                     // and closes above prior candle's high
-                    this.close[i] > this.high[i - 1];
+                    close[i] > high[i - 1];
 
                 outInteger[outIdx++] = isLadderBottom ? 100 : 0;
 
@@ -111,8 +110,8 @@ namespace TechnicalAnalysis.Candle
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 shadowVeryShortPeriodTotal +=
-                    this.GetCandleRange(ShadowVeryShort, i - 1, this.open, this.high, this.low, this.close) -
-                    this.GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - 1, this.open, this.high, this.low, this.close);
+                    GetCandleRange(ShadowVeryShort, i - 1) -
+                    GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - 1);
 
                 i++;
                 shadowVeryShortTrailingIdx++;
@@ -127,7 +126,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlLadderBottomLookback()
         {
-            return this.GetCandleAvgPeriod(ShadowVeryShort) + 4;
+            return GetCandleAvgPeriod(ShadowVeryShort) + 4;
         }
     }
 }

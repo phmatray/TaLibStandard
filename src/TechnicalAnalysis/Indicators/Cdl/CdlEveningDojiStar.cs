@@ -79,7 +79,7 @@ namespace TechnicalAnalysis
         public CdlEveningDojiStar(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)
         {
-            this.Integer = integer;
+            Integer = integer;
         }
 
         public int[] Integer { get; }

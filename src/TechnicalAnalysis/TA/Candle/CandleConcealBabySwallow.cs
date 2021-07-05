@@ -32,7 +32,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -43,7 +43,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.CdlConcealBabySwallowLookback();
+            int lookbackTotal = CdlConcealBabySwallowLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -64,14 +64,14 @@ namespace TechnicalAnalysis.Candle
             shadowVeryShortPeriodTotal[3] = 0.0;
             shadowVeryShortPeriodTotal[2] = 0.0;
             shadowVeryShortPeriodTotal[1] = 0.0;
-            int shadowVeryShortTrailingIdx = startIdx - this.GetCandleAvgPeriod(ShadowVeryShort);
+            int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
             
             int i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal[3] += this.GetCandleRange(ShadowVeryShort, i - 3, this.open, this.high, this.low, this.close);
-                shadowVeryShortPeriodTotal[2] += this.GetCandleRange(ShadowVeryShort, i - 2, this.open, this.high, this.low, this.close);
-                shadowVeryShortPeriodTotal[1] += this.GetCandleRange(ShadowVeryShort, i - 1, this.open, this.high, this.low, this.close);
+                shadowVeryShortPeriodTotal[3] += GetCandleRange(ShadowVeryShort, i - 3);
+                shadowVeryShortPeriodTotal[2] += GetCandleRange(ShadowVeryShort, i - 2);
+                shadowVeryShortPeriodTotal[1] += GetCandleRange(ShadowVeryShort, i - 1);
                 i++;
             }
 
@@ -93,32 +93,32 @@ namespace TechnicalAnalysis.Candle
             {
                 bool isConcealBabySwallow =
                     // 1st black
-                    this.GetCandleColor(i - 3, this.open, this.close) == -1 &&
+                    GetCandleColor(i - 3) == -1 &&
                     // 2nd black
-                    this.GetCandleColor(i - 2, this.open, this.close) == -1 &&
+                    GetCandleColor(i - 2) == -1 &&
                     // 3rd black
-                    this.GetCandleColor(i - 1, this.open, this.close) == -1 &&
+                    GetCandleColor(i - 1) == -1 &&
                     // 4th black
-                    this.GetCandleColor(i, this.open, this.close) == -1 &&
+                    GetCandleColor(i) == -1 &&
                     // 1st: marubozu
-                    this.GetLowerShadow(i - 3, this.open, this.low, this.close) < 
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[3], i - 3, this.open, this.high, this.low, this.close) &&
-                    this.GetUpperShadow(i - 3, this.open, this.low, this.close) < 
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[3], i - 3, this.open, this.high, this.low, this.close) &&
+                    GetLowerShadow(i - 3) < 
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[3], i - 3) &&
+                    GetUpperShadow(i - 3) < 
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[3], i - 3) &&
                     // 2nd: marubozu
-                    this.GetLowerShadow(i - 2, this.open, this.low, this.close) < 
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2, this.open, this.high, this.low, this.close) &&
-                    this.GetUpperShadow(i - 2, this.open, this.low, this.close) < 
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2, this.open, this.high, this.low, this.close) &&
+                    GetLowerShadow(i - 2) < 
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
+                    GetUpperShadow(i - 2) < 
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
                     // 3rd: opens gapping down
-                    this.GetRealBodyGapDown(i - 1, i - 2, this.open, this.close) &&
+                    GetRealBodyGapDown(i - 1, i - 2) &&
                     // and HAS an upper shadow
-                    this.GetUpperShadow(i - 1, this.open, this.low, this.close) > 
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1, this.open, this.high, this.low, this.close) &&
+                    GetUpperShadow(i - 1) > 
+                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
                     // that extends into the prior body
-                    this.high[i - 1] > this.close[i - 2] &&
+                    high[i - 1] > close[i - 2] &&
                     // 4th: engulfs the 3rd including the shadows
-                    this.high[i] > this.high[i - 1] && this.low[i] < this.low[i - 1];
+                    high[i] > high[i - 1] && low[i] < low[i - 1];
 
                 outInteger[outIdx++] = isConcealBabySwallow ? 100 : 0;
 
@@ -128,8 +128,8 @@ namespace TechnicalAnalysis.Candle
                 for (int totIdx = 3; totIdx >= 1; --totIdx)
                 {
                     shadowVeryShortPeriodTotal[totIdx] +=
-                        this.GetCandleRange(ShadowVeryShort, i - totIdx, this.open, this.high, this.low, this.close) -
-                        this.GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx, this.open, this.high, this.low, this.close);
+                        GetCandleRange(ShadowVeryShort, i - totIdx) -
+                        GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx);
                 }
 
                 i++;
@@ -145,7 +145,7 @@ namespace TechnicalAnalysis.Candle
 
         public int CdlConcealBabySwallowLookback()
         {
-            return this.GetCandleAvgPeriod(ShadowVeryShort) + 3;
+            return GetCandleAvgPeriod(ShadowVeryShort) + 3;
         }
     }
 }

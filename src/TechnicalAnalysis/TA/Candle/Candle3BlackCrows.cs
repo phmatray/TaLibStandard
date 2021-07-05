@@ -32,7 +32,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (this.open == null || this.high == null || this.low == null || this.close == null)
+            if (open == null || high == null || low == null || close == null)
             {
                 return RetCode.BadParam;
             }
@@ -43,7 +43,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = this.Cdl3BlackCrowsLookback();
+            int lookbackTotal = Cdl3BlackCrowsLookback();
             
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -64,14 +64,14 @@ namespace TechnicalAnalysis.Candle
             shadowVeryShortPeriodTotal[2] = 0.0;
             shadowVeryShortPeriodTotal[1] = 0.0;
             shadowVeryShortPeriodTotal[0] = 0.0;
-            int shadowVeryShortTrailingIdx = startIdx - this.GetCandleAvgPeriod(ShadowVeryShort);
+            int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
             
             int i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal[2] = this.GetCandleRange(ShadowVeryShort, i - 2, this.open, this.high, this.low, this.close);
-                shadowVeryShortPeriodTotal[1] = this.GetCandleRange(ShadowVeryShort, i - 1, this.open, this.high, this.low, this.close);
-                shadowVeryShortPeriodTotal[0] = this.GetCandleRange(ShadowVeryShort, i, this.open, this.high, this.low, this.close);
+                shadowVeryShortPeriodTotal[2] = GetCandleRange(ShadowVeryShort, i - 2);
+                shadowVeryShortPeriodTotal[1] = GetCandleRange(ShadowVeryShort, i - 1);
+                shadowVeryShortPeriodTotal[0] = GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
             
@@ -91,34 +91,31 @@ namespace TechnicalAnalysis.Candle
             {
                 bool is3BlackCrows =
                     // white
-                    this.GetCandleColor(i - 3, this.open, this.close) == 1 &&
+                    GetCandleColor(i - 3) == 1 &&
                     // 1st black
-                    this.GetCandleColor(i - 2, this.open, this.close) == -1 &&
+                    GetCandleColor(i - 2) == -1 &&
                     // very short lower shadow
-                    this.GetLowerShadow(i - 2, this.open, this.low, this.close) <
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2, this.open, this.high, this.low, this.close) &&
+                    GetLowerShadow(i - 2) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
                     // 2nd black
-                    this.GetCandleColor(i - 1, this.open, this.close) == -1 &&
+                    GetCandleColor(i - 1) == -1 &&
                     // very short lower shadow
-                    this.GetLowerShadow(i - 1, this.open, this.low, this.close) <
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1, this.open, this.high, this.low, this.close) &&
+                    GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
                     // 3rd black
-                    this.GetCandleColor(i, this.open, this.close) == -1 &&
+                    GetCandleColor(i) == -1 &&
                     // very short lower shadow
-                    this.GetLowerShadow(i, this.open, this.low, this.close) <
-                    this.GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i, this.open, this.high, this.low, this.close) &&
+                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
                     // 2nd black opens within 1st black's rb
-                    this.open[i - 1] < this.open[i - 2] &&
-                    this.open[i - 1] > this.close[i - 2] &&
+                    open[i - 1] < open[i - 2] &&
+                    open[i - 1] > close[i - 2] &&
                     // 3rd black opens within 2nd black's rb
-                    this.open[i] < this.open[i - 1] &&
-                    this.open[i] > this.close[i - 1] &&
+                    open[i] < open[i - 1] &&
+                    open[i] > close[i - 1] &&
                     // 1st black closes under prior candle's high
-                    this.high[i - 3] > this.close[i - 2] &&
+                    high[i - 3] > close[i - 2] &&
                     // three declining
-                    this.close[i - 2] > this.close[i - 1] &&
+                    close[i - 2] > close[i - 1] &&
                     // three declining
-                    this.close[i - 1] > this.close[i];
+                    close[i - 1] > close[i];
 
                 outInteger[outIdx++] = is3BlackCrows ? -100 : 0;
 
@@ -128,8 +125,8 @@ namespace TechnicalAnalysis.Candle
                 for (int totIdx = 2; totIdx >= 0; --totIdx)
                 {
                     shadowVeryShortPeriodTotal[totIdx] +=
-                        this.GetCandleRange(ShadowVeryShort, i - totIdx, this.open, this.high, this.low, this.close) -
-                        this.GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx, this.open, this.high, this.low, this.close);
+                        GetCandleRange(ShadowVeryShort, i - totIdx) -
+                        GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx);
                 }
 
                 i++;
@@ -145,7 +142,7 @@ namespace TechnicalAnalysis.Candle
 
         public int Cdl3BlackCrowsLookback()
         {
-            return this.GetCandleAvgPeriod(ShadowVeryShort) + 3;
+            return GetCandleAvgPeriod(ShadowVeryShort) + 3;
         }
     }
 }

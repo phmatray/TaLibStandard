@@ -82,8 +82,8 @@ namespace TechnicalAnalysis
         public Stoch(RetCode retCode, int begIdx, int nbElement, double[] slowK, double[] slowD)
             : base(retCode, begIdx, nbElement)
         {
-            this.SlowK = slowK;
-            this.SlowD = slowD;
+            SlowK = slowK;
+            SlowD = slowD;
         }
 
         public double[] SlowD { get; }

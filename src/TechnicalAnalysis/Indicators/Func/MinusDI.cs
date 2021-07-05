@@ -58,7 +58,7 @@ namespace TechnicalAnalysis
         public MinusDI(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
-            this.Real = real;
+            Real = real;
         }
 
         public double[] Real { get; }
