@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TechnicalAnalysis.Candle;
+
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
@@ -24,13 +26,10 @@ namespace TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            RetCode retCode = TACore.CdlMatHold(
+            CandleMatHold candle = new (open, high, low, close);
+            RetCode retCode = candle.CdlMatHold(
                 startIdx,
                 endIdx,
-                open,
-                high,
-                low,
-                close,
                 penetration,
                 ref outBegIdx,
                 ref outNBElement,

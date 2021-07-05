@@ -4,7 +4,7 @@ namespace TechnicalAnalysis
 {
     internal static partial class TACore
     {
-        private static readonly GlobalsType Globals = new();
+        internal static readonly GlobalsType Globals = new();
         
         static TACore()
         {
@@ -842,31 +842,15 @@ namespace TechnicalAnalysis
             outBegIdx = startIdx;
             return RetCode.Success;
         }
-        
-        private sealed class CandleSetting
+
+        internal sealed class CandleSetting
         {
             public int avgPeriod;
             public double factor;
             public RangeType rangeType;
             public CandleSettingType settingType;
         }
-        
-        public enum CandleSettingType
-        {
-            BodyLong,
-            BodyVeryLong,
-            BodyShort,
-            BodyDoji,
-            ShadowLong,
-            ShadowVeryLong,
-            ShadowShort,
-            ShadowVeryShort,
-            Near,
-            Far,
-            Equal,
-            AllCandleSettings
-        }
-        
+
         public enum Compatibility
         {
             Default,
@@ -902,14 +886,7 @@ namespace TechnicalAnalysis
             T3 = 22
         }
         
-        public enum RangeType
-        {
-            RealBody,
-            HighLow,
-            Shadows
-        }
-        
-        private sealed class GlobalsType
+        internal sealed class GlobalsType
         {
             public CandleSetting[] candleSettings;
             public Compatibility compatibility = Compatibility.Default;

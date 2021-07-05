@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TechnicalAnalysis.Candle;
+
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
@@ -23,16 +25,8 @@ namespace TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            RetCode retCode = TACore.CdlIdentical3Crows(
-                startIdx,
-                endIdx,
-                open,
-                high,
-                low,
-                close,
-                ref outBegIdx,
-                ref outNBElement,
-                ref outInteger);
+            CandleIdentical3Crows candle = new (open, high, low, close);
+            RetCode retCode = candle.CdlIdentical3Crows(startIdx, endIdx, ref outBegIdx, ref outNBElement, ref outInteger);
             
             return new CdlIdentical3Crows(retCode, outBegIdx, outNBElement, outInteger);
         }

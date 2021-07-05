@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TechnicalAnalysis.Candle;
+
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
@@ -23,16 +25,8 @@ namespace TechnicalAnalysis
             int outNBElement = default;
             int[] outInteger = new int[endIdx - startIdx + 1];
 
-            RetCode retCode = TACore.CdlEngulfing(
-                startIdx,
-                endIdx,
-                open,
-                high,
-                low,
-                close,
-                ref outBegIdx,
-                ref outNBElement,
-                ref outInteger);
+            CandleEngulfing candle = new (open, high, low, close);
+            RetCode retCode = candle.CdlEngulfing(startIdx, endIdx, ref outBegIdx, ref outNBElement, ref outInteger);
             
             return new CdlEngulfing(retCode, outBegIdx, outNBElement, outInteger);
         }
