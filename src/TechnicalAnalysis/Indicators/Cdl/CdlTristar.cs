@@ -14,31 +14,20 @@ namespace TechnicalAnalysis
     public static partial class TAMath
     {
         public static CdlTristar CdlTristar(
-            int startIdx,
-            int endIdx,
-            double[] open,
-            double[] high,
-            double[] low,
-            double[] close)
+            int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            CandleTristar candle = new (open, high, low, close);
-            RetCode retCode = candle.CdlTristar(startIdx, endIdx, ref outBegIdx, ref outNBElement, ref outInteger);
+            RetCode retCode = new CandleTristar(open, high, low, close)
+                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
             
-            return new CdlTristar(retCode, outBegIdx, outNBElement, outInteger);
+            return new CdlTristar(retCode, begIdx, nbElement, ints);
         }
 
         public static CdlTristar CdlTristar(
-            int startIdx,
-            int endIdx,
-            float[] open,
-            float[] high,
-            float[] low,
-            float[] close)
-            => CdlTristar(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+            int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
+        {
+            return CdlTristar(startIdx, endIdx,
+                open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+        }
     }
 
     public class CdlTristar : IndicatorBase

@@ -14,31 +14,20 @@ namespace TechnicalAnalysis
     public static partial class TAMath
     {
         public static Cdl2Crows Cdl2Crows(
-            int startIdx,
-            int endIdx,
-            double[] open,
-            double[] high,
-            double[] low,
-            double[] close)
+            int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
+            RetCode retCode = new Candle2Crows(open, high, low, close)
+                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
 
-            Candle2Crows candle = new (open, high, low, close);
-            RetCode retCode = candle.Cdl2Crows(startIdx, endIdx, ref outBegIdx, ref outNBElement, ref outInteger);
-
-            return new Cdl2Crows(retCode, outBegIdx, outNBElement, outInteger);
+            return new Cdl2Crows(retCode, begIdx, nbElement, ints);
         }
 
         public static Cdl2Crows Cdl2Crows(
-            int startIdx,
-            int endIdx,
-            float[] open,
-            float[] high,
-            float[] low,
-            float[] close)
-            => Cdl2Crows(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+            int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
+        {
+            return Cdl2Crows(startIdx, endIdx,
+                open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+        }
     }
 
     public class Cdl2Crows : IndicatorBase

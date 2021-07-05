@@ -14,37 +14,20 @@ namespace TechnicalAnalysis
     public static partial class TAMath
     {
         public static CdlRiseFall3Methods CdlRiseFall3Methods(
-            int startIdx,
-            int endIdx,
-            double[] open,
-            double[] high,
-            double[] low,
-            double[] close)
+            int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            CandleRiseFall3Methods candle = new (open, high, low, close);
-            RetCode retCode = candle.CdlRiseFall3Methods(startIdx, endIdx, ref outBegIdx, ref outNBElement, ref outInteger);
+            RetCode retCode = new CandleRiseFall3Methods(open, high, low, close)
+                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
             
-            return new CdlRiseFall3Methods(retCode, outBegIdx, outNBElement, outInteger);
+            return new CdlRiseFall3Methods(retCode, begIdx, nbElement, ints);
         }
 
         public static CdlRiseFall3Methods CdlRiseFall3Methods(
-            int startIdx,
-            int endIdx,
-            float[] open,
-            float[] high,
-            float[] low,
-            float[] close)
-            => CdlRiseFall3Methods(
-                startIdx,
-                endIdx,
-                open.ToDouble(),
-                high.ToDouble(),
-                low.ToDouble(),
-                close.ToDouble());
+            int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
+        {
+            return CdlRiseFall3Methods(startIdx, endIdx,
+                open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+        }
     }
 
     public class CdlRiseFall3Methods : IndicatorBase

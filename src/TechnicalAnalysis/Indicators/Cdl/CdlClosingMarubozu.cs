@@ -14,31 +14,20 @@ namespace TechnicalAnalysis
     public static partial class TAMath
     {
         public static CdlClosingMarubozu CdlClosingMarubozu(
-            int startIdx,
-            int endIdx,
-            double[] open,
-            double[] high,
-            double[] low,
-            double[] close)
+            int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            CandleClosingMarubozu candle = new (open, high, low, close);
-            RetCode retCode = candle.CdlClosingMarubozu(startIdx, endIdx, ref outBegIdx, ref outNBElement, ref outInteger);
+            RetCode retCode = new CandleClosingMarubozu(open, high, low, close)
+                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
             
-            return new CdlClosingMarubozu(retCode, outBegIdx, outNBElement, outInteger);
+            return new CdlClosingMarubozu(retCode, begIdx, nbElement, ints);
         }
 
         public static CdlClosingMarubozu CdlClosingMarubozu(
-            int startIdx,
-            int endIdx,
-            float[] open,
-            float[] high,
-            float[] low,
-            float[] close)
-            => CdlClosingMarubozu(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+            int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
+        {
+            return CdlClosingMarubozu(startIdx, endIdx,
+                open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+        }
     }
 
     public class CdlClosingMarubozu : IndicatorBase

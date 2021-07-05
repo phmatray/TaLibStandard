@@ -14,31 +14,20 @@ namespace TechnicalAnalysis
     public static partial class TAMath
     {
         public static CdlAdvanceBlock CdlAdvanceBlock(
-            int startIdx,
-            int endIdx,
-            double[] open,
-            double[] high,
-            double[] low,
-            double[] close)
+            int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            CandleAdvanceBlock candle = new (open, high, low, close);
-            RetCode retCode = candle.CdlAdvanceBlock(startIdx, endIdx, ref outBegIdx, ref outNBElement, ref outInteger);
+            RetCode retCode = new CandleAdvanceBlock(open, high, low, close)
+                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
             
-            return new CdlAdvanceBlock(retCode, outBegIdx, outNBElement, outInteger);
+            return new CdlAdvanceBlock(retCode, begIdx, nbElement, ints);
         }
 
         public static CdlAdvanceBlock CdlAdvanceBlock(
-            int startIdx,
-            int endIdx,
-            float[] open,
-            float[] high,
-            float[] low,
-            float[] close)
-            => CdlAdvanceBlock(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+            int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
+        {
+            return CdlAdvanceBlock(startIdx, endIdx,
+                open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+        }
     }
 
     public class CdlAdvanceBlock : IndicatorBase

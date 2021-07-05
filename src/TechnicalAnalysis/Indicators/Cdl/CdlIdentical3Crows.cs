@@ -14,31 +14,20 @@ namespace TechnicalAnalysis
     public static partial class TAMath
     {
         public static CdlIdentical3Crows CdlIdentical3Crows(
-            int startIdx,
-            int endIdx,
-            double[] open,
-            double[] high,
-            double[] low,
-            double[] close)
+            int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            CandleIdentical3Crows candle = new (open, high, low, close);
-            RetCode retCode = candle.CdlIdentical3Crows(startIdx, endIdx, ref outBegIdx, ref outNBElement, ref outInteger);
+            RetCode retCode = new CandleIdentical3Crows(open, high, low, close)
+                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
             
-            return new CdlIdentical3Crows(retCode, outBegIdx, outNBElement, outInteger);
+            return new CdlIdentical3Crows(retCode, begIdx, nbElement, ints);
         }
 
         public static CdlIdentical3Crows CdlIdentical3Crows(
-            int startIdx,
-            int endIdx,
-            float[] open,
-            float[] high,
-            float[] low,
-            float[] close)
-            => CdlIdentical3Crows(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+            int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
+        {
+            return CdlIdentical3Crows(startIdx, endIdx,
+                open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
+        }
     }
 
     public class CdlIdentical3Crows : IndicatorBase

@@ -10,8 +10,4 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
   
-  <ItemGroup>
-    <Folder Include="TA\TaCdl" />
-  </ItemGroup>
-  
 </Project>

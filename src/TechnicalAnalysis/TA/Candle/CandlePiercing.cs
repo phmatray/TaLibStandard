@@ -10,13 +10,18 @@ namespace TechnicalAnalysis.Candle
         {
         }
 
-        public RetCode CdlPiercing(
+        public RetCode TryCompute(
             int startIdx,
             int endIdx,
-            ref int outBegIdx,
-            ref int outNBElement,
-            ref int[] outInteger)
+            out int outBegIdx,
+            out int outNBElement,
+            out int[] outInteger)
         {
+            // Initialize output variables 
+            outBegIdx = default;
+            outNBElement = default;
+            outInteger = new int[endIdx - startIdx + 1];
+            
             // Local variables
             double[] bodyLongPeriodTotal = new double[2];
             
@@ -54,8 +59,6 @@ namespace TechnicalAnalysis.Candle
             // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
-                outBegIdx = 0;
-                outNBElement = 0;
                 return RetCode.Success;
             }
 

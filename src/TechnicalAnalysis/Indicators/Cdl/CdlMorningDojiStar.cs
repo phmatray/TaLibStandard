@@ -14,64 +14,32 @@ namespace TechnicalAnalysis
     public static partial class TAMath
     {
         public static CdlMorningDojiStar CdlMorningDojiStar(
-            int startIdx,
-            int endIdx,
-            double[] open,
-            double[] high,
-            double[] low,
-            double[] close,
-            double penetration)
+            int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close, double penetration)
         {
-            int outBegIdx = default;
-            int outNBElement = default;
-            int[] outInteger = new int[endIdx - startIdx + 1];
-
-            CandleMorningDojiStar candle = new (open, high, low, close);
-            RetCode retCode = candle.CdlMorningDojiStar(
-                startIdx,
-                endIdx,
-                penetration,
-                ref outBegIdx,
-                ref outNBElement,
-                ref outInteger);
+            RetCode retCode = new CandleMorningDojiStar(open, high, low, close)
+                .TryCompute(startIdx, endIdx, penetration, out int begIdx, out int nbElement, out int[] ints);
             
-            return new CdlMorningDojiStar(retCode, outBegIdx, outNBElement, outInteger);
+            return new CdlMorningDojiStar(retCode, begIdx, nbElement, ints);
         }
 
         public static CdlMorningDojiStar CdlMorningDojiStar(
-            int startIdx,
-            int endIdx,
-            double[] open,
-            double[] high,
-            double[] low,
-            double[] close)
-            => CdlMorningDojiStar(startIdx, endIdx, open, high, low, close, 0.3);
+            int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
+        {
+            return CdlMorningDojiStar(startIdx, endIdx, open, high, low, close, 0.3);
+        }
 
         public static CdlMorningDojiStar CdlMorningDojiStar(
-            int startIdx,
-            int endIdx,
-            float[] open,
-            float[] high,
-            float[] low,
-            float[] close,
-            double penetration)
-            => CdlMorningDojiStar(
-                startIdx,
-                endIdx,
-                open.ToDouble(),
-                high.ToDouble(),
-                low.ToDouble(),
-                close.ToDouble(),
-                penetration);
-        
+            int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close, double penetration)
+        {
+            return CdlMorningDojiStar(startIdx, endIdx,
+                open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble(), penetration);
+        }
+
         public static CdlMorningDojiStar CdlMorningDojiStar(
-            int startIdx,
-            int endIdx,
-            float[] open,
-            float[] high,
-            float[] low,
-            float[] close)
-            => CdlMorningDojiStar(startIdx, endIdx, open, high, low, close, 0.3);
+            int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
+        {
+            return CdlMorningDojiStar(startIdx, endIdx, open, high, low, close, 0.3);
+        }
     }
 
     public class CdlMorningDojiStar : IndicatorBase
