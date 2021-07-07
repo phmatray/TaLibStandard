@@ -98,15 +98,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isInvertedHammer =
-                    // small rb
-                    GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
-                    // long upper shadow
-                    GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
-                    // very short lower shadow
-                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
-                    // gap down
-                    GetRealBodyGapDown(i, i - 1);
+                bool isInvertedHammer = GetPatternRecognition(
+                    i, bodyPeriodTotal, shadowLongPeriodTotal, shadowVeryShortPeriodTotal);
 
                 outInteger[outIdx++] = isInvertedHammer ? 100 : 0;
 
@@ -136,6 +129,25 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(
+            int i,
+            double bodyPeriodTotal,
+            double shadowLongPeriodTotal,
+            double shadowVeryShortPeriodTotal)
+        {
+            bool isInvertedHammer =
+                // small rb
+                GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
+                // long upper shadow
+                GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
+                // very short lower shadow
+                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
+                // gap down
+                GetRealBodyGapDown(i, i - 1);
+            
+            return isInvertedHammer;
         }
 
         public override int GetLookback()

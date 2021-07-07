@@ -89,10 +89,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isDragonflyDoji =
-                    GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
-                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
-                    GetLowerShadow(i) > GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i);
+                bool isDragonflyDoji = GetPatternRecognition(i, bodyDojiPeriodTotal, shadowVeryShortPeriodTotal);
 
                 outInteger[outIdx++] = isDragonflyDoji ? 100 : 0;
 
@@ -117,6 +114,15 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyDojiPeriodTotal, double shadowVeryShortPeriodTotal)
+        {
+            bool isDragonflyDoji =
+                GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
+                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
+                GetLowerShadow(i) > GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i);
+            return isDragonflyDoji;
         }
 
         public override int GetLookback()

@@ -99,27 +99,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isSeparatingLines =
-                    // opposite candles
-                    GetCandleColor(i - 1) == -GetCandleColor(i) &&
-                    // same open
-                    open[i] <= open[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
-                    open[i] >= open[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
-                    // belt hold: long body
-                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i) &&
-                    (
-                        (
-                            // with no lower shadow if bullish
-                            GetCandleColor(i) == 1 &&
-                            GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
-                        )
-                        ||
-                        (
-                            // with no upper shadow if bearish
-                            GetCandleColor(i) == -1 &&
-                            GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
-                        )
-                    );
+                bool isSeparatingLines = GetPatternRecognition(
+                    i, equalPeriodTotal, bodyLongPeriodTotal, shadowVeryShortPeriodTotal);
 
                 outInteger[outIdx++] = isSeparatingLines ? GetCandleColor(i) * 100 : 0;
 
@@ -149,6 +130,37 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(
+            int i,
+            double equalPeriodTotal,
+            double bodyLongPeriodTotal,
+            double shadowVeryShortPeriodTotal)
+        {
+            bool isSeparatingLines =
+                // opposite candles
+                GetCandleColor(i - 1) == -GetCandleColor(i) &&
+                // same open
+                open[i] <= open[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                open[i] >= open[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                // belt hold: long body
+                GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i) &&
+                (
+                    (
+                        // with no lower shadow if bullish
+                        GetCandleColor(i) == 1 &&
+                        GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
+                    )
+                    ||
+                    (
+                        // with no upper shadow if bearish
+                        GetCandleColor(i) == -1 &&
+                        GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
+                    )
+                );
+            
+            return isSeparatingLines;
         }
 
         public override int GetLookback()

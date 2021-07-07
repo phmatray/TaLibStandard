@@ -97,18 +97,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isRickshawMan =
-                    // doji
-                    GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
-                    // long shadow
-                    GetLowerShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
-                    // long shadow
-                    GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
-                    (
-                        // body near midpoint
-                        Min(open[i], close[i]) <= low[i] + GetHighLowRange(i) / 2 + GetCandleAverage(Near, nearPeriodTotal, i) &&
-                        Max(open[i], close[i]) >= low[i] + GetHighLowRange(i) / 2 - GetCandleAverage(Near, nearPeriodTotal, i)
-                    );
+                bool isRickshawMan = GetPatternRecognition(i, bodyDojiPeriodTotal, shadowLongPeriodTotal, nearPeriodTotal);
 
                 outInteger[outIdx++] = isRickshawMan ? 100 : 0;
 
@@ -138,6 +127,28 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(
+            int i,
+            double bodyDojiPeriodTotal,
+            double shadowLongPeriodTotal,
+            double nearPeriodTotal)
+        {
+            bool isRickshawMan =
+                // doji
+                GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
+                // long shadow
+                GetLowerShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
+                // long shadow
+                GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
+                (
+                    // body near midpoint
+                    Min(open[i], close[i]) <= low[i] + GetHighLowRange(i) / 2 + GetCandleAverage(Near, nearPeriodTotal, i) &&
+                    Max(open[i], close[i]) >= low[i] + GetHighLowRange(i) / 2 - GetCandleAverage(Near, nearPeriodTotal, i)
+                );
+            
+            return isRickshawMan;
         }
 
         public override int GetLookback()

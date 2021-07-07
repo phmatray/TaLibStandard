@@ -86,10 +86,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isMarubozu =
-                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i) &&
-                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
-                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i);
+                bool isMarubozu = GetPatternRecognition(i, bodyLongPeriodTotal, shadowVeryShortPeriodTotal);
 
                 outInteger[outIdx++] = isMarubozu ? GetCandleColor(i) * 100 : 0;
 
@@ -114,6 +111,16 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double shadowVeryShortPeriodTotal)
+        {
+            bool isMarubozu =
+                GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i) &&
+                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
+                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i);
+            
+            return isMarubozu;
         }
 
         public override int GetLookback()

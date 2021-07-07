@@ -88,44 +88,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool is3LineStrike =
-                    // three with same color
-                    GetCandleColor(i - 3) == GetCandleColor(i - 2) &&
-                    GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
-                    // 4th opposite color
-                    GetCandleColor(i) == -GetCandleColor(i - 1) &&
-                    // 2nd opens within/near 1st rb
-                    open[i - 2] >= Min(open[i - 3], close[i - 3]) -
-                    GetCandleAverage(Near, nearPeriodTotal[3], i - 3) &&
-                    open[i - 2] <= Max(open[i - 3], close[i - 3]) +
-                    GetCandleAverage(Near, nearPeriodTotal[3], i - 3) &&
-                    // 3rd opens within/near 2nd rb
-                    open[i - 1] >= Min(open[i - 2], close[i - 2]) -
-                    GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
-                    open[i - 1] <= Max(open[i - 2], close[i - 2]) +
-                    GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
-                    (
-                        ( // if three white
-                            GetCandleColor(i - 1) == 1 &&
-                            close[i - 1] > close[i - 2] &&
-                            // consecutive higher closes
-                            close[i - 2] > close[i - 3] &&
-                            // 4th opens above prior close
-                            open[i] > close[i - 1] &&
-                            // 4th closes below 1st open
-                            close[i] < open[i - 3]
-                        ) ||
-                        ( // if three black
-                            GetCandleColor(i - 1) == -1 &&
-                            close[i - 1] < close[i - 2] &&
-                            // consecutive lower closes
-                            close[i - 2] < close[i - 3] &&
-                            // 4th opens below prior close
-                            open[i] < close[i - 1] &&
-                            // 4th closes above 1st open
-                            close[i] > open[i - 3]
-                        )
-                    );
+                bool is3LineStrike = GetPatternRecognition(i, nearPeriodTotal);
 
                 outInteger[outIdx++] = is3LineStrike ? GetCandleColor(i - 1) * 100 : 0;
 
@@ -148,6 +111,50 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double[] nearPeriodTotal)
+        {
+            bool is3LineStrike =
+                // three with same color
+                GetCandleColor(i - 3) == GetCandleColor(i - 2) &&
+                GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
+                // 4th opposite color
+                GetCandleColor(i) == -GetCandleColor(i - 1) &&
+                // 2nd opens within/near 1st rb
+                open[i - 2] >= Min(open[i - 3], close[i - 3]) -
+                GetCandleAverage(Near, nearPeriodTotal[3], i - 3) &&
+                open[i - 2] <= Max(open[i - 3], close[i - 3]) +
+                GetCandleAverage(Near, nearPeriodTotal[3], i - 3) &&
+                // 3rd opens within/near 2nd rb
+                open[i - 1] >= Min(open[i - 2], close[i - 2]) -
+                GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
+                open[i - 1] <= Max(open[i - 2], close[i - 2]) +
+                GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
+                (
+                    ( // if three white
+                        GetCandleColor(i - 1) == 1 &&
+                        close[i - 1] > close[i - 2] &&
+                        // consecutive higher closes
+                        close[i - 2] > close[i - 3] &&
+                        // 4th opens above prior close
+                        open[i] > close[i - 1] &&
+                        // 4th closes below 1st open
+                        close[i] < open[i - 3]
+                    ) ||
+                    ( // if three black
+                        GetCandleColor(i - 1) == -1 &&
+                        close[i - 1] < close[i - 2] &&
+                        // consecutive lower closes
+                        close[i - 2] < close[i - 3] &&
+                        // 4th opens below prior close
+                        open[i] < close[i - 1] &&
+                        // 4th closes above 1st open
+                        close[i] > open[i - 3]
+                    )
+                );
+            
+            return is3LineStrike;
         }
 
         public override int GetLookback()

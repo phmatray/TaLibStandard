@@ -71,31 +71,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isXSideGap3Methods =
-                    // 1st and 2nd of same color
-                    GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
-                    // 3rd opposite color
-                    GetCandleColor(i - 1) == -GetCandleColor(i) &&
-                    // 3rd opens within 2nd rb
-                    open[i] < Max(close[i - 1], open[i - 1]) &&
-                    open[i] > Min(close[i - 1], open[i - 1]) &&
-                    // 3rd closes within 1st rb
-                    close[i] < Max(close[i - 2], open[i - 2]) &&
-                    close[i] > Min(close[i - 2], open[i - 2]) &&
-                    (
-                        (
-                            // when 1st is white
-                            GetCandleColor(i - 2) == 1 &&
-                            // upside gap
-                            GetRealBodyGapUp(i - 1, i - 2)
-                        ) ||
-                        (
-                            // when 1st is black
-                            GetCandleColor(i - 2) == -1 &&
-                            // downside gap
-                            GetRealBodyGapDown(i - 1, i - 2)
-                        )
-                    );
+                bool isXSideGap3Methods = GetPatternRecognition(i);
 
                 outInteger[outIdx++] = isXSideGap3Methods ? GetCandleColor(i - 2) * 100 : 0;
 
@@ -110,6 +86,37 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i)
+        {
+            bool isXSideGap3Methods =
+                // 1st and 2nd of same color
+                GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
+                // 3rd opposite color
+                GetCandleColor(i - 1) == -GetCandleColor(i) &&
+                // 3rd opens within 2nd rb
+                open[i] < Max(close[i - 1], open[i - 1]) &&
+                open[i] > Min(close[i - 1], open[i - 1]) &&
+                // 3rd closes within 1st rb
+                close[i] < Max(close[i - 2], open[i - 2]) &&
+                close[i] > Min(close[i - 2], open[i - 2]) &&
+                (
+                    (
+                        // when 1st is white
+                        GetCandleColor(i - 2) == 1 &&
+                        // upside gap
+                        GetRealBodyGapUp(i - 1, i - 2)
+                    ) ||
+                    (
+                        // when 1st is black
+                        GetCandleColor(i - 2) == -1 &&
+                        // downside gap
+                        GetRealBodyGapDown(i - 1, i - 2)
+                    )
+                );
+            
+            return isXSideGap3Methods;
         }
 
         public override int GetLookback()

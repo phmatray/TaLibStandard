@@ -122,29 +122,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isStalledPattern =
-                    // 1st white
-                    GetCandleColor(i - 2) == 1 &&
-                    // 2nd white
-                    GetCandleColor(i - 1) == 1 &&
-                    // 3rd white
-                    GetCandleColor(i) == 1 &&
-                    // consecutive higher closes
-                    close[i] > close[i - 1] &&
-                    close[i - 1] > close[i - 2] &&
-                    // 1st: long real body
-                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[2], i - 2) &&
-                    // 2nd: long real body
-                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
-                    // very short upper shadow 
-                    GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i - 1) &&
-                    // opens within/near 1st real body
-                    open[i - 1] > open[i - 2] &&
-                    open[i - 1] <= close[i - 2] + GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
-                    // 3rd: small real body
-                    GetRealBody(i) < GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
-                    // rides on the shoulder of 2nd real body
-                    open[i] >= close[i - 1] - GetRealBody(i) - GetCandleAverage(Near, nearPeriodTotal[1], i - 1);
+                bool isStalledPattern = GetPatternRecognition(
+                    i, bodyLongPeriodTotal, shadowVeryShortPeriodTotal, nearPeriodTotal, bodyShortPeriodTotal);
 
                 outInteger[outIdx++] = isStalledPattern ? -100 : 0;
 
@@ -182,6 +161,40 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(
+            int i,
+            double[] bodyLongPeriodTotal,
+            double shadowVeryShortPeriodTotal,
+            double[] nearPeriodTotal,
+            double bodyShortPeriodTotal)
+        {
+            bool isStalledPattern =
+                // 1st white
+                GetCandleColor(i - 2) == 1 &&
+                // 2nd white
+                GetCandleColor(i - 1) == 1 &&
+                // 3rd white
+                GetCandleColor(i) == 1 &&
+                // consecutive higher closes
+                close[i] > close[i - 1] &&
+                close[i - 1] > close[i - 2] &&
+                // 1st: long real body
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[2], i - 2) &&
+                // 2nd: long real body
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
+                // very short upper shadow 
+                GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i - 1) &&
+                // opens within/near 1st real body
+                open[i - 1] > open[i - 2] &&
+                open[i - 1] <= close[i - 2] + GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
+                // 3rd: small real body
+                GetRealBody(i) < GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
+                // rides on the shoulder of 2nd real body
+                open[i] >= close[i - 1] - GetRealBody(i) - GetCandleAverage(Near, nearPeriodTotal[1], i - 1);
+            
+            return isStalledPattern;
         }
 
         public override int GetLookback()

@@ -87,12 +87,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isLongLeggedDoji =
-                    GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
-                    (
-                        GetLowerShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) ||
-                        GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i)
-                    );
+                bool isLongLeggedDoji = GetPatternRecognition(i, bodyDojiPeriodTotal, shadowLongPeriodTotal);
 
                 outInteger[outIdx++] = isLongLeggedDoji ? 100 : 0;
 
@@ -117,6 +112,18 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyDojiPeriodTotal, double shadowLongPeriodTotal)
+        {
+            bool isLongLeggedDoji =
+                GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
+                (
+                    GetLowerShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) ||
+                    GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i)
+                );
+            
+            return isLongLeggedDoji;
         }
 
         public override int GetLookback()

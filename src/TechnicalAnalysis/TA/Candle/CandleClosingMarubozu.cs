@@ -86,19 +86,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isClosingMarubozu =
-                    // long body
-                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i) &&
-                    (
-                        ( // white body and very short lower shadow
-                            GetCandleColor(i) == 1 &&
-                            GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
-                        ) ||
-                        ( // black body and very short upper shadow
-                            GetCandleColor(i) == -1 &&
-                            GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
-                        )
-                    );
+                bool isClosingMarubozu = GetPatternRecognition(i, bodyLongPeriodTotal, shadowVeryShortPeriodTotal);
 
                 outInteger[outIdx++] = isClosingMarubozu ? GetCandleColor(i) * 100 : 0;
 
@@ -123,6 +111,25 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double shadowVeryShortPeriodTotal)
+        {
+            bool isClosingMarubozu =
+                // long body
+                GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i) &&
+                (
+                    ( // white body and very short lower shadow
+                        GetCandleColor(i) == 1 &&
+                        GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
+                    ) ||
+                    ( // black body and very short upper shadow
+                        GetCandleColor(i) == -1 &&
+                        GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
+                    )
+                );
+            
+            return isClosingMarubozu;
         }
 
         public override int GetLookback()

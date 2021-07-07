@@ -81,18 +81,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isStickSandwich =
-                    // first black
-                    GetCandleColor(i - 2) == -1 &&
-                    // second white
-                    GetCandleColor(i - 1) == 1 &&
-                    // third black
-                    GetCandleColor(i) == -1 &&
-                    // 2nd low > prior close
-                    low[i - 1] > close[i - 2] &&
-                    // 1st and 3rd same close
-                    close[i] <= close[i - 2] + GetCandleAverage(Equal, equalPeriodTotal, i - 2) &&
-                    close[i] >= close[i - 2] - GetCandleAverage(Equal, equalPeriodTotal, i - 2);
+                bool isStickSandwich = GetPatternRecognition(i, equalPeriodTotal);
 
                 outInteger[outIdx++] = isStickSandwich ? 100 : 0;
 
@@ -112,6 +101,24 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double equalPeriodTotal)
+        {
+            bool isStickSandwich =
+                // first black
+                GetCandleColor(i - 2) == -1 &&
+                // second white
+                GetCandleColor(i - 1) == 1 &&
+                // third black
+                GetCandleColor(i) == -1 &&
+                // 2nd low > prior close
+                low[i - 1] > close[i - 2] &&
+                // 1st and 3rd same close
+                close[i] <= close[i - 2] + GetCandleAverage(Equal, equalPeriodTotal, i - 2) &&
+                close[i] >= close[i - 2] - GetCandleAverage(Equal, equalPeriodTotal, i - 2);
+            
+            return isStickSandwich;
         }
 
         public override int GetLookback()

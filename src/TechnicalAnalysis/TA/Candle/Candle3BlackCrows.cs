@@ -87,33 +87,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool is3BlackCrows =
-                    // white
-                    GetCandleColor(i - 3) == 1 &&
-                    // 1st black
-                    GetCandleColor(i - 2) == -1 &&
-                    // very short lower shadow
-                    GetLowerShadow(i - 2) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
-                    // 2nd black
-                    GetCandleColor(i - 1) == -1 &&
-                    // very short lower shadow
-                    GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
-                    // 3rd black
-                    GetCandleColor(i) == -1 &&
-                    // very short lower shadow
-                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
-                    // 2nd black opens within 1st black's rb
-                    open[i - 1] < open[i - 2] &&
-                    open[i - 1] > close[i - 2] &&
-                    // 3rd black opens within 2nd black's rb
-                    open[i] < open[i - 1] &&
-                    open[i] > close[i - 1] &&
-                    // 1st black closes under prior candle's high
-                    high[i - 3] > close[i - 2] &&
-                    // three declining
-                    close[i - 2] > close[i - 1] &&
-                    // three declining
-                    close[i - 1] > close[i];
+                bool is3BlackCrows = GetPatternRecognition(i, shadowVeryShortPeriodTotal);
 
                 outInteger[outIdx++] = is3BlackCrows ? -100 : 0;
 
@@ -136,6 +110,39 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double[] shadowVeryShortPeriodTotal)
+        {
+            bool is3BlackCrows =
+                // white
+                GetCandleColor(i - 3) == 1 &&
+                // 1st black
+                GetCandleColor(i - 2) == -1 &&
+                // very short lower shadow
+                GetLowerShadow(i - 2) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
+                // 2nd black
+                GetCandleColor(i - 1) == -1 &&
+                // very short lower shadow
+                GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
+                // 3rd black
+                GetCandleColor(i) == -1 &&
+                // very short lower shadow
+                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
+                // 2nd black opens within 1st black's rb
+                open[i - 1] < open[i - 2] &&
+                open[i - 1] > close[i - 2] &&
+                // 3rd black opens within 2nd black's rb
+                open[i] < open[i - 1] &&
+                open[i] > close[i - 1] &&
+                // 1st black closes under prior candle's high
+                high[i - 3] > close[i - 2] &&
+                // three declining
+                close[i - 2] > close[i - 1] &&
+                // three declining
+                close[i - 1] > close[i];
+            
+            return is3BlackCrows;
         }
 
         public override int GetLookback()

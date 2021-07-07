@@ -109,21 +109,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isEveningDojiStar =
-                    // 1st: long
-                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
-                    // white
-                    GetCandleColor(i - 2) == 1 &&
-                    // 2nd: doji
-                    GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i - 1) &&
-                    // gapping up
-                    GetRealBodyGapUp(i - 1, i - 2) &&
-                    // 3rd: longer than short
-                    GetRealBody(i) > GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
-                    // black real body
-                    GetCandleColor(i) == -1 &&
-                    // closing well within 1st rb
-                    close[i] < close[i - 2] - GetRealBody(i - 2) * optInPenetration;
+                bool isEveningDojiStar = GetPatternRecognition(
+                    i, bodyLongPeriodTotal, bodyDojiPeriodTotal, bodyShortPeriodTotal, optInPenetration);
 
                 outInteger[outIdx++] = isEveningDojiStar ? -100 : 0;
 
@@ -153,6 +140,32 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(
+            int i,
+            double bodyLongPeriodTotal,
+            double bodyDojiPeriodTotal,
+            double bodyShortPeriodTotal,
+            double optInPenetration)
+        {
+            bool isEveningDojiStar =
+                // 1st: long
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                // white
+                GetCandleColor(i - 2) == 1 &&
+                // 2nd: doji
+                GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i - 1) &&
+                // gapping up
+                GetRealBodyGapUp(i - 1, i - 2) &&
+                // 3rd: longer than short
+                GetRealBody(i) > GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
+                // black real body
+                GetCandleColor(i) == -1 &&
+                // closing well within 1st rb
+                close[i] < close[i - 2] - GetRealBody(i - 2) * optInPenetration;
+            
+            return isEveningDojiStar;
         }
 
         public override int GetLookback()

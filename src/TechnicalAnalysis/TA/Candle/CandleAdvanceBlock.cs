@@ -138,59 +138,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isAdvanceBlock =
-                    // 1st white
-                    GetCandleColor(i - 2) == 1 &&
-                    // 2nd white
-                    GetCandleColor(i - 1) == 1 &&
-                    // 3rd white
-                    GetCandleColor(i) == 1 &&
-                    // consecutive higher closes
-                    close[i] > close[i - 1] && close[i - 1] > close[i - 2] &&
-                    // 2nd opens within/near 1st real body
-                    open[i - 1] > open[i - 2] &&
-                    open[i - 1] <= close[i - 2] + GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
-                    // 3rd opens within/near 2nd real body
-                    open[i] > open[i - 1] &&
-                    open[i] <= close[i - 1] + GetCandleAverage(Near, nearPeriodTotal[1], i - 1) &&
-                    // 1st: long real body
-                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
-                    // 1st: short upper shadow
-                    GetUpperShadow(i - 2) < GetCandleAverage(ShadowShort, shadowShortPeriodTotal[2], i - 2) &&
-                    (
-                        // ( 2 far smaller than 1 && 3 not longer than 2 )
-                        // advance blocked with the 2nd, 3rd must not carry on the advance
-                        (
-                            GetRealBody(i - 1) < GetRealBody(i - 2) -
-                            GetCandleAverage(Far, farPeriodTotal[2], i - 2) &&
-                            GetRealBody(i) < GetRealBody(i - 1) +
-                            GetCandleAverage(Near, nearPeriodTotal[1], i - 1)
-                        ) ||
-                        // 3 far smaller than 2
-                        // advance blocked with the 3rd
-                        (
-                            GetRealBody(i) < GetRealBody(i - 1) -
-                            GetCandleAverage(Far, farPeriodTotal[1], i - 1)
-                        ) ||
-                        // ( 3 smaller than 2 && 2 smaller than 1 && (3 or 2 not short upper shadow) )
-                        // advance blocked with progressively smaller real bodies and some upper shadows
-                        (
-                            GetRealBody(i) < GetRealBody(i - 1) &&
-                            GetRealBody(i - 1) < GetRealBody(i - 2) &&
-                            (
-                                GetUpperShadow(i) > 
-                                GetCandleAverage(ShadowShort, shadowShortPeriodTotal[0], i) ||
-                                GetUpperShadow(i - 1) > 
-                                GetCandleAverage(ShadowShort, shadowShortPeriodTotal[1], i - 1)
-                            )
-                        ) ||
-                        // ( 3 smaller than 2 && 3 long upper shadow )
-                        // advance blocked with 3rd candle's long upper shadow and smaller body
-                        (
-                            GetRealBody(i) < GetRealBody(i - 1) &&
-                            GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal[0], i)
-                        )
-                    );
+                bool isAdvanceBlock = GetPatternRecognition(
+                    i, nearPeriodTotal, bodyLongPeriodTotal, shadowShortPeriodTotal, farPeriodTotal, shadowLongPeriodTotal);
 
                 outInteger[outIdx++] = isAdvanceBlock ? -100 : 0;
 
@@ -239,6 +188,71 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(
+            int i,
+            double[] nearPeriodTotal,
+            double bodyLongPeriodTotal,
+            double[] shadowShortPeriodTotal,
+            double[] farPeriodTotal,
+            double[] shadowLongPeriodTotal)
+        {
+            bool isAdvanceBlock =
+                // 1st white
+                GetCandleColor(i - 2) == 1 &&
+                // 2nd white
+                GetCandleColor(i - 1) == 1 &&
+                // 3rd white
+                GetCandleColor(i) == 1 &&
+                // consecutive higher closes
+                close[i] > close[i - 1] && close[i - 1] > close[i - 2] &&
+                // 2nd opens within/near 1st real body
+                open[i - 1] > open[i - 2] &&
+                open[i - 1] <= close[i - 2] + GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
+                // 3rd opens within/near 2nd real body
+                open[i] > open[i - 1] &&
+                open[i] <= close[i - 1] + GetCandleAverage(Near, nearPeriodTotal[1], i - 1) &&
+                // 1st: long real body
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                // 1st: short upper shadow
+                GetUpperShadow(i - 2) < GetCandleAverage(ShadowShort, shadowShortPeriodTotal[2], i - 2) &&
+                (
+                    // ( 2 far smaller than 1 && 3 not longer than 2 )
+                    // advance blocked with the 2nd, 3rd must not carry on the advance
+                    (
+                        GetRealBody(i - 1) < GetRealBody(i - 2) -
+                        GetCandleAverage(Far, farPeriodTotal[2], i - 2) &&
+                        GetRealBody(i) < GetRealBody(i - 1) +
+                        GetCandleAverage(Near, nearPeriodTotal[1], i - 1)
+                    ) ||
+                    // 3 far smaller than 2
+                    // advance blocked with the 3rd
+                    (
+                        GetRealBody(i) < GetRealBody(i - 1) -
+                        GetCandleAverage(Far, farPeriodTotal[1], i - 1)
+                    ) ||
+                    // ( 3 smaller than 2 && 2 smaller than 1 && (3 or 2 not short upper shadow) )
+                    // advance blocked with progressively smaller real bodies and some upper shadows
+                    (
+                        GetRealBody(i) < GetRealBody(i - 1) &&
+                        GetRealBody(i - 1) < GetRealBody(i - 2) &&
+                        (
+                            GetUpperShadow(i) >
+                            GetCandleAverage(ShadowShort, shadowShortPeriodTotal[0], i) ||
+                            GetUpperShadow(i - 1) >
+                            GetCandleAverage(ShadowShort, shadowShortPeriodTotal[1], i - 1)
+                        )
+                    ) ||
+                    // ( 3 smaller than 2 && 3 long upper shadow )
+                    // advance blocked with 3rd candle's long upper shadow and smaller body
+                    (
+                        GetRealBody(i) < GetRealBody(i - 1) &&
+                        GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal[0], i)
+                    )
+                );
+            
+            return isAdvanceBlock;
         }
 
         public override int GetLookback()

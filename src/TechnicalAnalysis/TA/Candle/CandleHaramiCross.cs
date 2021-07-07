@@ -90,14 +90,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isHaramiCross =
-                    // 1st: long
-                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
-                    // 2nd: doji
-                    GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
-                    // engulfed by 1st
-                    Max(close[i], open[i]) < Max(close[i - 1], open[i - 1]) &&
-                    Min(close[i], open[i]) > Min(close[i - 1], open[i - 1]);
+                bool isHaramiCross = GetPatternRecognition(i, bodyLongPeriodTotal, bodyDojiPeriodTotal);
 
                 outInteger[outIdx++] = isHaramiCross ? -GetCandleColor(i - 1) * 100 : 0;
 
@@ -122,6 +115,20 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double bodyDojiPeriodTotal)
+        {
+            bool isHaramiCross =
+                // 1st: long
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
+                // 2nd: doji
+                GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
+                // engulfed by 1st
+                Max(close[i], open[i]) < Max(close[i - 1], open[i - 1]) &&
+                Min(close[i], open[i]) > Min(close[i - 1], open[i - 1]);
+            
+            return isHaramiCross;
         }
 
         public override int GetLookback()

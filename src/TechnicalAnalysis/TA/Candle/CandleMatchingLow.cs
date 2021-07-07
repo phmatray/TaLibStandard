@@ -78,14 +78,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isMatchingLow =
-                    // first black
-                    GetCandleColor(i - 1) == -1 &&
-                    // second black
-                    GetCandleColor(i) == -1 &&
-                    // 1st and 2nd same close
-                    close[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
-                    close[i] >= close[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1);
+                bool isMatchingLow = GetPatternRecognition(i, equalPeriodTotal);
 
                 outInteger[outIdx++] = isMatchingLow ? 100 : 0;
 
@@ -105,6 +98,20 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double equalPeriodTotal)
+        {
+            bool isMatchingLow =
+                // first black
+                GetCandleColor(i - 1) == -1 &&
+                // second black
+                GetCandleColor(i) == -1 &&
+                // 1st and 2nd same close
+                close[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                close[i] >= close[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1);
+            
+            return isMatchingLow;
         }
 
         public override int GetLookback()

@@ -109,15 +109,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isHammer =
-                    // small rb
-                    GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
-                    // long lower shadow
-                    GetLowerShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
-                    // very short upper shadow
-                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
-                    // rb near the prior candle's lows
-                    Min(close[i], open[i]) <= low[i - 1] + GetCandleAverage(Near, nearPeriodTotal, i - 1);
+                bool isHammer = GetPatternRecognition(
+                    i, bodyPeriodTotal, shadowLongPeriodTotal, shadowVeryShortPeriodTotal, nearPeriodTotal);
 
                 outInteger[outIdx++] = isHammer ? 100 : 0;
 
@@ -152,6 +145,22 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyPeriodTotal, double shadowLongPeriodTotal,
+            double shadowVeryShortPeriodTotal, double nearPeriodTotal)
+        {
+            bool isHammer =
+                // small rb
+                GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
+                // long lower shadow
+                GetLowerShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
+                // very short upper shadow
+                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
+                // rb near the prior candle's lows
+                Min(close[i], open[i]) <= low[i - 1] + GetCandleAverage(Near, nearPeriodTotal, i - 1);
+            
+            return isHammer;
         }
 
         public override int GetLookback()

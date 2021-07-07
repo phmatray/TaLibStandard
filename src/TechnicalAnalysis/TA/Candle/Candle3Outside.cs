@@ -69,26 +69,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool is3Outside =
-                    (
-                        // white engulfs black
-                        GetCandleColor(i - 1) == 1 &&
-                        GetCandleColor(i - 2) == -1 &&
-                        close[i - 1] > open[i - 2] &&
-                        open[i - 1] < close[i - 2] &&
-                        // third candle higher
-                        close[i] > close[i - 1]
-                    )
-                    ||
-                    (
-                        // black engulfs white
-                        GetCandleColor(i - 1) == -1 &&
-                        GetCandleColor(i - 2) == 1 &&
-                        open[i - 1] > close[i - 2] &&
-                        close[i - 1] < open[i - 2] &&
-                        // third candle lower
-                        close[i] < close[i - 1]
-                    );
+                bool is3Outside = GetPatternRecognition(i);
 
                 outInteger[outIdx++] = is3Outside ? GetCandleColor(i - 1) * 100 : 0;
 
@@ -100,6 +81,32 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i)
+        {
+            bool is3Outside =
+                (
+                    // white engulfs black
+                    GetCandleColor(i - 1) == 1 &&
+                    GetCandleColor(i - 2) == -1 &&
+                    close[i - 1] > open[i - 2] &&
+                    open[i - 1] < close[i - 2] &&
+                    // third candle higher
+                    close[i] > close[i - 1]
+                )
+                ||
+                (
+                    // black engulfs white
+                    GetCandleColor(i - 1) == -1 &&
+                    GetCandleColor(i - 2) == 1 &&
+                    open[i - 1] > close[i - 2] &&
+                    close[i - 1] < open[i - 2] &&
+                    // third candle lower
+                    close[i] < close[i - 1]
+                );
+            
+            return is3Outside;
         }
 
         public override int GetLookback()

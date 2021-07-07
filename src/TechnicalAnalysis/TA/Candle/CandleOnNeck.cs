@@ -90,18 +90,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isOnNeck =
-                    // 1st: black
-                    GetCandleColor(i - 1) == -1 &&
-                    // long
-                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
-                    // 2nd: white
-                    GetCandleColor(i) == 1 &&
-                    // open below prior low
-                    open[i] < low[i - 1] &&
-                    // close equal to prior low
-                    close[i] <= low[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
-                    close[i] >= low[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1);
+                bool isOnNeck = GetPatternRecognition(i, bodyLongPeriodTotal, equalPeriodTotal);
 
                 outInteger[outIdx++] = isOnNeck ? -100 : 0;
 
@@ -126,6 +115,24 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double equalPeriodTotal)
+        {
+            bool isOnNeck =
+                // 1st: black
+                GetCandleColor(i - 1) == -1 &&
+                // long
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
+                // 2nd: white
+                GetCandleColor(i) == 1 &&
+                // open below prior low
+                open[i] < low[i - 1] &&
+                // close equal to prior low
+                close[i] <= low[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                close[i] >= low[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1);
+            
+            return isOnNeck;
         }
 
         public override int GetLookback()

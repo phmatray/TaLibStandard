@@ -102,21 +102,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isEveningStar =
-                    // 1st: long
-                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
-                    // white
-                    GetCandleColor(i - 2) == 1 &&
-                    // 2nd: short
-                    GetRealBody(i - 1) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i - 1) &&
-                    // gapping up
-                    GetRealBodyGapUp(i - 1, i - 2) &&
-                    // 3rd: longer than short
-                    GetRealBody(i) > GetCandleAverage(BodyShort, bodyShortPeriodTotal2, i) &&
-                    // black real body
-                    GetCandleColor(i) == -1 &&
-                    // closing well within 1st rb
-                    close[i] < close[i - 2] - GetRealBody(i - 2) * optInPenetration;
+                bool isEveningStar = GetPatternRecognition(
+                    i, bodyLongPeriodTotal, bodyShortPeriodTotal, bodyShortPeriodTotal2, optInPenetration);
 
                 outInteger[outIdx++] = isEveningStar ? -100 : 0;
 
@@ -145,6 +132,32 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(
+            int i,
+            double bodyLongPeriodTotal,
+            double bodyShortPeriodTotal,
+            double bodyShortPeriodTotal2,
+            double optInPenetration)
+        {
+            bool isEveningStar =
+                // 1st: long
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                // white
+                GetCandleColor(i - 2) == 1 &&
+                // 2nd: short
+                GetRealBody(i - 1) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i - 1) &&
+                // gapping up
+                GetRealBodyGapUp(i - 1, i - 2) &&
+                // 3rd: longer than short
+                GetRealBody(i) > GetCandleAverage(BodyShort, bodyShortPeriodTotal2, i) &&
+                // black real body
+                GetCandleColor(i) == -1 &&
+                // closing well within 1st rb
+                close[i] < close[i - 2] - GetRealBody(i - 2) * optInPenetration;
+            
+            return isEveningStar;
         }
 
         public override int GetLookback()

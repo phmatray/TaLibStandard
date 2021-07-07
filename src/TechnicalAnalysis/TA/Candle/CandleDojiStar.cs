@@ -90,24 +90,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isDojiStar =
-                    // 1st: long real body
-                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
-                    // 2nd: doji
-                    GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
-                    (
-                        (
-                            // that gaps up if 1st is white
-                            GetCandleColor(i - 1) == 1 &&
-                            GetRealBodyGapUp(i, i - 1)
-                        )
-                        ||
-                        (
-                            // or down if 1st is black
-                            GetCandleColor(i - 1) == -1 &&
-                            GetRealBodyGapDown(i, i - 1)
-                        )
-                    );
+                bool isDojiStar = GetPatternRecognition(i, bodyLongPeriodTotal, bodyDojiPeriodTotal);
 
                 outInteger[outIdx++] = isDojiStar ? -GetCandleColor(i - 1) * 100 : 0;
 
@@ -132,6 +115,30 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double bodyDojiPeriodTotal)
+        {
+            bool isDojiStar =
+                // 1st: long real body
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
+                // 2nd: doji
+                GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
+                (
+                    (
+                        // that gaps up if 1st is white
+                        GetCandleColor(i - 1) == 1 &&
+                        GetRealBodyGapUp(i, i - 1)
+                    )
+                    ||
+                    (
+                        // or down if 1st is black
+                        GetCandleColor(i - 1) == -1 &&
+                        GetRealBodyGapDown(i, i - 1)
+                    )
+                );
+            
+            return isDojiStar;
         }
 
         public override int GetLookback()

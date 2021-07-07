@@ -98,15 +98,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isShootingStar =
-                    // small rb
-                    GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
-                    // long upper shadow
-                    GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
-                    // very short lower shadow
-                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
-                    // gap up
-                    GetRealBodyGapUp(i, i - 1);
+                bool isShootingStar = GetPatternRecognition(
+                    i, bodyPeriodTotal, shadowLongPeriodTotal, shadowVeryShortPeriodTotal);
 
                 outInteger[outIdx++] = isShootingStar ? -100 : 0;
 
@@ -136,6 +129,25 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(
+            int i,
+            double bodyPeriodTotal,
+            double shadowLongPeriodTotal,
+            double shadowVeryShortPeriodTotal)
+        {
+            bool isShootingStar =
+                // small rb
+                GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
+                // long upper shadow
+                GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
+                // very short lower shadow
+                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
+                // gap up
+                GetRealBodyGapUp(i, i - 1);
+            
+            return isShootingStar;
         }
 
         public override int GetLookback()

@@ -93,23 +93,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isUpsideGap2Crows =
-                    // 1st: white
-                    GetCandleColor(i - 2) == 1 &&
-                    // long
-                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
-                    // 2nd: black
-                    GetCandleColor(i - 1) == -1 &&
-                    // short
-                    GetRealBody(i - 1) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i - 1) &&
-                    // gapping up
-                    GetRealBodyGapUp(i - 1, i - 2) &&
-                    // 3rd: black
-                    GetCandleColor(i) == -1 &&
-                    // 3rd: engulfing prior rb
-                    open[i] > open[i - 1] && close[i] < close[i - 1] &&
-                    // closing above 1st
-                    close[i] > close[i - 2];
+                bool isUpsideGap2Crows = GetPatternRecognition(i, bodyLongPeriodTotal, bodyShortPeriodTotal);
 
                 outInteger[outIdx++] = isUpsideGap2Crows ? -100 : 0;
 
@@ -134,6 +118,29 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double bodyShortPeriodTotal)
+        {
+            bool isUpsideGap2Crows =
+                // 1st: white
+                GetCandleColor(i - 2) == 1 &&
+                // long
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                // 2nd: black
+                GetCandleColor(i - 1) == -1 &&
+                // short
+                GetRealBody(i - 1) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i - 1) &&
+                // gapping up
+                GetRealBodyGapUp(i - 1, i - 2) &&
+                // 3rd: black
+                GetCandleColor(i) == -1 &&
+                // 3rd: engulfing prior rb
+                open[i] > open[i - 1] && close[i] < close[i - 1] &&
+                // closing above 1st
+                close[i] > close[i - 2];
+            
+            return isUpsideGap2Crows;
         }
 
         public override int GetLookback()

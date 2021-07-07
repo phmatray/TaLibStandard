@@ -101,32 +101,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isRiseFall3Methods =
-                    // 1st long, then 3 small, 5th long
-                    GetRealBody(i - 4) > GetCandleAverage(BodyLong, bodyPeriodTotal[4], i - 4) &&
-                    GetRealBody(i - 3) < GetCandleAverage(BodyShort, bodyPeriodTotal[3], i - 3) &&
-                    GetRealBody(i - 2) < GetCandleAverage(BodyShort, bodyPeriodTotal[2], i - 2) &&
-                    GetRealBody(i - 1) < GetCandleAverage(BodyShort, bodyPeriodTotal[1], i - 1) &&
-                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyPeriodTotal[0], i) &&
-                    // white, 3 black, white  ||  black, 3 white, black
-                    GetCandleColor(i - 4) == -GetCandleColor(i - 3) &&
-                    GetCandleColor(i - 3) == GetCandleColor(i - 2) &&
-                    GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
-                    GetCandleColor(i - 1) == -GetCandleColor(i) &&
-                    // 2nd to 4th hold within 1st: a part of the real body must be within 1st range
-                    Min(open[i - 3], close[i - 3]) < high[i - 4] &&
-                    Max(open[i - 3], close[i - 3]) > low[i - 4] &&
-                    Min(open[i - 2], close[i - 2]) < high[i - 4] &&
-                    Max(open[i - 2], close[i - 2]) > low[i - 4] &&
-                    Min(open[i - 1], close[i - 1]) < high[i - 4] &&
-                    Max(open[i - 1], close[i - 1]) > low[i - 4] &&
-                    // 2nd to 4th are falling (rising)
-                    close[i - 2] * GetCandleColor(i - 4) < close[i - 3] * GetCandleColor(i - 4) &&
-                    close[i - 1] * GetCandleColor(i - 4) < close[i - 2] * GetCandleColor(i - 4) &&
-                    // 5th opens above (below) the prior close
-                    open[i] * GetCandleColor(i - 4) > close[i - 1] * GetCandleColor(i - 4) &&
-                    // 5th closes above (below) the 1st close
-                    close[i] * GetCandleColor(i - 4) > close[i - 4] * GetCandleColor(i - 4);
+                bool isRiseFall3Methods = GetPatternRecognition(i, bodyPeriodTotal);
 
                 outInteger[outIdx++] = isRiseFall3Methods ? 100 * GetCandleColor(i - 4) : 0;
 
@@ -158,6 +133,38 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double[] bodyPeriodTotal)
+        {
+            bool isRiseFall3Methods =
+                // 1st long, then 3 small, 5th long
+                GetRealBody(i - 4) > GetCandleAverage(BodyLong, bodyPeriodTotal[4], i - 4) &&
+                GetRealBody(i - 3) < GetCandleAverage(BodyShort, bodyPeriodTotal[3], i - 3) &&
+                GetRealBody(i - 2) < GetCandleAverage(BodyShort, bodyPeriodTotal[2], i - 2) &&
+                GetRealBody(i - 1) < GetCandleAverage(BodyShort, bodyPeriodTotal[1], i - 1) &&
+                GetRealBody(i) > GetCandleAverage(BodyLong, bodyPeriodTotal[0], i) &&
+                // white, 3 black, white  ||  black, 3 white, black
+                GetCandleColor(i - 4) == -GetCandleColor(i - 3) &&
+                GetCandleColor(i - 3) == GetCandleColor(i - 2) &&
+                GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
+                GetCandleColor(i - 1) == -GetCandleColor(i) &&
+                // 2nd to 4th hold within 1st: a part of the real body must be within 1st range
+                Min(open[i - 3], close[i - 3]) < high[i - 4] &&
+                Max(open[i - 3], close[i - 3]) > low[i - 4] &&
+                Min(open[i - 2], close[i - 2]) < high[i - 4] &&
+                Max(open[i - 2], close[i - 2]) > low[i - 4] &&
+                Min(open[i - 1], close[i - 1]) < high[i - 4] &&
+                Max(open[i - 1], close[i - 1]) > low[i - 4] &&
+                // 2nd to 4th are falling (rising)
+                close[i - 2] * GetCandleColor(i - 4) < close[i - 3] * GetCandleColor(i - 4) &&
+                close[i - 1] * GetCandleColor(i - 4) < close[i - 2] * GetCandleColor(i - 4) &&
+                // 5th opens above (below) the prior close
+                open[i] * GetCandleColor(i - 4) > close[i - 1] * GetCandleColor(i - 4) &&
+                // 5th closes above (below) the 1st close
+                close[i] * GetCandleColor(i - 4) > close[i - 4] * GetCandleColor(i - 4);
+            
+            return isRiseFall3Methods;
         }
 
         public override int GetLookback()

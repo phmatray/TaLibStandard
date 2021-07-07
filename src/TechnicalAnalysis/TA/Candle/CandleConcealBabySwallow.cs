@@ -89,34 +89,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isConcealBabySwallow =
-                    // 1st black
-                    GetCandleColor(i - 3) == -1 &&
-                    // 2nd black
-                    GetCandleColor(i - 2) == -1 &&
-                    // 3rd black
-                    GetCandleColor(i - 1) == -1 &&
-                    // 4th black
-                    GetCandleColor(i) == -1 &&
-                    // 1st: marubozu
-                    GetLowerShadow(i - 3) < 
-                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[3], i - 3) &&
-                    GetUpperShadow(i - 3) < 
-                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[3], i - 3) &&
-                    // 2nd: marubozu
-                    GetLowerShadow(i - 2) < 
-                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
-                    GetUpperShadow(i - 2) < 
-                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
-                    // 3rd: opens gapping down
-                    GetRealBodyGapDown(i - 1, i - 2) &&
-                    // and HAS an upper shadow
-                    GetUpperShadow(i - 1) > 
-                    GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
-                    // that extends into the prior body
-                    high[i - 1] > close[i - 2] &&
-                    // 4th: engulfs the 3rd including the shadows
-                    high[i] > high[i - 1] && low[i] < low[i - 1];
+                bool isConcealBabySwallow = GetPatternRecognition(i, shadowVeryShortPeriodTotal);
 
                 outInteger[outIdx++] = isConcealBabySwallow ? 100 : 0;
 
@@ -139,6 +112,40 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double[] shadowVeryShortPeriodTotal)
+        {
+            bool isConcealBabySwallow =
+                // 1st black
+                GetCandleColor(i - 3) == -1 &&
+                // 2nd black
+                GetCandleColor(i - 2) == -1 &&
+                // 3rd black
+                GetCandleColor(i - 1) == -1 &&
+                // 4th black
+                GetCandleColor(i) == -1 &&
+                // 1st: marubozu
+                GetLowerShadow(i - 3) <
+                GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[3], i - 3) &&
+                GetUpperShadow(i - 3) <
+                GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[3], i - 3) &&
+                // 2nd: marubozu
+                GetLowerShadow(i - 2) <
+                GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
+                GetUpperShadow(i - 2) <
+                GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
+                // 3rd: opens gapping down
+                GetRealBodyGapDown(i - 1, i - 2) &&
+                // and HAS an upper shadow
+                GetUpperShadow(i - 1) >
+                GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
+                // that extends into the prior body
+                high[i - 1] > close[i - 2] &&
+                // 4th: engulfs the 3rd including the shadows
+                high[i] > high[i - 1] && low[i] < low[i - 1];
+            
+            return isConcealBabySwallow;
         }
 
         public override int GetLookback()

@@ -103,28 +103,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isIdentical3Crows =
-                    // 1st black
-                    GetCandleColor(i - 2) == -1 &&
-                    // very short lower shadow
-                    GetLowerShadow(i - 2) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
-                    // 2nd black
-                    GetCandleColor(i - 1) == -1 &&
-                    // very short lower shadow
-                    GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
-                    // 3rd black
-                    GetCandleColor(i) == -1 &&
-                    // very short lower shadow
-                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
-                    // three declining
-                    close[i - 2] > close[i - 1] &&
-                    close[i - 1] > close[i] &&
-                    // 2nd black opens very close to 1st close
-                    open[i - 1] <= close[i - 2] + GetCandleAverage(Equal, equalPeriodTotal[2], i - 2) &&
-                    open[i - 1] >= close[i - 2] - GetCandleAverage(Equal, equalPeriodTotal[2], i - 2) &&
-                    // 3rd black opens very close to 2nd close 
-                    open[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal[1], i - 1) &&
-                    open[i] >= close[i - 1] - GetCandleAverage(Equal, equalPeriodTotal[1], i - 1);
+                bool isIdentical3Crows = GetPatternRecognition(i, shadowVeryShortPeriodTotal, equalPeriodTotal);
 
                 outInteger[outIdx++] = isIdentical3Crows ? -100 : 0;
 
@@ -155,6 +134,34 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double[] shadowVeryShortPeriodTotal, double[] equalPeriodTotal)
+        {
+            bool isIdentical3Crows =
+                // 1st black
+                GetCandleColor(i - 2) == -1 &&
+                // very short lower shadow
+                GetLowerShadow(i - 2) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
+                // 2nd black
+                GetCandleColor(i - 1) == -1 &&
+                // very short lower shadow
+                GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
+                // 3rd black
+                GetCandleColor(i) == -1 &&
+                // very short lower shadow
+                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
+                // three declining
+                close[i - 2] > close[i - 1] &&
+                close[i - 1] > close[i] &&
+                // 2nd black opens very close to 1st close
+                open[i - 1] <= close[i - 2] + GetCandleAverage(Equal, equalPeriodTotal[2], i - 2) &&
+                open[i - 1] >= close[i - 2] - GetCandleAverage(Equal, equalPeriodTotal[2], i - 2) &&
+                // 3rd black opens very close to 2nd close 
+                open[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal[1], i - 1) &&
+                open[i] >= close[i - 1] - GetCandleAverage(Equal, equalPeriodTotal[1], i - 1);
+            
+            return isIdentical3Crows;
         }
 
         public override int GetLookback()

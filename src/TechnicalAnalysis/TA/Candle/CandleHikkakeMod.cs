@@ -73,23 +73,7 @@ namespace TechnicalAnalysis.Candle
             i = startIdx - 3;
             while (i < startIdx)
             {
-                bool patternRecognition =
-                    // 2nd: lower high and higher low than 1st
-                    high[i - 2] < high[i - 3] && low[i - 2] > low[i - 3] &&
-                    // 3rd: lower high and higher low than 2nd
-                    high[i - 1] < high[i - 2] && low[i - 1] > low[i - 2] &&
-                    (
-                        // (bull) 4th: lower high and lower low
-                        high[i] < high[i - 1] && low[i] < low[i - 1] &&
-                        // (bull) 2nd: close near the low
-                        close[i - 2] <= low[i - 2] + GetCandleAverage(Near, nearPeriodTotal, i - 2) ||
-                        // (bear) 4th: higher high and higher low
-                        high[i] > high[i - 1] && low[i] > low[i - 1] &&
-                        // (bull) 2nd: close near the top
-                        close[i - 2] >= high[i - 2] - GetCandleAverage(Near, nearPeriodTotal, i - 2)
-                    );
-                
-                if (patternRecognition)
+                if (GetPatternRecognition(i, nearPeriodTotal))
                 {
                     patternResult = 100 * (high[i] < high[i - 1] ? 1 : -1);
                     patternIdx = i;
@@ -97,16 +81,7 @@ namespace TechnicalAnalysis.Candle
                 else
                 {
                     // search for confirmation if modified hikkake was no more than 3 bars ago
-                    bool confirmation =
-                        i <= patternIdx + 3 &&
-                        (
-                            // close higher than the high of 3rd
-                            patternResult > 0 && close[i] > high[patternIdx - 1] ||
-                            // close lower than the low of 3rd
-                            patternResult < 0 && close[i] < low[patternIdx - 1]
-                        );
-                    
-                    if (confirmation)
+                    if (GetPatternConfirmation(i, patternIdx, patternResult))
                     {
                         patternIdx = 0;
                     }
@@ -141,30 +116,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool patternRecognition =
-                    // 2nd: lower high and higher low than 1st
-                    high[i - 2] < high[i - 3] && low[i - 2] > low[i - 3] &&
-                    // 3rd: lower high and higher low than 2nd
-                    high[i - 1] < high[i - 2] && low[i - 1] > low[i - 2] &&
-                    (
-                        (
-                            // (bull) 4th: lower high and lower low
-                            high[i] < high[i - 1] && low[i] < low[i - 1] &&
-                            // (bull) 2nd: close near the low
-                            close[i - 2] <= low[i - 2] + GetCandleAverage(Near, nearPeriodTotal, i - 2)
-                        )
-                        ||
-                        (
-                            // (bear) 4th: higher high and higher low
-                            high[i] > high[i - 1] && low[i] > low[i - 1] &&
-                            // (bull) 2nd: close near the top
-                            close[i - 2] >= high[i - 2] - GetCandleAverage(Near, nearPeriodTotal, i - 2)
-
-                        )
-                    );
-
-                if (patternRecognition
-                )
+                if (GetPatternRecognition(i, nearPeriodTotal))
                 {
                     patternResult = 100 * (high[i] < high[i - 1] ? 1 : -1);
                     patternIdx = i;
@@ -173,17 +125,7 @@ namespace TechnicalAnalysis.Candle
                 else
                 {
                     /* search for confirmation if modified hikkake was no more than 3 bars ago */
-                    bool confirmation =
-                        i <= patternIdx + 3 &&
-                        (
-                            // close higher than the high of 3rd
-                            (patternResult > 0 && close[i] > high[patternIdx - 1]) ||
-                            // close lower than the low of 3rd
-                            (patternResult < 0 && close[i] < low[patternIdx - 1])
-                        );
-
-                    if (confirmation
-                    )
+                    if (GetPatternConfirmation(i, patternIdx, patternResult))
                     {
                         outInteger[outIdx++] = patternResult + 100 * (patternResult > 0 ? 1 : -1);
                         patternIdx = 0;
@@ -207,6 +149,41 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double nearPeriodTotal)
+        {
+            bool patternRecognition =
+                // 2nd: lower high and higher low than 1st
+                high[i - 2] < high[i - 3] && low[i - 2] > low[i - 3] &&
+                // 3rd: lower high and higher low than 2nd
+                high[i - 1] < high[i - 2] && low[i - 1] > low[i - 2] &&
+                (
+                    // (bull) 4th: lower high and lower low
+                    high[i] < high[i - 1] && low[i] < low[i - 1] &&
+                    // (bull) 2nd: close near the low
+                    close[i - 2] <= low[i - 2] + GetCandleAverage(Near, nearPeriodTotal, i - 2) ||
+                    // (bear) 4th: higher high and higher low
+                    high[i] > high[i - 1] && low[i] > low[i - 1] &&
+                    // (bull) 2nd: close near the top
+                    close[i - 2] >= high[i - 2] - GetCandleAverage(Near, nearPeriodTotal, i - 2)
+                );
+            
+            return patternRecognition;
+        }
+
+        private bool GetPatternConfirmation(int i, int patternIdx, int patternResult)
+        {
+            bool confirmation =
+                i <= patternIdx + 3 &&
+                (
+                    // close higher than the high of 3rd
+                    patternResult > 0 && close[i] > high[patternIdx - 1] ||
+                    // close lower than the low of 3rd
+                    patternResult < 0 && close[i] < low[patternIdx - 1]
+                );
+            
+            return confirmation;
         }
 
         public override int GetLookback()

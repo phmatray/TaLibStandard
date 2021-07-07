@@ -127,39 +127,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool is3WhiteSoldiers =
-                    // 1st white
-                    GetCandleColor(i - 2) == 1 &&
-                    // very short upper shadow
-                    GetUpperShadow(i - 2) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
-                    // 2nd white                
-                    GetCandleColor(i - 1) == 1 &&
-                    // very short upper shadow
-                    GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
-                    // 3rd white   
-                    GetCandleColor(i) == 1 &&
-                    // very short upper shadow
-                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
-                    // consecutive higher closes           
-                    close[i] > close[i - 1] &&
-                    close[i - 1] > close[i - 2] &&
-                    // 2nd opens within/near 1st real body
-                    open[i - 1] > open[i - 2] &&
-                    open[i - 1] <= close[i - 2] +
-                    GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
-                    // 3rd opens within/near 2nd real body
-                    open[i] > open[i - 1] &&
-                    open[i] <= close[i - 1] +
-                    GetCandleAverage(Near, nearPeriodTotal[1], i - 1) &&
-                    // 2nd not far shorter than 1st
-                    GetRealBody(i - 1) > GetRealBody(i - 2) -
-                    GetCandleAverage(Far, farPeriodTotal[2], i - 2) &&
-                    // 3rd not far shorter than 2nd
-                    GetRealBody(i) > GetRealBody(i - 1) -
-                    GetCandleAverage(Far, farPeriodTotal[1], i - 1) &&
-                    // not short real body
-                    GetRealBody(i) > 
-                    GetCandleAverage(BodyShort, bodyShortPeriodTotal, i);
+                bool is3WhiteSoldiers = GetPatternRecognition(
+                    i, shadowVeryShortPeriodTotal, nearPeriodTotal, farPeriodTotal, bodyShortPeriodTotal);
 
                 outInteger[outIdx++] = is3WhiteSoldiers ? 100 : 0;
 
@@ -200,6 +169,50 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(
+            int i,
+            double[] shadowVeryShortPeriodTotal,
+            double[] nearPeriodTotal,
+            double[] farPeriodTotal,
+            double bodyShortPeriodTotal)
+        {
+            bool is3WhiteSoldiers =
+                // 1st white
+                GetCandleColor(i - 2) == 1 &&
+                // very short upper shadow
+                GetUpperShadow(i - 2) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
+                // 2nd white                
+                GetCandleColor(i - 1) == 1 &&
+                // very short upper shadow
+                GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
+                // 3rd white   
+                GetCandleColor(i) == 1 &&
+                // very short upper shadow
+                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
+                // consecutive higher closes           
+                close[i] > close[i - 1] &&
+                close[i - 1] > close[i - 2] &&
+                // 2nd opens within/near 1st real body
+                open[i - 1] > open[i - 2] &&
+                open[i - 1] <= close[i - 2] +
+                GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
+                // 3rd opens within/near 2nd real body
+                open[i] > open[i - 1] &&
+                open[i] <= close[i - 1] +
+                GetCandleAverage(Near, nearPeriodTotal[1], i - 1) &&
+                // 2nd not far shorter than 1st
+                GetRealBody(i - 1) > GetRealBody(i - 2) -
+                GetCandleAverage(Far, farPeriodTotal[2], i - 2) &&
+                // 3rd not far shorter than 2nd
+                GetRealBody(i) > GetRealBody(i - 1) -
+                GetCandleAverage(Far, farPeriodTotal[1], i - 1) &&
+                // not short real body
+                GetRealBody(i) >
+                GetCandleAverage(BodyShort, bodyShortPeriodTotal, i);
+            
+            return is3WhiteSoldiers;
         }
 
         public override int GetLookback()

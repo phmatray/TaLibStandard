@@ -83,22 +83,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool is2Crows =
-                    // 1st: white
-                    GetCandleColor(i - 2) == 1 &&
-                    // long
-                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
-                    // 2nd: black
-                    GetCandleColor(i - 1) == -1 &&
-                    // gapping up
-                    GetRealBodyGapUp(i - 1, i - 2) &&
-                    // 3rd: black
-                    GetCandleColor(i) == -1 &&
-                    // opening within 2nd rb
-                    open[i] < open[i - 1] && open[i] > close[i - 1] &&
-                    // closing within 1st rb
-                    close[i] > open[i - 2] && close[i] < close[i - 2];
-
+                bool is2Crows = GetPatternRecognition(i, bodyLongPeriodTotal);
+                
                 outInteger[outIdx++] = is2Crows ? -100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
@@ -117,6 +103,27 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
 
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal)
+        {
+            bool is2Crows =
+                // 1st: white
+                GetCandleColor(i - 2) == 1 &&
+                // long
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                // 2nd: black
+                GetCandleColor(i - 1) == -1 &&
+                // gapping up
+                GetRealBodyGapUp(i - 1, i - 2) &&
+                // 3rd: black
+                GetCandleColor(i) == -1 &&
+                // opening within 2nd rb
+                open[i] < open[i - 1] && open[i] > close[i - 1] &&
+                // closing within 1st rb
+                close[i] > open[i - 2] && close[i] < close[i - 2];
+
+            return is2Crows;
         }
 
         public override int GetLookback()

@@ -88,18 +88,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isDarkCloudCover =
-                    // 1st: white
-                    GetCandleColor(i - 1) == 1 &&
-                    // long
-                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
-                    // 2nd: black
-                    GetCandleColor(i) == -1 &&
-                    // open above prior high
-                    open[i] > high[i - 1] &&
-                    // close within prior body
-                    close[i] > open[i - 1] &&
-                    close[i] < close[i - 1] - GetRealBody(i - 1) * optInPenetration;
+                bool isDarkCloudCover = GetPatternRecognition(optInPenetration, i, bodyLongPeriodTotal);
 
                 outInteger[outIdx++] = isDarkCloudCover ? -100 : 0;
 
@@ -119,6 +108,24 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(double optInPenetration, int i, double bodyLongPeriodTotal)
+        {
+            bool isDarkCloudCover =
+                // 1st: white
+                GetCandleColor(i - 1) == 1 &&
+                // long
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
+                // 2nd: black
+                GetCandleColor(i) == -1 &&
+                // open above prior high
+                open[i] > high[i - 1] &&
+                // close within prior body
+                close[i] > open[i - 1] &&
+                close[i] < close[i - 1] - GetRealBody(i - 1) * optInPenetration;
+            
+            return isDarkCloudCover;
         }
 
         public override int GetLookback()

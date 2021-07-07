@@ -89,10 +89,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isGravestoneDoji =
-                    GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
-                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
-                    GetUpperShadow(i) > GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i);
+                bool isGravestoneDoji = GetPatternRecognition(i, bodyDojiPeriodTotal, shadowVeryShortPeriodTotal);
 
                 outInteger[outIdx++] = isGravestoneDoji ? 100 : 0;
 
@@ -117,6 +114,16 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyDojiPeriodTotal, double shadowVeryShortPeriodTotal)
+        {
+            bool isGravestoneDoji =
+                GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
+                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
+                GetUpperShadow(i) > GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i);
+            
+            return isGravestoneDoji;
         }
 
         public override int GetLookback()

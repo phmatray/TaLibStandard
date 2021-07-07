@@ -91,23 +91,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isUnique3River =
-                    // 1st: long
-                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
-                    // black
-                    GetCandleColor(i - 2) == -1 &&
-                    // 2nd: black
-                    GetCandleColor(i - 1) == -1 &&
-                    // harami
-                    close[i - 1] > close[i - 2] && open[i - 1] <= open[i - 2] &&
-                    // lower low
-                    low[i - 1] < low[i - 2] &&
-                    // 3rd: short
-                    GetRealBody(i) < GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
-                    // white
-                    GetCandleColor(i) == 1 &&
-                    // open not lower
-                    open[i] > low[i - 1];
+                bool isUnique3River = GetPatternRecognition(i, bodyLongPeriodTotal, bodyShortPeriodTotal);
 
                 outInteger[outIdx++] = isUnique3River ? 100 : 0;
 
@@ -132,6 +116,29 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double bodyShortPeriodTotal)
+        {
+            bool isUnique3River =
+                // 1st: long
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                // black
+                GetCandleColor(i - 2) == -1 &&
+                // 2nd: black
+                GetCandleColor(i - 1) == -1 &&
+                // harami
+                close[i - 1] > close[i - 2] && open[i - 1] <= open[i - 2] &&
+                // lower low
+                low[i - 1] < low[i - 2] &&
+                // 3rd: short
+                GetRealBody(i) < GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
+                // white
+                GetCandleColor(i) == 1 &&
+                // open not lower
+                open[i] > low[i - 1];
+            
+            return isUnique3River;
         }
 
         public override int GetLookback()

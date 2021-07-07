@@ -81,26 +81,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isLadderBottom =
-                    // 3 black candlesticks
-                    GetCandleColor(i - 4) == -1 &&
-                    GetCandleColor(i - 3) == -1 &&
-                    GetCandleColor(i - 2) == -1 &&
-                    // with consecutively lower opens
-                    open[i - 4] > open[i - 3] &&
-                    open[i - 3] > open[i - 2] &&
-                    // and closes
-                    close[i - 4] > close[i - 3] &&
-                    close[i - 3] > close[i - 2] &&
-                    // 4th: black with an upper shadow
-                    GetCandleColor(i - 1) == -1 &&
-                    GetUpperShadow(i - 1) > GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i - 1) &&
-                    // 5th: white
-                    GetCandleColor(i) == 1 &&
-                    // that opens above prior candle's body
-                    open[i] > open[i - 1] &&
-                    // and closes above prior candle's high
-                    close[i] > high[i - 1];
+                bool isLadderBottom = GetPatternRecognition(i, shadowVeryShortPeriodTotal);
 
                 outInteger[outIdx++] = isLadderBottom ? 100 : 0;
 
@@ -120,6 +101,32 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double shadowVeryShortPeriodTotal)
+        {
+            bool isLadderBottom =
+                // 3 black candlesticks
+                GetCandleColor(i - 4) == -1 &&
+                GetCandleColor(i - 3) == -1 &&
+                GetCandleColor(i - 2) == -1 &&
+                // with consecutively lower opens
+                open[i - 4] > open[i - 3] &&
+                open[i - 3] > open[i - 2] &&
+                // and closes
+                close[i - 4] > close[i - 3] &&
+                close[i - 3] > close[i - 2] &&
+                // 4th: black with an upper shadow
+                GetCandleColor(i - 1) == -1 &&
+                GetUpperShadow(i - 1) > GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i - 1) &&
+                // 5th: white
+                GetCandleColor(i) == 1 &&
+                // that opens above prior candle's body
+                open[i] > open[i - 1] &&
+                // and closes above prior candle's high
+                close[i] > high[i - 1];
+            
+            return isLadderBottom;
         }
 
         public override int GetLookback()

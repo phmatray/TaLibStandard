@@ -93,32 +93,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isGapSideSideWhite =
-                    ( // upside or downside gap between the 1st candle and both the next 2 candles
-                        (
-                            GetRealBodyGapUp(i - 1, i - 2) &&
-                            GetRealBodyGapUp(i, i - 2)
-                        )
-                        ||
-                        (
-                            GetRealBodyGapDown(i - 1, i - 2) &&
-                            GetRealBodyGapDown(i, i - 2)
-                        )
-                    ) &&
-                    // 2nd: white
-                    GetCandleColor(i - 1) == 1 &&
-                    // 3rd: white
-                    GetCandleColor(i) == 1 &&
-                    // same size 2 and 3
-                    GetRealBody(i) >= GetRealBody(i - 1) -
-                    GetCandleAverage(Near, nearPeriodTotal, i - 1) &&
-                    GetRealBody(i) <= GetRealBody(i - 1) +
-                    GetCandleAverage(Near, nearPeriodTotal, i - 1) &&
-                    // same open 2 and 3
-                    open[i] >= open[i - 1] -
-                    GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
-                    open[i] <= open[i - 1] +
-                    GetCandleAverage(Equal, equalPeriodTotal, i - 1);
+                bool isGapSideSideWhite = GetPatternRecognition(i, nearPeriodTotal, equalPeriodTotal);
 
                 outInteger[outIdx++] =
                     isGapSideSideWhite ? GetRealBodyGapUp(i - 1, i - 2) ? 100 : -100 : 0;
@@ -144,6 +119,38 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double nearPeriodTotal, double equalPeriodTotal)
+        {
+            bool isGapSideSideWhite =
+                ( // upside or downside gap between the 1st candle and both the next 2 candles
+                    (
+                        GetRealBodyGapUp(i - 1, i - 2) &&
+                        GetRealBodyGapUp(i, i - 2)
+                    )
+                    ||
+                    (
+                        GetRealBodyGapDown(i - 1, i - 2) &&
+                        GetRealBodyGapDown(i, i - 2)
+                    )
+                ) &&
+                // 2nd: white
+                GetCandleColor(i - 1) == 1 &&
+                // 3rd: white
+                GetCandleColor(i) == 1 &&
+                // same size 2 and 3
+                GetRealBody(i) >= GetRealBody(i - 1) -
+                GetCandleAverage(Near, nearPeriodTotal, i - 1) &&
+                GetRealBody(i) <= GetRealBody(i - 1) +
+                GetCandleAverage(Near, nearPeriodTotal, i - 1) &&
+                // same open 2 and 3
+                open[i] >= open[i - 1] -
+                GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                open[i] <= open[i - 1] +
+                GetCandleAverage(Equal, equalPeriodTotal, i - 1);
+            
+            return isGapSideSideWhite;
         }
 
         public override int GetLookback()

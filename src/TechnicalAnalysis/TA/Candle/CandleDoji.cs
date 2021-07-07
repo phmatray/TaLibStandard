@@ -77,7 +77,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isDoji = GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i);
+                bool isDoji = GetPatternRecognition(i, bodyDojiPeriodTotal);
 
                 outInteger[outIdx++] = isDoji ? 100 : 0;
 
@@ -97,6 +97,13 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
 
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyDojiPeriodTotal)
+        {
+            bool isDoji = GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i);
+            
+            return isDoji;
         }
 
         public override int GetLookback()

@@ -91,26 +91,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool is3Inside =
-                    // 1st: long
-                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
-                    // 2nd: short
-                    GetRealBody(i - 1) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i - 1) &&
-                    // engulfed by 1st
-                    Max(close[i - 1], open[i - 1]) < Max(close[i - 2], open[i - 2]) &&
-                    Min(close[i - 1], open[i - 1]) > Min(close[i - 2], open[i - 2]) &&
-                    (
-                        ( // 3rd: opposite to 1st
-                            GetCandleColor(i - 2) == 1 &&
-                            GetCandleColor(i) == -1 &&
-                            close[i] < open[i - 2]
-                        ) ||
-                        ( // and closing out
-                            GetCandleColor(i - 2) == -1 &&
-                            GetCandleColor(i) == 1 &&
-                            close[i] > open[i - 2]
-                        )
-                    );
+                bool is3Inside = GetPatternRecognition(i, bodyLongPeriodTotal, bodyShortPeriodTotal);
 
                 outInteger[outIdx++] = is3Inside ? -GetCandleColor(i - 2) * 100 : 0;
 
@@ -135,6 +116,32 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double bodyShortPeriodTotal)
+        {
+            bool is3Inside =
+                // 1st: long
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                // 2nd: short
+                GetRealBody(i - 1) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i - 1) &&
+                // engulfed by 1st
+                Max(close[i - 1], open[i - 1]) < Max(close[i - 2], open[i - 2]) &&
+                Min(close[i - 1], open[i - 1]) > Min(close[i - 2], open[i - 2]) &&
+                (
+                    ( // 3rd: opposite to 1st
+                        GetCandleColor(i - 2) == 1 &&
+                        GetCandleColor(i) == -1 &&
+                        close[i] < open[i - 2]
+                    ) ||
+                    ( // and closing out
+                        GetCandleColor(i - 2) == -1 &&
+                        GetCandleColor(i) == 1 &&
+                        close[i] > open[i - 2]
+                    )
+                );
+            
+            return is3Inside;
         }
 
         public override int GetLookback()

@@ -111,40 +111,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isAbandonedBaby =
-                    // 1st: long
-                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
-                    // 2nd: doji
-                    GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i - 1) &&
-                    // 3rd: longer than short
-                    GetRealBody(i) > GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
-                    (
-                        (
-                            // 1st white
-                            GetCandleColor(i - 2) == 1 &&
-                            // 3rd black
-                            GetCandleColor(i) == -1 &&
-                            // 3rd closes well within 1st rb
-                            close[i] < close[i - 2] - GetRealBody(i - 2) * optInPenetration &&
-                            // upside gap between 1st and 2nd
-                            GetCandleGapUp(i - 1, i - 2) &&
-                            // downside gap between 2nd and 3rd
-                            GetCandleGapDown(i, i - 1)
-                        )
-                        ||
-                        (
-                            // 1st black
-                            GetCandleColor(i - 2) == -1 &&
-                            // 3rd white
-                            GetCandleColor(i) == 1 &&
-                            // 3rd closes well within 1st rb
-                            close[i] > close[i - 2] + GetRealBody(i - 2) * optInPenetration &&
-                            // downside gap between 1st and 2nd
-                            GetCandleGapDown(i - 1, i - 2) &&
-                            // upside gap between 2nd and 3rd
-                            GetCandleGapUp(i, i - 1)
-                        )
-                    );
+                bool isAbandonedBaby = GetPatternRecognition(
+                    i, bodyLongPeriodTotal, bodyDojiPeriodTotal, bodyShortPeriodTotal, optInPenetration);
 
                 outInteger[outIdx++] = isAbandonedBaby ? GetCandleColor(i) * 100 : 0;
 
@@ -174,6 +142,51 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(
+            int i,
+            double bodyLongPeriodTotal,
+            double bodyDojiPeriodTotal,
+            double bodyShortPeriodTotal,
+            double optInPenetration)
+        {
+            bool isAbandonedBaby =
+                // 1st: long
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                // 2nd: doji
+                GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i - 1) &&
+                // 3rd: longer than short
+                GetRealBody(i) > GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
+                (
+                    (
+                        // 1st white
+                        GetCandleColor(i - 2) == 1 &&
+                        // 3rd black
+                        GetCandleColor(i) == -1 &&
+                        // 3rd closes well within 1st rb
+                        close[i] < close[i - 2] - GetRealBody(i - 2) * optInPenetration &&
+                        // upside gap between 1st and 2nd
+                        GetCandleGapUp(i - 1, i - 2) &&
+                        // downside gap between 2nd and 3rd
+                        GetCandleGapDown(i, i - 1)
+                    )
+                    ||
+                    (
+                        // 1st black
+                        GetCandleColor(i - 2) == -1 &&
+                        // 3rd white
+                        GetCandleColor(i) == 1 &&
+                        // 3rd closes well within 1st rb
+                        close[i] > close[i - 2] + GetRealBody(i - 2) * optInPenetration &&
+                        // downside gap between 1st and 2nd
+                        GetCandleGapDown(i - 1, i - 2) &&
+                        // upside gap between 2nd and 3rd
+                        GetCandleGapUp(i, i - 1)
+                    )
+                );
+            
+            return isAbandonedBaby;
         }
 
         public override int GetLookback()

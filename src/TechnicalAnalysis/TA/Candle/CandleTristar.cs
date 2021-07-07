@@ -79,13 +79,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isCdlTristar =
-                    // 1st: doji
-                    GetRealBody(i - 2) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2) &&
-                    // 2nd: doji
-                    GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2) &&
-                    // 3rd: doji
-                    GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2);
+                bool isCdlTristar = GetPatternRecognition(i, bodyPeriodTotal);
 
                 if (isCdlTristar)
                 {
@@ -130,6 +124,19 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyPeriodTotal)
+        {
+            bool isCdlTristar =
+                // 1st: doji
+                GetRealBody(i - 2) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2) &&
+                // 2nd: doji
+                GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2) &&
+                // 3rd: doji
+                GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2);
+            
+            return isCdlTristar;
         }
 
         public override int GetLookback()

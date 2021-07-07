@@ -98,22 +98,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isKickingByLength =
-                    // opposite candles
-                    GetCandleColor(i - 1) == -GetCandleColor(i) &&
-                    // 1st marubozu
-                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
-                    GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
-                    GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
-                    // 2nd marubozu
-                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i) &&
-                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
-                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
-                    // gap
-                    (
-                        (GetCandleColor(i - 1) == -1 && GetCandleGapUp(i, i - 1)) ||
-                        (GetCandleColor(i - 1) == 1 && GetCandleGapDown(i, i - 1))
-                    );
+                bool isKickingByLength = GetPatternRecognition(i, bodyLongPeriodTotal, shadowVeryShortPeriodTotal);
 
                 outInteger[outIdx++] = isKickingByLength
                     ? GetCandleColor((GetRealBody(i) > GetRealBody(i - 1) ? i : i - 1)) * 100
@@ -143,6 +128,28 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double[] bodyLongPeriodTotal, double[] shadowVeryShortPeriodTotal)
+        {
+            bool isKickingByLength =
+                // opposite candles
+                GetCandleColor(i - 1) == -GetCandleColor(i) &&
+                // 1st marubozu
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
+                GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
+                GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
+                // 2nd marubozu
+                GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i) &&
+                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
+                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
+                // gap
+                (
+                    (GetCandleColor(i - 1) == -1 && GetCandleGapUp(i, i - 1)) ||
+                    (GetCandleColor(i - 1) == 1 && GetCandleGapDown(i, i - 1))
+                );
+            
+            return isKickingByLength;
         }
 
         public override int GetLookback()

@@ -90,18 +90,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isInNeck =
-                    // 1st: black
-                    GetCandleColor(i - 1) == -1 &&
-                    // long
-                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
-                    // 2nd: white
-                    GetCandleColor(i) == 1 &&
-                    // open below prior low
-                    open[i] < low[i - 1] &&
-                    // close slightly into prior body
-                    close[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
-                    close[i] >= close[i - 1];
+                bool isInNeck = GetPatternRecognition(i, bodyLongPeriodTotal, equalPeriodTotal);
 
                 outInteger[outIdx++] = isInNeck ? -100 : 0;
 
@@ -126,6 +115,24 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double equalPeriodTotal)
+        {
+            bool isInNeck =
+                // 1st: black
+                GetCandleColor(i - 1) == -1 &&
+                // long
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
+                // 2nd: white
+                GetCandleColor(i) == 1 &&
+                // open below prior low
+                open[i] < low[i - 1] &&
+                // close slightly into prior body
+                close[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                close[i] >= close[i - 1];
+            
+            return isInNeck;
         }
 
         public override int GetLookback()

@@ -90,14 +90,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isHarami =
-                    // 1st: long
-                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
-                    // 2nd: short
-                    GetRealBody(i) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
-                    // engulfed by 1st
-                    Max(close[i], open[i]) < Max(close[i - 1], open[i - 1]) &&
-                    Min(close[i], open[i]) > Min(close[i - 1], open[i - 1]);
+                bool isHarami = GetPatternRecognition(i, bodyLongPeriodTotal, bodyShortPeriodTotal);
 
                 outInteger[outIdx++] = isHarami ? -GetCandleColor(i - 1) * 100 : 0;
 
@@ -122,6 +115,20 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double bodyShortPeriodTotal)
+        {
+            bool isHarami =
+                // 1st: long
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
+                // 2nd: short
+                GetRealBody(i) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
+                // engulfed by 1st
+                Max(close[i], open[i]) < Max(close[i - 1], open[i - 1]) &&
+                Min(close[i], open[i]) > Min(close[i - 1], open[i - 1]);
+            
+            return isHarami;
         }
 
         public override int GetLookback()

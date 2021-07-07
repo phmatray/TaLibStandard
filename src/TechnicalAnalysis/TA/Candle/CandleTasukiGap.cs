@@ -84,39 +84,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isTasukiGap =
-                    (
-                        // upside gap
-                        GetRealBodyGapUp(i - 1, i - 2) &&
-                        // 1st: white
-                        GetCandleColor(i - 1) == 1 &&
-                        // 2nd: black
-                        GetCandleColor(i) == -1 &&
-                        // that opens within the white rb
-                        open[i] < close[i - 1] && open[i] > open[i - 1] &&
-                        // and closes under the white rb
-                        close[i] < open[i - 1] &&
-                        // inside the gap
-                        close[i] > Max(close[i - 2], open[i - 2]) &&
-                        // size of 2 rb near the same
-                        Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, nearPeriodTotal, i - 1)
-                    ) ||
-                    (
-                        // downside gap
-                        GetRealBodyGapDown(i - 1, i - 2) &&
-                        // 1st: black
-                        GetCandleColor(i - 1) == -1 &&
-                        // 2nd: white
-                        GetCandleColor(i) == 1 &&
-                        // that opens within the black rb
-                        open[i] < open[i - 1] && open[i] > close[i - 1] &&
-                        // and closes above the black rb
-                        close[i] > open[i - 1] &&
-                        // inside the gap
-                        close[i] < Min(close[i - 2], open[i - 2]) &&
-                        // size of 2 rb near the same
-                        Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, nearPeriodTotal, i - 1)
-                    );
+                bool isTasukiGap = GetPatternRecognition(i, nearPeriodTotal);
 
                 outInteger[outIdx++] = isTasukiGap ? GetCandleColor(i - 1) * 100 : 0;
 
@@ -136,6 +104,45 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double nearPeriodTotal)
+        {
+            bool isTasukiGap =
+                (
+                    // upside gap
+                    GetRealBodyGapUp(i - 1, i - 2) &&
+                    // 1st: white
+                    GetCandleColor(i - 1) == 1 &&
+                    // 2nd: black
+                    GetCandleColor(i) == -1 &&
+                    // that opens within the white rb
+                    open[i] < close[i - 1] && open[i] > open[i - 1] &&
+                    // and closes under the white rb
+                    close[i] < open[i - 1] &&
+                    // inside the gap
+                    close[i] > Max(close[i - 2], open[i - 2]) &&
+                    // size of 2 rb near the same
+                    Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, nearPeriodTotal, i - 1)
+                ) ||
+                (
+                    // downside gap
+                    GetRealBodyGapDown(i - 1, i - 2) &&
+                    // 1st: black
+                    GetCandleColor(i - 1) == -1 &&
+                    // 2nd: white
+                    GetCandleColor(i) == 1 &&
+                    // that opens within the black rb
+                    open[i] < open[i - 1] && open[i] > close[i - 1] &&
+                    // and closes above the black rb
+                    close[i] > open[i - 1] &&
+                    // inside the gap
+                    close[i] < Min(close[i - 2], open[i - 2]) &&
+                    // size of 2 rb near the same
+                    Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, nearPeriodTotal, i - 1)
+                );
+            
+            return isTasukiGap;
         }
 
         public override int GetLookback()

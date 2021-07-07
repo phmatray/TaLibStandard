@@ -90,18 +90,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isHomingPigeon =
-                    // 1st black
-                    GetCandleColor(i - 1) == -1 &&
-                    // 2nd black
-                    GetCandleColor(i) == -1 &&
-                    // 1st long
-                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
-                    // 2nd short
-                    GetRealBody(i) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
-                    // 2nd engulfed by 1st
-                    open[i] < open[i - 1] &&
-                    close[i] > close[i - 1];
+                bool isHomingPigeon = GetPatternRecognition(i, bodyLongPeriodTotal, bodyShortPeriodTotal);
 
                 outInteger[outIdx++] = isHomingPigeon ? 100 : 0;
 
@@ -126,6 +115,24 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double bodyShortPeriodTotal)
+        {
+            bool isHomingPigeon =
+                // 1st black
+                GetCandleColor(i - 1) == -1 &&
+                // 2nd black
+                GetCandleColor(i) == -1 &&
+                // 1st long
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
+                // 2nd short
+                GetRealBody(i) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
+                // 2nd engulfed by 1st
+                open[i] < open[i - 1] &&
+                close[i] > close[i - 1];
+            
+            return isHomingPigeon;
         }
 
         public override int GetLookback()

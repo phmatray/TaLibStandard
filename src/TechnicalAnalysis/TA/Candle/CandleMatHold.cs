@@ -110,31 +110,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isMatHold =
-                    // 1st long, then 3 small
-                    GetRealBody(i - 4) > GetCandleAverage(BodyLong, bodyPeriodTotal[4], i - 4) &&
-                    GetRealBody(i - 3) < GetCandleAverage(BodyShort, bodyPeriodTotal[3], i - 3) &&
-                    GetRealBody(i - 2) < GetCandleAverage(BodyShort, bodyPeriodTotal[2], i - 2) &&
-                    GetRealBody(i - 1) < GetCandleAverage(BodyShort, bodyPeriodTotal[1], i - 1) &&
-                    // white, black, 2 black or white, white
-                    GetCandleColor(i - 4) == 1 &&
-                    GetCandleColor(i - 3) == -1 &&
-                    GetCandleColor(i) == 1 &&
-                    // upside gap 1st to 2nd
-                    GetRealBodyGapUp(i - 3, i - 4) &&
-                    // 3rd to 4th hold within 1st: a part of the real body must be within 1st real body
-                    Min(open[i - 2], close[i - 2]) < close[i - 4] &&
-                    Min(open[i - 1], close[i - 1]) < close[i - 4] &&
-                    // reaction days penetrate first body less than optInPenetration percent
-                    Min(open[i - 2], close[i - 2]) > close[i - 4] - GetRealBody(i - 4) * optInPenetration &&
-                    Min(open[i - 1], close[i - 1]) > close[i - 4] - GetRealBody(i - 4) * optInPenetration &&
-                    // 2nd to 4th are falling
-                    Max(close[i - 2], open[i - 2]) < open[i - 3] &&
-                    Max(close[i - 1], open[i - 1]) < Max(close[i - 2], open[i - 2]) &&
-                    // 5th opens above the prior close
-                    open[i] > close[i - 1] &&
-                    // 5th closes above the highest high of the reaction days
-                    close[i] > Max(Max(high[i - 3], high[i - 2]), high[i - 1]);
+                bool isMatHold = GetPatternRecognition(i, bodyPeriodTotal, optInPenetration);
 
                 outInteger[outIdx++] = isMatHold ? 100 : 0;
 
@@ -163,6 +139,37 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double[] bodyPeriodTotal, double optInPenetration)
+        {
+            bool isMatHold =
+                // 1st long, then 3 small
+                GetRealBody(i - 4) > GetCandleAverage(BodyLong, bodyPeriodTotal[4], i - 4) &&
+                GetRealBody(i - 3) < GetCandleAverage(BodyShort, bodyPeriodTotal[3], i - 3) &&
+                GetRealBody(i - 2) < GetCandleAverage(BodyShort, bodyPeriodTotal[2], i - 2) &&
+                GetRealBody(i - 1) < GetCandleAverage(BodyShort, bodyPeriodTotal[1], i - 1) &&
+                // white, black, 2 black or white, white
+                GetCandleColor(i - 4) == 1 &&
+                GetCandleColor(i - 3) == -1 &&
+                GetCandleColor(i) == 1 &&
+                // upside gap 1st to 2nd
+                GetRealBodyGapUp(i - 3, i - 4) &&
+                // 3rd to 4th hold within 1st: a part of the real body must be within 1st real body
+                Min(open[i - 2], close[i - 2]) < close[i - 4] &&
+                Min(open[i - 1], close[i - 1]) < close[i - 4] &&
+                // reaction days penetrate first body less than optInPenetration percent
+                Min(open[i - 2], close[i - 2]) > close[i - 4] - GetRealBody(i - 4) * optInPenetration &&
+                Min(open[i - 1], close[i - 1]) > close[i - 4] - GetRealBody(i - 4) * optInPenetration &&
+                // 2nd to 4th are falling
+                Max(close[i - 2], open[i - 2]) < open[i - 3] &&
+                Max(close[i - 1], open[i - 1]) < Max(close[i - 2], open[i - 2]) &&
+                // 5th opens above the prior close
+                open[i] > close[i - 1] &&
+                // 5th closes above the highest high of the reaction days
+                close[i] > Max(Max(high[i - 3], high[i - 2]), high[i - 1]);
+            
+            return isMatHold;
         }
 
         public override int GetLookback()

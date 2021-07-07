@@ -86,21 +86,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isPiercing =
-                    // 1st: black
-                    GetCandleColor(i - 1) == -1 &&
-                    // long
-                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
-                    // 2nd: white
-                    GetCandleColor(i) == 1 &&
-                    // long
-                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i) &&
-                    // open below prior low
-                    open[i] < low[i - 1] &&
-                    // close within prior body
-                    close[i] < open[i - 1] &&
-                    // above midpoint
-                    close[i] > close[i - 1] + GetRealBody(i - 1) * 0.5;
+                bool isPiercing = GetPatternRecognition(i, bodyLongPeriodTotal);
 
                 outInteger[outIdx++] = isPiercing ? 100 : 0;
 
@@ -123,6 +109,27 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double[] bodyLongPeriodTotal)
+        {
+            bool isPiercing =
+                // 1st: black
+                GetCandleColor(i - 1) == -1 &&
+                // long
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
+                // 2nd: white
+                GetCandleColor(i) == 1 &&
+                // long
+                GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i) &&
+                // open below prior low
+                open[i] < low[i - 1] &&
+                // close within prior body
+                close[i] < open[i - 1] &&
+                // above midpoint
+                close[i] > close[i - 1] + GetRealBody(i - 1) * 0.5;
+            
+            return isPiercing;
         }
 
         public override int GetLookback()

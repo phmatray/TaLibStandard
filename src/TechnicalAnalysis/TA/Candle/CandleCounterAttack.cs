@@ -94,16 +94,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isCounterAttack =
-                    // opposite candles
-                    GetCandleColor(i - 1) == -GetCandleColor(i) &&
-                    // 1st long
-                    GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
-                    // 2nd long
-                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i) &&
-                    // equal closes
-                    close[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
-                    close[i] >= close[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1);
+                bool isCounterAttack = GetPatternRecognition(i, bodyLongPeriodTotal, equalPeriodTotal);
 
                 outInteger[outIdx++] = isCounterAttack ? GetCandleColor(i) * 100 : 0;
 
@@ -132,6 +123,22 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double[] bodyLongPeriodTotal, double equalPeriodTotal)
+        {
+            bool isCounterAttack =
+                // opposite candles
+                GetCandleColor(i - 1) == -GetCandleColor(i) &&
+                // 1st long
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
+                // 2nd long
+                GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i) &&
+                // equal closes
+                close[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                close[i] >= close[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1);
+            
+            return isCounterAttack;
         }
 
         public override int GetLookback()

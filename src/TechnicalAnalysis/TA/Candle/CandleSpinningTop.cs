@@ -77,10 +77,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isSpinningTop =
-                    GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
-                    GetUpperShadow(i) > GetRealBody(i) &&
-                    GetLowerShadow(i) > GetRealBody(i);
+                bool isSpinningTop = GetPatternRecognition(i, bodyPeriodTotal);
 
                 outInteger[outIdx++] = isSpinningTop ? GetCandleColor(i) * 100 : 0;
 
@@ -100,6 +97,16 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyPeriodTotal)
+        {
+            bool isSpinningTop =
+                GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
+                GetUpperShadow(i) > GetRealBody(i) &&
+                GetLowerShadow(i) > GetRealBody(i);
+            
+            return isSpinningTop;
         }
 
         public override int GetLookback()

@@ -68,22 +68,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isEngulfing =
-                    (
-                        // white engulfs black
-                        GetCandleColor(i) == 1 &&
-                        GetCandleColor(i - 1) == -1 &&
-                        close[i] > open[i - 1] &&
-                        open[i] < close[i - 1]
-                    )
-                    ||
-                    (
-                        // black engulfs white
-                        GetCandleColor(i) == -1 &&
-                        GetCandleColor(i - 1) == 1 &&
-                        open[i] > close[i - 1] && 
-                        close[i] < open[i - 1]
-                    );
+                bool isEngulfing = GetPatternRecognition(i);
 
                 outInteger[outIdx++] = isEngulfing ? GetCandleColor(i) * 100 : 0;
 
@@ -95,6 +80,28 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i)
+        {
+            bool isEngulfing =
+                (
+                    // white engulfs black
+                    GetCandleColor(i) == 1 &&
+                    GetCandleColor(i - 1) == -1 &&
+                    close[i] > open[i - 1] &&
+                    open[i] < close[i - 1]
+                )
+                ||
+                (
+                    // black engulfs white
+                    GetCandleColor(i) == -1 &&
+                    GetCandleColor(i - 1) == 1 &&
+                    open[i] > close[i - 1] &&
+                    close[i] < open[i - 1]
+                );
+            
+            return isEngulfing;
         }
 
         public override int GetLookback()

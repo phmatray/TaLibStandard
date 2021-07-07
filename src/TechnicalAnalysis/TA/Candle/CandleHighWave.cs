@@ -87,10 +87,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isHighWave =
-                    GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
-                    GetUpperShadow(i) > GetCandleAverage(ShadowVeryLong, shadowPeriodTotal, i) &&
-                    GetLowerShadow(i) > GetCandleAverage(ShadowVeryLong, shadowPeriodTotal, i);
+                bool isHighWave = GetPatternRecognition(i, bodyPeriodTotal, shadowPeriodTotal);
 
                 outInteger[outIdx++] = isHighWave ? GetCandleColor(i) * 100 : 0;
 
@@ -115,6 +112,16 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyPeriodTotal, double shadowPeriodTotal)
+        {
+            bool isHighWave =
+                GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
+                GetUpperShadow(i) > GetCandleAverage(ShadowVeryLong, shadowPeriodTotal, i) &&
+                GetLowerShadow(i) > GetCandleAverage(ShadowVeryLong, shadowPeriodTotal, i);
+            
+            return isHighWave;
         }
 
         public override int GetLookback()

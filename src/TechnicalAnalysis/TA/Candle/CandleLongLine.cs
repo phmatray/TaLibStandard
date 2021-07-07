@@ -86,10 +86,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isLongLine =
-                    GetRealBody(i) > GetCandleAverage(BodyLong, bodyPeriodTotal, i) &&
-                    GetUpperShadow(i) < GetCandleAverage(ShadowShort, shadowPeriodTotal, i) &&
-                    GetLowerShadow(i) < GetCandleAverage(ShadowShort, shadowPeriodTotal, i);
+                bool isLongLine = GetPatternRecognition(i, bodyPeriodTotal, shadowPeriodTotal);
 
                 outInteger[outIdx++] = isLongLine ? GetCandleColor(i) * 100 : 0;
 
@@ -114,6 +111,15 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyPeriodTotal, double shadowPeriodTotal)
+        {
+            bool isLongLine =
+                GetRealBody(i) > GetCandleAverage(BodyLong, bodyPeriodTotal, i) &&
+                GetUpperShadow(i) < GetCandleAverage(ShadowShort, shadowPeriodTotal, i) &&
+                GetLowerShadow(i) < GetCandleAverage(ShadowShort, shadowPeriodTotal, i);
+            return isLongLine;
         }
 
         public override int GetLookback()

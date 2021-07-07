@@ -115,34 +115,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool is3StarsInSouth =
-                    // 1st black
-                    GetCandleColor(i - 2) == -1 &&
-                    // 2nd black
-                    GetCandleColor(i - 1) == -1 &&
-                    // 3rd black
-                    GetCandleColor(i) == -1 &&
-                    // 1st: long
-                    GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
-                    // with long lower shadow
-                    GetLowerShadow(i - 2) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i - 2) &&
-                    // 2nd: smaller candle
-                    GetRealBody(i - 1) < GetRealBody(i - 2) &&
-                    // that opens higher but within 1st range
-                    open[i - 1] > close[i - 2] &&
-                    open[i - 1] <= high[i - 2] &&
-                    // and trades lower than 1st close
-                    low[i - 1] < close[i - 2] &&
-                    // but not lower than 1st low
-                    low[i - 1] >= low[i - 2] &&
-                    // and has a lower shadow
-                    GetLowerShadow(i - 1) > GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
-                    // 3rd: small marubozu
-                    GetRealBody(i) < GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
-                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
-                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
-                    // engulfed by prior candle's range
-                    low[i] > low[i - 1] && high[i] < high[i - 1];
+                bool is3StarsInSouth = GetPatternRecognition(
+                    i, bodyLongPeriodTotal, shadowLongPeriodTotal, shadowVeryShortPeriodTotal, bodyShortPeriodTotal);
 
                 outInteger[outIdx++] = is3StarsInSouth ? 100 : 0;
 
@@ -181,6 +155,45 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(
+            int i, 
+            double bodyLongPeriodTotal,
+            double shadowLongPeriodTotal,
+            double[] shadowVeryShortPeriodTotal,
+            double bodyShortPeriodTotal)
+        {
+            bool is3StarsInSouth =
+                // 1st black
+                GetCandleColor(i - 2) == -1 &&
+                // 2nd black
+                GetCandleColor(i - 1) == -1 &&
+                // 3rd black
+                GetCandleColor(i) == -1 &&
+                // 1st: long
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                // with long lower shadow
+                GetLowerShadow(i - 2) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i - 2) &&
+                // 2nd: smaller candle
+                GetRealBody(i - 1) < GetRealBody(i - 2) &&
+                // that opens higher but within 1st range
+                open[i - 1] > close[i - 2] &&
+                open[i - 1] <= high[i - 2] &&
+                // and trades lower than 1st close
+                low[i - 1] < close[i - 2] &&
+                // but not lower than 1st low
+                low[i - 1] >= low[i - 2] &&
+                // and has a lower shadow
+                GetLowerShadow(i - 1) > GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
+                // 3rd: small marubozu
+                GetRealBody(i) < GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
+                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
+                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
+                // engulfed by prior candle's range
+                low[i] > low[i - 1] && high[i] < high[i - 1];
+            
+            return is3StarsInSouth;
         }
 
         public override int GetLookback()

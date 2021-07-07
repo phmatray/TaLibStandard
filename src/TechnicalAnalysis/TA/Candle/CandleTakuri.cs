@@ -98,10 +98,8 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isTakuri =
-                    GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
-                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
-                    GetLowerShadow(i) > GetCandleAverage(ShadowVeryLong, shadowVeryLongPeriodTotal, i);
+                bool isTakuri = GetPatternRecognition(
+                    i, bodyDojiPeriodTotal, shadowVeryShortPeriodTotal, shadowVeryLongPeriodTotal);
 
                 outInteger[outIdx++] = isTakuri ? 100 : 0;
 
@@ -131,6 +129,17 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyDojiPeriodTotal, double shadowVeryShortPeriodTotal,
+            double shadowVeryLongPeriodTotal)
+        {
+            bool isTakuri =
+                GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
+                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
+                GetLowerShadow(i) > GetCandleAverage(ShadowVeryLong, shadowVeryLongPeriodTotal, i);
+            
+            return isTakuri;
         }
 
         public override int GetLookback()

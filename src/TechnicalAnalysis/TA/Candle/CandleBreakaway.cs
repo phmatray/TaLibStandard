@@ -83,46 +83,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isBreakaway =
-                    // 1st long
-                    GetRealBody(i - 4) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 4) &&
-                    // 1st, 2nd, 4th same color, 5th opposite
-                    GetCandleColor(i - 4) == GetCandleColor(i - 3) &&
-                    GetCandleColor(i - 3) == GetCandleColor(i - 1) &&
-                    GetCandleColor(i - 1) == -GetCandleColor(i) &&
-                    (
-                        (
-                            // when 1st is black:
-                            GetCandleColor(i - 4) == -1 &&
-                            // 2nd gaps down
-                            GetRealBodyGapDown(i - 3, i - 4) &&
-                            // 3rd has lower high and low than 2nd
-                            high[i - 2] < high[i - 3] &&
-                            low[i - 2] < low[i - 3] &&
-                            // 4th has lower high and low than 3rd
-                            high[i - 1] < high[i - 2] &&
-                            low[i - 1] < low[i - 2] &&
-                            // 5th closes inside the gap
-                            close[i] > open[i - 3] &&
-                            close[i] < close[i - 4]
-                        )
-                        ||
-                        (
-                            // when 1st is white:
-                            GetCandleColor(i - 4) == 1 &&
-                            // 2nd gaps up
-                            GetRealBodyGapUp(i - 3, i - 4) &&
-                            // 3rd has higher high and low than 2nd
-                            high[i - 2] > high[i - 3] &&
-                            low[i - 2] > low[i - 3] &&
-                            // 4th has higher high and low than 3rd
-                            high[i - 1] > high[i - 2] &&
-                            low[i - 1] > low[i - 2] &&
-                            // 5th closes inside the gap
-                            close[i] < open[i - 3] &&
-                            close[i] > close[i - 4]
-                        )
-                    );
+                bool isBreakaway = GetPatternRecognition(i, bodyLongPeriodTotal);
 
                 outInteger[outIdx++] = isBreakaway ? GetCandleColor(i) * 100 : 0;
 
@@ -142,6 +103,52 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = startIdx;
             
             return RetCode.Success;
+        }
+
+        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal)
+        {
+            bool isBreakaway =
+                // 1st long
+                GetRealBody(i - 4) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 4) &&
+                // 1st, 2nd, 4th same color, 5th opposite
+                GetCandleColor(i - 4) == GetCandleColor(i - 3) &&
+                GetCandleColor(i - 3) == GetCandleColor(i - 1) &&
+                GetCandleColor(i - 1) == -GetCandleColor(i) &&
+                (
+                    (
+                        // when 1st is black:
+                        GetCandleColor(i - 4) == -1 &&
+                        // 2nd gaps down
+                        GetRealBodyGapDown(i - 3, i - 4) &&
+                        // 3rd has lower high and low than 2nd
+                        high[i - 2] < high[i - 3] &&
+                        low[i - 2] < low[i - 3] &&
+                        // 4th has lower high and low than 3rd
+                        high[i - 1] < high[i - 2] &&
+                        low[i - 1] < low[i - 2] &&
+                        // 5th closes inside the gap
+                        close[i] > open[i - 3] &&
+                        close[i] < close[i - 4]
+                    )
+                    ||
+                    (
+                        // when 1st is white:
+                        GetCandleColor(i - 4) == 1 &&
+                        // 2nd gaps up
+                        GetRealBodyGapUp(i - 3, i - 4) &&
+                        // 3rd has higher high and low than 2nd
+                        high[i - 2] > high[i - 3] &&
+                        low[i - 2] > low[i - 3] &&
+                        // 4th has higher high and low than 3rd
+                        high[i - 1] > high[i - 2] &&
+                        low[i - 1] > low[i - 2] &&
+                        // 5th closes inside the gap
+                        close[i] < open[i - 3] &&
+                        close[i] > close[i - 4]
+                    )
+                );
+            
+            return isBreakaway;
         }
 
         public override int GetLookback()
