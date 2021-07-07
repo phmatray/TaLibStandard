@@ -17,6 +17,8 @@ namespace TechnicalAnalysis.Abstractions
             this.close = close;
         }
 
+        public abstract int GetLookback();
+
         protected RangeType GetCandleRangeType(CandleSettingType candleSettingType)
             => TACore.Globals.candleSettings[(int)candleSettingType].rangeType;
         

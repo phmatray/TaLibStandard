@@ -39,7 +39,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = Cdl3OutsideLookback();
+            int lookbackTotal = GetLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -102,7 +102,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        public int Cdl3OutsideLookback()
+        public override int GetLookback()
         {
             return 3;
         }

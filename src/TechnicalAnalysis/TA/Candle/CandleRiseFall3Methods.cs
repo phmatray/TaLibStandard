@@ -44,7 +44,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
-            int lookbackTotal = CdlRiseFall3MethodsLookback();
+            int lookbackTotal = GetLookback();
 
             // Move up the start index if there is not enough initial data.
             if (startIdx < lookbackTotal)
@@ -160,7 +160,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        public int CdlRiseFall3MethodsLookback()
+        public override int GetLookback()
         {
             return Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(BodyLong)) + 4;
         }
