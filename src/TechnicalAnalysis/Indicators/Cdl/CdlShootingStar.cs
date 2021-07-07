@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlShootingStar : IndicatorBase
+    public record CdlShootingStar : IndicatorBase
     {
         public CdlShootingStar(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

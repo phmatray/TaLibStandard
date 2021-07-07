@@ -67,7 +67,7 @@ namespace TechnicalAnalysis
             => UltOsc(startIdx, endIdx, high, low, close, 7, 14, 28);
     }
 
-    public class UltOsc : IndicatorBase
+    public record UltOsc : IndicatorBase
     {
         public UltOsc(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

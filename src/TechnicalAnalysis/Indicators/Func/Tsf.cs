@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Tsf(startIdx, endIdx, real, 14);
     }
 
-    public class Tsf : IndicatorBase
+    public record Tsf : IndicatorBase
     {
         public Tsf(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

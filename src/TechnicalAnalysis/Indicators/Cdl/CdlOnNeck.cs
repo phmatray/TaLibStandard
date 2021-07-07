@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlOnNeck : IndicatorBase
+    public record CdlOnNeck : IndicatorBase
     {
         public CdlOnNeck(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

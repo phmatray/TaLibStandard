@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlUpsideGap2Crows : IndicatorBase
+    public record CdlUpsideGap2Crows : IndicatorBase
     {
         public CdlUpsideGap2Crows(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

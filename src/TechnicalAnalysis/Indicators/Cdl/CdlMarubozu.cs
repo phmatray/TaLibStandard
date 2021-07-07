@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlMarubozu : IndicatorBase
+    public record CdlMarubozu : IndicatorBase
     {
         public CdlMarubozu(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

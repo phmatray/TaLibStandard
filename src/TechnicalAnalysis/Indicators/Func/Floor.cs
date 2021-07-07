@@ -25,7 +25,7 @@ namespace TechnicalAnalysis
             => Floor(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Floor : IndicatorBase
+    public record Floor : IndicatorBase
     {
         public Floor(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

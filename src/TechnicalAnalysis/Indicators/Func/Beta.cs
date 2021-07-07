@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
             => Beta(startIdx, endIdx, real0, real1, 5);
     }
 
-    public class Beta : IndicatorBase
+    public record Beta : IndicatorBase
     {
         public Beta(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

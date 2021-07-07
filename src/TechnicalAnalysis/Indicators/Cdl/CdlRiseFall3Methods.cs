@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlRiseFall3Methods : IndicatorBase
+    public record CdlRiseFall3Methods : IndicatorBase
     {
         public CdlRiseFall3Methods(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

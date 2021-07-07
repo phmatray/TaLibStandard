@@ -56,7 +56,7 @@ namespace TechnicalAnalysis
             => Mfi(startIdx, endIdx, high, low, close, volume, 14);
     }
 
-    public class Mfi : IndicatorBase
+    public record Mfi : IndicatorBase
     {
         public Mfi(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

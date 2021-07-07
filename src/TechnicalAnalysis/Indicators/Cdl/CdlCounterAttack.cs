@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlCounterAttack : IndicatorBase
+    public record CdlCounterAttack : IndicatorBase
     {
         public CdlCounterAttack(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

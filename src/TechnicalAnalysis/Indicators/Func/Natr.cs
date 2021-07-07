@@ -41,7 +41,7 @@ namespace TechnicalAnalysis
             => Natr(startIdx, endIdx, high, low, close, 14);
     }
 
-    public class Natr : IndicatorBase
+    public record Natr : IndicatorBase
     {
         public Natr(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

@@ -41,7 +41,7 @@ namespace TechnicalAnalysis
             => Atr(startIdx, endIdx, high, low, close, 14);
     }
 
-    public class Atr : IndicatorBase
+    public record Atr : IndicatorBase
     {
         public Atr(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

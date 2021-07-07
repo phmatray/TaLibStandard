@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlShortLine : IndicatorBase
+    public record CdlShortLine : IndicatorBase
     {
         public CdlShortLine(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

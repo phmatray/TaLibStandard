@@ -39,7 +39,7 @@ namespace TechnicalAnalysis
             => LinearRegAngle(startIdx, endIdx, real, 14);
     }
 
-    public class LinearRegAngle : IndicatorBase
+    public record LinearRegAngle : IndicatorBase
     {
         public LinearRegAngle(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

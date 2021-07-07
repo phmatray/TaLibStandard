@@ -47,7 +47,7 @@ namespace TechnicalAnalysis
             => AvgPrice(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
-    public class AvgPrice : IndicatorBase
+    public record AvgPrice : IndicatorBase
     {
         public AvgPrice(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

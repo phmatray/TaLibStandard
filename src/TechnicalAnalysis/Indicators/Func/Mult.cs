@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Mult(startIdx, endIdx, real0.ToDouble(), real1.ToDouble());
     }
 
-    public class Mult : IndicatorBase
+    public record Mult : IndicatorBase
     {
         public Mult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

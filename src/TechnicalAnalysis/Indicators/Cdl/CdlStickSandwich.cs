@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlStickSandwich : IndicatorBase
+    public record CdlStickSandwich : IndicatorBase
     {
         public CdlStickSandwich(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

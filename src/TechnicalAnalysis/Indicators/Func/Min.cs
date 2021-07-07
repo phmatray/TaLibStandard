@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Min(startIdx, endIdx, real, 30);
     }
 
-    public class Min : IndicatorBase
+    public record Min : IndicatorBase
     {
         public Min(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

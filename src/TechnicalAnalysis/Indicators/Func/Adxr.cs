@@ -41,7 +41,7 @@ namespace TechnicalAnalysis
             => Adxr(startIdx, endIdx, high, low, close, 14);
     }
 
-    public class Adxr : IndicatorBase
+    public record Adxr : IndicatorBase
     {
         public Adxr(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

@@ -41,7 +41,7 @@ namespace TechnicalAnalysis
             => Apo(startIdx, endIdx, real, 12, 26, MAType.Sma);
     }
 
-    public class Apo : IndicatorBase
+    public record Apo : IndicatorBase
     {
         public Apo(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

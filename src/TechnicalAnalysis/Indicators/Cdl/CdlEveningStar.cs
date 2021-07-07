@@ -42,7 +42,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlEveningStar : IndicatorBase
+    public record CdlEveningStar : IndicatorBase
     {
         public CdlEveningStar(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

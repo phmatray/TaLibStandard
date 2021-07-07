@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Cmo(startIdx, endIdx, real, 14);
     }
 
-    public class Cmo : IndicatorBase
+    public record Cmo : IndicatorBase
     {
         public Cmo(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

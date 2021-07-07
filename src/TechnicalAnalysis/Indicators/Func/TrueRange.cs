@@ -34,7 +34,7 @@ namespace TechnicalAnalysis
             => TrueRange(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
-    public class TrueRange : IndicatorBase
+    public record TrueRange : IndicatorBase
     {
         public TrueRange(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

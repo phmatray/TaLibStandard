@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlSpinningTop : IndicatorBase
+    public record CdlSpinningTop : IndicatorBase
     {
         public CdlSpinningTop(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

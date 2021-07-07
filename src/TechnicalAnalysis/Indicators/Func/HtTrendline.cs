@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => HtTrendline(startIdx, endIdx, real.ToDouble());
     }
 
-    public class HtTrendline : IndicatorBase
+    public record HtTrendline : IndicatorBase
     {
         public HtTrendline(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

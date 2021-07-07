@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
             => T3(startIdx, endIdx, real, 5, 0.7);
     }
 
-    public class T3 : IndicatorBase
+    public record T3 : IndicatorBase
     {
         public T3(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

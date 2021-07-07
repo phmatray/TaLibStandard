@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlHangingMan : IndicatorBase
+    public record CdlHangingMan : IndicatorBase
     {
         public CdlHangingMan(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

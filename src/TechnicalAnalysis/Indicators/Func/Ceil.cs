@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Ceil(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Ceil : IndicatorBase
+    public record Ceil : IndicatorBase
     {
         public Ceil(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

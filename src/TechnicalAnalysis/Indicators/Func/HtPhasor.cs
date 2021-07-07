@@ -34,7 +34,7 @@ namespace TechnicalAnalysis
             => HtPhasor(startIdx, endIdx, real.ToDouble());
     }
 
-    public class HtPhasor : IndicatorBase
+    public record HtPhasor : IndicatorBase
     {
         public HtPhasor(RetCode retCode, int begIdx, int nbElement, double[] inPhase, double[] quadrature)
             : base(retCode, begIdx, nbElement)

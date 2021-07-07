@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlTristar : IndicatorBase
+    public record CdlTristar : IndicatorBase
     {
         public CdlTristar(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

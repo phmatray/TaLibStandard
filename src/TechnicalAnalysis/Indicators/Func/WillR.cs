@@ -47,7 +47,7 @@ namespace TechnicalAnalysis
             => WillR(startIdx, endIdx, high, low, close, 14);
     }
 
-    public class WillR : IndicatorBase
+    public record WillR : IndicatorBase
     {
         public WillR(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

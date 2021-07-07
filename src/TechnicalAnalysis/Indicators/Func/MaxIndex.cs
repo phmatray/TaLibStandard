@@ -39,7 +39,7 @@ namespace TechnicalAnalysis
             => MaxIndex(startIdx, endIdx, real, 30);
     }
 
-    public class MaxIndex : IndicatorBase
+    public record MaxIndex : IndicatorBase
     {
         public MaxIndex(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

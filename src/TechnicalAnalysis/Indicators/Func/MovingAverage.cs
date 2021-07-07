@@ -45,7 +45,7 @@ namespace TechnicalAnalysis
             => MovingAverage(startIdx, endIdx, real, 30, MAType.Sma);
     }
 
-    public class MovingAverage : IndicatorBase
+    public record MovingAverage : IndicatorBase
     {
         public MovingAverage(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

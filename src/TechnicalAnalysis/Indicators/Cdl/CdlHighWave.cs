@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlHighWave : IndicatorBase
+    public record CdlHighWave : IndicatorBase
     {
         public CdlHighWave(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

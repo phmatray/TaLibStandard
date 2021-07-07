@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlBreakaway : IndicatorBase
+    public record CdlBreakaway : IndicatorBase
     {
         public CdlBreakaway(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

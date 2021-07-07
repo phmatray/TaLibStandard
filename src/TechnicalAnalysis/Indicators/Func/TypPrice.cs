@@ -25,7 +25,7 @@ namespace TechnicalAnalysis
             => TypPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
-    public class TypPrice : IndicatorBase
+    public record TypPrice : IndicatorBase
     {
         public TypPrice(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

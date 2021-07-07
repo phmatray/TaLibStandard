@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Ln(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Ln : IndicatorBase
+    public record Ln : IndicatorBase
     {
         public Ln(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

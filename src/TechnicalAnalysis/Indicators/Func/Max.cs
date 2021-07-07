@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Max(startIdx, endIdx, real, 30);
     }
 
-    public class Max : IndicatorBase
+    public record Max : IndicatorBase
     {
         public Max(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

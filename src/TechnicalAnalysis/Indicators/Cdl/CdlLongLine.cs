@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlLongLine : IndicatorBase
+    public record CdlLongLine : IndicatorBase
     {
         public CdlLongLine(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

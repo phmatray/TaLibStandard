@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlTakuri : IndicatorBase
+    public record CdlTakuri : IndicatorBase
     {
         public CdlTakuri(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

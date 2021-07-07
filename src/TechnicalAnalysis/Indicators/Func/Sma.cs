@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Sma(startIdx, endIdx, real, 30);
     }
 
-    public class Sma : IndicatorBase
+    public record Sma : IndicatorBase
     {
         public Sma(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

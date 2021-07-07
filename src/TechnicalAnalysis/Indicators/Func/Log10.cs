@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Log10(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Log10 : IndicatorBase
+    public record Log10 : IndicatorBase
     {
         public Log10(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

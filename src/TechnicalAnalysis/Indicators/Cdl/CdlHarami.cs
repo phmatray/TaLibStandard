@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlHarami : IndicatorBase
+    public record CdlHarami : IndicatorBase
     {
         public CdlHarami(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

@@ -41,7 +41,7 @@ namespace TechnicalAnalysis
             => MinMaxIndex(startIdx, endIdx, real, 30);
     }
 
-    public class MinMaxIndex : IndicatorBase
+    public record MinMaxIndex : IndicatorBase
     {
         public MinMaxIndex(RetCode retCode, int begIdx, int nbElement, int[] minIdx, int[] maxIdx)
             : base(retCode, begIdx, nbElement)

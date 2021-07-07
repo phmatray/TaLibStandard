@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => MedPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble());
     }
 
-    public class MedPrice : IndicatorBase
+    public record MedPrice : IndicatorBase
     {
         public MedPrice(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

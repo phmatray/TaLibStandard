@@ -1,8 +1,8 @@
 ﻿namespace TechnicalAnalysis
 {
-    public abstract class IndicatorBase
+    public abstract record IndicatorBase
     {
-        public IndicatorBase(RetCode retCode, int begIdx, int nbElement)
+        protected IndicatorBase(RetCode retCode, int begIdx, int nbElement)
         {
             RetCode = retCode;
             BegIdx = begIdx;

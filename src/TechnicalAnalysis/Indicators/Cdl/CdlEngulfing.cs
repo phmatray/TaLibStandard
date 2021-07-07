@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlEngulfing : IndicatorBase
+    public record CdlEngulfing : IndicatorBase
     {
         public CdlEngulfing(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

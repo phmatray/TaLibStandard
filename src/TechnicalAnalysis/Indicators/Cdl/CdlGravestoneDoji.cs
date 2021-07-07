@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlGravestoneDoji : IndicatorBase
+    public record CdlGravestoneDoji : IndicatorBase
     {
         public CdlGravestoneDoji(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

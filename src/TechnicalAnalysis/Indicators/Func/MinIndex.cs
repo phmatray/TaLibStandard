@@ -39,7 +39,7 @@ namespace TechnicalAnalysis
             => MinIndex(startIdx, endIdx, real, 30);
     }
 
-    public class MinIndex : IndicatorBase
+    public record MinIndex : IndicatorBase
     {
         public MinIndex(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

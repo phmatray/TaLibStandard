@@ -69,7 +69,7 @@ namespace TechnicalAnalysis
             => StochF(startIdx, endIdx, high, low, close, 5, 3, MAType.Sma);
     }
 
-    public class StochF : IndicatorBase
+    public record StochF : IndicatorBase
     {
         public StochF(RetCode retCode, int begIdx, int nbElement, double[] fastK, double[] fastD)
             : base(retCode, begIdx, nbElement)

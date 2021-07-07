@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Sin(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Sin : IndicatorBase
+    public record Sin : IndicatorBase
     {
         public Sin(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

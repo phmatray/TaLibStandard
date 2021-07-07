@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlDragonflyDoji : IndicatorBase
+    public record CdlDragonflyDoji : IndicatorBase
     {
         public CdlDragonflyDoji(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

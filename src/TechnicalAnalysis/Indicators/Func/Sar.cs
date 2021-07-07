@@ -47,7 +47,7 @@ namespace TechnicalAnalysis
             => Sar(startIdx, endIdx, high, low, 0.02, 0.2);
     }
 
-    public class Sar : IndicatorBase
+    public record Sar : IndicatorBase
     {
         public Sar(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

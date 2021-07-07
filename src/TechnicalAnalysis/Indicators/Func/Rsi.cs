@@ -31,7 +31,7 @@ namespace TechnicalAnalysis
             => Rsi(startIdx, endIdx, real, 14);
     }
 
-    public class Rsi : IndicatorBase
+    public record Rsi : IndicatorBase
     {
         public Rsi(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Sqrt(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Sqrt : IndicatorBase
+    public record Sqrt : IndicatorBase
     {
         public Sqrt(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

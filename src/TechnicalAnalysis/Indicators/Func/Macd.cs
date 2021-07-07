@@ -57,7 +57,7 @@ namespace TechnicalAnalysis
             => Macd(startIdx, endIdx, real, 12, 26, 9);
     }
 
-    public class Macd : IndicatorBase
+    public record Macd : IndicatorBase
     {
         public Macd(
             RetCode retCode,

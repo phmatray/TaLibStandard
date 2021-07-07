@@ -53,7 +53,7 @@ namespace TechnicalAnalysis
             => MinusDI(startIdx, endIdx, high, low, close, 14);
     }
 
-    public class MinusDI : IndicatorBase
+    public record MinusDI : IndicatorBase
     {
         public MinusDI(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

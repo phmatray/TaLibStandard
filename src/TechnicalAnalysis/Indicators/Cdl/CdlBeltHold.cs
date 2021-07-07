@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlBeltHold : IndicatorBase
+    public record CdlBeltHold : IndicatorBase
     {
         public CdlBeltHold(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

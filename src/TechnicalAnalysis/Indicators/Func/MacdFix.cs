@@ -43,7 +43,7 @@ namespace TechnicalAnalysis
             => MacdFix(startIdx, endIdx, real, 9);
     }
 
-    public class MacdFix : IndicatorBase
+    public record MacdFix : IndicatorBase
     {
         public MacdFix(
             RetCode retCode,

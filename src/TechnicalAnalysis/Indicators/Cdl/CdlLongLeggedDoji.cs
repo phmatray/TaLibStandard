@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlLongLeggedDoji : IndicatorBase
+    public record CdlLongLeggedDoji : IndicatorBase
     {
         public CdlLongLeggedDoji(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

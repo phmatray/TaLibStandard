@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlInvertedHammer : IndicatorBase
+    public record CdlInvertedHammer : IndicatorBase
     {
         public CdlInvertedHammer(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

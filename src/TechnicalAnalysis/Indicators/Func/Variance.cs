@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
             => Variance(startIdx, endIdx, real, 5, 1.0);
     }
 
-    public class Variance : IndicatorBase
+    public record Variance : IndicatorBase
     {
         public Variance(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

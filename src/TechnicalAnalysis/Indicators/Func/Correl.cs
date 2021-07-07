@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
             => Correl(startIdx, endIdx, real0, real1, 30);
     }
 
-    public class Correl : IndicatorBase
+    public record Correl : IndicatorBase
     {
         public Correl(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

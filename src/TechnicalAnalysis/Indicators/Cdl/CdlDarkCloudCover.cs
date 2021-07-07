@@ -42,7 +42,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlDarkCloudCover : IndicatorBase
+    public record CdlDarkCloudCover : IndicatorBase
     {
         public CdlDarkCloudCover(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

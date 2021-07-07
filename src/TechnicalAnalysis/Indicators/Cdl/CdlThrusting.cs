@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlThrusting : IndicatorBase
+    public record CdlThrusting : IndicatorBase
     {
         public CdlThrusting(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

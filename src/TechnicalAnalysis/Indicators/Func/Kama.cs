@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Kama(startIdx, endIdx, real, 30);
     }
 
-    public class Kama : IndicatorBase
+    public record Kama : IndicatorBase
     {
         public Kama(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

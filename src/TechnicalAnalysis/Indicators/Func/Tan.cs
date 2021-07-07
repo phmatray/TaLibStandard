@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Tan(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Tan : IndicatorBase
+    public record Tan : IndicatorBase
     {
         public Tan(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

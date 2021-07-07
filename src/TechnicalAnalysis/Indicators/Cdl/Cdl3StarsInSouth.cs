@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class Cdl3StarsInSouth : IndicatorBase
+    public record Cdl3StarsInSouth : IndicatorBase
     {
         public Cdl3StarsInSouth(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Cosh(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Cosh : IndicatorBase
+    public record Cosh : IndicatorBase
     {
         public Cosh(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

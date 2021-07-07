@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Div(startIdx, endIdx, real0.ToDouble(), real1.ToDouble());
     }
 
-    public class Div : IndicatorBase
+    public record Div : IndicatorBase
     {
         public Div(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

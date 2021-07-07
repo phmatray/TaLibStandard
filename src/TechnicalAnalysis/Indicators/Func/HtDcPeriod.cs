@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => HtDcPeriod(startIdx, endIdx, real.ToDouble());
     }
 
-    public class HtDcPeriod : IndicatorBase
+    public record HtDcPeriod : IndicatorBase
     {
         public HtDcPeriod(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

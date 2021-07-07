@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Dema(startIdx, endIdx, real, 30);
     }
 
-    public class Dema : IndicatorBase
+    public record Dema : IndicatorBase
     {
         public Dema(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

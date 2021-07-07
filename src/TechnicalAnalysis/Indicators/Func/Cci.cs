@@ -41,7 +41,7 @@ namespace TechnicalAnalysis
             => Cci(startIdx, endIdx, high, low, close, 14);
     }
 
-    public class Cci : IndicatorBase
+    public record Cci : IndicatorBase
     {
         public Cci(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

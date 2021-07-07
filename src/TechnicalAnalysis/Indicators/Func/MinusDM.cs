@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
             => MinusDM(startIdx, endIdx, high, low, 14);
     }
 
-    public class MinusDM : IndicatorBase
+    public record MinusDM : IndicatorBase
     {
         public MinusDM(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

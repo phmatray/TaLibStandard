@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
             => StdDev(startIdx, endIdx, real, 5, 1.0);
     }
 
-    public class StdDev : IndicatorBase
+    public record StdDev : IndicatorBase
     {
         public StdDev(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

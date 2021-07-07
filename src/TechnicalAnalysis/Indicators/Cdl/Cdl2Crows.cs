@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class Cdl2Crows : IndicatorBase
+    public record Cdl2Crows : IndicatorBase
     {
         public Cdl2Crows(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

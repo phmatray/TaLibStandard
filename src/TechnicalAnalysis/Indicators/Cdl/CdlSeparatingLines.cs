@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlSeparatingLines : IndicatorBase
+    public record CdlSeparatingLines : IndicatorBase
     {
         public CdlSeparatingLines(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

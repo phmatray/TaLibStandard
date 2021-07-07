@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Tema(startIdx, endIdx, real, 30);
     }
 
-    public class Tema : IndicatorBase
+    public record Tema : IndicatorBase
     {
         public Tema(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

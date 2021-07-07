@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlDoji : IndicatorBase
+    public record CdlDoji : IndicatorBase
     {
         public CdlDoji(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

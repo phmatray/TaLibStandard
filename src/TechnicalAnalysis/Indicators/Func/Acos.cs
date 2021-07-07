@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Acos(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Acos : IndicatorBase
+    public record Acos : IndicatorBase
     {
         public Acos(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

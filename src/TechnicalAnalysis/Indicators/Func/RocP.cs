@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => RocP(startIdx, endIdx, real, 10);
     }
 
-    public class RocP : IndicatorBase
+    public record RocP : IndicatorBase
     {
         public RocP(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

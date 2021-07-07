@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlConcealBabySwallow : IndicatorBase
+    public record CdlConcealBabySwallow : IndicatorBase
     {
         public CdlConcealBabySwallow(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

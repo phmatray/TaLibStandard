@@ -42,7 +42,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlAbandonedBaby : IndicatorBase
+    public record CdlAbandonedBaby : IndicatorBase
     {
         public CdlAbandonedBaby(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

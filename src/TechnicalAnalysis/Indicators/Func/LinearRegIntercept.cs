@@ -39,7 +39,7 @@ namespace TechnicalAnalysis
             => LinearRegIntercept(startIdx, endIdx, real, 14);
     }
 
-    public class LinearRegIntercept : IndicatorBase
+    public record LinearRegIntercept : IndicatorBase
     {
         public LinearRegIntercept(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

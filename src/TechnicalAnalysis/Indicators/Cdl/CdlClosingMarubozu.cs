@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlClosingMarubozu : IndicatorBase
+    public record CdlClosingMarubozu : IndicatorBase
     {
         public CdlClosingMarubozu(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

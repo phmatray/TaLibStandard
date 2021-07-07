@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => HtDcPhase(startIdx, endIdx, real.ToDouble());
     }
 
-    public class HtDcPhase : IndicatorBase
+    public record HtDcPhase : IndicatorBase
     {
         public HtDcPhase(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

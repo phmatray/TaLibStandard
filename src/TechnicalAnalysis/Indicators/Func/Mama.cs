@@ -42,7 +42,7 @@ namespace TechnicalAnalysis
             => Mama(startIdx, endIdx, real, 0.5, 0.05);
     }
 
-    public class Mama : IndicatorBase
+    public record Mama : IndicatorBase
     {
         public Mama(RetCode retCode, int begIdx, int nbElement, double[] mama, double[] fama)
             : base(retCode, begIdx, nbElement)

@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Cos(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Cos : IndicatorBase
+    public record Cos : IndicatorBase
     {
         public Cos(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

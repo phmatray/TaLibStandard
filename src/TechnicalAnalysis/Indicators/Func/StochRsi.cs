@@ -58,7 +58,7 @@ namespace TechnicalAnalysis
             => StochRsi(startIdx, endIdx, real, 14, 5, 3, MAType.Sma);
     }
 
-    public class StochRsi : IndicatorBase
+    public record StochRsi : IndicatorBase
     {
         public StochRsi(RetCode retCode, int begIdx, int nbElement, double[] fastK, double[] fastD)
             : base(retCode, begIdx, nbElement)

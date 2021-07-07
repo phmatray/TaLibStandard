@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlTasukiGap : IndicatorBase
+    public record CdlTasukiGap : IndicatorBase
     {
         public CdlTasukiGap(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

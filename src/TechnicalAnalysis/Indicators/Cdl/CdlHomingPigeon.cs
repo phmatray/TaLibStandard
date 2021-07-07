@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlHomingPigeon : IndicatorBase
+    public record CdlHomingPigeon : IndicatorBase
     {
         public CdlHomingPigeon(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

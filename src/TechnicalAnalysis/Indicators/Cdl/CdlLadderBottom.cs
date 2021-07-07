@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlLadderBottom : IndicatorBase
+    public record CdlLadderBottom : IndicatorBase
     {
         public CdlLadderBottom(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

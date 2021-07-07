@@ -71,7 +71,7 @@ namespace TechnicalAnalysis
             => MovingAverageVariablePeriod(startIdx, endIdx, real, periods, 2, 30, MAType.Sma);
     }
 
-    public class MovingAverageVariablePeriod : IndicatorBase
+    public record MovingAverageVariablePeriod : IndicatorBase
     {
         public MovingAverageVariablePeriod(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

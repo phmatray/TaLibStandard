@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Asin(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Asin : IndicatorBase
+    public record Asin : IndicatorBase
     {
         public Asin(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

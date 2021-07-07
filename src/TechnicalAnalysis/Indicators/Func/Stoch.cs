@@ -77,7 +77,7 @@ namespace TechnicalAnalysis
             => Stoch(startIdx, endIdx, high, low, close, 5, 3, MAType.Sma, 3, MAType.Sma);
     }
 
-    public class Stoch : IndicatorBase
+    public record Stoch : IndicatorBase
     {
         public Stoch(RetCode retCode, int begIdx, int nbElement, double[] slowK, double[] slowD)
             : base(retCode, begIdx, nbElement)

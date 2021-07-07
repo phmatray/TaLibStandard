@@ -42,7 +42,7 @@ namespace TechnicalAnalysis
             => Aroon(startIdx, endIdx, high, low, 14);
     }
 
-    public class Aroon : IndicatorBase
+    public record Aroon : IndicatorBase
     {
         public Aroon(RetCode retCode, int begIdx, int nbElement, double[] aroonDown, double[] aroonUp)
             : base(retCode, begIdx, nbElement)

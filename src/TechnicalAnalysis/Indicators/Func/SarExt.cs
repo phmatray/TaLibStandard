@@ -83,7 +83,7 @@ namespace TechnicalAnalysis
             => SarExt(startIdx, endIdx, high, low, 0.0, 0.0, 0.02, 0.02, 0.2, 0.02, 0.02, 0.2);
     }
 
-    public class SarExt : IndicatorBase
+    public record SarExt : IndicatorBase
     {
         public SarExt(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class Cdl3LineStrike : IndicatorBase
+    public record Cdl3LineStrike : IndicatorBase
     {
         public Cdl3LineStrike(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

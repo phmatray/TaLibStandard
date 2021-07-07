@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
             => MidPrice(startIdx, endIdx, high, low, 14);
     }
 
-    public class MidPrice : IndicatorBase
+    public record MidPrice : IndicatorBase
     {
         public MidPrice(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

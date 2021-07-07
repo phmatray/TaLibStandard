@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlStalledPattern : IndicatorBase
+    public record CdlStalledPattern : IndicatorBase
     {
         public CdlStalledPattern(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Obv(startIdx, endIdx, real.ToDouble(), volume.ToDouble());
     }
 
-    public class Obv : IndicatorBase
+    public record Obv : IndicatorBase
     {
         public Obv(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

@@ -41,7 +41,7 @@ namespace TechnicalAnalysis
             => Bop(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
-    public class Bop : IndicatorBase
+    public record Bop : IndicatorBase
     {
         public Bop(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

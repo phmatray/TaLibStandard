@@ -42,7 +42,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlMatHold : IndicatorBase
+    public record CdlMatHold : IndicatorBase
     {
         public CdlMatHold(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

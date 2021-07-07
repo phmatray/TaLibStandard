@@ -39,7 +39,7 @@ namespace TechnicalAnalysis
             => LinearRegSlope(startIdx, endIdx, real, 14);
     }
 
-    public class LinearRegSlope : IndicatorBase
+    public record LinearRegSlope : IndicatorBase
     {
         public LinearRegSlope(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

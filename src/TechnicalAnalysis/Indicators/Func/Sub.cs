@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Sub(startIdx, endIdx, real0.ToDouble(), real1.ToDouble());
     }
 
-    public class Sub : IndicatorBase
+    public record Sub : IndicatorBase
     {
         public Sub(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

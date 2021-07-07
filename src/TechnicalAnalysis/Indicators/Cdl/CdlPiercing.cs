@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlPiercing : IndicatorBase
+    public record CdlPiercing : IndicatorBase
     {
         public CdlPiercing(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

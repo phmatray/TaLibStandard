@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlIdentical3Crows : IndicatorBase
+    public record CdlIdentical3Crows : IndicatorBase
     {
         public CdlIdentical3Crows(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

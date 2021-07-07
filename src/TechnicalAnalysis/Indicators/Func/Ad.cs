@@ -35,7 +35,7 @@ namespace TechnicalAnalysis
             => Ad(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), volume.ToDouble());
     }
 
-    public class Ad : IndicatorBase
+    public record Ad : IndicatorBase
     {
         public Ad(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

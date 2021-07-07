@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Mom(startIdx, endIdx, real, 10);
     }
 
-    public class Mom : IndicatorBase
+    public record Mom : IndicatorBase
     {
         public Mom(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

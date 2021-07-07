@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Sum(startIdx, endIdx, real, 30);
     }
 
-    public class Sum : IndicatorBase
+    public record Sum : IndicatorBase
     {
         public Sum(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

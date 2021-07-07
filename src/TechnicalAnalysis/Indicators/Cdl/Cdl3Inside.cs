@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class Cdl3Inside : IndicatorBase
+    public record Cdl3Inside : IndicatorBase
     {
         public Cdl3Inside(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

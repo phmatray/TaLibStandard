@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Exp(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Exp : IndicatorBase
+    public record Exp : IndicatorBase
     {
         public Exp(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

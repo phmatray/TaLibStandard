@@ -31,7 +31,7 @@ namespace TechnicalAnalysis
             => MidPoint(startIdx, endIdx, real, 14);
     }
 
-    public class MidPoint : IndicatorBase
+    public record MidPoint : IndicatorBase
     {
         public MidPoint(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

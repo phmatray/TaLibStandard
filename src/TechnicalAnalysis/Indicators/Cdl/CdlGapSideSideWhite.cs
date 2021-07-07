@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlGapSideSideWhite : IndicatorBase
+    public record CdlGapSideSideWhite : IndicatorBase
     {
         public CdlGapSideSideWhite(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

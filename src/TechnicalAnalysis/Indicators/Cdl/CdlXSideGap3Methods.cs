@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlXSideGap3Methods : IndicatorBase
+    public record CdlXSideGap3Methods : IndicatorBase
     {
         public CdlXSideGap3Methods(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

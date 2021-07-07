@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Sinh(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Sinh : IndicatorBase
+    public record Sinh : IndicatorBase
     {
         public Sinh(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

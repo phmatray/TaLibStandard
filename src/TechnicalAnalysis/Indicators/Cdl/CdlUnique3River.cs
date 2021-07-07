@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlUnique3River : IndicatorBase
+    public record CdlUnique3River : IndicatorBase
     {
         public CdlUnique3River(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

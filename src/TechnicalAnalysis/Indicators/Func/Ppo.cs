@@ -41,7 +41,7 @@ namespace TechnicalAnalysis
             => Ppo(startIdx, endIdx, real, 12, 26, MAType.Sma);
     }
 
-    public class Ppo : IndicatorBase
+    public record Ppo : IndicatorBase
     {
         public Ppo(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

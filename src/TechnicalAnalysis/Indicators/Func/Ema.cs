@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Ema(startIdx, endIdx, real, 30);
     }
 
-    public class Ema : IndicatorBase
+    public record Ema : IndicatorBase
     {
         public Ema(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

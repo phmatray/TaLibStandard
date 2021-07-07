@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlRickshawMan : IndicatorBase
+    public record CdlRickshawMan : IndicatorBase
     {
         public CdlRickshawMan(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

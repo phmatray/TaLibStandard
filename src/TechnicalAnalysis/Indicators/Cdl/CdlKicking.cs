@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlKicking : IndicatorBase
+    public record CdlKicking : IndicatorBase
     {
         public CdlKicking(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

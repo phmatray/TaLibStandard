@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlHaramiCross : IndicatorBase
+    public record CdlHaramiCross : IndicatorBase
     {
         public CdlHaramiCross(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

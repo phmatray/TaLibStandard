@@ -66,7 +66,7 @@ namespace TechnicalAnalysis
             => BollingerBands(startIdx, endIdx, real, 5, 2.0, 2.0, MAType.Sma);
     }
 
-    public class BollingerBands : IndicatorBase
+    public record BollingerBands : IndicatorBase
     {
         public BollingerBands(
             RetCode retCode,

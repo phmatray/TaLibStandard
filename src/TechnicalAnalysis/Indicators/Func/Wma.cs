@@ -31,7 +31,7 @@ namespace TechnicalAnalysis
             => Wma(startIdx, endIdx, real, 30);
     }
 
-    public class Wma : IndicatorBase
+    public record Wma : IndicatorBase
     {
         public Wma(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

@@ -27,7 +27,7 @@ namespace TechnicalAnalysis
             => HtSine(startIdx, endIdx, real.ToDouble());
     }
 
-    public class HtSine : IndicatorBase
+    public record HtSine : IndicatorBase
     {
         public HtSine(RetCode retCode, int begIdx, int nbElement, double[] sine, double[] leadSine)
             : base(retCode, begIdx, nbElement)

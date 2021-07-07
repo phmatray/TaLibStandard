@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class Cdl3WhiteSoldiers : IndicatorBase
+    public record Cdl3WhiteSoldiers : IndicatorBase
     {
         public Cdl3WhiteSoldiers(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

@@ -75,7 +75,7 @@ namespace TechnicalAnalysis
             => MacdExt(startIdx, endIdx, real, 12, MAType.Sma, 26, MAType.Sma, 9, MAType.Sma);
     }
 
-    public class MacdExt : IndicatorBase
+    public record MacdExt : IndicatorBase
     {
         public MacdExt(
             RetCode retCode,

@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Trix(startIdx, endIdx, real, 30);
     }
 
-    public class Trix : IndicatorBase
+    public record Trix : IndicatorBase
     {
         public Trix(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

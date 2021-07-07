@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Tanh(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Tanh : IndicatorBase
+    public record Tanh : IndicatorBase
     {
         public Tanh(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

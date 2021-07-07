@@ -47,7 +47,7 @@ namespace TechnicalAnalysis
             => PlusDI(startIdx, endIdx, high, low, close, 14);
     }
 
-    public class PlusDI : IndicatorBase
+    public record PlusDI : IndicatorBase
     {
         public PlusDI(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

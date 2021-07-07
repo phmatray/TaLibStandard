@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
             => AroonOsc(startIdx, endIdx, high, low, 14);
     }
 
-    public class AroonOsc : IndicatorBase
+    public record AroonOsc : IndicatorBase
     {
         public AroonOsc(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

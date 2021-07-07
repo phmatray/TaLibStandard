@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => HtTrendMode(startIdx, endIdx, real.ToDouble());
     }
 
-    public class HtTrendMode : IndicatorBase
+    public record HtTrendMode : IndicatorBase
     {
         public HtTrendMode(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

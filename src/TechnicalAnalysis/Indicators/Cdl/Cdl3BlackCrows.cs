@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class Cdl3BlackCrows : IndicatorBase
+    public record Cdl3BlackCrows : IndicatorBase
     {
         public Cdl3BlackCrows(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Add(startIdx, endIdx, real0.ToDouble(), real1.ToDouble());
     }
 
-    public class Add : IndicatorBase
+    public record Add : IndicatorBase
     {
         public Add(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

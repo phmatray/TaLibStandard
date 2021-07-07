@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlMatchingLow : IndicatorBase
+    public record CdlMatchingLow : IndicatorBase
     {
         public CdlMatchingLow(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

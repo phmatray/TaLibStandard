@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlAdvanceBlock : IndicatorBase
+    public record CdlAdvanceBlock : IndicatorBase
     {
         public CdlAdvanceBlock(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)

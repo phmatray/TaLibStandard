@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
             => PlusDM(startIdx, endIdx, high, low, 14);
     }
 
-    public class PlusDM : IndicatorBase
+    public record PlusDM : IndicatorBase
     {
         public PlusDM(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => WclPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
-    public class WclPrice : IndicatorBase
+    public record WclPrice : IndicatorBase
     {
         public WclPrice(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

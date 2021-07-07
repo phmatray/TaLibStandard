@@ -73,7 +73,7 @@ namespace TechnicalAnalysis
             => AdOsc(startIdx, endIdx, high, low, close, volume, 3, 10);
     }
 
-    public class AdOsc : IndicatorBase
+    public record AdOsc : IndicatorBase
     {
         public AdOsc(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

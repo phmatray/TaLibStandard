@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
             => Atan(startIdx, endIdx, real.ToDouble());
     }
 
-    public class Atan : IndicatorBase
+    public record Atan : IndicatorBase
     {
         public Atan(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
             => Trima(startIdx, endIdx, real, 30);
     }
 
-    public class Trima : IndicatorBase
+    public record Trima : IndicatorBase
     {
         public Trima(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)

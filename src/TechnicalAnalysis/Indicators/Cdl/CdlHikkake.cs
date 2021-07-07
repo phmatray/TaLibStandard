@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
         }
     }
 
-    public class CdlHikkake : IndicatorBase
+    public record CdlHikkake : IndicatorBase
     {
         public CdlHikkake(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)
