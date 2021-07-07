@@ -59,8 +59,6 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            _nearPeriodTotal[3] = 0.0;
-            _nearPeriodTotal[2] = 0.0;
             int nearTrailingIdx = startIdx - GetCandleAvgPeriod(Near);
             
             int i = nearTrailingIdx;

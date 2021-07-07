@@ -60,11 +60,7 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            _shadowVeryShortPeriodTotal[1] = 0.0;
-            _shadowVeryShortPeriodTotal[0] = 0.0;
             int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
-            _bodyLongPeriodTotal[1] = 0.0;
-            _bodyLongPeriodTotal[0] = 0.0;
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = shadowVeryShortTrailingIdx;
