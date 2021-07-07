@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleMatHold : CandleIndicator
     {
+        private double[] _bodyPeriodTotal = new double[5];
+        private double _penetration;
+
         public CandleMatHold(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -19,13 +22,12 @@ namespace TechnicalAnalysis.Candle
             out int outNBElement,
             out int[] outInteger)
         {
+            _penetration = optInPenetration;
+            
             // Initialize output variables 
             outBegIdx = default;
             outNBElement = default;
             outInteger = new int[endIdx - startIdx + 1];
-            
-            // Local variables
-            double[] bodyPeriodTotal = new double[5];
 
             // Validate the requested output range.
             if (startIdx < 0)
@@ -66,27 +68,27 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            bodyPeriodTotal[4] = 0.0;
-            bodyPeriodTotal[3] = 0.0;
-            bodyPeriodTotal[2] = 0.0;
-            bodyPeriodTotal[1] = 0.0;
-            bodyPeriodTotal[0] = 0.0;
+            _bodyPeriodTotal[4] = 0.0;
+            _bodyPeriodTotal[3] = 0.0;
+            _bodyPeriodTotal[2] = 0.0;
+            _bodyPeriodTotal[1] = 0.0;
+            _bodyPeriodTotal[0] = 0.0;
             int bodyShortTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = bodyShortTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal[3] += GetCandleRange(BodyShort, i - 3);
-                bodyPeriodTotal[2] += GetCandleRange(BodyShort, i - 2);
-                bodyPeriodTotal[1] += GetCandleRange(BodyShort, i - 1);
+                _bodyPeriodTotal[3] += GetCandleRange(BodyShort, i - 3);
+                _bodyPeriodTotal[2] += GetCandleRange(BodyShort, i - 2);
+                _bodyPeriodTotal[1] += GetCandleRange(BodyShort, i - 1);
                 i++;
             }
 
             i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal[4] += GetCandleRange(BodyLong, i - 4);
+                _bodyPeriodTotal[4] += GetCandleRange(BodyLong, i - 4);
                 i++;
             }
 
@@ -110,21 +112,19 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isMatHold = GetPatternRecognition(i, bodyPeriodTotal, optInPenetration);
-
-                outInteger[outIdx++] = isMatHold ? 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyPeriodTotal[4] +=
+                _bodyPeriodTotal[4] +=
                     GetCandleRange(BodyLong, i - 4) -
                     GetCandleRange(BodyLong, bodyLongTrailingIdx - 4);
 
                 int totIdx;
                 for (totIdx = 3; totIdx >= 1; --totIdx)
                 {
-                    bodyPeriodTotal[totIdx] +=
+                    _bodyPeriodTotal[totIdx] +=
                         GetCandleRange(BodyShort, i - totIdx) -
                         GetCandleRange(BodyShort, bodyShortTrailingIdx - totIdx);
                 }
@@ -141,14 +141,14 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double[] bodyPeriodTotal, double optInPenetration)
+        public override bool GetPatternRecognition(int i)
         {
             bool isMatHold =
                 // 1st long, then 3 small
-                GetRealBody(i - 4) > GetCandleAverage(BodyLong, bodyPeriodTotal[4], i - 4) &&
-                GetRealBody(i - 3) < GetCandleAverage(BodyShort, bodyPeriodTotal[3], i - 3) &&
-                GetRealBody(i - 2) < GetCandleAverage(BodyShort, bodyPeriodTotal[2], i - 2) &&
-                GetRealBody(i - 1) < GetCandleAverage(BodyShort, bodyPeriodTotal[1], i - 1) &&
+                GetRealBody(i - 4) > GetCandleAverage(BodyLong, _bodyPeriodTotal[4], i - 4) &&
+                GetRealBody(i - 3) < GetCandleAverage(BodyShort, _bodyPeriodTotal[3], i - 3) &&
+                GetRealBody(i - 2) < GetCandleAverage(BodyShort, _bodyPeriodTotal[2], i - 2) &&
+                GetRealBody(i - 1) < GetCandleAverage(BodyShort, _bodyPeriodTotal[1], i - 1) &&
                 // white, black, 2 black or white, white
                 GetCandleColor(i - 4) == 1 &&
                 GetCandleColor(i - 3) == -1 &&
@@ -159,8 +159,8 @@ namespace TechnicalAnalysis.Candle
                 Min(open[i - 2], close[i - 2]) < close[i - 4] &&
                 Min(open[i - 1], close[i - 1]) < close[i - 4] &&
                 // reaction days penetrate first body less than optInPenetration percent
-                Min(open[i - 2], close[i - 2]) > close[i - 4] - GetRealBody(i - 4) * optInPenetration &&
-                Min(open[i - 1], close[i - 1]) > close[i - 4] - GetRealBody(i - 4) * optInPenetration &&
+                Min(open[i - 2], close[i - 2]) > close[i - 4] - GetRealBody(i - 4) * _penetration &&
+                Min(open[i - 1], close[i - 1]) > close[i - 4] - GetRealBody(i - 4) * _penetration &&
                 // 2nd to 4th are falling
                 Max(close[i - 2], open[i - 2]) < open[i - 3] &&
                 Max(close[i - 1], open[i - 1]) < Max(close[i - 2], open[i - 2]) &&

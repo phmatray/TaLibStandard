@@ -6,6 +6,11 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleStalledPattern : CandleIndicator
     {
+        private double[] _bodyLongPeriodTotal = new double[3];
+        private double[] _nearPeriodTotal = new double[3];
+        private double _bodyShortPeriodTotal;
+        private double _shadowVeryShortPeriodTotal;
+
         public CandleStalledPattern(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -22,11 +27,7 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = default;
             outNBElement = default;
             outInteger = new int[endIdx - startIdx + 1];
-            
-            // Local variables
-            double[] bodyLongPeriodTotal = new double[3];
-            double[] nearPeriodTotal = new double[3];
-            
+
             // Validate the requested output range.
             if (startIdx < 0)
             {
@@ -61,46 +62,44 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            bodyLongPeriodTotal[2] = 0.0;
-            bodyLongPeriodTotal[1] = 0.0;
-            bodyLongPeriodTotal[0] = 0.0;
+            _bodyLongPeriodTotal[2] = 0.0;
+            _bodyLongPeriodTotal[1] = 0.0;
+            _bodyLongPeriodTotal[0] = 0.0;
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
-            double bodyShortPeriodTotal = 0.0;
             int bodyShortTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
-            double shadowVeryShortPeriodTotal = 0.0;
             int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
-            nearPeriodTotal[2] = 0.0;
-            nearPeriodTotal[1] = 0.0;
-            nearPeriodTotal[0] = 0.0;
+            _nearPeriodTotal[2] = 0.0;
+            _nearPeriodTotal[1] = 0.0;
+            _nearPeriodTotal[0] = 0.0;
             int nearTrailingIdx = startIdx - GetCandleAvgPeriod(Near);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal[2] += GetCandleRange(BodyLong, i - 2);
-                bodyLongPeriodTotal[1] += GetCandleRange(BodyLong, i - 1);
+                _bodyLongPeriodTotal[2] += GetCandleRange(BodyLong, i - 2);
+                _bodyLongPeriodTotal[1] += GetCandleRange(BodyLong, i - 1);
                 i++;
             }
 
             i = bodyShortTrailingIdx;
             while (i < startIdx)
             {
-                bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
+                _bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
             i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i - 1);
+                _shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i - 1);
                 i++;
             }
 
             i = nearTrailingIdx;
             while (i < startIdx)
             {
-                nearPeriodTotal[2] += GetCandleRange(Near, i - 2);
-                nearPeriodTotal[1] += GetCandleRange(Near, i - 1);
+                _nearPeriodTotal[2] += GetCandleRange(Near, i - 2);
+                _nearPeriodTotal[1] += GetCandleRange(Near, i - 1);
                 i++;
             }
 
@@ -122,30 +121,27 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isStalledPattern = GetPatternRecognition(
-                    i, bodyLongPeriodTotal, shadowVeryShortPeriodTotal, nearPeriodTotal, bodyShortPeriodTotal);
-
-                outInteger[outIdx++] = isStalledPattern ? -100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? -100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 for (int totIdx = 2; totIdx >= 1; --totIdx)
                 {
-                    bodyLongPeriodTotal[totIdx] +=
+                    _bodyLongPeriodTotal[totIdx] +=
                         GetCandleRange(BodyLong, i - totIdx) -
                         GetCandleRange(BodyLong, bodyLongTrailingIdx - totIdx);
 
-                    nearPeriodTotal[totIdx] +=
+                    _nearPeriodTotal[totIdx] +=
                         GetCandleRange(Near, i - totIdx) -
                         GetCandleRange(Near, nearTrailingIdx - totIdx);
                 }
 
-                bodyShortPeriodTotal +=
+                _bodyShortPeriodTotal +=
                     GetCandleRange(BodyShort, i) -
                     GetCandleRange(BodyShort, bodyShortTrailingIdx);
 
-                shadowVeryShortPeriodTotal +=
+                _shadowVeryShortPeriodTotal +=
                     GetCandleRange(ShadowVeryShort, i - 1) -
                     GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - 1);
 
@@ -163,12 +159,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(
-            int i,
-            double[] bodyLongPeriodTotal,
-            double shadowVeryShortPeriodTotal,
-            double[] nearPeriodTotal,
-            double bodyShortPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isStalledPattern =
                 // 1st white
@@ -181,18 +172,18 @@ namespace TechnicalAnalysis.Candle
                 close[i] > close[i - 1] &&
                 close[i - 1] > close[i - 2] &&
                 // 1st: long real body
-                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[2], i - 2) &&
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[2], i - 2) &&
                 // 2nd: long real body
-                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], i - 1) &&
                 // very short upper shadow 
-                GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i - 1) &&
+                GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i - 1) &&
                 // opens within/near 1st real body
                 open[i - 1] > open[i - 2] &&
-                open[i - 1] <= close[i - 2] + GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
+                open[i - 1] <= close[i - 2] + GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
                 // 3rd: small real body
-                GetRealBody(i) < GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
+                GetRealBody(i) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
                 // rides on the shoulder of 2nd real body
-                open[i] >= close[i - 1] - GetRealBody(i) - GetCandleAverage(Near, nearPeriodTotal[1], i - 1);
+                open[i] >= close[i - 1] - GetRealBody(i) - GetCandleAverage(Near, _nearPeriodTotal[1], i - 1);
             
             return isStalledPattern;
         }

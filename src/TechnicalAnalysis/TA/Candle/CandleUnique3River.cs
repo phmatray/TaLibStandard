@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleUnique3River : CandleIndicator
     {
+        private double _bodyLongPeriodTotal;
+        private double _bodyShortPeriodTotal;
+
         public CandleUnique3River(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,22 +60,20 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyLongPeriodTotal = 0.0;
-            double bodyShortPeriodTotal = 0.0;
             int bodyLongTrailingIdx = startIdx - 2 - GetCandleAvgPeriod(BodyLong);
             int bodyShortTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx - 2)
             {
-                bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
+                _bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
                 i++;
             }
 
             i = bodyShortTrailingIdx;
             while (i < startIdx)
             {
-                bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
+                _bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
@@ -91,18 +92,18 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isUnique3River = GetPatternRecognition(i, bodyLongPeriodTotal, bodyShortPeriodTotal);
+                bool isUnique3River = GetPatternRecognition(i);
 
                 outInteger[outIdx++] = isUnique3River ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyLongPeriodTotal +=
+                _bodyLongPeriodTotal +=
                     GetCandleRange(BodyLong, i - 2) -
                     GetCandleRange(BodyLong, bodyLongTrailingIdx);
 
-                bodyShortPeriodTotal +=
+                _bodyShortPeriodTotal +=
                     GetCandleRange(BodyShort, i) -
                     GetCandleRange(BodyShort, bodyShortTrailingIdx);
 
@@ -118,11 +119,11 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double bodyShortPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isUnique3River =
                 // 1st: long
-                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
                 // black
                 GetCandleColor(i - 2) == -1 &&
                 // 2nd: black
@@ -132,7 +133,7 @@ namespace TechnicalAnalysis.Candle
                 // lower low
                 low[i - 1] < low[i - 2] &&
                 // 3rd: short
-                GetRealBody(i) < GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
+                GetRealBody(i) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
                 // white
                 GetCandleColor(i) == 1 &&
                 // open not lower

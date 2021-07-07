@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleLongLine : CandleIndicator
     {
+        private double _bodyPeriodTotal;
+        private double _shadowPeriodTotal;
+
         public CandleLongLine(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,22 +60,20 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyPeriodTotal = 0.0;
             int bodyTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
-            double shadowPeriodTotal = 0.0;
             int shadowTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowShort);
             
             int i = bodyTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal += GetCandleRange(BodyLong, i);
+                _bodyPeriodTotal += GetCandleRange(BodyLong, i);
                 i++;
             }
 
             i = shadowTrailingIdx;
             while (i < startIdx)
             {
-                shadowPeriodTotal += GetCandleRange(ShadowShort, i);
+                _shadowPeriodTotal += GetCandleRange(ShadowShort, i);
                 i++;
             }
 
@@ -86,18 +87,16 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isLongLine = GetPatternRecognition(i, bodyPeriodTotal, shadowPeriodTotal);
-
-                outInteger[outIdx++] = isLongLine ? GetCandleColor(i) * 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyPeriodTotal +=
+                _bodyPeriodTotal +=
                     GetCandleRange(BodyLong, i) -
                     GetCandleRange(BodyLong, bodyTrailingIdx);
 
-                shadowPeriodTotal +=
+                _shadowPeriodTotal +=
                     GetCandleRange(ShadowShort, i) -
                     GetCandleRange(ShadowShort, shadowTrailingIdx);
 
@@ -113,12 +112,13 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyPeriodTotal, double shadowPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isLongLine =
-                GetRealBody(i) > GetCandleAverage(BodyLong, bodyPeriodTotal, i) &&
-                GetUpperShadow(i) < GetCandleAverage(ShadowShort, shadowPeriodTotal, i) &&
-                GetLowerShadow(i) < GetCandleAverage(ShadowShort, shadowPeriodTotal, i);
+                GetRealBody(i) > GetCandleAverage(BodyLong, _bodyPeriodTotal, i) &&
+                GetUpperShadow(i) < GetCandleAverage(ShadowShort, _shadowPeriodTotal, i) &&
+                GetLowerShadow(i) < GetCandleAverage(ShadowShort, _shadowPeriodTotal, i);
+            
             return isLongLine;
         }
 

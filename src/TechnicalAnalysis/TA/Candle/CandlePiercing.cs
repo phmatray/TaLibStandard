@@ -5,6 +5,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandlePiercing : CandleIndicator
     {
+        private double[] _bodyLongPeriodTotal = new double[2];
+
         public CandlePiercing(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -21,10 +23,7 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = default;
             outNBElement = default;
             outInteger = new int[endIdx - startIdx + 1];
-            
-            // Local variables
-            double[] bodyLongPeriodTotal = new double[2];
-            
+
             // Validate the requested output range.
             if (startIdx < 0)
             {
@@ -59,15 +58,15 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            bodyLongPeriodTotal[1] = 0.0;
-            bodyLongPeriodTotal[0] = 0.0;
+            _bodyLongPeriodTotal[1] = 0.0;
+            _bodyLongPeriodTotal[0] = 0.0;
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal[1] += GetCandleRange(BodyLong, i - 1);
-                bodyLongPeriodTotal[0] += GetCandleRange(BodyLong, i);
+                _bodyLongPeriodTotal[1] += GetCandleRange(BodyLong, i - 1);
+                _bodyLongPeriodTotal[0] += GetCandleRange(BodyLong, i);
                 i++;
             }
 
@@ -86,16 +85,14 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isPiercing = GetPatternRecognition(i, bodyLongPeriodTotal);
-
-                outInteger[outIdx++] = isPiercing ? 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 for (int totIdx = 1; totIdx >= 0; --totIdx)
                 {
-                    bodyLongPeriodTotal[totIdx] +=
+                    _bodyLongPeriodTotal[totIdx] +=
                         GetCandleRange(BodyLong, i - totIdx) -
                         GetCandleRange(BodyLong, bodyLongTrailingIdx - totIdx);
                 }
@@ -111,17 +108,17 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double[] bodyLongPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isPiercing =
                 // 1st: black
                 GetCandleColor(i - 1) == -1 &&
                 // long
-                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], i - 1) &&
                 // 2nd: white
                 GetCandleColor(i) == 1 &&
                 // long
-                GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i) &&
+                GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], i) &&
                 // open below prior low
                 open[i] < low[i - 1] &&
                 // close within prior body

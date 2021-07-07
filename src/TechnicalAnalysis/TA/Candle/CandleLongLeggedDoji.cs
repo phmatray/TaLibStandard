@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleLongLeggedDoji : CandleIndicator
     {
+        private double _bodyDojiPeriodTotal;
+        private double _shadowLongPeriodTotal;
+
         public CandleLongLeggedDoji(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,22 +60,20 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyDojiPeriodTotal = 0.0;
             int bodyDojiTrailingIdx = startIdx - GetCandleAvgPeriod(BodyDoji);
-            double shadowLongPeriodTotal = 0.0;
             int shadowLongTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowLong);
             
             int i = bodyDojiTrailingIdx;
             while (i < startIdx)
             {
-                bodyDojiPeriodTotal += GetCandleRange(BodyDoji, i);
+                _bodyDojiPeriodTotal += GetCandleRange(BodyDoji, i);
                 i++;
             }
 
             i = shadowLongTrailingIdx;
             while (i < startIdx)
             {
-                shadowLongPeriodTotal += GetCandleRange(ShadowLong, i);
+                _shadowLongPeriodTotal += GetCandleRange(ShadowLong, i);
                 i++;
             }
 
@@ -87,18 +88,18 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isLongLeggedDoji = GetPatternRecognition(i, bodyDojiPeriodTotal, shadowLongPeriodTotal);
+                bool isLongLeggedDoji = GetPatternRecognition(i);
 
                 outInteger[outIdx++] = isLongLeggedDoji ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyDojiPeriodTotal +=
+                _bodyDojiPeriodTotal +=
                     GetCandleRange(BodyDoji, i) -
                     GetCandleRange(BodyDoji, bodyDojiTrailingIdx);
 
-                shadowLongPeriodTotal +=
+                _shadowLongPeriodTotal +=
                     GetCandleRange(ShadowLong, i) -
                     GetCandleRange(ShadowLong, shadowLongTrailingIdx);
 
@@ -114,13 +115,13 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyDojiPeriodTotal, double shadowLongPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isLongLeggedDoji =
-                GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i) &&
+                GetRealBody(i) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, i) &&
                 (
-                    GetLowerShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) ||
-                    GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i)
+                    GetLowerShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) ||
+                    GetUpperShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i)
                 );
             
             return isLongLeggedDoji;

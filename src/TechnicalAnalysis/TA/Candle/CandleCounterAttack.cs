@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleCounterAttack : CandleIndicator
     {
+        private double[] _bodyLongPeriodTotal = new double[2];
+        private double _equalPeriodTotal;
+
         public CandleCounterAttack(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -22,9 +25,6 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = default;
             outNBElement = default;
             outInteger = new int[endIdx - startIdx + 1];
-            
-            // Local variables
-            double[] bodyLongPeriodTotal = new double[2];
 
             // Validate the requested output range.
             if (startIdx < 0)
@@ -60,24 +60,23 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double equalPeriodTotal = 0.0;
             int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
-            bodyLongPeriodTotal[1] = 0.0;
-            bodyLongPeriodTotal[0] = 0.0;
+            _bodyLongPeriodTotal[1] = 0.0;
+            _bodyLongPeriodTotal[0] = 0.0;
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal += GetCandleRange(Equal, i - 1);
+                _equalPeriodTotal += GetCandleRange(Equal, i - 1);
                 i++;
             }
 
             i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal[1] += GetCandleRange(BodyLong, i - 1);
-                bodyLongPeriodTotal[0] += GetCandleRange(BodyLong, i);
+                _bodyLongPeriodTotal[1] += GetCandleRange(BodyLong, i - 1);
+                _bodyLongPeriodTotal[0] += GetCandleRange(BodyLong, i);
                 i++;
             }
 
@@ -94,21 +93,19 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isCounterAttack = GetPatternRecognition(i, bodyLongPeriodTotal, equalPeriodTotal);
-
-                outInteger[outIdx++] = isCounterAttack ? GetCandleColor(i) * 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                equalPeriodTotal +=
+                _equalPeriodTotal +=
                     GetCandleRange(Equal, i - 1) -
                     GetCandleRange(Equal, equalTrailingIdx - 1);
 
                 int totIdx;
                 for (totIdx = 1; totIdx >= 0; --totIdx)
                 {
-                    bodyLongPeriodTotal[totIdx] +=
+                    _bodyLongPeriodTotal[totIdx] +=
                         GetCandleRange(BodyLong, i - totIdx) -
                         GetCandleRange(BodyLong, bodyLongTrailingIdx - totIdx);
                 }
@@ -125,18 +122,18 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double[] bodyLongPeriodTotal, double equalPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isCounterAttack =
                 // opposite candles
                 GetCandleColor(i - 1) == -GetCandleColor(i) &&
                 // 1st long
-                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], i - 1) &&
                 // 2nd long
-                GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i) &&
+                GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], i) &&
                 // equal closes
-                close[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
-                close[i] >= close[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1);
+                close[i] <= close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+                close[i] >= close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
             
             return isCounterAttack;
         }

@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleGapSideSideWhite : CandleIndicator
     {
+        private double _nearPeriodTotal;
+        private double _equalPeriodTotal;
+
         public CandleGapSideSideWhite(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,22 +60,20 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double nearPeriodTotal = 0.0;
-            double equalPeriodTotal = 0.0;
             int nearTrailingIdx = startIdx - GetCandleAvgPeriod(Near);
             int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
             
             int i = nearTrailingIdx;
             while (i < startIdx)
             {
-                nearPeriodTotal += GetCandleRange(Near, i - 1);
+                _nearPeriodTotal += GetCandleRange(Near, i - 1);
                 i++;
             }
 
             i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal += GetCandleRange(Equal, i - 1);
+                _equalPeriodTotal += GetCandleRange(Equal, i - 1);
                 i++;
             }
 
@@ -93,19 +94,18 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isGapSideSideWhite = GetPatternRecognition(i, nearPeriodTotal, equalPeriodTotal);
-
-                outInteger[outIdx++] =
-                    isGapSideSideWhite ? GetRealBodyGapUp(i - 1, i - 2) ? 100 : -100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i)
+                    ? GetRealBodyGapUp(i - 1, i - 2) ? 100 : -100
+                    : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                nearPeriodTotal +=
+                _nearPeriodTotal +=
                     GetCandleRange(Near, i - 1) -
                     GetCandleRange(Near, nearTrailingIdx - 1);
 
-                equalPeriodTotal +=
+                _equalPeriodTotal +=
                     GetCandleRange(Equal, i - 1) -
                     GetCandleRange(Equal, equalTrailingIdx - 1);
 
@@ -121,7 +121,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double nearPeriodTotal, double equalPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isGapSideSideWhite =
                 ( // upside or downside gap between the 1st candle and both the next 2 candles
@@ -141,14 +141,14 @@ namespace TechnicalAnalysis.Candle
                 GetCandleColor(i) == 1 &&
                 // same size 2 and 3
                 GetRealBody(i) >= GetRealBody(i - 1) -
-                GetCandleAverage(Near, nearPeriodTotal, i - 1) &&
+                GetCandleAverage(Near, _nearPeriodTotal, i - 1) &&
                 GetRealBody(i) <= GetRealBody(i - 1) +
-                GetCandleAverage(Near, nearPeriodTotal, i - 1) &&
+                GetCandleAverage(Near, _nearPeriodTotal, i - 1) &&
                 // same open 2 and 3
                 open[i] >= open[i - 1] -
-                GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
                 open[i] <= open[i - 1] +
-                GetCandleAverage(Equal, equalPeriodTotal, i - 1);
+                GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
             
             return isGapSideSideWhite;
         }

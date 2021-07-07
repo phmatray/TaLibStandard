@@ -5,6 +5,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleSpinningTop : CandleIndicator
     {
+        private double _bodyPeriodTotal;
+
         public CandleSpinningTop(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -56,13 +58,12 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyPeriodTotal = 0.0;
             int bodyTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
             
             int i = bodyTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal += GetCandleRange(BodyShort, i);
+                _bodyPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
@@ -77,14 +78,12 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isSpinningTop = GetPatternRecognition(i, bodyPeriodTotal);
-
-                outInteger[outIdx++] = isSpinningTop ? GetCandleColor(i) * 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyPeriodTotal +=
+                _bodyPeriodTotal +=
                     GetCandleRange(BodyShort, i) -
                     GetCandleRange(BodyShort, bodyTrailingIdx);
 
@@ -99,10 +98,10 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isSpinningTop =
-                GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
+                GetRealBody(i) < GetCandleAverage(BodyShort, _bodyPeriodTotal, i) &&
                 GetUpperShadow(i) > GetRealBody(i) &&
                 GetLowerShadow(i) > GetRealBody(i);
             

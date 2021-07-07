@@ -6,6 +6,11 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleAbandonedBaby : CandleIndicator
     {
+        private double _bodyLongPeriodTotal;
+        private double _bodyDojiPeriodTotal;
+        private double _bodyShortPeriodTotal;
+        private double _penetration;
+
         public CandleAbandonedBaby(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -19,6 +24,8 @@ namespace TechnicalAnalysis.Candle
             out int outNBElement,
             out int[] outInteger)
         {
+            _penetration = optInPenetration;
+            
             // Initialize output variables 
             outBegIdx = default;
             outNBElement = default;
@@ -63,9 +70,6 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyLongPeriodTotal = 0.0;
-            double bodyDojiPeriodTotal = 0.0;
-            double bodyShortPeriodTotal = 0.0;
             int bodyLongTrailingIdx = startIdx - 2 - GetCandleAvgPeriod(BodyLong);
             int bodyDojiTrailingIdx = startIdx - 1 - GetCandleAvgPeriod(BodyDoji);
             int bodyShortTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
@@ -73,21 +77,21 @@ namespace TechnicalAnalysis.Candle
             int i = bodyLongTrailingIdx;
             while (i < startIdx - 2)
             {
-                bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
+                _bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
                 i++;
             }
 
             i = bodyDojiTrailingIdx;
             while (i < startIdx - 1)
             {
-                bodyDojiPeriodTotal += GetCandleRange(BodyDoji, i);
+                _bodyDojiPeriodTotal += GetCandleRange(BodyDoji, i);
                 i++;
             }
 
             i = bodyShortTrailingIdx;
             while (i < startIdx)
             {
-                bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
+                _bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
@@ -111,23 +115,20 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isAbandonedBaby = GetPatternRecognition(
-                    i, bodyLongPeriodTotal, bodyDojiPeriodTotal, bodyShortPeriodTotal, optInPenetration);
-
-                outInteger[outIdx++] = isAbandonedBaby ? GetCandleColor(i) * 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyLongPeriodTotal +=
+                _bodyLongPeriodTotal +=
                     GetCandleRange(BodyLong, i - 2) -
                     GetCandleRange(BodyLong, bodyLongTrailingIdx);
 
-                bodyDojiPeriodTotal +=
+                _bodyDojiPeriodTotal +=
                     GetCandleRange(BodyDoji, i - 1) -
                     GetCandleRange(BodyDoji, bodyDojiTrailingIdx);
 
-                bodyShortPeriodTotal +=
+                _bodyShortPeriodTotal +=
                     GetCandleRange(BodyShort, i) -
                     GetCandleRange(BodyShort, bodyShortTrailingIdx);
 
@@ -144,20 +145,15 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(
-            int i,
-            double bodyLongPeriodTotal,
-            double bodyDojiPeriodTotal,
-            double bodyShortPeriodTotal,
-            double optInPenetration)
+        public override bool GetPatternRecognition(int i)
         {
             bool isAbandonedBaby =
                 // 1st: long
-                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
                 // 2nd: doji
-                GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i - 1) &&
+                GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, i - 1) &&
                 // 3rd: longer than short
-                GetRealBody(i) > GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
+                GetRealBody(i) > GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
                 (
                     (
                         // 1st white
@@ -165,7 +161,7 @@ namespace TechnicalAnalysis.Candle
                         // 3rd black
                         GetCandleColor(i) == -1 &&
                         // 3rd closes well within 1st rb
-                        close[i] < close[i - 2] - GetRealBody(i - 2) * optInPenetration &&
+                        close[i] < close[i - 2] - GetRealBody(i - 2) * _penetration &&
                         // upside gap between 1st and 2nd
                         GetCandleGapUp(i - 1, i - 2) &&
                         // downside gap between 2nd and 3rd
@@ -178,7 +174,7 @@ namespace TechnicalAnalysis.Candle
                         // 3rd white
                         GetCandleColor(i) == 1 &&
                         // 3rd closes well within 1st rb
-                        close[i] > close[i - 2] + GetRealBody(i - 2) * optInPenetration &&
+                        close[i] > close[i - 2] + GetRealBody(i - 2) * _penetration &&
                         // downside gap between 1st and 2nd
                         GetCandleGapDown(i - 1, i - 2) &&
                         // upside gap between 2nd and 3rd

@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleHighWave : CandleIndicator
     {
+        private double _bodyPeriodTotal;
+        private double _shadowPeriodTotal;
+
         public CandleHighWave(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,22 +60,20 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyPeriodTotal = 0.0;
             int bodyTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
-            double shadowPeriodTotal = 0.0;
             int shadowTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryLong);
             
             int i = bodyTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal += GetCandleRange(BodyShort, i);
+                _bodyPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
             i = shadowTrailingIdx;
             while (i < startIdx)
             {
-                shadowPeriodTotal += GetCandleRange(ShadowVeryLong, i);
+                _shadowPeriodTotal += GetCandleRange(ShadowVeryLong, i);
                 i++;
             }
 
@@ -87,18 +88,16 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isHighWave = GetPatternRecognition(i, bodyPeriodTotal, shadowPeriodTotal);
-
-                outInteger[outIdx++] = isHighWave ? GetCandleColor(i) * 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyPeriodTotal +=
+                _bodyPeriodTotal +=
                     GetCandleRange(BodyShort, i) -
                     GetCandleRange(BodyShort, bodyTrailingIdx);
 
-                shadowPeriodTotal +=
+                _shadowPeriodTotal +=
                     GetCandleRange(ShadowVeryLong, i) -
                     GetCandleRange(ShadowVeryLong, shadowTrailingIdx);
 
@@ -114,12 +113,12 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyPeriodTotal, double shadowPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isHighWave =
-                GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
-                GetUpperShadow(i) > GetCandleAverage(ShadowVeryLong, shadowPeriodTotal, i) &&
-                GetLowerShadow(i) > GetCandleAverage(ShadowVeryLong, shadowPeriodTotal, i);
+                GetRealBody(i) < GetCandleAverage(BodyShort, _bodyPeriodTotal, i) &&
+                GetUpperShadow(i) > GetCandleAverage(ShadowVeryLong, _shadowPeriodTotal, i) &&
+                GetLowerShadow(i) > GetCandleAverage(ShadowVeryLong, _shadowPeriodTotal, i);
             
             return isHighWave;
         }

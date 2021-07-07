@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleUpsideGap2Crows : CandleIndicator
     {
+        private double _bodyLongPeriodTotal;
+        private double _bodyShortPeriodTotal;
+
         public CandleUpsideGap2Crows(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,22 +60,20 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyLongPeriodTotal = 0.0;
-            double bodyShortPeriodTotal = 0.0;
             int bodyLongTrailingIdx = startIdx - 2 - GetCandleAvgPeriod(BodyLong);
             int bodyShortTrailingIdx = startIdx - 1 - GetCandleAvgPeriod(BodyShort);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx - 2)
             {
-                bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
+                _bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
                 i++;
             }
 
             i = bodyShortTrailingIdx;
             while (i < startIdx - 1)
             {
-                bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
+                _bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
@@ -93,18 +94,16 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isUpsideGap2Crows = GetPatternRecognition(i, bodyLongPeriodTotal, bodyShortPeriodTotal);
-
-                outInteger[outIdx++] = isUpsideGap2Crows ? -100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? -100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyLongPeriodTotal +=
+                _bodyLongPeriodTotal +=
                     GetCandleRange(BodyLong, i - 2) -
                     GetCandleRange(BodyLong, bodyLongTrailingIdx);
 
-                bodyShortPeriodTotal +=
+                _bodyShortPeriodTotal +=
                     GetCandleRange(BodyShort, i - 1) -
                     GetCandleRange(BodyShort, bodyShortTrailingIdx);
 
@@ -120,17 +119,17 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double bodyShortPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isUpsideGap2Crows =
                 // 1st: white
                 GetCandleColor(i - 2) == 1 &&
                 // long
-                GetRealBody(i - 2) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 2) &&
+                GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
                 // 2nd: black
                 GetCandleColor(i - 1) == -1 &&
                 // short
-                GetRealBody(i - 1) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i - 1) &&
+                GetRealBody(i - 1) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i - 1) &&
                 // gapping up
                 GetRealBodyGapUp(i - 1, i - 2) &&
                 // 3rd: black

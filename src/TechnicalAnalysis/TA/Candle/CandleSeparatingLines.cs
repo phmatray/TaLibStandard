@@ -6,6 +6,10 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleSeparatingLines : CandleIndicator
     {
+        private double _shadowVeryShortPeriodTotal;
+        private double _bodyLongPeriodTotal;
+        private double _equalPeriodTotal;
+
         public CandleSeparatingLines(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,31 +61,28 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double shadowVeryShortPeriodTotal = 0.0;
             int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
-            double bodyLongPeriodTotal = 0.0;
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
-            double equalPeriodTotal = 0.0;
             int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
             
             int i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i);
+                _shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
 
             i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
+                _bodyLongPeriodTotal += GetCandleRange(BodyLong, i);
                 i++;
             }
 
             i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal += GetCandleRange(Equal, i - 1);
+                _equalPeriodTotal += GetCandleRange(Equal, i - 1);
                 i++;
             }
 
@@ -99,23 +100,20 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isSeparatingLines = GetPatternRecognition(
-                    i, equalPeriodTotal, bodyLongPeriodTotal, shadowVeryShortPeriodTotal);
-
-                outInteger[outIdx++] = isSeparatingLines ? GetCandleColor(i) * 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                shadowVeryShortPeriodTotal +=
+                _shadowVeryShortPeriodTotal +=
                     GetCandleRange(ShadowVeryShort, i) -
                     GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx);
 
-                bodyLongPeriodTotal +=
+                _bodyLongPeriodTotal +=
                     GetCandleRange(BodyLong, i) -
                     GetCandleRange(BodyLong, bodyLongTrailingIdx);
 
-                equalPeriodTotal +=
+                _equalPeriodTotal +=
                     GetCandleRange(Equal, i - 1) -
                     GetCandleRange(Equal, equalTrailingIdx - 1);
 
@@ -132,31 +130,27 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(
-            int i,
-            double equalPeriodTotal,
-            double bodyLongPeriodTotal,
-            double shadowVeryShortPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isSeparatingLines =
                 // opposite candles
                 GetCandleColor(i - 1) == -GetCandleColor(i) &&
                 // same open
-                open[i] <= open[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
-                open[i] >= open[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                open[i] <= open[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+                open[i] >= open[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
                 // belt hold: long body
-                GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i) &&
+                GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i) &&
                 (
                     (
                         // with no lower shadow if bullish
                         GetCandleColor(i) == 1 &&
-                        GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
+                        GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
                     )
                     ||
                     (
                         // with no upper shadow if bearish
                         GetCandleColor(i) == -1 &&
-                        GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i)
+                        GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
                     )
                 );
             

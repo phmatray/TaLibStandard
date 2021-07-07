@@ -6,6 +6,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleRiseFall3Methods : CandleIndicator
     {
+        private double[] _bodyPeriodTotal = new double[5];
+
         public CandleRiseFall3Methods(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -22,9 +24,6 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = default;
             outNBElement = default;
             outInteger = new int[endIdx - startIdx + 1];
-            
-            // Local variables
-            double[] bodyPeriodTotal = new double[5];
 
             // Validate the requested output range.
             if (startIdx < 0)
@@ -60,28 +59,28 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            bodyPeriodTotal[4] = 0.0;
-            bodyPeriodTotal[3] = 0.0;
-            bodyPeriodTotal[2] = 0.0;
-            bodyPeriodTotal[1] = 0.0;
-            bodyPeriodTotal[0] = 0.0;
+            _bodyPeriodTotal[4] = 0.0;
+            _bodyPeriodTotal[3] = 0.0;
+            _bodyPeriodTotal[2] = 0.0;
+            _bodyPeriodTotal[1] = 0.0;
+            _bodyPeriodTotal[0] = 0.0;
             int bodyShortTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = bodyShortTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal[3] += GetCandleRange(BodyShort, i - 3);
-                bodyPeriodTotal[2] += GetCandleRange(BodyShort, i - 2);
-                bodyPeriodTotal[1] += GetCandleRange(BodyShort, i - 1);
+                _bodyPeriodTotal[3] += GetCandleRange(BodyShort, i - 3);
+                _bodyPeriodTotal[2] += GetCandleRange(BodyShort, i - 2);
+                _bodyPeriodTotal[1] += GetCandleRange(BodyShort, i - 1);
                 i++;
             }
 
             i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal[4] += GetCandleRange(BodyLong, i - 4);
-                bodyPeriodTotal[0] += GetCandleRange(BodyLong, i);
+                _bodyPeriodTotal[4] += GetCandleRange(BodyLong, i - 4);
+                _bodyPeriodTotal[0] += GetCandleRange(BodyLong, i);
                 i++;
             }
 
@@ -101,25 +100,23 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isRiseFall3Methods = GetPatternRecognition(i, bodyPeriodTotal);
-
-                outInteger[outIdx++] = isRiseFall3Methods ? 100 * GetCandleColor(i - 4) : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? 100 * GetCandleColor(i - 4) : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyPeriodTotal[4] +=
+                _bodyPeriodTotal[4] +=
                     GetCandleRange(BodyLong, i - 4) -
                     GetCandleRange(BodyLong, bodyLongTrailingIdx - 4);
 
                 for (int totIdx = 3; totIdx >= 1; --totIdx)
                 {
-                    bodyPeriodTotal[totIdx] +=
+                    _bodyPeriodTotal[totIdx] +=
                         GetCandleRange(BodyShort, i - totIdx) -
                         GetCandleRange(BodyShort, bodyShortTrailingIdx - totIdx);
                 }
 
-                bodyPeriodTotal[0] +=
+                _bodyPeriodTotal[0] +=
                     GetCandleRange(BodyLong, i) -
                     GetCandleRange(BodyLong, bodyLongTrailingIdx);
 
@@ -135,15 +132,15 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double[] bodyPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isRiseFall3Methods =
                 // 1st long, then 3 small, 5th long
-                GetRealBody(i - 4) > GetCandleAverage(BodyLong, bodyPeriodTotal[4], i - 4) &&
-                GetRealBody(i - 3) < GetCandleAverage(BodyShort, bodyPeriodTotal[3], i - 3) &&
-                GetRealBody(i - 2) < GetCandleAverage(BodyShort, bodyPeriodTotal[2], i - 2) &&
-                GetRealBody(i - 1) < GetCandleAverage(BodyShort, bodyPeriodTotal[1], i - 1) &&
-                GetRealBody(i) > GetCandleAverage(BodyLong, bodyPeriodTotal[0], i) &&
+                GetRealBody(i - 4) > GetCandleAverage(BodyLong, _bodyPeriodTotal[4], i - 4) &&
+                GetRealBody(i - 3) < GetCandleAverage(BodyShort, _bodyPeriodTotal[3], i - 3) &&
+                GetRealBody(i - 2) < GetCandleAverage(BodyShort, _bodyPeriodTotal[2], i - 2) &&
+                GetRealBody(i - 1) < GetCandleAverage(BodyShort, _bodyPeriodTotal[1], i - 1) &&
+                GetRealBody(i) > GetCandleAverage(BodyLong, _bodyPeriodTotal[0], i) &&
                 // white, 3 black, white  ||  black, 3 white, black
                 GetCandleColor(i - 4) == -GetCandleColor(i - 3) &&
                 GetCandleColor(i - 3) == GetCandleColor(i - 2) &&

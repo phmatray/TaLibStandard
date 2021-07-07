@@ -6,6 +6,11 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleHammer : CandleIndicator
     {
+        private double _bodyPeriodTotal;
+        private double _shadowLongPeriodTotal;
+        private double _shadowVeryShortPeriodTotal;
+        private double _nearPeriodTotal;
+
         public CandleHammer(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,40 +62,36 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyPeriodTotal = 0.0;
             int bodyTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
-            double shadowLongPeriodTotal = 0.0;
             int shadowLongTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowLong);
-            double shadowVeryShortPeriodTotal = 0.0;
             int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
-            double nearPeriodTotal = 0.0;
             int nearTrailingIdx = startIdx - 1 - GetCandleAvgPeriod(Near);
             
             int i = bodyTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal += GetCandleRange(BodyShort, i);
+                _bodyPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
             i = shadowLongTrailingIdx;
             while (i < startIdx)
             {
-                shadowLongPeriodTotal += GetCandleRange(ShadowLong, i);
+                _shadowLongPeriodTotal += GetCandleRange(ShadowLong, i);
                 i++;
             }
 
             i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i);
+                _shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
 
             i = nearTrailingIdx;
             while (i < startIdx - 1)
             {
-                nearPeriodTotal += GetCandleRange(Near, i);
+                _nearPeriodTotal += GetCandleRange(Near, i);
                 i++;
             }
 
@@ -109,27 +110,24 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isHammer = GetPatternRecognition(
-                    i, bodyPeriodTotal, shadowLongPeriodTotal, shadowVeryShortPeriodTotal, nearPeriodTotal);
-
-                outInteger[outIdx++] = isHammer ? 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyPeriodTotal +=
+                _bodyPeriodTotal +=
                     GetCandleRange(BodyShort, i) -
                     GetCandleRange(BodyShort, bodyTrailingIdx);
 
-                shadowLongPeriodTotal +=
+                _shadowLongPeriodTotal +=
                     GetCandleRange(ShadowLong, i) -
                     GetCandleRange(ShadowLong, shadowLongTrailingIdx);
 
-                shadowVeryShortPeriodTotal +=
+                _shadowVeryShortPeriodTotal +=
                     GetCandleRange(ShadowVeryShort, i) -
                     GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx);
 
-                nearPeriodTotal +=
+                _nearPeriodTotal +=
                     GetCandleRange(Near, i - 1) -
                     GetCandleRange(Near, nearTrailingIdx);
 
@@ -147,18 +145,17 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyPeriodTotal, double shadowLongPeriodTotal,
-            double shadowVeryShortPeriodTotal, double nearPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isHammer =
                 // small rb
-                GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
+                GetRealBody(i) < GetCandleAverage(BodyShort, _bodyPeriodTotal, i) &&
                 // long lower shadow
-                GetLowerShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
+                GetLowerShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) &&
                 // very short upper shadow
-                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
+                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i) &&
                 // rb near the prior candle's lows
-                Min(close[i], open[i]) <= low[i - 1] + GetCandleAverage(Near, nearPeriodTotal, i - 1);
+                Min(close[i], open[i]) <= low[i - 1] + GetCandleAverage(Near, _nearPeriodTotal, i - 1);
             
             return isHammer;
         }

@@ -18,6 +18,7 @@ namespace TechnicalAnalysis.Abstractions
         }
 
         public abstract int GetLookback();
+        public abstract bool GetPatternRecognition(int i);
 
         protected RangeType GetCandleRangeType(CandleSettingType candleSettingType)
             => TACore.Globals.candleSettings[(int)candleSettingType].rangeType;

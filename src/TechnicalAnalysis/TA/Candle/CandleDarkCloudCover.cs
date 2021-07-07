@@ -5,6 +5,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleDarkCloudCover : CandleIndicator
     {
+        private double _penetration;
+        private double _bodyLongPeriodTotal;
+
         public CandleDarkCloudCover(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -18,6 +21,8 @@ namespace TechnicalAnalysis.Candle
             out int outNBElement,
             out int[] outInteger)
         {
+            _penetration = optInPenetration;
+            
             // Initialize output variables 
             outBegIdx = default;
             outNBElement = default;
@@ -62,13 +67,12 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyLongPeriodTotal = 0.0;
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal += GetCandleRange(BodyLong, i - 1);
+                _bodyLongPeriodTotal += GetCandleRange(BodyLong, i - 1);
                 i++;
             }
 
@@ -88,14 +92,12 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isDarkCloudCover = GetPatternRecognition(optInPenetration, i, bodyLongPeriodTotal);
-
-                outInteger[outIdx++] = isDarkCloudCover ? -100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? -100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyLongPeriodTotal +=
+                _bodyLongPeriodTotal +=
                     GetCandleRange(BodyLong, i - 1) -
                     GetCandleRange(BodyLong, bodyLongTrailingIdx - 1);
 
@@ -110,20 +112,20 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(double optInPenetration, int i, double bodyLongPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isDarkCloudCover =
                 // 1st: white
                 GetCandleColor(i - 1) == 1 &&
                 // long
-                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 1) &&
                 // 2nd: black
                 GetCandleColor(i) == -1 &&
                 // open above prior high
                 open[i] > high[i - 1] &&
                 // close within prior body
                 close[i] > open[i - 1] &&
-                close[i] < close[i - 1] - GetRealBody(i - 1) * optInPenetration;
+                close[i] < close[i - 1] - GetRealBody(i - 1) * _penetration;
             
             return isDarkCloudCover;
         }

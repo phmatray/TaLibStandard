@@ -5,6 +5,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleLadderBottom : CandleIndicator
     {
+        private double _shadowVeryShortPeriodTotal;
+
         public CandleLadderBottom(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -56,13 +58,12 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double shadowVeryShortPeriodTotal = 0.0;
             int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
             
             int i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i - 1);
+                _shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i - 1);
                 i++;
             }
 
@@ -81,14 +82,12 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isLadderBottom = GetPatternRecognition(i, shadowVeryShortPeriodTotal);
-
-                outInteger[outIdx++] = isLadderBottom ? 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                shadowVeryShortPeriodTotal +=
+                _shadowVeryShortPeriodTotal +=
                     GetCandleRange(ShadowVeryShort, i - 1) -
                     GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - 1);
 
@@ -103,7 +102,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double shadowVeryShortPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isLadderBottom =
                 // 3 black candlesticks
@@ -118,7 +117,7 @@ namespace TechnicalAnalysis.Candle
                 close[i - 3] > close[i - 2] &&
                 // 4th: black with an upper shadow
                 GetCandleColor(i - 1) == -1 &&
-                GetUpperShadow(i - 1) > GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i - 1) &&
+                GetUpperShadow(i - 1) > GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i - 1) &&
                 // 5th: white
                 GetCandleColor(i) == 1 &&
                 // that opens above prior candle's body

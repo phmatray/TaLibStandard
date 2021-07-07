@@ -6,6 +6,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleTasukiGap : CandleIndicator
     {
+        private double _nearPeriodTotal;
+
         public CandleTasukiGap(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,13 +59,12 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double nearPeriodTotal = 0.0;
             int nearTrailingIdx = startIdx - GetCandleAvgPeriod(Near);
             
             int i = nearTrailingIdx;
             while (i < startIdx)
             {
-                nearPeriodTotal += GetCandleRange(Near, i - 1);
+                _nearPeriodTotal += GetCandleRange(Near, i - 1);
                 i++;
             }
 
@@ -84,14 +85,12 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isTasukiGap = GetPatternRecognition(i, nearPeriodTotal);
-
-                outInteger[outIdx++] = isTasukiGap ? GetCandleColor(i - 1) * 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i - 1) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                nearPeriodTotal +=
+                _nearPeriodTotal +=
                     GetCandleRange(Near, i - 1) -
                     GetCandleRange(Near, nearTrailingIdx - 1);
 
@@ -106,7 +105,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double nearPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isTasukiGap =
                 (
@@ -123,7 +122,7 @@ namespace TechnicalAnalysis.Candle
                     // inside the gap
                     close[i] > Max(close[i - 2], open[i - 2]) &&
                     // size of 2 rb near the same
-                    Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, nearPeriodTotal, i - 1)
+                    Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
                 ) ||
                 (
                     // downside gap
@@ -139,7 +138,7 @@ namespace TechnicalAnalysis.Candle
                     // inside the gap
                     close[i] < Min(close[i - 2], open[i - 2]) &&
                     // size of 2 rb near the same
-                    Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, nearPeriodTotal, i - 1)
+                    Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
                 );
             
             return isTasukiGap;

@@ -5,6 +5,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleStickSandwich : CandleIndicator
     {
+        private double _equalPeriodTotal;
+
         public CandleStickSandwich(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -56,13 +58,12 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double equalPeriodTotal = 0.0;
             int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
             
             int i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal += GetCandleRange(Equal, i - 2);
+                _equalPeriodTotal += GetCandleRange(Equal, i - 2);
                 i++;
             }
 
@@ -81,14 +82,12 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isStickSandwich = GetPatternRecognition(i, equalPeriodTotal);
-
-                outInteger[outIdx++] = isStickSandwich ? 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                equalPeriodTotal +=
+                _equalPeriodTotal +=
                     GetCandleRange(Equal, i - 2) -
                     GetCandleRange(Equal, equalTrailingIdx - 2);
 
@@ -103,7 +102,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double equalPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isStickSandwich =
                 // first black
@@ -115,8 +114,8 @@ namespace TechnicalAnalysis.Candle
                 // 2nd low > prior close
                 low[i - 1] > close[i - 2] &&
                 // 1st and 3rd same close
-                close[i] <= close[i - 2] + GetCandleAverage(Equal, equalPeriodTotal, i - 2) &&
-                close[i] >= close[i - 2] - GetCandleAverage(Equal, equalPeriodTotal, i - 2);
+                close[i] <= close[i - 2] + GetCandleAverage(Equal, _equalPeriodTotal, i - 2) &&
+                close[i] >= close[i - 2] - GetCandleAverage(Equal, _equalPeriodTotal, i - 2);
             
             return isStickSandwich;
         }

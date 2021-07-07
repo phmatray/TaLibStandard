@@ -6,6 +6,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class Candle3LineStrike : CandleIndicator
     {
+        private double[] _nearPeriodTotal = new double[4];
+
         public Candle3LineStrike(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -22,9 +24,6 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = default;
             outNBElement = default;
             outInteger = new int[endIdx - startIdx + 1];
-            
-            // Local variables
-            double[] nearPeriodTotal = new double[4];
 
             // Validate the requested output range.
             if (startIdx < 0)
@@ -60,15 +59,15 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            nearPeriodTotal[3] = 0.0;
-            nearPeriodTotal[2] = 0.0;
+            _nearPeriodTotal[3] = 0.0;
+            _nearPeriodTotal[2] = 0.0;
             int nearTrailingIdx = startIdx - GetCandleAvgPeriod(Near);
             
             int i = nearTrailingIdx;
             while (i < startIdx)
             {
-                nearPeriodTotal[3] += GetCandleRange(Near, i - 3);
-                nearPeriodTotal[2] += GetCandleRange(Near, i - 2);
+                _nearPeriodTotal[3] += GetCandleRange(Near, i - 3);
+                _nearPeriodTotal[2] += GetCandleRange(Near, i - 2);
                 i++;
             }
 
@@ -88,16 +87,14 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool is3LineStrike = GetPatternRecognition(i, nearPeriodTotal);
-
-                outInteger[outIdx++] = is3LineStrike ? GetCandleColor(i - 1) * 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i - 1) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 for (int totIdx = 3; totIdx >= 2; --totIdx)
                 {
-                    nearPeriodTotal[totIdx] +=
+                    _nearPeriodTotal[totIdx] +=
                         GetCandleRange(Near, i - totIdx) -
                         GetCandleRange(Near, nearTrailingIdx - totIdx);
                 }
@@ -113,7 +110,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double[] nearPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool is3LineStrike =
                 // three with same color
@@ -123,14 +120,14 @@ namespace TechnicalAnalysis.Candle
                 GetCandleColor(i) == -GetCandleColor(i - 1) &&
                 // 2nd opens within/near 1st rb
                 open[i - 2] >= Min(open[i - 3], close[i - 3]) -
-                GetCandleAverage(Near, nearPeriodTotal[3], i - 3) &&
+                GetCandleAverage(Near, _nearPeriodTotal[3], i - 3) &&
                 open[i - 2] <= Max(open[i - 3], close[i - 3]) +
-                GetCandleAverage(Near, nearPeriodTotal[3], i - 3) &&
+                GetCandleAverage(Near, _nearPeriodTotal[3], i - 3) &&
                 // 3rd opens within/near 2nd rb
                 open[i - 1] >= Min(open[i - 2], close[i - 2]) -
-                GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
+                GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
                 open[i - 1] <= Max(open[i - 2], close[i - 2]) +
-                GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
+                GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
                 (
                     ( // if three white
                         GetCandleColor(i - 1) == 1 &&

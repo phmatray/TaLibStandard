@@ -88,7 +88,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i)
+        public override bool GetPatternRecognition(int i)
         {
             bool isXSideGap3Methods =
                 // 1st and 2nd of same color

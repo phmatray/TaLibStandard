@@ -83,7 +83,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i)
+        public override bool GetPatternRecognition(int i)
         {
             bool is3Outside =
                 (

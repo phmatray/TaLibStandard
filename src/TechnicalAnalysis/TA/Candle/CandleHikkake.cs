@@ -121,7 +121,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i)
+        public override bool GetPatternRecognition(int i)
         {
             bool patternRecognition =
                 // 1st + 2nd: lower high and higher low

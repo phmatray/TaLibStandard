@@ -5,6 +5,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleMatchingLow : CandleIndicator
     {
+        private double _equalPeriodTotal;
+
         public CandleMatchingLow(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -56,13 +58,12 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double equalPeriodTotal = 0.0;
             int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
             
             int i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal += GetCandleRange(Equal, i - 1);
+                _equalPeriodTotal += GetCandleRange(Equal, i - 1);
                 i++;
             }
 
@@ -78,14 +79,12 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isMatchingLow = GetPatternRecognition(i, equalPeriodTotal);
-
-                outInteger[outIdx++] = isMatchingLow ? 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                equalPeriodTotal +=
+                _equalPeriodTotal +=
                     GetCandleRange(Equal, i - 1) -
                     GetCandleRange(Equal, equalTrailingIdx - 1);
 
@@ -100,7 +99,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double equalPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isMatchingLow =
                 // first black
@@ -108,8 +107,8 @@ namespace TechnicalAnalysis.Candle
                 // second black
                 GetCandleColor(i) == -1 &&
                 // 1st and 2nd same close
-                close[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
-                close[i] >= close[i - 1] - GetCandleAverage(Equal, equalPeriodTotal, i - 1);
+                close[i] <= close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+                close[i] >= close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
             
             return isMatchingLow;
         }

@@ -6,6 +6,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleHikkakeMod : CandleIndicator
     {
+        private double _nearPeriodTotal;
+
         public CandleHikkakeMod(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,13 +59,12 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double nearPeriodTotal = 0.0;
             int nearTrailingIdx = startIdx - 3 - GetCandleAvgPeriod(Near);
             
             int i = nearTrailingIdx;
             while (i < startIdx - 3)
             {
-                nearPeriodTotal += GetCandleRange(Near, i - 2);
+                _nearPeriodTotal += GetCandleRange(Near, i - 2);
                 i++;
             }
 
@@ -73,7 +74,7 @@ namespace TechnicalAnalysis.Candle
             i = startIdx - 3;
             while (i < startIdx)
             {
-                if (GetPatternRecognition(i, nearPeriodTotal))
+                if (GetPatternRecognition(i))
                 {
                     patternResult = 100 * (high[i] < high[i - 1] ? 1 : -1);
                     patternIdx = i;
@@ -87,7 +88,7 @@ namespace TechnicalAnalysis.Candle
                     }
                 }
 
-                nearPeriodTotal +=
+                _nearPeriodTotal +=
                     GetCandleRange(Near, i - 2) -
                     GetCandleRange(Near, nearTrailingIdx - 2);
                 
@@ -116,7 +117,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                if (GetPatternRecognition(i, nearPeriodTotal))
+                if (GetPatternRecognition(i))
                 {
                     patternResult = 100 * (high[i] < high[i - 1] ? 1 : -1);
                     patternIdx = i;
@@ -136,7 +137,7 @@ namespace TechnicalAnalysis.Candle
                     }
                 }
 
-                nearPeriodTotal +=
+                _nearPeriodTotal +=
                     GetCandleRange(Near, i - 2) -
                     GetCandleRange(Near, nearTrailingIdx - 2);
 
@@ -151,7 +152,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double nearPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool patternRecognition =
                 // 2nd: lower high and higher low than 1st
@@ -162,11 +163,11 @@ namespace TechnicalAnalysis.Candle
                     // (bull) 4th: lower high and lower low
                     high[i] < high[i - 1] && low[i] < low[i - 1] &&
                     // (bull) 2nd: close near the low
-                    close[i - 2] <= low[i - 2] + GetCandleAverage(Near, nearPeriodTotal, i - 2) ||
+                    close[i - 2] <= low[i - 2] + GetCandleAverage(Near, _nearPeriodTotal, i - 2) ||
                     // (bear) 4th: higher high and higher low
                     high[i] > high[i - 1] && low[i] > low[i - 1] &&
                     // (bull) 2nd: close near the top
-                    close[i - 2] >= high[i - 2] - GetCandleAverage(Near, nearPeriodTotal, i - 2)
+                    close[i - 2] >= high[i - 2] - GetCandleAverage(Near, _nearPeriodTotal, i - 2)
                 );
             
             return patternRecognition;

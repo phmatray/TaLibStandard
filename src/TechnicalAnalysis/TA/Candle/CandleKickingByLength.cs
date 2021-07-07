@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleKickingByLength : CandleIndicator
     {
+        private double[] _shadowVeryShortPeriodTotal = new double[2];
+        private double[] _bodyLongPeriodTotal = new double[2];
+
         public CandleKickingByLength(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -22,11 +25,7 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = default;
             outNBElement = default;
             outInteger = new int[endIdx - startIdx + 1];
-            
-            // Local variables
-            double[] shadowVeryShortPeriodTotal = new double[2];
-            double[] bodyLongPeriodTotal = new double[2];
-            
+
             // Validate the requested output range.
             if (startIdx < 0)
             {
@@ -61,26 +60,26 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            shadowVeryShortPeriodTotal[1] = 0.0;
-            shadowVeryShortPeriodTotal[0] = 0.0;
+            _shadowVeryShortPeriodTotal[1] = 0.0;
+            _shadowVeryShortPeriodTotal[0] = 0.0;
             int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
-            bodyLongPeriodTotal[1] = 0.0;
-            bodyLongPeriodTotal[0] = 0.0;
+            _bodyLongPeriodTotal[1] = 0.0;
+            _bodyLongPeriodTotal[0] = 0.0;
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal[1] += GetCandleRange(ShadowVeryShort, i - 1);
-                shadowVeryShortPeriodTotal[0] += GetCandleRange(ShadowVeryShort, i);
+                _shadowVeryShortPeriodTotal[1] += GetCandleRange(ShadowVeryShort, i - 1);
+                _shadowVeryShortPeriodTotal[0] += GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
 
             i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal[1] += GetCandleRange(BodyLong, i - 1);
-                bodyLongPeriodTotal[0] += GetCandleRange(BodyLong, i);
+                _bodyLongPeriodTotal[1] += GetCandleRange(BodyLong, i - 1);
+                _bodyLongPeriodTotal[0] += GetCandleRange(BodyLong, i);
                 i++;
             }
 
@@ -98,9 +97,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isKickingByLength = GetPatternRecognition(i, bodyLongPeriodTotal, shadowVeryShortPeriodTotal);
-
-                outInteger[outIdx++] = isKickingByLength
+                outInteger[outIdx++] = GetPatternRecognition(i)
                     ? GetCandleColor((GetRealBody(i) > GetRealBody(i - 1) ? i : i - 1)) * 100
                     : 0;
 
@@ -109,11 +106,11 @@ namespace TechnicalAnalysis.Candle
                  */
                 for (int totIdx = 1; totIdx >= 0; --totIdx)
                 {
-                    bodyLongPeriodTotal[totIdx] +=
+                    _bodyLongPeriodTotal[totIdx] +=
                         GetCandleRange(BodyLong, i - totIdx) -
                         GetCandleRange(BodyLong, bodyLongTrailingIdx - totIdx);
 
-                    shadowVeryShortPeriodTotal[totIdx] +=
+                    _shadowVeryShortPeriodTotal[totIdx] +=
                         GetCandleRange(ShadowVeryShort, i - totIdx) -
                         GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx);
                 }
@@ -130,19 +127,19 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double[] bodyLongPeriodTotal, double[] shadowVeryShortPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isKickingByLength =
                 // opposite candles
                 GetCandleColor(i - 1) == -GetCandleColor(i) &&
                 // 1st marubozu
-                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[1], i - 1) &&
-                GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
-                GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], i - 1) &&
+                GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
+                GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
                 // 2nd marubozu
-                GetRealBody(i) > GetCandleAverage(BodyLong, bodyLongPeriodTotal[0], i) &&
-                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
-                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
+                GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], i) &&
+                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
+                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
                 // gap
                 (
                     (GetCandleColor(i - 1) == -1 && GetCandleGapUp(i, i - 1)) ||

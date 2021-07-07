@@ -5,6 +5,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleBreakaway : CandleIndicator
     {
+        private double _bodyLongPeriodTotal;
+
         public CandleBreakaway(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -56,13 +58,12 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyLongPeriodTotal = 0.0;
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal += GetCandleRange(BodyLong, i - 4);
+                _bodyLongPeriodTotal += GetCandleRange(BodyLong, i - 4);
                 i++;
             }
 
@@ -83,14 +84,12 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isBreakaway = GetPatternRecognition(i, bodyLongPeriodTotal);
-
-                outInteger[outIdx++] = isBreakaway ? GetCandleColor(i) * 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyLongPeriodTotal +=
+                _bodyLongPeriodTotal +=
                     GetCandleRange(BodyLong, i - 4) -
                     GetCandleRange(BodyLong, bodyLongTrailingIdx - 4);
 
@@ -105,11 +104,11 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isBreakaway =
                 // 1st long
-                GetRealBody(i - 4) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 4) &&
+                GetRealBody(i - 4) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 4) &&
                 // 1st, 2nd, 4th same color, 5th opposite
                 GetCandleColor(i - 4) == GetCandleColor(i - 3) &&
                 GetCandleColor(i - 3) == GetCandleColor(i - 1) &&

@@ -5,6 +5,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleConcealBabySwallow : CandleIndicator
     {
+        private double[] _shadowVeryShortPeriodTotal = new double[4];
+
         public CandleConcealBabySwallow(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -21,10 +23,7 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = default;
             outNBElement = default;
             outInteger = new int[endIdx - startIdx + 1];
-            
-            // Local variables
-            double[] shadowVeryShortPeriodTotal = new double[4];
-            
+
             // Validate the requested output range.
             if (startIdx < 0)
             {
@@ -59,17 +58,17 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            shadowVeryShortPeriodTotal[3] = 0.0;
-            shadowVeryShortPeriodTotal[2] = 0.0;
-            shadowVeryShortPeriodTotal[1] = 0.0;
+            _shadowVeryShortPeriodTotal[3] = 0.0;
+            _shadowVeryShortPeriodTotal[2] = 0.0;
+            _shadowVeryShortPeriodTotal[1] = 0.0;
             int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
             
             int i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal[3] += GetCandleRange(ShadowVeryShort, i - 3);
-                shadowVeryShortPeriodTotal[2] += GetCandleRange(ShadowVeryShort, i - 2);
-                shadowVeryShortPeriodTotal[1] += GetCandleRange(ShadowVeryShort, i - 1);
+                _shadowVeryShortPeriodTotal[3] += GetCandleRange(ShadowVeryShort, i - 3);
+                _shadowVeryShortPeriodTotal[2] += GetCandleRange(ShadowVeryShort, i - 2);
+                _shadowVeryShortPeriodTotal[1] += GetCandleRange(ShadowVeryShort, i - 1);
                 i++;
             }
 
@@ -89,16 +88,14 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isConcealBabySwallow = GetPatternRecognition(i, shadowVeryShortPeriodTotal);
-
-                outInteger[outIdx++] = isConcealBabySwallow ? 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 for (int totIdx = 3; totIdx >= 1; --totIdx)
                 {
-                    shadowVeryShortPeriodTotal[totIdx] +=
+                    _shadowVeryShortPeriodTotal[totIdx] +=
                         GetCandleRange(ShadowVeryShort, i - totIdx) -
                         GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx);
                 }
@@ -114,7 +111,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double[] shadowVeryShortPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isConcealBabySwallow =
                 // 1st black
@@ -127,19 +124,19 @@ namespace TechnicalAnalysis.Candle
                 GetCandleColor(i) == -1 &&
                 // 1st: marubozu
                 GetLowerShadow(i - 3) <
-                GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[3], i - 3) &&
+                GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[3], i - 3) &&
                 GetUpperShadow(i - 3) <
-                GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[3], i - 3) &&
+                GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[3], i - 3) &&
                 // 2nd: marubozu
                 GetLowerShadow(i - 2) <
-                GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
+                GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], i - 2) &&
                 GetUpperShadow(i - 2) <
-                GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
+                GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], i - 2) &&
                 // 3rd: opens gapping down
                 GetRealBodyGapDown(i - 1, i - 2) &&
                 // and HAS an upper shadow
                 GetUpperShadow(i - 1) >
-                GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
+                GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
                 // that extends into the prior body
                 high[i - 1] > close[i - 2] &&
                 // 4th: engulfs the 3rd including the shadows

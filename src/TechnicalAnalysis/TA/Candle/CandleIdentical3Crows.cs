@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleIdentical3Crows : CandleIndicator
     {
+        private double[] _shadowVeryShortPeriodTotal = new double[3];
+        private double[] _equalPeriodTotal = new double[3];
+
         public CandleIdentical3Crows(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -22,11 +25,7 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = default;
             outNBElement = default;
             outInteger = new int[endIdx - startIdx + 1];
-            
-            // Local variables
-            double[] shadowVeryShortPeriodTotal = new double[3];
-            double[] equalPeriodTotal = new double[3];
-            
+
             // Validate the requested output range.
             if (startIdx < 0)
             {
@@ -61,29 +60,29 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            shadowVeryShortPeriodTotal[2] = 0.0;
-            shadowVeryShortPeriodTotal[1] = 0.0;
-            shadowVeryShortPeriodTotal[0] = 0.0;
+            _shadowVeryShortPeriodTotal[2] = 0.0;
+            _shadowVeryShortPeriodTotal[1] = 0.0;
+            _shadowVeryShortPeriodTotal[0] = 0.0;
             int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
-            equalPeriodTotal[2] = 0.0;
-            equalPeriodTotal[1] = 0.0;
-            equalPeriodTotal[0] = 0.0;
+            _equalPeriodTotal[2] = 0.0;
+            _equalPeriodTotal[1] = 0.0;
+            _equalPeriodTotal[0] = 0.0;
             int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
             
             int i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal[2] += GetCandleRange(ShadowVeryShort, i - 2);
-                shadowVeryShortPeriodTotal[1] += GetCandleRange(ShadowVeryShort, i - 1);
-                shadowVeryShortPeriodTotal[0] += GetCandleRange(ShadowVeryShort, i);
+                _shadowVeryShortPeriodTotal[2] += GetCandleRange(ShadowVeryShort, i - 2);
+                _shadowVeryShortPeriodTotal[1] += GetCandleRange(ShadowVeryShort, i - 1);
+                _shadowVeryShortPeriodTotal[0] += GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
 
             i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal[2] += GetCandleRange(Equal, i - 2);
-                equalPeriodTotal[1] += GetCandleRange(Equal, i - 1);
+                _equalPeriodTotal[2] += GetCandleRange(Equal, i - 2);
+                _equalPeriodTotal[1] += GetCandleRange(Equal, i - 1);
                 i++;
             }
 
@@ -103,7 +102,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isIdentical3Crows = GetPatternRecognition(i, shadowVeryShortPeriodTotal, equalPeriodTotal);
+                bool isIdentical3Crows = GetPatternRecognition(i);
 
                 outInteger[outIdx++] = isIdentical3Crows ? -100 : 0;
 
@@ -112,14 +111,14 @@ namespace TechnicalAnalysis.Candle
                  */
                 for (int totIdx = 2; totIdx >= 0; --totIdx)
                 {
-                    shadowVeryShortPeriodTotal[totIdx] +=
+                    _shadowVeryShortPeriodTotal[totIdx] +=
                         GetCandleRange(ShadowVeryShort, i - totIdx) -
                         GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx);
                 }
 
                 for (int totIdx = 2; totIdx >= 1; --totIdx)
                 {
-                    equalPeriodTotal[totIdx] +=
+                    _equalPeriodTotal[totIdx] +=
                         GetCandleRange(Equal, i - totIdx) -
                         GetCandleRange(Equal, equalTrailingIdx - totIdx);
                 }
@@ -136,30 +135,30 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double[] shadowVeryShortPeriodTotal, double[] equalPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isIdentical3Crows =
                 // 1st black
                 GetCandleColor(i - 2) == -1 &&
                 // very short lower shadow
-                GetLowerShadow(i - 2) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
+                GetLowerShadow(i - 2) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], i - 2) &&
                 // 2nd black
                 GetCandleColor(i - 1) == -1 &&
                 // very short lower shadow
-                GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
+                GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
                 // 3rd black
                 GetCandleColor(i) == -1 &&
                 // very short lower shadow
-                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
+                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
                 // three declining
                 close[i - 2] > close[i - 1] &&
                 close[i - 1] > close[i] &&
                 // 2nd black opens very close to 1st close
-                open[i - 1] <= close[i - 2] + GetCandleAverage(Equal, equalPeriodTotal[2], i - 2) &&
-                open[i - 1] >= close[i - 2] - GetCandleAverage(Equal, equalPeriodTotal[2], i - 2) &&
+                open[i - 1] <= close[i - 2] + GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
+                open[i - 1] >= close[i - 2] - GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
                 // 3rd black opens very close to 2nd close 
-                open[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal[1], i - 1) &&
-                open[i] >= close[i - 1] - GetCandleAverage(Equal, equalPeriodTotal[1], i - 1);
+                open[i] <= close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1) &&
+                open[i] >= close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1);
             
             return isIdentical3Crows;
         }

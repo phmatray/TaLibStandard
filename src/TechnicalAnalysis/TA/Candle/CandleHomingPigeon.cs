@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleHomingPigeon : CandleIndicator
     {
+        private double _bodyLongPeriodTotal;
+        private double _bodyShortPeriodTotal;
+
         public CandleHomingPigeon(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,22 +60,20 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyLongPeriodTotal = 0.0;
-            double bodyShortPeriodTotal = 0.0;
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             int bodyShortTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
             
             int i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal += GetCandleRange(BodyLong, i - 1);
+                _bodyLongPeriodTotal += GetCandleRange(BodyLong, i - 1);
                 i++;
             }
 
             i = bodyShortTrailingIdx;
             while (i < startIdx)
             {
-                bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
+                _bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
@@ -90,18 +91,18 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isHomingPigeon = GetPatternRecognition(i, bodyLongPeriodTotal, bodyShortPeriodTotal);
+                bool isHomingPigeon = GetPatternRecognition(i);
 
                 outInteger[outIdx++] = isHomingPigeon ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyLongPeriodTotal +=
+                _bodyLongPeriodTotal +=
                     GetCandleRange(BodyLong, i - 1) -
                     GetCandleRange(BodyLong, bodyLongTrailingIdx - 1);
 
-                bodyShortPeriodTotal +=
+                _bodyShortPeriodTotal +=
                     GetCandleRange(BodyShort, i) -
                     GetCandleRange(BodyShort, bodyShortTrailingIdx);
 
@@ -117,7 +118,7 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double bodyShortPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isHomingPigeon =
                 // 1st black
@@ -125,9 +126,9 @@ namespace TechnicalAnalysis.Candle
                 // 2nd black
                 GetCandleColor(i) == -1 &&
                 // 1st long
-                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 1) &&
                 // 2nd short
-                GetRealBody(i) <= GetCandleAverage(BodyShort, bodyShortPeriodTotal, i) &&
+                GetRealBody(i) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
                 // 2nd engulfed by 1st
                 open[i] < open[i - 1] &&
                 close[i] > close[i - 1];

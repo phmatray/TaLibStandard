@@ -6,6 +6,11 @@ namespace TechnicalAnalysis.Candle
 {
     public class Candle3WhiteSoldiers : CandleIndicator
     {
+        private double[] _shadowVeryShortPeriodTotal = new double[3];
+        private double[] _nearPeriodTotal = new double[3];
+        private double[] _farPeriodTotal = new double[3];
+        private double _bodyShortPeriodTotal;
+
         public Candle3WhiteSoldiers(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -22,11 +27,6 @@ namespace TechnicalAnalysis.Candle
             outBegIdx = default;
             outNBElement = default;
             outInteger = new int[endIdx - startIdx + 1];
-            
-            // Local variables
-            double[] shadowVeryShortPeriodTotal = new double[3];
-            double[] nearPeriodTotal = new double[3];
-            double[] farPeriodTotal = new double[3];
 
             // Validate the requested output range.
             if (startIdx < 0)
@@ -62,50 +62,49 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            shadowVeryShortPeriodTotal[2] = 0.0;
-            shadowVeryShortPeriodTotal[1] = 0.0;
-            shadowVeryShortPeriodTotal[0] = 0.0;
+            _shadowVeryShortPeriodTotal[2] = 0.0;
+            _shadowVeryShortPeriodTotal[1] = 0.0;
+            _shadowVeryShortPeriodTotal[0] = 0.0;
             int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
-            nearPeriodTotal[2] = 0.0;
-            nearPeriodTotal[1] = 0.0;
-            nearPeriodTotal[0] = 0.0;
+            _nearPeriodTotal[2] = 0.0;
+            _nearPeriodTotal[1] = 0.0;
+            _nearPeriodTotal[0] = 0.0;
             int nearTrailingIdx = startIdx - GetCandleAvgPeriod(Near);
-            farPeriodTotal[2] = 0.0;
-            farPeriodTotal[1] = 0.0;
-            farPeriodTotal[0] = 0.0;
+            _farPeriodTotal[2] = 0.0;
+            _farPeriodTotal[1] = 0.0;
+            _farPeriodTotal[0] = 0.0;
             int farTrailingIdx = startIdx - GetCandleAvgPeriod(Far);
-            double bodyShortPeriodTotal = 0.0;
             int bodyShortTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
             
             int i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal[2] += GetCandleRange(ShadowVeryShort, i - 2);
-                shadowVeryShortPeriodTotal[1] += GetCandleRange(ShadowVeryShort, i - 1);
-                shadowVeryShortPeriodTotal[0] += GetCandleRange(ShadowVeryShort, i);
+                _shadowVeryShortPeriodTotal[2] += GetCandleRange(ShadowVeryShort, i - 2);
+                _shadowVeryShortPeriodTotal[1] += GetCandleRange(ShadowVeryShort, i - 1);
+                _shadowVeryShortPeriodTotal[0] += GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
 
             i = nearTrailingIdx;
             while (i < startIdx)
             {
-                nearPeriodTotal[2] += GetCandleRange(Near, i - 2);
-                nearPeriodTotal[1] += GetCandleRange(Near, i - 1);
+                _nearPeriodTotal[2] += GetCandleRange(Near, i - 2);
+                _nearPeriodTotal[1] += GetCandleRange(Near, i - 1);
                 i++;
             }
 
             i = farTrailingIdx;
             while (i < startIdx)
             {
-                farPeriodTotal[2] += GetCandleRange(Far, i - 2);
-                farPeriodTotal[1] += GetCandleRange(Far, i - 1);
+                _farPeriodTotal[2] += GetCandleRange(Far, i - 2);
+                _farPeriodTotal[1] += GetCandleRange(Far, i - 1);
                 i++;
             }
 
             i = bodyShortTrailingIdx;
             while (i < startIdx)
             {
-                bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
+                _bodyShortPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
@@ -127,33 +126,30 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool is3WhiteSoldiers = GetPatternRecognition(
-                    i, shadowVeryShortPeriodTotal, nearPeriodTotal, farPeriodTotal, bodyShortPeriodTotal);
-
-                outInteger[outIdx++] = is3WhiteSoldiers ? 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
                 for (int totIdx = 2; totIdx >= 0; --totIdx)
                 {
-                    shadowVeryShortPeriodTotal[totIdx] +=
+                    _shadowVeryShortPeriodTotal[totIdx] +=
                         GetCandleRange(ShadowVeryShort, i - totIdx) -
                         GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx - totIdx);
                 }
 
                 for (int totIdx = 2; totIdx >= 1; --totIdx)
                 {
-                    farPeriodTotal[totIdx] +=
+                    _farPeriodTotal[totIdx] +=
                         GetCandleRange(Far, i - totIdx) -
                         GetCandleRange(Far, farTrailingIdx - totIdx);
 
-                    nearPeriodTotal[totIdx] +=
+                    _nearPeriodTotal[totIdx] +=
                         GetCandleRange(Near, i - totIdx) -
                         GetCandleRange(Near, nearTrailingIdx - totIdx);
                 }
 
-                bodyShortPeriodTotal +=
+                _bodyShortPeriodTotal +=
                     GetCandleRange(BodyShort, i) -
                     GetCandleRange(BodyShort, bodyShortTrailingIdx);
 
@@ -171,46 +167,41 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(
-            int i,
-            double[] shadowVeryShortPeriodTotal,
-            double[] nearPeriodTotal,
-            double[] farPeriodTotal,
-            double bodyShortPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool is3WhiteSoldiers =
                 // 1st white
                 GetCandleColor(i - 2) == 1 &&
                 // very short upper shadow
-                GetUpperShadow(i - 2) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[2], i - 2) &&
+                GetUpperShadow(i - 2) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], i - 2) &&
                 // 2nd white                
                 GetCandleColor(i - 1) == 1 &&
                 // very short upper shadow
-                GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[1], i - 1) &&
+                GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
                 // 3rd white   
                 GetCandleColor(i) == 1 &&
                 // very short upper shadow
-                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal[0], i) &&
+                GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
                 // consecutive higher closes           
                 close[i] > close[i - 1] &&
                 close[i - 1] > close[i - 2] &&
                 // 2nd opens within/near 1st real body
                 open[i - 1] > open[i - 2] &&
                 open[i - 1] <= close[i - 2] +
-                GetCandleAverage(Near, nearPeriodTotal[2], i - 2) &&
+                GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
                 // 3rd opens within/near 2nd real body
                 open[i] > open[i - 1] &&
                 open[i] <= close[i - 1] +
-                GetCandleAverage(Near, nearPeriodTotal[1], i - 1) &&
+                GetCandleAverage(Near, _nearPeriodTotal[1], i - 1) &&
                 // 2nd not far shorter than 1st
                 GetRealBody(i - 1) > GetRealBody(i - 2) -
-                GetCandleAverage(Far, farPeriodTotal[2], i - 2) &&
+                GetCandleAverage(Far, _farPeriodTotal[2], i - 2) &&
                 // 3rd not far shorter than 2nd
                 GetRealBody(i) > GetRealBody(i - 1) -
-                GetCandleAverage(Far, farPeriodTotal[1], i - 1) &&
+                GetCandleAverage(Far, _farPeriodTotal[1], i - 1) &&
                 // not short real body
                 GetRealBody(i) >
-                GetCandleAverage(BodyShort, bodyShortPeriodTotal, i);
+                GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i);
             
             return is3WhiteSoldiers;
         }

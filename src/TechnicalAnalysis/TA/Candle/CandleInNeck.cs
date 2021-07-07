@@ -6,6 +6,9 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleInNeck : CandleIndicator
     {
+        private double _equalPeriodTotal;
+        private double _bodyLongPeriodTotal;
+
         public CandleInNeck(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,22 +60,20 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double equalPeriodTotal = 0.0;
             int equalTrailingIdx = startIdx - GetCandleAvgPeriod(Equal);
-            double bodyLongPeriodTotal = 0.0;
             int bodyLongTrailingIdx = startIdx - GetCandleAvgPeriod(BodyLong);
             
             int i = equalTrailingIdx;
             while (i < startIdx)
             {
-                equalPeriodTotal += GetCandleRange(Equal, i - 1);
+                _equalPeriodTotal += GetCandleRange(Equal, i - 1);
                 i++;
             }
 
             i = bodyLongTrailingIdx;
             while (i < startIdx)
             {
-                bodyLongPeriodTotal += GetCandleRange(BodyLong, i - 1);
+                _bodyLongPeriodTotal += GetCandleRange(BodyLong, i - 1);
                 i++;
             }
 
@@ -90,18 +91,16 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isInNeck = GetPatternRecognition(i, bodyLongPeriodTotal, equalPeriodTotal);
-
-                outInteger[outIdx++] = isInNeck ? -100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? -100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                equalPeriodTotal +=
+                _equalPeriodTotal +=
                     GetCandleRange(Equal, i - 1) -
                     GetCandleRange(Equal, equalTrailingIdx - 1);
 
-                bodyLongPeriodTotal +=
+                _bodyLongPeriodTotal +=
                     GetCandleRange(BodyLong, i - 1) -
                     GetCandleRange(BodyLong, bodyLongTrailingIdx - 1);
 
@@ -117,19 +116,19 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyLongPeriodTotal, double equalPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isInNeck =
                 // 1st: black
                 GetCandleColor(i - 1) == -1 &&
                 // long
-                GetRealBody(i - 1) > GetCandleAverage(BodyLong, bodyLongPeriodTotal, i - 1) &&
+                GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 1) &&
                 // 2nd: white
                 GetCandleColor(i) == 1 &&
                 // open below prior low
                 open[i] < low[i - 1] &&
                 // close slightly into prior body
-                close[i] <= close[i - 1] + GetCandleAverage(Equal, equalPeriodTotal, i - 1) &&
+                close[i] <= close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
                 close[i] >= close[i - 1];
             
             return isInNeck;

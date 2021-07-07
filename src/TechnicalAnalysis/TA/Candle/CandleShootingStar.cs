@@ -6,6 +6,10 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleShootingStar : CandleIndicator
     {
+        private double _bodyPeriodTotal;
+        private double _shadowLongPeriodTotal;
+        private double _shadowVeryShortPeriodTotal;
+
         public CandleShootingStar(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,31 +61,28 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyPeriodTotal = 0.0;
             int bodyTrailingIdx = startIdx - GetCandleAvgPeriod(BodyShort);
-            double shadowLongPeriodTotal = 0.0;
             int shadowLongTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowLong);
-            double shadowVeryShortPeriodTotal = 0.0;
             int shadowVeryShortTrailingIdx = startIdx - GetCandleAvgPeriod(ShadowVeryShort);
             
             int i = bodyTrailingIdx;
             while (i < startIdx)
             {
-                bodyPeriodTotal += GetCandleRange(BodyShort, i);
+                _bodyPeriodTotal += GetCandleRange(BodyShort, i);
                 i++;
             }
 
             i = shadowLongTrailingIdx;
             while (i < startIdx)
             {
-                shadowLongPeriodTotal += GetCandleRange(ShadowLong, i);
+                _shadowLongPeriodTotal += GetCandleRange(ShadowLong, i);
                 i++;
             }
 
             i = shadowVeryShortTrailingIdx;
             while (i < startIdx)
             {
-                shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i);
+                _shadowVeryShortPeriodTotal += GetCandleRange(ShadowVeryShort, i);
                 i++;
             }
 
@@ -98,23 +99,20 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isShootingStar = GetPatternRecognition(
-                    i, bodyPeriodTotal, shadowLongPeriodTotal, shadowVeryShortPeriodTotal);
-
-                outInteger[outIdx++] = isShootingStar ? -100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? -100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyPeriodTotal +=
+                _bodyPeriodTotal +=
                     GetCandleRange(BodyShort, i) -
                     GetCandleRange(BodyShort, bodyTrailingIdx);
 
-                shadowLongPeriodTotal +=
+                _shadowLongPeriodTotal +=
                     GetCandleRange(ShadowLong, i) -
                     GetCandleRange(ShadowLong, shadowLongTrailingIdx);
 
-                shadowVeryShortPeriodTotal +=
+                _shadowVeryShortPeriodTotal +=
                     GetCandleRange(ShadowVeryShort, i) -
                     GetCandleRange(ShadowVeryShort, shadowVeryShortTrailingIdx);
 
@@ -131,19 +129,15 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(
-            int i,
-            double bodyPeriodTotal,
-            double shadowLongPeriodTotal,
-            double shadowVeryShortPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isShootingStar =
                 // small rb
-                GetRealBody(i) < GetCandleAverage(BodyShort, bodyPeriodTotal, i) &&
+                GetRealBody(i) < GetCandleAverage(BodyShort, _bodyPeriodTotal, i) &&
                 // long upper shadow
-                GetUpperShadow(i) > GetCandleAverage(ShadowLong, shadowLongPeriodTotal, i) &&
+                GetUpperShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) &&
                 // very short lower shadow
-                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, shadowVeryShortPeriodTotal, i) &&
+                GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i) &&
                 // gap up
                 GetRealBodyGapUp(i, i - 1);
             

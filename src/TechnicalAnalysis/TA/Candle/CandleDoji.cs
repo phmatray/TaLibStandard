@@ -5,6 +5,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleDoji : CandleIndicator
     {
+        private double _bodyDojiPeriodTotal;
+
         public CandleDoji(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -56,13 +58,12 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyDojiPeriodTotal = 0.0;
             int bodyDojiTrailingIdx = startIdx - GetCandleAvgPeriod(BodyDoji);
 
             int i = bodyDojiTrailingIdx;
             while (i < startIdx)
             {
-                bodyDojiPeriodTotal += GetCandleRange(BodyDoji, i);
+                _bodyDojiPeriodTotal += GetCandleRange(BodyDoji, i);
                 i++;
             }
 
@@ -77,14 +78,12 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isDoji = GetPatternRecognition(i, bodyDojiPeriodTotal);
-
-                outInteger[outIdx++] = isDoji ? 100 : 0;
+                outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
 
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyDojiPeriodTotal +=
+                _bodyDojiPeriodTotal +=
                     GetCandleRange(BodyDoji, i) -
                     GetCandleRange(BodyDoji, bodyDojiTrailingIdx);
 
@@ -99,9 +98,9 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyDojiPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
-            bool isDoji = GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyDojiPeriodTotal, i);
+            bool isDoji = GetRealBody(i) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, i);
             
             return isDoji;
         }

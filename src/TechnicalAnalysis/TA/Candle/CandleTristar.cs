@@ -6,6 +6,8 @@ namespace TechnicalAnalysis.Candle
 {
     public class CandleTristar : CandleIndicator
     {
+        private double _bodyPeriodTotal;
+
         public CandleTristar(in double[] open, in double[] high, in double[] low, in double[] close)
             : base(open, high, low, close)
         {
@@ -57,13 +59,12 @@ namespace TechnicalAnalysis.Candle
 
             // Do the calculation using tight loops.
             // Add-up the initial period, except for the last value.
-            double bodyPeriodTotal = 0.0;
             int bodyTrailingIdx = startIdx - 2 - GetCandleAvgPeriod(BodyDoji);
             
             int i = bodyTrailingIdx;
             while (i < startIdx - 2)
             {
-                bodyPeriodTotal += GetCandleRange(BodyDoji, i);
+                _bodyPeriodTotal += GetCandleRange(BodyDoji, i);
                 i++;
             }
 
@@ -79,9 +80,7 @@ namespace TechnicalAnalysis.Candle
             int outIdx = 0;
             do
             {
-                bool isCdlTristar = GetPatternRecognition(i, bodyPeriodTotal);
-
-                if (isCdlTristar)
+                if (GetPatternRecognition(i))
                 {
                     outInteger[outIdx] = 0;
 
@@ -111,7 +110,7 @@ namespace TechnicalAnalysis.Candle
                 /* add the current range and subtract the first range: this is done after the pattern recognition 
                  * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
                  */
-                bodyPeriodTotal +=
+                _bodyPeriodTotal +=
                     GetCandleRange(BodyDoji, i - 2) -
                     GetCandleRange(BodyDoji, bodyTrailingIdx);
 
@@ -126,15 +125,15 @@ namespace TechnicalAnalysis.Candle
             return RetCode.Success;
         }
 
-        private bool GetPatternRecognition(int i, double bodyPeriodTotal)
+        public override bool GetPatternRecognition(int i)
         {
             bool isCdlTristar =
                 // 1st: doji
-                GetRealBody(i - 2) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2) &&
+                GetRealBody(i - 2) <= GetCandleAverage(BodyDoji, _bodyPeriodTotal, i - 2) &&
                 // 2nd: doji
-                GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2) &&
+                GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, _bodyPeriodTotal, i - 2) &&
                 // 3rd: doji
-                GetRealBody(i) <= GetCandleAverage(BodyDoji, bodyPeriodTotal, i - 2);
+                GetRealBody(i) <= GetCandleAverage(BodyDoji, _bodyPeriodTotal, i - 2);
             
             return isCdlTristar;
         }
