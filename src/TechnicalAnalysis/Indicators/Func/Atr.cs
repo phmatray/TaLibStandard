@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Atr.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Atr.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Atr Atr(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod)
+        public static AtrResult Atr(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -30,22 +21,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new Atr(retCode, outBegIdx, outNBElement, outReal);
+            return new AtrResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Atr Atr(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+        public static AtrResult Atr(int startIdx, int endIdx, double[] high, double[] low, double[] close)
             => Atr(startIdx, endIdx, high, low, close, 14);
 
-        public static Atr Atr(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod)
+        public static AtrResult Atr(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod)
             => Atr(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), timePeriod);
 
-        public static Atr Atr(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+        public static AtrResult Atr(int startIdx, int endIdx, float[] high, float[] low, float[] close)
             => Atr(startIdx, endIdx, high, low, close, 14);
     }
 
-    public record Atr : IndicatorBase
+    public record AtrResult : IndicatorBase
     {
-        public Atr(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public AtrResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

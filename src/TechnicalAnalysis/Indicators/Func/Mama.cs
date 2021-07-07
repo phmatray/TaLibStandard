@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Mama.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Mama.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Mama Mama(int startIdx, int endIdx, double[] real, double fastLimit, double slowLimit)
+        public static MamaResult Mama(int startIdx, int endIdx, double[] real, double fastLimit, double slowLimit)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -31,22 +22,22 @@ namespace TechnicalAnalysis
                 ref outMAMA,
                 ref outFAMA);
             
-            return new Mama(retCode, outBegIdx, outNBElement, outMAMA, outFAMA);
+            return new MamaResult(retCode, outBegIdx, outNBElement, outMAMA, outFAMA);
         }
         
-        public static Mama Mama(int startIdx, int endIdx, double[] real)
+        public static MamaResult Mama(int startIdx, int endIdx, double[] real)
             => Mama(startIdx, endIdx, real, 0.5, 0.05);
 
-        public static Mama Mama(int startIdx, int endIdx, float[] real, double fastLimit, double slowLimit)
+        public static MamaResult Mama(int startIdx, int endIdx, float[] real, double fastLimit, double slowLimit)
             => Mama(startIdx, endIdx, real.ToDouble(), fastLimit, slowLimit);
         
-        public static Mama Mama(int startIdx, int endIdx, float[] real)
+        public static MamaResult Mama(int startIdx, int endIdx, float[] real)
             => Mama(startIdx, endIdx, real, 0.5, 0.05);
     }
 
-    public record Mama : IndicatorBase
+    public record MamaResult : IndicatorBase
     {
-        public Mama(RetCode retCode, int begIdx, int nbElement, double[] mama, double[] fama)
+        public MamaResult(RetCode retCode, int begIdx, int nbElement, double[] mama, double[] fama)
             : base(retCode, begIdx, nbElement)
         {
             MAMA = mama;

@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="RocR100.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines RocR100.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static RocR100 RocR100(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static RocR100Result RocR100(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,22 +12,22 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.RocR100(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new RocR100(retCode, outBegIdx, outNBElement, outReal);
+            return new RocR100Result(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static RocR100 RocR100(int startIdx, int endIdx, double[] real)
+        public static RocR100Result RocR100(int startIdx, int endIdx, double[] real)
             => RocR100(startIdx, endIdx, real, 10);
 
-        public static RocR100 RocR100(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static RocR100Result RocR100(int startIdx, int endIdx, float[] real, int timePeriod)
             => RocR100(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static RocR100 RocR100(int startIdx, int endIdx, float[] real)
+        public static RocR100Result RocR100(int startIdx, int endIdx, float[] real)
             => RocR100(startIdx, endIdx, real, 10);
     }
 
-    public record RocR100 : IndicatorBase
+    public record RocR100Result : IndicatorBase
     {
-        public RocR100(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public RocR100Result(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

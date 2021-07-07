@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LinearRegIntercept.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines LinearRegIntercept.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static LinearRegIntercept LinearRegIntercept(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static LinearRegInterceptResult LinearRegIntercept(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -28,22 +19,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new LinearRegIntercept(retCode, outBegIdx, outNBElement, outReal);
+            return new LinearRegInterceptResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static LinearRegIntercept LinearRegIntercept(int startIdx, int endIdx, double[] real)
+        public static LinearRegInterceptResult LinearRegIntercept(int startIdx, int endIdx, double[] real)
             => LinearRegIntercept(startIdx, endIdx, real, 14);
 
-        public static LinearRegIntercept LinearRegIntercept(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static LinearRegInterceptResult LinearRegIntercept(int startIdx, int endIdx, float[] real, int timePeriod)
             => LinearRegIntercept(startIdx, endIdx, real.ToDouble(), timePeriod);
 
-        public static LinearRegIntercept LinearRegIntercept(int startIdx, int endIdx, float[] real)
+        public static LinearRegInterceptResult LinearRegIntercept(int startIdx, int endIdx, float[] real)
             => LinearRegIntercept(startIdx, endIdx, real, 14);
     }
 
-    public record LinearRegIntercept : IndicatorBase
+    public record LinearRegInterceptResult : IndicatorBase
     {
-        public LinearRegIntercept(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public LinearRegInterceptResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

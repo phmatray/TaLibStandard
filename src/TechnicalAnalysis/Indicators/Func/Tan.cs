@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Tan.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Tan.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Tan Tan(int startIdx, int endIdx, double[] real)
+        public static TanResult Tan(int startIdx, int endIdx, double[] real)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,16 +12,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Tan(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Tan(retCode, outBegIdx, outNBElement, outReal);
+            return new TanResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Tan Tan(int startIdx, int endIdx, float[] real)
+        public static TanResult Tan(int startIdx, int endIdx, float[] real)
             => Tan(startIdx, endIdx, real.ToDouble());
     }
 
-    public record Tan : IndicatorBase
+    public record TanResult : IndicatorBase
     {
-        public Tan(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public TanResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

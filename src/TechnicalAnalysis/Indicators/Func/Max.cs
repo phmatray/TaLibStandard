@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Max.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Max.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Max Max(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static MaxResult Max(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,22 +12,22 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Max(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Max(retCode, outBegIdx, outNBElement, outReal);
+            return new MaxResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Max Max(int startIdx, int endIdx, double[] real)
+        public static MaxResult Max(int startIdx, int endIdx, double[] real)
             => Max(startIdx, endIdx, real, 30);
 
-        public static Max Max(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static MaxResult Max(int startIdx, int endIdx, float[] real, int timePeriod)
             => Max(startIdx, endIdx, real.ToDouble(), timePeriod);
 
-        public static Max Max(int startIdx, int endIdx, float[] real)
+        public static MaxResult Max(int startIdx, int endIdx, float[] real)
             => Max(startIdx, endIdx, real, 30);
     }
 
-    public record Max : IndicatorBase
+    public record MaxResult : IndicatorBase
     {
-        public Max(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public MaxResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

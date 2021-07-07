@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Sub.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Sub.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Sub Sub(int startIdx, int endIdx, double[] real0, double[] real1)
+        public static SubResult Sub(int startIdx, int endIdx, double[] real0, double[] real1)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,16 +12,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Sub(startIdx, endIdx, real0, real1, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Sub(retCode, outBegIdx, outNBElement, outReal);
+            return new SubResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Sub Sub(int startIdx, int endIdx, float[] real0, float[] real1)
+        public static SubResult Sub(int startIdx, int endIdx, float[] real0, float[] real1)
             => Sub(startIdx, endIdx, real0.ToDouble(), real1.ToDouble());
     }
 
-    public record Sub : IndicatorBase
+    public record SubResult : IndicatorBase
     {
-        public Sub(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public SubResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

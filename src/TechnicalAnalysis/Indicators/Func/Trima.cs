@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Trima.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Trima.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Trima Trima(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static TrimaResult Trima(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,22 +12,22 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Trima(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Trima(retCode, outBegIdx, outNBElement, outReal);
+            return new TrimaResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Trima Trima(int startIdx, int endIdx, double[] real)
+        public static TrimaResult Trima(int startIdx, int endIdx, double[] real)
             => Trima(startIdx, endIdx, real, 30);
 
-        public static Trima Trima(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static TrimaResult Trima(int startIdx, int endIdx, float[] real, int timePeriod)
             => Trima(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static Trima Trima(int startIdx, int endIdx, float[] real)
+        public static TrimaResult Trima(int startIdx, int endIdx, float[] real)
             => Trima(startIdx, endIdx, real, 30);
     }
 
-    public record Trima : IndicatorBase
+    public record TrimaResult : IndicatorBase
     {
-        public Trima(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public TrimaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

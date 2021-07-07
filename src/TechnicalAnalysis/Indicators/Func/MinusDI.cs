@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MinusDI.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines MinusDI.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static MinusDI MinusDI(
+        public static MinusDIResult MinusDI(
             int startIdx,
             int endIdx,
             double[] high,
@@ -36,13 +27,13 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new MinusDI(retCode, outBegIdx, outNBElement, outReal);
+            return new MinusDIResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static MinusDI MinusDI(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+        public static MinusDIResult MinusDI(int startIdx, int endIdx, double[] high, double[] low, double[] close)
             => MinusDI(startIdx, endIdx, high, low, close, 14);
 
-        public static MinusDI MinusDI(
+        public static MinusDIResult MinusDI(
             int startIdx,
             int endIdx,
             float[] high,
@@ -51,13 +42,13 @@ namespace TechnicalAnalysis
             int timePeriod)
             => MinusDI(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), timePeriod);
 
-        public static MinusDI MinusDI(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+        public static MinusDIResult MinusDI(int startIdx, int endIdx, float[] high, float[] low, float[] close)
             => MinusDI(startIdx, endIdx, high, low, close, 14);
     }
 
-    public record MinusDI : IndicatorBase
+    public record MinusDIResult : IndicatorBase
     {
-        public MinusDI(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public MinusDIResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

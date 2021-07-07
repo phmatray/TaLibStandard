@@ -7,13 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TechnicalAnalysis.Abstractions;
+using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Acos Acos(int startIdx, int endIdx, double[] real)
+        public static AcosResult Acos(int startIdx, int endIdx, double[] real)
         {
             int outBegIdx = 0;
             int outNBElement = 0;
@@ -21,16 +21,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Acos(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Acos(retCode, outBegIdx, outNBElement, outReal);
+            return new AcosResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Acos Acos(int startIdx, int endIdx, float[] real)
+        public static AcosResult Acos(int startIdx, int endIdx, float[] real)
             => Acos(startIdx, endIdx, real.ToDouble());
     }
 
-    public record Acos : IndicatorBase
+    public record AcosResult : IndicatorBase
     {
-        public Acos(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public AcosResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

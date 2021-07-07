@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MacdFix.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines MacdFix.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static MacdFix MacdFix(int startIdx, int endIdx, double[] real, int signalPeriod)
+        public static MacdFixResult MacdFix(int startIdx, int endIdx, double[] real, int signalPeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -32,22 +23,22 @@ namespace TechnicalAnalysis
                 ref outMACDSignal,
                 ref outMACDHist);
             
-            return new MacdFix(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
+            return new MacdFixResult(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
         }
 
-        public static MacdFix MacdFix(int startIdx, int endIdx, double[] real)
+        public static MacdFixResult MacdFix(int startIdx, int endIdx, double[] real)
             => MacdFix(startIdx, endIdx, real, 9);
 
-        public static MacdFix MacdFix(int startIdx, int endIdx, float[] real, int signalPeriod)
+        public static MacdFixResult MacdFix(int startIdx, int endIdx, float[] real, int signalPeriod)
             => MacdFix(startIdx, endIdx, real.ToDouble(), signalPeriod);
         
-        public static MacdFix MacdFix(int startIdx, int endIdx, float[] real)
+        public static MacdFixResult MacdFix(int startIdx, int endIdx, float[] real)
             => MacdFix(startIdx, endIdx, real, 9);
     }
 
-    public record MacdFix : IndicatorBase
+    public record MacdFixResult : IndicatorBase
     {
-        public MacdFix(
+        public MacdFixResult(
             RetCode retCode,
             int begIdx,
             int nbElement,

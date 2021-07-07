@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LinearRegAngle.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines LinearRegAngle.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static LinearRegAngle LinearRegAngle(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static LinearRegAngleResult LinearRegAngle(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -28,22 +19,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new LinearRegAngle(retCode, outBegIdx, outNBElement, outReal);
+            return new LinearRegAngleResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static LinearRegAngle LinearRegAngle(int startIdx, int endIdx, double[] real)
+        public static LinearRegAngleResult LinearRegAngle(int startIdx, int endIdx, double[] real)
             => LinearRegAngle(startIdx, endIdx, real, 14);
 
-        public static LinearRegAngle LinearRegAngle(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static LinearRegAngleResult LinearRegAngle(int startIdx, int endIdx, float[] real, int timePeriod)
             => LinearRegAngle(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static LinearRegAngle LinearRegAngle(int startIdx, int endIdx, float[] real)
+        public static LinearRegAngleResult LinearRegAngle(int startIdx, int endIdx, float[] real)
             => LinearRegAngle(startIdx, endIdx, real, 14);
     }
 
-    public record LinearRegAngle : IndicatorBase
+    public record LinearRegAngleResult : IndicatorBase
     {
-        public LinearRegAngle(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public LinearRegAngleResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

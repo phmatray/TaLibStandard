@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Bop.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Bop.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Bop Bop(
+        public static BopResult Bop(
             int startIdx,
             int endIdx,
             double[] open,
@@ -36,16 +27,16 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new Bop(retCode, outBegIdx, outNBElement, outReal);
+            return new BopResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Bop Bop(int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
+        public static BopResult Bop(int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
             => Bop(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
-    public record Bop : IndicatorBase
+    public record BopResult : IndicatorBase
     {
-        public Bop(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public BopResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

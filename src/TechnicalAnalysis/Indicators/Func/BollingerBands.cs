@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BollingerBands.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines BollingerBands.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static BollingerBands BollingerBands(
+        public static BollingerBandsResult BollingerBands(
             int startIdx,
             int endIdx,
             double[] real,
@@ -42,7 +33,7 @@ namespace TechnicalAnalysis
                 ref outRealMiddleBand,
                 ref outRealLowerBand);
             
-            return new BollingerBands(
+            return new BollingerBandsResult(
                 retCode,
                 outBegIdx,
                 outNBElement,
@@ -51,10 +42,10 @@ namespace TechnicalAnalysis
                 outRealLowerBand);
         }
         
-        public static BollingerBands BollingerBands(int startIdx, int endIdx, double[] real)
+        public static BollingerBandsResult BollingerBands(int startIdx, int endIdx, double[] real)
             => BollingerBands(startIdx, endIdx, real, 5, 2.0, 2.0, MAType.Sma);
 
-        public static BollingerBands BollingerBands(
+        public static BollingerBandsResult BollingerBands(
             int startIdx,
             int endIdx,
             float[] real,
@@ -64,13 +55,13 @@ namespace TechnicalAnalysis
             MAType maType)
             => BollingerBands(startIdx, endIdx, real.ToDouble(), timePeriod, nbDevUp, nbDevDn, maType);
         
-        public static BollingerBands BollingerBands(int startIdx, int endIdx, float[] real)
+        public static BollingerBandsResult BollingerBands(int startIdx, int endIdx, float[] real)
             => BollingerBands(startIdx, endIdx, real, 5, 2.0, 2.0, MAType.Sma);
     }
 
-    public record BollingerBands : IndicatorBase
+    public record BollingerBandsResult : IndicatorBase
     {
-        public BollingerBands(
+        public BollingerBandsResult(
             RetCode retCode,
             int begIdx,
             int nbElement,

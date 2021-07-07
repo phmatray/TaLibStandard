@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AvgPrice.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines AvgPrice.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static AvgPrice AvgPrice(
+        public static AvgPriceResult AvgPrice(
             int startIdx,
             int endIdx,
             double[] open,
@@ -36,10 +27,10 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new AvgPrice(retCode, outBegIdx, outNBElement, outReal);
+            return new AvgPriceResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static AvgPrice AvgPrice(
+        public static AvgPriceResult AvgPrice(
             int startIdx,
             int endIdx,
             float[] open,
@@ -49,9 +40,9 @@ namespace TechnicalAnalysis
             => AvgPrice(startIdx, endIdx, open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
-    public record AvgPrice : IndicatorBase
+    public record AvgPriceResult : IndicatorBase
     {
-        public AvgPrice(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public AvgPriceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

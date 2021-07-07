@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Trix.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Trix.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Trix Trix(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static TrixResult Trix(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,22 +12,22 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Trix(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Trix(retCode, outBegIdx, outNBElement, outReal);
+            return new TrixResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Trix Trix(int startIdx, int endIdx, double[] real)
+        public static TrixResult Trix(int startIdx, int endIdx, double[] real)
             => Trix(startIdx, endIdx, real, 30);
 
-        public static Trix Trix(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static TrixResult Trix(int startIdx, int endIdx, float[] real, int timePeriod)
             => Trix(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static Trix Trix(int startIdx, int endIdx, float[] real)
+        public static TrixResult Trix(int startIdx, int endIdx, float[] real)
             => Trix(startIdx, endIdx, real, 30);
     }
 
-    public record Trix : IndicatorBase
+    public record TrixResult : IndicatorBase
     {
-        public Trix(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public TrixResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

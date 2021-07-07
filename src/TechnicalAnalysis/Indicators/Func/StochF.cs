@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StochF.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines StochF.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static StochF StochF(
+        public static StochFResult StochF(
             int startIdx,
             int endIdx,
             double[] high,
@@ -42,13 +33,13 @@ namespace TechnicalAnalysis
                 ref outFastK,
                 ref outFastD);
             
-            return new StochF(retCode, outBegIdx, outNBElement, outFastK, outFastD);
+            return new StochFResult(retCode, outBegIdx, outNBElement, outFastK, outFastD);
         }
 
-        public static StochF StochF(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+        public static StochFResult StochF(int startIdx, int endIdx, double[] high, double[] low, double[] close)
             => StochF(startIdx, endIdx, high, low, close, 5, 3, MAType.Sma);
 
-        public static StochF StochF(
+        public static StochFResult StochF(
             int startIdx,
             int endIdx,
             float[] high,
@@ -67,13 +58,13 @@ namespace TechnicalAnalysis
                 fastD_Period,
                 fastD_MAType);
         
-        public static StochF StochF(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+        public static StochFResult StochF(int startIdx, int endIdx, float[] high, float[] low, float[] close)
             => StochF(startIdx, endIdx, high, low, close, 5, 3, MAType.Sma);
     }
 
-    public record StochF : IndicatorBase
+    public record StochFResult : IndicatorBase
     {
-        public StochF(RetCode retCode, int begIdx, int nbElement, double[] fastK, double[] fastD)
+        public StochFResult(RetCode retCode, int begIdx, int nbElement, double[] fastK, double[] fastD)
             : base(retCode, begIdx, nbElement)
         {
             FastK = fastK;

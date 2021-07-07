@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="T3.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines T3.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static T3 T3(int startIdx, int endIdx, double[] real, int timePeriod, double vFactor)
+        public static T3Result T3(int startIdx, int endIdx, double[] real, int timePeriod, double vFactor)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -29,22 +20,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new T3(retCode, outBegIdx, outNBElement, outReal);
+            return new T3Result(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static T3 T3(int startIdx, int endIdx, double[] real)
+        public static T3Result T3(int startIdx, int endIdx, double[] real)
             => T3(startIdx, endIdx, real, 5, 0.7);
 
-        public static T3 T3(int startIdx, int endIdx, float[] real, int timePeriod, double vFactor)
+        public static T3Result T3(int startIdx, int endIdx, float[] real, int timePeriod, double vFactor)
             => T3(startIdx, endIdx, real.ToDouble(), timePeriod, vFactor);
         
-        public static T3 T3(int startIdx, int endIdx, float[] real)
+        public static T3Result T3(int startIdx, int endIdx, float[] real)
             => T3(startIdx, endIdx, real, 5, 0.7);
     }
 
-    public record T3 : IndicatorBase
+    public record T3Result : IndicatorBase
     {
-        public T3(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public T3Result(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

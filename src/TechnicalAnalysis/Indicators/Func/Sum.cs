@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Sum.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Sum.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Sum Sum(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static SumResult Sum(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,22 +12,22 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Sum(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Sum(retCode, outBegIdx, outNBElement, outReal);
+            return new SumResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Sum Sum(int startIdx, int endIdx, double[] real)
+        public static SumResult Sum(int startIdx, int endIdx, double[] real)
             => Sum(startIdx, endIdx, real, 30);
 
-        public static Sum Sum(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static SumResult Sum(int startIdx, int endIdx, float[] real, int timePeriod)
             => Sum(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static Sum Sum(int startIdx, int endIdx, float[] real)
+        public static SumResult Sum(int startIdx, int endIdx, float[] real)
             => Sum(startIdx, endIdx, real, 30);
     }
 
-    public record Sum : IndicatorBase
+    public record SumResult : IndicatorBase
     {
-        public Sum(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public SumResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

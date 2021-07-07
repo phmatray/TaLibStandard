@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AdOsc.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines AdOsc.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static AdOsc AdOsc(
+        public static AdOscResult AdOsc(
             int startIdx,
             int endIdx,
             double[] high,
@@ -40,10 +31,10 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new AdOsc(retCode, outBegIdx, outNBElement, outReal);
+            return new AdOscResult(retCode, outBegIdx, outNBElement, outReal);
         }
         
-        public static AdOsc AdOsc(
+        public static AdOscResult AdOsc(
             int startIdx,
             int endIdx,
             double[] high,
@@ -52,7 +43,7 @@ namespace TechnicalAnalysis
             double[] volume)
             => AdOsc(startIdx, endIdx, high, low, close, volume, 3, 10);
 
-        public static AdOsc AdOsc(
+        public static AdOscResult AdOsc(
             int startIdx,
             int endIdx,
             float[] high,
@@ -71,13 +62,13 @@ namespace TechnicalAnalysis
                 fastPeriod,
                 slowPeriod);
         
-        public static AdOsc AdOsc(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume)
+        public static AdOscResult AdOsc(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume)
             => AdOsc(startIdx, endIdx, high, low, close, volume, 3, 10);
     }
 
-    public record AdOsc : IndicatorBase
+    public record AdOscResult : IndicatorBase
     {
-        public AdOsc(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public AdOscResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

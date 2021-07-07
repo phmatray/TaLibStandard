@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LinearRegSlope.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines LinearRegSlope.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static LinearRegSlopeResult LinearRegSlope(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -28,22 +19,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new LinearRegSlope(retCode, outBegIdx, outNBElement, outReal);
+            return new LinearRegSlopeResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, double[] real)
+        public static LinearRegSlopeResult LinearRegSlope(int startIdx, int endIdx, double[] real)
             => LinearRegSlope(startIdx, endIdx, real, 14);
 
-        public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static LinearRegSlopeResult LinearRegSlope(int startIdx, int endIdx, float[] real, int timePeriod)
             => LinearRegSlope(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static LinearRegSlope LinearRegSlope(int startIdx, int endIdx, float[] real)
+        public static LinearRegSlopeResult LinearRegSlope(int startIdx, int endIdx, float[] real)
             => LinearRegSlope(startIdx, endIdx, real, 14);
     }
 
-    public record LinearRegSlope : IndicatorBase
+    public record LinearRegSlopeResult : IndicatorBase
     {
-        public LinearRegSlope(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public LinearRegSlopeResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Cosh.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Cosh.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Cosh Cosh(int startIdx, int endIdx, double[] real)
+        public static CoshResult Cosh(int startIdx, int endIdx, double[] real)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,16 +12,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Cosh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Cosh(retCode, outBegIdx, outNBElement, outReal);
+            return new CoshResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Cosh Cosh(int startIdx, int endIdx, float[] real)
+        public static CoshResult Cosh(int startIdx, int endIdx, float[] real)
             => Cosh(startIdx, endIdx, real.ToDouble());
     }
 
-    public record Cosh : IndicatorBase
+    public record CoshResult : IndicatorBase
     {
-        public Cosh(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public CoshResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

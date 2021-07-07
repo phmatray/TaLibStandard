@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Ln.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Ln.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Ln Ln(int startIdx, int endIdx, double[] real)
+        public static LnResult Ln(int startIdx, int endIdx, double[] real)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,16 +12,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Ln(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Ln(retCode, outBegIdx, outNBElement, outReal);
+            return new LnResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Ln Ln(int startIdx, int endIdx, float[] real)
+        public static LnResult Ln(int startIdx, int endIdx, float[] real)
             => Ln(startIdx, endIdx, real.ToDouble());
     }
 
-    public record Ln : IndicatorBase
+    public record LnResult : IndicatorBase
     {
-        public Ln(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public LnResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

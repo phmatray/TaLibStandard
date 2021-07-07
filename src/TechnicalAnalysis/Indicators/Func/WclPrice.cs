@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="WclPrice.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines WclPrice.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static WclPrice WclPrice(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+        public static WclPriceResult WclPrice(int startIdx, int endIdx, double[] high, double[] low, double[] close)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,16 +12,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.WclPrice(startIdx, endIdx, high, low, close, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new WclPrice(retCode, outBegIdx, outNBElement, outReal);
+            return new WclPriceResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static WclPrice WclPrice(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+        public static WclPriceResult WclPrice(int startIdx, int endIdx, float[] high, float[] low, float[] close)
             => WclPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble());
     }
 
-    public record WclPrice : IndicatorBase
+    public record WclPriceResult : IndicatorBase
     {
-        public WclPrice(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public WclPriceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

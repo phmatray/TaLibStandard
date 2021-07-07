@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LinearReg.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines LinearReg.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static LinearReg LinearReg(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static LinearRegResult LinearReg(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -28,22 +19,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new LinearReg(retCode, outBegIdx, outNBElement, outReal);
+            return new LinearRegResult(retCode, outBegIdx, outNBElement, outReal);
         }
         
-        public static LinearReg LinearReg(int startIdx, int endIdx, double[] real)
+        public static LinearRegResult LinearReg(int startIdx, int endIdx, double[] real)
             => LinearReg(startIdx, endIdx, real, 14);
 
-        public static LinearReg LinearReg(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static LinearRegResult LinearReg(int startIdx, int endIdx, float[] real, int timePeriod)
             => LinearReg(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static LinearReg LinearReg(int startIdx, int endIdx, float[] real)
+        public static LinearRegResult LinearReg(int startIdx, int endIdx, float[] real)
             => LinearReg(startIdx, endIdx, real, 14);
     }
 
-    public record LinearReg : IndicatorBase
+    public record LinearRegResult : IndicatorBase
     {
-        public LinearReg(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public LinearRegResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

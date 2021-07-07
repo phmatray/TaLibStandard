@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HtDcPhase.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines HtDcPhase.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static HtDcPhase HtDcPhase(int startIdx, int endIdx, double[] real)
+        public static HtDcPhaseResult HtDcPhase(int startIdx, int endIdx, double[] real)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,16 +12,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.HtDcPhase(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new HtDcPhase(retCode, outBegIdx, outNBElement, outReal);
+            return new HtDcPhaseResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static HtDcPhase HtDcPhase(int startIdx, int endIdx, float[] real)
+        public static HtDcPhaseResult HtDcPhase(int startIdx, int endIdx, float[] real)
             => HtDcPhase(startIdx, endIdx, real.ToDouble());
     }
 
-    public record HtDcPhase : IndicatorBase
+    public record HtDcPhaseResult : IndicatorBase
     {
-        public HtDcPhase(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public HtDcPhaseResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

@@ -1,5 +1,5 @@
 ﻿using System;
-using TechnicalAnalysis.Abstractions;
+using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis.Business
 {

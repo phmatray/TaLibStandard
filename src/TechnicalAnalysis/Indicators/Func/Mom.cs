@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Mom.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Mom.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Mom Mom(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static MomResult Mom(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,22 +12,22 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Mom(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Mom(retCode, outBegIdx, outNBElement, outReal);
+            return new MomResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Mom Mom(int startIdx, int endIdx, double[] real)
+        public static MomResult Mom(int startIdx, int endIdx, double[] real)
             => Mom(startIdx, endIdx, real, 10);
 
-        public static Mom Mom(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static MomResult Mom(int startIdx, int endIdx, float[] real, int timePeriod)
             => Mom(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static Mom Mom(int startIdx, int endIdx, float[] real)
+        public static MomResult Mom(int startIdx, int endIdx, float[] real)
             => Mom(startIdx, endIdx, real, 10);
     }
 
-    public record Mom : IndicatorBase
+    public record MomResult : IndicatorBase
     {
-        public Mom(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public MomResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

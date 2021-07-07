@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Div.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Div.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Div Div(int startIdx, int endIdx, double[] real0, double[] real1)
+        public static DivResult Div(int startIdx, int endIdx, double[] real0, double[] real1)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,16 +12,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Div(startIdx, endIdx, real0, real1, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Div(retCode, outBegIdx, outNBElement, outReal);
+            return new DivResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Div Div(int startIdx, int endIdx, float[] real0, float[] real1)
+        public static DivResult Div(int startIdx, int endIdx, float[] real0, float[] real1)
             => Div(startIdx, endIdx, real0.ToDouble(), real1.ToDouble());
     }
 
-    public record Div : IndicatorBase
+    public record DivResult : IndicatorBase
     {
-        public Div(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public DivResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

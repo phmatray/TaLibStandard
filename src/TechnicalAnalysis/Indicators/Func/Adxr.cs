@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Adxr.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Adxr.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Adxr Adxr(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod)
+        public static AdxrResult Adxr(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -30,22 +21,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new Adxr(retCode, outBegIdx, outNBElement, outReal);
+            return new AdxrResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Adxr Adxr(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+        public static AdxrResult Adxr(int startIdx, int endIdx, double[] high, double[] low, double[] close)
             => Adxr(startIdx, endIdx, high, low, close, 14);
 
-        public static Adxr Adxr(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod)
+        public static AdxrResult Adxr(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod)
             => Adxr(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), timePeriod);
         
-        public static Adxr Adxr(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+        public static AdxrResult Adxr(int startIdx, int endIdx, float[] high, float[] low, float[] close)
             => Adxr(startIdx, endIdx, high, low, close, 14);
     }
 
-    public record Adxr : IndicatorBase
+    public record AdxrResult : IndicatorBase
     {
-        public Adxr(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public AdxrResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="UltOsc.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines UltOsc.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static UltOsc UltOsc(
+        public static UltOscResult UltOsc(
             int startIdx,
             int endIdx,
             double[] high,
@@ -40,13 +31,13 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new UltOsc(retCode, outBegIdx, outNBElement, outReal);
+            return new UltOscResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static UltOsc UltOsc(int startIdx, int endIdx, double[] high, double[] low, double[] close)
+        public static UltOscResult UltOsc(int startIdx, int endIdx, double[] high, double[] low, double[] close)
             => UltOsc(startIdx, endIdx, high, low, close, 7, 14, 28);
 
-        public static UltOsc UltOsc(
+        public static UltOscResult UltOsc(
             int startIdx,
             int endIdx,
             float[] high,
@@ -65,13 +56,13 @@ namespace TechnicalAnalysis
                 timePeriod2,
                 timePeriod3);
         
-        public static UltOsc UltOsc(int startIdx, int endIdx, float[] high, float[] low, float[] close)
+        public static UltOscResult UltOsc(int startIdx, int endIdx, float[] high, float[] low, float[] close)
             => UltOsc(startIdx, endIdx, high, low, close, 7, 14, 28);
     }
 
-    public record UltOsc : IndicatorBase
+    public record UltOscResult : IndicatorBase
     {
-        public UltOsc(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public UltOscResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

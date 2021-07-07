@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Sar.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Sar.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Sar Sar(
+        public static SarResult Sar(
             int startIdx,
             int endIdx,
             double[] high,
@@ -36,22 +27,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new Sar(retCode, outBegIdx, outNBElement, outReal);
+            return new SarResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Sar Sar(int startIdx, int endIdx, double[] high, double[] low)
+        public static SarResult Sar(int startIdx, int endIdx, double[] high, double[] low)
             => Sar(startIdx, endIdx, high, low, 0.02, 0.2);
 
-        public static Sar Sar(int startIdx, int endIdx, float[] high, float[] low, double acceleration, double maximum)
+        public static SarResult Sar(int startIdx, int endIdx, float[] high, float[] low, double acceleration, double maximum)
             => Sar(startIdx, endIdx, high.ToDouble(), low.ToDouble(), acceleration, maximum);
         
-        public static Sar Sar(int startIdx, int endIdx, float[] high, float[] low)
+        public static SarResult Sar(int startIdx, int endIdx, float[] high, float[] low)
             => Sar(startIdx, endIdx, high, low, 0.02, 0.2);
     }
 
-    public record Sar : IndicatorBase
+    public record SarResult : IndicatorBase
     {
-        public Sar(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public SarResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

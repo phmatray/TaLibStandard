@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MedPrice.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines MedPrice.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static MedPrice MedPrice(int startIdx, int endIdx, double[] high, double[] low)
+        public static MedPriceResult MedPrice(int startIdx, int endIdx, double[] high, double[] low)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,16 +12,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.MedPrice(startIdx, endIdx, high, low, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new MedPrice(retCode, outBegIdx, outNBElement, outReal);
+            return new MedPriceResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static MedPrice MedPrice(int startIdx, int endIdx, float[] high, float[] low)
+        public static MedPriceResult MedPrice(int startIdx, int endIdx, float[] high, float[] low)
             => MedPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble());
     }
 
-    public record MedPrice : IndicatorBase
+    public record MedPriceResult : IndicatorBase
     {
-        public MedPrice(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public MedPriceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MinMaxIndex.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines MinMaxIndex.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static MinMaxIndexResult MinMaxIndex(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -30,22 +21,22 @@ namespace TechnicalAnalysis
                 ref outMinIdx,
                 ref outMaxIdx);
             
-            return new MinMaxIndex(retCode, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
+            return new MinMaxIndexResult(retCode, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
         }
         
-        public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, double[] real)
+        public static MinMaxIndexResult MinMaxIndex(int startIdx, int endIdx, double[] real)
             => MinMaxIndex(startIdx, endIdx, real, 30);
 
-        public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static MinMaxIndexResult MinMaxIndex(int startIdx, int endIdx, float[] real, int timePeriod)
             => MinMaxIndex(startIdx, endIdx, real.ToDouble(), timePeriod);        
 
-        public static MinMaxIndex MinMaxIndex(int startIdx, int endIdx, float[] real)
+        public static MinMaxIndexResult MinMaxIndex(int startIdx, int endIdx, float[] real)
             => MinMaxIndex(startIdx, endIdx, real, 30);
     }
 
-    public record MinMaxIndex : IndicatorBase
+    public record MinMaxIndexResult : IndicatorBase
     {
-        public MinMaxIndex(RetCode retCode, int begIdx, int nbElement, int[] minIdx, int[] maxIdx)
+        public MinMaxIndexResult(RetCode retCode, int begIdx, int nbElement, int[] minIdx, int[] maxIdx)
             : base(retCode, begIdx, nbElement)
         {
             MinIdx = minIdx;

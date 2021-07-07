@@ -1,6 +1,7 @@
 using System.Linq;
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Common;
 using Xunit;
 
 namespace TechnicalAnalysis.Tests.Indicators.Cdl

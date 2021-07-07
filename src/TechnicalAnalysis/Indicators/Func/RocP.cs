@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="RocP.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines RocP.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static RocP RocP(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static RocPResult RocP(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,22 +12,22 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.RocP(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new RocP(retCode, outBegIdx, outNBElement, outReal);
+            return new RocPResult(retCode, outBegIdx, outNBElement, outReal);
         }
         
-        public static RocP RocP(int startIdx, int endIdx, double[] real)
+        public static RocPResult RocP(int startIdx, int endIdx, double[] real)
             => RocP(startIdx, endIdx, real, 10);
 
-        public static RocP RocP(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static RocPResult RocP(int startIdx, int endIdx, float[] real, int timePeriod)
             => RocP(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static RocP RocP(int startIdx, int endIdx, float[] real)
+        public static RocPResult RocP(int startIdx, int endIdx, float[] real)
             => RocP(startIdx, endIdx, real, 10);
     }
 
-    public record RocP : IndicatorBase
+    public record RocPResult : IndicatorBase
     {
-        public RocP(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public RocPResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

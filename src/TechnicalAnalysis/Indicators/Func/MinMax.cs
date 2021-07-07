@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MinMax.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines MinMax.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static MinMax MinMax(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static MinMaxResult MinMax(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -30,22 +21,22 @@ namespace TechnicalAnalysis
                 ref outMin,
                 ref outMax);
             
-            return new MinMax(retCode, outBegIdx, outNBElement, outMin, outMax);
+            return new MinMaxResult(retCode, outBegIdx, outNBElement, outMin, outMax);
         }
 
-        public static MinMax MinMax(int startIdx, int endIdx, double[] real)
+        public static MinMaxResult MinMax(int startIdx, int endIdx, double[] real)
             => MinMax(startIdx, endIdx, real, 30);
 
-        public static MinMax MinMax(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static MinMaxResult MinMax(int startIdx, int endIdx, float[] real, int timePeriod)
             => MinMax(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static MinMax MinMax(int startIdx, int endIdx, float[] real)
+        public static MinMaxResult MinMax(int startIdx, int endIdx, float[] real)
             => MinMax(startIdx, endIdx, real, 30);
     }
 
-    public record MinMax : IndicatorBase
+    public record MinMaxResult : IndicatorBase
     {
-        public MinMax(RetCode retCode, int begIdx, int nbElement, double[] min, double[] max)
+        public MinMaxResult(RetCode retCode, int begIdx, int nbElement, double[] min, double[] max)
             : base(retCode, begIdx, nbElement)
         {
             Min = min;

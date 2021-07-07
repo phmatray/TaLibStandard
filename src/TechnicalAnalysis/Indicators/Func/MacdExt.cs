@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MacdExt.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines MacdExt.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static MacdExt MacdExt(
+        public static MacdExtResult MacdExt(
             int startIdx,
             int endIdx,
             double[] real,
@@ -46,13 +37,13 @@ namespace TechnicalAnalysis
                 ref outMACDSignal,
                 ref outMACDHist);
             
-            return new MacdExt(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
+            return new MacdExtResult(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
         }
         
-        public static MacdExt MacdExt(int startIdx, int endIdx, double[] real)
+        public static MacdExtResult MacdExt(int startIdx, int endIdx, double[] real)
             => MacdExt(startIdx, endIdx, real, 12, MAType.Sma, 26, MAType.Sma, 9, MAType.Sma);
 
-        public static MacdExt MacdExt(
+        public static MacdExtResult MacdExt(
             int startIdx,
             int endIdx,
             float[] real,
@@ -73,13 +64,13 @@ namespace TechnicalAnalysis
                 signalPeriod,
                 signalMAType);
         
-        public static MacdExt MacdExt(int startIdx, int endIdx, float[] real)
+        public static MacdExtResult MacdExt(int startIdx, int endIdx, float[] real)
             => MacdExt(startIdx, endIdx, real, 12, MAType.Sma, 26, MAType.Sma, 9, MAType.Sma);
     }
 
-    public record MacdExt : IndicatorBase
+    public record MacdExtResult : IndicatorBase
     {
-        public MacdExt(
+        public MacdExtResult(
             RetCode retCode,
             int begIdx,
             int nbElement,

@@ -7,13 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TechnicalAnalysis.Abstractions;
+using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static StochRsi StochRsi(
+        public static StochRsiResult StochRsi(
             int startIdx,
             int endIdx,
             double[] real,
@@ -40,13 +40,13 @@ namespace TechnicalAnalysis
                 ref outFastK,
                 ref outFastD);
             
-            return new StochRsi(retCode, outBegIdx, outNBElement, outFastK, outFastD);
+            return new StochRsiResult(retCode, outBegIdx, outNBElement, outFastK, outFastD);
         }
 
-        public static StochRsi StochRsi(int startIdx, int endIdx, double[] real)
+        public static StochRsiResult StochRsi(int startIdx, int endIdx, double[] real)
             => StochRsi(startIdx, endIdx, real, 14, 5, 3, MAType.Sma);
 
-        public static StochRsi StochRsi(
+        public static StochRsiResult StochRsi(
             int startIdx,
             int endIdx,
             float[] real,
@@ -56,13 +56,13 @@ namespace TechnicalAnalysis
             MAType fastD_MAType)
             => StochRsi(startIdx, endIdx, real.ToDouble(), timePeriod, fastK_Period, fastD_Period, fastD_MAType);
         
-        public static StochRsi StochRsi(int startIdx, int endIdx, float[] real)
+        public static StochRsiResult StochRsi(int startIdx, int endIdx, float[] real)
             => StochRsi(startIdx, endIdx, real, 14, 5, 3, MAType.Sma);
     }
 
-    public record StochRsi : IndicatorBase
+    public record StochRsiResult : IndicatorBase
     {
-        public StochRsi(RetCode retCode, int begIdx, int nbElement, double[] fastK, double[] fastD)
+        public StochRsiResult(RetCode retCode, int begIdx, int nbElement, double[] fastK, double[] fastD)
             : base(retCode, begIdx, nbElement)
         {
             FastK = fastK;

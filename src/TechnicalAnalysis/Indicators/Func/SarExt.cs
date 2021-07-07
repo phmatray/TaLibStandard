@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SarExt.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines SarExt.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static SarExt SarExt(
+        public static SarExtResult SarExt(
             int startIdx,
             int endIdx,
             double[] high,
@@ -48,13 +39,13 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new SarExt(retCode, outBegIdx, outNBElement, outReal);
+            return new SarExtResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static SarExt SarExt(int startIdx, int endIdx, double[] high, double[] low)
+        public static SarExtResult SarExt(int startIdx, int endIdx, double[] high, double[] low)
             => SarExt(startIdx, endIdx, high, low, 0.0, 0.0, 0.02, 0.02, 0.2, 0.02, 0.02, 0.2);
 
-        public static SarExt SarExt(
+        public static SarExtResult SarExt(
             int startIdx,
             int endIdx,
             float[] high,
@@ -81,13 +72,13 @@ namespace TechnicalAnalysis
                 accelerationShort,
                 accelerationMaxShort);
         
-        public static SarExt SarExt(int startIdx, int endIdx, float[] high, float[] low)
+        public static SarExtResult SarExt(int startIdx, int endIdx, float[] high, float[] low)
             => SarExt(startIdx, endIdx, high, low, 0.0, 0.0, 0.02, 0.02, 0.2, 0.02, 0.02, 0.2);
     }
 
-    public record SarExt : IndicatorBase
+    public record SarExtResult : IndicatorBase
     {
-        public SarExt(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public SarExtResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

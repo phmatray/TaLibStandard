@@ -7,13 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TechnicalAnalysis.Abstractions;
+using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Sma Sma(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static SmaResult Sma(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = 0;
             int outNBElement = 0;
@@ -21,22 +21,22 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Sma(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Sma(retCode, outBegIdx, outNBElement, outReal);
+            return new SmaResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Sma Sma(int startIdx, int endIdx, double[] real)
+        public static SmaResult Sma(int startIdx, int endIdx, double[] real)
             => Sma(startIdx, endIdx, real, 30);
 
-        public static Sma Sma(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static SmaResult Sma(int startIdx, int endIdx, float[] real, int timePeriod)
             => Sma(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static Sma Sma(int startIdx, int endIdx, float[] real)
+        public static SmaResult Sma(int startIdx, int endIdx, float[] real)
             => Sma(startIdx, endIdx, real, 30);
     }
 
-    public record Sma : IndicatorBase
+    public record SmaResult : IndicatorBase
     {
-        public Sma(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public SmaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

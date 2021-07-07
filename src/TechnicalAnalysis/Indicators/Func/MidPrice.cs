@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MidPrice.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines MidPrice.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static MidPrice MidPrice(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
+        public static MidPriceResult MidPrice(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -29,22 +20,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new MidPrice(retCode, outBegIdx, outNBElement, outReal);
+            return new MidPriceResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static MidPrice MidPrice(int startIdx, int endIdx, double[] high, double[] low)
+        public static MidPriceResult MidPrice(int startIdx, int endIdx, double[] high, double[] low)
             => MidPrice(startIdx, endIdx, high, low, 14);
 
-        public static MidPrice MidPrice(int startIdx, int endIdx, float[] high, float[] low, int timePeriod)
+        public static MidPriceResult MidPrice(int startIdx, int endIdx, float[] high, float[] low, int timePeriod)
             => MidPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble(), timePeriod);
         
-        public static MidPrice MidPrice(int startIdx, int endIdx, float[] high, float[] low)
+        public static MidPriceResult MidPrice(int startIdx, int endIdx, float[] high, float[] low)
             => MidPrice(startIdx, endIdx, high, low, 14);
     }
 
-    public record MidPrice : IndicatorBase
+    public record MidPriceResult : IndicatorBase
     {
-        public MidPrice(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public MidPriceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

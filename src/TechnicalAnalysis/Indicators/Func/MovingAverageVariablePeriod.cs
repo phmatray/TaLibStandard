@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MovingAverageVariablePeriod.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines MovingAverageVariablePeriod.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static MovingAverageVariablePeriod MovingAverageVariablePeriod(
+        public static MovingAverageVariablePeriodResult MovingAverageVariablePeriod(
             int startIdx,
             int endIdx,
             double[] real,
@@ -38,17 +29,17 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new MovingAverageVariablePeriod(retCode, outBegIdx, outNBElement, outReal);
+            return new MovingAverageVariablePeriodResult(retCode, outBegIdx, outNBElement, outReal);
         }
         
-        public static MovingAverageVariablePeriod MovingAverageVariablePeriod(
+        public static MovingAverageVariablePeriodResult MovingAverageVariablePeriod(
             int startIdx,
             int endIdx,
             double[] real,
             double[] periods)
             => MovingAverageVariablePeriod(startIdx, endIdx, real, periods, 2, 30, MAType.Sma);
 
-        public static MovingAverageVariablePeriod MovingAverageVariablePeriod(
+        public static MovingAverageVariablePeriodResult MovingAverageVariablePeriod(
             int startIdx,
             int endIdx,
             float[] real,
@@ -65,7 +56,7 @@ namespace TechnicalAnalysis
                 maxPeriod,
                 maType);
         
-        public static MovingAverageVariablePeriod MovingAverageVariablePeriod(
+        public static MovingAverageVariablePeriodResult MovingAverageVariablePeriod(
             int startIdx,
             int endIdx,
             float[] real,
@@ -73,9 +64,9 @@ namespace TechnicalAnalysis
             => MovingAverageVariablePeriod(startIdx, endIdx, real, periods, 2, 30, MAType.Sma);
     }
 
-    public record MovingAverageVariablePeriod : IndicatorBase
+    public record MovingAverageVariablePeriodResult : IndicatorBase
     {
-        public MovingAverageVariablePeriod(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public MovingAverageVariablePeriodResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

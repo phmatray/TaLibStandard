@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HtSine.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines HtSine.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static HtSine HtSine(int startIdx, int endIdx, double[] real)
+        public static HtSineResult HtSine(int startIdx, int endIdx, double[] real)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -22,16 +13,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outSine, ref outLeadSine);
             
-            return new HtSine(retCode, outBegIdx, outNBElement, outSine, outLeadSine);
+            return new HtSineResult(retCode, outBegIdx, outNBElement, outSine, outLeadSine);
         }
 
-        public static HtSine HtSine(int startIdx, int endIdx, float[] real)
+        public static HtSineResult HtSine(int startIdx, int endIdx, float[] real)
             => HtSine(startIdx, endIdx, real.ToDouble());
     }
 
-    public record HtSine : IndicatorBase
+    public record HtSineResult : IndicatorBase
     {
-        public HtSine(RetCode retCode, int begIdx, int nbElement, double[] sine, double[] leadSine)
+        public HtSineResult(RetCode retCode, int begIdx, int nbElement, double[] sine, double[] leadSine)
             : base(retCode, begIdx, nbElement)
         {
             Sine = sine;

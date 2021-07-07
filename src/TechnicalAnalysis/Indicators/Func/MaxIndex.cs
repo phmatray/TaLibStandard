@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MaxIndex.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines MaxIndex.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static MaxIndex MaxIndex(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static MaxIndexResult MaxIndex(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -28,22 +19,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outInteger);
             
-            return new MaxIndex(retCode, outBegIdx, outNBElement, outInteger);
+            return new MaxIndexResult(retCode, outBegIdx, outNBElement, outInteger);
         }
         
-        public static MaxIndex MaxIndex(int startIdx, int endIdx, double[] real)
+        public static MaxIndexResult MaxIndex(int startIdx, int endIdx, double[] real)
             => MaxIndex(startIdx, endIdx, real, 30);
 
-        public static MaxIndex MaxIndex(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static MaxIndexResult MaxIndex(int startIdx, int endIdx, float[] real, int timePeriod)
             => MaxIndex(startIdx, endIdx, real.ToDouble(), timePeriod);
 
-        public static MaxIndex MaxIndex(int startIdx, int endIdx, float[] real)
+        public static MaxIndexResult MaxIndex(int startIdx, int endIdx, float[] real)
             => MaxIndex(startIdx, endIdx, real, 30);
     }
 
-    public record MaxIndex : IndicatorBase
+    public record MaxIndexResult : IndicatorBase
     {
-        public MaxIndex(RetCode retCode, int begIdx, int nbElement, int[] integer)
+        public MaxIndexResult(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)
         {
             Integer = integer;

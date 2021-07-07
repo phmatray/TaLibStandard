@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MinusDM.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines MinusDM.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static MinusDM MinusDM(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
+        public static MinusDMResult MinusDM(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -29,22 +20,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new MinusDM(retCode, outBegIdx, outNBElement, outReal);
+            return new MinusDMResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static MinusDM MinusDM(int startIdx, int endIdx, double[] high, double[] low)
+        public static MinusDMResult MinusDM(int startIdx, int endIdx, double[] high, double[] low)
             => MinusDM(startIdx, endIdx, high, low, 14);
 
-        public static MinusDM MinusDM(int startIdx, int endIdx, float[] high, float[] low, int timePeriod)
+        public static MinusDMResult MinusDM(int startIdx, int endIdx, float[] high, float[] low, int timePeriod)
             => MinusDM(startIdx, endIdx, high.ToDouble(), low.ToDouble(), timePeriod);
 
-        public static MinusDM MinusDM(int startIdx, int endIdx, float[] high, float[] low)
+        public static MinusDMResult MinusDM(int startIdx, int endIdx, float[] high, float[] low)
             => MinusDM(startIdx, endIdx, high, low, 14);
     }
 
-    public record MinusDM : IndicatorBase
+    public record MinusDMResult : IndicatorBase
     {
-        public MinusDM(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public MinusDMResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

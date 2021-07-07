@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Tanh.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Tanh.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Tanh Tanh(int startIdx, int endIdx, double[] real)
+        public static TanhResult Tanh(int startIdx, int endIdx, double[] real)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,16 +12,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Tanh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Tanh(retCode, outBegIdx, outNBElement, outReal);
+            return new TanhResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Tanh Tanh(int startIdx, int endIdx, float[] real)
+        public static TanhResult Tanh(int startIdx, int endIdx, float[] real)
             => Tanh(startIdx, endIdx, real.ToDouble());
     }
 
-    public record Tanh : IndicatorBase
+    public record TanhResult : IndicatorBase
     {
-        public Tanh(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public TanhResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

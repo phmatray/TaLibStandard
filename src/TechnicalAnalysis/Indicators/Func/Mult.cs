@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Mult.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Mult.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Mult Mult(int startIdx, int endIdx, double[] real0, double[] real1)
+        public static MultResult Mult(int startIdx, int endIdx, double[] real0, double[] real1)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,16 +12,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Mult(startIdx, endIdx, real0, real1, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Mult(retCode, outBegIdx, outNBElement, outReal);
+            return new MultResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Mult Mult(int startIdx, int endIdx, float[] real0, float[] real1)
+        public static MultResult Mult(int startIdx, int endIdx, float[] real0, float[] real1)
             => Mult(startIdx, endIdx, real0.ToDouble(), real1.ToDouble());
     }
 
-    public record Mult : IndicatorBase
+    public record MultResult : IndicatorBase
     {
-        public Mult(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public MultResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

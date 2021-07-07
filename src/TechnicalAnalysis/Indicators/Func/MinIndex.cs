@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MinIndex.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines MinIndex.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static MinIndex MinIndex(int startIdx, int endIdx, double[] real, int timePeriod)
+        public static MinIndexResult MinIndex(int startIdx, int endIdx, double[] real, int timePeriod)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -28,22 +19,22 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outInteger);
             
-            return new MinIndex(retCode, outBegIdx, outNBElement, outInteger);
+            return new MinIndexResult(retCode, outBegIdx, outNBElement, outInteger);
         }
 
-        public static MinIndex MinIndex(int startIdx, int endIdx, double[] real)
+        public static MinIndexResult MinIndex(int startIdx, int endIdx, double[] real)
             => MinIndex(startIdx, endIdx, real, 30);
 
-        public static MinIndex MinIndex(int startIdx, int endIdx, float[] real, int timePeriod)
+        public static MinIndexResult MinIndex(int startIdx, int endIdx, float[] real, int timePeriod)
             => MinIndex(startIdx, endIdx, real.ToDouble(), timePeriod);
         
-        public static MinIndex MinIndex(int startIdx, int endIdx, float[] real)
+        public static MinIndexResult MinIndex(int startIdx, int endIdx, float[] real)
             => MinIndex(startIdx, endIdx, real, 30);
     }
 
-    public record MinIndex : IndicatorBase
+    public record MinIndexResult : IndicatorBase
     {
-        public MinIndex(RetCode retCode, int begIdx, int nbElement, int[] integer)
+        public MinIndexResult(RetCode retCode, int begIdx, int nbElement, int[] integer)
             : base(retCode, begIdx, nbElement)
         {
             Integer = integer;

@@ -7,13 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using TechnicalAnalysis.Abstractions;
+using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Macd Macd(
+        public static MacdResult Macd(
             int startIdx,
             int endIdx,
             double[] real,
@@ -40,13 +40,13 @@ namespace TechnicalAnalysis
                 ref outMACDSignal,
                 ref outMACDHist);
             
-            return new Macd(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
+            return new MacdResult(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
         }
 
-        public static Macd Macd(int startIdx, int endIdx, double[] real)
+        public static MacdResult Macd(int startIdx, int endIdx, double[] real)
             => Macd(startIdx, endIdx, real, 12, 26, 9);
 
-        public static Macd Macd(
+        public static MacdResult Macd(
             int startIdx,
             int endIdx,
             float[] real,
@@ -55,13 +55,13 @@ namespace TechnicalAnalysis
             int optInSignalPeriod)
             => Macd(startIdx, endIdx, real.ToDouble(), optInFastPeriod, optInSlowPeriod, optInSignalPeriod);
         
-        public static Macd Macd(int startIdx, int endIdx, float[] real)
+        public static MacdResult Macd(int startIdx, int endIdx, float[] real)
             => Macd(startIdx, endIdx, real, 12, 26, 9);
     }
 
-    public record Macd : IndicatorBase
+    public record MacdResult : IndicatorBase
     {
-        public Macd(
+        public MacdResult(
             RetCode retCode,
             int begIdx,
             int nbElement,

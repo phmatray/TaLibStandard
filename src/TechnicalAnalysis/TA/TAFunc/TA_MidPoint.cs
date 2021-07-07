@@ -1,3 +1,5 @@
+using TechnicalAnalysis.Common;
+
 namespace TechnicalAnalysis
 {
     internal static partial class TACore

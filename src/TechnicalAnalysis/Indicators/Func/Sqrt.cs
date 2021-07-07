@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Sqrt.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Sqrt.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Sqrt Sqrt(int startIdx, int endIdx, double[] real)
+        public static SqrtResult Sqrt(int startIdx, int endIdx, double[] real)
         {
             int outBegIdx = default;
             int outNBElement = default;
@@ -21,16 +12,16 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Sqrt(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new Sqrt(retCode, outBegIdx, outNBElement, outReal);
+            return new SqrtResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Sqrt Sqrt(int startIdx, int endIdx, float[] real)
+        public static SqrtResult Sqrt(int startIdx, int endIdx, float[] real)
             => Sqrt(startIdx, endIdx, real.ToDouble());
     }
 
-    public record Sqrt : IndicatorBase
+    public record SqrtResult : IndicatorBase
     {
-        public Sqrt(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public SqrtResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;

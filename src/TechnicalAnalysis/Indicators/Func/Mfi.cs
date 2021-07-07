@@ -1,19 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Mfi.cs" company="GLPM">
-//   Copyright (c) GLPM. All rights reserved.
-// </copyright>
-// <summary>
-//   Defines Mfi.
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using TechnicalAnalysis.Abstractions;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
     {
-        public static Mfi Mfi(
+        public static MfiResult Mfi(
             int startIdx,
             int endIdx,
             double[] high,
@@ -38,13 +29,13 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new Mfi(retCode, outBegIdx, outNBElement, outReal);
+            return new MfiResult(retCode, outBegIdx, outNBElement, outReal);
         }
 
-        public static Mfi Mfi(int startIdx, int endIdx, double[] high, double[] low, double[] close, double[] volume)
+        public static MfiResult Mfi(int startIdx, int endIdx, double[] high, double[] low, double[] close, double[] volume)
             => Mfi(startIdx, endIdx, high, low, close, volume, 14);
 
-        public static Mfi Mfi(
+        public static MfiResult Mfi(
             int startIdx,
             int endIdx,
             float[] high,
@@ -54,13 +45,13 @@ namespace TechnicalAnalysis
             int timePeriod)
             => Mfi(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), volume.ToDouble(), timePeriod);
         
-        public static Mfi Mfi(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume)
+        public static MfiResult Mfi(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume)
             => Mfi(startIdx, endIdx, high, low, close, volume, 14);
     }
 
-    public record Mfi : IndicatorBase
+    public record MfiResult : IndicatorBase
     {
-        public Mfi(RetCode retCode, int begIdx, int nbElement, double[] real)
+        public MfiResult(RetCode retCode, int begIdx, int nbElement, double[] real)
             : base(retCode, begIdx, nbElement)
         {
             Real = real;
