@@ -40,11 +40,6 @@ namespace TechnicalAnalysis.Candle
                 return RetCode.BadParam;
             }
 
-            if (outInteger == null)
-            {
-                return RetCode.BadParam;
-            }
-
             // Identify the minimum number of price bar needed to calculate at least one output.
             int lookbackTotal = CdlGravestoneDojiLookback();
 
