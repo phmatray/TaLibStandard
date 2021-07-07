@@ -38,7 +38,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -127,18 +127,18 @@ namespace TechnicalAnalysis.Candle
                 // 2nd: short
                 GetRealBody(i - 1) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i - 1) &&
                 // engulfed by 1st
-                Max(close[i - 1], open[i - 1]) < Max(close[i - 2], open[i - 2]) &&
-                Min(close[i - 1], open[i - 1]) > Min(close[i - 2], open[i - 2]) &&
+                Max(_close[i - 1], _open[i - 1]) < Max(_close[i - 2], _open[i - 2]) &&
+                Min(_close[i - 1], _open[i - 1]) > Min(_close[i - 2], _open[i - 2]) &&
                 (
                     ( // 3rd: opposite to 1st
                         GetCandleColor(i - 2) == 1 &&
                         GetCandleColor(i) == -1 &&
-                        close[i] < open[i - 2]
+                        _close[i] < _open[i - 2]
                     ) ||
                     ( // and closing out
                         GetCandleColor(i - 2) == -1 &&
                         GetCandleColor(i) == 1 &&
-                        close[i] > open[i - 2]
+                        _close[i] > _open[i - 2]
                     )
                 );
             

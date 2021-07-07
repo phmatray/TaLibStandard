@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -163,8 +163,8 @@ namespace TechnicalAnalysis.Candle
                 // 3rd white
                 GetCandleColor(i) == 1 &&
                 // consecutive higher closes
-                close[i] > close[i - 1] &&
-                close[i - 1] > close[i - 2] &&
+                _close[i] > _close[i - 1] &&
+                _close[i - 1] > _close[i - 2] &&
                 // 1st: long real body
                 GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[2], i - 2) &&
                 // 2nd: long real body
@@ -172,12 +172,12 @@ namespace TechnicalAnalysis.Candle
                 // very short upper shadow 
                 GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i - 1) &&
                 // opens within/near 1st real body
-                open[i - 1] > open[i - 2] &&
-                open[i - 1] <= close[i - 2] + GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
+                _open[i - 1] > _open[i - 2] &&
+                _open[i - 1] <= _close[i - 2] + GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
                 // 3rd: small real body
                 GetRealBody(i) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
                 // rides on the shoulder of 2nd real body
-                open[i] >= close[i - 1] - GetRealBody(i) - GetCandleAverage(Near, _nearPeriodTotal[1], i - 1);
+                _open[i] >= _close[i - 1] - GetRealBody(i) - GetCandleAverage(Near, _nearPeriodTotal[1], i - 1);
             
             return isStalledPattern;
         }

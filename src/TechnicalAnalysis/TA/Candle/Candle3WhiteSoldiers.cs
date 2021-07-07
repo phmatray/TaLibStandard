@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -174,15 +174,15 @@ namespace TechnicalAnalysis.Candle
                 // very short upper shadow
                 GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
                 // consecutive higher closes           
-                close[i] > close[i - 1] &&
-                close[i - 1] > close[i - 2] &&
+                _close[i] > _close[i - 1] &&
+                _close[i - 1] > _close[i - 2] &&
                 // 2nd opens within/near 1st real body
-                open[i - 1] > open[i - 2] &&
-                open[i - 1] <= close[i - 2] +
+                _open[i - 1] > _open[i - 2] &&
+                _open[i - 1] <= _close[i - 2] +
                 GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
                 // 3rd opens within/near 2nd real body
-                open[i] > open[i - 1] &&
-                open[i] <= close[i - 1] +
+                _open[i] > _open[i - 1] &&
+                _open[i] <= _close[i - 1] +
                 GetCandleAverage(Near, _nearPeriodTotal[1], i - 1) &&
                 // 2nd not far shorter than 1st
                 GetRealBody(i - 1) > GetRealBody(i - 2) -

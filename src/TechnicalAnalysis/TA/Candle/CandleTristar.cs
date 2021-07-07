@@ -37,7 +37,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -87,7 +87,7 @@ namespace TechnicalAnalysis.Candle
                     if ( // 2nd gaps up
                         GetRealBodyGapUp(i - 1, i - 2) &&
                         // 3rd is not higher than 2nd
-                        Max(open[i], close[i]) < Max(open[i - 1], close[i - 1]))
+                        Max(_open[i], _close[i]) < Max(_open[i - 1], _close[i - 1]))
                     {
                         outInteger[outIdx] = -100;
                     }
@@ -95,7 +95,7 @@ namespace TechnicalAnalysis.Candle
                     if ( // 2nd gaps down 
                         GetRealBodyGapDown(i - 1, i - 2) &&
                         // 3rd is not lower than 2nd
-                        Min(open[i], close[i]) > Min(open[i - 1], close[i - 1]))
+                        Min(_open[i], _close[i]) > Min(_open[i - 1], _close[i - 1]))
                     {
                         outInteger[outIdx] = +100;
                     }

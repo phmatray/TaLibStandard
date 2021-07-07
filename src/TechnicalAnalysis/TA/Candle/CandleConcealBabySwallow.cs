@@ -36,7 +36,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -135,9 +135,9 @@ namespace TechnicalAnalysis.Candle
                 GetUpperShadow(i - 1) >
                 GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
                 // that extends into the prior body
-                high[i - 1] > close[i - 2] &&
+                _high[i - 1] > _close[i - 2] &&
                 // 4th: engulfs the 3rd including the shadows
-                high[i] > high[i - 1] && low[i] < low[i - 1];
+                _high[i] > _high[i - 1] && _low[i] < _low[i - 1];
             
             return isConcealBabySwallow;
         }

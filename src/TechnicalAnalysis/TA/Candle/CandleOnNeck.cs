@@ -38,7 +38,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -126,10 +126,10 @@ namespace TechnicalAnalysis.Candle
                 // 2nd: white
                 GetCandleColor(i) == 1 &&
                 // open below prior low
-                open[i] < low[i - 1] &&
+                _open[i] < _low[i - 1] &&
                 // close equal to prior low
-                close[i] <= low[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
-                close[i] >= low[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
+                _close[i] <= _low[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+                _close[i] >= _low[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
             
             return isOnNeck;
         }

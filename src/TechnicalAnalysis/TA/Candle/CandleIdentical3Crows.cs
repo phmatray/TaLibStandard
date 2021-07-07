@@ -38,7 +38,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -145,14 +145,14 @@ namespace TechnicalAnalysis.Candle
                 // very short lower shadow
                 GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
                 // three declining
-                close[i - 2] > close[i - 1] &&
-                close[i - 1] > close[i] &&
+                _close[i - 2] > _close[i - 1] &&
+                _close[i - 1] > _close[i] &&
                 // 2nd black opens very close to 1st close
-                open[i - 1] <= close[i - 2] + GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
-                open[i - 1] >= close[i - 2] - GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
+                _open[i - 1] <= _close[i - 2] + GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
+                _open[i - 1] >= _close[i - 2] - GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
                 // 3rd black opens very close to 2nd close 
-                open[i] <= close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1) &&
-                open[i] >= close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1);
+                _open[i] <= _close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1) &&
+                _open[i] >= _close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1);
             
             return isIdentical3Crows;
         }

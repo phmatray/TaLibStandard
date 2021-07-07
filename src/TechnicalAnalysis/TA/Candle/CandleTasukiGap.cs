@@ -37,7 +37,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -116,11 +116,11 @@ namespace TechnicalAnalysis.Candle
                     // 2nd: black
                     GetCandleColor(i) == -1 &&
                     // that opens within the white rb
-                    open[i] < close[i - 1] && open[i] > open[i - 1] &&
+                    _open[i] < _close[i - 1] && _open[i] > _open[i - 1] &&
                     // and closes under the white rb
-                    close[i] < open[i - 1] &&
+                    _close[i] < _open[i - 1] &&
                     // inside the gap
-                    close[i] > Max(close[i - 2], open[i - 2]) &&
+                    _close[i] > Max(_close[i - 2], _open[i - 2]) &&
                     // size of 2 rb near the same
                     Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
                 ) ||
@@ -132,11 +132,11 @@ namespace TechnicalAnalysis.Candle
                     // 2nd: white
                     GetCandleColor(i) == 1 &&
                     // that opens within the black rb
-                    open[i] < open[i - 1] && open[i] > close[i - 1] &&
+                    _open[i] < _open[i - 1] && _open[i] > _close[i - 1] &&
                     // and closes above the black rb
-                    close[i] > open[i - 1] &&
+                    _close[i] > _open[i - 1] &&
                     // inside the gap
-                    close[i] < Min(close[i - 2], open[i - 2]) &&
+                    _close[i] < Min(_close[i - 2], _open[i - 2]) &&
                     // size of 2 rb near the same
                     Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
                 );

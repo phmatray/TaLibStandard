@@ -38,7 +38,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -124,8 +124,8 @@ namespace TechnicalAnalysis.Candle
                 // 2nd: short
                 GetRealBody(i) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
                 // engulfed by 1st
-                Max(close[i], open[i]) < Max(close[i - 1], open[i - 1]) &&
-                Min(close[i], open[i]) > Min(close[i - 1], open[i - 1]);
+                Max(_close[i], _open[i]) < Max(_close[i - 1], _open[i - 1]) &&
+                Min(_close[i], _open[i]) > Min(_close[i - 1], _open[i - 1]);
             
             return isHarami;
         }

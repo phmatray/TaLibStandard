@@ -33,7 +33,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -90,20 +90,20 @@ namespace TechnicalAnalysis.Candle
                     // white engulfs black
                     GetCandleColor(i - 1) == 1 &&
                     GetCandleColor(i - 2) == -1 &&
-                    close[i - 1] > open[i - 2] &&
-                    open[i - 1] < close[i - 2] &&
+                    _close[i - 1] > _open[i - 2] &&
+                    _open[i - 1] < _close[i - 2] &&
                     // third candle higher
-                    close[i] > close[i - 1]
+                    _close[i] > _close[i - 1]
                 )
                 ||
                 (
                     // black engulfs white
                     GetCandleColor(i - 1) == -1 &&
                     GetCandleColor(i - 2) == 1 &&
-                    open[i - 1] > close[i - 2] &&
-                    close[i - 1] < open[i - 2] &&
+                    _open[i - 1] > _close[i - 2] &&
+                    _close[i - 1] < _open[i - 2] &&
                     // third candle lower
-                    close[i] < close[i - 1]
+                    _close[i] < _close[i - 1]
                 );
             
             return is3Outside;

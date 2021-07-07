@@ -33,7 +33,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -89,16 +89,16 @@ namespace TechnicalAnalysis.Candle
                     // white engulfs black
                     GetCandleColor(i) == 1 &&
                     GetCandleColor(i - 1) == -1 &&
-                    close[i] > open[i - 1] &&
-                    open[i] < close[i - 1]
+                    _close[i] > _open[i - 1] &&
+                    _open[i] < _close[i - 1]
                 )
                 ||
                 (
                     // black engulfs white
                     GetCandleColor(i) == -1 &&
                     GetCandleColor(i - 1) == 1 &&
-                    open[i] > close[i - 1] &&
-                    close[i] < open[i - 1]
+                    _open[i] > _close[i - 1] &&
+                    _close[i] < _open[i - 1]
                 );
             
             return isEngulfing;

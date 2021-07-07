@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -122,10 +122,10 @@ namespace TechnicalAnalysis.Candle
                 // 2nd: black
                 GetCandleColor(i) == -1 &&
                 // open above prior high
-                open[i] > high[i - 1] &&
+                _open[i] > _high[i - 1] &&
                 // close within prior body
-                close[i] > open[i - 1] &&
-                close[i] < close[i - 1] - GetRealBody(i - 1) * _penetration;
+                _close[i] > _open[i - 1] &&
+                _close[i] < _close[i - 1] - GetRealBody(i - 1) * _penetration;
             
             return isDarkCloudCover;
         }

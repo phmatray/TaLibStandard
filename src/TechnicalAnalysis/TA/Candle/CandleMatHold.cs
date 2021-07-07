@@ -41,7 +41,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -151,18 +151,18 @@ namespace TechnicalAnalysis.Candle
                 // upside gap 1st to 2nd
                 GetRealBodyGapUp(i - 3, i - 4) &&
                 // 3rd to 4th hold within 1st: a part of the real body must be within 1st real body
-                Min(open[i - 2], close[i - 2]) < close[i - 4] &&
-                Min(open[i - 1], close[i - 1]) < close[i - 4] &&
+                Min(_open[i - 2], _close[i - 2]) < _close[i - 4] &&
+                Min(_open[i - 1], _close[i - 1]) < _close[i - 4] &&
                 // reaction days penetrate first body less than optInPenetration percent
-                Min(open[i - 2], close[i - 2]) > close[i - 4] - GetRealBody(i - 4) * _penetration &&
-                Min(open[i - 1], close[i - 1]) > close[i - 4] - GetRealBody(i - 4) * _penetration &&
+                Min(_open[i - 2], _close[i - 2]) > _close[i - 4] - GetRealBody(i - 4) * _penetration &&
+                Min(_open[i - 1], _close[i - 1]) > _close[i - 4] - GetRealBody(i - 4) * _penetration &&
                 // 2nd to 4th are falling
-                Max(close[i - 2], open[i - 2]) < open[i - 3] &&
-                Max(close[i - 1], open[i - 1]) < Max(close[i - 2], open[i - 2]) &&
+                Max(_close[i - 2], _open[i - 2]) < _open[i - 3] &&
+                Max(_close[i - 1], _open[i - 1]) < Max(_close[i - 2], _open[i - 2]) &&
                 // 5th opens above the prior close
-                open[i] > close[i - 1] &&
+                _open[i] > _close[i - 1] &&
                 // 5th closes above the highest high of the reaction days
-                close[i] > Max(Max(high[i - 3], high[i - 2]), high[i - 1]);
+                _close[i] > Max(Max(_high[i - 3], _high[i - 2]), _high[i - 1]);
             
             return isMatHold;
         }

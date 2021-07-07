@@ -38,7 +38,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -130,8 +130,8 @@ namespace TechnicalAnalysis.Candle
                 // 2nd long
                 GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], i) &&
                 // equal closes
-                close[i] <= close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
-                close[i] >= close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
+                _close[i] <= _close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+                _close[i] >= _close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
             
             return isCounterAttack;
         }

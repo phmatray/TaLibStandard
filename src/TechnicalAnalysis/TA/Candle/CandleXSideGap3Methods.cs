@@ -34,7 +34,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -96,11 +96,11 @@ namespace TechnicalAnalysis.Candle
                 // 3rd opposite color
                 GetCandleColor(i - 1) == -GetCandleColor(i) &&
                 // 3rd opens within 2nd rb
-                open[i] < Max(close[i - 1], open[i - 1]) &&
-                open[i] > Min(close[i - 1], open[i - 1]) &&
+                _open[i] < Max(_close[i - 1], _open[i - 1]) &&
+                _open[i] > Min(_close[i - 1], _open[i - 1]) &&
                 // 3rd closes within 1st rb
-                close[i] < Max(close[i - 2], open[i - 2]) &&
-                close[i] > Min(close[i - 2], open[i - 2]) &&
+                _close[i] < Max(_close[i - 2], _open[i - 2]) &&
+                _close[i] > Min(_close[i - 2], _open[i - 2]) &&
                 (
                     (
                         // when 1st is white

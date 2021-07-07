@@ -37,7 +37,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -76,7 +76,7 @@ namespace TechnicalAnalysis.Candle
             {
                 if (GetPatternRecognition(i))
                 {
-                    patternResult = 100 * (high[i] < high[i - 1] ? 1 : -1);
+                    patternResult = 100 * (_high[i] < _high[i - 1] ? 1 : -1);
                     patternIdx = i;
                 }
                 else
@@ -119,7 +119,7 @@ namespace TechnicalAnalysis.Candle
             {
                 if (GetPatternRecognition(i))
                 {
-                    patternResult = 100 * (high[i] < high[i - 1] ? 1 : -1);
+                    patternResult = 100 * (_high[i] < _high[i - 1] ? 1 : -1);
                     patternIdx = i;
                     outInteger[outIdx++] = patternResult;
                 }
@@ -156,18 +156,18 @@ namespace TechnicalAnalysis.Candle
         {
             bool patternRecognition =
                 // 2nd: lower high and higher low than 1st
-                high[i - 2] < high[i - 3] && low[i - 2] > low[i - 3] &&
+                _high[i - 2] < _high[i - 3] && _low[i - 2] > _low[i - 3] &&
                 // 3rd: lower high and higher low than 2nd
-                high[i - 1] < high[i - 2] && low[i - 1] > low[i - 2] &&
+                _high[i - 1] < _high[i - 2] && _low[i - 1] > _low[i - 2] &&
                 (
                     // (bull) 4th: lower high and lower low
-                    high[i] < high[i - 1] && low[i] < low[i - 1] &&
+                    _high[i] < _high[i - 1] && _low[i] < _low[i - 1] &&
                     // (bull) 2nd: close near the low
-                    close[i - 2] <= low[i - 2] + GetCandleAverage(Near, _nearPeriodTotal, i - 2) ||
+                    _close[i - 2] <= _low[i - 2] + GetCandleAverage(Near, _nearPeriodTotal, i - 2) ||
                     // (bear) 4th: higher high and higher low
-                    high[i] > high[i - 1] && low[i] > low[i - 1] &&
+                    _high[i] > _high[i - 1] && _low[i] > _low[i - 1] &&
                     // (bull) 2nd: close near the top
-                    close[i - 2] >= high[i - 2] - GetCandleAverage(Near, _nearPeriodTotal, i - 2)
+                    _close[i - 2] >= _high[i - 2] - GetCandleAverage(Near, _nearPeriodTotal, i - 2)
                 );
             
             return patternRecognition;
@@ -179,9 +179,9 @@ namespace TechnicalAnalysis.Candle
                 i <= patternIdx + 3 &&
                 (
                     // close higher than the high of 3rd
-                    patternResult > 0 && close[i] > high[patternIdx - 1] ||
+                    patternResult > 0 && _close[i] > _high[patternIdx - 1] ||
                     // close lower than the low of 3rd
-                    patternResult < 0 && close[i] < low[patternIdx - 1]
+                    patternResult < 0 && _close[i] < _low[patternIdx - 1]
                 );
             
             return confirmation;

@@ -39,7 +39,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -136,8 +136,8 @@ namespace TechnicalAnalysis.Candle
                 // opposite candles
                 GetCandleColor(i - 1) == -GetCandleColor(i) &&
                 // same open
-                open[i] <= open[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
-                open[i] >= open[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+                _open[i] <= _open[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+                _open[i] >= _open[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
                 // belt hold: long body
                 GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i) &&
                 (

@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TechnicalAnalysis.Abstractions;
+
 namespace TechnicalAnalysis
 {
     public static partial class TAMath

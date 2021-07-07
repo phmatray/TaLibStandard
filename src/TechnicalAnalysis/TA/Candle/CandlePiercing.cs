@@ -36,7 +36,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -118,11 +118,11 @@ namespace TechnicalAnalysis.Candle
                 // long
                 GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], i) &&
                 // open below prior low
-                open[i] < low[i - 1] &&
+                _open[i] < _low[i - 1] &&
                 // close within prior body
-                close[i] < open[i - 1] &&
+                _close[i] < _open[i - 1] &&
                 // above midpoint
-                close[i] > close[i - 1] + GetRealBody(i - 1) * 0.5;
+                _close[i] > _close[i - 1] + GetRealBody(i - 1) * 0.5;
             
             return isPiercing;
         }

@@ -1,4 +1,4 @@
-﻿namespace TechnicalAnalysis
+﻿namespace TechnicalAnalysis.Abstractions
 {
     public abstract record IndicatorBase
     {

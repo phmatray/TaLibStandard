@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -167,12 +167,12 @@ namespace TechnicalAnalysis.Candle
                 // 2nd: smaller candle
                 GetRealBody(i - 1) < GetRealBody(i - 2) &&
                 // that opens higher but within 1st range
-                open[i - 1] > close[i - 2] &&
-                open[i - 1] <= high[i - 2] &&
+                _open[i - 1] > _close[i - 2] &&
+                _open[i - 1] <= _high[i - 2] &&
                 // and trades lower than 1st close
-                low[i - 1] < close[i - 2] &&
+                _low[i - 1] < _close[i - 2] &&
                 // but not lower than 1st low
-                low[i - 1] >= low[i - 2] &&
+                _low[i - 1] >= _low[i - 2] &&
                 // and has a lower shadow
                 GetLowerShadow(i - 1) > GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
                 // 3rd: small marubozu
@@ -180,7 +180,7 @@ namespace TechnicalAnalysis.Candle
                 GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
                 GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
                 // engulfed by prior candle's range
-                low[i] > low[i - 1] && high[i] < high[i - 1];
+                _low[i] > _low[i - 1] && _high[i] < _high[i - 1];
             
             return is3StarsInSouth;
         }

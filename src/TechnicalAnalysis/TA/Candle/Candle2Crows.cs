@@ -36,7 +36,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -118,9 +118,9 @@ namespace TechnicalAnalysis.Candle
                 // 3rd: black
                 GetCandleColor(i) == -1 &&
                 // opening within 2nd rb
-                open[i] < open[i - 1] && open[i] > close[i - 1] &&
+                _open[i] < _open[i - 1] && _open[i] > _close[i - 1] &&
                 // closing within 1st rb
-                close[i] > open[i - 2] && close[i] < close[i - 2];
+                _close[i] > _open[i - 2] && _close[i] < _close[i - 2];
 
             return is2Crows;
         }

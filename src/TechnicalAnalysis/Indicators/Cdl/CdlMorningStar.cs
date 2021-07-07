@@ -7,6 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using TechnicalAnalysis.Abstractions;
 using TechnicalAnalysis.Candle;
 
 namespace TechnicalAnalysis

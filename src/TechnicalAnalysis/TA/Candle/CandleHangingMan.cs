@@ -40,7 +40,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -155,7 +155,7 @@ namespace TechnicalAnalysis.Candle
                 // very short upper shadow
                 GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i) &&
                 // rb near the prior candle's highs
-                Min(close[i], open[i]) >= high[i - 1] - GetCandleAverage(Near, _nearPeriodTotal, i - 1);
+                Min(_close[i], _open[i]) >= _high[i - 1] - GetCandleAverage(Near, _nearPeriodTotal, i - 1);
             
             return isHangingMan;
         }

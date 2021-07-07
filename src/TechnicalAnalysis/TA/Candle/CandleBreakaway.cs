@@ -36,7 +36,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -120,14 +120,14 @@ namespace TechnicalAnalysis.Candle
                         // 2nd gaps down
                         GetRealBodyGapDown(i - 3, i - 4) &&
                         // 3rd has lower high and low than 2nd
-                        high[i - 2] < high[i - 3] &&
-                        low[i - 2] < low[i - 3] &&
+                        _high[i - 2] < _high[i - 3] &&
+                        _low[i - 2] < _low[i - 3] &&
                         // 4th has lower high and low than 3rd
-                        high[i - 1] < high[i - 2] &&
-                        low[i - 1] < low[i - 2] &&
+                        _high[i - 1] < _high[i - 2] &&
+                        _low[i - 1] < _low[i - 2] &&
                         // 5th closes inside the gap
-                        close[i] > open[i - 3] &&
-                        close[i] < close[i - 4]
+                        _close[i] > _open[i - 3] &&
+                        _close[i] < _close[i - 4]
                     )
                     ||
                     (
@@ -136,14 +136,14 @@ namespace TechnicalAnalysis.Candle
                         // 2nd gaps up
                         GetRealBodyGapUp(i - 3, i - 4) &&
                         // 3rd has higher high and low than 2nd
-                        high[i - 2] > high[i - 3] &&
-                        low[i - 2] > low[i - 3] &&
+                        _high[i - 2] > _high[i - 3] &&
+                        _low[i - 2] > _low[i - 3] &&
                         // 4th has higher high and low than 3rd
-                        high[i - 1] > high[i - 2] &&
-                        low[i - 1] > low[i - 2] &&
+                        _high[i - 1] > _high[i - 2] &&
+                        _low[i - 1] > _low[i - 2] &&
                         // 5th closes inside the gap
-                        close[i] < open[i - 3] &&
-                        close[i] > close[i - 4]
+                        _close[i] < _open[i - 3] &&
+                        _close[i] > _close[i - 4]
                     )
                 );
             

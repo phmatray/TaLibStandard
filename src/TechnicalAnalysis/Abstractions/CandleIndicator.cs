@@ -4,17 +4,17 @@ namespace TechnicalAnalysis.Abstractions
 {
     public abstract class CandleIndicator
     {
-        protected double[] open;
-        protected double[] high;
-        protected double[] low;
-        protected double[] close;
+        protected double[] _open;
+        protected double[] _high;
+        protected double[] _low;
+        protected double[] _close;
 
         protected CandleIndicator(double[] open, double[] high, double[] low, double[] close)
         {
-            this.open = open;
-            this.high = high;
-            this.low = low;
-            this.close = close;
+            _open = open;
+            _high = high;
+            _low = low;
+            _close = close;
         }
 
         public abstract int GetLookback();
@@ -50,30 +50,30 @@ namespace TechnicalAnalysis.Abstractions
         }
 
         protected double GetRealBody(int index)
-            => Abs(close[index] - open[index]);
+            => Abs(_close[index] - _open[index]);
 
         protected double GetUpperShadow(int index)
-            => high[index] - (close[index] >= open[index] ? close[index] : open[index]);
+            => _high[index] - (_close[index] >= _open[index] ? _close[index] : _open[index]);
 
         protected double GetLowerShadow(int index)
-            => (close[index] >= open[index] ? open[index] : close[index]) - low[index];
+            => (_close[index] >= _open[index] ? _open[index] : _close[index]) - _low[index];
 
         protected double GetHighLowRange(int index)
-            => high[index] - low[index];
+            => _high[index] - _low[index];
 
         protected int GetCandleColor(int index)
-            => close[index] >= open[index] ? 1 : -1;
+            => _close[index] >= _open[index] ? 1 : -1;
 
         protected bool GetRealBodyGapUp(int index2, int index1)
-            => Min(open[index2], close[index2]) > Max(open[index1], close[index1]);
+            => Min(_open[index2], _close[index2]) > Max(_open[index1], _close[index1]);
 
         protected bool GetRealBodyGapDown(int index2, int index1)
-            => Max(open[index2], close[index2]) < Min(open[index1], close[index1]);
+            => Max(_open[index2], _close[index2]) < Min(_open[index1], _close[index1]);
 
         protected bool GetCandleGapUp(int index2, int index1)
-            => low[index2] > high[index1];
+            => _low[index2] > _high[index1];
 
         protected bool GetCandleGapDown(int index2, int index1)
-            => high[index2] < low[index1];
+            => _high[index2] < _low[index1];
     }
 }

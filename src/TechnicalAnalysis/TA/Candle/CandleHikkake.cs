@@ -33,7 +33,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -63,7 +63,7 @@ namespace TechnicalAnalysis.Candle
             {
                 if (GetPatternRecognition(i))
                 {
-                    patternResult = 100 * (high[i] < high[i - 1] ? 1 : -1);
+                    patternResult = 100 * (_high[i] < _high[i - 1] ? 1 : -1);
                     patternIdx = i;
                 }
                 // search for confirmation if hikkake was no more than 3 bars ago
@@ -93,7 +93,7 @@ namespace TechnicalAnalysis.Candle
             {
                 if (GetPatternRecognition(i))
                 {
-                    patternResult = 100 * (high[i] < high[i - 1] ? 1 : -1);
+                    patternResult = 100 * (_high[i] < _high[i - 1] ? 1 : -1);
                     patternIdx = i;
                     outInteger[outIdx++] = patternResult;
                 }
@@ -125,12 +125,12 @@ namespace TechnicalAnalysis.Candle
         {
             bool patternRecognition =
                 // 1st + 2nd: lower high and higher low
-                high[i - 1] < high[i - 2] && low[i - 1] > low[i - 2] &&
+                _high[i - 1] < _high[i - 2] && _low[i - 1] > _low[i - 2] &&
                 (
                     // (bull) 3rd: lower high and lower low
-                    (high[i] < high[i - 1] && low[i] < low[i - 1]) ||
+                    (_high[i] < _high[i - 1] && _low[i] < _low[i - 1]) ||
                     // (bear) 3rd: higher high and higher low
-                    (high[i] > high[i - 1] && low[i] > low[i - 1])
+                    (_high[i] > _high[i - 1] && _low[i] > _low[i - 1])
                 );
             
             return patternRecognition;
@@ -142,9 +142,9 @@ namespace TechnicalAnalysis.Candle
                 i <= patternIdx + 3 &&
                 (
                     // close higher than the high of 2nd
-                    (patternResult > 0 && close[i] > high[patternIdx - 1]) ||
+                    (patternResult > 0 && _close[i] > _high[patternIdx - 1]) ||
                     // close lower than the low of 2nd
-                    (patternResult < 0 && close[i] < low[patternIdx - 1])
+                    (patternResult < 0 && _close[i] < _low[patternIdx - 1])
                 );
             
             return patternConfirmation;

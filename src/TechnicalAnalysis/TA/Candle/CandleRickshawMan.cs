@@ -39,7 +39,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -139,8 +139,8 @@ namespace TechnicalAnalysis.Candle
                 GetUpperShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) &&
                 (
                     // body near midpoint
-                    Min(open[i], close[i]) <= low[i] + GetHighLowRange(i) / 2 + GetCandleAverage(Near, _nearPeriodTotal, i) &&
-                    Max(open[i], close[i]) >= low[i] + GetHighLowRange(i) / 2 - GetCandleAverage(Near, _nearPeriodTotal, i)
+                    Min(_open[i], _close[i]) <= _low[i] + GetHighLowRange(i) / 2 + GetCandleAverage(Near, _nearPeriodTotal, i) &&
+                    Max(_open[i], _close[i]) >= _low[i] + GetHighLowRange(i) / 2 - GetCandleAverage(Near, _nearPeriodTotal, i)
                 );
             
             return isRickshawMan;

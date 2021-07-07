@@ -38,7 +38,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -128,11 +128,11 @@ namespace TechnicalAnalysis.Candle
                 // 2nd: white
                 GetCandleColor(i) == 1 &&
                 // open below prior low
-                open[i] < low[i - 1] &&
+                _open[i] < _low[i - 1] &&
                 // close into prior body
-                close[i] > close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+                _close[i] > _close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
                 // under the midpoint
-                close[i] <= close[i - 1] + GetRealBody(i - 1) * 0.5;
+                _close[i] <= _close[i - 1] + GetRealBody(i - 1) * 0.5;
             
             return isThrusting;
         }

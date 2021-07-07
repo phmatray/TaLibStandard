@@ -43,7 +43,7 @@ namespace TechnicalAnalysis.Candle
             }
 
             // Verify required price component.
-            if (open == null || high == null || low == null || close == null)
+            if (_open == null || _high == null || _low == null || _close == null)
             {
                 return RetCode.BadParam;
             }
@@ -159,7 +159,7 @@ namespace TechnicalAnalysis.Candle
                 // white real body
                 GetCandleColor(i) == 1 &&
                 // closing well within 1st rb
-                close[i] > close[i - 2] + GetRealBody(i - 2) * _penetration;
+                _close[i] > _close[i - 2] + GetRealBody(i - 2) * _penetration;
             
             return isMorningDojiStar;
         }
