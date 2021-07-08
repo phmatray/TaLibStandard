@@ -187,10 +187,7 @@ namespace TechnicalAnalysis.Candles.Candle3StarsInSouth
 
         public override int GetLookback()
         {
-            return Max(
-                Max(GetCandleAvgPeriod(ShadowVeryShort), GetCandleAvgPeriod(ShadowLong)),
-                Max(GetCandleAvgPeriod(BodyLong), GetCandleAvgPeriod(BodyShort))
-            ) + 2;
+            return GetCandleMaxAvgPeriod(ShadowVeryShort, ShadowLong, BodyLong, BodyShort) + 2;
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Linq;
 using static System.Math;
 
 namespace TechnicalAnalysis.Common
@@ -75,5 +76,10 @@ namespace TechnicalAnalysis.Common
 
         protected bool GetCandleGapDown(int index2, int index1)
             => _high[index2] < _low[index1];
+
+        protected int GetCandleMaxAvgPeriod(params CandleSettingType[] candleSettingTypes)
+            => candleSettingTypes
+                .Select(GetCandleAvgPeriod)
+                .Aggregate(Max);
     }
 }

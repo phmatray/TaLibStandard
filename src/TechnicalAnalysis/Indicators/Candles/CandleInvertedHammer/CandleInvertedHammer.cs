@@ -146,10 +146,7 @@ namespace TechnicalAnalysis.Candles.CandleInvertedHammer
 
         public override int GetLookback()
         {
-            return Max(
-                Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(ShadowLong)),
-                GetCandleAvgPeriod(ShadowVeryShort)
-            ) + 1;
+            return GetCandleMaxAvgPeriod(BodyShort, ShadowLong, ShadowVeryShort) + 1;
         }
     }
 }

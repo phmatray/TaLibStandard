@@ -148,10 +148,7 @@ namespace TechnicalAnalysis.Candles.CandleRickshawMan
 
         public override int GetLookback()
         {
-            return Max(
-                Max(GetCandleAvgPeriod(BodyDoji), GetCandleAvgPeriod(ShadowLong)),
-                GetCandleAvgPeriod(Near)
-            );
+            return GetCandleMaxAvgPeriod(BodyDoji, ShadowLong, Near);
         }
     }
 }

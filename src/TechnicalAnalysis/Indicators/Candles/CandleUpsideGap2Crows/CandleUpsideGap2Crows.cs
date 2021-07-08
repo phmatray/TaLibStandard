@@ -144,7 +144,7 @@ namespace TechnicalAnalysis.Candles.CandleUpsideGap2Crows
 
         public override int GetLookback()
         {
-            return Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(BodyLong)) + 2;
+            return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 2;
         }
     }
 }

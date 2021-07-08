@@ -199,10 +199,7 @@ namespace TechnicalAnalysis.Candles.Candle3WhiteSoldiers
 
         public override int GetLookback()
         {
-            return Max(
-                Max(GetCandleAvgPeriod(ShadowVeryShort), GetCandleAvgPeriod(BodyShort)),
-                Max(GetCandleAvgPeriod(Far), GetCandleAvgPeriod(Near))
-            ) + 2;
+            return GetCandleMaxAvgPeriod(ShadowVeryShort, BodyShort, Far, Near) + 2;
         }
     }
 }

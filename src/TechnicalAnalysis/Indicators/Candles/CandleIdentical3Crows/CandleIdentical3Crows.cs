@@ -159,7 +159,7 @@ namespace TechnicalAnalysis.Candles.CandleIdentical3Crows
 
         public override int GetLookback()
         {
-            return Max(GetCandleAvgPeriod(ShadowVeryShort), GetCandleAvgPeriod(Equal)) + 2;
+            return GetCandleMaxAvgPeriod(ShadowVeryShort, Equal) + 2;
         }
     }
 }

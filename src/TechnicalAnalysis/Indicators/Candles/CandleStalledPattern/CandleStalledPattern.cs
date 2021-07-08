@@ -184,10 +184,7 @@ namespace TechnicalAnalysis.Candles.CandleStalledPattern
 
         public override int GetLookback()
         {
-            return Max(
-                Max(GetCandleAvgPeriod(BodyLong), GetCandleAvgPeriod(BodyShort)),
-                Max(GetCandleAvgPeriod(ShadowVeryShort), GetCandleAvgPeriod(Near))
-            ) + 2;
+            return GetCandleMaxAvgPeriod(BodyLong, BodyShort, ShadowVeryShort, Near) + 2;
         }
     }
 }

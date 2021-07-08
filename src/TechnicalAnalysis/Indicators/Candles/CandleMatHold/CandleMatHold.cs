@@ -169,7 +169,7 @@ namespace TechnicalAnalysis.Candles.CandleMatHold
 
         public override int GetLookback()
         {
-            return Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(BodyLong)) + 4;
+            return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 4;
         }
     }
 }

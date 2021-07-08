@@ -162,12 +162,7 @@ namespace TechnicalAnalysis.Candles.CandleHangingMan
 
         public override int GetLookback()
         {
-            return Max(
-                Max(
-                    Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(ShadowLong)),
-                    GetCandleAvgPeriod(ShadowVeryShort)),
-                GetCandleAvgPeriod(Near)
-            ) + 1;
+            return GetCandleMaxAvgPeriod(BodyShort, ShadowLong, ShadowVeryShort, Near) + 1;
         }
     }
 }

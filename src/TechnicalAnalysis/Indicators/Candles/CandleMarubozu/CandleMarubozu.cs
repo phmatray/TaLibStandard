@@ -124,7 +124,7 @@ namespace TechnicalAnalysis.Candles.CandleMarubozu
 
         public override int GetLookback()
         {
-            return Max(GetCandleAvgPeriod(BodyLong), GetCandleAvgPeriod(ShadowVeryShort));
+            return GetCandleMaxAvgPeriod(BodyLong, ShadowVeryShort);
         }
     }
 }

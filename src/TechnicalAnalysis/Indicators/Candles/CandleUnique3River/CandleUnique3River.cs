@@ -144,7 +144,7 @@ namespace TechnicalAnalysis.Candles.CandleUnique3River
 
         public override int GetLookback()
         {
-            return Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(BodyLong)) + 2;
+            return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 2;
         }
     }
 }

@@ -129,7 +129,7 @@ namespace TechnicalAnalysis.Candles.CandleLongLeggedDoji
 
         public override int GetLookback()
         {
-            return Max(GetCandleAvgPeriod(BodyDoji), GetCandleAvgPeriod(ShadowLong));
+            return GetCandleMaxAvgPeriod(BodyDoji, ShadowLong);
         }
     }
 }

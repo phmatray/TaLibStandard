@@ -158,7 +158,7 @@ namespace TechnicalAnalysis.Candles.CandleEveningStar
 
         public override int GetLookback()
         {
-            return Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(BodyLong)) + 2;
+            return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 2;
         }
     }
 }

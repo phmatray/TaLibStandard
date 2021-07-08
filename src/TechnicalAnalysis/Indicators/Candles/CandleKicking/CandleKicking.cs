@@ -145,7 +145,7 @@ namespace TechnicalAnalysis.Candles.CandleKicking
 
         public override int GetLookback()
         {
-            return Max(GetCandleAvgPeriod(ShadowVeryShort), GetCandleAvgPeriod(BodyLong)) + 1;
+            return GetCandleMaxAvgPeriod(ShadowVeryShort, BodyLong) + 1;
         }
     }
 }

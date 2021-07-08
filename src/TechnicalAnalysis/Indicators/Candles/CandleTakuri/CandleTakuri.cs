@@ -141,10 +141,7 @@ namespace TechnicalAnalysis.Candles.CandleTakuri
 
         public override int GetLookback()
         {
-            return Max(
-                Max(GetCandleAvgPeriod(BodyDoji), GetCandleAvgPeriod(ShadowVeryShort)),
-                GetCandleAvgPeriod(ShadowVeryLong)
-            );
+            return GetCandleMaxAvgPeriod(BodyDoji, ShadowVeryShort, ShadowVeryLong);
         }
     }
 }

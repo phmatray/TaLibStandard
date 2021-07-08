@@ -155,7 +155,7 @@ namespace TechnicalAnalysis.Candles.CandleGapSideSideWhite
 
         public override int GetLookback()
         {
-            return Max(GetCandleAvgPeriod(Near), GetCandleAvgPeriod(Equal)) + 2;
+            return GetCandleMaxAvgPeriod(Near, Equal) + 2;
         }
     }
 }

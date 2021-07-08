@@ -138,7 +138,7 @@ namespace TechnicalAnalysis.Candles.CandleHomingPigeon
 
         public override int GetLookback()
         {
-            return Max(GetCandleAvgPeriod(BodyShort), GetCandleAvgPeriod(BodyLong)) + 1;
+            return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 1;
         }
     }
 }

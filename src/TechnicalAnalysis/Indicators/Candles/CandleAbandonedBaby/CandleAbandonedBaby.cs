@@ -187,10 +187,7 @@ namespace TechnicalAnalysis.Candles.CandleAbandonedBaby
 
         public override int GetLookback()
         {
-            return Max(
-                Max(GetCandleAvgPeriod(BodyDoji), GetCandleAvgPeriod(BodyLong)),
-                GetCandleAvgPeriod(BodyShort)
-            ) + 2;
+            return GetCandleMaxAvgPeriod(BodyDoji, BodyLong, BodyShort) + 2;
         }
     }
 }

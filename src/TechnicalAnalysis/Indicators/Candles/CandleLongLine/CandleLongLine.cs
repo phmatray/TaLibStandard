@@ -124,7 +124,7 @@ namespace TechnicalAnalysis.Candles.CandleLongLine
 
         public override int GetLookback()
         {
-            return Max(GetCandleAvgPeriod(BodyLong), GetCandleAvgPeriod(ShadowShort));
+            return GetCandleMaxAvgPeriod(BodyLong, ShadowShort);
         }
     }
 }

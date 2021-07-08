@@ -236,12 +236,7 @@ namespace TechnicalAnalysis.Candles.CandleAdvanceBlock
 
         public override int GetLookback()
         {
-            return Max(
-                Max(
-                    Max(GetCandleAvgPeriod(ShadowLong), GetCandleAvgPeriod(ShadowShort)),
-                    Max(GetCandleAvgPeriod(Far), GetCandleAvgPeriod(Near))),
-                GetCandleAvgPeriod(BodyLong)
-            ) + 2;
+            return GetCandleMaxAvgPeriod(ShadowLong, ShadowShort, Far, Near, BodyLong) + 2;
         }
     }
 }
