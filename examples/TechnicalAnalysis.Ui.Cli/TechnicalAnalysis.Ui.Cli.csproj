@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TechnicalAnalysis.Business\TechnicalAnalysis.Business.csproj" />
-    <ProjectReference Include="..\TechnicalAnalysis\TechnicalAnalysis.csproj" />
   </ItemGroup>
 
 </Project>

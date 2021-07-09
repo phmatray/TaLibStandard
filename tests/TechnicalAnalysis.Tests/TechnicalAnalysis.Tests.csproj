@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TechnicalAnalysis\TechnicalAnalysis.csproj" />
+    <ProjectReference Include="..\..\src\TechnicalAnalysis\TechnicalAnalysis.csproj" />
   </ItemGroup>
 
 </Project>
