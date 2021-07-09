@@ -1,6 +1,4 @@
-using System.Linq;
 using TechnicalAnalysis.Common;
-using static System.Math;
 using static TechnicalAnalysis.Common.CandleSettingType;
 
 namespace TechnicalAnalysis.Candles.CandleEveningDojiStar
