@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleDojiResult CdlDoji(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleDoji(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleDojiResult(retCode, begIdx, nbElement, ints);
+            return new CandleDoji(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleDojiResult CdlDoji(

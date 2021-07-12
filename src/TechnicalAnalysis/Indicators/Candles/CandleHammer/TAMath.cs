@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleHammerResult CdlHammer(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleHammer(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleHammerResult(retCode, begIdx, nbElement, ints);
+            return new CandleHammer(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleHammerResult CdlHammer(

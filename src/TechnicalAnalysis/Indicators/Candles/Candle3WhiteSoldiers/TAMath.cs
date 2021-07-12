@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static Candle3WhiteSoldiersResult Cdl3WhiteSoldiers(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new Candle3WhiteSoldiers(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new Candle3WhiteSoldiersResult(retCode, begIdx, nbElement, ints);
+            return new Candle3WhiteSoldiers(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static Candle3WhiteSoldiersResult Cdl3WhiteSoldiers(

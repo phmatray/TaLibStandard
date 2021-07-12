@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleThrustingResult CdlThrusting(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleThrusting(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleThrustingResult(retCode, begIdx, nbElement, ints);
+            return new CandleThrusting(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleThrustingResult CdlThrusting(

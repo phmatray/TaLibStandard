@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleMorningStarResult CdlMorningStar(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close, double penetration)
         {
-            RetCode retCode = new CandleMorningStar(open, high, low, close)
-                .TryCompute(startIdx, endIdx, penetration, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleMorningStarResult(retCode, begIdx, nbElement, ints);
+            return new CandleMorningStar(open, high, low, close)
+                .Compute(startIdx, endIdx, penetration);
         }
 
         public static CandleMorningStarResult CdlMorningStar(

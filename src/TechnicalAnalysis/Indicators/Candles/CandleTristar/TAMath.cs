@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleTristarResult CdlTristar(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleTristar(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleTristarResult(retCode, begIdx, nbElement, ints);
+            return new CandleTristar(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleTristarResult CdlTristar(

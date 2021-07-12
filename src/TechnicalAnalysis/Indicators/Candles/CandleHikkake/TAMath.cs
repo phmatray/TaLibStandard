@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleHikkakeResult CdlHikkake(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleHikkake(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleHikkakeResult(retCode, begIdx, nbElement, ints);
+            return new CandleHikkake(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleHikkakeResult CdlHikkake(

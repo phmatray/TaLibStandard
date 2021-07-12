@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleLongLeggedDojiResult CdlLongLeggedDoji(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleLongLeggedDoji(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleLongLeggedDojiResult(retCode, begIdx, nbElement, ints);
+            return new CandleLongLeggedDoji(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleLongLeggedDojiResult CdlLongLeggedDoji(

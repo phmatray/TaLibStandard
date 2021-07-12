@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleStalledPatternResult CdlStalledPattern(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleStalledPattern(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleStalledPatternResult(retCode, begIdx, nbElement, ints);
+            return new CandleStalledPattern(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleStalledPatternResult CdlStalledPattern(

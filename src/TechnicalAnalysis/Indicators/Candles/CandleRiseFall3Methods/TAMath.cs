@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleRiseFall3MethodsResult CdlRiseFall3Methods(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleRiseFall3Methods(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleRiseFall3MethodsResult(retCode, begIdx, nbElement, ints);
+            return new CandleRiseFall3Methods(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleRiseFall3MethodsResult CdlRiseFall3Methods(

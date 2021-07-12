@@ -1,4 +1,5 @@
 using TechnicalAnalysis.Common;
+using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleEngulfing
 {
@@ -9,33 +10,28 @@ namespace TechnicalAnalysis.Candles.CandleEngulfing
         {
         }
 
-        public RetCode TryCompute(
-            int startIdx,
-            int endIdx,
-            out int outBegIdx,
-            out int outNBElement,
-            out int[] outInteger)
+        public CandleEngulfingResult Compute(int startIdx, int endIdx)
         {
             // Initialize output variables 
-            outBegIdx = default;
-            outNBElement = default;
-            outInteger = new int[endIdx - startIdx + 1];
+            int outBegIdx = default;
+            int outNBElement = default;
+            int[] outInteger = new int[endIdx - startIdx + 1];
             
             // Validate the requested output range.
             if (startIdx < 0)
             {
-                return RetCode.OutOfRangeStartIndex;
+                return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
             }
 
             if (endIdx < 0 || endIdx < startIdx)
             {
-                return RetCode.OutOfRangeEndIndex;
+                return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
             }
 
             // Verify required price component.
             if (_open == null || _high == null || _low == null || _close == null)
             {
-                return RetCode.BadParam;
+                return new(BadParam, outBegIdx, outNBElement, outInteger);
             }
 
             // Identify the minimum number of price bar needed to calculate at least one output.
@@ -50,7 +46,7 @@ namespace TechnicalAnalysis.Candles.CandleEngulfing
             // Make sure there is still something to evaluate.
             if (startIdx > endIdx)
             {
-                return RetCode.Success;
+                return new(Success, outBegIdx, outNBElement, outInteger);
             }
 
             // Do the calculation using tight loops.
@@ -79,7 +75,7 @@ namespace TechnicalAnalysis.Candles.CandleEngulfing
             outNBElement = outIdx;
             outBegIdx = startIdx;
             
-            return RetCode.Success;
+            return new(Success, outBegIdx, outNBElement, outInteger);
         }
 
         public override bool GetPatternRecognition(int i)

@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleTasukiGapResult CdlTasukiGap(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleTasukiGap(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleTasukiGapResult(retCode, begIdx, nbElement, ints);
+            return new CandleTasukiGap(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleTasukiGapResult CdlTasukiGap(

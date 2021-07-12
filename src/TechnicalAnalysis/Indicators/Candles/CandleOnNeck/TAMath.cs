@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleOnNeckResult CdlOnNeck(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleOnNeck(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleOnNeckResult(retCode, begIdx, nbElement, ints);
+            return new CandleOnNeck(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleOnNeckResult CdlOnNeck(

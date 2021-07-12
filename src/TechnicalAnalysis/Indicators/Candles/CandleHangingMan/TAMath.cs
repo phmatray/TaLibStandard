@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleHangingManResult CdlHangingMan(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleHangingMan(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleHangingManResult(retCode, begIdx, nbElement, ints);
+            return new CandleHangingMan(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleHangingManResult CdlHangingMan(

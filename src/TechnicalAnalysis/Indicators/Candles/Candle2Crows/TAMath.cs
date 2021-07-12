@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static Candle2CrowsResult Cdl2Crows(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new Candle2Crows(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-
-            return new Candle2CrowsResult(retCode, begIdx, nbElement, ints);
+            return new Candle2Crows(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static Candle2CrowsResult Cdl2Crows(

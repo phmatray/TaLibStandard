@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleClosingMarubozuResult CdlClosingMarubozu(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleClosingMarubozu(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleClosingMarubozuResult(retCode, begIdx, nbElement, ints);
+            return new CandleClosingMarubozu(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleClosingMarubozuResult CdlClosingMarubozu(

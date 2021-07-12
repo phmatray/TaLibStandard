@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleShootingStarResult CdlShootingStar(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleShootingStar(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleShootingStarResult(retCode, begIdx, nbElement, ints);
+            return new CandleShootingStar(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleShootingStarResult CdlShootingStar(

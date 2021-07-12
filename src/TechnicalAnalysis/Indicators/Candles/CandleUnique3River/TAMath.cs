@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleUnique3RiverResult CdlUnique3River(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleUnique3River(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleUnique3RiverResult(retCode, begIdx, nbElement, ints);
+            return new CandleUnique3River(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleUnique3RiverResult CdlUnique3River(

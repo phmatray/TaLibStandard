@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleHighWaveResult CdlHighWave(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleHighWave(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleHighWaveResult(retCode, begIdx, nbElement, ints);
+            return new CandleHighWave(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleHighWaveResult CdlHighWave(

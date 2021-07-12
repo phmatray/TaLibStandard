@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleKickingByLengthResult CdlKickingByLength(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleKickingByLength(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleKickingByLengthResult(retCode, begIdx, nbElement, ints);
+            return new CandleKickingByLength(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleKickingByLengthResult CdlKickingByLength(

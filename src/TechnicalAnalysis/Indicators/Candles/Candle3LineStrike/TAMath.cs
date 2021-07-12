@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static Candle3LineStrikeResult Cdl3LineStrike(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new Candle3LineStrike(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new Candle3LineStrikeResult(retCode, begIdx, nbElement, ints);
+            return new Candle3LineStrike(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static Candle3LineStrikeResult Cdl3LineStrike(

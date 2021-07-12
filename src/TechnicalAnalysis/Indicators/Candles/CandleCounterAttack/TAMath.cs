@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleCounterAttackResult CdlCounterAttack(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleCounterAttack(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleCounterAttackResult(retCode, begIdx, nbElement, ints);
+            return new CandleCounterAttack(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleCounterAttackResult CdlCounterAttack(

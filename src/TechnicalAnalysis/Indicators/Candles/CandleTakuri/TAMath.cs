@@ -9,10 +9,8 @@ namespace TechnicalAnalysis
         public static CandleTakuriResult CdlTakuri(
             int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
         {
-            RetCode retCode = new CandleTakuri(open, high, low, close)
-                .TryCompute(startIdx, endIdx, out int begIdx, out int nbElement, out int[] ints);
-            
-            return new CandleTakuriResult(retCode, begIdx, nbElement, ints);
+            return new CandleTakuri(open, high, low, close)
+                .Compute(startIdx, endIdx);
         }
 
         public static CandleTakuriResult CdlTakuri(
