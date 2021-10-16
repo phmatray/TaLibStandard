@@ -13,7 +13,7 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Trix(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new TrixResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static TrixResult Trix(int startIdx, int endIdx, double[] real)

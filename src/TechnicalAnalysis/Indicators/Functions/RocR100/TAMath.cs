@@ -13,7 +13,7 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.RocR100(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new RocR100Result(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static RocR100Result RocR100(int startIdx, int endIdx, double[] real)

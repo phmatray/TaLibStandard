@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new MfiResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static MfiResult Mfi(int startIdx, int endIdx, double[] high, double[] low, double[] close, double[] volume)

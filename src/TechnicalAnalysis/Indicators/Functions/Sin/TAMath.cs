@@ -13,7 +13,7 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Sin(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new SinResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static SinResult Sin(int startIdx, int endIdx, float[] real)

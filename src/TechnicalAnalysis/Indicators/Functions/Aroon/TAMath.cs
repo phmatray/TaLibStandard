@@ -23,7 +23,7 @@ namespace TechnicalAnalysis
                 ref outAroonDown,
                 ref outAroonUp);
             
-            return new AroonResult(retCode, outBegIdx, outNBElement, outAroonDown, outAroonUp);
+            return new(retCode, outBegIdx, outNBElement, outAroonDown, outAroonUp);
         }
 
         public static AroonResult Aroon(int startIdx, int endIdx, double[] high, double[] low)

@@ -21,7 +21,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new TrueRangeResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static TrueRangeResult TrueRange(int startIdx, int endIdx, float[] high, float[] low, float[] close)

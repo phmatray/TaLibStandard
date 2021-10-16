@@ -21,7 +21,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new MinusDMResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static MinusDMResult MinusDM(int startIdx, int endIdx, double[] high, double[] low)

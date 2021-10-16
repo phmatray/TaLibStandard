@@ -22,7 +22,7 @@ namespace TechnicalAnalysis
                 ref outMinIdx,
                 ref outMaxIdx);
             
-            return new MinMaxIndexResult(retCode, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
+            return new(retCode, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
         }
         
         public static MinMaxIndexResult MinMaxIndex(int startIdx, int endIdx, double[] real)

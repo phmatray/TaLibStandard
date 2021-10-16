@@ -13,7 +13,7 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Sum(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new SumResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static SumResult Sum(int startIdx, int endIdx, double[] real)

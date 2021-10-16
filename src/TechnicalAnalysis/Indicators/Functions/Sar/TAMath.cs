@@ -28,7 +28,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new SarResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static SarResult Sar(int startIdx, int endIdx, double[] high, double[] low)

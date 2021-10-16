@@ -20,7 +20,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new LinearRegSlopeResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static LinearRegSlopeResult LinearRegSlope(int startIdx, int endIdx, double[] real)

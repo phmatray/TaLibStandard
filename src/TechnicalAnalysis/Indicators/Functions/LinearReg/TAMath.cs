@@ -20,7 +20,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new LinearRegResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
         
         public static LinearRegResult LinearReg(int startIdx, int endIdx, double[] real)

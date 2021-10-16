@@ -13,7 +13,7 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.HtDcPhase(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new HtDcPhaseResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static HtDcPhaseResult HtDcPhase(int startIdx, int endIdx, float[] real)

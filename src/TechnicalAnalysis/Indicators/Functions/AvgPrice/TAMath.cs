@@ -1,6 +1,5 @@
 ﻿using TechnicalAnalysis.Common;
 
-// ReSharper disable once CheckNamespace
 namespace TechnicalAnalysis
 {
     public static partial class TAMath
@@ -28,7 +27,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new AvgPriceResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static AvgPriceResult AvgPrice(

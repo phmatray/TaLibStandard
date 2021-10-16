@@ -22,7 +22,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new AdxResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static AdxResult Adx(int startIdx, int endIdx, double[] high, double[] low, double[] close)

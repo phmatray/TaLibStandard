@@ -23,7 +23,7 @@ namespace TechnicalAnalysis
                 ref outMAMA,
                 ref outFAMA);
             
-            return new MamaResult(retCode, outBegIdx, outNBElement, outMAMA, outFAMA);
+            return new(retCode, outBegIdx, outNBElement, outMAMA, outFAMA);
         }
         
         public static MamaResult Mama(int startIdx, int endIdx, double[] real)

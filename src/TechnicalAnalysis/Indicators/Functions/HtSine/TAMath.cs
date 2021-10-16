@@ -14,7 +14,7 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.HtSine(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outSine, ref outLeadSine);
             
-            return new HtSineResult(retCode, outBegIdx, outNBElement, outSine, outLeadSine);
+            return new(retCode, outBegIdx, outNBElement, outSine, outLeadSine);
         }
 
         public static HtSineResult HtSine(int startIdx, int endIdx, float[] real)

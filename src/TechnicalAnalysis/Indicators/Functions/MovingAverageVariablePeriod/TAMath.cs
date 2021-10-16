@@ -30,7 +30,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new MovingAverageVariablePeriodResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
         
         public static MovingAverageVariablePeriodResult MovingAverageVariablePeriod(

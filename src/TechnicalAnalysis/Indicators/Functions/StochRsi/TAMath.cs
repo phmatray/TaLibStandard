@@ -32,7 +32,7 @@ namespace TechnicalAnalysis
                 ref outFastK,
                 ref outFastD);
             
-            return new StochRsiResult(retCode, outBegIdx, outNBElement, outFastK, outFastD);
+            return new(retCode, outBegIdx, outNBElement, outFastK, outFastD);
         }
 
         public static StochRsiResult StochRsi(int startIdx, int endIdx, double[] real)

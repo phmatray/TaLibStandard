@@ -26,7 +26,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
 
-            return new MovingAverageResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static MovingAverageResult MovingAverage(int startIdx, int endIdx, double[] real)

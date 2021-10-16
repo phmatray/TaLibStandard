@@ -22,7 +22,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new CciResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static CciResult Cci(int startIdx, int endIdx, double[] high, double[] low, double[] close)

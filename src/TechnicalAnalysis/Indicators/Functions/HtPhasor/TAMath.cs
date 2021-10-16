@@ -21,7 +21,7 @@ namespace TechnicalAnalysis
                 ref outInPhase,
                 ref outQuadrature);
             
-            return new HtPhasorResult(retCode, outBegIdx, outNBElement, outInPhase, outQuadrature);
+            return new(retCode, outBegIdx, outNBElement, outInPhase, outQuadrature);
         }
 
         public static HtPhasorResult HtPhasor(int startIdx, int endIdx, float[] real)

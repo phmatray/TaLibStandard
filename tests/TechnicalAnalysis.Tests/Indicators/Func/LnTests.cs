@@ -18,7 +18,7 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             double[] real = fixture.CreateMany<double>(100).ToArray();
             
             // Act
-            var actualResult = TAMath.Ln(
+            LnResult? actualResult = TAMath.Ln(
                 startIdx,
                 endIdx,
                 real);
@@ -38,7 +38,7 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             float[] real = fixture.CreateMany<float>(100).ToArray();
             
             // Act
-            var actualResult = TAMath.Ln(
+            LnResult? actualResult = TAMath.Ln(
                 startIdx,
                 endIdx,
                 real);

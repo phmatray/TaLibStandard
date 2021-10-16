@@ -40,7 +40,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new SarExtResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static SarExtResult SarExt(int startIdx, int endIdx, double[] high, double[] low)

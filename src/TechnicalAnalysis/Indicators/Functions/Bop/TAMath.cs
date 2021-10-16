@@ -28,7 +28,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new BopResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static BopResult Bop(int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)

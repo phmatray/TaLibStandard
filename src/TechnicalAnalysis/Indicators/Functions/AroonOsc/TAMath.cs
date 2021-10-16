@@ -21,7 +21,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new AroonOscResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static AroonOscResult AroonOsc(int startIdx, int endIdx, double[] high, double[] low)

@@ -34,7 +34,7 @@ namespace TechnicalAnalysis
                 ref outFastK,
                 ref outFastD);
             
-            return new StochFResult(retCode, outBegIdx, outNBElement, outFastK, outFastD);
+            return new(retCode, outBegIdx, outNBElement, outFastK, outFastD);
         }
 
         public static StochFResult StochF(int startIdx, int endIdx, double[] high, double[] low, double[] close)

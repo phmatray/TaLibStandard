@@ -13,7 +13,7 @@ namespace TechnicalAnalysis
 
             RetCode retCode = TACore.Tan(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new TanResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static TanResult Tan(int startIdx, int endIdx, float[] real)

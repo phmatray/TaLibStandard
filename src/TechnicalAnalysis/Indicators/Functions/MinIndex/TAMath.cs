@@ -20,7 +20,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outInteger);
             
-            return new MinIndexResult(retCode, outBegIdx, outNBElement, outInteger);
+            return new(retCode, outBegIdx, outNBElement, outInteger);
         }
 
         public static MinIndexResult MinIndex(int startIdx, int endIdx, double[] real)

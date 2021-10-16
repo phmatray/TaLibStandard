@@ -28,7 +28,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new WillRResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static WillRResult WillR(int startIdx, int endIdx, double[] high, double[] low, double[] close)

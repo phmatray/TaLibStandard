@@ -22,7 +22,7 @@ namespace TechnicalAnalysis
                 ref outNBElement,
                 ref outReal);
             
-            return new AtrResult(retCode, outBegIdx, outNBElement, outReal);
+            return new(retCode, outBegIdx, outNBElement, outReal);
         }
 
         public static AtrResult Atr(int startIdx, int endIdx, double[] high, double[] low, double[] close)

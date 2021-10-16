@@ -904,7 +904,7 @@ namespace TechnicalAnalysis
                 
                 for (int j = 0; j < candleSettings.Length; j++)
                 {
-                    candleSettings[j] = new CandleSetting();
+                    candleSettings[j] = new();
                 }
             }
         }
