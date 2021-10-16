@@ -13,14 +13,14 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
         {
             // Arrange
             Fixture fixture = new();
-            const int StartIdx = 0;
-            const int EndIdx = 99;
+            const int startIdx = 0;
+            const int endIdx = 99;
             double[] real = fixture.CreateMany<double>(count: 100).ToArray();
             
             // Act
             var actualResult = TAMath.Trix(
-                StartIdx,
-                EndIdx,
+                startIdx,
+                endIdx,
                 real);
 
             // Assert
@@ -33,14 +33,14 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
         {
             // Arrange
             Fixture fixture = new();
-            const int StartIdx = 0;
-            const int EndIdx = 99;
+            const int startIdx = 0;
+            const int endIdx = 99;
             float[] real = fixture.CreateMany<float>(count: 100).ToArray();
             
             // Act
             var actualResult = TAMath.Trix(
-                StartIdx,
-                EndIdx,
+                startIdx,
+                endIdx,
                 real);
 
             // Assert

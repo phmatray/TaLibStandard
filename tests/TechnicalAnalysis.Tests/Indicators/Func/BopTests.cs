@@ -13,8 +13,8 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
         {
             // Arrange
             Fixture fixture = new();
-            const int StartIdx = 0;
-            const int EndIdx = 99;
+            const int startIdx = 0;
+            const int endIdx = 99;
             double[] open = fixture.CreateMany<double>(count: 100).ToArray();
             double[] high = fixture.CreateMany<double>(count: 100).ToArray();
             double[] low = fixture.CreateMany<double>(count: 100).ToArray();
@@ -22,8 +22,8 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             
             // Act
             var actualResult = TAMath.Bop(
-                StartIdx,
-                EndIdx,
+                startIdx,
+                endIdx,
                 open,
                 high,
                 low,
@@ -39,8 +39,8 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
         {
             // Arrange
             Fixture fixture = new();
-            const int StartIdx = 0;
-            const int EndIdx = 99;
+            const int startIdx = 0;
+            const int endIdx = 99;
             double[] open = fixture.CreateMany<double>(count: 100).ToArray();
             double[] high = fixture.CreateMany<double>(count: 100).ToArray();
             double[] low = fixture.CreateMany<double>(count: 100).ToArray();
@@ -48,8 +48,8 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             
             // Act
             var actualResult = TAMath.Bop(
-                StartIdx,
-                EndIdx,
+                startIdx,
+                endIdx,
                 open,
                 high,
                 low,

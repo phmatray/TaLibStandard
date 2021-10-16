@@ -13,15 +13,15 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
         {
             // Arrange
             Fixture fixture = new();
-            const int StartIdx = 0;
-            const int EndIdx = 99;
+            const int startIdx = 0;
+            const int endIdx = 99;
             double[] real = fixture.CreateMany<double>(count: 100).ToArray();
             double[] periods = fixture.CreateMany<double>(count: 100).ToArray();
             
             // Act
             var actualResult = TAMath.MovingAverageVariablePeriod(
-                StartIdx,
-                EndIdx,
+                startIdx,
+                endIdx,
                 real,
                 periods);
 
@@ -35,15 +35,15 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
         {
             // Arrange
             Fixture fixture = new();
-            const int StartIdx = 0;
-            const int EndIdx = 99;
+            const int startIdx = 0;
+            const int endIdx = 99;
             float[] real = fixture.CreateMany<float>(count: 100).ToArray();
             float[] periods = fixture.CreateMany<float>(count: 100).ToArray();
 
             // Act
             var actualResult = TAMath.MovingAverageVariablePeriod(
-                StartIdx,
-                EndIdx,
+                startIdx,
+                endIdx,
                 real,
                 periods);
 
