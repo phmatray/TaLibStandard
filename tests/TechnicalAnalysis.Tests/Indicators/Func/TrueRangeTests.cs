@@ -15,9 +15,9 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             Fixture fixture = new();
             const int startIdx = 0;
             const int endIdx = 99;
-            double[] high = fixture.CreateMany<double>(count: 100).ToArray();
-            double[] low = fixture.CreateMany<double>(count: 100).ToArray();
-            double[] close = fixture.CreateMany<double>(count: 100).ToArray();
+            double[] high = fixture.CreateMany<double>(100).ToArray();
+            double[] low = fixture.CreateMany<double>(100).ToArray();
+            double[] close = fixture.CreateMany<double>(100).ToArray();
             
             // Act
             var actualResult = TAMath.TrueRange(
@@ -39,9 +39,9 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             Fixture fixture = new();
             const int startIdx = 0;
             const int endIdx = 99;
-            double[] high = fixture.CreateMany<double>(count: 100).ToArray();
-            double[] low = fixture.CreateMany<double>(count: 100).ToArray();
-            double[] close = fixture.CreateMany<double>(count: 100).ToArray();
+            double[] high = fixture.CreateMany<double>(100).ToArray();
+            double[] low = fixture.CreateMany<double>(100).ToArray();
+            double[] close = fixture.CreateMany<double>(100).ToArray();
             
             // Act
             var actualResult = TAMath.TrueRange(

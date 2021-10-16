@@ -15,8 +15,8 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             Fixture fixture = new();
             const int startIdx = 0;
             const int endIdx = 99;
-            double[] real0 = fixture.CreateMany<double>(count: 100).ToArray();
-            double[] real1 = fixture.CreateMany<double>(count: 100).ToArray();
+            double[] real0 = fixture.CreateMany<double>(100).ToArray();
+            double[] real1 = fixture.CreateMany<double>(100).ToArray();
             
             // Act
             var actualResult = TAMath.Beta(
@@ -37,8 +37,8 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             Fixture fixture = new();
             const int startIdx = 0;
             const int endIdx = 99;
-            float[] real0 = fixture.CreateMany<float>(count: 100).ToArray();
-            float[] real1 = fixture.CreateMany<float>(count: 100).ToArray();
+            float[] real0 = fixture.CreateMany<float>(100).ToArray();
+            float[] real1 = fixture.CreateMany<float>(100).ToArray();
             
             // Act
             var actualResult = TAMath.Beta(

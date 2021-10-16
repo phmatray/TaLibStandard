@@ -15,8 +15,8 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             Fixture fixture = new();
             const int startIdx = 0;
             const int endIdx = 99;
-            double[] real = fixture.CreateMany<double>(count: 100).ToArray();
-            double[] periods = fixture.CreateMany<double>(count: 100).ToArray();
+            double[] real = fixture.CreateMany<double>(100).ToArray();
+            double[] periods = fixture.CreateMany<double>(100).ToArray();
             
             // Act
             var actualResult = TAMath.MovingAverageVariablePeriod(
@@ -37,8 +37,8 @@ namespace TechnicalAnalysis.Tests.Indicators.Func
             Fixture fixture = new();
             const int startIdx = 0;
             const int endIdx = 99;
-            float[] real = fixture.CreateMany<float>(count: 100).ToArray();
-            float[] periods = fixture.CreateMany<float>(count: 100).ToArray();
+            float[] real = fixture.CreateMany<float>(100).ToArray();
+            float[] periods = fixture.CreateMany<float>(100).ToArray();
 
             // Act
             var actualResult = TAMath.MovingAverageVariablePeriod(
