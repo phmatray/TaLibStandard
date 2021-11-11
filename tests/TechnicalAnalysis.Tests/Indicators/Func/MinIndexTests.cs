@@ -3,48 +3,47 @@ using FluentAssertions;
 using TechnicalAnalysis.Common;
 using Xunit;
 
-namespace TechnicalAnalysis.Tests.Indicators.Func
+namespace TechnicalAnalysis.Tests.Indicators.Func;
+
+public class MinIndexTests
 {
-    public class MinIndexTests
+    [Fact]
+    public void MinIndexDouble()
     {
-        [Fact]
-        public void MinIndexDouble()
-        {
-            // Arrange
-            Fixture fixture = new();
-            const int startIdx = 0;
-            const int endIdx = 99;
-            double[] real = fixture.CreateMany<double>(100).ToArray();
+        // Arrange
+        Fixture fixture = new();
+        const int startIdx = 0;
+        const int endIdx = 99;
+        double[] real = fixture.CreateMany<double>(100).ToArray();
             
-            // Act
-            var actualResult = TAMath.MinIndex(
-                startIdx,
-                endIdx,
-                real);
+        // Act
+        var actualResult = TAMath.MinIndex(
+            startIdx,
+            endIdx,
+            real);
 
-            // Assert
-            actualResult.Should().NotBeNull();
-            actualResult.RetCode.Should().Be(RetCode.Success);
-        }
+        // Assert
+        actualResult.Should().NotBeNull();
+        actualResult.RetCode.Should().Be(RetCode.Success);
+    }
         
-        [Fact]
-        public void MinIndexFloat()
-        {
-            // Arrange
-            Fixture fixture = new();
-            const int startIdx = 0;
-            const int endIdx = 99;
-            float[] real = fixture.CreateMany<float>(100).ToArray();
+    [Fact]
+    public void MinIndexFloat()
+    {
+        // Arrange
+        Fixture fixture = new();
+        const int startIdx = 0;
+        const int endIdx = 99;
+        float[] real = fixture.CreateMany<float>(100).ToArray();
             
-            // Act
-            var actualResult = TAMath.MinIndex(
-                startIdx,
-                endIdx,
-                real);
+        // Act
+        var actualResult = TAMath.MinIndex(
+            startIdx,
+            endIdx,
+            real);
 
-            // Assert
-            actualResult.Should().NotBeNull();
-            actualResult.RetCode.Should().Be(RetCode.Success);
-        }
+        // Assert
+        actualResult.Should().NotBeNull();
+        actualResult.RetCode.Should().Be(RetCode.Success);
     }
 }

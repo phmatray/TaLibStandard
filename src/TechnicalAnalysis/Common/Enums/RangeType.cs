@@ -1,9 +1,8 @@
-namespace TechnicalAnalysis.Common
+namespace TechnicalAnalysis.Common;
+
+public enum RangeType
 {
-    public enum RangeType
-    {
-        RealBody,
-        HighLow,
-        Shadows
-    }
+    RealBody,
+    HighLow,
+    Shadows
 }

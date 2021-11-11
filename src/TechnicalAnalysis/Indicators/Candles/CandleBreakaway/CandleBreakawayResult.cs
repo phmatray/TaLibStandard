@@ -1,15 +1,14 @@
 ﻿using TechnicalAnalysis.Common;
 
-namespace TechnicalAnalysis.Candles.CandleBreakaway
-{
-    public record CandleBreakawayResult : IndicatorBase
-    {
-        public CandleBreakawayResult(RetCode retCode, int begIdx, int nbElement, int[] integer)
-            : base(retCode, begIdx, nbElement)
-        {
-            Integer = integer;
-        }
+namespace TechnicalAnalysis.Candles.CandleBreakaway;
 
-        public int[] Integer { get; }
+public record CandleBreakawayResult : IndicatorBase
+{
+    public CandleBreakawayResult(RetCode retCode, int begIdx, int nbElement, int[] integer)
+        : base(retCode, begIdx, nbElement)
+    {
+        Integer = integer;
     }
+
+    public int[] Integer { get; }
 }

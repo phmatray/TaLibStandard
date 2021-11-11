@@ -1,27 +1,26 @@
 using TechnicalAnalysis.Common;
 
-namespace TechnicalAnalysis
+namespace TechnicalAnalysis;
+
+public record BollingerBandsResult : IndicatorBase
 {
-    public record BollingerBandsResult : IndicatorBase
+    public BollingerBandsResult(
+        RetCode retCode,
+        int begIdx,
+        int nbElement,
+        double[] realUpperBand,
+        double[] realMiddleBand,
+        double[] realLowerBand)
+        : base(retCode, begIdx, nbElement)
     {
-        public BollingerBandsResult(
-            RetCode retCode,
-            int begIdx,
-            int nbElement,
-            double[] realUpperBand,
-            double[] realMiddleBand,
-            double[] realLowerBand)
-            : base(retCode, begIdx, nbElement)
-        {
-            RealUpperBand = realUpperBand;
-            RealMiddleBand = realMiddleBand;
-            RealLowerBand = realLowerBand;
-        }
-
-        public double[] RealLowerBand { get; }
-
-        public double[] RealMiddleBand { get; }
-
-        public double[] RealUpperBand { get; }
+        RealUpperBand = realUpperBand;
+        RealMiddleBand = realMiddleBand;
+        RealLowerBand = realLowerBand;
     }
+
+    public double[] RealLowerBand { get; }
+
+    public double[] RealMiddleBand { get; }
+
+    public double[] RealUpperBand { get; }
 }
