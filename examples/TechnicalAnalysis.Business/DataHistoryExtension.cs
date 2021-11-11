@@ -1,5 +1,4 @@
-﻿using System;
-using TechnicalAnalysis.Common;
+﻿using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis.Business
 {

@@ -1,4 +1,3 @@
-using System;
 using TechnicalAnalysis.Common;
 
 namespace TechnicalAnalysis

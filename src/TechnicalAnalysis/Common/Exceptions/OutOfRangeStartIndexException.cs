@@ -1,5 +1,3 @@
-using System;
-
 namespace TechnicalAnalysis.Common
 {
     public class OutOfRangeStartIndexException : Exception

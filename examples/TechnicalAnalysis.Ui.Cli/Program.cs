@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using TechnicalAnalysis.Business;
+﻿using TechnicalAnalysis.Business;
 
 namespace TechnicalAnalysis.Ui.Cli
 {

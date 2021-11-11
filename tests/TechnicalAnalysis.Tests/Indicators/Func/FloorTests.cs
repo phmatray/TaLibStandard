@@ -1,4 +1,3 @@
-using System.Linq;
 using AutoFixture;
 using FluentAssertions;
 using TechnicalAnalysis.Common;

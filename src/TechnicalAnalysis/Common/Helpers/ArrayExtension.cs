@@ -1,5 +1,3 @@
-using System;
-
 namespace TechnicalAnalysis.Common
 {
     internal static class ArrayExtension
