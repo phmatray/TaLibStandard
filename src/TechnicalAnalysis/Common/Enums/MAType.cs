@@ -8,45 +8,45 @@ public enum MAType
     /// <summary>
     /// Simple Moving Average
     /// </summary>
-    Sma,
+    Sma = 0,
 
     /// <summary>
     /// Exponential Moving Average
     /// </summary>
-    Ema,
+    Ema = 1,
 
     /// <summary>
     /// Weight Moving Average
     /// </summary>
-    Wma,
+    Wma = 2,
 
     /// <summary>
     /// Double Exponential Moving Average
     /// </summary>
-    Dema,
+    Dema = 3,
 
     /// <summary>
     /// Triple Exponential Moving Average
     /// </summary>
-    Tema,
+    Tema = 4,
 
     /// <summary>
     /// Triangular Moving Average
     /// </summary>
-    Trima,
+    Trima = 5,
 
     /// <summary>
     /// Kaufman's Adaptive Moving Average
     /// </summary>
-    Kama,
+    Kama = 6,
 
     /// <summary>
     /// MESA Adaptive Moving Average
     /// </summary>
-    Mama,
+    Mama = 7,
 
     /// <summary>
     /// Tilson T3 Moving Average
     /// </summary>
-    T3
+    T3 = 8
 }
