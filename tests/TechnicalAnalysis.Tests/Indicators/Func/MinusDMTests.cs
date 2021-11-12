@@ -36,8 +36,8 @@ public class MinusDMTests
         Fixture fixture = new();
         const int startIdx = 0;
         const int endIdx = 99;
-        double[] high = fixture.CreateMany<double>(100).ToArray();
-        double[] low = fixture.CreateMany<double>(100).ToArray();
+        float[] high = fixture.CreateMany<float>(100).ToArray();
+        float[] low = fixture.CreateMany<float>(100).ToArray();
             
         // Act
         MinusDMResult actualResult = TAMath.MinusDM(

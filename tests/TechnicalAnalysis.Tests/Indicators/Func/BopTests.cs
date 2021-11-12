@@ -40,10 +40,10 @@ public class BopTests
         Fixture fixture = new();
         const int startIdx = 0;
         const int endIdx = 99;
-        double[] open = fixture.CreateMany<double>(100).ToArray();
-        double[] high = fixture.CreateMany<double>(100).ToArray();
-        double[] low = fixture.CreateMany<double>(100).ToArray();
-        double[] close = fixture.CreateMany<double>(100).ToArray();
+        float[] open = fixture.CreateMany<float>(100).ToArray();
+        float[] high = fixture.CreateMany<float>(100).ToArray();
+        float[] low = fixture.CreateMany<float>(100).ToArray();
+        float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
         BopResult actualResult = TAMath.Bop(
