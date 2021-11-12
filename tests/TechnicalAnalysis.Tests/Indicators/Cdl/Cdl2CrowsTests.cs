@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.Candle2Crows;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class Cdl2CrowsTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cdl2Crows(
+        Candle2CrowsResult actualResult = TAMath.Cdl2Crows(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class Cdl2CrowsTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cdl2Crows(
+        Candle2CrowsResult actualResult = TAMath.Cdl2Crows(
             startIdx,
             endIdx,
             open,

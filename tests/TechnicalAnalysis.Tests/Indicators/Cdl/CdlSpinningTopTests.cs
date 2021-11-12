@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleSpinningTop;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlSpinningTopTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlSpinningTop(
+        CandleSpinningTopResult actualResult = TAMath.CdlSpinningTop(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlSpinningTopTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlSpinningTop(
+        CandleSpinningTopResult actualResult = TAMath.CdlSpinningTop(
             startIdx,
             endIdx,
             open,

@@ -17,7 +17,7 @@ public class PpoTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Ppo(
+        PpoResult actualResult = TAMath.Ppo(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class PpoTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Ppo(
+        PpoResult actualResult = TAMath.Ppo(
             startIdx,
             endIdx,
             real);

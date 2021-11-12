@@ -17,7 +17,7 @@ public class EmaTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Ema(
+        EmaResult actualResult = TAMath.Ema(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class EmaTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Ema(
+        EmaResult actualResult = TAMath.Ema(
             startIdx,
             endIdx,
             real);

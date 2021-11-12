@@ -17,7 +17,7 @@ public class SqrtTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Sqrt(
+        SqrtResult actualResult = TAMath.Sqrt(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class SqrtTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Sqrt(
+        SqrtResult actualResult = TAMath.Sqrt(
             startIdx,
             endIdx,
             real);

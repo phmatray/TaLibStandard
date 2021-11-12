@@ -18,7 +18,7 @@ public class BetaTests
         double[] real1 = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Beta(
+        BetaResult actualResult = TAMath.Beta(
             startIdx,
             endIdx,
             real0,
@@ -40,7 +40,7 @@ public class BetaTests
         float[] real1 = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Beta(
+        BetaResult actualResult = TAMath.Beta(
             startIdx,
             endIdx,
             real0,

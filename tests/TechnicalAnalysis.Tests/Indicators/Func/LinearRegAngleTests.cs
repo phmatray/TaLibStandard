@@ -17,7 +17,7 @@ public class LinearRegAngleTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.LinearRegAngle(
+        LinearRegAngleResult actualResult = TAMath.LinearRegAngle(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class LinearRegAngleTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.LinearRegAngle(
+        LinearRegAngleResult actualResult = TAMath.LinearRegAngle(
             startIdx,
             endIdx,
             real);

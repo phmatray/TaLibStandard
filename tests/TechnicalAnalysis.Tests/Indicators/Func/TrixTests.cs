@@ -17,7 +17,7 @@ public class TrixTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Trix(
+        TrixResult actualResult = TAMath.Trix(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class TrixTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Trix(
+        TrixResult actualResult = TAMath.Trix(
             startIdx,
             endIdx,
             real);

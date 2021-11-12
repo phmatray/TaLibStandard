@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleDarkCloudCover;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlDarkCloudCoverTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlDarkCloudCover(
+        CandleDarkCloudCoverResult actualResult = TAMath.CdlDarkCloudCover(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlDarkCloudCoverTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlDarkCloudCover(
+        CandleDarkCloudCoverResult actualResult = TAMath.CdlDarkCloudCover(
             startIdx,
             endIdx,
             open,

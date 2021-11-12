@@ -17,7 +17,7 @@ public class CoshTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cosh(
+        CoshResult actualResult = TAMath.Cosh(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class CoshTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cosh(
+        CoshResult actualResult = TAMath.Cosh(
             startIdx,
             endIdx,
             real);

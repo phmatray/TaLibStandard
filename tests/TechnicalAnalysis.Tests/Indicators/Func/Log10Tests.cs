@@ -17,7 +17,7 @@ public class Log10Tests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Log10(
+        Log10Result actualResult = TAMath.Log10(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class Log10Tests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Log10(
+        Log10Result actualResult = TAMath.Log10(
             startIdx,
             endIdx,
             real);

@@ -17,7 +17,7 @@ public class CosTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cos(
+        CosResult actualResult = TAMath.Cos(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class CosTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cos(
+        CosResult actualResult = TAMath.Cos(
             startIdx,
             endIdx,
             real);

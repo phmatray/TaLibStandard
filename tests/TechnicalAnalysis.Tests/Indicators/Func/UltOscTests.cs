@@ -19,7 +19,7 @@ public class UltOscTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.UltOsc(
+        UltOscResult actualResult = TAMath.UltOsc(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class UltOscTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.UltOsc(
+        UltOscResult actualResult = TAMath.UltOsc(
             startIdx,
             endIdx,
             high,

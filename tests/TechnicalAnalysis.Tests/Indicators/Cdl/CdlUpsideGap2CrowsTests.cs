@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleUpsideGap2Crows;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlUpsideGap2CrowsTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlUpsideGap2Crows(
+        CandleUpsideGap2CrowsResult actualResult = TAMath.CdlUpsideGap2Crows(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlUpsideGap2CrowsTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlUpsideGap2Crows(
+        CandleUpsideGap2CrowsResult actualResult = TAMath.CdlUpsideGap2Crows(
             startIdx,
             endIdx,
             open,

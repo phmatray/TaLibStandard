@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.Candle3Inside;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class Cdl3InsideTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
 
         // Act
-        var actualResult = TAMath.Cdl3Inside(
+        Candle3InsideResult actualResult = TAMath.Cdl3Inside(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class Cdl3InsideTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
 
         // Act
-        var actualResult = TAMath.Cdl3Inside(
+        Candle3InsideResult actualResult = TAMath.Cdl3Inside(
             startIdx,
             endIdx,
             open,

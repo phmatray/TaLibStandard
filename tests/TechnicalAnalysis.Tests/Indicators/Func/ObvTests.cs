@@ -18,7 +18,7 @@ public class ObvTests
         double[] volume = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Obv(
+        ObvResult actualResult = TAMath.Obv(
             startIdx,
             endIdx,
             real,
@@ -40,7 +40,7 @@ public class ObvTests
         float[] volume = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Obv(
+        ObvResult actualResult = TAMath.Obv(
             startIdx,
             endIdx,
             real,

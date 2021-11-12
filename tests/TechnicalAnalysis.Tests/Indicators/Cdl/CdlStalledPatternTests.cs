@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleStalledPattern;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlStalledPatternTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlStalledPattern(
+        CandleStalledPatternResult actualResult = TAMath.CdlStalledPattern(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlStalledPatternTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlStalledPattern(
+        CandleStalledPatternResult actualResult = TAMath.CdlStalledPattern(
             startIdx,
             endIdx,
             open,

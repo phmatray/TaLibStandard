@@ -17,7 +17,7 @@ public class WmaTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Wma(
+        WmaResult actualResult = TAMath.Wma(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class WmaTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Wma(
+        WmaResult actualResult = TAMath.Wma(
             startIdx,
             endIdx,
             real);

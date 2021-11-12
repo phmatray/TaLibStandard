@@ -17,7 +17,7 @@ public class LinearRegSlopeTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.LinearRegSlope(
+        LinearRegSlopeResult actualResult = TAMath.LinearRegSlope(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class LinearRegSlopeTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.LinearRegSlope(
+        LinearRegSlopeResult actualResult = TAMath.LinearRegSlope(
             startIdx,
             endIdx,
             real);

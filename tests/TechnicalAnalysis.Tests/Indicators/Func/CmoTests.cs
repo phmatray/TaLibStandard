@@ -17,7 +17,7 @@ public class CmoTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cmo(
+        CmoResult actualResult = TAMath.Cmo(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class CmoTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cmo(
+        CmoResult actualResult = TAMath.Cmo(
             startIdx,
             endIdx,
             real);

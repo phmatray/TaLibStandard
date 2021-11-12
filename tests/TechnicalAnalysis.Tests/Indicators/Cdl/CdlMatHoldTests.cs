@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleMatHold;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlMatHoldTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlMatHold(
+        CandleMatHoldResult actualResult = TAMath.CdlMatHold(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlMatHoldTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlMatHold(
+        CandleMatHoldResult actualResult = TAMath.CdlMatHold(
             startIdx,
             endIdx,
             open,

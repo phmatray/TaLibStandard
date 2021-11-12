@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleCounterAttack;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlCounterAttackTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlCounterAttack(
+        CandleCounterAttackResult actualResult = TAMath.CdlCounterAttack(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlCounterAttackTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlCounterAttack(
+        CandleCounterAttackResult actualResult = TAMath.CdlCounterAttack(
             startIdx,
             endIdx,
             open,

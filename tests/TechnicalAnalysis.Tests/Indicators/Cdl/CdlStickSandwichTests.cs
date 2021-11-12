@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleStickSandwich;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlStickSandwichTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlStickSandwich(
+        CandleStickSandwichResult actualResult = TAMath.CdlStickSandwich(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlStickSandwichTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlStickSandwich(
+        CandleStickSandwichResult actualResult = TAMath.CdlStickSandwich(
             startIdx,
             endIdx,
             open,

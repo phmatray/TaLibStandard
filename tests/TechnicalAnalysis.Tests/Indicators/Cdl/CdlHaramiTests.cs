@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleHarami;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlHaramiTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHarami(
+        CandleHaramiResult actualResult = TAMath.CdlHarami(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlHaramiTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHarami(
+        CandleHaramiResult actualResult = TAMath.CdlHarami(
             startIdx,
             endIdx,
             open,

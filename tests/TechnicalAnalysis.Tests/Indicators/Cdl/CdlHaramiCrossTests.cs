@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleHaramiCross;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlHaramiCrossTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHaramiCross(
+        CandleHaramiCrossResult actualResult = TAMath.CdlHaramiCross(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlHaramiCrossTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHaramiCross(
+        CandleHaramiCrossResult actualResult = TAMath.CdlHaramiCross(
             startIdx,
             endIdx,
             open,

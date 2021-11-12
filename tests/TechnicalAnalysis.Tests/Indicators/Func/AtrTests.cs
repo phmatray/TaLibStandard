@@ -19,7 +19,7 @@ public class AtrTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Atr(
+        AtrResult actualResult = TAMath.Atr(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class AtrTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Atr(
+        AtrResult actualResult = TAMath.Atr(
             startIdx,
             endIdx,
             high,

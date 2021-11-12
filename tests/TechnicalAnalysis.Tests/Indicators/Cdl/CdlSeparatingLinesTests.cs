@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleSeparatingLines;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlSeparatingLinesTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlSeparatingLines(
+        CandleSeparatingLinesResult actualResult = TAMath.CdlSeparatingLines(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlSeparatingLinesTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlSeparatingLines(
+        CandleSeparatingLinesResult actualResult = TAMath.CdlSeparatingLines(
             startIdx,
             endIdx,
             open,

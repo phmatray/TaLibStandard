@@ -18,7 +18,7 @@ public class MovingAverageVariablePeriodTests
         double[] periods = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MovingAverageVariablePeriod(
+        MovingAverageVariablePeriodResult actualResult = TAMath.MovingAverageVariablePeriod(
             startIdx,
             endIdx,
             real,
@@ -40,7 +40,7 @@ public class MovingAverageVariablePeriodTests
         float[] periods = fixture.CreateMany<float>(100).ToArray();
 
         // Act
-        var actualResult = TAMath.MovingAverageVariablePeriod(
+        MovingAverageVariablePeriodResult actualResult = TAMath.MovingAverageVariablePeriod(
             startIdx,
             endIdx,
             real,

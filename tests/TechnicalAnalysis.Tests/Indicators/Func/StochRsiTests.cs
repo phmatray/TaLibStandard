@@ -17,7 +17,7 @@ public class StochRsiTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.StochRsi(
+        StochRsiResult actualResult = TAMath.StochRsi(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class StochRsiTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.StochRsi(
+        StochRsiResult actualResult = TAMath.StochRsi(
             startIdx,
             endIdx,
             real);

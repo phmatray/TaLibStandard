@@ -18,7 +18,7 @@ public class CorrelTests
         double[] real1 = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Correl(
+        CorrelResult actualResult = TAMath.Correl(
             startIdx,
             endIdx,
             real0,
@@ -40,7 +40,7 @@ public class CorrelTests
         float[] real1 = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Correl(
+        CorrelResult actualResult = TAMath.Correl(
             startIdx,
             endIdx,
             real0,

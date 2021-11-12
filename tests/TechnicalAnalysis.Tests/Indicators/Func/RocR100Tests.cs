@@ -17,7 +17,7 @@ public class RocR100Tests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.RocR100(
+        RocR100Result actualResult = TAMath.RocR100(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class RocR100Tests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.RocR100(
+        RocR100Result actualResult = TAMath.RocR100(
             startIdx,
             endIdx,
             real);

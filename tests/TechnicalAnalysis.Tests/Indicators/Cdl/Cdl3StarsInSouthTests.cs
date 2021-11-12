@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.Candle3StarsInSouth;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class Cdl3StarsInSouthTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cdl3StarsInSouth(
+        Candle3StarsInSouthResult actualResult = TAMath.Cdl3StarsInSouth(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class Cdl3StarsInSouthTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cdl3StarsInSouth(
+        Candle3StarsInSouthResult actualResult = TAMath.Cdl3StarsInSouth(
             startIdx,
             endIdx,
             open,

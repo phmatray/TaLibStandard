@@ -17,7 +17,7 @@ public class ExpTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Exp(
+        ExpResult actualResult = TAMath.Exp(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class ExpTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Exp(
+        ExpResult actualResult = TAMath.Exp(
             startIdx,
             endIdx,
             real);

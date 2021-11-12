@@ -20,7 +20,7 @@ public class BopTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Bop(
+        BopResult actualResult = TAMath.Bop(
             startIdx,
             endIdx,
             open,
@@ -46,7 +46,7 @@ public class BopTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Bop(
+        BopResult actualResult = TAMath.Bop(
             startIdx,
             endIdx,
             open,

@@ -17,7 +17,7 @@ public class MinIndexTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MinIndex(
+        MinIndexResult actualResult = TAMath.MinIndex(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class MinIndexTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MinIndex(
+        MinIndexResult actualResult = TAMath.MinIndex(
             startIdx,
             endIdx,
             real);

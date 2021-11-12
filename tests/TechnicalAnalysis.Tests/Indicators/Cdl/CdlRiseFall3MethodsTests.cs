@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleRiseFall3Methods;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlRiseFall3MethodsTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlRiseFall3Methods(
+        CandleRiseFall3MethodsResult actualResult = TAMath.CdlRiseFall3Methods(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlRiseFall3MethodsTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlRiseFall3Methods(
+        CandleRiseFall3MethodsResult actualResult = TAMath.CdlRiseFall3Methods(
             startIdx,
             endIdx,
             open,

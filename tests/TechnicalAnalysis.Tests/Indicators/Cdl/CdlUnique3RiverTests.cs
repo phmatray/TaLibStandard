@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleUnique3River;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlUnique3RiverTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlUnique3River(
+        CandleUnique3RiverResult actualResult = TAMath.CdlUnique3River(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlUnique3RiverTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlUnique3River(
+        CandleUnique3RiverResult actualResult = TAMath.CdlUnique3River(
             startIdx,
             endIdx,
             open,

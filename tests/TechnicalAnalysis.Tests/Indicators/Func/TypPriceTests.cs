@@ -19,7 +19,7 @@ public class TypPriceTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.TypPrice(
+        TypPriceResult actualResult = TAMath.TypPrice(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class TypPriceTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.TypPrice(
+        TypPriceResult actualResult = TAMath.TypPrice(
             startIdx,
             endIdx,
             high,

@@ -20,7 +20,7 @@ public class AvgPriceTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.AvgPrice(
+        AvgPriceResult actualResult = TAMath.AvgPrice(
             startIdx,
             endIdx,
             open,
@@ -46,7 +46,7 @@ public class AvgPriceTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.AvgPrice(
+        AvgPriceResult actualResult = TAMath.AvgPrice(
             startIdx,
             endIdx,
             open,

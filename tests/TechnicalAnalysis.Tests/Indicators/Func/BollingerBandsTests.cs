@@ -17,7 +17,7 @@ public class BollingerBandsTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.BollingerBands(
+        BollingerBandsResult actualResult = TAMath.BollingerBands(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class BollingerBandsTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.BollingerBands(
+        BollingerBandsResult actualResult = TAMath.BollingerBands(
             startIdx,
             endIdx,
             real);

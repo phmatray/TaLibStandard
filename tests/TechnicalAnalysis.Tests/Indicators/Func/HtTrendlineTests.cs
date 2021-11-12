@@ -17,7 +17,7 @@ public class HtTrendlineTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.HtTrendline(
+        HtTrendlineResult actualResult = TAMath.HtTrendline(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class HtTrendlineTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.HtTrendline(
+        HtTrendlineResult actualResult = TAMath.HtTrendline(
             startIdx,
             endIdx,
             real);

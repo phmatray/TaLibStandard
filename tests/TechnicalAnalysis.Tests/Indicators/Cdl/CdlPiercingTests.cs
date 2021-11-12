@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandlePiercing;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlPiercingTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlPiercing(
+        CandlePiercingResult actualResult = TAMath.CdlPiercing(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlPiercingTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlPiercing(
+        CandlePiercingResult actualResult = TAMath.CdlPiercing(
             startIdx,
             endIdx,
             open,

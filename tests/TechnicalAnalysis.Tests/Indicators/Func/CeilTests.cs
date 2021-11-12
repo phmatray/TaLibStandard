@@ -17,7 +17,7 @@ public class CeilTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Ceil(
+        CeilResult actualResult = TAMath.Ceil(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class CeilTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Ceil(
+        CeilResult actualResult = TAMath.Ceil(
             startIdx,
             endIdx,
             real);

@@ -17,7 +17,7 @@ public class StdDevTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.StdDev(
+        StdDevResult actualResult = TAMath.StdDev(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class StdDevTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.StdDev(
+        StdDevResult actualResult = TAMath.StdDev(
             startIdx,
             endIdx,
             real);

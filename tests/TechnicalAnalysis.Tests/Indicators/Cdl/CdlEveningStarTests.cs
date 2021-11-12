@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleEveningStar;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlEveningStarTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlEveningStar(
+        CandleEveningStarResult actualResult = TAMath.CdlEveningStar(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlEveningStarTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlEveningStar(
+        CandleEveningStarResult actualResult = TAMath.CdlEveningStar(
             startIdx,
             endIdx,
             open,

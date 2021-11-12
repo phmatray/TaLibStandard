@@ -20,7 +20,7 @@ public class AdOscTests
         double[] volume = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.AdOsc(
+        AdOscResult actualResult = TAMath.AdOsc(
             startIdx,
             endIdx,
             high,
@@ -46,7 +46,7 @@ public class AdOscTests
         float[] volume = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.AdOsc(
+        AdOscResult actualResult = TAMath.AdOsc(
             startIdx,
             endIdx,
             high,

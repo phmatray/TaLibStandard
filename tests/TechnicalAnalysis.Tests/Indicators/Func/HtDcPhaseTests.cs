@@ -17,7 +17,7 @@ public class HtDcPhaseTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.HtDcPhase(
+        HtDcPhaseResult actualResult = TAMath.HtDcPhase(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class HtDcPhaseTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.HtDcPhase(
+        HtDcPhaseResult actualResult = TAMath.HtDcPhase(
             startIdx,
             endIdx,
             real);

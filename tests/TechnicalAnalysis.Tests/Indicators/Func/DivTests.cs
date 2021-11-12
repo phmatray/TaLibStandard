@@ -18,7 +18,7 @@ public class DivTests
         double[] real1 = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Div(
+        DivResult actualResult = TAMath.Div(
             startIdx,
             endIdx,
             real0,
@@ -40,7 +40,7 @@ public class DivTests
         float[] real1 = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Div(
+        DivResult actualResult = TAMath.Div(
             startIdx,
             endIdx,
             real0,

@@ -17,7 +17,7 @@ public class RsiTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Rsi(
+        RsiResult actualResult = TAMath.Rsi(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class RsiTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Rsi(
+        RsiResult actualResult = TAMath.Rsi(
             startIdx,
             endIdx,
             real);

@@ -17,7 +17,7 @@ public class SmaTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Sma(
+        SmaResult actualResult = TAMath.Sma(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class SmaTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Sma(
+        SmaResult actualResult = TAMath.Sma(
             startIdx,
             endIdx,
             real);

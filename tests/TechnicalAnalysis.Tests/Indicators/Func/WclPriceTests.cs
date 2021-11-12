@@ -19,7 +19,7 @@ public class WclPriceTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.WclPrice(
+        WclPriceResult actualResult = TAMath.WclPrice(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class WclPriceTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.WclPrice(
+        WclPriceResult actualResult = TAMath.WclPrice(
             startIdx,
             endIdx,
             high,

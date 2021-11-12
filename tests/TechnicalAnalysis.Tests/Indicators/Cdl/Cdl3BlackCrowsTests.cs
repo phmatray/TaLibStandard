@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.Candle3BlackCrows;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class Cdl3BlackCrowsTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
 
         // Act
-        var actualResult = TAMath.Cdl3BlackCrows(
+        Candle3BlackCrowsResult actualResult = TAMath.Cdl3BlackCrows(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class Cdl3BlackCrowsTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
 
         // Act
-        var actualResult = TAMath.Cdl3BlackCrows(
+        Candle3BlackCrowsResult actualResult = TAMath.Cdl3BlackCrows(
             startIdx,
             endIdx,
             open,

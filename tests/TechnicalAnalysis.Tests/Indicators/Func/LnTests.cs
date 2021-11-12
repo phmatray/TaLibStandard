@@ -17,7 +17,7 @@ public class LnTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        LnResult? actualResult = TAMath.Ln(
+        LnResult actualResult = TAMath.Ln(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class LnTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        LnResult? actualResult = TAMath.Ln(
+        LnResult actualResult = TAMath.Ln(
             startIdx,
             endIdx,
             real);

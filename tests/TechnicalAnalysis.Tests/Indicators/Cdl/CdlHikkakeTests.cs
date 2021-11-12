@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleHikkake;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlHikkakeTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHikkake(
+        CandleHikkakeResult actualResult = TAMath.CdlHikkake(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlHikkakeTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHikkake(
+        CandleHikkakeResult actualResult = TAMath.CdlHikkake(
             startIdx,
             endIdx,
             open,

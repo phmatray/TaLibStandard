@@ -17,7 +17,7 @@ public class MaxTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Max(
+        MaxResult actualResult = TAMath.Max(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class MaxTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Max(
+        MaxResult actualResult = TAMath.Max(
             startIdx,
             endIdx,
             real);

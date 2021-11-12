@@ -17,7 +17,7 @@ public class MacdTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Macd(
+        MacdResult actualResult = TAMath.Macd(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class MacdTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Macd(
+        MacdResult actualResult = TAMath.Macd(
             startIdx,
             endIdx,
             real);

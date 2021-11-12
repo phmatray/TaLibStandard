@@ -18,7 +18,7 @@ public class MultTests
         double[] real1 = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Mult(
+        MultResult actualResult = TAMath.Mult(
             startIdx,
             endIdx,
             real0,
@@ -40,7 +40,7 @@ public class MultTests
         float[] real1 = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Mult(
+        MultResult actualResult = TAMath.Mult(
             startIdx,
             endIdx,
             real0,

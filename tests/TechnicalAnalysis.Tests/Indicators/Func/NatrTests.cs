@@ -19,7 +19,7 @@ public class NatrTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Natr(
+        NatrResult actualResult = TAMath.Natr(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class NatrTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Natr(
+        NatrResult actualResult = TAMath.Natr(
             startIdx,
             endIdx,
             high,

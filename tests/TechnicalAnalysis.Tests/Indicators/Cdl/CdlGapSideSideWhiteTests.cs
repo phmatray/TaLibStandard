@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleGapSideSideWhite;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlGapSideSideWhiteTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlGapSideSideWhite(
+        CandleGapSideSideWhiteResult actualResult = TAMath.CdlGapSideSideWhite(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlGapSideSideWhiteTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlGapSideSideWhite(
+        CandleGapSideSideWhiteResult actualResult = TAMath.CdlGapSideSideWhite(
             startIdx,
             endIdx,
             open,

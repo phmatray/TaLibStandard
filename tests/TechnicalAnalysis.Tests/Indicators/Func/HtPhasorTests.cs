@@ -17,7 +17,7 @@ public class HtPhasorTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.HtPhasor(
+        HtPhasorResult actualResult = TAMath.HtPhasor(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class HtPhasorTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.HtPhasor(
+        HtPhasorResult actualResult = TAMath.HtPhasor(
             startIdx,
             endIdx,
             real);

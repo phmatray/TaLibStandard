@@ -17,7 +17,7 @@ public class TrimaTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Trima(
+        TrimaResult actualResult = TAMath.Trima(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class TrimaTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Trima(
+        TrimaResult actualResult = TAMath.Trima(
             startIdx,
             endIdx,
             real);
