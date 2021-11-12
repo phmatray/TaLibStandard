@@ -17,7 +17,7 @@ public class VarianceTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Variance(
+        VarianceResult actualResult = TAMath.Variance(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class VarianceTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Variance(
+        VarianceResult actualResult = TAMath.Variance(
             startIdx,
             endIdx,
             real);

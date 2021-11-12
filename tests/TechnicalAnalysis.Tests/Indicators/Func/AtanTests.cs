@@ -17,7 +17,7 @@ public class AtanTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Atan(
+        AtanResult actualResult = TAMath.Atan(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class AtanTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Atan(
+        AtanResult actualResult = TAMath.Atan(
             startIdx,
             endIdx,
             real);

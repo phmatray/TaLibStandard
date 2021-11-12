@@ -17,7 +17,7 @@ public class TsfTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Tsf(
+        TsfResult actualResult = TAMath.Tsf(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class TsfTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Tsf(
+        TsfResult actualResult = TAMath.Tsf(
             startIdx,
             endIdx,
             real);

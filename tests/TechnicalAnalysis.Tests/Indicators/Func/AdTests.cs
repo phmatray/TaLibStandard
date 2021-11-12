@@ -20,7 +20,7 @@ public class AdTests
         double[] volume = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Ad(
+        AdResult actualResult = TAMath.Ad(
             startIdx,
             endIdx,
             high,
@@ -46,7 +46,7 @@ public class AdTests
         float[] volume = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Ad(
+        AdResult actualResult = TAMath.Ad(
             startIdx,
             endIdx,
             high,

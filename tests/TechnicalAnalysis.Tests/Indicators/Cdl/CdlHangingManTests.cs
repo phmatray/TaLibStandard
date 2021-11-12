@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleHangingMan;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlHangingManTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHangingMan(
+        CandleHangingManResult actualResult = TAMath.CdlHangingMan(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlHangingManTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHangingMan(
+        CandleHangingManResult actualResult = TAMath.CdlHangingMan(
             startIdx,
             endIdx,
             open,

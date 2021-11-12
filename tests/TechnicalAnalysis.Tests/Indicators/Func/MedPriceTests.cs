@@ -18,7 +18,7 @@ public class MedPriceTests
         double[] low = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MedPrice(
+        MedPriceResult actualResult = TAMath.MedPrice(
             startIdx,
             endIdx,
             high,
@@ -40,7 +40,7 @@ public class MedPriceTests
         double[] low = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MedPrice(
+        MedPriceResult actualResult = TAMath.MedPrice(
             startIdx,
             endIdx,
             high,

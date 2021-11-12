@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleAdvanceBlock;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlAdvanceBlockTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlAdvanceBlock(
+        CandleAdvanceBlockResult actualResult = TAMath.CdlAdvanceBlock(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlAdvanceBlockTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlAdvanceBlock(
+        CandleAdvanceBlockResult actualResult = TAMath.CdlAdvanceBlock(
             startIdx,
             endIdx,
             open,

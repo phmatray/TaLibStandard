@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleXSideGap3Methods;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlXSideGap3MethodsTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlXSideGap3Methods(
+        CandleXSideGap3MethodsResult actualResult = TAMath.CdlXSideGap3Methods(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlXSideGap3MethodsTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlXSideGap3Methods(
+        CandleXSideGap3MethodsResult actualResult = TAMath.CdlXSideGap3Methods(
             startIdx,
             endIdx,
             open,

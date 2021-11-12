@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.Candle3LineStrike;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class Cdl3LineStrikeTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cdl3LineStrike(
+        Candle3LineStrikeResult actualResult = TAMath.Cdl3LineStrike(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class Cdl3LineStrikeTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cdl3LineStrike(
+        Candle3LineStrikeResult actualResult = TAMath.Cdl3LineStrike(
             startIdx,
             endIdx,
             open,

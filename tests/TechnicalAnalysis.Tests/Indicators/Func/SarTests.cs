@@ -18,7 +18,7 @@ public class SarTests
         double[] low = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Sar(
+        SarResult actualResult = TAMath.Sar(
             startIdx,
             endIdx,
             high,
@@ -40,7 +40,7 @@ public class SarTests
         double[] low = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Sar(
+        SarResult actualResult = TAMath.Sar(
             startIdx,
             endIdx,
             high,

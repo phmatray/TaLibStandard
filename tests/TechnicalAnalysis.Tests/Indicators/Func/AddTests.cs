@@ -18,7 +18,7 @@ public class AddTests
         double[] real1 = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Add(
+        AddResult actualResult = TAMath.Add(
             startIdx,
             endIdx,
             real0,
@@ -40,7 +40,7 @@ public class AddTests
         float[] real1 = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Add(
+        AddResult actualResult = TAMath.Add(
             startIdx,
             endIdx,
             real0,

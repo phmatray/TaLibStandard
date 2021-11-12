@@ -19,7 +19,7 @@ public class WillRTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.WillR(
+        WillRResult actualResult = TAMath.WillR(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class WillRTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.WillR(
+        WillRResult actualResult = TAMath.WillR(
             startIdx,
             endIdx,
             high,

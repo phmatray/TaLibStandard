@@ -17,7 +17,7 @@ public class SinhTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Sinh(
+        SinhResult actualResult = TAMath.Sinh(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class SinhTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Sinh(
+        SinhResult actualResult = TAMath.Sinh(
             startIdx,
             endIdx,
             real);

@@ -18,7 +18,7 @@ public class MidPriceTests
         double[] low = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MidPrice(
+        MidPriceResult actualResult = TAMath.MidPrice(
             startIdx,
             endIdx,
             high,
@@ -40,7 +40,7 @@ public class MidPriceTests
         double[] low = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MidPrice(
+        MidPriceResult actualResult = TAMath.MidPrice(
             startIdx,
             endIdx,
             high,

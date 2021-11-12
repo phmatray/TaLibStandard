@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleAbandonedBaby;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlAbandonedBabyTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlAbandonedBaby(
+        CandleAbandonedBabyResult actualResult = TAMath.CdlAbandonedBaby(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlAbandonedBabyTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlAbandonedBaby(
+        CandleAbandonedBabyResult actualResult = TAMath.CdlAbandonedBaby(
             startIdx,
             endIdx,
             open,

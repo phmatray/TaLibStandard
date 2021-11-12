@@ -17,7 +17,7 @@ public class DemaTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Dema(
+        DemaResult actualResult = TAMath.Dema(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class DemaTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Dema(
+        DemaResult actualResult = TAMath.Dema(
             startIdx,
             endIdx,
             real);

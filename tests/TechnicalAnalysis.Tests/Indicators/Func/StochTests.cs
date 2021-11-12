@@ -19,7 +19,7 @@ public class StochTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Stoch(
+        StochResult actualResult = TAMath.Stoch(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class StochTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Stoch(
+        StochResult actualResult = TAMath.Stoch(
             startIdx,
             endIdx,
             high,

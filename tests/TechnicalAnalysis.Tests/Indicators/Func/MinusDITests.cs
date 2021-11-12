@@ -19,7 +19,7 @@ public class MinusDITests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MinusDI(
+        MinusDIResult actualResult = TAMath.MinusDI(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class MinusDITests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MinusDI(
+        MinusDIResult actualResult = TAMath.MinusDI(
             startIdx,
             endIdx,
             high,

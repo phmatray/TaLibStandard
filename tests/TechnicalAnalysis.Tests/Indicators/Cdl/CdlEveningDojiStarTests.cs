@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleEveningDojiStar;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlEveningDojiStarTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlEveningDojiStar(
+        CandleEveningDojiStarResult actualResult = TAMath.CdlEveningDojiStar(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlEveningDojiStarTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlEveningDojiStar(
+        CandleEveningDojiStarResult actualResult = TAMath.CdlEveningDojiStar(
             startIdx,
             endIdx,
             open,

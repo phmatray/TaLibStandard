@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleIdentical3Crows;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlIdentical3CrowsTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlIdentical3Crows(
+        CandleIdentical3CrowsResult actualResult = TAMath.CdlIdentical3Crows(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlIdentical3CrowsTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlIdentical3Crows(
+        CandleIdentical3CrowsResult actualResult = TAMath.CdlIdentical3Crows(
             startIdx,
             endIdx,
             open,

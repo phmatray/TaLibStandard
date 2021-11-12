@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleMarubozu;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlMarubozuTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlMarubozu(
+        CandleMarubozuResult actualResult = TAMath.CdlMarubozu(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlMarubozuTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlMarubozu(
+        CandleMarubozuResult actualResult = TAMath.CdlMarubozu(
             startIdx,
             endIdx,
             open,

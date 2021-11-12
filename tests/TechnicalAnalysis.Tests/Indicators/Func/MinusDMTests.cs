@@ -18,7 +18,7 @@ public class MinusDMTests
         double[] low = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MinusDM(
+        MinusDMResult actualResult = TAMath.MinusDM(
             startIdx,
             endIdx,
             high,
@@ -40,7 +40,7 @@ public class MinusDMTests
         double[] low = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MinusDM(
+        MinusDMResult actualResult = TAMath.MinusDM(
             startIdx,
             endIdx,
             high,

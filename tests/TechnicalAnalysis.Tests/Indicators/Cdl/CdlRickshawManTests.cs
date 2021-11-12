@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleRickshawMan;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlRickshawManTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlRickshawMan(
+        CandleRickshawManResult actualResult = TAMath.CdlRickshawMan(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlRickshawManTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlRickshawMan(
+        CandleRickshawManResult actualResult = TAMath.CdlRickshawMan(
             startIdx,
             endIdx,
             open,

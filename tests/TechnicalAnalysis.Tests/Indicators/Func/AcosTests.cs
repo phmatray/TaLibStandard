@@ -17,7 +17,7 @@ public class AcosTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Acos(
+        AcosResult actualResult = TAMath.Acos(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class AcosTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Acos(
+        AcosResult actualResult = TAMath.Acos(
             startIdx,
             endIdx,
             real);

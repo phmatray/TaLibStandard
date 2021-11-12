@@ -19,7 +19,7 @@ public class PlusDITests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.PlusDI(
+        PlusDIResult actualResult = TAMath.PlusDI(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class PlusDITests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.PlusDI(
+        PlusDIResult actualResult = TAMath.PlusDI(
             startIdx,
             endIdx,
             high,

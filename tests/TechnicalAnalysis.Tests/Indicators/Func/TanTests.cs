@@ -17,7 +17,7 @@ public class TanTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Tan(
+        TanResult actualResult = TAMath.Tan(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class TanTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Tan(
+        TanResult actualResult = TAMath.Tan(
             startIdx,
             endIdx,
             real);

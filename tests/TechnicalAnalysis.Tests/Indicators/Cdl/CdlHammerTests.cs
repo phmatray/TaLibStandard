@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleHammer;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlHammerTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHammer(
+        CandleHammerResult actualResult = TAMath.CdlHammer(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlHammerTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHammer(
+        CandleHammerResult actualResult = TAMath.CdlHammer(
             startIdx,
             endIdx,
             open,

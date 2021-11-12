@@ -17,7 +17,7 @@ public class MacdFixTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MacdFix(
+        MacdFixResult actualResult = TAMath.MacdFix(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class MacdFixTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MacdFix(
+        MacdFixResult actualResult = TAMath.MacdFix(
             startIdx,
             endIdx,
             real);

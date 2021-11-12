@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleLongLeggedDoji;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlLongLeggedDojiTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlLongLeggedDoji(
+        CandleLongLeggedDojiResult actualResult = TAMath.CdlLongLeggedDoji(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlLongLeggedDojiTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlLongLeggedDoji(
+        CandleLongLeggedDojiResult actualResult = TAMath.CdlLongLeggedDoji(
             startIdx,
             endIdx,
             open,

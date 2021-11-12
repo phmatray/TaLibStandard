@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleHomingPigeon;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlHomingPigeonTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHomingPigeon(
+        CandleHomingPigeonResult actualResult = TAMath.CdlHomingPigeon(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlHomingPigeonTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHomingPigeon(
+        CandleHomingPigeonResult actualResult = TAMath.CdlHomingPigeon(
             startIdx,
             endIdx,
             open,

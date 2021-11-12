@@ -19,7 +19,7 @@ public class CciTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cci(
+        CciResult actualResult = TAMath.Cci(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class CciTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Cci(
+        CciResult actualResult = TAMath.Cci(
             startIdx,
             endIdx,
             high,

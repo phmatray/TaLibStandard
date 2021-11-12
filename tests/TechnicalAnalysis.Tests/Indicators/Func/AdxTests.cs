@@ -19,7 +19,7 @@ public class AdxTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Adx(
+        AdxResult actualResult = TAMath.Adx(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class AdxTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Adx(
+        AdxResult actualResult = TAMath.Adx(
             startIdx,
             endIdx,
             high,

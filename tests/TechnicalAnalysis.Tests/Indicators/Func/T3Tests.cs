@@ -17,7 +17,7 @@ public class T3Tests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.T3(
+        T3Result actualResult = TAMath.T3(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class T3Tests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.T3(
+        T3Result actualResult = TAMath.T3(
             startIdx,
             endIdx,
             real);

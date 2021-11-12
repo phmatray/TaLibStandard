@@ -17,7 +17,7 @@ public class MinMaxTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MinMax(
+        MinMaxResult actualResult = TAMath.MinMax(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class MinMaxTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.MinMax(
+        MinMaxResult actualResult = TAMath.MinMax(
             startIdx,
             endIdx,
             real);

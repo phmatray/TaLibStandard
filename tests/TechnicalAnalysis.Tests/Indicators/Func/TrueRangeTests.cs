@@ -19,7 +19,7 @@ public class TrueRangeTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.TrueRange(
+        TrueRangeResult actualResult = TAMath.TrueRange(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class TrueRangeTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.TrueRange(
+        TrueRangeResult actualResult = TAMath.TrueRange(
             startIdx,
             endIdx,
             high,

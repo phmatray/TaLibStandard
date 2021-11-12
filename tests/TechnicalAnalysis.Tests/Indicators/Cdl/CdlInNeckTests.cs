@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleInNeck;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlInNeckTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlInNeck(
+        CandleInNeckResult actualResult = TAMath.CdlInNeck(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlInNeckTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlInNeck(
+        CandleInNeckResult actualResult = TAMath.CdlInNeck(
             startIdx,
             endIdx,
             open,

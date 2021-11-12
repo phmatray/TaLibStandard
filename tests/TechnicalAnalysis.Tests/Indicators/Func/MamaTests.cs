@@ -17,7 +17,7 @@ public class MamaTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Mama(
+        MamaResult actualResult = TAMath.Mama(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class MamaTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Mama(
+        MamaResult actualResult = TAMath.Mama(
             startIdx,
             endIdx,
             real);

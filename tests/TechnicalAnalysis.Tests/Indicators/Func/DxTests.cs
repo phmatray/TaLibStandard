@@ -19,7 +19,7 @@ public class DxTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Dx(
+        DxResult actualResult = TAMath.Dx(
             startIdx,
             endIdx,
             high,
@@ -43,7 +43,7 @@ public class DxTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Dx(
+        DxResult actualResult = TAMath.Dx(
             startIdx,
             endIdx,
             high,

@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleHighWave;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlHighWaveTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHighWave(
+        CandleHighWaveResult actualResult = TAMath.CdlHighWave(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlHighWaveTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlHighWave(
+        CandleHighWaveResult actualResult = TAMath.CdlHighWave(
             startIdx,
             endIdx,
             open,

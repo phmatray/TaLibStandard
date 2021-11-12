@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleTristar;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlTristarTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlTristar(
+        CandleTristarResult actualResult = TAMath.CdlTristar(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlTristarTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlTristar(
+        CandleTristarResult actualResult = TAMath.CdlTristar(
             startIdx,
             endIdx,
             open,

@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleKickingByLength;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlKickingByLengthTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlKickingByLength(
+        CandleKickingByLengthResult actualResult = TAMath.CdlKickingByLength(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlKickingByLengthTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlKickingByLength(
+        CandleKickingByLengthResult actualResult = TAMath.CdlKickingByLength(
             startIdx,
             endIdx,
             open,

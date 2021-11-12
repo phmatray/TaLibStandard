@@ -18,7 +18,7 @@ public class SubTests
         double[] real1 = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Sub(
+        SubResult actualResult = TAMath.Sub(
             startIdx,
             endIdx,
             real0,
@@ -40,7 +40,7 @@ public class SubTests
         float[] real1 = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Sub(
+        SubResult actualResult = TAMath.Sub(
             startIdx,
             endIdx,
             real0,

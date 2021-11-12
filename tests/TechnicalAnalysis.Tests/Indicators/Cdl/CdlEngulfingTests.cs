@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using TechnicalAnalysis.Candles.CandleEngulfing;
 using TechnicalAnalysis.Common;
 using Xunit;
 
@@ -20,7 +21,7 @@ public class CdlEngulfingTests
         double[] close = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlEngulfing(
+        CandleEngulfingResult actualResult = TAMath.CdlEngulfing(
             startIdx,
             endIdx,
             open,
@@ -46,7 +47,7 @@ public class CdlEngulfingTests
         float[] close = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.CdlEngulfing(
+        CandleEngulfingResult actualResult = TAMath.CdlEngulfing(
             startIdx,
             endIdx,
             open,

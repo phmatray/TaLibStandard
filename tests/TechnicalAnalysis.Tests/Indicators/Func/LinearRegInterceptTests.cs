@@ -17,7 +17,7 @@ public class LinearRegInterceptTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.LinearRegIntercept(
+        LinearRegInterceptResult actualResult = TAMath.LinearRegIntercept(
             startIdx,
             endIdx,
             real);
@@ -37,7 +37,7 @@ public class LinearRegInterceptTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.LinearRegIntercept(
+        LinearRegInterceptResult actualResult = TAMath.LinearRegIntercept(
             startIdx,
             endIdx,
             real);

@@ -18,7 +18,7 @@ public class AroonTests
         double[] low = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Aroon(
+        AroonResult actualResult = TAMath.Aroon(
             startIdx,
             endIdx,
             high,
@@ -40,7 +40,7 @@ public class AroonTests
         float[] low = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        var actualResult = TAMath.Aroon(
+        AroonResult actualResult = TAMath.Aroon(
             startIdx,
             endIdx,
             high,
