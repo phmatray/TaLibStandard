@@ -29,7 +29,7 @@ public class Candle3Outside : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -86,20 +86,20 @@ public class Candle3Outside : CandleIndicator
                 // white engulfs black
                 GetCandleColor(i - 1) == 1 &&
                 GetCandleColor(i - 2) == -1 &&
-                _close[i - 1] > _open[i - 2] &&
-                _open[i - 1] < _close[i - 2] &&
+                Close[i - 1] > Open[i - 2] &&
+                Open[i - 1] < Close[i - 2] &&
                 // third candle higher
-                _close[i] > _close[i - 1]
+                Close[i] > Close[i - 1]
             )
             ||
             (
                 // black engulfs white
                 GetCandleColor(i - 1) == -1 &&
                 GetCandleColor(i - 2) == 1 &&
-                _open[i - 1] > _close[i - 2] &&
-                _close[i - 1] < _open[i - 2] &&
+                Open[i - 1] > Close[i - 2] &&
+                Close[i - 1] < Open[i - 2] &&
                 // third candle lower
-                _close[i] < _close[i - 1]
+                Close[i] < Close[i - 1]
             );
             
         return is3Outside;

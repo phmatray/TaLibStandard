@@ -33,7 +33,7 @@ public class CandleCounterAttack : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -125,8 +125,8 @@ public class CandleCounterAttack : CandleIndicator
             // 2nd long
             GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], i) &&
             // equal closes
-            _close[i] <= _close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
-            _close[i] >= _close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
+            Close[i] <= Close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+            Close[i] >= Close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
             
         return isCounterAttack;
     }

@@ -35,7 +35,7 @@ public class CandleDarkCloudCover : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -117,10 +117,10 @@ public class CandleDarkCloudCover : CandleIndicator
             // 2nd: black
             GetCandleColor(i) == -1 &&
             // open above prior high
-            _open[i] > _high[i - 1] &&
+            Open[i] > High[i - 1] &&
             // close within prior body
-            _close[i] > _open[i - 1] &&
-            _close[i] < _close[i - 1] - GetRealBody(i - 1) * _penetration;
+            Close[i] > Open[i - 1] &&
+            Close[i] < Close[i - 1] - GetRealBody(i - 1) * _penetration;
             
         return isDarkCloudCover;
     }

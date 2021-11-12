@@ -37,7 +37,7 @@ public class CandleEveningDojiStar : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -153,7 +153,7 @@ public class CandleEveningDojiStar : CandleIndicator
             // black real body
             GetCandleColor(i) == -1 &&
             // closing well within 1st rb
-            _close[i] < _close[i - 2] - GetRealBody(i - 2) * _penetration;
+            Close[i] < Close[i - 2] - GetRealBody(i - 2) * _penetration;
             
         return isEveningDojiStar;
     }

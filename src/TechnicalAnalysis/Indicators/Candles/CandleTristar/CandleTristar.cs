@@ -33,7 +33,7 @@ public class CandleTristar : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -83,7 +83,7 @@ public class CandleTristar : CandleIndicator
                 if ( // 2nd gaps up
                     GetRealBodyGapUp(i - 1, i - 2) &&
                     // 3rd is not higher than 2nd
-                    Max(_open[i], _close[i]) < Max(_open[i - 1], _close[i - 1]))
+                    Max(Open[i], Close[i]) < Max(Open[i - 1], Close[i - 1]))
                 {
                     outInteger[outIdx] = -100;
                 }
@@ -91,7 +91,7 @@ public class CandleTristar : CandleIndicator
                 if ( // 2nd gaps down 
                     GetRealBodyGapDown(i - 1, i - 2) &&
                     // 3rd is not lower than 2nd
-                    Min(_open[i], _close[i]) > Min(_open[i - 1], _close[i - 1]))
+                    Min(Open[i], Close[i]) > Min(Open[i - 1], Close[i - 1]))
                 {
                     outInteger[outIdx] = +100;
                 }

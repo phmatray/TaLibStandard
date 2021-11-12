@@ -32,7 +32,7 @@ public class Candle3BlackCrows : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -120,17 +120,17 @@ public class Candle3BlackCrows : CandleIndicator
             // very short lower shadow
             GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             // 2nd black opens within 1st black's rb
-            _open[i - 1] < _open[i - 2] &&
-            _open[i - 1] > _close[i - 2] &&
+            Open[i - 1] < Open[i - 2] &&
+            Open[i - 1] > Close[i - 2] &&
             // 3rd black opens within 2nd black's rb
-            _open[i] < _open[i - 1] &&
-            _open[i] > _close[i - 1] &&
+            Open[i] < Open[i - 1] &&
+            Open[i] > Close[i - 1] &&
             // 1st black closes under prior candle's high
-            _high[i - 3] > _close[i - 2] &&
+            High[i - 3] > Close[i - 2] &&
             // three declining
-            _close[i - 2] > _close[i - 1] &&
+            Close[i - 2] > Close[i - 1] &&
             // three declining
-            _close[i - 1] > _close[i];
+            Close[i - 1] > Close[i];
 
         return is3BlackCrows;
     }

@@ -32,7 +32,7 @@ public class CandlePiercing : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -114,11 +114,11 @@ public class CandlePiercing : CandleIndicator
             // long
             GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], i) &&
             // open below prior low
-            _open[i] < _low[i - 1] &&
+            Open[i] < Low[i - 1] &&
             // close within prior body
-            _close[i] < _open[i - 1] &&
+            Close[i] < Open[i - 1] &&
             // above midpoint
-            _close[i] > _close[i - 1] + GetRealBody(i - 1) * 0.5;
+            Close[i] > Close[i - 1] + GetRealBody(i - 1) * 0.5;
             
         return isPiercing;
     }

@@ -32,7 +32,7 @@ public class Candle2Crows : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -114,9 +114,9 @@ public class Candle2Crows : CandleIndicator
             // 3rd: black
             GetCandleColor(i) == -1 &&
             // opening within 2nd rb
-            _open[i] < _open[i - 1] && _open[i] > _close[i - 1] &&
+            Open[i] < Open[i - 1] && Open[i] > Close[i - 1] &&
             // closing within 1st rb
-            _close[i] > _open[i - 2] && _close[i] < _close[i - 2];
+            Close[i] > Open[i - 2] && Close[i] < Close[i - 2];
 
         return is2Crows;
     }

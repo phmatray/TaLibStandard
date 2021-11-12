@@ -33,7 +33,7 @@ public class CandleRiseFall3Methods : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -138,19 +138,19 @@ public class CandleRiseFall3Methods : CandleIndicator
             GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
             GetCandleColor(i - 1) == -GetCandleColor(i) &&
             // 2nd to 4th hold within 1st: a part of the real body must be within 1st range
-            Min(_open[i - 3], _close[i - 3]) < _high[i - 4] &&
-            Max(_open[i - 3], _close[i - 3]) > _low[i - 4] &&
-            Min(_open[i - 2], _close[i - 2]) < _high[i - 4] &&
-            Max(_open[i - 2], _close[i - 2]) > _low[i - 4] &&
-            Min(_open[i - 1], _close[i - 1]) < _high[i - 4] &&
-            Max(_open[i - 1], _close[i - 1]) > _low[i - 4] &&
+            Min(Open[i - 3], Close[i - 3]) < High[i - 4] &&
+            Max(Open[i - 3], Close[i - 3]) > Low[i - 4] &&
+            Min(Open[i - 2], Close[i - 2]) < High[i - 4] &&
+            Max(Open[i - 2], Close[i - 2]) > Low[i - 4] &&
+            Min(Open[i - 1], Close[i - 1]) < High[i - 4] &&
+            Max(Open[i - 1], Close[i - 1]) > Low[i - 4] &&
             // 2nd to 4th are falling (rising)
-            _close[i - 2] * GetCandleColor(i - 4) < _close[i - 3] * GetCandleColor(i - 4) &&
-            _close[i - 1] * GetCandleColor(i - 4) < _close[i - 2] * GetCandleColor(i - 4) &&
+            Close[i - 2] * GetCandleColor(i - 4) < Close[i - 3] * GetCandleColor(i - 4) &&
+            Close[i - 1] * GetCandleColor(i - 4) < Close[i - 2] * GetCandleColor(i - 4) &&
             // 5th opens above (below) the prior close
-            _open[i] * GetCandleColor(i - 4) > _close[i - 1] * GetCandleColor(i - 4) &&
+            Open[i] * GetCandleColor(i - 4) > Close[i - 1] * GetCandleColor(i - 4) &&
             // 5th closes above (below) the 1st close
-            _close[i] * GetCandleColor(i - 4) > _close[i - 4] * GetCandleColor(i - 4);
+            Close[i] * GetCandleColor(i - 4) > Close[i - 4] * GetCandleColor(i - 4);
             
         return isRiseFall3Methods;
     }

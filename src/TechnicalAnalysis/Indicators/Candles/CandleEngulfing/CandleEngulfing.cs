@@ -29,7 +29,7 @@ public class CandleEngulfing : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -85,16 +85,16 @@ public class CandleEngulfing : CandleIndicator
                 // white engulfs black
                 GetCandleColor(i) == 1 &&
                 GetCandleColor(i - 1) == -1 &&
-                _close[i] > _open[i - 1] &&
-                _open[i] < _close[i - 1]
+                Close[i] > Open[i - 1] &&
+                Open[i] < Close[i - 1]
             )
             ||
             (
                 // black engulfs white
                 GetCandleColor(i) == -1 &&
                 GetCandleColor(i - 1) == 1 &&
-                _open[i] > _close[i - 1] &&
-                _close[i] < _open[i - 1]
+                Open[i] > Close[i - 1] &&
+                Close[i] < Open[i - 1]
             );
             
         return isEngulfing;

@@ -29,7 +29,7 @@ public class CandleHikkake : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -59,7 +59,7 @@ public class CandleHikkake : CandleIndicator
         {
             if (GetPatternRecognition(i))
             {
-                patternResult = 100 * (_high[i] < _high[i - 1] ? 1 : -1);
+                patternResult = 100 * (High[i] < High[i - 1] ? 1 : -1);
                 patternIdx = i;
             }
             // search for confirmation if hikkake was no more than 3 bars ago
@@ -89,7 +89,7 @@ public class CandleHikkake : CandleIndicator
         {
             if (GetPatternRecognition(i))
             {
-                patternResult = 100 * (_high[i] < _high[i - 1] ? 1 : -1);
+                patternResult = 100 * (High[i] < High[i - 1] ? 1 : -1);
                 patternIdx = i;
                 outInteger[outIdx++] = patternResult;
             }
@@ -121,12 +121,12 @@ public class CandleHikkake : CandleIndicator
     {
         bool patternRecognition =
             // 1st + 2nd: lower high and higher low
-            _high[i - 1] < _high[i - 2] && _low[i - 1] > _low[i - 2] &&
+            High[i - 1] < High[i - 2] && Low[i - 1] > Low[i - 2] &&
             (
                 // (bull) 3rd: lower high and lower low
-                (_high[i] < _high[i - 1] && _low[i] < _low[i - 1]) ||
+                (High[i] < High[i - 1] && Low[i] < Low[i - 1]) ||
                 // (bear) 3rd: higher high and higher low
-                (_high[i] > _high[i - 1] && _low[i] > _low[i - 1])
+                (High[i] > High[i - 1] && Low[i] > Low[i - 1])
             );
             
         return patternRecognition;
@@ -138,9 +138,9 @@ public class CandleHikkake : CandleIndicator
             i <= patternIdx + 3 &&
             (
                 // close higher than the high of 2nd
-                (patternResult > 0 && _close[i] > _high[patternIdx - 1]) ||
+                (patternResult > 0 && Close[i] > High[patternIdx - 1]) ||
                 // close lower than the low of 2nd
-                (patternResult < 0 && _close[i] < _low[patternIdx - 1])
+                (patternResult < 0 && Close[i] < Low[patternIdx - 1])
             );
             
         return patternConfirmation;

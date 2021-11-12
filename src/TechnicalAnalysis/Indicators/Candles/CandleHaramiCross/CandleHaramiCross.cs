@@ -34,7 +34,7 @@ public class CandleHaramiCross : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -120,8 +120,8 @@ public class CandleHaramiCross : CandleIndicator
             // 2nd: doji
             GetRealBody(i) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, i) &&
             // engulfed by 1st
-            Max(_close[i], _open[i]) < Max(_close[i - 1], _open[i - 1]) &&
-            Min(_close[i], _open[i]) > Min(_close[i - 1], _open[i - 1]);
+            Max(Close[i], Open[i]) < Max(Close[i - 1], Open[i - 1]) &&
+            Min(Close[i], Open[i]) > Min(Close[i - 1], Open[i - 1]);
             
         return isHaramiCross;
     }

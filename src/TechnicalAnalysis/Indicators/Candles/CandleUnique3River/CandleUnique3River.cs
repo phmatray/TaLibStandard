@@ -33,7 +33,7 @@ public class CandleUnique3River : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -124,15 +124,15 @@ public class CandleUnique3River : CandleIndicator
             // 2nd: black
             GetCandleColor(i - 1) == -1 &&
             // harami
-            _close[i - 1] > _close[i - 2] && _open[i - 1] <= _open[i - 2] &&
+            Close[i - 1] > Close[i - 2] && Open[i - 1] <= Open[i - 2] &&
             // lower low
-            _low[i - 1] < _low[i - 2] &&
+            Low[i - 1] < Low[i - 2] &&
             // 3rd: short
             GetRealBody(i) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
             // white
             GetCandleColor(i) == 1 &&
             // open not lower
-            _open[i] > _low[i - 1];
+            Open[i] > Low[i - 1];
             
         return isUnique3River;
     }

@@ -4,17 +4,39 @@ namespace TechnicalAnalysis.Common;
 
 public abstract class CandleIndicator
 {
-    protected double[] _open;
-    protected double[] _high;
-    protected double[] _low;
-    protected double[] _close;
+    /// <summary>
+    /// The price at which the first transaction was completed in a given time period.
+    /// </summary>
+    protected double[] Open { get; }
 
+    /// <summary>
+    /// Top bid or price at which a contract was traded during a trading period.
+    /// </summary>
+    protected double[] High { get; }
+
+    /// <summary>
+    /// Lowest offer or price at which a contract was traded during a trading period.
+    /// </summary>
+    protected double[] Low { get; }
+
+    /// <summary>
+    /// This is the last traded price in the market for the specified session.
+    /// </summary>
+    protected double[] Close { get; }
+
+    /// <summary>
+    /// Constructor for <see cref="CandleIndicator"/> class.
+    /// </summary>
+    /// <param name="open">The price at which the first transaction was completed in a given time period.</param>
+    /// <param name="high">Top bid or price at which a contract was traded during a trading period.</param>
+    /// <param name="low">Lowest offer or price at which a contract was traded during a trading period.</param>
+    /// <param name="close">This is the last traded price in the market for the specified session.</param>
     protected CandleIndicator(double[] open, double[] high, double[] low, double[] close)
     {
-        _open = open;
-        _high = high;
-        _low = low;
-        _close = close;
+        Open = open;
+        High = high;
+        Low = low;
+        Close = close;
     }
 
     public abstract int GetLookback();
@@ -50,31 +72,31 @@ public abstract class CandleIndicator
     }
 
     protected double GetRealBody(int index)
-        => Abs(_close[index] - _open[index]);
+        => Abs(Close[index] - Open[index]);
 
     protected double GetUpperShadow(int index)
-        => _high[index] - (_close[index] >= _open[index] ? _close[index] : _open[index]);
+        => High[index] - (Close[index] >= Open[index] ? Close[index] : Open[index]);
 
     protected double GetLowerShadow(int index)
-        => (_close[index] >= _open[index] ? _open[index] : _close[index]) - _low[index];
+        => (Close[index] >= Open[index] ? Open[index] : Close[index]) - Low[index];
 
     protected double GetHighLowRange(int index)
-        => _high[index] - _low[index];
+        => High[index] - Low[index];
 
     protected int GetCandleColor(int index)
-        => _close[index] >= _open[index] ? 1 : -1;
+        => Close[index] >= Open[index] ? 1 : -1;
 
     protected bool GetRealBodyGapUp(int index2, int index1)
-        => Min(_open[index2], _close[index2]) > Max(_open[index1], _close[index1]);
+        => Min(Open[index2], Close[index2]) > Max(Open[index1], Close[index1]);
 
     protected bool GetRealBodyGapDown(int index2, int index1)
-        => Max(_open[index2], _close[index2]) < Min(_open[index1], _close[index1]);
+        => Max(Open[index2], Close[index2]) < Min(Open[index1], Close[index1]);
 
     protected bool GetCandleGapUp(int index2, int index1)
-        => _low[index2] > _high[index1];
+        => Low[index2] > High[index1];
 
     protected bool GetCandleGapDown(int index2, int index1)
-        => _high[index2] < _low[index1];
+        => High[index2] < Low[index1];
 
     protected int GetCandleMaxAvgPeriod(params CandleSettingType[] candleSettingTypes)
         => candleSettingTypes

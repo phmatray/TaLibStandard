@@ -33,7 +33,7 @@ public class CandleOnNeck : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -121,10 +121,10 @@ public class CandleOnNeck : CandleIndicator
             // 2nd: white
             GetCandleColor(i) == 1 &&
             // open below prior low
-            _open[i] < _low[i - 1] &&
+            Open[i] < Low[i - 1] &&
             // close equal to prior low
-            _close[i] <= _low[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
-            _close[i] >= _low[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
+            Close[i] <= Low[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+            Close[i] >= Low[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
             
         return isOnNeck;
     }

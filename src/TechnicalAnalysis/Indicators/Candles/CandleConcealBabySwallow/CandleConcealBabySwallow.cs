@@ -32,7 +32,7 @@ public class CandleConcealBabySwallow : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -131,9 +131,9 @@ public class CandleConcealBabySwallow : CandleIndicator
             GetUpperShadow(i - 1) >
             GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
             // that extends into the prior body
-            _high[i - 1] > _close[i - 2] &&
+            High[i - 1] > Close[i - 2] &&
             // 4th: engulfs the 3rd including the shadows
-            _high[i] > _high[i - 1] && _low[i] < _low[i - 1];
+            High[i] > High[i - 1] && Low[i] < Low[i - 1];
             
         return isConcealBabySwallow;
     }

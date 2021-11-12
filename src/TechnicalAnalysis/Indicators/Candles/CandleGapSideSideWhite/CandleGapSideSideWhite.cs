@@ -33,7 +33,7 @@ public class CandleGapSideSideWhite : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -140,9 +140,9 @@ public class CandleGapSideSideWhite : CandleIndicator
             GetRealBody(i) <= GetRealBody(i - 1) +
             GetCandleAverage(Near, _nearPeriodTotal, i - 1) &&
             // same open 2 and 3
-            _open[i] >= _open[i - 1] -
+            Open[i] >= Open[i - 1] -
             GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
-            _open[i] <= _open[i - 1] +
+            Open[i] <= Open[i - 1] +
             GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
             
         return isGapSideSideWhite;

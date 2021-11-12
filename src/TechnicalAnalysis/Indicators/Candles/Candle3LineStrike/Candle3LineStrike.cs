@@ -33,7 +33,7 @@ public class Candle3LineStrike : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -113,35 +113,35 @@ public class Candle3LineStrike : CandleIndicator
             // 4th opposite color
             GetCandleColor(i) == -GetCandleColor(i - 1) &&
             // 2nd opens within/near 1st rb
-            _open[i - 2] >= Min(_open[i - 3], _close[i - 3]) -
+            Open[i - 2] >= Min(Open[i - 3], Close[i - 3]) -
             GetCandleAverage(Near, _nearPeriodTotal[3], i - 3) &&
-            _open[i - 2] <= Max(_open[i - 3], _close[i - 3]) +
+            Open[i - 2] <= Max(Open[i - 3], Close[i - 3]) +
             GetCandleAverage(Near, _nearPeriodTotal[3], i - 3) &&
             // 3rd opens within/near 2nd rb
-            _open[i - 1] >= Min(_open[i - 2], _close[i - 2]) -
+            Open[i - 1] >= Min(Open[i - 2], Close[i - 2]) -
             GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
-            _open[i - 1] <= Max(_open[i - 2], _close[i - 2]) +
+            Open[i - 1] <= Max(Open[i - 2], Close[i - 2]) +
             GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
             (
                 ( // if three white
                     GetCandleColor(i - 1) == 1 &&
-                    _close[i - 1] > _close[i - 2] &&
+                    Close[i - 1] > Close[i - 2] &&
                     // consecutive higher closes
-                    _close[i - 2] > _close[i - 3] &&
+                    Close[i - 2] > Close[i - 3] &&
                     // 4th opens above prior close
-                    _open[i] > _close[i - 1] &&
+                    Open[i] > Close[i - 1] &&
                     // 4th closes below 1st open
-                    _close[i] < _open[i - 3]
+                    Close[i] < Open[i - 3]
                 ) ||
                 ( // if three black
                     GetCandleColor(i - 1) == -1 &&
-                    _close[i - 1] < _close[i - 2] &&
+                    Close[i - 1] < Close[i - 2] &&
                     // consecutive lower closes
-                    _close[i - 2] < _close[i - 3] &&
+                    Close[i - 2] < Close[i - 3] &&
                     // 4th opens below prior close
-                    _open[i] < _close[i - 1] &&
+                    Open[i] < Close[i - 1] &&
                     // 4th closes above 1st open
-                    _close[i] > _open[i - 3]
+                    Close[i] > Open[i - 3]
                 )
             );
             

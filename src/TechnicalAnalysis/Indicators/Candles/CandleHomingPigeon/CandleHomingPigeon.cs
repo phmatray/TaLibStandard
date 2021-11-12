@@ -33,7 +33,7 @@ public class CandleHomingPigeon : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -125,8 +125,8 @@ public class CandleHomingPigeon : CandleIndicator
             // 2nd short
             GetRealBody(i) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
             // 2nd engulfed by 1st
-            _open[i] < _open[i - 1] &&
-            _close[i] > _close[i - 1];
+            Open[i] < Open[i - 1] &&
+            Close[i] > Close[i - 1];
             
         return isHomingPigeon;
     }
