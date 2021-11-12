@@ -21,7 +21,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new BetaResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static BetaResult Beta(int startIdx, int endIdx, double[] real0, double[] real1)

@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Max(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new MaxResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static MaxResult Max(int startIdx, int endIdx, double[] real)

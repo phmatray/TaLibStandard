@@ -20,7 +20,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outInteger);
             
-        return new(retCode, outBegIdx, outNBElement, outInteger);
+        return new MaxIndexResult(retCode, outBegIdx, outNBElement, outInteger);
     }
         
     public static MaxIndexResult MaxIndex(int startIdx, int endIdx, double[] real)

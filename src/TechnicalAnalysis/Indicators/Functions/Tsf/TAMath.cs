@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Tsf(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new TsfResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static TsfResult Tsf(int startIdx, int endIdx, double[] real)

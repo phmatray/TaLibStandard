@@ -34,7 +34,7 @@ public static partial class TAMath
             ref outRealMiddleBand,
             ref outRealLowerBand);
             
-        return new(
+        return new BollingerBandsResult(
             retCode,
             outBegIdx,
             outNBElement,

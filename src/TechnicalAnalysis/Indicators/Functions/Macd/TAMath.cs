@@ -32,7 +32,7 @@ public static partial class TAMath
             ref outMACDSignal,
             ref outMACDHist);
             
-        return new(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
+        return new MacdResult(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
     }
 
     public static MacdResult Macd(int startIdx, int endIdx, double[] real)

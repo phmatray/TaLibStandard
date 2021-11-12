@@ -903,7 +903,7 @@ internal static partial class TACore
                 
             for (int j = 0; j < candleSettings.Length; j++)
             {
-                candleSettings[j] = new();
+                candleSettings[j] = new CandleSetting();
             }
         }
     }

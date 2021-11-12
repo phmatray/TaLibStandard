@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Sub(startIdx, endIdx, real0, real1, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new SubResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static SubResult Sub(int startIdx, int endIdx, float[] real0, float[] real1)

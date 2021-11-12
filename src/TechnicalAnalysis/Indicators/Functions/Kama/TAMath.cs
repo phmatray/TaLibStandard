@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Kama(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new KamaResult(retCode, outBegIdx, outNBElement, outReal);
     }
         
     public static KamaResult Kama(int startIdx, int endIdx, double[] real)

@@ -28,23 +28,23 @@ public class CandleAbandonedBaby : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleAbandonedBabyResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleAbandonedBabyResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
         if (Open == null || High == null || Low == null || Close == null)
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleAbandonedBabyResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         if (optInPenetration < 0.0)
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleAbandonedBabyResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -59,7 +59,7 @@ public class CandleAbandonedBaby : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleAbandonedBabyResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -136,7 +136,7 @@ public class CandleAbandonedBaby : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleAbandonedBabyResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
     public override bool GetPatternRecognition(int i)

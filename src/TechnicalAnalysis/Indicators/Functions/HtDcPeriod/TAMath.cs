@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.HtDcPeriod(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new HtDcPeriodResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static HtDcPeriodResult HtDcPeriod(int startIdx, int endIdx, float[] real)

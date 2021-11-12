@@ -24,7 +24,7 @@ public static partial class TAMath
             ref outMACDSignal,
             ref outMACDHist);
             
-        return new(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
+        return new MacdFixResult(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
     }
 
     public static MacdFixResult MacdFix(int startIdx, int endIdx, double[] real)

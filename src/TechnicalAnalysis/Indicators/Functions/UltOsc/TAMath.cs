@@ -32,7 +32,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new UltOscResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static UltOscResult UltOsc(int startIdx, int endIdx, double[] high, double[] low, double[] close)

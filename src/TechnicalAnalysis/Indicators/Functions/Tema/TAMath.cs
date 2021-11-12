@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Tema(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new TemaResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static TemaResult Tema(int startIdx, int endIdx, double[] real)

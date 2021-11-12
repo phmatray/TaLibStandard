@@ -12,7 +12,7 @@ public static partial class TAMath
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TACore.TypPrice(startIdx, endIdx, high, low, close, ref outBegIdx, ref outNBElement, ref outReal);
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new TypPriceResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static TypPriceResult TypPrice(int startIdx, int endIdx, float[] high, float[] low, float[] close)

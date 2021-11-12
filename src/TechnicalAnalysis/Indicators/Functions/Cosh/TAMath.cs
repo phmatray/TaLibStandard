@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Cosh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new CoshResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static CoshResult Cosh(int startIdx, int endIdx, float[] real)

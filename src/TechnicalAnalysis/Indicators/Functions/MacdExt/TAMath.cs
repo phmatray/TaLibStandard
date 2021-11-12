@@ -38,7 +38,7 @@ public static partial class TAMath
             ref outMACDSignal,
             ref outMACDHist);
             
-        return new(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
+        return new MacdExtResult(retCode, outBegIdx, outNBElement, outMACD, outMACDSignal, outMACDHist);
     }
         
     public static MacdExtResult MacdExt(int startIdx, int endIdx, double[] real)

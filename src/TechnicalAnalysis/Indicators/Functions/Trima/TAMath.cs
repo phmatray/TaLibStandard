@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Trima(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new TrimaResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static TrimaResult Trima(int startIdx, int endIdx, double[] real)

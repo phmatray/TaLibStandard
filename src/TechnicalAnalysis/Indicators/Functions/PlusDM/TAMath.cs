@@ -21,7 +21,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new PlusDMResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static PlusDMResult PlusDM(int startIdx, int endIdx, double[] high, double[] low)

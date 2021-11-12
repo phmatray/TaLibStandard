@@ -20,7 +20,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new LinearRegAngleResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static LinearRegAngleResult LinearRegAngle(int startIdx, int endIdx, double[] real)

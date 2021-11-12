@@ -21,7 +21,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new VarianceResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static VarianceResult Variance(int startIdx, int endIdx, double[] real)

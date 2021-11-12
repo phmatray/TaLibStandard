@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Acos(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new AcosResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static AcosResult Acos(int startIdx, int endIdx, float[] real)

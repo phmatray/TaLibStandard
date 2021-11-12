@@ -38,7 +38,7 @@ public static partial class TAMath
             ref outSlowK,
             ref outSlowD);
             
-        return new(retCode, outBegIdx, outNBElement, outSlowK, outSlowD);
+        return new StochResult(retCode, outBegIdx, outNBElement, outSlowK, outSlowD);
     }
 
     public static StochResult Stoch(int startIdx, int endIdx, double[] high, double[] low, double[] close)

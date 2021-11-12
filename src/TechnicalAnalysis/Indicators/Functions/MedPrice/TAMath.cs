@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.MedPrice(startIdx, endIdx, high, low, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new MedPriceResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static MedPriceResult MedPrice(int startIdx, int endIdx, float[] high, float[] low)

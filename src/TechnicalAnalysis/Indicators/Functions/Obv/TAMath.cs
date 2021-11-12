@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Obv(startIdx, endIdx, real, volume, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new ObvResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static ObvResult Obv(int startIdx, int endIdx, float[] real, float[] volume)

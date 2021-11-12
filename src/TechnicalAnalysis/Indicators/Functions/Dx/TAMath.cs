@@ -22,7 +22,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new DxResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static DxResult Dx(int startIdx, int endIdx, double[] high, double[] low, double[] close)

@@ -22,7 +22,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
 
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new AdResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static AdResult Ad(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume)

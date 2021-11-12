@@ -22,7 +22,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new ApoResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static ApoResult Apo(int startIdx, int endIdx, double[] real)

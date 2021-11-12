@@ -30,7 +30,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new MovingAverageVariablePeriodResult(retCode, outBegIdx, outNBElement, outReal);
     }
         
     public static MovingAverageVariablePeriodResult MovingAverageVariablePeriod(

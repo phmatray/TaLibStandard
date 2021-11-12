@@ -22,7 +22,7 @@ public static partial class TAMath
             ref outMin,
             ref outMax);
             
-        return new(retCode, outBegIdx, outNBElement, outMin, outMax);
+        return new MinMaxResult(retCode, outBegIdx, outNBElement, outMin, outMax);
     }
 
     public static MinMaxResult MinMax(int startIdx, int endIdx, double[] real)
