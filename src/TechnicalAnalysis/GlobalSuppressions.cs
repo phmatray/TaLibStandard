@@ -6,3 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Major Bug", "S3903:Types should be defined in named namespaces", Justification = "We use file scoped namespaces from C#10", Scope = "module")]
+[assembly: SuppressMessage("Major Code Smell", "S125:Sections of code should not be commented out", Justification = "False positive", Scope = "module")]
