@@ -30,7 +30,7 @@ public class CandleXSideGap3Methods : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -92,11 +92,11 @@ public class CandleXSideGap3Methods : CandleIndicator
             // 3rd opposite color
             GetCandleColor(i - 1) == -GetCandleColor(i) &&
             // 3rd opens within 2nd rb
-            _open[i] < Max(_close[i - 1], _open[i - 1]) &&
-            _open[i] > Min(_close[i - 1], _open[i - 1]) &&
+            Open[i] < Max(Close[i - 1], Open[i - 1]) &&
+            Open[i] > Min(Close[i - 1], Open[i - 1]) &&
             // 3rd closes within 1st rb
-            _close[i] < Max(_close[i - 2], _open[i - 2]) &&
-            _close[i] > Min(_close[i - 2], _open[i - 2]) &&
+            Close[i] < Max(Close[i - 2], Open[i - 2]) &&
+            Close[i] > Min(Close[i - 2], Open[i - 2]) &&
             (
                 (
                     // when 1st is white

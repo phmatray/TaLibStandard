@@ -33,7 +33,7 @@ public class CandleIdentical3Crows : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -140,14 +140,14 @@ public class CandleIdentical3Crows : CandleIndicator
             // very short lower shadow
             GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             // three declining
-            _close[i - 2] > _close[i - 1] &&
-            _close[i - 1] > _close[i] &&
+            Close[i - 2] > Close[i - 1] &&
+            Close[i - 1] > Close[i] &&
             // 2nd black opens very close to 1st close
-            _open[i - 1] <= _close[i - 2] + GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
-            _open[i - 1] >= _close[i - 2] - GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
+            Open[i - 1] <= Close[i - 2] + GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
+            Open[i - 1] >= Close[i - 2] - GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
             // 3rd black opens very close to 2nd close 
-            _open[i] <= _close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1) &&
-            _open[i] >= _close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1);
+            Open[i] <= Close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1) &&
+            Open[i] >= Close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1);
             
         return isIdentical3Crows;
     }

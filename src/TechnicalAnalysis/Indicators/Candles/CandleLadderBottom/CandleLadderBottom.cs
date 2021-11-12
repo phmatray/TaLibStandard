@@ -32,7 +32,7 @@ public class CandleLadderBottom : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -106,20 +106,20 @@ public class CandleLadderBottom : CandleIndicator
             GetCandleColor(i - 3) == -1 &&
             GetCandleColor(i - 2) == -1 &&
             // with consecutively lower opens
-            _open[i - 4] > _open[i - 3] &&
-            _open[i - 3] > _open[i - 2] &&
+            Open[i - 4] > Open[i - 3] &&
+            Open[i - 3] > Open[i - 2] &&
             // and closes
-            _close[i - 4] > _close[i - 3] &&
-            _close[i - 3] > _close[i - 2] &&
+            Close[i - 4] > Close[i - 3] &&
+            Close[i - 3] > Close[i - 2] &&
             // 4th: black with an upper shadow
             GetCandleColor(i - 1) == -1 &&
             GetUpperShadow(i - 1) > GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i - 1) &&
             // 5th: white
             GetCandleColor(i) == 1 &&
             // that opens above prior candle's body
-            _open[i] > _open[i - 1] &&
+            Open[i] > Open[i - 1] &&
             // and closes above prior candle's high
-            _close[i] > _high[i - 1];
+            Close[i] > High[i - 1];
             
         return isLadderBottom;
     }

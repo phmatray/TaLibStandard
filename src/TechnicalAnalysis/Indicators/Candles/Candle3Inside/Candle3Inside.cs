@@ -34,7 +34,7 @@ public class Candle3Inside : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -123,18 +123,18 @@ public class Candle3Inside : CandleIndicator
             // 2nd: short
             GetRealBody(i - 1) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i - 1) &&
             // engulfed by 1st
-            Max(_close[i - 1], _open[i - 1]) < Max(_close[i - 2], _open[i - 2]) &&
-            Min(_close[i - 1], _open[i - 1]) > Min(_close[i - 2], _open[i - 2]) &&
+            Max(Close[i - 1], Open[i - 1]) < Max(Close[i - 2], Open[i - 2]) &&
+            Min(Close[i - 1], Open[i - 1]) > Min(Close[i - 2], Open[i - 2]) &&
             (
                 ( // 3rd: opposite to 1st
                     GetCandleColor(i - 2) == 1 &&
                     GetCandleColor(i) == -1 &&
-                    _close[i] < _open[i - 2]
+                    Close[i] < Open[i - 2]
                 ) ||
                 ( // and closing out
                     GetCandleColor(i - 2) == -1 &&
                     GetCandleColor(i) == 1 &&
-                    _close[i] > _open[i - 2]
+                    Close[i] > Open[i - 2]
                 )
             );
 

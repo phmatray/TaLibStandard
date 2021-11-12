@@ -35,7 +35,7 @@ public class CandleRickshawMan : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -135,8 +135,8 @@ public class CandleRickshawMan : CandleIndicator
             GetUpperShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) &&
             (
                 // body near midpoint
-                Min(_open[i], _close[i]) <= _low[i] + GetHighLowRange(i) / 2 + GetCandleAverage(Near, _nearPeriodTotal, i) &&
-                Max(_open[i], _close[i]) >= _low[i] + GetHighLowRange(i) / 2 - GetCandleAverage(Near, _nearPeriodTotal, i)
+                Min(Open[i], Close[i]) <= Low[i] + GetHighLowRange(i) / 2 + GetCandleAverage(Near, _nearPeriodTotal, i) &&
+                Max(Open[i], Close[i]) >= Low[i] + GetHighLowRange(i) / 2 - GetCandleAverage(Near, _nearPeriodTotal, i)
             );
             
         return isRickshawMan;

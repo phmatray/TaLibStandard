@@ -33,7 +33,7 @@ public class CandleTasukiGap : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -112,11 +112,11 @@ public class CandleTasukiGap : CandleIndicator
                 // 2nd: black
                 GetCandleColor(i) == -1 &&
                 // that opens within the white rb
-                _open[i] < _close[i - 1] && _open[i] > _open[i - 1] &&
+                Open[i] < Close[i - 1] && Open[i] > Open[i - 1] &&
                 // and closes under the white rb
-                _close[i] < _open[i - 1] &&
+                Close[i] < Open[i - 1] &&
                 // inside the gap
-                _close[i] > Max(_close[i - 2], _open[i - 2]) &&
+                Close[i] > Max(Close[i - 2], Open[i - 2]) &&
                 // size of 2 rb near the same
                 Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
             ) ||
@@ -128,11 +128,11 @@ public class CandleTasukiGap : CandleIndicator
                 // 2nd: white
                 GetCandleColor(i) == 1 &&
                 // that opens within the black rb
-                _open[i] < _open[i - 1] && _open[i] > _close[i - 1] &&
+                Open[i] < Open[i - 1] && Open[i] > Close[i - 1] &&
                 // and closes above the black rb
-                _close[i] > _open[i - 1] &&
+                Close[i] > Open[i - 1] &&
                 // inside the gap
-                _close[i] < Min(_close[i - 2], _open[i - 2]) &&
+                Close[i] < Min(Close[i - 2], Open[i - 2]) &&
                 // size of 2 rb near the same
                 Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
             );

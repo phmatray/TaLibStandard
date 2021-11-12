@@ -36,7 +36,7 @@ public class CandleHammer : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -151,7 +151,7 @@ public class CandleHammer : CandleIndicator
             // very short upper shadow
             GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i) &&
             // rb near the prior candle's lows
-            Min(_close[i], _open[i]) <= _low[i - 1] + GetCandleAverage(Near, _nearPeriodTotal, i - 1);
+            Min(Close[i], Open[i]) <= Low[i - 1] + GetCandleAverage(Near, _nearPeriodTotal, i - 1);
             
         return isHammer;
     }

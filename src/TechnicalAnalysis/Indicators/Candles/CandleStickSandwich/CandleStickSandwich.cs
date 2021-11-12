@@ -32,7 +32,7 @@ public class CandleStickSandwich : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -108,10 +108,10 @@ public class CandleStickSandwich : CandleIndicator
             // third black
             GetCandleColor(i) == -1 &&
             // 2nd low > prior close
-            _low[i - 1] > _close[i - 2] &&
+            Low[i - 1] > Close[i - 2] &&
             // 1st and 3rd same close
-            _close[i] <= _close[i - 2] + GetCandleAverage(Equal, _equalPeriodTotal, i - 2) &&
-            _close[i] >= _close[i - 2] - GetCandleAverage(Equal, _equalPeriodTotal, i - 2);
+            Close[i] <= Close[i - 2] + GetCandleAverage(Equal, _equalPeriodTotal, i - 2) &&
+            Close[i] >= Close[i - 2] - GetCandleAverage(Equal, _equalPeriodTotal, i - 2);
             
         return isStickSandwich;
     }

@@ -36,7 +36,7 @@ public class CandleMatHold : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -146,18 +146,18 @@ public class CandleMatHold : CandleIndicator
             // upside gap 1st to 2nd
             GetRealBodyGapUp(i - 3, i - 4) &&
             // 3rd to 4th hold within 1st: a part of the real body must be within 1st real body
-            Min(_open[i - 2], _close[i - 2]) < _close[i - 4] &&
-            Min(_open[i - 1], _close[i - 1]) < _close[i - 4] &&
+            Min(Open[i - 2], Close[i - 2]) < Close[i - 4] &&
+            Min(Open[i - 1], Close[i - 1]) < Close[i - 4] &&
             // reaction days penetrate first body less than optInPenetration percent
-            Min(_open[i - 2], _close[i - 2]) > _close[i - 4] - GetRealBody(i - 4) * _penetration &&
-            Min(_open[i - 1], _close[i - 1]) > _close[i - 4] - GetRealBody(i - 4) * _penetration &&
+            Min(Open[i - 2], Close[i - 2]) > Close[i - 4] - GetRealBody(i - 4) * _penetration &&
+            Min(Open[i - 1], Close[i - 1]) > Close[i - 4] - GetRealBody(i - 4) * _penetration &&
             // 2nd to 4th are falling
-            Max(_close[i - 2], _open[i - 2]) < _open[i - 3] &&
-            Max(_close[i - 1], _open[i - 1]) < Max(_close[i - 2], _open[i - 2]) &&
+            Max(Close[i - 2], Open[i - 2]) < Open[i - 3] &&
+            Max(Close[i - 1], Open[i - 1]) < Max(Close[i - 2], Open[i - 2]) &&
             // 5th opens above the prior close
-            _open[i] > _close[i - 1] &&
+            Open[i] > Close[i - 1] &&
             // 5th closes above the highest high of the reaction days
-            _close[i] > Max(Max(_high[i - 3], _high[i - 2]), _high[i - 1]);
+            Close[i] > Max(Max(High[i - 3], High[i - 2]), High[i - 1]);
             
         return isMatHold;
     }

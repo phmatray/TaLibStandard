@@ -37,7 +37,7 @@ public class CandleAbandonedBaby : CandleIndicator
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        if (Open == null || High == null || Low == null || Close == null)
         {
             return new(BadParam, outBegIdx, outNBElement, outInteger);
         }
@@ -155,7 +155,7 @@ public class CandleAbandonedBaby : CandleIndicator
                     // 3rd black
                     GetCandleColor(i) == -1 &&
                     // 3rd closes well within 1st rb
-                    _close[i] < _close[i - 2] - GetRealBody(i - 2) * _penetration &&
+                    Close[i] < Close[i - 2] - GetRealBody(i - 2) * _penetration &&
                     // upside gap between 1st and 2nd
                     GetCandleGapUp(i - 1, i - 2) &&
                     // downside gap between 2nd and 3rd
@@ -168,7 +168,7 @@ public class CandleAbandonedBaby : CandleIndicator
                     // 3rd white
                     GetCandleColor(i) == 1 &&
                     // 3rd closes well within 1st rb
-                    _close[i] > _close[i - 2] + GetRealBody(i - 2) * _penetration &&
+                    Close[i] > Close[i - 2] + GetRealBody(i - 2) * _penetration &&
                     // downside gap between 1st and 2nd
                     GetCandleGapDown(i - 1, i - 2) &&
                     // upside gap between 2nd and 3rd
