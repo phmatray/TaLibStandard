@@ -39,7 +39,7 @@ public static class DataHistoryRepository
 
         if (histoResponse.Response != "Success")
         {
-            throw new Exception("Couldn't create the data hist");
+            throw new Exception("Couldn't create the data history");
         }
 
         var candles = histoResponse.Data;
