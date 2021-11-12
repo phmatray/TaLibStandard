@@ -95,7 +95,7 @@ public class CandleSeparatingLines : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -124,34 +124,36 @@ public class CandleSeparatingLines : CandleIndicator
             
         return new CandleSeparatingLinesResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isSeparatingLines =
             // opposite candles
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            GetCandleColor(index - 1) == -GetCandleColor(index) &&
             // same open
-            Open[i] <= Open[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
-            Open[i] >= Open[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+            Open[index] <= Open[index - 1] + GetCandleAverage(Equal, _equalPeriodTotal, index - 1) &&
+            Open[index] >= Open[index - 1] - GetCandleAverage(Equal, _equalPeriodTotal, index - 1) &&
             // belt hold: long body
-            GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i) &&
+            GetRealBody(index) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index) &&
             (
                 (
                     // with no lower shadow if bullish
-                    GetCandleColor(i) == 1 &&
-                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
+                    GetCandleColor(index) == 1 &&
+                    GetLowerShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, index)
                 )
                 ||
                 (
                     // with no upper shadow if bearish
-                    GetCandleColor(i) == -1 &&
-                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
+                    GetCandleColor(index) == -1 &&
+                    GetUpperShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, index)
                 )
             );
             
         return isSeparatingLines;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(ShadowVeryShort, BodyLong, Equal) + 1;

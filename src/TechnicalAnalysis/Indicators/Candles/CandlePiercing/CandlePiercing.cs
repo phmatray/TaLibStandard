@@ -79,7 +79,7 @@ public class CandlePiercing : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -101,28 +101,30 @@ public class CandlePiercing : CandleIndicator
             
         return new CandlePiercingResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isPiercing =
             // 1st: black
-            GetCandleColor(i - 1) == -1 &&
+            GetCandleColor(index - 1) == -1 &&
             // long
-            GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], i - 1) &&
+            GetRealBody(index - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], index - 1) &&
             // 2nd: white
-            GetCandleColor(i) == 1 &&
+            GetCandleColor(index) == 1 &&
             // long
-            GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], i) &&
+            GetRealBody(index) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], index) &&
             // open below prior low
-            Open[i] < Low[i - 1] &&
+            Open[index] < Low[index - 1] &&
             // close within prior body
-            Close[i] < Open[i - 1] &&
+            Close[index] < Open[index - 1] &&
             // above midpoint
-            Close[i] > Close[i - 1] + GetRealBody(i - 1) * 0.5;
+            Close[index] > Close[index - 1] + GetRealBody(index - 1) * 0.5;
             
         return isPiercing;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyLong) + 1;

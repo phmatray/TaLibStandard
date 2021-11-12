@@ -70,7 +70,7 @@ public class CandleHikkakeMod : CandleIndicator
         i = startIdx - 3;
         while (i < startIdx)
         {
-            if (GetPatternRecognition(i))
+            if (RecognizeCandlePattern(i))
             {
                 patternResult = 100 * (High[i] < High[i - 1] ? 1 : -1);
                 patternIdx = i;
@@ -113,7 +113,7 @@ public class CandleHikkakeMod : CandleIndicator
         int outIdx = 0;
         do
         {
-            if (GetPatternRecognition(i))
+            if (RecognizeCandlePattern(i))
             {
                 patternResult = 100 * (High[i] < High[i - 1] ? 1 : -1);
                 patternIdx = i;
@@ -147,23 +147,24 @@ public class CandleHikkakeMod : CandleIndicator
             
         return new CandleHikkakeModResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool patternRecognition =
             // 2nd: lower high and higher low than 1st
-            High[i - 2] < High[i - 3] && Low[i - 2] > Low[i - 3] &&
+            High[index - 2] < High[index - 3] && Low[index - 2] > Low[index - 3] &&
             // 3rd: lower high and higher low than 2nd
-            High[i - 1] < High[i - 2] && Low[i - 1] > Low[i - 2] &&
+            High[index - 1] < High[index - 2] && Low[index - 1] > Low[index - 2] &&
             (
                 // (bull) 4th: lower high and lower low
-                High[i] < High[i - 1] && Low[i] < Low[i - 1] &&
+                High[index] < High[index - 1] && Low[index] < Low[index - 1] &&
                 // (bull) 2nd: close near the low
-                Close[i - 2] <= Low[i - 2] + GetCandleAverage(Near, _nearPeriodTotal, i - 2) ||
+                Close[index - 2] <= Low[index - 2] + GetCandleAverage(Near, _nearPeriodTotal, index - 2) ||
                 // (bear) 4th: higher high and higher low
-                High[i] > High[i - 1] && Low[i] > Low[i - 1] &&
+                High[index] > High[index - 1] && Low[index] > Low[index - 1] &&
                 // (bull) 2nd: close near the top
-                Close[i - 2] >= High[i - 2] - GetCandleAverage(Near, _nearPeriodTotal, i - 2)
+                Close[index - 2] >= High[index - 2] - GetCandleAverage(Near, _nearPeriodTotal, index - 2)
             );
             
         return patternRecognition;
@@ -182,7 +183,8 @@ public class CandleHikkakeMod : CandleIndicator
             
         return confirmation;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return Max(1, GetCandleAvgPeriod(Near)) + 5;

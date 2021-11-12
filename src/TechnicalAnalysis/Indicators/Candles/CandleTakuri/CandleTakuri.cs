@@ -94,7 +94,7 @@ public class CandleTakuri : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -123,17 +123,19 @@ public class CandleTakuri : CandleIndicator
             
         return new CandleTakuriResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isTakuri =
-            GetRealBody(i) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, i) &&
-            GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i) &&
-            GetLowerShadow(i) > GetCandleAverage(ShadowVeryLong, _shadowVeryLongPeriodTotal, i);
+            GetRealBody(index) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, index) &&
+            GetUpperShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, index) &&
+            GetLowerShadow(index) > GetCandleAverage(ShadowVeryLong, _shadowVeryLongPeriodTotal, index);
             
         return isTakuri;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, ShadowVeryShort, ShadowVeryLong);

@@ -83,7 +83,7 @@ public class CandleHighWave : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -107,17 +107,19 @@ public class CandleHighWave : CandleIndicator
             
         return new CandleHighWaveResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isHighWave =
-            GetRealBody(i) < GetCandleAverage(BodyShort, _bodyPeriodTotal, i) &&
-            GetUpperShadow(i) > GetCandleAverage(ShadowVeryLong, _shadowPeriodTotal, i) &&
-            GetLowerShadow(i) > GetCandleAverage(ShadowVeryLong, _shadowPeriodTotal, i);
+            GetRealBody(index) < GetCandleAverage(BodyShort, _bodyPeriodTotal, index) &&
+            GetUpperShadow(index) > GetCandleAverage(ShadowVeryLong, _shadowPeriodTotal, index) &&
+            GetLowerShadow(index) > GetCandleAverage(ShadowVeryLong, _shadowPeriodTotal, index);
             
         return isHighWave;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, ShadowVeryLong);

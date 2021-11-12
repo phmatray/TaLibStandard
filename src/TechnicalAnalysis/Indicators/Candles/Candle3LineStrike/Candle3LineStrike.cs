@@ -81,7 +81,7 @@ public class Candle3LineStrike : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i - 1) * 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? GetCandleColor(i - 1) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -103,51 +103,53 @@ public class Candle3LineStrike : CandleIndicator
             
         return new Candle3LineStrikeResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool is3LineStrike =
             // three with same color
-            GetCandleColor(i - 3) == GetCandleColor(i - 2) &&
-            GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
+            GetCandleColor(index - 3) == GetCandleColor(index - 2) &&
+            GetCandleColor(index - 2) == GetCandleColor(index - 1) &&
             // 4th opposite color
-            GetCandleColor(i) == -GetCandleColor(i - 1) &&
+            GetCandleColor(index) == -GetCandleColor(index - 1) &&
             // 2nd opens within/near 1st rb
-            Open[i - 2] >= Min(Open[i - 3], Close[i - 3]) -
-            GetCandleAverage(Near, _nearPeriodTotal[3], i - 3) &&
-            Open[i - 2] <= Max(Open[i - 3], Close[i - 3]) +
-            GetCandleAverage(Near, _nearPeriodTotal[3], i - 3) &&
+            Open[index - 2] >= Min(Open[index - 3], Close[index - 3]) -
+            GetCandleAverage(Near, _nearPeriodTotal[3], index - 3) &&
+            Open[index - 2] <= Max(Open[index - 3], Close[index - 3]) +
+            GetCandleAverage(Near, _nearPeriodTotal[3], index - 3) &&
             // 3rd opens within/near 2nd rb
-            Open[i - 1] >= Min(Open[i - 2], Close[i - 2]) -
-            GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
-            Open[i - 1] <= Max(Open[i - 2], Close[i - 2]) +
-            GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
+            Open[index - 1] >= Min(Open[index - 2], Close[index - 2]) -
+            GetCandleAverage(Near, _nearPeriodTotal[2], index - 2) &&
+            Open[index - 1] <= Max(Open[index - 2], Close[index - 2]) +
+            GetCandleAverage(Near, _nearPeriodTotal[2], index - 2) &&
             (
                 ( // if three white
-                    GetCandleColor(i - 1) == 1 &&
-                    Close[i - 1] > Close[i - 2] &&
+                    GetCandleColor(index - 1) == 1 &&
+                    Close[index - 1] > Close[index - 2] &&
                     // consecutive higher closes
-                    Close[i - 2] > Close[i - 3] &&
+                    Close[index - 2] > Close[index - 3] &&
                     // 4th opens above prior close
-                    Open[i] > Close[i - 1] &&
+                    Open[index] > Close[index - 1] &&
                     // 4th closes below 1st open
-                    Close[i] < Open[i - 3]
+                    Close[index] < Open[index - 3]
                 ) ||
                 ( // if three black
-                    GetCandleColor(i - 1) == -1 &&
-                    Close[i - 1] < Close[i - 2] &&
+                    GetCandleColor(index - 1) == -1 &&
+                    Close[index - 1] < Close[index - 2] &&
                     // consecutive lower closes
-                    Close[i - 2] < Close[i - 3] &&
+                    Close[index - 2] < Close[index - 3] &&
                     // 4th opens below prior close
-                    Open[i] < Close[i - 1] &&
+                    Open[index] < Close[index - 1] &&
                     // 4th closes above 1st open
-                    Close[i] > Open[i - 3]
+                    Close[index] > Open[index - 3]
                 )
             );
             
         return is3LineStrike;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(Near) + 3;

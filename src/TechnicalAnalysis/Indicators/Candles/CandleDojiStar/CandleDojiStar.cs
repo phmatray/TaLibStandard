@@ -86,7 +86,7 @@ public class CandleDojiStar : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? -GetCandleColor(i - 1) * 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? -GetCandleColor(i - 1) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -110,31 +110,33 @@ public class CandleDojiStar : CandleIndicator
             
         return new CandleDojiStarResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isDojiStar =
             // 1st: long real body
-            GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 1) &&
+            GetRealBody(index - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 1) &&
             // 2nd: doji
-            GetRealBody(i) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, i) &&
+            GetRealBody(index) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, index) &&
             (
                 (
                     // that gaps up if 1st is white
-                    GetCandleColor(i - 1) == 1 &&
-                    GetRealBodyGapUp(i, i - 1)
+                    GetCandleColor(index - 1) == 1 &&
+                    GetRealBodyGapUp(index, index - 1)
                 )
                 ||
                 (
                     // or down if 1st is black
-                    GetCandleColor(i - 1) == -1 &&
-                    GetRealBodyGapDown(i, i - 1)
+                    GetCandleColor(index - 1) == -1 &&
+                    GetRealBodyGapDown(index, index - 1)
                 )
             );
             
         return isDojiStar;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, BodyLong) + 1;

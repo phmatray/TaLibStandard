@@ -87,7 +87,7 @@ public class CandleKicking : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -115,29 +115,31 @@ public class CandleKicking : CandleIndicator
             
         return new CandleKickingResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isKicking =
             // opposite candles
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            GetCandleColor(index - 1) == -GetCandleColor(index) &&
             // 1st marubozu
-            GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], i - 1) &&
-            GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
-            GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
+            GetRealBody(index - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], index - 1) &&
+            GetUpperShadow(index - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], index - 1) &&
+            GetLowerShadow(index - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], index - 1) &&
             // 2nd marubozu
-            GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], i) &&
-            GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
-            GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
+            GetRealBody(index) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], index) &&
+            GetUpperShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], index) &&
+            GetLowerShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], index) &&
             // gap
             (
-                (GetCandleColor(i - 1) == -1 && GetCandleGapUp(i, i - 1)) ||
-                (GetCandleColor(i - 1) == 1 && GetCandleGapDown(i, i - 1))
+                (GetCandleColor(index - 1) == -1 && GetCandleGapUp(index, index - 1)) ||
+                (GetCandleColor(index - 1) == 1 && GetCandleGapDown(index, index - 1))
             );
             
         return isKicking;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(ShadowVeryShort, BodyLong) + 1;

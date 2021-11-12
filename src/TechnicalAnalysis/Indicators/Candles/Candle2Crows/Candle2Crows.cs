@@ -80,7 +80,7 @@ public class Candle2Crows : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? -100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? -100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -99,28 +99,30 @@ public class Candle2Crows : CandleIndicator
 
         return new Candle2CrowsResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool is2Crows =
             // 1st: white
-            GetCandleColor(i - 2) == 1 &&
+            GetCandleColor(index - 2) == 1 &&
             // long
-            GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
+            GetRealBody(index - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 2) &&
             // 2nd: black
-            GetCandleColor(i - 1) == -1 &&
+            GetCandleColor(index - 1) == -1 &&
             // gapping up
-            GetRealBodyGapUp(i - 1, i - 2) &&
+            GetRealBodyGapUp(index - 1, index - 2) &&
             // 3rd: black
-            GetCandleColor(i) == -1 &&
+            GetCandleColor(index) == -1 &&
             // opening within 2nd rb
-            Open[i] < Open[i - 1] && Open[i] > Close[i - 1] &&
+            Open[index] < Open[index - 1] && Open[index] > Close[index - 1] &&
             // closing within 1st rb
-            Close[i] > Open[i - 2] && Close[i] < Close[i - 2];
+            Close[index] > Open[index - 2] && Close[index] < Close[index - 2];
 
         return is2Crows;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyLong) + 2;

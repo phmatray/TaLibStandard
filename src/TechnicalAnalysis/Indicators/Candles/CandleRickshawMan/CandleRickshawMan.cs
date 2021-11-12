@@ -94,7 +94,7 @@ public class CandleRickshawMan : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -123,25 +123,27 @@ public class CandleRickshawMan : CandleIndicator
             
         return new CandleRickshawManResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isRickshawMan =
             // doji
-            GetRealBody(i) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, i) &&
+            GetRealBody(index) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, index) &&
             // long shadow
-            GetLowerShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) &&
+            GetLowerShadow(index) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, index) &&
             // long shadow
-            GetUpperShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) &&
+            GetUpperShadow(index) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, index) &&
             (
                 // body near midpoint
-                Min(Open[i], Close[i]) <= Low[i] + GetHighLowRange(i) / 2 + GetCandleAverage(Near, _nearPeriodTotal, i) &&
-                Max(Open[i], Close[i]) >= Low[i] + GetHighLowRange(i) / 2 - GetCandleAverage(Near, _nearPeriodTotal, i)
+                Min(Open[index], Close[index]) <= Low[index] + GetHighLowRange(index) / 2 + GetCandleAverage(Near, _nearPeriodTotal, index) &&
+                Max(Open[index], Close[index]) >= Low[index] + GetHighLowRange(index) / 2 - GetCandleAverage(Near, _nearPeriodTotal, index)
             );
             
         return isRickshawMan;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, ShadowLong, Near);

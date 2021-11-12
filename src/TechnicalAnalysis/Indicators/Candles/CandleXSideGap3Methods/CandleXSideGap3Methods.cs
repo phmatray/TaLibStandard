@@ -67,7 +67,7 @@ public class CandleXSideGap3Methods : CandleIndicator
         int outIdx = 0;
         do
         {
-            bool isXSideGap3Methods = GetPatternRecognition(i);
+            bool isXSideGap3Methods = RecognizeCandlePattern(i);
 
             outInteger[outIdx++] = isXSideGap3Methods ? GetCandleColor(i - 2) * 100 : 0;
 
@@ -83,38 +83,40 @@ public class CandleXSideGap3Methods : CandleIndicator
             
         return new CandleXSideGap3MethodsResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isXSideGap3Methods =
             // 1st and 2nd of same color
-            GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
+            GetCandleColor(index - 2) == GetCandleColor(index - 1) &&
             // 3rd opposite color
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            GetCandleColor(index - 1) == -GetCandleColor(index) &&
             // 3rd opens within 2nd rb
-            Open[i] < Max(Close[i - 1], Open[i - 1]) &&
-            Open[i] > Min(Close[i - 1], Open[i - 1]) &&
+            Open[index] < Max(Close[index - 1], Open[index - 1]) &&
+            Open[index] > Min(Close[index - 1], Open[index - 1]) &&
             // 3rd closes within 1st rb
-            Close[i] < Max(Close[i - 2], Open[i - 2]) &&
-            Close[i] > Min(Close[i - 2], Open[i - 2]) &&
+            Close[index] < Max(Close[index - 2], Open[index - 2]) &&
+            Close[index] > Min(Close[index - 2], Open[index - 2]) &&
             (
                 (
                     // when 1st is white
-                    GetCandleColor(i - 2) == 1 &&
+                    GetCandleColor(index - 2) == 1 &&
                     // upside gap
-                    GetRealBodyGapUp(i - 1, i - 2)
+                    GetRealBodyGapUp(index - 1, index - 2)
                 ) ||
                 (
                     // when 1st is black
-                    GetCandleColor(i - 2) == -1 &&
+                    GetCandleColor(index - 2) == -1 &&
                     // downside gap
-                    GetRealBodyGapDown(i - 1, i - 2)
+                    GetRealBodyGapDown(index - 1, index - 2)
                 )
             );
             
         return isXSideGap3Methods;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return 2;

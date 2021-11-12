@@ -81,7 +81,7 @@ public class CandleTasukiGap : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i - 1) * 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? GetCandleColor(i - 1) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -100,46 +100,48 @@ public class CandleTasukiGap : CandleIndicator
             
         return new CandleTasukiGapResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isTasukiGap =
             (
                 // upside gap
-                GetRealBodyGapUp(i - 1, i - 2) &&
+                GetRealBodyGapUp(index - 1, index - 2) &&
                 // 1st: white
-                GetCandleColor(i - 1) == 1 &&
+                GetCandleColor(index - 1) == 1 &&
                 // 2nd: black
-                GetCandleColor(i) == -1 &&
+                GetCandleColor(index) == -1 &&
                 // that opens within the white rb
-                Open[i] < Close[i - 1] && Open[i] > Open[i - 1] &&
+                Open[index] < Close[index - 1] && Open[index] > Open[index - 1] &&
                 // and closes under the white rb
-                Close[i] < Open[i - 1] &&
+                Close[index] < Open[index - 1] &&
                 // inside the gap
-                Close[i] > Max(Close[i - 2], Open[i - 2]) &&
+                Close[index] > Max(Close[index - 2], Open[index - 2]) &&
                 // size of 2 rb near the same
-                Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
+                Abs(GetRealBody(index - 1) - GetRealBody(index)) < GetCandleAverage(Near, _nearPeriodTotal, index - 1)
             ) ||
             (
                 // downside gap
-                GetRealBodyGapDown(i - 1, i - 2) &&
+                GetRealBodyGapDown(index - 1, index - 2) &&
                 // 1st: black
-                GetCandleColor(i - 1) == -1 &&
+                GetCandleColor(index - 1) == -1 &&
                 // 2nd: white
-                GetCandleColor(i) == 1 &&
+                GetCandleColor(index) == 1 &&
                 // that opens within the black rb
-                Open[i] < Open[i - 1] && Open[i] > Close[i - 1] &&
+                Open[index] < Open[index - 1] && Open[index] > Close[index - 1] &&
                 // and closes above the black rb
-                Close[i] > Open[i - 1] &&
+                Close[index] > Open[index - 1] &&
                 // inside the gap
-                Close[i] < Min(Close[i - 2], Open[i - 2]) &&
+                Close[index] < Min(Close[index - 2], Open[index - 2]) &&
                 // size of 2 rb near the same
-                Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
+                Abs(GetRealBody(index - 1) - GetRealBody(index)) < GetCandleAverage(Near, _nearPeriodTotal, index - 1)
             );
             
         return isTasukiGap;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(Near) + 2;

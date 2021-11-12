@@ -76,7 +76,7 @@ public class CandleTristar : CandleIndicator
         int outIdx = 0;
         do
         {
-            if (GetPatternRecognition(i))
+            if (RecognizeCandlePattern(i))
             {
                 outInteger[outIdx] = 0;
 
@@ -120,20 +120,22 @@ public class CandleTristar : CandleIndicator
             
         return new CandleTristarResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isCdlTristar =
             // 1st: doji
-            GetRealBody(i - 2) <= GetCandleAverage(BodyDoji, _bodyPeriodTotal, i - 2) &&
+            GetRealBody(index - 2) <= GetCandleAverage(BodyDoji, _bodyPeriodTotal, index - 2) &&
             // 2nd: doji
-            GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, _bodyPeriodTotal, i - 2) &&
+            GetRealBody(index - 1) <= GetCandleAverage(BodyDoji, _bodyPeriodTotal, index - 2) &&
             // 3rd: doji
-            GetRealBody(i) <= GetCandleAverage(BodyDoji, _bodyPeriodTotal, i - 2);
+            GetRealBody(index) <= GetCandleAverage(BodyDoji, _bodyPeriodTotal, index - 2);
             
         return isCdlTristar;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyDoji) + 2;

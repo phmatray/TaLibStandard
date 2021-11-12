@@ -107,7 +107,7 @@ public class Candle3StarsInSouth : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -146,40 +146,42 @@ public class Candle3StarsInSouth : CandleIndicator
         return new Candle3StarsInSouthResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
-    public override bool GetPatternRecognition(int i)
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool is3StarsInSouth =
             // 1st black
-            GetCandleColor(i - 2) == -1 &&
+            GetCandleColor(index - 2) == -1 &&
             // 2nd black
-            GetCandleColor(i - 1) == -1 &&
+            GetCandleColor(index - 1) == -1 &&
             // 3rd black
-            GetCandleColor(i) == -1 &&
+            GetCandleColor(index) == -1 &&
             // 1st: long
-            GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
+            GetRealBody(index - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 2) &&
             // with long lower shadow
-            GetLowerShadow(i - 2) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i - 2) &&
+            GetLowerShadow(index - 2) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, index - 2) &&
             // 2nd: smaller candle
-            GetRealBody(i - 1) < GetRealBody(i - 2) &&
+            GetRealBody(index - 1) < GetRealBody(index - 2) &&
             // that opens higher but within 1st range
-            Open[i - 1] > Close[i - 2] &&
-            Open[i - 1] <= High[i - 2] &&
+            Open[index - 1] > Close[index - 2] &&
+            Open[index - 1] <= High[index - 2] &&
             // and trades lower than 1st close
-            Low[i - 1] < Close[i - 2] &&
+            Low[index - 1] < Close[index - 2] &&
             // but not lower than 1st low
-            Low[i - 1] >= Low[i - 2] &&
+            Low[index - 1] >= Low[index - 2] &&
             // and has a lower shadow
-            GetLowerShadow(i - 1) > GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
+            GetLowerShadow(index - 1) > GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], index - 1) &&
             // 3rd: small marubozu
-            GetRealBody(i) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
-            GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
-            GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
+            GetRealBody(index) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, index) &&
+            GetLowerShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], index) &&
+            GetUpperShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], index) &&
             // engulfed by prior candle's range
-            Low[i] > Low[i - 1] && High[i] < High[i - 1];
+            Low[index] > Low[index - 1] && High[index] < High[index - 1];
             
         return is3StarsInSouth;
     }
 
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(ShadowVeryShort, ShadowLong, BodyLong, BodyShort) + 2;

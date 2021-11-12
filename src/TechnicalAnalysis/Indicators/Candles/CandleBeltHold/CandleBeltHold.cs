@@ -82,7 +82,7 @@ public class CandleBeltHold : CandleIndicator
         int outIdx = 0;
         do
         {
-            bool isBeltHold = GetPatternRecognition(i);
+            bool isBeltHold = RecognizeCandlePattern(i);
 
             outInteger[outIdx++] = isBeltHold ? GetCandleColor(i) * 100 : 0;
 
@@ -108,26 +108,28 @@ public class CandleBeltHold : CandleIndicator
             
         return new CandleBeltHoldResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isBeltHold =
             // long body
-            GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i) &&
+            GetRealBody(index) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index) &&
             (
                 ( // white body and very short lower shadow
-                    GetCandleColor(i) == 1 &&
-                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
+                    GetCandleColor(index) == 1 &&
+                    GetLowerShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, index)
                 ) ||
                 ( // black body and very short upper shadow
-                    GetCandleColor(i) == -1 &&
-                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
+                    GetCandleColor(index) == -1 &&
+                    GetUpperShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, index)
                 )
             );
             
         return isBeltHold;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyLong, ShadowVeryShort);

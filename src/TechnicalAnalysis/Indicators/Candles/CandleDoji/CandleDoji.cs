@@ -74,7 +74,7 @@ public class CandleDoji : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -93,14 +93,16 @@ public class CandleDoji : CandleIndicator
 
         return new CandleDojiResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
-        bool isDoji = GetRealBody(i) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, i);
+        bool isDoji = GetRealBody(index) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, index);
             
         return isDoji;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyDoji);

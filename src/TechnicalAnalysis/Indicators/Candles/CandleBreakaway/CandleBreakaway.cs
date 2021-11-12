@@ -80,7 +80,7 @@ public class CandleBreakaway : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -99,53 +99,55 @@ public class CandleBreakaway : CandleIndicator
             
         return new CandleBreakawayResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isBreakaway =
             // 1st long
-            GetRealBody(i - 4) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 4) &&
+            GetRealBody(index - 4) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 4) &&
             // 1st, 2nd, 4th same color, 5th opposite
-            GetCandleColor(i - 4) == GetCandleColor(i - 3) &&
-            GetCandleColor(i - 3) == GetCandleColor(i - 1) &&
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            GetCandleColor(index - 4) == GetCandleColor(index - 3) &&
+            GetCandleColor(index - 3) == GetCandleColor(index - 1) &&
+            GetCandleColor(index - 1) == -GetCandleColor(index) &&
             (
                 (
                     // when 1st is black:
-                    GetCandleColor(i - 4) == -1 &&
+                    GetCandleColor(index - 4) == -1 &&
                     // 2nd gaps down
-                    GetRealBodyGapDown(i - 3, i - 4) &&
+                    GetRealBodyGapDown(index - 3, index - 4) &&
                     // 3rd has lower high and low than 2nd
-                    High[i - 2] < High[i - 3] &&
-                    Low[i - 2] < Low[i - 3] &&
+                    High[index - 2] < High[index - 3] &&
+                    Low[index - 2] < Low[index - 3] &&
                     // 4th has lower high and low than 3rd
-                    High[i - 1] < High[i - 2] &&
-                    Low[i - 1] < Low[i - 2] &&
+                    High[index - 1] < High[index - 2] &&
+                    Low[index - 1] < Low[index - 2] &&
                     // 5th closes inside the gap
-                    Close[i] > Open[i - 3] &&
-                    Close[i] < Close[i - 4]
+                    Close[index] > Open[index - 3] &&
+                    Close[index] < Close[index - 4]
                 )
                 ||
                 (
                     // when 1st is white:
-                    GetCandleColor(i - 4) == 1 &&
+                    GetCandleColor(index - 4) == 1 &&
                     // 2nd gaps up
-                    GetRealBodyGapUp(i - 3, i - 4) &&
+                    GetRealBodyGapUp(index - 3, index - 4) &&
                     // 3rd has higher high and low than 2nd
-                    High[i - 2] > High[i - 3] &&
-                    Low[i - 2] > Low[i - 3] &&
+                    High[index - 2] > High[index - 3] &&
+                    Low[index - 2] > Low[index - 3] &&
                     // 4th has higher high and low than 3rd
-                    High[i - 1] > High[i - 2] &&
-                    Low[i - 1] > Low[i - 2] &&
+                    High[index - 1] > High[index - 2] &&
+                    Low[index - 1] > Low[index - 2] &&
                     // 5th closes inside the gap
-                    Close[i] < Open[i - 3] &&
-                    Close[i] > Close[i - 4]
+                    Close[index] < Open[index - 3] &&
+                    Close[index] > Close[index - 4]
                 )
             );
             
         return isBreakaway;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyLong) + 4;

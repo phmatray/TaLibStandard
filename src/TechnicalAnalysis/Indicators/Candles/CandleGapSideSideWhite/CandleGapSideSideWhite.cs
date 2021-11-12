@@ -89,7 +89,7 @@ public class CandleGapSideSideWhite : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i)
+            outInteger[outIdx++] = RecognizeCandlePattern(i)
                 ? GetRealBodyGapUp(i - 1, i - 2) ? 100 : -100
                 : 0;
 
@@ -115,39 +115,41 @@ public class CandleGapSideSideWhite : CandleIndicator
             
         return new CandleGapSideSideWhiteResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isGapSideSideWhite =
             ( // upside or downside gap between the 1st candle and both the next 2 candles
                 (
-                    GetRealBodyGapUp(i - 1, i - 2) &&
-                    GetRealBodyGapUp(i, i - 2)
+                    GetRealBodyGapUp(index - 1, index - 2) &&
+                    GetRealBodyGapUp(index, index - 2)
                 )
                 ||
                 (
-                    GetRealBodyGapDown(i - 1, i - 2) &&
-                    GetRealBodyGapDown(i, i - 2)
+                    GetRealBodyGapDown(index - 1, index - 2) &&
+                    GetRealBodyGapDown(index, index - 2)
                 )
             ) &&
             // 2nd: white
-            GetCandleColor(i - 1) == 1 &&
+            GetCandleColor(index - 1) == 1 &&
             // 3rd: white
-            GetCandleColor(i) == 1 &&
+            GetCandleColor(index) == 1 &&
             // same size 2 and 3
-            GetRealBody(i) >= GetRealBody(i - 1) -
-            GetCandleAverage(Near, _nearPeriodTotal, i - 1) &&
-            GetRealBody(i) <= GetRealBody(i - 1) +
-            GetCandleAverage(Near, _nearPeriodTotal, i - 1) &&
+            GetRealBody(index) >= GetRealBody(index - 1) -
+            GetCandleAverage(Near, _nearPeriodTotal, index - 1) &&
+            GetRealBody(index) <= GetRealBody(index - 1) +
+            GetCandleAverage(Near, _nearPeriodTotal, index - 1) &&
             // same open 2 and 3
-            Open[i] >= Open[i - 1] -
-            GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
-            Open[i] <= Open[i - 1] +
-            GetCandleAverage(Equal, _equalPeriodTotal, i - 1);
+            Open[index] >= Open[index - 1] -
+            GetCandleAverage(Equal, _equalPeriodTotal, index - 1) &&
+            Open[index] <= Open[index - 1] +
+            GetCandleAverage(Equal, _equalPeriodTotal, index - 1);
             
         return isGapSideSideWhite;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(Near, Equal) + 2;

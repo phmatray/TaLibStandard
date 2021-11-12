@@ -106,7 +106,7 @@ public class CandleHangingMan : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? -100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? -100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -140,22 +140,24 @@ public class CandleHangingMan : CandleIndicator
             
         return new CandleHangingManResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isHangingMan =
             // small rb
-            GetRealBody(i) < GetCandleAverage(BodyShort, _bodyPeriodTotal, i) &&
+            GetRealBody(index) < GetCandleAverage(BodyShort, _bodyPeriodTotal, index) &&
             // long lower shadow
-            GetLowerShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) &&
+            GetLowerShadow(index) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, index) &&
             // very short upper shadow
-            GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i) &&
+            GetUpperShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, index) &&
             // rb near the prior candle's highs
-            Min(Close[i], Open[i]) >= High[i - 1] - GetCandleAverage(Near, _nearPeriodTotal, i - 1);
+            Min(Close[index], Open[index]) >= High[index - 1] - GetCandleAverage(Near, _nearPeriodTotal, index - 1);
             
         return isHangingMan;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, ShadowLong, ShadowVeryShort, Near) + 1;

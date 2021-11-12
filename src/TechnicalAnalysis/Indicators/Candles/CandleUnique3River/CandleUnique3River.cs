@@ -87,7 +87,7 @@ public class CandleUnique3River : CandleIndicator
         int outIdx = 0;
         do
         {
-            bool isUnique3River = GetPatternRecognition(i);
+            bool isUnique3River = RecognizeCandlePattern(i);
 
             outInteger[outIdx++] = isUnique3River ? 100 : 0;
 
@@ -113,30 +113,32 @@ public class CandleUnique3River : CandleIndicator
             
         return new CandleUnique3RiverResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isUnique3River =
             // 1st: long
-            GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
+            GetRealBody(index - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 2) &&
             // black
-            GetCandleColor(i - 2) == -1 &&
+            GetCandleColor(index - 2) == -1 &&
             // 2nd: black
-            GetCandleColor(i - 1) == -1 &&
+            GetCandleColor(index - 1) == -1 &&
             // harami
-            Close[i - 1] > Close[i - 2] && Open[i - 1] <= Open[i - 2] &&
+            Close[index - 1] > Close[index - 2] && Open[index - 1] <= Open[index - 2] &&
             // lower low
-            Low[i - 1] < Low[i - 2] &&
+            Low[index - 1] < Low[index - 2] &&
             // 3rd: short
-            GetRealBody(i) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
+            GetRealBody(index) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, index) &&
             // white
-            GetCandleColor(i) == 1 &&
+            GetCandleColor(index) == 1 &&
             // open not lower
-            Open[i] > Low[i - 1];
+            Open[index] > Low[index - 1];
             
         return isUnique3River;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 2;

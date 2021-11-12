@@ -82,7 +82,7 @@ public class CandleClosingMarubozu : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -106,26 +106,28 @@ public class CandleClosingMarubozu : CandleIndicator
             
         return new CandleClosingMarubozuResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isClosingMarubozu =
             // long body
-            GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i) &&
+            GetRealBody(index) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index) &&
             (
                 ( // white body and very short lower shadow
-                    GetCandleColor(i) == 1 &&
-                    GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
+                    GetCandleColor(index) == 1 &&
+                    GetUpperShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, index)
                 ) ||
                 ( // black body and very short upper shadow
-                    GetCandleColor(i) == -1 &&
-                    GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
+                    GetCandleColor(index) == -1 &&
+                    GetLowerShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, index)
                 )
             );
             
         return isClosingMarubozu;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyLong, ShadowVeryShort);

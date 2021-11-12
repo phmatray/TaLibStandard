@@ -81,7 +81,7 @@ public class CandleConcealBabySwallow : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -103,41 +103,43 @@ public class CandleConcealBabySwallow : CandleIndicator
             
         return new CandleConcealBabySwallowResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isConcealBabySwallow =
             // 1st black
-            GetCandleColor(i - 3) == -1 &&
+            GetCandleColor(index - 3) == -1 &&
             // 2nd black
-            GetCandleColor(i - 2) == -1 &&
+            GetCandleColor(index - 2) == -1 &&
             // 3rd black
-            GetCandleColor(i - 1) == -1 &&
+            GetCandleColor(index - 1) == -1 &&
             // 4th black
-            GetCandleColor(i) == -1 &&
+            GetCandleColor(index) == -1 &&
             // 1st: marubozu
-            GetLowerShadow(i - 3) <
-            GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[3], i - 3) &&
-            GetUpperShadow(i - 3) <
-            GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[3], i - 3) &&
+            GetLowerShadow(index - 3) <
+            GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[3], index - 3) &&
+            GetUpperShadow(index - 3) <
+            GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[3], index - 3) &&
             // 2nd: marubozu
-            GetLowerShadow(i - 2) <
-            GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], i - 2) &&
-            GetUpperShadow(i - 2) <
-            GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], i - 2) &&
+            GetLowerShadow(index - 2) <
+            GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], index - 2) &&
+            GetUpperShadow(index - 2) <
+            GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], index - 2) &&
             // 3rd: opens gapping down
-            GetRealBodyGapDown(i - 1, i - 2) &&
+            GetRealBodyGapDown(index - 1, index - 2) &&
             // and HAS an upper shadow
-            GetUpperShadow(i - 1) >
-            GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
+            GetUpperShadow(index - 1) >
+            GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], index - 1) &&
             // that extends into the prior body
-            High[i - 1] > Close[i - 2] &&
+            High[index - 1] > Close[index - 2] &&
             // 4th: engulfs the 3rd including the shadows
-            High[i] > High[i - 1] && Low[i] < Low[i - 1];
+            High[index] > High[index - 1] && Low[index] < Low[index - 1];
             
         return isConcealBabySwallow;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(ShadowVeryShort) + 3;

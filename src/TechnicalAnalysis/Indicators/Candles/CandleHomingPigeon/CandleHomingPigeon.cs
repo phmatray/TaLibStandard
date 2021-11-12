@@ -86,7 +86,7 @@ public class CandleHomingPigeon : CandleIndicator
         int outIdx = 0;
         do
         {
-            bool isHomingPigeon = GetPatternRecognition(i);
+            bool isHomingPigeon = RecognizeCandlePattern(i);
 
             outInteger[outIdx++] = isHomingPigeon ? 100 : 0;
 
@@ -112,25 +112,27 @@ public class CandleHomingPigeon : CandleIndicator
             
         return new CandleHomingPigeonResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isHomingPigeon =
             // 1st black
-            GetCandleColor(i - 1) == -1 &&
+            GetCandleColor(index - 1) == -1 &&
             // 2nd black
-            GetCandleColor(i) == -1 &&
+            GetCandleColor(index) == -1 &&
             // 1st long
-            GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 1) &&
+            GetRealBody(index - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 1) &&
             // 2nd short
-            GetRealBody(i) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
+            GetRealBody(index) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, index) &&
             // 2nd engulfed by 1st
-            Open[i] < Open[i - 1] &&
-            Close[i] > Close[i - 1];
+            Open[index] < Open[index - 1] &&
+            Close[index] > Close[index - 1];
             
         return isHomingPigeon;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 1;

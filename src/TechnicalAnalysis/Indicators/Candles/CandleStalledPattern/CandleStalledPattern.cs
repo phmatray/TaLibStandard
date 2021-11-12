@@ -110,7 +110,7 @@ public class CandleStalledPattern : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? -100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? -100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -147,36 +147,38 @@ public class CandleStalledPattern : CandleIndicator
             
         return new CandleStalledPatternResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isStalledPattern =
             // 1st white
-            GetCandleColor(i - 2) == 1 &&
+            GetCandleColor(index - 2) == 1 &&
             // 2nd white
-            GetCandleColor(i - 1) == 1 &&
+            GetCandleColor(index - 1) == 1 &&
             // 3rd white
-            GetCandleColor(i) == 1 &&
+            GetCandleColor(index) == 1 &&
             // consecutive higher closes
-            Close[i] > Close[i - 1] &&
-            Close[i - 1] > Close[i - 2] &&
+            Close[index] > Close[index - 1] &&
+            Close[index - 1] > Close[index - 2] &&
             // 1st: long real body
-            GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[2], i - 2) &&
+            GetRealBody(index - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[2], index - 2) &&
             // 2nd: long real body
-            GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], i - 1) &&
+            GetRealBody(index - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], index - 1) &&
             // very short upper shadow 
-            GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i - 1) &&
+            GetUpperShadow(index - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, index - 1) &&
             // opens within/near 1st real body
-            Open[i - 1] > Open[i - 2] &&
-            Open[i - 1] <= Close[i - 2] + GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
+            Open[index - 1] > Open[index - 2] &&
+            Open[index - 1] <= Close[index - 2] + GetCandleAverage(Near, _nearPeriodTotal[2], index - 2) &&
             // 3rd: small real body
-            GetRealBody(i) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
+            GetRealBody(index) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, index) &&
             // rides on the shoulder of 2nd real body
-            Open[i] >= Close[i - 1] - GetRealBody(i) - GetCandleAverage(Near, _nearPeriodTotal[1], i - 1);
+            Open[index] >= Close[index - 1] - GetRealBody(index) - GetCandleAverage(Near, _nearPeriodTotal[1], index - 1);
             
         return isStalledPattern;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyLong, BodyShort, ShadowVeryShort, Near) + 2;

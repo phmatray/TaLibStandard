@@ -78,7 +78,7 @@ public class CandleLadderBottom : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -97,33 +97,35 @@ public class CandleLadderBottom : CandleIndicator
             
         return new CandleLadderBottomResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isLadderBottom =
             // 3 black candlesticks
-            GetCandleColor(i - 4) == -1 &&
-            GetCandleColor(i - 3) == -1 &&
-            GetCandleColor(i - 2) == -1 &&
+            GetCandleColor(index - 4) == -1 &&
+            GetCandleColor(index - 3) == -1 &&
+            GetCandleColor(index - 2) == -1 &&
             // with consecutively lower opens
-            Open[i - 4] > Open[i - 3] &&
-            Open[i - 3] > Open[i - 2] &&
+            Open[index - 4] > Open[index - 3] &&
+            Open[index - 3] > Open[index - 2] &&
             // and closes
-            Close[i - 4] > Close[i - 3] &&
-            Close[i - 3] > Close[i - 2] &&
+            Close[index - 4] > Close[index - 3] &&
+            Close[index - 3] > Close[index - 2] &&
             // 4th: black with an upper shadow
-            GetCandleColor(i - 1) == -1 &&
-            GetUpperShadow(i - 1) > GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i - 1) &&
+            GetCandleColor(index - 1) == -1 &&
+            GetUpperShadow(index - 1) > GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, index - 1) &&
             // 5th: white
-            GetCandleColor(i) == 1 &&
+            GetCandleColor(index) == 1 &&
             // that opens above prior candle's body
-            Open[i] > Open[i - 1] &&
+            Open[index] > Open[index - 1] &&
             // and closes above prior candle's high
-            Close[i] > High[i - 1];
+            Close[index] > High[index - 1];
             
         return isLadderBottom;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(ShadowVeryShort) + 4;

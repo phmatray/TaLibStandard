@@ -112,7 +112,7 @@ public class Candle3WhiteSoldiers : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -152,46 +152,48 @@ public class Candle3WhiteSoldiers : CandleIndicator
             
         return new Candle3WhiteSoldiersResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool is3WhiteSoldiers =
             // 1st white
-            GetCandleColor(i - 2) == 1 &&
+            GetCandleColor(index - 2) == 1 &&
             // very short upper shadow
-            GetUpperShadow(i - 2) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], i - 2) &&
+            GetUpperShadow(index - 2) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], index - 2) &&
             // 2nd white                
-            GetCandleColor(i - 1) == 1 &&
+            GetCandleColor(index - 1) == 1 &&
             // very short upper shadow
-            GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
+            GetUpperShadow(index - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], index - 1) &&
             // 3rd white   
-            GetCandleColor(i) == 1 &&
+            GetCandleColor(index) == 1 &&
             // very short upper shadow
-            GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
+            GetUpperShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], index) &&
             // consecutive higher closes           
-            Close[i] > Close[i - 1] &&
-            Close[i - 1] > Close[i - 2] &&
+            Close[index] > Close[index - 1] &&
+            Close[index - 1] > Close[index - 2] &&
             // 2nd opens within/near 1st real body
-            Open[i - 1] > Open[i - 2] &&
-            Open[i - 1] <= Close[i - 2] +
-            GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
+            Open[index - 1] > Open[index - 2] &&
+            Open[index - 1] <= Close[index - 2] +
+            GetCandleAverage(Near, _nearPeriodTotal[2], index - 2) &&
             // 3rd opens within/near 2nd real body
-            Open[i] > Open[i - 1] &&
-            Open[i] <= Close[i - 1] +
-            GetCandleAverage(Near, _nearPeriodTotal[1], i - 1) &&
+            Open[index] > Open[index - 1] &&
+            Open[index] <= Close[index - 1] +
+            GetCandleAverage(Near, _nearPeriodTotal[1], index - 1) &&
             // 2nd not far shorter than 1st
-            GetRealBody(i - 1) > GetRealBody(i - 2) -
-            GetCandleAverage(Far, _farPeriodTotal[2], i - 2) &&
+            GetRealBody(index - 1) > GetRealBody(index - 2) -
+            GetCandleAverage(Far, _farPeriodTotal[2], index - 2) &&
             // 3rd not far shorter than 2nd
-            GetRealBody(i) > GetRealBody(i - 1) -
-            GetCandleAverage(Far, _farPeriodTotal[1], i - 1) &&
+            GetRealBody(index) > GetRealBody(index - 1) -
+            GetCandleAverage(Far, _farPeriodTotal[1], index - 1) &&
             // not short real body
-            GetRealBody(i) >
-            GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i);
+            GetRealBody(index) >
+            GetCandleAverage(BodyShort, _bodyShortPeriodTotal, index);
             
         return is3WhiteSoldiers;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(ShadowVeryShort, BodyShort, Far, Near) + 2;

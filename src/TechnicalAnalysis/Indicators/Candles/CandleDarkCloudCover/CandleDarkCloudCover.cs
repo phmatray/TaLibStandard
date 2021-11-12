@@ -87,7 +87,7 @@ public class CandleDarkCloudCover : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? -100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? -100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -106,25 +106,27 @@ public class CandleDarkCloudCover : CandleIndicator
             
         return new CandleDarkCloudCoverResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isDarkCloudCover =
             // 1st: white
-            GetCandleColor(i - 1) == 1 &&
+            GetCandleColor(index - 1) == 1 &&
             // long
-            GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 1) &&
+            GetRealBody(index - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 1) &&
             // 2nd: black
-            GetCandleColor(i) == -1 &&
+            GetCandleColor(index) == -1 &&
             // open above prior high
-            Open[i] > High[i - 1] &&
+            Open[index] > High[index - 1] &&
             // close within prior body
-            Close[i] > Open[i - 1] &&
-            Close[i] < Close[i - 1] - GetRealBody(i - 1) * _penetration;
+            Close[index] > Open[index - 1] &&
+            Close[index] < Close[index - 1] - GetRealBody(index - 1) * _penetration;
             
         return isDarkCloudCover;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyLong) + 1;

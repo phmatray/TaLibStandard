@@ -88,7 +88,7 @@ public class Candle3Inside : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i)
+            outInteger[outIdx++] = RecognizeCandlePattern(i)
                 ? -GetCandleColor(i - 2) * 100
                 : 0;
 
@@ -114,33 +114,35 @@ public class Candle3Inside : CandleIndicator
 
         return new Candle3InsideResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool is3Inside =
             // 1st: long
-            GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
+            GetRealBody(index - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 2) &&
             // 2nd: short
-            GetRealBody(i - 1) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i - 1) &&
+            GetRealBody(index - 1) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, index - 1) &&
             // engulfed by 1st
-            Max(Close[i - 1], Open[i - 1]) < Max(Close[i - 2], Open[i - 2]) &&
-            Min(Close[i - 1], Open[i - 1]) > Min(Close[i - 2], Open[i - 2]) &&
+            Max(Close[index - 1], Open[index - 1]) < Max(Close[index - 2], Open[index - 2]) &&
+            Min(Close[index - 1], Open[index - 1]) > Min(Close[index - 2], Open[index - 2]) &&
             (
                 ( // 3rd: opposite to 1st
-                    GetCandleColor(i - 2) == 1 &&
-                    GetCandleColor(i) == -1 &&
-                    Close[i] < Open[i - 2]
+                    GetCandleColor(index - 2) == 1 &&
+                    GetCandleColor(index) == -1 &&
+                    Close[index] < Open[index - 2]
                 ) ||
                 ( // and closing out
-                    GetCandleColor(i - 2) == -1 &&
-                    GetCandleColor(i) == 1 &&
-                    Close[i] > Open[i - 2]
+                    GetCandleColor(index - 2) == -1 &&
+                    GetCandleColor(index) == 1 &&
+                    Close[index] > Open[index - 2]
                 )
             );
 
         return is3Inside;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 2;

@@ -91,7 +91,7 @@ public class CandleRiseFall3Methods : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 * GetCandleColor(i - 4) : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 * GetCandleColor(i - 4) : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -122,39 +122,41 @@ public class CandleRiseFall3Methods : CandleIndicator
             
         return new CandleRiseFall3MethodsResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isRiseFall3Methods =
             // 1st long, then 3 small, 5th long
-            GetRealBody(i - 4) > GetCandleAverage(BodyLong, _bodyPeriodTotal[4], i - 4) &&
-            GetRealBody(i - 3) < GetCandleAverage(BodyShort, _bodyPeriodTotal[3], i - 3) &&
-            GetRealBody(i - 2) < GetCandleAverage(BodyShort, _bodyPeriodTotal[2], i - 2) &&
-            GetRealBody(i - 1) < GetCandleAverage(BodyShort, _bodyPeriodTotal[1], i - 1) &&
-            GetRealBody(i) > GetCandleAverage(BodyLong, _bodyPeriodTotal[0], i) &&
+            GetRealBody(index - 4) > GetCandleAverage(BodyLong, _bodyPeriodTotal[4], index - 4) &&
+            GetRealBody(index - 3) < GetCandleAverage(BodyShort, _bodyPeriodTotal[3], index - 3) &&
+            GetRealBody(index - 2) < GetCandleAverage(BodyShort, _bodyPeriodTotal[2], index - 2) &&
+            GetRealBody(index - 1) < GetCandleAverage(BodyShort, _bodyPeriodTotal[1], index - 1) &&
+            GetRealBody(index) > GetCandleAverage(BodyLong, _bodyPeriodTotal[0], index) &&
             // white, 3 black, white  ||  black, 3 white, black
-            GetCandleColor(i - 4) == -GetCandleColor(i - 3) &&
-            GetCandleColor(i - 3) == GetCandleColor(i - 2) &&
-            GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            GetCandleColor(index - 4) == -GetCandleColor(index - 3) &&
+            GetCandleColor(index - 3) == GetCandleColor(index - 2) &&
+            GetCandleColor(index - 2) == GetCandleColor(index - 1) &&
+            GetCandleColor(index - 1) == -GetCandleColor(index) &&
             // 2nd to 4th hold within 1st: a part of the real body must be within 1st range
-            Min(Open[i - 3], Close[i - 3]) < High[i - 4] &&
-            Max(Open[i - 3], Close[i - 3]) > Low[i - 4] &&
-            Min(Open[i - 2], Close[i - 2]) < High[i - 4] &&
-            Max(Open[i - 2], Close[i - 2]) > Low[i - 4] &&
-            Min(Open[i - 1], Close[i - 1]) < High[i - 4] &&
-            Max(Open[i - 1], Close[i - 1]) > Low[i - 4] &&
+            Min(Open[index - 3], Close[index - 3]) < High[index - 4] &&
+            Max(Open[index - 3], Close[index - 3]) > Low[index - 4] &&
+            Min(Open[index - 2], Close[index - 2]) < High[index - 4] &&
+            Max(Open[index - 2], Close[index - 2]) > Low[index - 4] &&
+            Min(Open[index - 1], Close[index - 1]) < High[index - 4] &&
+            Max(Open[index - 1], Close[index - 1]) > Low[index - 4] &&
             // 2nd to 4th are falling (rising)
-            Close[i - 2] * GetCandleColor(i - 4) < Close[i - 3] * GetCandleColor(i - 4) &&
-            Close[i - 1] * GetCandleColor(i - 4) < Close[i - 2] * GetCandleColor(i - 4) &&
+            Close[index - 2] * GetCandleColor(index - 4) < Close[index - 3] * GetCandleColor(index - 4) &&
+            Close[index - 1] * GetCandleColor(index - 4) < Close[index - 2] * GetCandleColor(index - 4) &&
             // 5th opens above (below) the prior close
-            Open[i] * GetCandleColor(i - 4) > Close[i - 1] * GetCandleColor(i - 4) &&
+            Open[index] * GetCandleColor(index - 4) > Close[index - 1] * GetCandleColor(index - 4) &&
             // 5th closes above (below) the 1st close
-            Close[i] * GetCandleColor(i - 4) > Close[i - 4] * GetCandleColor(i - 4);
+            Close[index] * GetCandleColor(index - 4) > Close[index - 4] * GetCandleColor(index - 4);
             
         return isRiseFall3Methods;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 4;

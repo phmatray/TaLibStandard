@@ -94,7 +94,7 @@ public class CandleInvertedHammer : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -123,22 +123,24 @@ public class CandleInvertedHammer : CandleIndicator
             
         return new CandleInvertedHammerResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isInvertedHammer =
             // small rb
-            GetRealBody(i) < GetCandleAverage(BodyShort, _bodyPeriodTotal, i) &&
+            GetRealBody(index) < GetCandleAverage(BodyShort, _bodyPeriodTotal, index) &&
             // long upper shadow
-            GetUpperShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) &&
+            GetUpperShadow(index) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, index) &&
             // very short lower shadow
-            GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i) &&
+            GetLowerShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, index) &&
             // gap down
-            GetRealBodyGapDown(i, i - 1);
+            GetRealBodyGapDown(index, index - 1);
             
         return isInvertedHammer;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, ShadowLong, ShadowVeryShort) + 1;

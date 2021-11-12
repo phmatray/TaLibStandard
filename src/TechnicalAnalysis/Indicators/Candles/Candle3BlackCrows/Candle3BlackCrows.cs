@@ -79,7 +79,7 @@ public class Candle3BlackCrows : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? -100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? -100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -101,40 +101,42 @@ public class Candle3BlackCrows : CandleIndicator
 
         return new Candle3BlackCrowsResult(BadParam, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool is3BlackCrows =
             // white
-            GetCandleColor(i - 3) == 1 &&
+            GetCandleColor(index - 3) == 1 &&
             // 1st black
-            GetCandleColor(i - 2) == -1 &&
+            GetCandleColor(index - 2) == -1 &&
             // very short lower shadow
-            GetLowerShadow(i - 2) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], i - 2) &&
+            GetLowerShadow(index - 2) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], index - 2) &&
             // 2nd black
-            GetCandleColor(i - 1) == -1 &&
+            GetCandleColor(index - 1) == -1 &&
             // very short lower shadow
-            GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
+            GetLowerShadow(index - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], index - 1) &&
             // 3rd black
-            GetCandleColor(i) == -1 &&
+            GetCandleColor(index) == -1 &&
             // very short lower shadow
-            GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
+            GetLowerShadow(index) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], index) &&
             // 2nd black opens within 1st black's rb
-            Open[i - 1] < Open[i - 2] &&
-            Open[i - 1] > Close[i - 2] &&
+            Open[index - 1] < Open[index - 2] &&
+            Open[index - 1] > Close[index - 2] &&
             // 3rd black opens within 2nd black's rb
-            Open[i] < Open[i - 1] &&
-            Open[i] > Close[i - 1] &&
+            Open[index] < Open[index - 1] &&
+            Open[index] > Close[index - 1] &&
             // 1st black closes under prior candle's high
-            High[i - 3] > Close[i - 2] &&
+            High[index - 3] > Close[index - 2] &&
             // three declining
-            Close[i - 2] > Close[i - 1] &&
+            Close[index - 2] > Close[index - 1] &&
             // three declining
-            Close[i - 1] > Close[i];
+            Close[index - 1] > Close[index];
 
         return is3BlackCrows;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(ShadowVeryShort) + 3;

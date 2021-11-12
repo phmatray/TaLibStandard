@@ -102,7 +102,7 @@ public class CandleMatHold : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -130,38 +130,40 @@ public class CandleMatHold : CandleIndicator
             
         return new CandleMatHoldResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isMatHold =
             // 1st long, then 3 small
-            GetRealBody(i - 4) > GetCandleAverage(BodyLong, _bodyPeriodTotal[4], i - 4) &&
-            GetRealBody(i - 3) < GetCandleAverage(BodyShort, _bodyPeriodTotal[3], i - 3) &&
-            GetRealBody(i - 2) < GetCandleAverage(BodyShort, _bodyPeriodTotal[2], i - 2) &&
-            GetRealBody(i - 1) < GetCandleAverage(BodyShort, _bodyPeriodTotal[1], i - 1) &&
+            GetRealBody(index - 4) > GetCandleAverage(BodyLong, _bodyPeriodTotal[4], index - 4) &&
+            GetRealBody(index - 3) < GetCandleAverage(BodyShort, _bodyPeriodTotal[3], index - 3) &&
+            GetRealBody(index - 2) < GetCandleAverage(BodyShort, _bodyPeriodTotal[2], index - 2) &&
+            GetRealBody(index - 1) < GetCandleAverage(BodyShort, _bodyPeriodTotal[1], index - 1) &&
             // white, black, 2 black or white, white
-            GetCandleColor(i - 4) == 1 &&
-            GetCandleColor(i - 3) == -1 &&
-            GetCandleColor(i) == 1 &&
+            GetCandleColor(index - 4) == 1 &&
+            GetCandleColor(index - 3) == -1 &&
+            GetCandleColor(index) == 1 &&
             // upside gap 1st to 2nd
-            GetRealBodyGapUp(i - 3, i - 4) &&
+            GetRealBodyGapUp(index - 3, index - 4) &&
             // 3rd to 4th hold within 1st: a part of the real body must be within 1st real body
-            Min(Open[i - 2], Close[i - 2]) < Close[i - 4] &&
-            Min(Open[i - 1], Close[i - 1]) < Close[i - 4] &&
+            Min(Open[index - 2], Close[index - 2]) < Close[index - 4] &&
+            Min(Open[index - 1], Close[index - 1]) < Close[index - 4] &&
             // reaction days penetrate first body less than optInPenetration percent
-            Min(Open[i - 2], Close[i - 2]) > Close[i - 4] - GetRealBody(i - 4) * _penetration &&
-            Min(Open[i - 1], Close[i - 1]) > Close[i - 4] - GetRealBody(i - 4) * _penetration &&
+            Min(Open[index - 2], Close[index - 2]) > Close[index - 4] - GetRealBody(index - 4) * _penetration &&
+            Min(Open[index - 1], Close[index - 1]) > Close[index - 4] - GetRealBody(index - 4) * _penetration &&
             // 2nd to 4th are falling
-            Max(Close[i - 2], Open[i - 2]) < Open[i - 3] &&
-            Max(Close[i - 1], Open[i - 1]) < Max(Close[i - 2], Open[i - 2]) &&
+            Max(Close[index - 2], Open[index - 2]) < Open[index - 3] &&
+            Max(Close[index - 1], Open[index - 1]) < Max(Close[index - 2], Open[index - 2]) &&
             // 5th opens above the prior close
-            Open[i] > Close[i - 1] &&
+            Open[index] > Close[index - 1] &&
             // 5th closes above the highest high of the reaction days
-            Close[i] > Max(Max(High[i - 3], High[i - 2]), High[i - 1]);
+            Close[index] > Max(Max(High[index - 3], High[index - 2]), High[index - 1]);
             
         return isMatHold;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 4;

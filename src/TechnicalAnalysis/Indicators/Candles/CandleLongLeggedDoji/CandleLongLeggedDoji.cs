@@ -83,7 +83,7 @@ public class CandleLongLeggedDoji : CandleIndicator
         int outIdx = 0;
         do
         {
-            bool isLongLeggedDoji = GetPatternRecognition(i);
+            bool isLongLeggedDoji = RecognizeCandlePattern(i);
 
             outInteger[outIdx++] = isLongLeggedDoji ? 100 : 0;
 
@@ -109,19 +109,21 @@ public class CandleLongLeggedDoji : CandleIndicator
             
         return new CandleLongLeggedDojiResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isLongLeggedDoji =
-            GetRealBody(i) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, i) &&
+            GetRealBody(index) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, index) &&
             (
-                GetLowerShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) ||
-                GetUpperShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i)
+                GetLowerShadow(index) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, index) ||
+                GetUpperShadow(index) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, index)
             );
             
         return isLongLeggedDoji;
     }
 
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, ShadowLong);

@@ -64,7 +64,7 @@ public class CandleEngulfing : CandleIndicator
         int outIdx = 0;
         do
         {
-            bool isEngulfing = GetPatternRecognition(i);
+            bool isEngulfing = RecognizeCandlePattern(i);
 
             outInteger[outIdx++] = isEngulfing ? GetCandleColor(i) * 100 : 0;
 
@@ -77,29 +77,31 @@ public class CandleEngulfing : CandleIndicator
             
         return new CandleEngulfingResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isEngulfing =
             (
                 // white engulfs black
-                GetCandleColor(i) == 1 &&
-                GetCandleColor(i - 1) == -1 &&
-                Close[i] > Open[i - 1] &&
-                Open[i] < Close[i - 1]
+                GetCandleColor(index) == 1 &&
+                GetCandleColor(index - 1) == -1 &&
+                Close[index] > Open[index - 1] &&
+                Open[index] < Close[index - 1]
             )
             ||
             (
                 // black engulfs white
-                GetCandleColor(i) == -1 &&
-                GetCandleColor(i - 1) == 1 &&
-                Open[i] > Close[i - 1] &&
-                Close[i] < Open[i - 1]
+                GetCandleColor(index) == -1 &&
+                GetCandleColor(index - 1) == 1 &&
+                Open[index] > Close[index - 1] &&
+                Close[index] < Open[index - 1]
             );
             
         return isEngulfing;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return 2;

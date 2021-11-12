@@ -100,7 +100,7 @@ public class CandleMorningStar : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -128,28 +128,30 @@ public class CandleMorningStar : CandleIndicator
             
         return new CandleMorningStarResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isMorningStar =
             // 1st: long
-            GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
+            GetRealBody(index - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 2) &&
             // black
-            GetCandleColor(i - 2) == -1 &&
+            GetCandleColor(index - 2) == -1 &&
             // 2nd: short
-            GetRealBody(i - 1) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i - 1) &&
+            GetRealBody(index - 1) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, index - 1) &&
             // gapping down
-            GetRealBodyGapDown(i - 1, i - 2) &&
+            GetRealBodyGapDown(index - 1, index - 2) &&
             // 3rd: longer than short
-            GetRealBody(i) > GetCandleAverage(BodyShort, _bodyShortPeriodTotal2, i) &&
+            GetRealBody(index) > GetCandleAverage(BodyShort, _bodyShortPeriodTotal2, index) &&
             // black real body
-            GetCandleColor(i) == 1 &&
+            GetCandleColor(index) == 1 &&
             // closing well within 1st rb
-            Close[i] > Close[i - 2] + GetRealBody(i - 2) * _penetration;
+            Close[index] > Close[index - 2] + GetRealBody(index - 2) * _penetration;
             
         return isMorningStar;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 2;

@@ -65,7 +65,7 @@ public class Candle3Outside : CandleIndicator
         int outIdx = 0;
         do
         {
-            bool is3Outside = GetPatternRecognition(i);
+            bool is3Outside = RecognizeCandlePattern(i);
 
             outInteger[outIdx++] = is3Outside ? GetCandleColor(i - 1) * 100 : 0;
 
@@ -78,33 +78,35 @@ public class Candle3Outside : CandleIndicator
             
         return new Candle3OutsideResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool is3Outside =
             (
                 // white engulfs black
-                GetCandleColor(i - 1) == 1 &&
-                GetCandleColor(i - 2) == -1 &&
-                Close[i - 1] > Open[i - 2] &&
-                Open[i - 1] < Close[i - 2] &&
+                GetCandleColor(index - 1) == 1 &&
+                GetCandleColor(index - 2) == -1 &&
+                Close[index - 1] > Open[index - 2] &&
+                Open[index - 1] < Close[index - 2] &&
                 // third candle higher
-                Close[i] > Close[i - 1]
+                Close[index] > Close[index - 1]
             )
             ||
             (
                 // black engulfs white
-                GetCandleColor(i - 1) == -1 &&
-                GetCandleColor(i - 2) == 1 &&
-                Open[i - 1] > Close[i - 2] &&
-                Close[i - 1] < Open[i - 2] &&
+                GetCandleColor(index - 1) == -1 &&
+                GetCandleColor(index - 2) == 1 &&
+                Open[index - 1] > Close[index - 2] &&
+                Close[index - 1] < Open[index - 2] &&
                 // third candle lower
-                Close[i] < Close[i - 1]
+                Close[index] < Close[index - 1]
             );
             
         return is3Outside;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return 3;

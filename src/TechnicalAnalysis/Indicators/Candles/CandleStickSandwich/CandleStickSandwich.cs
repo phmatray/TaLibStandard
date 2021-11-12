@@ -78,7 +78,7 @@ public class CandleStickSandwich : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -97,25 +97,27 @@ public class CandleStickSandwich : CandleIndicator
             
         return new CandleStickSandwichResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isStickSandwich =
             // first black
-            GetCandleColor(i - 2) == -1 &&
+            GetCandleColor(index - 2) == -1 &&
             // second white
-            GetCandleColor(i - 1) == 1 &&
+            GetCandleColor(index - 1) == 1 &&
             // third black
-            GetCandleColor(i) == -1 &&
+            GetCandleColor(index) == -1 &&
             // 2nd low > prior close
-            Low[i - 1] > Close[i - 2] &&
+            Low[index - 1] > Close[index - 2] &&
             // 1st and 3rd same close
-            Close[i] <= Close[i - 2] + GetCandleAverage(Equal, _equalPeriodTotal, i - 2) &&
-            Close[i] >= Close[i - 2] - GetCandleAverage(Equal, _equalPeriodTotal, i - 2);
+            Close[index] <= Close[index - 2] + GetCandleAverage(Equal, _equalPeriodTotal, index - 2) &&
+            Close[index] >= Close[index - 2] - GetCandleAverage(Equal, _equalPeriodTotal, index - 2);
             
         return isStickSandwich;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(Equal) + 2;

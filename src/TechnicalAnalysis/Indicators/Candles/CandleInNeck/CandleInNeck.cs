@@ -86,7 +86,7 @@ public class CandleInNeck : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? -100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? -100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -110,25 +110,27 @@ public class CandleInNeck : CandleIndicator
             
         return new CandleInNeckResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isInNeck =
             // 1st: black
-            GetCandleColor(i - 1) == -1 &&
+            GetCandleColor(index - 1) == -1 &&
             // long
-            GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 1) &&
+            GetRealBody(index - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 1) &&
             // 2nd: white
-            GetCandleColor(i) == 1 &&
+            GetCandleColor(index) == 1 &&
             // open below prior low
-            Open[i] < Low[i - 1] &&
+            Open[index] < Low[index - 1] &&
             // close slightly into prior body
-            Close[i] <= Close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
-            Close[i] >= Close[i - 1];
+            Close[index] <= Close[index - 1] + GetCandleAverage(Equal, _equalPeriodTotal, index - 1) &&
+            Close[index] >= Close[index - 1];
             
         return isInNeck;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(Equal, BodyLong) + 1;

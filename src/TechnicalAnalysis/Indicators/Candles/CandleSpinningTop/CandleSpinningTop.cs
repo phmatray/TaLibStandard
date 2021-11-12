@@ -74,7 +74,7 @@ public class CandleSpinningTop : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -93,17 +93,19 @@ public class CandleSpinningTop : CandleIndicator
             
         return new CandleSpinningTopResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isSpinningTop =
-            GetRealBody(i) < GetCandleAverage(BodyShort, _bodyPeriodTotal, i) &&
-            GetUpperShadow(i) > GetRealBody(i) &&
-            GetLowerShadow(i) > GetRealBody(i);
+            GetRealBody(index) < GetCandleAverage(BodyShort, _bodyPeriodTotal, index) &&
+            GetUpperShadow(index) > GetRealBody(index) &&
+            GetLowerShadow(index) > GetRealBody(index);
             
         return isSpinningTop;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyShort);

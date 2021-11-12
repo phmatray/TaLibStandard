@@ -57,7 +57,7 @@ public class CandleHikkake : CandleIndicator
         int i = startIdx - 3;
         while (i < startIdx)
         {
-            if (GetPatternRecognition(i))
+            if (RecognizeCandlePattern(i))
             {
                 patternResult = 100 * (High[i] < High[i - 1] ? 1 : -1);
                 patternIdx = i;
@@ -87,7 +87,7 @@ public class CandleHikkake : CandleIndicator
         int outIdx = 0;
         do
         {
-            if (GetPatternRecognition(i))
+            if (RecognizeCandlePattern(i))
             {
                 patternResult = 100 * (High[i] < High[i - 1] ? 1 : -1);
                 patternIdx = i;
@@ -116,17 +116,18 @@ public class CandleHikkake : CandleIndicator
             
         return new CandleHikkakeResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool patternRecognition =
             // 1st + 2nd: lower high and higher low
-            High[i - 1] < High[i - 2] && Low[i - 1] > Low[i - 2] &&
+            High[index - 1] < High[index - 2] && Low[index - 1] > Low[index - 2] &&
             (
                 // (bull) 3rd: lower high and lower low
-                (High[i] < High[i - 1] && Low[i] < Low[i - 1]) ||
+                (High[index] < High[index - 1] && Low[index] < Low[index - 1]) ||
                 // (bear) 3rd: higher high and higher low
-                (High[i] > High[i - 1] && Low[i] > Low[i - 1])
+                (High[index] > High[index - 1] && Low[index] > Low[index - 1])
             );
             
         return patternRecognition;
@@ -145,7 +146,8 @@ public class CandleHikkake : CandleIndicator
             
         return patternConfirmation;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return 5;

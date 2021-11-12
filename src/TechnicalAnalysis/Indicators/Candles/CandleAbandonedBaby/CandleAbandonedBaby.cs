@@ -109,7 +109,7 @@ public class CandleAbandonedBaby : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -139,46 +139,49 @@ public class CandleAbandonedBaby : CandleIndicator
         return new CandleAbandonedBabyResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isAbandonedBaby =
             // 1st: long
-            GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
+            GetRealBody(index - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 2) &&
             // 2nd: doji
-            GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, i - 1) &&
+            GetRealBody(index - 1) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, index - 1) &&
             // 3rd: longer than short
-            GetRealBody(i) > GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
+            GetRealBody(index) > GetCandleAverage(BodyShort, _bodyShortPeriodTotal, index) &&
             (
                 (
                     // 1st white
-                    GetCandleColor(i - 2) == 1 &&
+                    GetCandleColor(index - 2) == 1 &&
                     // 3rd black
-                    GetCandleColor(i) == -1 &&
+                    GetCandleColor(index) == -1 &&
                     // 3rd closes well within 1st rb
-                    Close[i] < Close[i - 2] - GetRealBody(i - 2) * _penetration &&
+                    Close[index] < Close[index - 2] - GetRealBody(index - 2) * _penetration &&
                     // upside gap between 1st and 2nd
-                    GetCandleGapUp(i - 1, i - 2) &&
+                    GetCandleGapUp(index - 1, index - 2) &&
                     // downside gap between 2nd and 3rd
-                    GetCandleGapDown(i, i - 1)
+                    GetCandleGapDown(index, index - 1)
                 )
                 ||
                 (
                     // 1st black
-                    GetCandleColor(i - 2) == -1 &&
+                    GetCandleColor(index - 2) == -1 &&
                     // 3rd white
-                    GetCandleColor(i) == 1 &&
+                    GetCandleColor(index) == 1 &&
                     // 3rd closes well within 1st rb
-                    Close[i] > Close[i - 2] + GetRealBody(i - 2) * _penetration &&
+                    Close[index] > Close[index - 2] + GetRealBody(index - 2) * _penetration &&
                     // downside gap between 1st and 2nd
-                    GetCandleGapDown(i - 1, i - 2) &&
+                    GetCandleGapDown(index - 1, index - 2) &&
                     // upside gap between 2nd and 3rd
-                    GetCandleGapUp(i, i - 1)
+                    GetCandleGapUp(index, index - 1)
                 )
             );
             
         return isAbandonedBaby;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, BodyLong, BodyShort) + 2;

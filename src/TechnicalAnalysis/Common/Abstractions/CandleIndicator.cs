@@ -39,8 +39,18 @@ public abstract class CandleIndicator
         Close = close;
     }
 
+    /// <summary>
+    /// Get lookback.
+    /// </summary>
+    /// <returns>The lookback value.</returns>
     public abstract int GetLookback();
-    public abstract bool GetPatternRecognition(int i);
+
+    /// <summary>
+    /// Recognizes a candle pattern.
+    /// </summary>
+    /// <param name="index">The current index</param>
+    /// <returns>Whether the pattern is recognized or not.</returns>
+    public abstract bool RecognizeCandlePattern(int index);
 
     protected RangeType GetCandleRangeType(CandleSettingType candleSettingType)
         => TACore.Globals.candleSettings[(int)candleSettingType].rangeType;

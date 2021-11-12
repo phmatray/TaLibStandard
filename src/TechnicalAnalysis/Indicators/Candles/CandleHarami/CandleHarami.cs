@@ -87,7 +87,7 @@ public class CandleHarami : CandleIndicator
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? -GetCandleColor(i - 1) * 100 : 0;
+            outInteger[outIdx++] = RecognizeCandlePattern(i) ? -GetCandleColor(i - 1) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -111,21 +111,23 @@ public class CandleHarami : CandleIndicator
             
         return new CandleHaramiResult(Success, outBegIdx, outNBElement, outInteger);
     }
-
-    public override bool GetPatternRecognition(int i)
+    
+    /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
+    public override bool RecognizeCandlePattern(int index)
     {
         bool isHarami =
             // 1st: long
-            GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 1) &&
+            GetRealBody(index - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, index - 1) &&
             // 2nd: short
-            GetRealBody(i) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
+            GetRealBody(index) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, index) &&
             // engulfed by 1st
-            Max(Close[i], Open[i]) < Max(Close[i - 1], Open[i - 1]) &&
-            Min(Close[i], Open[i]) > Min(Close[i - 1], Open[i - 1]);
+            Max(Close[index], Open[index]) < Max(Close[index - 1], Open[index - 1]) &&
+            Min(Close[index], Open[index]) > Min(Close[index - 1], Open[index - 1]);
             
         return isHarami;
     }
-
+    
+    /// <inheritdoc cref="CandleIndicator.GetLookback"/>
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 1;
