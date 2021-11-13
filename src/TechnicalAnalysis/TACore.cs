@@ -1,4 +1,5 @@
 using TechnicalAnalysis.Common;
+using TechnicalAnalysis.Functions.FunctionEma;
 
 namespace TechnicalAnalysis;
 
@@ -136,7 +137,7 @@ internal static partial class TACore
     {
         int today;
         double prevMA;
-        int lookbackTotal = EmaLookback(optInTimePeriod_0);
+        int lookbackTotal = new EmaLookback(optInTimePeriod_0).Result;
             
         if (startIdx < lookbackTotal)
         {
@@ -207,7 +208,7 @@ internal static partial class TACore
     {
         int today;
         double prevMA;
-        int lookbackTotal = EmaLookback(optInTimePeriod_0);
+        int lookbackTotal = new EmaLookback(optInTimePeriod_0).Result;
             
         if (startIdx < lookbackTotal)
         {
@@ -312,9 +313,9 @@ internal static partial class TACore
             k2 = 0.15;
         }
             
-        int lookbackSignal = EmaLookback(optInSignalPeriod_2);
+        int lookbackSignal = new EmaLookback(optInSignalPeriod_2).Result;
         int lookbackTotal = lookbackSignal;
-        lookbackTotal += EmaLookback(optInSlowPeriod_1);
+        lookbackTotal += new EmaLookback(optInSlowPeriod_1).Result;
             
         if (startIdx < lookbackTotal)
         {
@@ -422,9 +423,9 @@ internal static partial class TACore
             k2 = 0.15;
         }
             
-        int lookbackSignal = EmaLookback(optInSignalPeriod_2);
+        int lookbackSignal = new EmaLookback(optInSignalPeriod_2).Result;
         int lookbackTotal = lookbackSignal;
-        lookbackTotal += EmaLookback(optInSlowPeriod_1);
+        lookbackTotal += new EmaLookback(optInSlowPeriod_1).Result;
             
         if (startIdx < lookbackTotal)
         {

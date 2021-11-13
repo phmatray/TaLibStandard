@@ -1,6 +1,7 @@
 using AutoFixture;
 using FluentAssertions;
 using TechnicalAnalysis.Common;
+using TechnicalAnalysis.Functions.FunctionRocR;
 using Xunit;
 
 namespace TechnicalAnalysis.Tests.Indicators.Func;

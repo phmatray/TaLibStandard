@@ -837,7 +837,7 @@ public static class DataHistoryExtension
 
         return indicator switch
         {
-            Indicator.Acos => TAMath.Acos(startIdx, endIdx, real),
+            Indicator.Acos => TAMath.ACos(startIdx, endIdx, real),
             Indicator.Ad => TAMath.Ad(startIdx, endIdx, dh.High, dh.Low, dh.Close, dh.Volume),
             // Indicator.Add => TAMath.Add(startIdx, endIdx, dataHistory.Real0, dataHistory.Real1),
             Indicator.AdOsc => TAMath.AdOsc(startIdx, endIdx, dh.High, dh.Low, dh.Close, dh.Volume),

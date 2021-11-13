@@ -1,6 +1,7 @@
 using AutoFixture;
 using FluentAssertions;
 using TechnicalAnalysis.Common;
+using TechnicalAnalysis.Functions.FunctionMovingAverageVariablePeriod;
 using Xunit;
 
 namespace TechnicalAnalysis.Tests.Indicators.Func;

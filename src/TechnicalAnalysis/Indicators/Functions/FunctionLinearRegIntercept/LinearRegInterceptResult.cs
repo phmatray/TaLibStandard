@@ -1,0 +1,14 @@
+using TechnicalAnalysis.Common;
+
+namespace TechnicalAnalysis.Functions.FunctionLinearRegIntercept;
+
+public record LinearRegInterceptResult : IndicatorBase
+{
+    public LinearRegInterceptResult(RetCode retCode, int begIdx, int nbElement, double[] real)
+        : base(retCode, begIdx, nbElement)
+    {
+        Real = real;
+    }
+
+    public double[] Real { get; }
+}

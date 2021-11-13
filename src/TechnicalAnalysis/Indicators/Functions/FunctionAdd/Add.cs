@@ -1,0 +1,1 @@
+namespace TechnicalAnalysis.Functions.FunctionAdd;

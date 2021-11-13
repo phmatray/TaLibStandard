@@ -1,14 +1,15 @@
 using AutoFixture;
 using FluentAssertions;
 using TechnicalAnalysis.Common;
+using TechnicalAnalysis.Functions.FunctionAcos;
 using Xunit;
 
 namespace TechnicalAnalysis.Tests.Indicators.Func;
 
-public class AcosTests
+public class ACosTests
 {
     [Fact]
-    public void AcosDouble()
+    public void ACosDouble()
     {
         // Arrange
         Fixture fixture = new();
@@ -17,7 +18,7 @@ public class AcosTests
         double[] real = fixture.CreateMany<double>(100).ToArray();
             
         // Act
-        AcosResult actualResult = TAMath.Acos(
+        ACosResult actualResult = TAMath.ACos(
             startIdx,
             endIdx,
             real);
@@ -28,7 +29,7 @@ public class AcosTests
     }
         
     [Fact]
-    public void AcosFloat()
+    public void ACosFloat()
     {
         // Arrange
         Fixture fixture = new();
@@ -37,7 +38,7 @@ public class AcosTests
         float[] real = fixture.CreateMany<float>(100).ToArray();
             
         // Act
-        AcosResult actualResult = TAMath.Acos(
+        ACosResult actualResult = TAMath.ACos(
             startIdx,
             endIdx,
             real);
