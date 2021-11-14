@@ -45,7 +45,7 @@ internal static partial class TACore
             return RetCode.BadParam;
         }
 
-        int lookbackTotal = (optInTimePeriod - 1) * 6 + (int)TechnicalAnalysis.TACore.Globals.unstablePeriod[22];
+        int lookbackTotal = (optInTimePeriod - 1) * 6 + (int)Globals.UnstablePeriods[FuncUnstId.T3];
         if (startIdx <= lookbackTotal)
         {
             startIdx = lookbackTotal;

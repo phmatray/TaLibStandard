@@ -1,0 +1,30 @@
+namespace TechnicalAnalysis.Common;
+
+public enum FuncUnstId
+{
+    Adx = 0,
+    Adxr = 1,
+    Atr = 2,
+    Cmo = 3,
+    Dx = 4,
+    Ema = 5,
+    HtDcPeriod = 6,
+    HtDcPhase = 7,
+    HtPhasor = 8,
+    HtSine = 9,
+    HtTrendline = 10,
+    HtTrendMode = 11,
+    Kama = 12,
+    Mama = 13,
+    Mfi = 14,
+    MinusDI = 15,
+    MinusDM = 16,
+    Natr = 17,
+    PlusDI = 18,
+    PlusDM = 19,
+    Rsi = 20,
+    StochRsi = 21,
+    T3 = 22,
+    FuncUnstAll = 23,
+    FuncUnstNone = -1,
+}

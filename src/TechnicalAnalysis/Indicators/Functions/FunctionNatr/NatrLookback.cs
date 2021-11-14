@@ -26,7 +26,7 @@ public record NatrLookback : Lookback
              * (optInTimePeriod-1) is for the simple
              * moving average.
              */
-            Result = optInTimePeriod + (int)TACore.Globals.unstablePeriod[17];
+            Result = optInTimePeriod + (int)TACore.Globals.UnstablePeriods[FuncUnstId.Natr];
         }
     }
 }

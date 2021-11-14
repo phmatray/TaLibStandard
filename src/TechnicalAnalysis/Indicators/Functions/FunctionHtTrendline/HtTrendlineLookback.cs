@@ -23,6 +23,6 @@ public record HtTrendlineLookback : Lookback
          *
          * 31 is for being compatible with Tradestation.
          */
-        Result = 63 + (int)TACore.Globals.unstablePeriod[10];
+        Result = 63 + (int)TACore.Globals.UnstablePeriods[FuncUnstId.HtTrendline];
     }
 }

@@ -89,7 +89,7 @@ internal static partial class TACore
 
             double prevATR = prevATRTemp[0];
             int today = optInTimePeriod;
-            int outIdx = (int)TechnicalAnalysis.TACore.Globals.unstablePeriod[2];
+            int outIdx = (int)Globals.UnstablePeriods[FuncUnstId.Atr];
             while (true)
             {
                 if (outIdx == 0)

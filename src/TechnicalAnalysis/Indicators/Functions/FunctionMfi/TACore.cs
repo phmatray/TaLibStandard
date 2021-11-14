@@ -43,16 +43,16 @@ internal static partial class TACore
             return RetCode.BadParam;
         }
 
-        TechnicalAnalysis.TACore.MoneyFlow[] mflow = new TechnicalAnalysis.TACore.MoneyFlow[optInTimePeriod];
+        MoneyFlow[] mflow = new MoneyFlow[optInTimePeriod];
         for (int _mflow_index = 0; _mflow_index < mflow.Length; _mflow_index++)
         {
-            mflow[_mflow_index] = new TechnicalAnalysis.TACore.MoneyFlow();
+            mflow[_mflow_index] = new MoneyFlow();
         }
 
         maxIdx_mflow = optInTimePeriod - 1;
         outBegIdx = 0;
         outNBElement = 0;
-        int lookbackTotal = optInTimePeriod + (int)TechnicalAnalysis.TACore.Globals.unstablePeriod[14];
+        int lookbackTotal = optInTimePeriod + (int)Globals.UnstablePeriods[FuncUnstId.Mfi];
         if (startIdx < lookbackTotal)
         {
             startIdx = lookbackTotal;
@@ -77,20 +77,20 @@ internal static partial class TACore
                 today++;
                 if (tempValue2 < 0.0)
                 {
-                    mflow[mflow_Idx].negative = tempValue1;
+                    mflow[mflow_Idx].Negative = tempValue1;
                     negSumMF += tempValue1;
-                    mflow[mflow_Idx].positive = 0.0;
+                    mflow[mflow_Idx].Positive = 0.0;
                 }
                 else if (tempValue2 > 0.0)
                 {
-                    mflow[mflow_Idx].positive = tempValue1;
+                    mflow[mflow_Idx].Positive = tempValue1;
                     posSumMF += tempValue1;
-                    mflow[mflow_Idx].negative = 0.0;
+                    mflow[mflow_Idx].Negative = 0.0;
                 }
                 else
                 {
-                    mflow[mflow_Idx].positive = 0.0;
-                    mflow[mflow_Idx].negative = 0.0;
+                    mflow[mflow_Idx].Positive = 0.0;
+                    mflow[mflow_Idx].Negative = 0.0;
                 }
 
                 mflow_Idx++;
@@ -118,8 +118,8 @@ internal static partial class TACore
             {
                 while (today < startIdx)
                 {
-                    posSumMF -= mflow[mflow_Idx].positive;
-                    negSumMF -= mflow[mflow_Idx].negative;
+                    posSumMF -= mflow[mflow_Idx].Positive;
+                    negSumMF -= mflow[mflow_Idx].Negative;
                     tempValue1 = (inHigh[today] + inLow[today] + inClose[today]) / 3.0;
                     tempValue2 = tempValue1 - prevValue;
                     prevValue = tempValue1;
@@ -127,20 +127,20 @@ internal static partial class TACore
                     today++;
                     if (tempValue2 < 0.0)
                     {
-                        mflow[mflow_Idx].negative = tempValue1;
+                        mflow[mflow_Idx].Negative = tempValue1;
                         negSumMF += tempValue1;
-                        mflow[mflow_Idx].positive = 0.0;
+                        mflow[mflow_Idx].Positive = 0.0;
                     }
                     else if (tempValue2 > 0.0)
                     {
-                        mflow[mflow_Idx].positive = tempValue1;
+                        mflow[mflow_Idx].Positive = tempValue1;
                         posSumMF += tempValue1;
-                        mflow[mflow_Idx].negative = 0.0;
+                        mflow[mflow_Idx].Negative = 0.0;
                     }
                     else
                     {
-                        mflow[mflow_Idx].positive = 0.0;
-                        mflow[mflow_Idx].negative = 0.0;
+                        mflow[mflow_Idx].Positive = 0.0;
+                        mflow[mflow_Idx].Negative = 0.0;
                     }
 
                     mflow_Idx++;
@@ -153,8 +153,8 @@ internal static partial class TACore
 
             while (today <= endIdx)
             {
-                posSumMF -= mflow[mflow_Idx].positive;
-                negSumMF -= mflow[mflow_Idx].negative;
+                posSumMF -= mflow[mflow_Idx].Positive;
+                negSumMF -= mflow[mflow_Idx].Negative;
                 tempValue1 = (inHigh[today] + inLow[today] + inClose[today]) / 3.0;
                 tempValue2 = tempValue1 - prevValue;
                 prevValue = tempValue1;
@@ -162,20 +162,20 @@ internal static partial class TACore
                 today++;
                 if (tempValue2 < 0.0)
                 {
-                    mflow[mflow_Idx].negative = tempValue1;
+                    mflow[mflow_Idx].Negative = tempValue1;
                     negSumMF += tempValue1;
-                    mflow[mflow_Idx].positive = 0.0;
+                    mflow[mflow_Idx].Positive = 0.0;
                 }
                 else if (tempValue2 > 0.0)
                 {
-                    mflow[mflow_Idx].positive = tempValue1;
+                    mflow[mflow_Idx].Positive = tempValue1;
                     posSumMF += tempValue1;
-                    mflow[mflow_Idx].negative = 0.0;
+                    mflow[mflow_Idx].Negative = 0.0;
                 }
                 else
                 {
-                    mflow[mflow_Idx].positive = 0.0;
-                    mflow[mflow_Idx].negative = 0.0;
+                    mflow[mflow_Idx].Positive = 0.0;
+                    mflow[mflow_Idx].Negative = 0.0;
                 }
 
                 tempValue1 = posSumMF + negSumMF;

@@ -19,7 +19,7 @@ public class CandleDoji : CandleIndicator
         int outBegIdx = default;
         int outNBElement = default;
         int[] outInteger = new int[endIdx - startIdx + 1];
-            
+
         // Validate the requested output range.
         if (startIdx < 0)
         {
@@ -93,7 +93,7 @@ public class CandleDoji : CandleIndicator
 
         return new CandleDojiResult(Success, outBegIdx, outNBElement, outInteger);
     }
-    
+
     /// <inheritdoc cref="CandleIndicator.RecognizeCandlePattern"/>
     public override bool RecognizeCandlePattern(int index)
     {

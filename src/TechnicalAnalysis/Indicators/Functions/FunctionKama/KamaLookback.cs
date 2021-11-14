@@ -19,7 +19,7 @@ public record KamaLookback : Lookback
         }
         else
         {
-            Result = optInTimePeriod + (int)TACore.Globals.unstablePeriod[12];
+            Result = optInTimePeriod + (int)TACore.Globals.UnstablePeriods[FuncUnstId.Kama];
         }
     }
 }

@@ -43,7 +43,7 @@ internal static partial class TACore
 
         outBegIdx = 0;
         outNBElement = 0;
-        int lookbackTotal = optInTimePeriod + (int)TechnicalAnalysis.TACore.Globals.unstablePeriod[12];
+        int lookbackTotal = optInTimePeriod + (int)Globals.UnstablePeriods[FuncUnstId.Kama];
         if (startIdx < lookbackTotal)
         {
             startIdx = lookbackTotal;

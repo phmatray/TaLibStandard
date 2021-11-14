@@ -16,7 +16,7 @@ public record PlusDILookback : Lookback
         Result = optInTimePeriod switch
         {
             < 1 or > 100000 => -1,
-            > 1 => optInTimePeriod + (int)TACore.Globals.unstablePeriod[18],
+            > 1 => optInTimePeriod + (int)TACore.Globals.UnstablePeriods[FuncUnstId.PlusDI],
             _ => 1
         };
     }

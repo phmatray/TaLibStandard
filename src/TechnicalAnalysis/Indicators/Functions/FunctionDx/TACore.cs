@@ -49,7 +49,7 @@ internal static partial class TACore
 
         if (optInTimePeriod > 1)
         {
-            lookbackTotal = optInTimePeriod + (int)TechnicalAnalysis.TACore.Globals.unstablePeriod[4];
+            lookbackTotal = optInTimePeriod + (int)Globals.UnstablePeriods[FuncUnstId.Dx];
         }
         else
         {
@@ -120,7 +120,7 @@ internal static partial class TACore
             prevClose = inClose[today];
         }
 
-        i = (int)TechnicalAnalysis.TACore.Globals.unstablePeriod[4] + 1;
+        i = (int)Globals.UnstablePeriods[FuncUnstId.Dx] + 1;
         while (true)
         {
             i--;

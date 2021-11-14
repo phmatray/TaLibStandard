@@ -19,8 +19,8 @@ public record RsiLookback : Lookback
         }
         else
         {
-            int retValue = optInTimePeriod + (int)TACore.Globals.unstablePeriod[20];
-            if (TACore.Globals.compatibility == TACore.Compatibility.Metastock)
+            int retValue = optInTimePeriod + (int)TACore.Globals.UnstablePeriods[FuncUnstId.Rsi];
+            if (TACore.Globals.Compatibility == Compatibility.Metastock)
             {
                 retValue--;
             }

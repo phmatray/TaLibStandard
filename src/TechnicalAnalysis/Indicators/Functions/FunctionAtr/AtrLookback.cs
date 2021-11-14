@@ -25,7 +25,7 @@ public record AtrLookback : Lookback
              * Where 1 is for the True Range, and
              * (optInTimePeriod-1) is for the simple moving average.
              */
-            Result = optInTimePeriod + (int)TACore.Globals.unstablePeriod[2];
+            Result = optInTimePeriod + (int)TACore.Globals.UnstablePeriods[FuncUnstId.Atr];
         }
     }
 }

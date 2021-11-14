@@ -19,7 +19,7 @@ public record MinusDILookback : Lookback
         }
         else
         {
-            Result = optInTimePeriod + (int)TACore.Globals.unstablePeriod[15];
+            Result = optInTimePeriod + (int)TACore.Globals.UnstablePeriods[FuncUnstId.MinusDI];
         }
     }
 }

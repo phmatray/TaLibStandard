@@ -36,5 +36,5 @@ public enum RetCode
     BadObject = 15,
     NotSupported = 16,
     InternalError = 5000,
-    UnknownErr = 65535
+    UnknownErr = 0xFFFF
 }

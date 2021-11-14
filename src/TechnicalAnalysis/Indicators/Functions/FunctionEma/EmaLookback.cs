@@ -19,7 +19,7 @@ public record EmaLookback : Lookback
         }
         else
         {
-            Result = optInTimePeriod - 1 + (int)TACore.Globals.unstablePeriod[5];
+            Result = optInTimePeriod - 1 + (int)TACore.Globals.UnstablePeriods[FuncUnstId.Ema];
         }
     }
 }

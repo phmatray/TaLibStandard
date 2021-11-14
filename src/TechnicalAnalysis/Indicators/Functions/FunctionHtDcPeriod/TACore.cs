@@ -44,7 +44,7 @@ internal static partial class TACore
         }
 
         double rad2Deg = 180.0 / (4.0 * Math.Atan(1.0));
-        int lookbackTotal = (int)TechnicalAnalysis.TACore.Globals.unstablePeriod[6] + 32;
+        int lookbackTotal = (int)Globals.UnstablePeriods[FuncUnstId.HtDcPeriod] + 32;
         if (startIdx < lookbackTotal)
         {
             startIdx = lookbackTotal;

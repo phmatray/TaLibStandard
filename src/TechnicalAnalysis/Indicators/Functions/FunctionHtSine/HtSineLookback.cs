@@ -23,6 +23,6 @@ public record HtSineLookback : Lookback
          *
          * 31 is for being compatible with Tradestation.
          */
-        Result = 63 + (int)TACore.Globals.unstablePeriod[9];
+        Result = 63 + (int)TACore.Globals.UnstablePeriods[FuncUnstId.HtSine];
     }
 }

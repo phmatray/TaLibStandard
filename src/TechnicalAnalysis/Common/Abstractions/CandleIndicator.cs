@@ -53,13 +53,13 @@ public abstract class CandleIndicator
     public abstract bool RecognizeCandlePattern(int index);
 
     protected RangeType GetCandleRangeType(CandleSettingType candleSettingType)
-        => TACore.Globals.candleSettings[(int)candleSettingType].rangeType;
+        => TACore.Globals.CandleSettings[candleSettingType].RangeType;
 
     protected int GetCandleAvgPeriod(CandleSettingType candleSettingType)
-        => TACore.Globals.candleSettings[(int)candleSettingType].avgPeriod;
+        => TACore.Globals.CandleSettings[candleSettingType].AvgPeriod;
 
     protected double GetCandleFactor(CandleSettingType candleSettingType)
-        => TACore.Globals.candleSettings[(int)candleSettingType].factor;
+        => TACore.Globals.CandleSettings[candleSettingType].Factor;
 
     protected double GetCandleRange(CandleSettingType candleSettingType, int index)
     {

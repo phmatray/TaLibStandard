@@ -12,17 +12,7 @@ internal static partial class TACore
         RestoreCandleDefaultSettings(CandleSettingType.AllCandleSettings);
     }
         
-    public static Compatibility GetCompatibility()
-    {
-        return Globals.compatibility;
-    }
-        
-    public static long GetUnstablePeriod(FuncUnstId id)
-    {
-        return id >= FuncUnstId.FuncUnstAll ? 0 : Globals.unstablePeriod[(int)id];
-    }
-        
-    public static RetCode RestoreCandleDefaultSettings(CandleSettingType settingType)
+    public static void RestoreCandleDefaultSettings(CandleSettingType settingType)
     {
         switch (settingType)
         {
@@ -87,50 +77,41 @@ internal static partial class TACore
             default:
                 throw new ArgumentOutOfRangeException(nameof(settingType), settingType, null);
         }
-        return RetCode.Success;
     }
         
-    public static RetCode SetCandleSettings(CandleSettingType settingType, RangeType rangeType, int avgPeriod, double factor)
+    public static void SetCandleSettings(CandleSettingType settingType, RangeType rangeType, int avgPeriod, double factor)
     {
-        if (settingType >= CandleSettingType.AllCandleSettings)
-        {
-            return RetCode.BadParam;
-        }
-            
-        Globals.candleSettings[(int)settingType].settingType = settingType;
-        Globals.candleSettings[(int)settingType].rangeType = rangeType;
-        Globals.candleSettings[(int)settingType].avgPeriod = avgPeriod;
-        Globals.candleSettings[(int)settingType].factor = factor;
-            
-        return RetCode.Success;
+        Globals.CandleSettings[settingType] = new CandleSetting(settingType, rangeType, avgPeriod, factor);
     }
         
-    public static RetCode SetCompatibility(Compatibility value)
+    public static void SetUnstablePeriod(FuncUnstId id, long unstablePeriod)
     {
-        Globals.compatibility = value;
-        return RetCode.Success;
-    }
-        
-    public static RetCode SetUnstablePeriod(FuncUnstId id, long unstablePeriod)
-    {
-        if (id > FuncUnstId.FuncUnstAll)
+        if (id == FuncUnstId.FuncUnstAll)
         {
-            return RetCode.BadParam;
-        }
-            
-        if (id != FuncUnstId.FuncUnstAll)
-        {
-            Globals.unstablePeriod[(int)id] = unstablePeriod;
+            for (int i = 0; i < (int)FuncUnstId.FuncUnstAll; i++)
+            {
+                Globals.UnstablePeriods[(FuncUnstId)i] = unstablePeriod;
+            }
         }
         else
         {
-            for (int i = 0; i < 23; i++)
-            {
-                Globals.unstablePeriod[i] = unstablePeriod;
-            }
+            Globals.UnstablePeriods[id] = unstablePeriod;
         }
-            
-        return RetCode.Success;
+    }
+        
+    public static long GetUnstablePeriod(FuncUnstId id)
+    {
+        return Globals.UnstablePeriods[id];
+    }
+        
+    public static void SetCompatibility(Compatibility value)
+    {
+        Globals.Compatibility = value;
+    }
+        
+    public static Compatibility GetCompatibility()
+    {
+        return Globals.Compatibility;
     }
         
     private static RetCode TA_INT_EMA(int startIdx, int endIdx, double[] inReal_0, int optInTimePeriod_0, double optInK_1, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
@@ -153,7 +134,7 @@ internal static partial class TACore
             
         outBegIdx = startIdx;
             
-        if (Globals.compatibility != Compatibility.Default)
+        if (Globals.Compatibility != Compatibility.Default)
         {
             prevMA = inReal_0[0];
             today = 1;
@@ -224,7 +205,7 @@ internal static partial class TACore
             
         outBegIdx = startIdx;
             
-        if (Globals.compatibility != Compatibility.Default)
+        if (Globals.Compatibility != Compatibility.Default)
         {
             prevMA = inReal_0[0];
             today = 1;
@@ -842,76 +823,5 @@ internal static partial class TACore
         outNbElement = outIdx;
         outBegIdx = startIdx;
         return RetCode.Success;
-    }
-
-    internal sealed class CandleSetting
-    {
-        public int avgPeriod;
-        public double factor;
-        public RangeType rangeType;
-        public CandleSettingType settingType;
-    }
-
-    public enum Compatibility
-    {
-        Default,
-        Metastock
-    }
-        
-    public enum FuncUnstId
-    {
-        Adx = 0,
-        Adxr = 1,
-        Atr = 2,
-        Cmo = 3,
-        Dx = 4,
-        Ema = 5,
-        FuncUnstAll = 23,
-        FuncUnstNone = -1,
-        HtDcPeriod = 6,
-        HtDcPhase = 7,
-        HtPhasor = 8,
-        HtSine = 9,
-        HtTrendline = 10,
-        HtTrendMode = 11,
-        Kama = 12,
-        Mama = 13,
-        Mfi = 14,
-        MinusDI = 15,
-        MinusDM = 16,
-        Natr = 17,
-        PlusDI = 18,
-        PlusDM = 19,
-        Rsi = 20,
-        StochRsi = 21,
-        T3 = 22
-    }
-        
-    internal sealed class GlobalsType
-    {
-        public CandleSetting[] candleSettings;
-        public Compatibility compatibility = Compatibility.Default;
-        public long[] unstablePeriod = new long[23];
-
-        public GlobalsType()
-        {
-            for (int i = 0; i < 23; i++)
-            {
-                unstablePeriod[i] = 0;
-            }
-                
-            candleSettings = new CandleSetting[11];
-                
-            for (int j = 0; j < candleSettings.Length; j++)
-            {
-                candleSettings[j] = new CandleSetting();
-            }
-        }
-    }
-        
-    internal class MoneyFlow
-    {
-        public double negative;
-        public double positive;
     }
 }

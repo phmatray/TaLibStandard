@@ -16,6 +16,6 @@ public record HtDcPeriodLookback : Lookback
     /// </remarks>
     public HtDcPeriodLookback()
     {
-        Result = 32 + (int)TACore.Globals.unstablePeriod[6];
+        Result = 32 + (int)TACore.Globals.UnstablePeriods[FuncUnstId.HtDcPeriod];
     }
 }

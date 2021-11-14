@@ -46,7 +46,7 @@ internal static partial class TACore
             return RetCode.BadParam;
         }
 
-        int lookbackTotal = optInTimePeriod * 2 + (int)TechnicalAnalysis.TACore.Globals.unstablePeriod[0] - 1;
+        int lookbackTotal = optInTimePeriod * 2 + (int)TechnicalAnalysis.TACore.Globals.UnstablePeriods[0] - 1;
         if (startIdx < lookbackTotal)
         {
             startIdx = lookbackTotal;
@@ -161,7 +161,7 @@ internal static partial class TACore
         }
 
         double prevADX = sumDX / optInTimePeriod;
-        i = (int)TechnicalAnalysis.TACore.Globals.unstablePeriod[0];
+        i = (int)TechnicalAnalysis.TACore.Globals.UnstablePeriods[0];
         while (true)
         {
             i--;

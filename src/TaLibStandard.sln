@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechnicalAnalysis", "TechnicalAnalysis\TechnicalAnalysis.csproj", "{AE28059B-2495-4229-A90E-5CE9D70334D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalAnalysis.Business", "..\examples\TechnicalAnalysis.Business\TechnicalAnalysis.Business.csproj", "{E2230B13-CF0D-4733-B040-2D6CDD77FEB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechnicalAnalysis.Business", "..\examples\TechnicalAnalysis.Business\TechnicalAnalysis.Business.csproj", "{E2230B13-CF0D-4733-B040-2D6CDD77FEB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalAnalysis.Tests", "..\tests\TechnicalAnalysis.Tests\TechnicalAnalysis.Tests.csproj", "{B252A236-98EE-4986-81D3-C47470340CB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechnicalAnalysis.Tests", "..\tests\TechnicalAnalysis.Tests\TechnicalAnalysis.Tests.csproj", "{B252A236-98EE-4986-81D3-C47470340CB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalAnalysis.Ui.Cli", "..\examples\TechnicalAnalysis.Ui.Cli\TechnicalAnalysis.Ui.Cli.csproj", "{13CB93B2-7E6C-4758-97BA-782B3F8F9201}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechnicalAnalysis.WebApi", "TechnicalAnalysis.WebApi\TechnicalAnalysis.WebApi.csproj", "{BABDCC0A-B96B-42BE-91A2-F61E9692C3A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +43,14 @@ Global
 		{B252A236-98EE-4986-81D3-C47470340CB9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B252A236-98EE-4986-81D3-C47470340CB9}.Release|x86.ActiveCfg = Release|Any CPU
 		{B252A236-98EE-4986-81D3-C47470340CB9}.Release|x86.Build.0 = Release|Any CPU
-		{13CB93B2-7E6C-4758-97BA-782B3F8F9201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13CB93B2-7E6C-4758-97BA-782B3F8F9201}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13CB93B2-7E6C-4758-97BA-782B3F8F9201}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{13CB93B2-7E6C-4758-97BA-782B3F8F9201}.Debug|x86.Build.0 = Debug|Any CPU
-		{13CB93B2-7E6C-4758-97BA-782B3F8F9201}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13CB93B2-7E6C-4758-97BA-782B3F8F9201}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13CB93B2-7E6C-4758-97BA-782B3F8F9201}.Release|x86.ActiveCfg = Release|Any CPU
-		{13CB93B2-7E6C-4758-97BA-782B3F8F9201}.Release|x86.Build.0 = Release|Any CPU
+		{BABDCC0A-B96B-42BE-91A2-F61E9692C3A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BABDCC0A-B96B-42BE-91A2-F61E9692C3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BABDCC0A-B96B-42BE-91A2-F61E9692C3A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BABDCC0A-B96B-42BE-91A2-F61E9692C3A1}.Debug|x86.Build.0 = Debug|Any CPU
+		{BABDCC0A-B96B-42BE-91A2-F61E9692C3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BABDCC0A-B96B-42BE-91A2-F61E9692C3A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BABDCC0A-B96B-42BE-91A2-F61E9692C3A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{BABDCC0A-B96B-42BE-91A2-F61E9692C3A1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

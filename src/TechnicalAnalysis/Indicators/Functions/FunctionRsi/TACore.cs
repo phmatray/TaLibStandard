@@ -66,7 +66,7 @@ internal static partial class TACore
 
             int today = startIdx - lookbackTotal;
             double prevValue = inReal[today];
-            if (TechnicalAnalysis.TACore.Globals.unstablePeriod[20] == 0 && TechnicalAnalysis.TACore.Globals.compatibility == TechnicalAnalysis.TACore.Compatibility.Metastock)
+            if (Globals.UnstablePeriods[FuncUnstId.Rsi] == 0 && Globals.Compatibility == Compatibility.Metastock)
             {
                 double savePrevValue = prevValue;
                 prevGain = 0.0;

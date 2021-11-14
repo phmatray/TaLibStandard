@@ -19,7 +19,7 @@ public record T3Lookback : Lookback
         }
         else
         {
-            Result = (optInTimePeriod - 1) * 6 + (int)TACore.Globals.unstablePeriod[22];
+            Result = (optInTimePeriod - 1) * 6 + (int)TACore.Globals.UnstablePeriods[FuncUnstId.T3];
         }
     }
 }

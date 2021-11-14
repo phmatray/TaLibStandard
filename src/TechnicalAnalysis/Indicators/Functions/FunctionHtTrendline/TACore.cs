@@ -52,7 +52,7 @@ internal static partial class TACore
         double iTrend1 = iTrend2;
         double tempReal = Math.Atan(1.0);
         double rad2Deg = 45.0 / tempReal;
-        int lookbackTotal = (int)TechnicalAnalysis.TACore.Globals.unstablePeriod[10] + 63;
+        int lookbackTotal = (int)Globals.UnstablePeriods[FuncUnstId.HtTrendline] + 63;
         if (startIdx < lookbackTotal)
         {
             startIdx = lookbackTotal;

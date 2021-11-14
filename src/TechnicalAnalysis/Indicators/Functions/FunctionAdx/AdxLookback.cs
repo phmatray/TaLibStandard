@@ -19,7 +19,7 @@ public record AdxLookback : Lookback
         }
         else
         {
-            Result = optInTimePeriod * 2 + (int)TACore.Globals.unstablePeriod[0] - 1;
+            Result = optInTimePeriod * 2 + (int)TACore.Globals.UnstablePeriods[0] - 1;
         }
     }
 }

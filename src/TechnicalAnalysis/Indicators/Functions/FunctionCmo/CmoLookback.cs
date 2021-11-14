@@ -19,8 +19,8 @@ public record CmoLookback : Lookback
         }
         else
         {
-            int retValue = optInTimePeriod + (int)TACore.Globals.unstablePeriod[3];
-            if (TACore.Globals.compatibility == TACore.Compatibility.Metastock)
+            int retValue = optInTimePeriod + (int)TACore.Globals.UnstablePeriods[FuncUnstId.Cmo];
+            if (TACore.Globals.Compatibility == Compatibility.Metastock)
             {
                 retValue--;
             }

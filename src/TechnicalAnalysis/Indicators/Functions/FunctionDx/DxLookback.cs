@@ -19,7 +19,7 @@ public record DxLookback : Lookback
         }
         else
         {
-            Result = optInTimePeriod + (int)TACore.Globals.unstablePeriod[4];
+            Result = optInTimePeriod + (int)TACore.Globals.UnstablePeriods[FuncUnstId.Dx];
         }
     }
 }

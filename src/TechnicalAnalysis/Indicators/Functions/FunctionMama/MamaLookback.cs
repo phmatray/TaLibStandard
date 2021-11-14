@@ -29,6 +29,6 @@ public record MamaLookback : Lookback
          *         32 Total
          */
 
-        Result = 32 + (int)TACore.Globals.unstablePeriod[13];
+        Result = 32 + (int)TACore.Globals.UnstablePeriods[FuncUnstId.Mama];
     }
 }

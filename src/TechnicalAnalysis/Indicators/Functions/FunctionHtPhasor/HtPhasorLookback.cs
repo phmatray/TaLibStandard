@@ -16,6 +16,6 @@ public record HtPhasorLookback : Lookback
     /// </remarks>
     public HtPhasorLookback()
     {
-        Result = 32 + (int)TACore.Globals.unstablePeriod[8];
+        Result = 32 + (int)TACore.Globals.UnstablePeriods[FuncUnstId.HtPhasor];
     }
 }

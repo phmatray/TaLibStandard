@@ -19,7 +19,7 @@ public record MfiLookback : Lookback
         }
         else
         {
-            Result = optInTimePeriod + (int)TACore.Globals.unstablePeriod[14];
+            Result = optInTimePeriod + (int)TACore.Globals.UnstablePeriods[FuncUnstId.Mfi];
         }
     }
 }
