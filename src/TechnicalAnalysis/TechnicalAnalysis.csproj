@@ -1,20 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <LangVersion>9</LangVersion>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
     <NullableReferenceTypes>true</NullableReferenceTypes>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <Authors>Philippe Matray</Authors>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <!-- Documentation -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -36,9 +36,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-  
+
   <ItemGroup>
     <Folder Include="Common" />
   </ItemGroup>
-  
+
 </Project>
