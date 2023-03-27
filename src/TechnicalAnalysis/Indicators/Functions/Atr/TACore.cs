@@ -117,7 +117,8 @@ namespace TechnicalAnalysis
                     prevATR *= optInTimePeriod - 1;
                     prevATR += tempBuffer[today];
                     today++;
-                    outReal[outIdx] = prevATR / optInTimePeriod;
+                    prevATR /= optInTimePeriod;
+                    outReal[outIdx] = prevATR;
                     outIdx++;
                 }
 
