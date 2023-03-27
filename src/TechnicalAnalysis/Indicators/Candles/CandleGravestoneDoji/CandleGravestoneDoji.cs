@@ -120,6 +120,7 @@ public class CandleGravestoneDoji : CandleIndicator
         return isGravestoneDoji;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, ShadowVeryShort);

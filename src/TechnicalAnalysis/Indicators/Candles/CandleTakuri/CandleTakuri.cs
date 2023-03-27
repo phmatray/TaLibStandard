@@ -134,6 +134,7 @@ public class CandleTakuri : CandleIndicator
         return isTakuri;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, ShadowVeryShort, ShadowVeryLong);

@@ -126,6 +126,7 @@ public class CandleClosingMarubozu : CandleIndicator
         return isClosingMarubozu;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyLong, ShadowVeryShort);

@@ -137,6 +137,7 @@ public class CandleUpsideGap2Crows : CandleIndicator
         return isUpsideGap2Crows;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 2;

@@ -118,6 +118,7 @@ public class CandleHighWave : CandleIndicator
         return isHighWave;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, ShadowVeryLong);

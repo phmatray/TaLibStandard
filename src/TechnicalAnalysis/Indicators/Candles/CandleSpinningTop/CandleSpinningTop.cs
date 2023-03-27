@@ -104,6 +104,7 @@ public class CandleSpinningTop : CandleIndicator
         return isSpinningTop;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyShort);

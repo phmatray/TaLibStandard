@@ -192,6 +192,7 @@ public class Candle3WhiteSoldiers : CandleIndicator
         return is3WhiteSoldiers;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(ShadowVeryShort, BodyShort, Far, Near) + 2;

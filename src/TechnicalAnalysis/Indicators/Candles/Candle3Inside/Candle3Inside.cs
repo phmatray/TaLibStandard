@@ -141,6 +141,7 @@ public class Candle3Inside : CandleIndicator
         return is3Inside;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 2;

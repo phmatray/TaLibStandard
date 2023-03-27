@@ -177,6 +177,7 @@ public class CandleStalledPattern : CandleIndicator
         return isStalledPattern;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyLong, BodyShort, ShadowVeryShort, Near) + 2;

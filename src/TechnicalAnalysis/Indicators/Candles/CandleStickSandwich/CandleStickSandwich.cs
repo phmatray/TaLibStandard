@@ -116,6 +116,7 @@ public class CandleStickSandwich : CandleIndicator
         return isStickSandwich;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(Equal) + 2;

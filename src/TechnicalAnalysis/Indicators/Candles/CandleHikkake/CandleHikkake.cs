@@ -146,6 +146,7 @@ public class CandleHikkake : CandleIndicator
         return patternConfirmation;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return 5;

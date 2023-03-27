@@ -148,6 +148,7 @@ public class CandleGapSideSideWhite : CandleIndicator
         return isGapSideSideWhite;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(Near, Equal) + 2;

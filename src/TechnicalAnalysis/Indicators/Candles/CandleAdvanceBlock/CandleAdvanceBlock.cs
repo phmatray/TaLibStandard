@@ -229,6 +229,7 @@ public class CandleAdvanceBlock : CandleIndicator
         return isAdvanceBlock;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(ShadowLong, ShadowShort, Far, Near, BodyLong) + 2;

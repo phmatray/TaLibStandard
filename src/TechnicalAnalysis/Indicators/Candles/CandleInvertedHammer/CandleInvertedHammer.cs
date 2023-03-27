@@ -139,6 +139,7 @@ public class CandleInvertedHammer : CandleIndicator
         return isInvertedHammer;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, ShadowLong, ShadowVeryShort) + 1;

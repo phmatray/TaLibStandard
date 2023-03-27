@@ -135,6 +135,7 @@ public class Candle3BlackCrows : CandleIndicator
         return is3BlackCrows;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(ShadowVeryShort) + 3;

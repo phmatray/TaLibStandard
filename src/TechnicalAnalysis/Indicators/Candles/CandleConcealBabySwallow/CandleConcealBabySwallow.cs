@@ -138,6 +138,7 @@ public class CandleConcealBabySwallow : CandleIndicator
         return isConcealBabySwallow;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(ShadowVeryShort) + 3;

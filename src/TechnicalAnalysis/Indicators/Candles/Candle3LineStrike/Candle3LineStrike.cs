@@ -148,6 +148,7 @@ public class Candle3LineStrike : CandleIndicator
         return is3LineStrike;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(Near) + 3;

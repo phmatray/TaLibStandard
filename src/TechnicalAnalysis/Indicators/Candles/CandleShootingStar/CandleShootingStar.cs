@@ -139,6 +139,7 @@ public class CandleShootingStar : CandleIndicator
         return isShootingStar;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, ShadowLong, ShadowVeryShort) + 1;

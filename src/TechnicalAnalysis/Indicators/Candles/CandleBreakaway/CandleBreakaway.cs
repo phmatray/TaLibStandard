@@ -146,6 +146,7 @@ public class CandleBreakaway : CandleIndicator
         return isBreakaway;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyLong) + 4;

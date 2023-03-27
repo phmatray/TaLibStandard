@@ -120,6 +120,7 @@ public class CandleDragonflyDoji : CandleIndicator
         return isDragonflyDoji;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, ShadowVeryShort);

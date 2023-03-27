@@ -140,6 +140,7 @@ public class CandleKickingByLength : CandleIndicator
         return isKickingByLength;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(ShadowVeryShort, BodyLong) + 1;

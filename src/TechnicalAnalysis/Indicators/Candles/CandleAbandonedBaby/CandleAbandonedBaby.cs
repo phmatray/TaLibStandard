@@ -179,6 +179,7 @@ public class CandleAbandonedBaby : CandleIndicator
         return isAbandonedBaby;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, BodyLong, BodyShort) + 2;

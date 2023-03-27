@@ -131,6 +131,7 @@ public class CandleHomingPigeon : CandleIndicator
         return isHomingPigeon;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 1;

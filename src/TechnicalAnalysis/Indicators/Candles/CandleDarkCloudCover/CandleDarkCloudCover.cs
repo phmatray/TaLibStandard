@@ -125,6 +125,7 @@ public class CandleDarkCloudCover : CandleIndicator
         return isDarkCloudCover;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyLong) + 1;

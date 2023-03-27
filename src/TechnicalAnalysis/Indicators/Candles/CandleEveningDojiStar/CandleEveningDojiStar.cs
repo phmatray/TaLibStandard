@@ -158,6 +158,7 @@ public class CandleEveningDojiStar : CandleIndicator
         return isEveningDojiStar;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, BodyLong, BodyShort) + 2;

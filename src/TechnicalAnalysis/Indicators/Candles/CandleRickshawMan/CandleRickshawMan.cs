@@ -142,6 +142,7 @@ public class CandleRickshawMan : CandleIndicator
         return isRickshawMan;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, ShadowLong, Near);

@@ -109,6 +109,7 @@ public class CandleMatchingLow : CandleIndicator
         return isMatchingLow;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(Equal) + 1;

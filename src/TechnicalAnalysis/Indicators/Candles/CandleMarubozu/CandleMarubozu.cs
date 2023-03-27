@@ -117,6 +117,7 @@ public class CandleMarubozu : CandleIndicator
         return isMarubozu;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyLong, ShadowVeryShort);

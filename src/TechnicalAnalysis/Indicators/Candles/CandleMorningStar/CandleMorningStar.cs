@@ -150,6 +150,7 @@ public class CandleMorningStar : CandleIndicator
         return isMorningStar;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 2;

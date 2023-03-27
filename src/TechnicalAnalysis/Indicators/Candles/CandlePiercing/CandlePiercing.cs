@@ -123,6 +123,7 @@ public class CandlePiercing : CandleIndicator
         return isPiercing;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyLong) + 1;

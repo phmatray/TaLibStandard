@@ -152,6 +152,7 @@ public class CandleSeparatingLines : CandleIndicator
         return isSeparatingLines;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(ShadowVeryShort, BodyLong, Equal) + 1;

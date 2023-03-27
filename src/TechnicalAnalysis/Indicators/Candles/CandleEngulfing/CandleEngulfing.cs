@@ -100,6 +100,7 @@ public class CandleEngulfing : CandleIndicator
         return isEngulfing;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return 2;

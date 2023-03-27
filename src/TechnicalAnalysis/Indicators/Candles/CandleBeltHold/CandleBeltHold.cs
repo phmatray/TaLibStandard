@@ -128,6 +128,7 @@ public class CandleBeltHold : CandleIndicator
         return isBeltHold;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyLong, ShadowVeryShort);

@@ -129,6 +129,7 @@ public class CandleOnNeck : CandleIndicator
         return isOnNeck;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(Equal, BodyLong) + 1;

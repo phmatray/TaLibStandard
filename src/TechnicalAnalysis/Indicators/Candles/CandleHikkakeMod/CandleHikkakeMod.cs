@@ -183,6 +183,7 @@ public class CandleHikkakeMod : CandleIndicator
         return confirmation;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return Max(1, GetCandleAvgPeriod(Near)) + 5;

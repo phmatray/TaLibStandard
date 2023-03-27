@@ -162,6 +162,7 @@ public class CandleMatHold : CandleIndicator
         return isMatHold;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 4;

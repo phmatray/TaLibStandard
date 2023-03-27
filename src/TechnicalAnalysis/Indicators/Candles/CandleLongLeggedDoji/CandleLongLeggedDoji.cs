@@ -122,6 +122,7 @@ public class CandleLongLeggedDoji : CandleIndicator
         return isLongLeggedDoji;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, ShadowLong);

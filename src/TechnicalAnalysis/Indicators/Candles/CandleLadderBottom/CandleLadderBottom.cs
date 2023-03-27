@@ -124,6 +124,7 @@ public class CandleLadderBottom : CandleIndicator
         return isLadderBottom;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(ShadowVeryShort) + 4;

@@ -118,6 +118,7 @@ public class CandleShortLine : CandleIndicator
         return isShortLine;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, ShadowShort);

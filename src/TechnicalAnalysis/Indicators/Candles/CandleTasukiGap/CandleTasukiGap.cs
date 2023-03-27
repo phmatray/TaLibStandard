@@ -140,6 +140,7 @@ public class CandleTasukiGap : CandleIndicator
         return isTasukiGap;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(Near) + 2;

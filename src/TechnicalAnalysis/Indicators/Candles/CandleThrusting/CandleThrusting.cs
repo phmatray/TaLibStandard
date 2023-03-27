@@ -132,6 +132,7 @@ public class CandleThrusting : CandleIndicator
         return isThrusting;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(Equal, BodyLong) + 1;

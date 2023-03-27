@@ -105,6 +105,7 @@ public class Candle3Outside : CandleIndicator
         return is3Outside;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return 3;

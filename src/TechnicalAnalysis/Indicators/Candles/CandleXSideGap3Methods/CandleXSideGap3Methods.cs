@@ -115,6 +115,7 @@ public class CandleXSideGap3Methods : CandleIndicator
         return isXSideGap3Methods;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return 2;

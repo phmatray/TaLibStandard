@@ -134,6 +134,7 @@ public class CandleTristar : CandleIndicator
         return isCdlTristar;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyDoji) + 2;

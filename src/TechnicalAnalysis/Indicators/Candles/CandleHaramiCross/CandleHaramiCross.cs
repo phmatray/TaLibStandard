@@ -126,6 +126,7 @@ public class CandleHaramiCross : CandleIndicator
         return isHaramiCross;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyDoji, BodyLong) + 1;

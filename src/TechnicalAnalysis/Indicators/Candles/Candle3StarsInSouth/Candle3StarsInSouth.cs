@@ -180,6 +180,7 @@ public class Candle3StarsInSouth : CandleIndicator
         return is3StarsInSouth;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(ShadowVeryShort, ShadowLong, BodyLong, BodyShort) + 2;

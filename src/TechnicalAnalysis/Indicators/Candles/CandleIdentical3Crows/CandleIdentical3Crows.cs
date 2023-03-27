@@ -152,6 +152,7 @@ public class CandleIdentical3Crows : CandleIndicator
         return isIdentical3Crows;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(ShadowVeryShort, Equal) + 2;

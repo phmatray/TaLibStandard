@@ -101,6 +101,7 @@ public class CandleDoji : CandleIndicator
         return isDoji;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyDoji);

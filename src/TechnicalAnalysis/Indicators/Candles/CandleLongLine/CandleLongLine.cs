@@ -117,6 +117,7 @@ public class CandleLongLine : CandleIndicator
         return isLongLine;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyLong, ShadowShort);

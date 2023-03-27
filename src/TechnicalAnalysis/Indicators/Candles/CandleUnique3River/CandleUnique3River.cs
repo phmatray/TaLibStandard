@@ -137,6 +137,7 @@ public class CandleUnique3River : CandleIndicator
         return isUnique3River;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 2;

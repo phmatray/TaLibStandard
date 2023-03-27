@@ -156,6 +156,7 @@ public class CandleHangingMan : CandleIndicator
         return isHangingMan;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, ShadowLong, ShadowVeryShort, Near) + 1;

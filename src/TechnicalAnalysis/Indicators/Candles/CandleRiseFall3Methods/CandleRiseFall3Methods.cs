@@ -155,6 +155,7 @@ public class CandleRiseFall3Methods : CandleIndicator
         return isRiseFall3Methods;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(BodyShort, BodyLong) + 4;

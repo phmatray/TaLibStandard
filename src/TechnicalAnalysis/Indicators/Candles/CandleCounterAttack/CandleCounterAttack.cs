@@ -131,6 +131,7 @@ public class CandleCounterAttack : CandleIndicator
         return isCounterAttack;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleMaxAvgPeriod(Equal, BodyLong) + 1;

@@ -100,6 +100,7 @@ public class Candle2Crows : CandleIndicator
         return new(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool is2Crows =
@@ -121,6 +122,7 @@ public class Candle2Crows : CandleIndicator
         return is2Crows;
     }
 
+    /// <inheritdoc />
     public override int GetLookback()
     {
         return GetCandleAvgPeriod(BodyLong) + 2;
