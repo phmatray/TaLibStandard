@@ -99,7 +99,7 @@ public class Candle3BlackCrows : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(BadParam, outBegIdx, outNBElement, outInteger);
+        return new(Success, outBegIdx, outNBElement, outInteger);
     }
 
     public override bool GetPatternRecognition(int i)

@@ -53,7 +53,7 @@ internal static partial class TACore
             return RetCode.Success;
         }
 
-        double[] adx = new double[endIdx - startIdx + optInTimePeriod];
+        double[] adx = new double[endIdx - startIdx + 2 * optInTimePeriod];
 
         RetCode retCode = Adx(
             startIdx - (optInTimePeriod - 1),
