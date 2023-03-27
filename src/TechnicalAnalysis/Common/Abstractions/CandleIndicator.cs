@@ -61,7 +61,7 @@ namespace TechnicalAnalysis.Common
         /// </summary>
         /// <param name="candleSettingType">The candle setting type to get the range type for.</param>
         /// <returns>A RangeType value representing the range type.</returns>
-        protected RangeType GetCandleRangeType(CandleSettingType candleSettingType)
+        protected virtual RangeType GetCandleRangeType(CandleSettingType candleSettingType)
             => TACore.Globals.candleSettings[(int)candleSettingType].rangeType;
         
         /// <summary>
@@ -69,7 +69,7 @@ namespace TechnicalAnalysis.Common
         /// </summary>
         /// <param name="candleSettingType">The candle setting type to get the average period for.</param>
         /// <returns>An integer representing the average period.</returns>
-        protected int GetCandleAvgPeriod(CandleSettingType candleSettingType)
+        protected virtual int GetCandleAvgPeriod(CandleSettingType candleSettingType)
             => TACore.Globals.candleSettings[(int)candleSettingType].avgPeriod;
         
         /// <summary>
@@ -77,7 +77,7 @@ namespace TechnicalAnalysis.Common
         /// </summary>
         /// <param name="candleSettingType">The candle setting type to get the factor for.</param>
         /// <returns>A double representing the factor.</returns>
-        protected double GetCandleFactor(CandleSettingType candleSettingType)
+        protected virtual double GetCandleFactor(CandleSettingType candleSettingType)
             => TACore.Globals.candleSettings[(int)candleSettingType].factor;
         
         /// <summary>
@@ -86,7 +86,7 @@ namespace TechnicalAnalysis.Common
         /// <param name="candleSettingType">The candle setting type to get the range for.</param>
         /// <param name="index">The index to get the range for.</param>
         /// <returns>A double representing the candle range.</returns>
-        protected double GetCandleRange(CandleSettingType candleSettingType, int index)
+        protected virtual double GetCandleRange(CandleSettingType candleSettingType, int index)
         {
             return GetCandleRangeType(candleSettingType) switch
             {
@@ -104,7 +104,7 @@ namespace TechnicalAnalysis.Common
         /// <param name="sum">The sum of the specified range of elements in the series.</param>
         /// <param name="index">The index to get the average for.</param>
         /// <returns>A double representing the candle average.</returns>
-        protected double GetCandleAverage(CandleSettingType candleSettingType, double sum, int index)
+        protected virtual double GetCandleAverage(CandleSettingType candleSettingType, double sum, int index)
         {
             return GetCandleFactor(candleSettingType)
                    * (GetCandleAvgPeriod(candleSettingType) != 0.0
@@ -118,7 +118,7 @@ namespace TechnicalAnalysis.Common
         /// </summary>
         /// <param name="index">The index to get the real body for.</param>
         /// <returns>A double representing the real body.</returns>
-        protected double GetRealBody(int index)
+        protected virtual double GetRealBody(int index)
             => Abs(_close[index] - _open[index]);
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace TechnicalAnalysis.Common
         /// </summary>
         /// <param name="index">The index to get the upper shadow for.</param>
         /// <returns>A double representing the upper shadow.</returns>
-        protected double GetUpperShadow(int index)
+        protected virtual double GetUpperShadow(int index)
             => _high[index] - (_close[index] >= _open[index] ? _close[index] : _open[index]);
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace TechnicalAnalysis.Common
         /// </summary>
         /// <param name="index">The index to get the lower shadow for.</param>
         /// <returns>A double representing the lower shadow.</returns>
-        protected double GetLowerShadow(int index)
+        protected virtual double GetLowerShadow(int index)
             => (_close[index] >= _open[index] ? _open[index] : _close[index]) - _low[index];
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace TechnicalAnalysis.Common
         /// </summary>
         /// <param name="index">The index to get the high-low range for.</param>
         /// <returns>A double representing the high-low range.</returns>
-        protected double GetHighLowRange(int index)
+        protected virtual double GetHighLowRange(int index)
             => _high[index] - _low[index];
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace TechnicalAnalysis.Common
         /// </summary>
         /// <param name="index">The index to get the candle color for.</param>
         /// <returns>1 if the candle is bullish, -1 if the candle is bearish.</returns>
-        protected int GetCandleColor(int index)
+        protected virtual int GetCandleColor(int index)
             => _close[index] >= _open[index] ? 1 : -1;
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace TechnicalAnalysis.Common
         /// <param name="index2">The index of the second candle.</param>
         /// <param name="index1">The index of the first candle.</param>
         /// <returns>True if there is a real body gap up, false otherwise.</returns>
-        protected bool GetRealBodyGapUp(int index2, int index1)
+        protected virtual bool GetRealBodyGapUp(int index2, int index1)
             => Min(_open[index2], _close[index2]) > Max(_open[index1], _close[index1]);
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace TechnicalAnalysis.Common
         /// <param name="index2">The index of the second candle.</param>
         /// <param name="index1">The index of the first candle.</param>
         /// <returns>True if there is a real body gap down, false otherwise.</returns>
-        protected bool GetRealBodyGapDown(int index2, int index1)
+        protected virtual bool GetRealBodyGapDown(int index2, int index1)
             => Max(_open[index2], _close[index2]) < Min(_open[index1], _close[index1]);
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace TechnicalAnalysis.Common
         /// <param name="index2">The index of the second candle.</param>
         /// <param name="index1">The index of the first candle.</param>
         /// <returns>True if there is a candle gap up, false otherwise.</returns>
-        protected bool GetCandleGapUp(int index2, int index1)
+        protected virtual bool GetCandleGapUp(int index2, int index1)
             => _low[index2] > _high[index1];
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace TechnicalAnalysis.Common
         /// <param name="index2">The index of the second candle.</param>
         /// <param name="index1">The index of the first candle.</param>
         /// <returns>True if there is a candle gap down, false otherwise.</returns>
-        protected bool GetCandleGapDown(int index2, int index1)
+        protected virtual bool GetCandleGapDown(int index2, int index1)
             => _high[index2] < _low[index1];
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace TechnicalAnalysis.Common
         /// </summary>
         /// <param name="candleSettingTypes">An array of candle setting types to get the maximum average period for.</param>
         /// <returns>An integer representing the maximum average period.</returns>
-        protected int GetCandleMaxAvgPeriod(params CandleSettingType[] candleSettingTypes)
+        protected virtual int GetCandleMaxAvgPeriod(params CandleSettingType[] candleSettingTypes)
             => candleSettingTypes
                 .Select(GetCandleAvgPeriod)
                 .Aggregate(Max);
