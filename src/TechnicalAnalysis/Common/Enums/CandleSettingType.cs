@@ -1,18 +1,17 @@
-namespace TechnicalAnalysis.Common
+namespace TechnicalAnalysis.Common;
+
+public enum CandleSettingType
 {
-    public enum CandleSettingType
-    {
-        BodyLong,
-        BodyVeryLong,
-        BodyShort,
-        BodyDoji,
-        ShadowLong,
-        ShadowVeryLong,
-        ShadowShort,
-        ShadowVeryShort,
-        Near,
-        Far,
-        Equal,
-        AllCandleSettings
-    }
+    BodyLong,
+    BodyVeryLong,
+    BodyShort,
+    BodyDoji,
+    ShadowLong,
+    ShadowVeryLong,
+    ShadowShort,
+    ShadowVeryShort,
+    Near,
+    Far,
+    Equal,
+    AllCandleSettings
 }

@@ -4,56 +4,55 @@ using FluentAssertions;
 using TechnicalAnalysis.Common;
 using Xunit;
 
-namespace TechnicalAnalysis.Tests.Indicators.Func
+namespace TechnicalAnalysis.Tests.Indicators.Func;
+
+public class PlusDITests
 {
-    public class PlusDITests
+    [Fact]
+    public void PlusDIDouble()
     {
-        [Fact]
-        public void PlusDIDouble()
-        {
-            // Arrange
-            Fixture fixture = new();
-            const int startIdx = 0;
-            const int endIdx = 99;
-            double[] high = fixture.CreateMany<double>(100).ToArray();
-            double[] low = fixture.CreateMany<double>(100).ToArray();
-            double[] close = fixture.CreateMany<double>(100).ToArray();
+        // Arrange
+        Fixture fixture = new();
+        const int startIdx = 0;
+        const int endIdx = 99;
+        double[] high = fixture.CreateMany<double>(100).ToArray();
+        double[] low = fixture.CreateMany<double>(100).ToArray();
+        double[] close = fixture.CreateMany<double>(100).ToArray();
             
-            // Act
-            var actualResult = TAMath.PlusDI(
-                startIdx,
-                endIdx,
-                high,
-                low,
-                close);
+        // Act
+        var actualResult = TAMath.PlusDI(
+            startIdx,
+            endIdx,
+            high,
+            low,
+            close);
 
-            // Assert
-            actualResult.Should().NotBeNull();
-            actualResult.RetCode.Should().Be(RetCode.Success);
-        }
+        // Assert
+        actualResult.Should().NotBeNull();
+        actualResult.RetCode.Should().Be(RetCode.Success);
+    }
         
-        [Fact]
-        public void PlusDIFloat()
-        {
-            // Arrange
-            Fixture fixture = new();
-            const int startIdx = 0;
-            const int endIdx = 99;
-            float[] high = fixture.CreateMany<float>(100).ToArray();
-            float[] low = fixture.CreateMany<float>(100).ToArray();
-            float[] close = fixture.CreateMany<float>(100).ToArray();
+    [Fact]
+    public void PlusDIFloat()
+    {
+        // Arrange
+        Fixture fixture = new();
+        const int startIdx = 0;
+        const int endIdx = 99;
+        float[] high = fixture.CreateMany<float>(100).ToArray();
+        float[] low = fixture.CreateMany<float>(100).ToArray();
+        float[] close = fixture.CreateMany<float>(100).ToArray();
             
-            // Act
-            var actualResult = TAMath.PlusDI(
-                startIdx,
-                endIdx,
-                high,
-                low,
-                close);
+        // Act
+        var actualResult = TAMath.PlusDI(
+            startIdx,
+            endIdx,
+            high,
+            low,
+            close);
 
-            // Assert
-            actualResult.Should().NotBeNull();
-            actualResult.RetCode.Should().Be(RetCode.Success);
-        }
+        // Assert
+        actualResult.Should().NotBeNull();
+        actualResult.RetCode.Should().Be(RetCode.Success);
     }
 }

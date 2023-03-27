@@ -1,18 +1,17 @@
 using TechnicalAnalysis.Common;
 
-namespace TechnicalAnalysis
+namespace TechnicalAnalysis;
+
+public record HtSineResult : IndicatorBase
 {
-    public record HtSineResult : IndicatorBase
+    public HtSineResult(RetCode retCode, int begIdx, int nbElement, double[] sine, double[] leadSine)
+        : base(retCode, begIdx, nbElement)
     {
-        public HtSineResult(RetCode retCode, int begIdx, int nbElement, double[] sine, double[] leadSine)
-            : base(retCode, begIdx, nbElement)
-        {
-            Sine = sine;
-            LeadSine = leadSine;
-        }
-
-        public double[] LeadSine { get; }
-
-        public double[] Sine { get; }
+        Sine = sine;
+        LeadSine = leadSine;
     }
+
+    public double[] LeadSine { get; }
+
+    public double[] Sine { get; }
 }

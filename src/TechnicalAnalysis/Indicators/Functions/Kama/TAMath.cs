@@ -1,28 +1,27 @@
 ﻿using TechnicalAnalysis.Common;
 
 // ReSharper disable once CheckNamespace
-namespace TechnicalAnalysis
+namespace TechnicalAnalysis;
+
+public static partial class TAMath
 {
-    public static partial class TAMath
+    public static KamaResult Kama(int startIdx, int endIdx, double[] real, int timePeriod)
     {
-        public static KamaResult Kama(int startIdx, int endIdx, double[] real, int timePeriod)
-        {
-            int outBegIdx = 0;
-            int outNBElement = 0;
-            double[] outReal = new double[endIdx - startIdx + 1];
+        int outBegIdx = 0;
+        int outNBElement = 0;
+        double[] outReal = new double[endIdx - startIdx + 1];
 
-            RetCode retCode = TACore.Kama(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
+        RetCode retCode = TACore.Kama(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-            return new(retCode, outBegIdx, outNBElement, outReal);
-        }
-        
-        public static KamaResult Kama(int startIdx, int endIdx, double[] real)
-            => Kama(startIdx, endIdx, real, 30);
-
-        public static KamaResult Kama(int startIdx, int endIdx, float[] real, int timePeriod)
-            => Kama(startIdx, endIdx, real.ToDouble(), timePeriod);
-        
-        public static KamaResult Kama(int startIdx, int endIdx, float[] real)
-            => Kama(startIdx, endIdx, real, 30);
+        return new(retCode, outBegIdx, outNBElement, outReal);
     }
+        
+    public static KamaResult Kama(int startIdx, int endIdx, double[] real)
+        => Kama(startIdx, endIdx, real, 30);
+
+    public static KamaResult Kama(int startIdx, int endIdx, float[] real, int timePeriod)
+        => Kama(startIdx, endIdx, real.ToDouble(), timePeriod);
+        
+    public static KamaResult Kama(int startIdx, int endIdx, float[] real)
+        => Kama(startIdx, endIdx, real, 30);
 }

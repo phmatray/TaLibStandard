@@ -4,60 +4,59 @@ using FluentAssertions;
 using TechnicalAnalysis.Common;
 using Xunit;
 
-namespace TechnicalAnalysis.Tests.Indicators.Cdl
+namespace TechnicalAnalysis.Tests.Indicators.Cdl;
+
+public class CdlDojiStarTests
 {
-    public class CdlDojiStarTests
+    [Fact]
+    public void CdlDojiStarDouble()
     {
-        [Fact]
-        public void CdlDojiStarDouble()
-        {
-            // Arrange
-            Fixture fixture = new();
-            const int startIdx = 0;
-            const int endIdx = 99;
-            double[] open = fixture.CreateMany<double>(100).ToArray();
-            double[] high = fixture.CreateMany<double>(100).ToArray();
-            double[] low = fixture.CreateMany<double>(100).ToArray();
-            double[] close = fixture.CreateMany<double>(100).ToArray();
+        // Arrange
+        Fixture fixture = new();
+        const int startIdx = 0;
+        const int endIdx = 99;
+        double[] open = fixture.CreateMany<double>(100).ToArray();
+        double[] high = fixture.CreateMany<double>(100).ToArray();
+        double[] low = fixture.CreateMany<double>(100).ToArray();
+        double[] close = fixture.CreateMany<double>(100).ToArray();
             
-            // Act
-            var actualResult = TAMath.CdlDojiStar(
-                startIdx,
-                endIdx,
-                open,
-                high,
-                low,
-                close);
+        // Act
+        var actualResult = TAMath.CdlDojiStar(
+            startIdx,
+            endIdx,
+            open,
+            high,
+            low,
+            close);
 
-            // Assert
-            actualResult.Should().NotBeNull();
-            actualResult.RetCode.Should().Be(RetCode.Success);
-        }
+        // Assert
+        actualResult.Should().NotBeNull();
+        actualResult.RetCode.Should().Be(RetCode.Success);
+    }
         
-        [Fact]
-        public void CdlDojiStarFloat()
-        {
-            // Arrange
-            Fixture fixture = new();
-            const int startIdx = 0;
-            const int endIdx = 99;
-            float[] open = fixture.CreateMany<float>(100).ToArray();
-            float[] high = fixture.CreateMany<float>(100).ToArray();
-            float[] low = fixture.CreateMany<float>(100).ToArray();
-            float[] close = fixture.CreateMany<float>(100).ToArray();
+    [Fact]
+    public void CdlDojiStarFloat()
+    {
+        // Arrange
+        Fixture fixture = new();
+        const int startIdx = 0;
+        const int endIdx = 99;
+        float[] open = fixture.CreateMany<float>(100).ToArray();
+        float[] high = fixture.CreateMany<float>(100).ToArray();
+        float[] low = fixture.CreateMany<float>(100).ToArray();
+        float[] close = fixture.CreateMany<float>(100).ToArray();
             
-            // Act
-            var actualResult = TAMath.CdlDojiStar(
-                startIdx,
-                endIdx,
-                open,
-                high,
-                low,
-                close);
+        // Act
+        var actualResult = TAMath.CdlDojiStar(
+            startIdx,
+            endIdx,
+            open,
+            high,
+            low,
+            close);
 
-            // Assert
-            actualResult.Should().NotBeNull();
-            actualResult.RetCode.Should().Be(RetCode.Success);
-        }
+        // Assert
+        actualResult.Should().NotBeNull();
+        actualResult.RetCode.Should().Be(RetCode.Success);
     }
 }

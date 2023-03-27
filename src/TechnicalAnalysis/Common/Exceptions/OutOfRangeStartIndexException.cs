@@ -1,12 +1,11 @@
 using System;
 
-namespace TechnicalAnalysis.Common
+namespace TechnicalAnalysis.Common;
+
+public class OutOfRangeStartIndexException : Exception
 {
-    public class OutOfRangeStartIndexException : Exception
+    public OutOfRangeStartIndexException()
+        : base("Start index is out of range")
     {
-        public OutOfRangeStartIndexException()
-            : base("Start index is out of range")
-        {
-        }
     }
 }

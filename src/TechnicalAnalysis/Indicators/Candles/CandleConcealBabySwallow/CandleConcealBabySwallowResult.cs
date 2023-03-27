@@ -1,15 +1,14 @@
 ﻿using TechnicalAnalysis.Common;
 
-namespace TechnicalAnalysis.Candles.CandleConcealBabySwallow
-{
-    public record CandleConcealBabySwallowResult : IndicatorBase
-    {
-        public CandleConcealBabySwallowResult(RetCode retCode, int begIdx, int nbElement, int[] integer)
-            : base(retCode, begIdx, nbElement)
-        {
-            Integer = integer;
-        }
+namespace TechnicalAnalysis.Candles.CandleConcealBabySwallow;
 
-        public int[] Integer { get; }
+public record CandleConcealBabySwallowResult : IndicatorBase
+{
+    public CandleConcealBabySwallowResult(RetCode retCode, int begIdx, int nbElement, int[] integer)
+        : base(retCode, begIdx, nbElement)
+    {
+        Integer = integer;
     }
+
+    public int[] Integer { get; }
 }

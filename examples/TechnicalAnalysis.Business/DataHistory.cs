@@ -3,54 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using TechnicalAnalysis.Common;
 
-namespace TechnicalAnalysis.Business
+namespace TechnicalAnalysis.Business;
+
+public class DataHistory
 {
-    public class DataHistory
+    private readonly List<Candle> _candles;
+
+    public DataHistory(List<Candle> candles)
     {
-        private readonly List<Candle> _candles;
-
-        public DataHistory(List<Candle> candles)
+        if (candles == null)
         {
-            if (candles == null)
-            {
-                throw new ArgumentNullException(nameof(candles));
-            }
-
-            if (candles.Count == 0)
-            {
-                throw new ArgumentException("Value cannot be an empty collection.", nameof(candles));
-            }
-
-            _candles = candles;
-
-            Count = candles.Count;
-            Open = candles.Select(x => x.Open).ToArray();
-            High = candles.Select(x => x.High).ToArray();
-            Low = candles.Select(x => x.Low).ToArray();
-            Close = candles.Select(x => x.Close).ToArray();
-            Volume = candles.Select(x => x.Volumefrom).ToArray();
-
-            Average = candles
-                .Select(x => (x.Open + x.High + x.Low + x.Close) / 4)
-                .ToArray();
-
-            Indicators = new Dictionary<Indicator, IndicatorBase>();
+            throw new ArgumentNullException(nameof(candles));
         }
 
-        public int Count { get; }
+        if (candles.Count == 0)
+        {
+            throw new ArgumentException("Value cannot be an empty collection.", nameof(candles));
+        }
 
-        public double[] Open { get; }
+        _candles = candles;
 
-        public double[] High { get; }
+        Count = candles.Count;
+        Open = candles.Select(x => x.Open).ToArray();
+        High = candles.Select(x => x.High).ToArray();
+        Low = candles.Select(x => x.Low).ToArray();
+        Close = candles.Select(x => x.Close).ToArray();
+        Volume = candles.Select(x => x.Volumefrom).ToArray();
 
-        public double[] Low { get; }
+        Average = candles
+            .Select(x => (x.Open + x.High + x.Low + x.Close) / 4)
+            .ToArray();
 
-        public double[] Close { get; }
-
-        public double[] Volume { get; }
-
-        public double[] Average { get; }
-
-        public Dictionary<Indicator, IndicatorBase> Indicators { get; }
+        Indicators = new Dictionary<Indicator, IndicatorBase>();
     }
+
+    public int Count { get; }
+
+    public double[] Open { get; }
+
+    public double[] High { get; }
+
+    public double[] Low { get; }
+
+    public double[] Close { get; }
+
+    public double[] Volume { get; }
+
+    public double[] Average { get; }
+
+    public Dictionary<Indicator, IndicatorBase> Indicators { get; }
 }
