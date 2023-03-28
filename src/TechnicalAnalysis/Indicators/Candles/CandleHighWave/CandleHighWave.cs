@@ -8,8 +8,8 @@ namespace TechnicalAnalysis.Candles.CandleHighWave;
 public class CandleHighWave<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyPeriodTotal;
-    private T _shadowPeriodTotal;
+    private T _bodyPeriodTotal = T.Zero;
+    private T _shadowPeriodTotal = T.Zero;
 
     public CandleHighWave(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

@@ -8,8 +8,8 @@ namespace TechnicalAnalysis.Candles.CandleGapSideSideWhite;
 public class CandleGapSideSideWhite<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _nearPeriodTotal;
-    private T _equalPeriodTotal;
+    private T _nearPeriodTotal = T.Zero;
+    private T _equalPeriodTotal = T.Zero;
 
     public CandleGapSideSideWhite(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

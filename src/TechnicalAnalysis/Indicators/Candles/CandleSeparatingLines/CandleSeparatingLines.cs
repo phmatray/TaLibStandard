@@ -8,9 +8,9 @@ namespace TechnicalAnalysis.Candles.CandleSeparatingLines;
 public class CandleSeparatingLines<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _shadowVeryShortPeriodTotal;
-    private T _bodyLongPeriodTotal;
-    private T _equalPeriodTotal;
+    private T _shadowVeryShortPeriodTotal = T.Zero;
+    private T _bodyLongPeriodTotal = T.Zero;
+    private T _equalPeriodTotal = T.Zero;
 
     public CandleSeparatingLines(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

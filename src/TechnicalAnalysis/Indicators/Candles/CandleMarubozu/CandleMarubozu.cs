@@ -8,8 +8,8 @@ namespace TechnicalAnalysis.Candles.CandleMarubozu;
 public class CandleMarubozu<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyLongPeriodTotal;
-    private T _shadowVeryShortPeriodTotal;
+    private T _bodyLongPeriodTotal = T.Zero;
+    private T _shadowVeryShortPeriodTotal = T.Zero;
 
     public CandleMarubozu(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

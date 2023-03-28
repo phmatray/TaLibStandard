@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.CandleLadderBottom;
 public class CandleLadderBottom<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _shadowVeryShortPeriodTotal;
+    private T _shadowVeryShortPeriodTotal = T.Zero;
 
     public CandleLadderBottom(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

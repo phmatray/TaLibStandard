@@ -9,7 +9,7 @@ namespace TechnicalAnalysis.Candles.CandleTasukiGap;
 public class CandleTasukiGap<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _nearPeriodTotal;
+    private T _nearPeriodTotal = T.Zero;
 
     public CandleTasukiGap(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

@@ -9,8 +9,8 @@ namespace TechnicalAnalysis.Candles.CandleHaramiCross;
 public class CandleHaramiCross<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyLongPeriodTotal;
-    private T _bodyDojiPeriodTotal;
+    private T _bodyLongPeriodTotal = T.Zero;
+    private T _bodyDojiPeriodTotal = T.Zero;
 
     public CandleHaramiCross(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

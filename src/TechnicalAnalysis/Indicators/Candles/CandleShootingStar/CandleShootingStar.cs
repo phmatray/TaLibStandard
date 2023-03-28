@@ -8,9 +8,9 @@ namespace TechnicalAnalysis.Candles.CandleShootingStar;
 public class CandleShootingStar<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyPeriodTotal;
-    private T _shadowLongPeriodTotal;
-    private T _shadowVeryShortPeriodTotal;
+    private T _bodyPeriodTotal = T.Zero;
+    private T _shadowLongPeriodTotal = T.Zero;
+    private T _shadowVeryShortPeriodTotal = T.Zero;
 
     public CandleShootingStar(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

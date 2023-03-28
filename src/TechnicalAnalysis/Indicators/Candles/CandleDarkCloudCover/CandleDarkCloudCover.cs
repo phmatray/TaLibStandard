@@ -8,8 +8,8 @@ namespace TechnicalAnalysis.Candles.CandleDarkCloudCover;
 public class CandleDarkCloudCover<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _penetration;
-    private T _bodyLongPeriodTotal;
+    private T _penetration = T.Zero;
+    private T _bodyLongPeriodTotal = T.Zero;
 
     public CandleDarkCloudCover(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

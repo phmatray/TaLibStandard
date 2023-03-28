@@ -9,7 +9,7 @@ public class CandleCounterAttack<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
     private readonly T[] _bodyLongPeriodTotal = new T[2];
-    private T _equalPeriodTotal;
+    private T _equalPeriodTotal = T.Zero;
 
     public CandleCounterAttack(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

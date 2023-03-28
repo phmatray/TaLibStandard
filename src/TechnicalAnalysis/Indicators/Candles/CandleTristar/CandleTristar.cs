@@ -9,7 +9,7 @@ namespace TechnicalAnalysis.Candles.CandleTristar;
 public class CandleTristar<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyPeriodTotal;
+    private T _bodyPeriodTotal = T.Zero;
 
     public CandleTristar(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

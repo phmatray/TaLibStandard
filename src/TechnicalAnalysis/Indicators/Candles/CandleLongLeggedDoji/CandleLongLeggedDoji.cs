@@ -8,8 +8,8 @@ namespace TechnicalAnalysis.Candles.CandleLongLeggedDoji;
 public class CandleLongLeggedDoji<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyDojiPeriodTotal;
-    private T _shadowLongPeriodTotal;
+    private T _bodyDojiPeriodTotal = T.Zero;
+    private T _shadowLongPeriodTotal = T.Zero;
 
     public CandleLongLeggedDoji(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

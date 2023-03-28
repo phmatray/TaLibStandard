@@ -9,7 +9,7 @@ public class CandleMatHold<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
     private readonly T[] _bodyPeriodTotal = new T[5];
-    private T _penetration;
+    private T _penetration = T.Zero;
 
     public CandleMatHold(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

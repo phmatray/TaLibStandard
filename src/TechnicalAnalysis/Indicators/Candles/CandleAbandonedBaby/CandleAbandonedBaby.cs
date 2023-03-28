@@ -8,10 +8,10 @@ namespace TechnicalAnalysis.Candles.CandleAbandonedBaby;
 public class CandleAbandonedBaby<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyLongPeriodTotal;
-    private T _bodyDojiPeriodTotal;
-    private T _bodyShortPeriodTotal;
-    private T _penetration;
+    private T _bodyLongPeriodTotal = T.Zero;
+    private T _bodyDojiPeriodTotal = T.Zero;
+    private T _bodyShortPeriodTotal = T.Zero;
+    private T _penetration = T.Zero;
 
     public CandleAbandonedBaby(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

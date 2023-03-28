@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.CandleSpinningTop;
 public class CandleSpinningTop<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyPeriodTotal;
+    private T _bodyPeriodTotal = T.Zero;
 
     public CandleSpinningTop(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

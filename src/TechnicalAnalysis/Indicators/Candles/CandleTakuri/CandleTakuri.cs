@@ -8,9 +8,9 @@ namespace TechnicalAnalysis.Candles.CandleTakuri;
 public class CandleTakuri<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyDojiPeriodTotal;
-    private T _shadowVeryShortPeriodTotal;
-    private T _shadowVeryLongPeriodTotal;
+    private T _bodyDojiPeriodTotal = T.Zero;
+    private T _shadowVeryShortPeriodTotal = T.Zero;
+    private T _shadowVeryLongPeriodTotal = T.Zero;
 
     public CandleTakuri(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

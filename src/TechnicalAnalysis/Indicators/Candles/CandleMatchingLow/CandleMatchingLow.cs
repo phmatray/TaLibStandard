@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.CandleMatchingLow;
 public class CandleMatchingLow<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _equalPeriodTotal;
+    private T _equalPeriodTotal = T.Zero;
 
     public CandleMatchingLow(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

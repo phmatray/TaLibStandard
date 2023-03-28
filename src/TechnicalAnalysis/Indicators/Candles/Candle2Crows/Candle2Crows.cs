@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.Candle2Crows;
 public class Candle2Crows<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyLongPeriodTotal;
+    private T _bodyLongPeriodTotal = T.Zero;
 
     public Candle2Crows(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

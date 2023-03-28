@@ -8,10 +8,10 @@ namespace TechnicalAnalysis.Candles.CandleEveningStar;
 public class CandleEveningStar<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _penetration;
-    private T _bodyLongPeriodTotal;
-    private T _bodyShortPeriodTotal;
-    private T _bodyShortPeriodTotal2;
+    private T _penetration = T.Zero;
+    private T _bodyLongPeriodTotal = T.Zero;
+    private T _bodyShortPeriodTotal = T.Zero;
+    private T _bodyShortPeriodTotal2 = T.Zero;
 
     public CandleEveningStar(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

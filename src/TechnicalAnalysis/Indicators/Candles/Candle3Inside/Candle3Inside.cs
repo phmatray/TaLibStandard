@@ -8,8 +8,8 @@ namespace TechnicalAnalysis.Candles.Candle3Inside;
 public class Candle3Inside<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyLongPeriodTotal;
-    private T _bodyShortPeriodTotal;
+    private T _bodyLongPeriodTotal = T.Zero;
+    private T _bodyShortPeriodTotal = T.Zero;
 
     public Candle3Inside(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

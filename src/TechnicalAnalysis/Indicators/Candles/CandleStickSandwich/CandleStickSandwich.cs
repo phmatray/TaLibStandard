@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.CandleStickSandwich;
 public class CandleStickSandwich<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _equalPeriodTotal;
+    private T _equalPeriodTotal = T.Zero;
 
     public CandleStickSandwich(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

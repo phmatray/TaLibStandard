@@ -8,9 +8,9 @@ namespace TechnicalAnalysis.Candles.CandleRickshawMan;
 public class CandleRickshawMan<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _bodyDojiPeriodTotal;
-    private T _shadowLongPeriodTotal;
-    private T _nearPeriodTotal;
+    private T _bodyDojiPeriodTotal = T.Zero;
+    private T _shadowLongPeriodTotal = T.Zero;
+    private T _nearPeriodTotal = T.Zero;
 
     public CandleRickshawMan(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

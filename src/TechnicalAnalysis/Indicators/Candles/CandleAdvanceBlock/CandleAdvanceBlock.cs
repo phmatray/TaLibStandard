@@ -12,7 +12,7 @@ public class CandleAdvanceBlock<T> : CandleIndicator<T>
     private readonly T[] _shadowLongPeriodTotal = new T[2];
     private readonly T[] _nearPeriodTotal = new T[3];
     private readonly T[] _farPeriodTotal = new T[3];
-    private T _bodyLongPeriodTotal;
+    private T _bodyLongPeriodTotal = T.Zero;
 
     public CandleAdvanceBlock(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

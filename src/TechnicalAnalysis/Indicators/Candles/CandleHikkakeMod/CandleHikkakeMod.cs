@@ -9,7 +9,7 @@ namespace TechnicalAnalysis.Candles.CandleHikkakeMod;
 public class CandleHikkakeMod<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _nearPeriodTotal;
+    private T _nearPeriodTotal = T.Zero;
 
     public CandleHikkakeMod(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

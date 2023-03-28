@@ -9,9 +9,9 @@ public class Candle3StarsInSouth<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
     private readonly T[] _shadowVeryShortPeriodTotal = new T[2];
-    private T _bodyLongPeriodTotal;
-    private T _shadowLongPeriodTotal;
-    private T _bodyShortPeriodTotal;
+    private T _bodyLongPeriodTotal = T.Zero;
+    private T _shadowLongPeriodTotal = T.Zero;
+    private T _bodyShortPeriodTotal = T.Zero;
 
     public Candle3StarsInSouth(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)

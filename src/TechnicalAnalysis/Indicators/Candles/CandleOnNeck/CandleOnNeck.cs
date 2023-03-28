@@ -8,8 +8,8 @@ namespace TechnicalAnalysis.Candles.CandleOnNeck;
 public class CandleOnNeck<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
-    private T _equalPeriodTotal;
-    private T _bodyLongPeriodTotal;
+    private T _equalPeriodTotal = T.Zero;
+    private T _bodyLongPeriodTotal = T.Zero;
 
     public CandleOnNeck(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
