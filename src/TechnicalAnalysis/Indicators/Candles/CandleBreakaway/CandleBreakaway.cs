@@ -1,14 +1,16 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleBreakaway;
 
-public class CandleBreakaway : CandleIndicator
+public class CandleBreakaway<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _bodyLongPeriodTotal;
+    private T _bodyLongPeriodTotal;
 
-    public CandleBreakaway(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleBreakaway(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -23,18 +25,20 @@ public class CandleBreakaway : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleBreakawayResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleBreakawayResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleBreakawayResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -49,7 +53,7 @@ public class CandleBreakaway : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleBreakawayResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -97,9 +101,10 @@ public class CandleBreakaway : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleBreakawayResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isBreakaway =
@@ -116,14 +121,14 @@ public class CandleBreakaway : CandleIndicator
                     // 2nd gaps down
                     GetRealBodyGapDown(i - 3, i - 4) &&
                     // 3rd has lower high and low than 2nd
-                    _high[i - 2] < _high[i - 3] &&
-                    _low[i - 2] < _low[i - 3] &&
+                    High[i - 2] < High[i - 3] &&
+                    Low[i - 2] < Low[i - 3] &&
                     // 4th has lower high and low than 3rd
-                    _high[i - 1] < _high[i - 2] &&
-                    _low[i - 1] < _low[i - 2] &&
+                    High[i - 1] < High[i - 2] &&
+                    Low[i - 1] < Low[i - 2] &&
                     // 5th closes inside the gap
-                    _close[i] > _open[i - 3] &&
-                    _close[i] < _close[i - 4]
+                    Close[i] > Open[i - 3] &&
+                    Close[i] < Close[i - 4]
                 )
                 ||
                 (
@@ -132,14 +137,14 @@ public class CandleBreakaway : CandleIndicator
                     // 2nd gaps up
                     GetRealBodyGapUp(i - 3, i - 4) &&
                     // 3rd has higher high and low than 2nd
-                    _high[i - 2] > _high[i - 3] &&
-                    _low[i - 2] > _low[i - 3] &&
+                    High[i - 2] > High[i - 3] &&
+                    Low[i - 2] > Low[i - 3] &&
                     // 4th has higher high and low than 3rd
-                    _high[i - 1] > _high[i - 2] &&
-                    _low[i - 1] > _low[i - 2] &&
+                    High[i - 1] > High[i - 2] &&
+                    Low[i - 1] > Low[i - 2] &&
                     // 5th closes inside the gap
-                    _close[i] < _open[i - 3] &&
-                    _close[i] > _close[i - 4]
+                    Close[i] < Open[i - 3] &&
+                    Close[i] > Close[i - 4]
                 )
             );
             

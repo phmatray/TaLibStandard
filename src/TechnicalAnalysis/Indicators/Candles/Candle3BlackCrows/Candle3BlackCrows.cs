@@ -1,14 +1,16 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.Candle3BlackCrows;
 
-public class Candle3BlackCrows : CandleIndicator
+public class Candle3BlackCrows<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private readonly double[] _shadowVeryShortPeriodTotal = new double[3];
+    private readonly T[] _shadowVeryShortPeriodTotal = new T[3];
 
-    public Candle3BlackCrows(in double[] open, in double[] high, in double[] low, in double[] close)
+    public Candle3BlackCrows(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -23,18 +25,20 @@ public class Candle3BlackCrows : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new Candle3BlackCrowsResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new Candle3BlackCrowsResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new Candle3BlackCrowsResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -49,7 +53,7 @@ public class Candle3BlackCrows : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new Candle3BlackCrowsResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -99,9 +103,10 @@ public class Candle3BlackCrows : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new Candle3BlackCrowsResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool is3BlackCrows =
@@ -120,17 +125,17 @@ public class Candle3BlackCrows : CandleIndicator
             // very short lower shadow
             GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             // 2nd black opens within 1st black's rb
-            _open[i - 1] < _open[i - 2] &&
-            _open[i - 1] > _close[i - 2] &&
+            Open[i - 1] < Open[i - 2] &&
+            Open[i - 1] > Close[i - 2] &&
             // 3rd black opens within 2nd black's rb
-            _open[i] < _open[i - 1] &&
-            _open[i] > _close[i - 1] &&
+            Open[i] < Open[i - 1] &&
+            Open[i] > Close[i - 1] &&
             // 1st black closes under prior candle's high
-            _high[i - 3] > _close[i - 2] &&
+            High[i - 3] > Close[i - 2] &&
             // three declining
-            _close[i - 2] > _close[i - 1] &&
+            Close[i - 2] > Close[i - 1] &&
             // three declining
-            _close[i - 1] > _close[i];
+            Close[i - 1] > Close[i];
             
         return is3BlackCrows;
     }

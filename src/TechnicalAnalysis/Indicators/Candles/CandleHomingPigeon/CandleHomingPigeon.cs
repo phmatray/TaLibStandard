@@ -1,15 +1,17 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleHomingPigeon;
 
-public class CandleHomingPigeon : CandleIndicator
+public class CandleHomingPigeon<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _bodyLongPeriodTotal;
-    private double _bodyShortPeriodTotal;
+    private T _bodyLongPeriodTotal;
+    private T _bodyShortPeriodTotal;
 
-    public CandleHomingPigeon(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleHomingPigeon(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -24,18 +26,20 @@ public class CandleHomingPigeon : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleHomingPigeonResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleHomingPigeonResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleHomingPigeonResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -50,7 +54,7 @@ public class CandleHomingPigeon : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleHomingPigeonResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -110,9 +114,10 @@ public class CandleHomingPigeon : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleHomingPigeonResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isHomingPigeon =
@@ -125,8 +130,8 @@ public class CandleHomingPigeon : CandleIndicator
             // 2nd short
             GetRealBody(i) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
             // 2nd engulfed by 1st
-            _open[i] < _open[i - 1] &&
-            _close[i] > _close[i - 1];
+            Open[i] < Open[i - 1] &&
+            Close[i] > Close[i - 1];
             
         return isHomingPigeon;
     }

@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -34,7 +34,7 @@ public static partial class TAMath
             ref outRealMiddleBand,
             ref outRealLowerBand);
             
-        return new(
+        return new BollingerBandsResult(
             retCode,
             outBegIdx,
             outNBElement,

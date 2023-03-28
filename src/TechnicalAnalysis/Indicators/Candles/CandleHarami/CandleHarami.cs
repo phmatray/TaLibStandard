@@ -1,3 +1,4 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static System.Math;
 using static TechnicalAnalysis.Common.CandleSettingType;
@@ -5,12 +6,13 @@ using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleHarami;
 
-public class CandleHarami : CandleIndicator
+public class CandleHarami<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _bodyLongPeriodTotal;
-    private double _bodyShortPeriodTotal;
+    private T _bodyLongPeriodTotal;
+    private T _bodyShortPeriodTotal;
 
-    public CandleHarami(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleHarami(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -25,18 +27,20 @@ public class CandleHarami : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleHaramiResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleHaramiResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleHaramiResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -51,7 +55,7 @@ public class CandleHarami : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleHaramiResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -109,9 +113,10 @@ public class CandleHarami : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleHaramiResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isHarami =
@@ -120,8 +125,8 @@ public class CandleHarami : CandleIndicator
             // 2nd: short
             GetRealBody(i) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
             // engulfed by 1st
-            Max(_close[i], _open[i]) < Max(_close[i - 1], _open[i - 1]) &&
-            Min(_close[i], _open[i]) > Min(_close[i - 1], _open[i - 1]);
+            T.Max(Close[i], Open[i]) < T.Max(Close[i - 1], Open[i - 1]) &&
+            T.Min(Close[i], Open[i]) > T.Min(Close[i - 1], Open[i - 1]);
             
         return isHarami;
     }

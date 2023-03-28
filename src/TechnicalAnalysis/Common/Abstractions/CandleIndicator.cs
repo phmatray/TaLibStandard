@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Numerics;
 using static System.Math;
 
 namespace TechnicalAnalysis.Common;
@@ -6,27 +7,28 @@ namespace TechnicalAnalysis.Common;
 /// <summary>
 /// Represents an abstract base class for candlestick pattern recognition indicators.
 /// </summary>
-public abstract class CandleIndicator
+public abstract class CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
     /// <summary>
     /// An array of open prices.
     /// </summary>
-    protected double[] _open;
+    protected readonly T[] Open;
         
     /// <summary>
     /// An array of high prices.
     /// </summary>
-    protected double[] _high;
+    protected readonly T[] High;
         
     /// <summary>
     /// An array of low prices.
     /// </summary>
-    protected double[] _low;
+    protected readonly T[] Low;
         
     /// <summary>
     /// An array of close prices.
     /// </summary>
-    protected double[] _close;
+    protected readonly T[] Close;
         
     /// <summary>
     /// Initializes a new instance of the CandleIndicator class.
@@ -35,12 +37,12 @@ public abstract class CandleIndicator
     /// <param name="high">An array of high prices.</param>
     /// <param name="low">An array of low prices.</param>
     /// <param name="close">An array of close prices.</param>
-    protected CandleIndicator(double[] open, double[] high, double[] low, double[] close)
+    protected CandleIndicator(T[] open, T[] high, T[] low, T[] close)
     {
-        _open = open;
-        _high = high;
-        _low = low;
-        _close = close;
+        Open = open;
+        High = high;
+        Low = low;
+        Close = close;
     }
         
     /// <summary>
@@ -86,14 +88,14 @@ public abstract class CandleIndicator
     /// <param name="candleSettingType">The candle setting type to get the range for.</param>
     /// <param name="index">The index to get the range for.</param>
     /// <returns>A double representing the candle range.</returns>
-    protected virtual double GetCandleRange(CandleSettingType candleSettingType, int index)
+    protected virtual T GetCandleRange(CandleSettingType candleSettingType, int index)
     {
         return GetCandleRangeType(candleSettingType) switch
         {
             RangeType.RealBody => GetRealBody(index),
             RangeType.HighLow => GetHighLowRange(index),
             RangeType.Shadows => GetUpperShadow(index) + GetLowerShadow(index),
-            _ => 0.0
+            _ => T.CreateChecked(0.0)
         };
     }
 
@@ -104,13 +106,18 @@ public abstract class CandleIndicator
     /// <param name="sum">The sum of the specified range of elements in the series.</param>
     /// <param name="index">The index to get the average for.</param>
     /// <returns>A double representing the candle average.</returns>
-    protected virtual double GetCandleAverage(CandleSettingType candleSettingType, double sum, int index)
-    {
-        return GetCandleFactor(candleSettingType)
-               * (GetCandleAvgPeriod(candleSettingType) != 0.0
-                   ? sum / GetCandleAvgPeriod(candleSettingType)
+    protected virtual T GetCandleAverage(CandleSettingType candleSettingType, T sum, int index)
+    { 
+        T candleAvgPeriod = T.CreateChecked(GetCandleAvgPeriod(candleSettingType));
+        T candleFactor = T.CreateChecked(GetCandleFactor(candleSettingType));
+        T two = T.CreateChecked(2);
+        T one = T.CreateChecked(1);
+
+        return candleFactor
+               * (candleAvgPeriod != T.Zero
+                   ? sum / candleAvgPeriod
                    : GetCandleRange(candleSettingType, index))
-               / (GetCandleRangeType(candleSettingType) == RangeType.Shadows ? 2.0 : 1.0);
+               / (GetCandleRangeType(candleSettingType) == RangeType.Shadows ? two : one);
     }
 
     /// <summary>
@@ -118,32 +125,32 @@ public abstract class CandleIndicator
     /// </summary>
     /// <param name="index">The index to get the real body for.</param>
     /// <returns>A double representing the real body.</returns>
-    protected virtual double GetRealBody(int index)
-        => Abs(_close[index] - _open[index]);
+    protected virtual T GetRealBody(int index)
+        => T.Abs(Close[index] - Open[index]);
 
     /// <summary>
     /// Gets the upper shadow of the candle at a specific index.
     /// </summary>
     /// <param name="index">The index to get the upper shadow for.</param>
     /// <returns>A double representing the upper shadow.</returns>
-    protected virtual double GetUpperShadow(int index)
-        => _high[index] - (_close[index] >= _open[index] ? _close[index] : _open[index]);
+    protected virtual T GetUpperShadow(int index)
+        => High[index] - (Close[index] >= Open[index] ? Close[index] : Open[index]);
 
     /// <summary>
     /// Gets the lower shadow of the candle at a specific index.
     /// </summary>
     /// <param name="index">The index to get the lower shadow for.</param>
     /// <returns>A double representing the lower shadow.</returns>
-    protected virtual double GetLowerShadow(int index)
-        => (_close[index] >= _open[index] ? _open[index] : _close[index]) - _low[index];
+    protected virtual T GetLowerShadow(int index)
+        => (Close[index] >= Open[index] ? Open[index] : Close[index]) - Low[index];
 
     /// <summary>
     /// Gets the high-low range of the candle at a specific index.
     /// </summary>
     /// <param name="index">The index to get the high-low range for.</param>
     /// <returns>A double representing the high-low range.</returns>
-    protected virtual double GetHighLowRange(int index)
-        => _high[index] - _low[index];
+    protected virtual T GetHighLowRange(int index)
+        => High[index] - Low[index];
 
     /// <summary>
     /// Gets the color of the candle at a specific index.
@@ -151,7 +158,7 @@ public abstract class CandleIndicator
     /// <param name="index">The index to get the candle color for.</param>
     /// <returns>1 if the candle is bullish, -1 if the candle is bearish.</returns>
     protected virtual int GetCandleColor(int index)
-        => _close[index] >= _open[index] ? 1 : -1;
+        => Close[index] >= Open[index] ? 1 : -1;
 
     /// <summary>
     /// Checks if there is a real body gap up between two candles.
@@ -160,7 +167,7 @@ public abstract class CandleIndicator
     /// <param name="index1">The index of the first candle.</param>
     /// <returns>True if there is a real body gap up, false otherwise.</returns>
     protected virtual bool GetRealBodyGapUp(int index2, int index1)
-        => Min(_open[index2], _close[index2]) > Max(_open[index1], _close[index1]);
+        => T.Min(Open[index2], Close[index2]) > T.Max(Open[index1], Close[index1]);
 
     /// <summary>
     /// Checks if there is a real body gap down between two candles.
@@ -169,7 +176,7 @@ public abstract class CandleIndicator
     /// <param name="index1">The index of the first candle.</param>
     /// <returns>True if there is a real body gap down, false otherwise.</returns>
     protected virtual bool GetRealBodyGapDown(int index2, int index1)
-        => Max(_open[index2], _close[index2]) < Min(_open[index1], _close[index1]);
+        => T.Max(Open[index2], Close[index2]) < T.Min(Open[index1], Close[index1]);
 
     /// <summary>
     /// Checks if there is a candle gap up between two candles.
@@ -178,7 +185,7 @@ public abstract class CandleIndicator
     /// <param name="index1">The index of the first candle.</param>
     /// <returns>True if there is a candle gap up, false otherwise.</returns>
     protected virtual bool GetCandleGapUp(int index2, int index1)
-        => _low[index2] > _high[index1];
+        => Low[index2] > High[index1];
 
     /// <summary>
     /// Checks if there is a candle gap down between two candles.
@@ -187,7 +194,7 @@ public abstract class CandleIndicator
     /// <param name="index1">The index of the first candle.</param>
     /// <returns>True if there is a candle gap down, false otherwise.</returns>
     protected virtual bool GetCandleGapDown(int index2, int index1)
-        => _high[index2] < _low[index1];
+        => High[index2] < Low[index1];
 
     /// <summary>
     /// Gets the maximum average period among the specified candle settings.

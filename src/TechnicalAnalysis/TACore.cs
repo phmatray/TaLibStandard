@@ -1,6 +1,7 @@
 using System;
 using TechnicalAnalysis.Common;
 
+// ReSharper disable InconsistentNaming
 namespace TechnicalAnalysis;
 
 internal static partial class TACore
@@ -904,7 +905,7 @@ internal static partial class TACore
                 
             for (int j = 0; j < candleSettings.Length; j++)
             {
-                candleSettings[j] = new();
+                candleSettings[j] = new CandleSetting();
             }
         }
     }

@@ -1,18 +1,20 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleAdvanceBlock;
 
-public class CandleAdvanceBlock : CandleIndicator
+public class CandleAdvanceBlock<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private readonly double[] _shadowShortPeriodTotal = new double[3];
-    private readonly double[] _shadowLongPeriodTotal = new double[2];
-    private readonly double[] _nearPeriodTotal = new double[3];
-    private readonly double[] _farPeriodTotal = new double[3];
-    private double _bodyLongPeriodTotal;
+    private readonly T[] _shadowShortPeriodTotal = new T[3];
+    private readonly T[] _shadowLongPeriodTotal = new T[2];
+    private readonly T[] _nearPeriodTotal = new T[3];
+    private readonly T[] _farPeriodTotal = new T[3];
+    private T _bodyLongPeriodTotal;
 
-    public CandleAdvanceBlock(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleAdvanceBlock(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -27,18 +29,20 @@ public class CandleAdvanceBlock : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleAdvanceBlockResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleAdvanceBlockResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleAdvanceBlockResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -53,7 +57,7 @@ public class CandleAdvanceBlock : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleAdvanceBlockResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -167,9 +171,10 @@ public class CandleAdvanceBlock : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleAdvanceBlockResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isAdvanceBlock =
@@ -180,13 +185,13 @@ public class CandleAdvanceBlock : CandleIndicator
             // 3rd white
             GetCandleColor(i) == 1 &&
             // consecutive higher closes
-            _close[i] > _close[i - 1] && _close[i - 1] > _close[i - 2] &&
+            Close[i] > Close[i - 1] && Close[i - 1] > Close[i - 2] &&
             // 2nd opens within/near 1st real body
-            _open[i - 1] > _open[i - 2] &&
-            _open[i - 1] <= _close[i - 2] + GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
+            Open[i - 1] > Open[i - 2] &&
+            Open[i - 1] <= Close[i - 2] + GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
             // 3rd opens within/near 2nd real body
-            _open[i] > _open[i - 1] &&
-            _open[i] <= _close[i - 1] + GetCandleAverage(Near, _nearPeriodTotal[1], i - 1) &&
+            Open[i] > Open[i - 1] &&
+            Open[i] <= Close[i - 1] + GetCandleAverage(Near, _nearPeriodTotal[1], i - 1) &&
             // 1st: long real body
             GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
             // 1st: short upper shadow

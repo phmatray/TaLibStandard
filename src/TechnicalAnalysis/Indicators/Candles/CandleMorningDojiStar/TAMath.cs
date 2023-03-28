@@ -1,34 +1,24 @@
+using System.Numerics;
 using TechnicalAnalysis.Candles.CandleMorningDojiStar;
-using TechnicalAnalysis.Common;
 
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
 {
-    public static CandleMorningDojiStarResult CdlMorningDojiStar(
-        int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close, double penetration)
+    public static CandleMorningDojiStarResult CdlMorningDojiStar<T>(
+        int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close, T penetration)
+        where T : IFloatingPoint<T>
     {
-        return new CandleMorningDojiStar(open, high, low, close)
+        return new CandleMorningDojiStar<T>(open, high, low, close)
             .Compute(startIdx, endIdx, penetration);
     }
 
-    public static CandleMorningDojiStarResult CdlMorningDojiStar(
-        int startIdx, int endIdx, double[] open, double[] high, double[] low, double[] close)
+    public static CandleMorningDojiStarResult CdlMorningDojiStar<T>(
+        int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
+        where T : IFloatingPoint<T>
     {
-        return CdlMorningDojiStar(startIdx, endIdx, open, high, low, close, 0.3);
-    }
-
-    public static CandleMorningDojiStarResult CdlMorningDojiStar(
-        int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close, double penetration)
-    {
-        return CdlMorningDojiStar(startIdx, endIdx,
-            open.ToDouble(), high.ToDouble(), low.ToDouble(), close.ToDouble(), penetration);
-    }
-
-    public static CandleMorningDojiStarResult CdlMorningDojiStar(
-        int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)
-    {
-        return CdlMorningDojiStar(startIdx, endIdx, open, high, low, close, 0.3);
+        return CdlMorningDojiStar<T>(startIdx, endIdx, open, high, low, close, T.CreateChecked(0.3));
     }
 }

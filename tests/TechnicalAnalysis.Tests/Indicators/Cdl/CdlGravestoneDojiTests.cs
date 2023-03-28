@@ -1,50 +1,37 @@
-using System.Linq;
-using AutoFixture;
-using FluentAssertions;
-using TechnicalAnalysis.Common;
-using Xunit;
+using TechnicalAnalysis.Candles.CandleGravestoneDoji;
 
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlGravestoneDojiTests
 {
-    [Fact]
-    public void CdlGravestoneDojiDouble()
+    [Theory]
+    [InlineData(typeof(float))]
+    [InlineData(typeof(double))]
+    [InlineData(typeof(decimal))]
+    [InlineData(typeof(Half))]
+    public void CdlGravestoneDojiFloatingPoint(Type floatingPointType)
     {
         // Arrange
-        Fixture fixture = new();
-        const int startIdx = 0;
-        const int endIdx = 99;
-        double[] open = fixture.CreateMany<double>(100).ToArray();
-        double[] high = fixture.CreateMany<double>(100).ToArray();
-        double[] low = fixture.CreateMany<double>(100).ToArray();
-        double[] close = fixture.CreateMany<double>(100).ToArray();
-            
-        // Act
-        var actualResult = TAMath.CdlGravestoneDoji(
-            startIdx,
-            endIdx,
-            open,
-            high,
-            low,
-            close);
-
-        // Assert
-        actualResult.Should().NotBeNull();
-        actualResult.RetCode.Should().Be(RetCode.Success);
-    }
+        var genericMethod = GetType().GetMethod(
+            nameof(CdlGravestoneDoji), BindingFlags.NonPublic | BindingFlags.Static);
+        var method = genericMethod!.MakeGenericMethod(floatingPointType);
+        var result = (CandleGravestoneDojiResult?)method.Invoke(this, null);
         
-    [Fact]
-    public void CdlGravestoneDojiFloat()
+        // Assert
+        result.Should().NotBeNull();
+        result!.RetCode.Should().Be(RetCode.Success);
+    }
+    
+    private static CandleGravestoneDojiResult CdlGravestoneDoji<T>()
+        where T : IFloatingPoint<T>
     {
-        // Arrange
         Fixture fixture = new();
         const int startIdx = 0;
         const int endIdx = 99;
-        float[] open = fixture.CreateMany<float>(100).ToArray();
-        float[] high = fixture.CreateMany<float>(100).ToArray();
-        float[] low = fixture.CreateMany<float>(100).ToArray();
-        float[] close = fixture.CreateMany<float>(100).ToArray();
+        var open = fixture.CreateMany<T>(100).ToArray();
+        var high = fixture.CreateMany<T>(100).ToArray();
+        var low = fixture.CreateMany<T>(100).ToArray();
+        var close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
         var actualResult = TAMath.CdlGravestoneDoji(
@@ -55,8 +42,6 @@ public class CdlGravestoneDojiTests
             low,
             close);
 
-        // Assert
-        actualResult.Should().NotBeNull();
-        actualResult.RetCode.Should().Be(RetCode.Success);
+        return actualResult;
     }
 }

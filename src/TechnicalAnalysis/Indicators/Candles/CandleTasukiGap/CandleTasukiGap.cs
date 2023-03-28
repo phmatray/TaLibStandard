@@ -1,3 +1,4 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static System.Math;
 using static TechnicalAnalysis.Common.CandleSettingType;
@@ -5,11 +6,12 @@ using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleTasukiGap;
 
-public class CandleTasukiGap : CandleIndicator
+public class CandleTasukiGap<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _nearPeriodTotal;
+    private T _nearPeriodTotal;
 
-    public CandleTasukiGap(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleTasukiGap(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -24,18 +26,20 @@ public class CandleTasukiGap : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleTasukiGapResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleTasukiGapResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleTasukiGapResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -50,7 +54,7 @@ public class CandleTasukiGap : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleTasukiGapResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -98,9 +102,10 @@ public class CandleTasukiGap : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleTasukiGapResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isTasukiGap =
@@ -112,13 +117,13 @@ public class CandleTasukiGap : CandleIndicator
                 // 2nd: black
                 GetCandleColor(i) == -1 &&
                 // that opens within the white rb
-                _open[i] < _close[i - 1] && _open[i] > _open[i - 1] &&
+                Open[i] < Close[i - 1] && Open[i] > Open[i - 1] &&
                 // and closes under the white rb
-                _close[i] < _open[i - 1] &&
+                Close[i] < Open[i - 1] &&
                 // inside the gap
-                _close[i] > Max(_close[i - 2], _open[i - 2]) &&
+                Close[i] > T.Max(Close[i - 2], Open[i - 2]) &&
                 // size of 2 rb near the same
-                Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
+                T.Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
             ) ||
             (
                 // downside gap
@@ -128,13 +133,13 @@ public class CandleTasukiGap : CandleIndicator
                 // 2nd: white
                 GetCandleColor(i) == 1 &&
                 // that opens within the black rb
-                _open[i] < _open[i - 1] && _open[i] > _close[i - 1] &&
+                Open[i] < Open[i - 1] && Open[i] > Close[i - 1] &&
                 // and closes above the black rb
-                _close[i] > _open[i - 1] &&
+                Close[i] > Open[i - 1] &&
                 // inside the gap
-                _close[i] < Min(_close[i - 2], _open[i - 2]) &&
+                Close[i] < T.Min(Close[i - 2], Open[i - 2]) &&
                 // size of 2 rb near the same
-                Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
+                T.Abs(GetRealBody(i - 1) - GetRealBody(i)) < GetCandleAverage(Near, _nearPeriodTotal, i - 1)
             );
             
         return isTasukiGap;

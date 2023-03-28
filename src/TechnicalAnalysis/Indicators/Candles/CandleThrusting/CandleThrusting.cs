@@ -1,15 +1,17 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleThrusting;
 
-public class CandleThrusting : CandleIndicator
+public class CandleThrusting<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _equalPeriodTotal;
-    private double _bodyLongPeriodTotal;
+    private T _equalPeriodTotal;
+    private T _bodyLongPeriodTotal;
 
-    public CandleThrusting(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleThrusting(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -24,18 +26,20 @@ public class CandleThrusting : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleThrustingResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleThrustingResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleThrustingResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -50,7 +54,7 @@ public class CandleThrusting : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleThrustingResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -110,9 +114,10 @@ public class CandleThrusting : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleThrustingResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isThrusting =
@@ -123,11 +128,11 @@ public class CandleThrusting : CandleIndicator
             // 2nd: white
             GetCandleColor(i) == 1 &&
             // open below prior low
-            _open[i] < _low[i - 1] &&
+            Open[i] < Low[i - 1] &&
             // close into prior body
-            _close[i] > _close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+            Close[i] > Close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
             // under the midpoint
-            _close[i] <= _close[i - 1] + GetRealBody(i - 1) * 0.5;
+            Close[i] <= Close[i - 1] + GetRealBody(i - 1) * T.CreateChecked(0.5);
             
         return isThrusting;
     }

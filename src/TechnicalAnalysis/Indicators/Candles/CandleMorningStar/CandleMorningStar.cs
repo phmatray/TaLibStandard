@@ -1,22 +1,24 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleMorningStar;
 
-public class CandleMorningStar : CandleIndicator
+public class CandleMorningStar<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _penetration;
-    private double _bodyLongPeriodTotal;
-    private double _bodyShortPeriodTotal;
-    private double _bodyShortPeriodTotal2;
+    private T _penetration;
+    private T _bodyLongPeriodTotal;
+    private T _bodyShortPeriodTotal;
+    private T _bodyShortPeriodTotal2;
 
-    public CandleMorningStar(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleMorningStar(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
-    public CandleMorningStarResult Compute(int startIdx, int endIdx, in double optInPenetration)
+    public CandleMorningStarResult Compute(int startIdx, int endIdx, in T optInPenetration)
     {
         _penetration = optInPenetration;
             
@@ -28,23 +30,25 @@ public class CandleMorningStar : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleMorningStarResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleMorningStarResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleMorningStarResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
-        if (optInPenetration < 0.0)
+        if (optInPenetration < T.Zero)
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleMorningStarResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -59,7 +63,7 @@ public class CandleMorningStar : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleMorningStarResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -126,9 +130,10 @@ public class CandleMorningStar : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleMorningStarResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isMorningStar =
@@ -145,7 +150,7 @@ public class CandleMorningStar : CandleIndicator
             // black real body
             GetCandleColor(i) == 1 &&
             // closing well within 1st rb
-            _close[i] > _close[i - 2] + GetRealBody(i - 2) * _penetration;
+            Close[i] > Close[i - 2] + GetRealBody(i - 2) * _penetration;
             
         return isMorningStar;
     }

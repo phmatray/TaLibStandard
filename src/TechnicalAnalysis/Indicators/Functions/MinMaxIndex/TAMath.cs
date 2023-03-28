@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -22,7 +22,7 @@ public static partial class TAMath
             ref outMinIdx,
             ref outMaxIdx);
             
-        return new(retCode, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
+        return new MinMaxIndexResult(retCode, outBegIdx, outNBElement, outMinIdx, outMaxIdx);
     }
         
     public static MinMaxIndexResult MinMaxIndex(int startIdx, int endIdx, double[] real)

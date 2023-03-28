@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -20,7 +20,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new LinearRegResult(retCode, outBegIdx, outNBElement, outReal);
     }
         
     public static LinearRegResult LinearReg(int startIdx, int endIdx, double[] real)

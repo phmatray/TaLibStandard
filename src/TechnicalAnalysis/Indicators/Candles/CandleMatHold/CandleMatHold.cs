@@ -1,21 +1,22 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
-using static System.Math;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleMatHold;
 
-public class CandleMatHold : CandleIndicator
+public class CandleMatHold<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private readonly double[] _bodyPeriodTotal = new double[5];
-    private double _penetration;
+    private readonly T[] _bodyPeriodTotal = new T[5];
+    private T _penetration;
 
-    public CandleMatHold(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleMatHold(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
-    public CandleMatHoldResult Compute(int startIdx, int endIdx, in double optInPenetration)
+    public CandleMatHoldResult Compute(int startIdx, int endIdx, in T optInPenetration)
     {
         _penetration = optInPenetration;
             
@@ -27,23 +28,25 @@ public class CandleMatHold : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleMatHoldResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleMatHoldResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleMatHoldResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
-        if (optInPenetration < 0.0)
+        if (optInPenetration < T.Zero)
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleMatHoldResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -58,7 +61,7 @@ public class CandleMatHold : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleMatHoldResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -128,9 +131,10 @@ public class CandleMatHold : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleMatHoldResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isMatHold =
@@ -146,18 +150,18 @@ public class CandleMatHold : CandleIndicator
             // upside gap 1st to 2nd
             GetRealBodyGapUp(i - 3, i - 4) &&
             // 3rd to 4th hold within 1st: a part of the real body must be within 1st real body
-            Min(_open[i - 2], _close[i - 2]) < _close[i - 4] &&
-            Min(_open[i - 1], _close[i - 1]) < _close[i - 4] &&
+            T.Min(Open[i - 2], Close[i - 2]) < Close[i - 4] &&
+            T.Min(Open[i - 1], Close[i - 1]) < Close[i - 4] &&
             // reaction days penetrate first body less than optInPenetration percent
-            Min(_open[i - 2], _close[i - 2]) > _close[i - 4] - GetRealBody(i - 4) * _penetration &&
-            Min(_open[i - 1], _close[i - 1]) > _close[i - 4] - GetRealBody(i - 4) * _penetration &&
+            T.Min(Open[i - 2], Close[i - 2]) > Close[i - 4] - GetRealBody(i - 4) * _penetration &&
+            T.Min(Open[i - 1], Close[i - 1]) > Close[i - 4] - GetRealBody(i - 4) * _penetration &&
             // 2nd to 4th are falling
-            Max(_close[i - 2], _open[i - 2]) < _open[i - 3] &&
-            Max(_close[i - 1], _open[i - 1]) < Max(_close[i - 2], _open[i - 2]) &&
+            T.Max(Close[i - 2], Open[i - 2]) < Open[i - 3] &&
+            T.Max(Close[i - 1], Open[i - 1]) < T.Max(Close[i - 2], Open[i - 2]) &&
             // 5th opens above the prior close
-            _open[i] > _close[i - 1] &&
+            Open[i] > Close[i - 1] &&
             // 5th closes above the highest high of the reaction days
-            _close[i] > Max(Max(_high[i - 3], _high[i - 2]), _high[i - 1]);
+            Close[i] > T.Max(T.Max(High[i - 3], High[i - 2]), High[i - 1]);
             
         return isMatHold;
     }

@@ -27,7 +27,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new AvgPriceResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static AvgPriceResult AvgPrice(

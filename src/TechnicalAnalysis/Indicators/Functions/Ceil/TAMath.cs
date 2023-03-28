@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Ceil(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new CeilResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static CeilResult Ceil(int startIdx, int endIdx, float[] real)

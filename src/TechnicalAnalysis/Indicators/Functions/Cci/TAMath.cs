@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -22,7 +22,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new CciResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static CciResult Cci(int startIdx, int endIdx, double[] high, double[] low, double[] close)

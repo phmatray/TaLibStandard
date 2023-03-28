@@ -1,16 +1,18 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleSeparatingLines;
 
-public class CandleSeparatingLines : CandleIndicator
+public class CandleSeparatingLines<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _shadowVeryShortPeriodTotal;
-    private double _bodyLongPeriodTotal;
-    private double _equalPeriodTotal;
+    private T _shadowVeryShortPeriodTotal;
+    private T _bodyLongPeriodTotal;
+    private T _equalPeriodTotal;
 
-    public CandleSeparatingLines(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleSeparatingLines(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -25,18 +27,20 @@ public class CandleSeparatingLines : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleSeparatingLinesResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleSeparatingLinesResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleSeparatingLinesResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -51,7 +55,7 @@ public class CandleSeparatingLines : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleSeparatingLinesResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -122,17 +126,18 @@ public class CandleSeparatingLines : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleSeparatingLinesResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isSeparatingLines =
             // opposite candles
             GetCandleColor(i - 1) == -GetCandleColor(i) &&
             // same open
-            _open[i] <= _open[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
-            _open[i] >= _open[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+            Open[i] <= Open[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
+            Open[i] >= Open[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
             // belt hold: long body
             GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i) &&
             (

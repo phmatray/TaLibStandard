@@ -46,7 +46,7 @@ internal static partial class TACore
         MoneyFlow[] mflow = new MoneyFlow[optInTimePeriod];
         for (int _mflow_index = 0; _mflow_index < mflow.Length; _mflow_index++)
         {
-            mflow[_mflow_index] = new();
+            mflow[_mflow_index] = new MoneyFlow();
         }
 
         maxIdx_mflow = optInTimePeriod - 1;

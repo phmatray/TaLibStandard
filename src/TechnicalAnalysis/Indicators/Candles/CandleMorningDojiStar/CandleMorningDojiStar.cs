@@ -1,22 +1,24 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleMorningDojiStar;
 
-public class CandleMorningDojiStar : CandleIndicator
+public class CandleMorningDojiStar<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _penetration;
-    private double _bodyLongPeriodTotal;
-    private double _bodyDojiPeriodTotal;
-    private double _bodyShortPeriodTotal;
+    private T _penetration;
+    private T _bodyLongPeriodTotal;
+    private T _bodyDojiPeriodTotal;
+    private T _bodyShortPeriodTotal;
 
-    public CandleMorningDojiStar(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleMorningDojiStar(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
-    public CandleMorningDojiStarResult Compute(int startIdx, int endIdx, in double optInPenetration)
+    public CandleMorningDojiStarResult Compute(int startIdx, int endIdx, in T optInPenetration)
     {
         _penetration = optInPenetration;
             
@@ -28,23 +30,25 @@ public class CandleMorningDojiStar : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleMorningDojiStarResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleMorningDojiStarResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleMorningDojiStarResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
-        if (optInPenetration < 0.0)
+        if (optInPenetration < T.Zero)
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleMorningDojiStarResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -59,7 +63,7 @@ public class CandleMorningDojiStar : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleMorningDojiStarResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -134,9 +138,10 @@ public class CandleMorningDojiStar : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleMorningDojiStarResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isMorningDojiStar =
@@ -153,7 +158,7 @@ public class CandleMorningDojiStar : CandleIndicator
             // white real body
             GetCandleColor(i) == 1 &&
             // closing well within 1st rb
-            _close[i] > _close[i - 2] + GetRealBody(i - 2) * _penetration;
+            Close[i] > Close[i - 2] + GetRealBody(i - 2) * _penetration;
             
         return isMorningDojiStar;
     }

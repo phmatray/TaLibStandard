@@ -1,15 +1,17 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleUnique3River;
 
-public class CandleUnique3River : CandleIndicator
+public class CandleUnique3River<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _bodyLongPeriodTotal;
-    private double _bodyShortPeriodTotal;
+    private T _bodyLongPeriodTotal;
+    private T _bodyShortPeriodTotal;
 
-    public CandleUnique3River(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleUnique3River(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -24,18 +26,20 @@ public class CandleUnique3River : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleUnique3RiverResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleUnique3RiverResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleUnique3RiverResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -50,7 +54,7 @@ public class CandleUnique3River : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleUnique3RiverResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -111,9 +115,10 @@ public class CandleUnique3River : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleUnique3RiverResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isUnique3River =
@@ -124,15 +129,15 @@ public class CandleUnique3River : CandleIndicator
             // 2nd: black
             GetCandleColor(i - 1) == -1 &&
             // harami
-            _close[i - 1] > _close[i - 2] && _open[i - 1] <= _open[i - 2] &&
+            Close[i - 1] > Close[i - 2] && Open[i - 1] <= Open[i - 2] &&
             // lower low
-            _low[i - 1] < _low[i - 2] &&
+            Low[i - 1] < Low[i - 2] &&
             // 3rd: short
             GetRealBody(i) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
             // white
             GetCandleColor(i) == 1 &&
             // open not lower
-            _open[i] > _low[i - 1];
+            Open[i] > Low[i - 1];
             
         return isUnique3River;
     }

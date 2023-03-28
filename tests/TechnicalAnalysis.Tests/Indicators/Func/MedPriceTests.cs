@@ -1,9 +1,3 @@
-using System.Linq;
-using AutoFixture;
-using FluentAssertions;
-using TechnicalAnalysis.Common;
-using Xunit;
-
 namespace TechnicalAnalysis.Tests.Indicators.Func;
 
 public class MedPriceTests
@@ -37,8 +31,8 @@ public class MedPriceTests
         Fixture fixture = new();
         const int startIdx = 0;
         const int endIdx = 99;
-        double[] high = fixture.CreateMany<double>(100).ToArray();
-        double[] low = fixture.CreateMany<double>(100).ToArray();
+        float[] high = fixture.CreateMany<float>(100).ToArray();
+        float[] low = fixture.CreateMany<float>(100).ToArray();
             
         // Act
         var actualResult = TAMath.MedPrice(

@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -32,7 +32,7 @@ public static partial class TAMath
             ref outFastK,
             ref outFastD);
             
-        return new(retCode, outBegIdx, outNBElement, outFastK, outFastD);
+        return new StochRsiResult(retCode, outBegIdx, outNBElement, outFastK, outFastD);
     }
 
     public static StochRsiResult StochRsi(int startIdx, int endIdx, double[] real)

@@ -1,15 +1,17 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleIdentical3Crows;
 
-public class CandleIdentical3Crows : CandleIndicator
+public class CandleIdentical3Crows<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private readonly double[] _shadowVeryShortPeriodTotal = new double[3];
-    private readonly double[] _equalPeriodTotal = new double[3];
+    private readonly T[] _shadowVeryShortPeriodTotal = new T[3];
+    private readonly T[] _equalPeriodTotal = new T[3];
 
-    public CandleIdentical3Crows(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleIdentical3Crows(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -24,18 +26,20 @@ public class CandleIdentical3Crows : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleIdentical3CrowsResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleIdentical3CrowsResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleIdentical3CrowsResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -50,7 +54,7 @@ public class CandleIdentical3Crows : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleIdentical3CrowsResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -121,9 +125,10 @@ public class CandleIdentical3Crows : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleIdentical3CrowsResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isIdentical3Crows =
@@ -140,14 +145,14 @@ public class CandleIdentical3Crows : CandleIndicator
             // very short lower shadow
             GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             // three declining
-            _close[i - 2] > _close[i - 1] &&
-            _close[i - 1] > _close[i] &&
+            Close[i - 2] > Close[i - 1] &&
+            Close[i - 1] > Close[i] &&
             // 2nd black opens very close to 1st close
-            _open[i - 1] <= _close[i - 2] + GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
-            _open[i - 1] >= _close[i - 2] - GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
+            Open[i - 1] <= Close[i - 2] + GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
+            Open[i - 1] >= Close[i - 2] - GetCandleAverage(Equal, _equalPeriodTotal[2], i - 2) &&
             // 3rd black opens very close to 2nd close 
-            _open[i] <= _close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1) &&
-            _open[i] >= _close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1);
+            Open[i] <= Close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1) &&
+            Open[i] >= Close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal[1], i - 1);
             
         return isIdentical3Crows;
     }

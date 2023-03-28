@@ -1,14 +1,16 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleLadderBottom;
 
-public class CandleLadderBottom : CandleIndicator
+public class CandleLadderBottom<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _shadowVeryShortPeriodTotal;
+    private T _shadowVeryShortPeriodTotal;
 
-    public CandleLadderBottom(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleLadderBottom(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -23,18 +25,20 @@ public class CandleLadderBottom : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleLadderBottomResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleLadderBottomResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleLadderBottomResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -49,7 +53,7 @@ public class CandleLadderBottom : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleLadderBottomResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -95,9 +99,10 @@ public class CandleLadderBottom : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleLadderBottomResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isLadderBottom =
@@ -106,20 +111,20 @@ public class CandleLadderBottom : CandleIndicator
             GetCandleColor(i - 3) == -1 &&
             GetCandleColor(i - 2) == -1 &&
             // with consecutively lower opens
-            _open[i - 4] > _open[i - 3] &&
-            _open[i - 3] > _open[i - 2] &&
+            Open[i - 4] > Open[i - 3] &&
+            Open[i - 3] > Open[i - 2] &&
             // and closes
-            _close[i - 4] > _close[i - 3] &&
-            _close[i - 3] > _close[i - 2] &&
+            Close[i - 4] > Close[i - 3] &&
+            Close[i - 3] > Close[i - 2] &&
             // 4th: black with an upper shadow
             GetCandleColor(i - 1) == -1 &&
             GetUpperShadow(i - 1) > GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i - 1) &&
             // 5th: white
             GetCandleColor(i) == 1 &&
             // that opens above prior candle's body
-            _open[i] > _open[i - 1] &&
+            Open[i] > Open[i - 1] &&
             // and closes above prior candle's high
-            _close[i] > _high[i - 1];
+            Close[i] > High[i - 1];
             
         return isLadderBottom;
     }

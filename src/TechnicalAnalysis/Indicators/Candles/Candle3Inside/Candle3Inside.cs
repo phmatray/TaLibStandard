@@ -1,16 +1,17 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
-using static System.Math;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.Candle3Inside;
 
-public class Candle3Inside : CandleIndicator
+public class Candle3Inside<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _bodyLongPeriodTotal;
-    private double _bodyShortPeriodTotal;
+    private T _bodyLongPeriodTotal;
+    private T _bodyShortPeriodTotal;
 
-    public Candle3Inside(in double[] open, in double[] high, in double[] low, in double[] close)
+    public Candle3Inside(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -25,18 +26,20 @@ public class Candle3Inside : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new Candle3InsideResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new Candle3InsideResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new Candle3InsideResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -51,7 +54,7 @@ public class Candle3Inside : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new Candle3InsideResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -112,9 +115,10 @@ public class Candle3Inside : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new Candle3InsideResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool is3Inside =
@@ -123,18 +127,18 @@ public class Candle3Inside : CandleIndicator
             // 2nd: short
             GetRealBody(i - 1) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i - 1) &&
             // engulfed by 1st
-            Max(_close[i - 1], _open[i - 1]) < Max(_close[i - 2], _open[i - 2]) &&
-            Min(_close[i - 1], _open[i - 1]) > Min(_close[i - 2], _open[i - 2]) &&
+            T.Max(Close[i - 1], Open[i - 1]) < T.Max(Close[i - 2], Open[i - 2]) &&
+            T.Min(Close[i - 1], Open[i - 1]) > T.Min(Close[i - 2], Open[i - 2]) &&
             (
                 ( // 3rd: opposite to 1st
                     GetCandleColor(i - 2) == 1 &&
                     GetCandleColor(i) == -1 &&
-                    _close[i] < _open[i - 2]
+                    Close[i] < Open[i - 2]
                 ) ||
                 ( // and closing out
                     GetCandleColor(i - 2) == -1 &&
                     GetCandleColor(i) == 1 &&
-                    _close[i] > _open[i - 2]
+                    Close[i] > Open[i - 2]
                 )
             );
             

@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.RocR(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new RocRResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static RocRResult RocR(int startIdx, int endIdx, double[] real)

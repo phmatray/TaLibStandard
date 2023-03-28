@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -21,7 +21,7 @@ public static partial class TAMath
             ref outInPhase,
             ref outQuadrature);
             
-        return new(retCode, outBegIdx, outNBElement, outInPhase, outQuadrature);
+        return new HtPhasorResult(retCode, outBegIdx, outNBElement, outInPhase, outQuadrature);
     }
 
     public static HtPhasorResult HtPhasor(int startIdx, int endIdx, float[] real)

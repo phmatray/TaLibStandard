@@ -1,3 +1,4 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static System.Math;
 using static TechnicalAnalysis.Common.CandleSettingType;
@@ -5,11 +6,12 @@ using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleHikkakeMod;
 
-public class CandleHikkakeMod : CandleIndicator
+public class CandleHikkakeMod<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _nearPeriodTotal;
+    private T _nearPeriodTotal;
 
-    public CandleHikkakeMod(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleHikkakeMod(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -24,18 +26,20 @@ public class CandleHikkakeMod : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleHikkakeModResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleHikkakeModResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleHikkakeModResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -50,7 +54,7 @@ public class CandleHikkakeMod : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleHikkakeModResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -72,7 +76,7 @@ public class CandleHikkakeMod : CandleIndicator
         {
             if (GetPatternRecognition(i))
             {
-                patternResult = 100 * (_high[i] < _high[i - 1] ? 1 : -1);
+                patternResult = 100 * (High[i] < High[i - 1] ? 1 : -1);
                 patternIdx = i;
             }
             else
@@ -115,7 +119,7 @@ public class CandleHikkakeMod : CandleIndicator
         {
             if (GetPatternRecognition(i))
             {
-                patternResult = 100 * (_high[i] < _high[i - 1] ? 1 : -1);
+                patternResult = 100 * (High[i] < High[i - 1] ? 1 : -1);
                 patternIdx = i;
                 outInteger[outIdx++] = patternResult;
             }
@@ -145,25 +149,26 @@ public class CandleHikkakeMod : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleHikkakeModResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool patternRecognition =
             // 2nd: lower high and higher low than 1st
-            _high[i - 2] < _high[i - 3] && _low[i - 2] > _low[i - 3] &&
+            High[i - 2] < High[i - 3] && Low[i - 2] > Low[i - 3] &&
             // 3rd: lower high and higher low than 2nd
-            _high[i - 1] < _high[i - 2] && _low[i - 1] > _low[i - 2] &&
+            High[i - 1] < High[i - 2] && Low[i - 1] > Low[i - 2] &&
             (
                 // (bull) 4th: lower high and lower low
-                _high[i] < _high[i - 1] && _low[i] < _low[i - 1] &&
+                High[i] < High[i - 1] && Low[i] < Low[i - 1] &&
                 // (bull) 2nd: close near the low
-                _close[i - 2] <= _low[i - 2] + GetCandleAverage(Near, _nearPeriodTotal, i - 2) ||
+                Close[i - 2] <= Low[i - 2] + GetCandleAverage(Near, _nearPeriodTotal, i - 2) ||
                 // (bear) 4th: higher high and higher low
-                _high[i] > _high[i - 1] && _low[i] > _low[i - 1] &&
+                High[i] > High[i - 1] && Low[i] > Low[i - 1] &&
                 // (bull) 2nd: close near the top
-                _close[i - 2] >= _high[i - 2] - GetCandleAverage(Near, _nearPeriodTotal, i - 2)
+                Close[i - 2] >= High[i - 2] - GetCandleAverage(Near, _nearPeriodTotal, i - 2)
             );
             
         return patternRecognition;
@@ -175,9 +180,9 @@ public class CandleHikkakeMod : CandleIndicator
             i <= patternIdx + 3 &&
             (
                 // close higher than the high of 3rd
-                patternResult > 0 && _close[i] > _high[patternIdx - 1] ||
+                patternResult > 0 && Close[i] > High[patternIdx - 1] ||
                 // close lower than the low of 3rd
-                patternResult < 0 && _close[i] < _low[patternIdx - 1]
+                patternResult < 0 && Close[i] < Low[patternIdx - 1]
             );
             
         return confirmation;

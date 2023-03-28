@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -23,7 +23,7 @@ public static partial class TAMath
             ref outMAMA,
             ref outFAMA);
             
-        return new(retCode, outBegIdx, outNBElement, outMAMA, outFAMA);
+        return new MamaResult(retCode, outBegIdx, outNBElement, outMAMA, outFAMA);
     }
         
     public static MamaResult Mama(int startIdx, int endIdx, double[] real)

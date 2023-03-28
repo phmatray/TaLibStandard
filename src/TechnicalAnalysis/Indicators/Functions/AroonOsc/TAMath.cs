@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -21,7 +21,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new AroonOscResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static AroonOscResult AroonOsc(int startIdx, int endIdx, double[] high, double[] low)

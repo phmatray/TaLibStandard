@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Min(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new MinResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static MinResult Min(int startIdx, int endIdx, double[] real)

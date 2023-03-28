@@ -1,17 +1,18 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
-using static System.Math;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleRickshawMan;
 
-public class CandleRickshawMan : CandleIndicator
+public class CandleRickshawMan<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _bodyDojiPeriodTotal;
-    private double _shadowLongPeriodTotal;
-    private double _nearPeriodTotal;
+    private T _bodyDojiPeriodTotal;
+    private T _shadowLongPeriodTotal;
+    private T _nearPeriodTotal;
 
-    public CandleRickshawMan(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleRickshawMan(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -26,18 +27,20 @@ public class CandleRickshawMan : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleRickshawManResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleRickshawManResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleRickshawManResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -52,7 +55,7 @@ public class CandleRickshawMan : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleRickshawManResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -121,9 +124,10 @@ public class CandleRickshawMan : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleRickshawManResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isRickshawMan =
@@ -135,8 +139,8 @@ public class CandleRickshawMan : CandleIndicator
             GetUpperShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) &&
             (
                 // body near midpoint
-                Min(_open[i], _close[i]) <= _low[i] + GetHighLowRange(i) / 2 + GetCandleAverage(Near, _nearPeriodTotal, i) &&
-                Max(_open[i], _close[i]) >= _low[i] + GetHighLowRange(i) / 2 - GetCandleAverage(Near, _nearPeriodTotal, i)
+                T.Min(Open[i], Close[i]) <= Low[i] + GetHighLowRange(i) / T.CreateChecked(2) + GetCandleAverage(Near, _nearPeriodTotal, i) &&
+                T.Max(Open[i], Close[i]) >= Low[i] + GetHighLowRange(i) / T.CreateChecked(2) - GetCandleAverage(Near, _nearPeriodTotal, i)
             );
             
         return isRickshawMan;

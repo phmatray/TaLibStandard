@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -40,7 +40,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new SarExtResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static SarExtResult SarExt(int startIdx, int endIdx, double[] high, double[] low)

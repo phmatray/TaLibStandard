@@ -1,20 +1,22 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleDarkCloudCover;
 
-public class CandleDarkCloudCover : CandleIndicator
+public class CandleDarkCloudCover<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private double _penetration;
-    private double _bodyLongPeriodTotal;
+    private T _penetration;
+    private T _bodyLongPeriodTotal;
 
-    public CandleDarkCloudCover(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleDarkCloudCover(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
-    public CandleDarkCloudCoverResult Compute(int startIdx, int endIdx, in double optInPenetration)
+    public CandleDarkCloudCoverResult Compute(int startIdx, int endIdx, in T optInPenetration)
     {
         _penetration = optInPenetration;
             
@@ -26,23 +28,25 @@ public class CandleDarkCloudCover : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleDarkCloudCoverResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleDarkCloudCoverResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleDarkCloudCoverResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
-        if (optInPenetration < 0.0)
+        if (optInPenetration < T.Zero)
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleDarkCloudCoverResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -57,7 +61,7 @@ public class CandleDarkCloudCover : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleDarkCloudCoverResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -104,9 +108,10 @@ public class CandleDarkCloudCover : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleDarkCloudCoverResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isDarkCloudCover =
@@ -117,10 +122,10 @@ public class CandleDarkCloudCover : CandleIndicator
             // 2nd: black
             GetCandleColor(i) == -1 &&
             // open above prior high
-            _open[i] > _high[i - 1] &&
+            Open[i] > High[i - 1] &&
             // close within prior body
-            _close[i] > _open[i - 1] &&
-            _close[i] < _close[i - 1] - GetRealBody(i - 1) * _penetration;
+            Close[i] > Open[i - 1] &&
+            Close[i] < Close[i - 1] - GetRealBody(i - 1) * _penetration;
             
         return isDarkCloudCover;
     }

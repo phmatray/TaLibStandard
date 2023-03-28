@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Log10(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new Log10Result(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static Log10Result Log10(int startIdx, int endIdx, float[] real)

@@ -1,17 +1,19 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.Candle3WhiteSoldiers;
 
-public class Candle3WhiteSoldiers : CandleIndicator
+public class Candle3WhiteSoldiers<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private readonly double[] _shadowVeryShortPeriodTotal = new double[3];
-    private readonly double[] _nearPeriodTotal = new double[3];
-    private readonly double[] _farPeriodTotal = new double[3];
-    private double _bodyShortPeriodTotal;
+    private readonly T[] _shadowVeryShortPeriodTotal = new T[3];
+    private readonly T[] _nearPeriodTotal = new T[3];
+    private readonly T[] _farPeriodTotal = new T[3];
+    private T _bodyShortPeriodTotal;
 
-    public Candle3WhiteSoldiers(in double[] open, in double[] high, in double[] low, in double[] close)
+    public Candle3WhiteSoldiers(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -26,18 +28,20 @@ public class Candle3WhiteSoldiers : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new Candle3WhiteSoldiersResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new Candle3WhiteSoldiersResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new Candle3WhiteSoldiersResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -52,7 +56,7 @@ public class Candle3WhiteSoldiers : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new Candle3WhiteSoldiersResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -150,9 +154,10 @@ public class Candle3WhiteSoldiers : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new Candle3WhiteSoldiersResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool is3WhiteSoldiers =
@@ -169,15 +174,15 @@ public class Candle3WhiteSoldiers : CandleIndicator
             // very short upper shadow
             GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             // consecutive higher closes           
-            _close[i] > _close[i - 1] &&
-            _close[i - 1] > _close[i - 2] &&
+            Close[i] > Close[i - 1] &&
+            Close[i - 1] > Close[i - 2] &&
             // 2nd opens within/near 1st real body
-            _open[i - 1] > _open[i - 2] &&
-            _open[i - 1] <= _close[i - 2] +
+            Open[i - 1] > Open[i - 2] &&
+            Open[i - 1] <= Close[i - 2] +
             GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
             // 3rd opens within/near 2nd real body
-            _open[i] > _open[i - 1] &&
-            _open[i] <= _close[i - 1] +
+            Open[i] > Open[i - 1] &&
+            Open[i] <= Close[i - 1] +
             GetCandleAverage(Near, _nearPeriodTotal[1], i - 1) &&
             // 2nd not far shorter than 1st
             GetRealBody(i - 1) > GetRealBody(i - 2) -

@@ -1,14 +1,16 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleConcealBabySwallow;
 
-public class CandleConcealBabySwallow : CandleIndicator
+public class CandleConcealBabySwallow<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private readonly double[] _shadowVeryShortPeriodTotal = new double[4];
+    private readonly T[] _shadowVeryShortPeriodTotal = new T[4];
 
-    public CandleConcealBabySwallow(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleConcealBabySwallow(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -23,18 +25,20 @@ public class CandleConcealBabySwallow : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleConcealBabySwallowResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleConcealBabySwallowResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleConcealBabySwallowResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -49,7 +53,7 @@ public class CandleConcealBabySwallow : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleConcealBabySwallowResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -101,9 +105,10 @@ public class CandleConcealBabySwallow : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleConcealBabySwallowResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isConcealBabySwallow =
@@ -131,9 +136,9 @@ public class CandleConcealBabySwallow : CandleIndicator
             GetUpperShadow(i - 1) >
             GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
             // that extends into the prior body
-            _high[i - 1] > _close[i - 2] &&
+            High[i - 1] > Close[i - 2] &&
             // 4th: engulfs the 3rd including the shadows
-            _high[i] > _high[i - 1] && _low[i] < _low[i - 1];
+            High[i] > High[i - 1] && Low[i] < Low[i - 1];
             
         return isConcealBabySwallow;
     }

@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -28,7 +28,7 @@ public static partial class TAMath
             ref outNBElement,
             ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new BopResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static BopResult Bop(int startIdx, int endIdx, float[] open, float[] high, float[] low, float[] close)

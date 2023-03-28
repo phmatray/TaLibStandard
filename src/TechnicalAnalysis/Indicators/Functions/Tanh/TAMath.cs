@@ -1,6 +1,6 @@
 ﻿using TechnicalAnalysis.Common;
-
 // ReSharper disable once CheckNamespace
+
 namespace TechnicalAnalysis;
 
 public static partial class TAMath
@@ -13,7 +13,7 @@ public static partial class TAMath
 
         RetCode retCode = TACore.Tanh(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
             
-        return new(retCode, outBegIdx, outNBElement, outReal);
+        return new TanhResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
     public static TanhResult Tanh(int startIdx, int endIdx, float[] real)

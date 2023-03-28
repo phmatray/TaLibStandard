@@ -1,17 +1,19 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.Candle3StarsInSouth;
 
-public class Candle3StarsInSouth : CandleIndicator
+public class Candle3StarsInSouth<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private readonly double[] _shadowVeryShortPeriodTotal = new double[2];
-    private double _bodyLongPeriodTotal;
-    private double _shadowLongPeriodTotal;
-    private double _bodyShortPeriodTotal;
+    private readonly T[] _shadowVeryShortPeriodTotal = new T[2];
+    private T _bodyLongPeriodTotal;
+    private T _shadowLongPeriodTotal;
+    private T _bodyShortPeriodTotal;
 
-    public Candle3StarsInSouth(in double[] open, in double[] high, in double[] low, in double[] close)
+    public Candle3StarsInSouth(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -26,18 +28,20 @@ public class Candle3StarsInSouth : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new Candle3StarsInSouthResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new Candle3StarsInSouthResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new Candle3StarsInSouthResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -52,7 +56,7 @@ public class Candle3StarsInSouth : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new Candle3StarsInSouthResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -143,9 +147,10 @@ public class Candle3StarsInSouth : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new Candle3StarsInSouthResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool is3StarsInSouth =
@@ -162,12 +167,12 @@ public class Candle3StarsInSouth : CandleIndicator
             // 2nd: smaller candle
             GetRealBody(i - 1) < GetRealBody(i - 2) &&
             // that opens higher but within 1st range
-            _open[i - 1] > _close[i - 2] &&
-            _open[i - 1] <= _high[i - 2] &&
+            Open[i - 1] > Close[i - 2] &&
+            Open[i - 1] <= High[i - 2] &&
             // and trades lower than 1st close
-            _low[i - 1] < _close[i - 2] &&
+            Low[i - 1] < Close[i - 2] &&
             // but not lower than 1st low
-            _low[i - 1] >= _low[i - 2] &&
+            Low[i - 1] >= Low[i - 2] &&
             // and has a lower shadow
             GetLowerShadow(i - 1) > GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
             // 3rd: small marubozu
@@ -175,7 +180,7 @@ public class Candle3StarsInSouth : CandleIndicator
             GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             // engulfed by prior candle's range
-            _low[i] > _low[i - 1] && _high[i] < _high[i - 1];
+            Low[i] > Low[i - 1] && High[i] < High[i - 1];
             
         return is3StarsInSouth;
     }

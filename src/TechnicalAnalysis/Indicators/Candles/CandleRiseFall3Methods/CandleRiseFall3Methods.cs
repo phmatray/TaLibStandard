@@ -1,3 +1,4 @@
+using System.Numerics;
 using TechnicalAnalysis.Common;
 using static System.Math;
 using static TechnicalAnalysis.Common.CandleSettingType;
@@ -5,11 +6,12 @@ using static TechnicalAnalysis.Common.RetCode;
 
 namespace TechnicalAnalysis.Candles.CandleRiseFall3Methods;
 
-public class CandleRiseFall3Methods : CandleIndicator
+public class CandleRiseFall3Methods<T> : CandleIndicator<T>
+    where T : IFloatingPoint<T>
 {
-    private readonly double[] _bodyPeriodTotal = new double[5];
+    private readonly T[] _bodyPeriodTotal = new T[5];
 
-    public CandleRiseFall3Methods(in double[] open, in double[] high, in double[] low, in double[] close)
+    public CandleRiseFall3Methods(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
@@ -24,18 +26,20 @@ public class CandleRiseFall3Methods : CandleIndicator
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleRiseFall3MethodsResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleRiseFall3MethodsResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
-        if (_open == null || _high == null || _low == null || _close == null)
+        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null || High == null || Low == null || Close == null)
+        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         {
-            return new(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleRiseFall3MethodsResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -50,7 +54,7 @@ public class CandleRiseFall3Methods : CandleIndicator
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleRiseFall3MethodsResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -120,9 +124,10 @@ public class CandleRiseFall3Methods : CandleIndicator
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleRiseFall3MethodsResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <inheritdoc />
     public override bool GetPatternRecognition(int i)
     {
         bool isRiseFall3Methods =
@@ -138,19 +143,19 @@ public class CandleRiseFall3Methods : CandleIndicator
             GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
             GetCandleColor(i - 1) == -GetCandleColor(i) &&
             // 2nd to 4th hold within 1st: a part of the real body must be within 1st range
-            Min(_open[i - 3], _close[i - 3]) < _high[i - 4] &&
-            Max(_open[i - 3], _close[i - 3]) > _low[i - 4] &&
-            Min(_open[i - 2], _close[i - 2]) < _high[i - 4] &&
-            Max(_open[i - 2], _close[i - 2]) > _low[i - 4] &&
-            Min(_open[i - 1], _close[i - 1]) < _high[i - 4] &&
-            Max(_open[i - 1], _close[i - 1]) > _low[i - 4] &&
+            T.Min(Open[i - 3], Close[i - 3]) < High[i - 4] &&
+            T.Max(Open[i - 3], Close[i - 3]) > Low[i - 4] &&
+            T.Min(Open[i - 2], Close[i - 2]) < High[i - 4] &&
+            T.Max(Open[i - 2], Close[i - 2]) > Low[i - 4] &&
+            T.Min(Open[i - 1], Close[i - 1]) < High[i - 4] &&
+            T.Max(Open[i - 1], Close[i - 1]) > Low[i - 4] &&
             // 2nd to 4th are falling (rising)
-            _close[i - 2] * GetCandleColor(i - 4) < _close[i - 3] * GetCandleColor(i - 4) &&
-            _close[i - 1] * GetCandleColor(i - 4) < _close[i - 2] * GetCandleColor(i - 4) &&
+            Close[i - 2] * T.CreateChecked(GetCandleColor(i - 4)) < Close[i - 3] * T.CreateChecked(GetCandleColor(i - 4)) &&
+            Close[i - 1] * T.CreateChecked(GetCandleColor(i - 4)) < Close[i - 2] * T.CreateChecked(GetCandleColor(i - 4)) &&
             // 5th opens above (below) the prior close
-            _open[i] * GetCandleColor(i - 4) > _close[i - 1] * GetCandleColor(i - 4) &&
+            Open[i] * T.CreateChecked(GetCandleColor(i - 4)) > Close[i - 1] * T.CreateChecked(GetCandleColor(i - 4)) &&
             // 5th closes above (below) the 1st close
-            _close[i] * GetCandleColor(i - 4) > _close[i - 4] * GetCandleColor(i - 4);
+            Close[i] * T.CreateChecked(GetCandleColor(i - 4)) > Close[i - 4] * T.CreateChecked(GetCandleColor(i - 4));
             
         return isRiseFall3Methods;
     }
