@@ -1,92 +1,78 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace TechnicalAnalysis.Business;
 
 public partial class DataHistoryResponse
 {
-    [JsonProperty("Aggregated")]
+    [JsonPropertyName("Aggregated")]
     public bool Aggregated { get; set; }
 
-    [JsonProperty("ConversionType")]
+    [JsonPropertyName("ConversionType")]
     public ConversionType ConversionType { get; set; }
 
-    [JsonProperty("Data")]
+    [JsonPropertyName("Data")]
     public List<Candle> Data { get; set; }
 
-    [JsonProperty("FirstValueInArray")]
+    [JsonPropertyName("FirstValueInArray")]
     public bool FirstValueInArray { get; set; }
 
-    [JsonProperty("Response")]
+    [JsonPropertyName("Response")]
     public string Response { get; set; }
 
-    [JsonProperty("TimeFrom")]
+    [JsonPropertyName("TimeFrom")]
     public long TimeFrom { get; set; }
 
-    [JsonProperty("TimeTo")]
+    [JsonPropertyName("TimeTo")]
     public long TimeTo { get; set; }
 
-    [JsonProperty("Type")]
+    [JsonPropertyName("Type")]
     public long Type { get; set; }
 }
 
 public partial class ConversionType
 {
-    [JsonProperty("conversionSymbol")]
+    [JsonPropertyName("conversionSymbol")]
     public string ConversionSymbol { get; set; }
 
-    [JsonProperty("type")]
+    [JsonPropertyName("type")]
     public string Type { get; set; }
 }
 
 public partial class Candle
 {
-    [JsonProperty("close")]
+    [JsonPropertyName("close")]
     public double Close { get; set; }
 
-    [JsonProperty("high")]
+    [JsonPropertyName("high")]
     public double High { get; set; }
 
-    [JsonProperty("low")]
+    [JsonPropertyName("low")]
     public double Low { get; set; }
 
-    [JsonProperty("open")]
+    [JsonPropertyName("open")]
     public double Open { get; set; }
 
-    [JsonProperty("time")]
+    [JsonPropertyName("time")]
     public long Time { get; set; }
 
-    [JsonProperty("volumefrom")]
+    [JsonPropertyName("volumefrom")]
     public double Volumefrom { get; set; }
 
-    [JsonProperty("volumeto")]
+    [JsonPropertyName("volumeto")]
     public double Volumeto { get; set; }
 }
 
 public partial class DataHistoryResponse
 {
     public static DataHistoryResponse FromJson(string json) =>
-        JsonConvert.DeserializeObject<DataHistoryResponse>(json, Converter.Settings);
+        JsonSerializer.Deserialize<DataHistoryResponse>(json);
 }
 
 public static class Serialize
 {
     public static string ToJson(this DataHistoryResponse self) =>
-        JsonConvert.SerializeObject(self, Converter.Settings);
-}
-
-internal class Converter
-{
-    public static readonly JsonSerializerSettings Settings =
-        new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            }
-        };
+        JsonSerializer.Serialize(self);
 }
