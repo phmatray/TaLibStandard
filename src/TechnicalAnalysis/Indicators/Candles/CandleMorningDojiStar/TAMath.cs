@@ -19,6 +19,6 @@ public static partial class TAMath
         int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
         where T : IFloatingPoint<T>
     {
-        return CdlMorningDojiStar<T>(startIdx, endIdx, open, high, low, close, T.CreateChecked(0.3));
+        return CdlMorningDojiStar(startIdx, endIdx, open, high, low, close, T.CreateChecked(0.3));
     }
 }

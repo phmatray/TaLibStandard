@@ -92,9 +92,15 @@ public class CandleKickingByLength<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i)
-                ? GetCandleColor((GetRealBody(i) > GetRealBody(i - 1) ? i : i - 1)) * 100
-                : 0;
+            if (GetPatternRecognition(i))
+            {
+                int index = GetRealBody(i) > GetRealBody(i - 1) ? i : i - 1;
+                outInteger[outIdx++] = GetCandleColor(index) * 100;
+            }
+            else
+            {
+                outInteger[outIdx++] = 0;
+            }
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
