@@ -7,8 +7,6 @@ namespace TechnicalAnalysis.Business;
 
 public class DataHistory
 {
-    private readonly List<Candle> _candles;
-
     public DataHistory(List<Candle> candles)
     {
         if (candles == null)
@@ -20,8 +18,6 @@ public class DataHistory
         {
             throw new ArgumentException("Value cannot be an empty collection.", nameof(candles));
         }
-
-        _candles = candles;
 
         Count = candles.Count;
         Open = candles.Select(x => x.Open).ToArray();
