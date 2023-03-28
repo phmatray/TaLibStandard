@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleMatchingLow;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlMatchingLowTests

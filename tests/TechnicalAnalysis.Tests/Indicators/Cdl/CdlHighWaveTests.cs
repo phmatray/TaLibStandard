@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleHighWave;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlHighWaveTests

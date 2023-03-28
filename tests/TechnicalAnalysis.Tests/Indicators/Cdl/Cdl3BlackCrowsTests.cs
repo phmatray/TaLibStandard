@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.Candle3BlackCrows;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class Cdl3BlackCrowsTests

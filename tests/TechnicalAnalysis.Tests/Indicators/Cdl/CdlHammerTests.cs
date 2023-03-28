@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleHammer;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlHammerTests

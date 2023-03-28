@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleGravestoneDoji;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlGravestoneDojiTests

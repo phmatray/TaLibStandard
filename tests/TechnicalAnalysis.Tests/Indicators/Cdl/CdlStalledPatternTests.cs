@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleStalledPattern;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlStalledPatternTests

@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.Candle3Outside;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class Cdl3OutsideTests

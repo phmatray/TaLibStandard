@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleAdvanceBlock;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlAdvanceBlockTests

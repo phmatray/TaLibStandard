@@ -1,5 +1,8 @@
-using System;
-using TechnicalAnalysis.Common;
+// Copyright (c) 2023 Philippe Matray. All rights reserved.
+// This file is part of TaLibStandard.
+// TaLibStandard is licensed under the GNU General Public License v3.0.
+// See the LICENSE file in the project root for the full license text.
+// For more information, visit https://github.com/phmatray/TaLibStandard.
 
 namespace TechnicalAnalysis;
 
@@ -29,37 +32,37 @@ internal static partial class TACore
         double[] jQ_Even = new double[3];
         if (startIdx < 0)
         {
-            return RetCode.OutOfRangeStartIndex;
+            return OutOfRangeStartIndex;
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return RetCode.OutOfRangeEndIndex;
+            return OutOfRangeEndIndex;
         }
 
         if (inReal == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInFastLimit is < 0.01 or > 0.99)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInSlowLimit is < 0.01 or > 0.99)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outMAMA == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outFAMA == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         double rad2Deg = 180.0 / (4.0 * Math.Atan(1.0));
@@ -73,7 +76,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNBElement = 0;
-            return RetCode.Success;
+            return Success;
         }
 
         outBegIdx = startIdx;
@@ -361,7 +364,7 @@ internal static partial class TACore
         }
 
         outNBElement = outIdx;
-        return RetCode.Success;
+        return Success;
     }
 
     public static int MamaLookback(double optInFastLimit, double optInSlowLimit)

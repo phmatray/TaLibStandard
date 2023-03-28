@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleThrusting;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlThrustingTests

@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleHarami;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlHaramiTests

@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleLadderBottom;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlLadderBottomTests

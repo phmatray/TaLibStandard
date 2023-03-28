@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleTristar;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlTristarTests

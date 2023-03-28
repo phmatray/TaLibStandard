@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleIdentical3Crows;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlIdentical3CrowsTests

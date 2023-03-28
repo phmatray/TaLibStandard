@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleConcealBabySwallow;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlConcealBabySwallowTests

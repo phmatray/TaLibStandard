@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleUpsideGap2Crows;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlUpsideGap2CrowsTests

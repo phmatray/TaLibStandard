@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleEveningStar;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlEveningStarTests

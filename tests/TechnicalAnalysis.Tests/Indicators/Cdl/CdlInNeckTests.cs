@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleInNeck;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlInNeckTests

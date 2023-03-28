@@ -1,4 +1,8 @@
-using TechnicalAnalysis.Common;
+// Copyright (c) 2023 Philippe Matray. All rights reserved.
+// This file is part of TaLibStandard.
+// TaLibStandard is licensed under the GNU General Public License v3.0.
+// See the LICENSE file in the project root for the full license text.
+// For more information, visit https://github.com/phmatray/TaLibStandard.
 
 namespace TechnicalAnalysis;
 
@@ -20,37 +24,37 @@ internal static partial class TACore
         int tempInt = 0;
         if (startIdx < 0)
         {
-            return RetCode.OutOfRangeStartIndex;
+            return OutOfRangeStartIndex;
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return RetCode.OutOfRangeEndIndex;
+            return OutOfRangeEndIndex;
         }
 
         if (inReal == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (inPeriods == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInMinPeriod is < 2 or > 100000)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInMaxPeriod is < 2 or > 100000)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outReal == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         int lookbackTotal = MovingAverageLookback(optInMaxPeriod, optInMAType);
@@ -63,7 +67,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNBElement = 0;
-            return RetCode.Success;
+            return Success;
         }
 
         if (lookbackTotal > startIdx)
@@ -79,7 +83,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNBElement = 0;
-            return RetCode.Success;
+            return Success;
         }
 
         int outputSize = endIdx - tempInt + 1;
@@ -107,7 +111,7 @@ internal static partial class TACore
             {
                 outBegIdx = startIdx;
                 outNBElement = outputSize;
-                return RetCode.Success;
+                return Success;
             }
 
             int curPeriod = localPeriodArray[i];
@@ -124,7 +128,7 @@ internal static partial class TACore
                     ref localBegIdx,
                     ref localNbElement,
                     ref localOutputArray);
-                if (retCode != RetCode.Success)
+                if (retCode != Success)
                 {
                     outBegIdx = 0;
                     outNBElement = 0;

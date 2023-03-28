@@ -1,5 +1,8 @@
-using System;
-using TechnicalAnalysis.Common;
+// Copyright (c) 2023 Philippe Matray. All rights reserved.
+// This file is part of TaLibStandard.
+// TaLibStandard is licensed under the GNU General Public License v3.0.
+// See the LICENSE file in the project root for the full license text.
+// For more information, visit https://github.com/phmatray/TaLibStandard.
 
 namespace TechnicalAnalysis;
 
@@ -22,37 +25,37 @@ internal static partial class TACore
         double[] tempBuffer;
         if (startIdx < 0)
         {
-            return RetCode.OutOfRangeStartIndex;
+            return OutOfRangeStartIndex;
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return RetCode.OutOfRangeEndIndex;
+            return OutOfRangeEndIndex;
         }
 
         if (inHigh == null || inLow == null || inClose == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInFastK_Period is < 1 or > 100000)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInFastD_Period is < 1 or > 100000)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outFastK == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outFastD == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         int lookbackK = optInFastK_Period - 1;
@@ -67,7 +70,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNBElement = 0;
-            return RetCode.Success;
+            return Success;
         }
 
         int outIdx = 0;
@@ -104,7 +107,7 @@ internal static partial class TACore
                 ref outNBElement,
                 ref outFastD);
                 
-            if (retCode != RetCode.Success || outNBElement == 0)
+            if (retCode != Success || outNBElement == 0)
             {
                 outBegIdx = 0;
                 outNBElement = 0;
@@ -112,7 +115,7 @@ internal static partial class TACore
             }
 
             Array.Copy(tempBuffer, lookbackFastD, outFastK, 0, outNBElement);
-            if (retCode != RetCode.Success)
+            if (retCode != Success)
             {
                 outBegIdx = 0;
                 outNBElement = 0;
@@ -120,7 +123,7 @@ internal static partial class TACore
             }
 
             outBegIdx = startIdx;
-            return RetCode.Success;
+            return Success;
         }
 
         double tmp = inLow[today];

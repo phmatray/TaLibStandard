@@ -1,4 +1,8 @@
-using TechnicalAnalysis.Common;
+// Copyright (c) 2023 Philippe Matray. All rights reserved.
+// This file is part of TaLibStandard.
+// TaLibStandard is licensed under the GNU General Public License v3.0.
+// See the LICENSE file in the project root for the full license text.
+// For more information, visit https://github.com/phmatray/TaLibStandard.
 
 namespace TechnicalAnalysis;
 
@@ -17,27 +21,27 @@ internal static partial class TACore
         int begIdx = 0;
         if (startIdx < 0)
         {
-            return RetCode.OutOfRangeStartIndex;
+            return OutOfRangeStartIndex;
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return RetCode.OutOfRangeEndIndex;
+            return OutOfRangeEndIndex;
         }
 
         if (inReal == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInTimePeriod is < 1 or > 100000)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outReal == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         int emaLookback = EmaLookback(optInTimePeriod);
@@ -52,7 +56,7 @@ internal static partial class TACore
         {
             outNBElement = 0;
             outBegIdx = 0;
-            return RetCode.Success;
+            return Success;
         }
 
         outBegIdx = startIdx;
@@ -69,7 +73,7 @@ internal static partial class TACore
             ref begIdx,
             ref nbElement,
             tempBuffer);
-        if (retCode != RetCode.Success || nbElement == 0)
+        if (retCode != Success || nbElement == 0)
         {
             outNBElement = 0;
             outBegIdx = 0;
@@ -87,7 +91,7 @@ internal static partial class TACore
             ref begIdx,
             ref nbElement,
             tempBuffer);
-        if (retCode != RetCode.Success || nbElement == 0)
+        if (retCode != Success || nbElement == 0)
         {
             outNBElement = 0;
             outBegIdx = 0;
@@ -104,7 +108,7 @@ internal static partial class TACore
             ref begIdx,
             ref nbElement,
             tempBuffer);
-        if (retCode != RetCode.Success || nbElement == 0)
+        if (retCode != Success || nbElement == 0)
         {
             outNBElement = 0;
             outBegIdx = 0;
@@ -114,14 +118,14 @@ internal static partial class TACore
         nbElementToOutput -= emaLookback;
         retCode = Roc(0, nbElementToOutput, tempBuffer, 1, ref begIdx, ref outNBElement, ref outReal);
             
-        if (retCode != RetCode.Success || outNBElement == 0)
+        if (retCode != Success || outNBElement == 0)
         {
             outNBElement = 0;
             outBegIdx = 0;
             return retCode;
         }
 
-        return RetCode.Success;
+        return Success;
     }
 
     public static int TrixLookback(int optInTimePeriod)

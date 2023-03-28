@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleBreakaway;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlBreakawayTests

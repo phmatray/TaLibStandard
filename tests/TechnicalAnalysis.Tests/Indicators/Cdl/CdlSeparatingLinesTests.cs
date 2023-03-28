@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleSeparatingLines;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlSeparatingLinesTests

@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleShootingStar;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlShootingStarTests

@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleMatHold;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlMatHoldTests

@@ -1,5 +1,4 @@
-using System;
-using TechnicalAnalysis.Common;
+
 
 // ReSharper disable InconsistentNaming
 namespace TechnicalAnalysis;
@@ -10,7 +9,7 @@ internal static partial class TACore
         
     static TACore()
     {
-        RestoreCandleDefaultSettings(CandleSettingType.AllCandleSettings);
+        RestoreCandleDefaultSettings(AllCandleSettings);
     }
         
     public static Compatibility GetCompatibility()
@@ -27,75 +26,75 @@ internal static partial class TACore
     {
         switch (settingType)
         {
-            case CandleSettingType.BodyLong:
-                SetCandleSettings(CandleSettingType.BodyLong, RangeType.RealBody, 10, 1.0);
+            case BodyLong:
+                SetCandleSettings(BodyLong, RangeType.RealBody, 10, 1.0);
                 break;
 
-            case CandleSettingType.BodyVeryLong:
-                SetCandleSettings(CandleSettingType.BodyVeryLong, RangeType.RealBody, 10, 3.0);
+            case BodyVeryLong:
+                SetCandleSettings(BodyVeryLong, RangeType.RealBody, 10, 3.0);
                 break;
 
-            case CandleSettingType.BodyShort:
-                SetCandleSettings(CandleSettingType.BodyShort, RangeType.RealBody, 10, 1.0);
+            case BodyShort:
+                SetCandleSettings(BodyShort, RangeType.RealBody, 10, 1.0);
                 break;
 
-            case CandleSettingType.BodyDoji:
-                SetCandleSettings(CandleSettingType.BodyDoji, RangeType.HighLow, 10, 0.1);
+            case BodyDoji:
+                SetCandleSettings(BodyDoji, RangeType.HighLow, 10, 0.1);
                 break;
 
-            case CandleSettingType.ShadowLong:
-                SetCandleSettings(CandleSettingType.ShadowLong, RangeType.RealBody, 0, 1.0);
+            case ShadowLong:
+                SetCandleSettings(ShadowLong, RangeType.RealBody, 0, 1.0);
                 break;
 
-            case CandleSettingType.ShadowVeryLong:
-                SetCandleSettings(CandleSettingType.ShadowVeryLong, RangeType.RealBody, 0, 2.0);
+            case ShadowVeryLong:
+                SetCandleSettings(ShadowVeryLong, RangeType.RealBody, 0, 2.0);
                 break;
 
-            case CandleSettingType.ShadowShort:
-                SetCandleSettings(CandleSettingType.ShadowShort, RangeType.Shadows, 10, 1.0);
+            case ShadowShort:
+                SetCandleSettings(ShadowShort, RangeType.Shadows, 10, 1.0);
                 break;
 
-            case CandleSettingType.ShadowVeryShort:
-                SetCandleSettings(CandleSettingType.ShadowVeryShort, RangeType.HighLow, 10, 0.1);
+            case ShadowVeryShort:
+                SetCandleSettings(ShadowVeryShort, RangeType.HighLow, 10, 0.1);
                 break;
 
-            case CandleSettingType.Near:
-                SetCandleSettings(CandleSettingType.Near, RangeType.HighLow, 5, 0.2);
+            case Near:
+                SetCandleSettings(Near, RangeType.HighLow, 5, 0.2);
                 break;
 
-            case CandleSettingType.Far:
-                SetCandleSettings(CandleSettingType.Far, RangeType.HighLow, 5, 0.6);
+            case Far:
+                SetCandleSettings(Far, RangeType.HighLow, 5, 0.6);
                 break;
 
-            case CandleSettingType.Equal:
-                SetCandleSettings(CandleSettingType.Equal, RangeType.HighLow, 5, 0.05);
+            case Equal:
+                SetCandleSettings(Equal, RangeType.HighLow, 5, 0.05);
                 break;
 
-            case CandleSettingType.AllCandleSettings:
-                SetCandleSettings(CandleSettingType.BodyLong, RangeType.RealBody, 10, 1.0);
-                SetCandleSettings(CandleSettingType.BodyVeryLong, RangeType.RealBody, 10, 3.0);
-                SetCandleSettings(CandleSettingType.BodyShort, RangeType.RealBody, 10, 1.0);
-                SetCandleSettings(CandleSettingType.BodyDoji, RangeType.HighLow, 10, 0.1);
-                SetCandleSettings(CandleSettingType.ShadowLong, RangeType.RealBody, 0, 1.0);
-                SetCandleSettings(CandleSettingType.ShadowVeryLong, RangeType.RealBody, 0, 2.0);
-                SetCandleSettings(CandleSettingType.ShadowShort, RangeType.Shadows, 10, 1.0);
-                SetCandleSettings(CandleSettingType.ShadowVeryShort, RangeType.HighLow, 10, 0.1);
-                SetCandleSettings(CandleSettingType.Near, RangeType.HighLow, 5, 0.2);
-                SetCandleSettings(CandleSettingType.Far, RangeType.HighLow, 5, 0.6);
-                SetCandleSettings(CandleSettingType.Equal, RangeType.HighLow, 5, 0.05);
+            case AllCandleSettings:
+                SetCandleSettings(BodyLong, RangeType.RealBody, 10, 1.0);
+                SetCandleSettings(BodyVeryLong, RangeType.RealBody, 10, 3.0);
+                SetCandleSettings(BodyShort, RangeType.RealBody, 10, 1.0);
+                SetCandleSettings(BodyDoji, RangeType.HighLow, 10, 0.1);
+                SetCandleSettings(ShadowLong, RangeType.RealBody, 0, 1.0);
+                SetCandleSettings(ShadowVeryLong, RangeType.RealBody, 0, 2.0);
+                SetCandleSettings(ShadowShort, RangeType.Shadows, 10, 1.0);
+                SetCandleSettings(ShadowVeryShort, RangeType.HighLow, 10, 0.1);
+                SetCandleSettings(Near, RangeType.HighLow, 5, 0.2);
+                SetCandleSettings(Far, RangeType.HighLow, 5, 0.6);
+                SetCandleSettings(Equal, RangeType.HighLow, 5, 0.05);
                 break;
                 
             default:
                 throw new ArgumentOutOfRangeException(nameof(settingType), settingType, null);
         }
-        return RetCode.Success;
+        return Success;
     }
         
     public static RetCode SetCandleSettings(CandleSettingType settingType, RangeType rangeType, int avgPeriod, double factor)
     {
-        if (settingType >= CandleSettingType.AllCandleSettings)
+        if (settingType >= AllCandleSettings)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
             
         Globals.candleSettings[(int)settingType].settingType = settingType;
@@ -103,20 +102,20 @@ internal static partial class TACore
         Globals.candleSettings[(int)settingType].avgPeriod = avgPeriod;
         Globals.candleSettings[(int)settingType].factor = factor;
             
-        return RetCode.Success;
+        return Success;
     }
         
     public static RetCode SetCompatibility(Compatibility value)
     {
         Globals.compatibility = value;
-        return RetCode.Success;
+        return Success;
     }
         
     public static RetCode SetUnstablePeriod(FuncUnstId id, long unstablePeriod)
     {
         if (id > FuncUnstId.FuncUnstAll)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
             
         if (id != FuncUnstId.FuncUnstAll)
@@ -131,7 +130,7 @@ internal static partial class TACore
             }
         }
             
-        return RetCode.Success;
+        return Success;
     }
         
     private static RetCode TA_INT_EMA(int startIdx, int endIdx, double[] inReal_0, int optInTimePeriod_0, double optInK_1, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
@@ -149,7 +148,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNbElement = 0;
-            return RetCode.Success;
+            return Success;
         }
             
         outBegIdx = startIdx;
@@ -202,7 +201,7 @@ internal static partial class TACore
         }
             
         outNbElement = outIdx;
-        return RetCode.Success;
+        return Success;
     }
         
     private static RetCode TA_INT_EMA(int startIdx, int endIdx, float[] inReal_0, int optInTimePeriod_0, double optInK_1, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
@@ -220,7 +219,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNbElement = 0;
-            return RetCode.Success;
+            return Success;
         }
             
         outBegIdx = startIdx;
@@ -273,7 +272,7 @@ internal static partial class TACore
         }
             
         outNbElement = outIdx;
-        return RetCode.Success;
+        return Success;
     }
         
     private static RetCode TA_INT_MACD(int startIdx, int endIdx, double[] inReal_0, int optInFastPeriod_0, int optInSlowPeriod_1, int optInSignalPeriod_2, ref int outBegIdx, ref int outNbElement, double[] outMACD_0, double[] outMACDSignal_1, double[] outMACDHist_2)
@@ -327,7 +326,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNbElement = 0;
-            return RetCode.Success;
+            return Success;
         }
             
         tempInteger = endIdx - startIdx + 1 + lookbackSignal;
@@ -338,7 +337,7 @@ internal static partial class TACore
         tempInteger = startIdx - lookbackSignal;
         RetCode retCode = TA_INT_EMA(tempInteger, endIdx, inReal_0, optInSlowPeriod_1, k1, ref outBegIdx1, ref outNbElement1, slowEMABuffer);
             
-        if (retCode != RetCode.Success)
+        if (retCode != Success)
         {
             outBegIdx = 0;
             outNbElement = 0;
@@ -347,7 +346,7 @@ internal static partial class TACore
             
         retCode = TA_INT_EMA(tempInteger, endIdx, inReal_0, optInFastPeriod_0, k2, ref outBegIdx2, ref outNbElement2, fastEMABuffer);
             
-        if (retCode != RetCode.Success)
+        if (retCode != Success)
         {
             outBegIdx = 0;
             outNbElement = 0;
@@ -358,7 +357,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNbElement = 0;
-            return RetCode.InternalError;
+            return InternalError;
         }
             
         for (i = 0; i < outNbElement1; i++)
@@ -369,7 +368,7 @@ internal static partial class TACore
         Array.Copy(fastEMABuffer, lookbackSignal, outMACD_0, 0, endIdx - startIdx + 1);
         retCode = TA_INT_EMA(0, outNbElement1 - 1, fastEMABuffer, optInSignalPeriod_2, 2.0 / (optInSignalPeriod_2 + 1), ref outBegIdx2, ref outNbElement2, outMACDSignal_1);
             
-        if (retCode != RetCode.Success)
+        if (retCode != Success)
         {
             outBegIdx = 0;
             outNbElement = 0;
@@ -383,7 +382,7 @@ internal static partial class TACore
             
         outBegIdx = startIdx;
         outNbElement = outNbElement2;
-        return RetCode.Success;
+        return Success;
     }
         
     private static RetCode TA_INT_MACD(int startIdx, int endIdx, float[] inReal_0, int optInFastPeriod_0, int optInSlowPeriod_1, int optInSignalPeriod_2, ref int outBegIdx, ref int outNbElement, double[] outMACD_0, double[] outMACDSignal_1, double[] outMACDHist_2)
@@ -437,7 +436,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNbElement = 0;
-            return RetCode.Success;
+            return Success;
         }
             
         tempInteger = endIdx - startIdx + 1 + lookbackSignal;
@@ -447,7 +446,7 @@ internal static partial class TACore
         tempInteger = startIdx - lookbackSignal;
         RetCode retCode = TA_INT_EMA(tempInteger, endIdx, inReal_0, optInSlowPeriod_1, k1, ref outBegIdx1, ref outNbElement1, slowEMABuffer);
             
-        if (retCode != RetCode.Success)
+        if (retCode != Success)
         {
             outBegIdx = 0;
             outNbElement = 0;
@@ -456,7 +455,7 @@ internal static partial class TACore
             
         retCode = TA_INT_EMA(tempInteger, endIdx, inReal_0, optInFastPeriod_0, k2, ref outBegIdx2, ref outNbElement2, fastEMABuffer);
             
-        if (retCode != RetCode.Success)
+        if (retCode != Success)
         {
             outBegIdx = 0;
             outNbElement = 0;
@@ -467,7 +466,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNbElement = 0;
-            return RetCode.InternalError;
+            return InternalError;
         }
             
         for (i = 0; i < outNbElement1; i++)
@@ -478,7 +477,7 @@ internal static partial class TACore
         Array.Copy(fastEMABuffer, lookbackSignal, outMACD_0, 0, endIdx - startIdx + 1);
         retCode = TA_INT_EMA(0, outNbElement1 - 1, fastEMABuffer, optInSignalPeriod_2, 2.0 / (optInSignalPeriod_2 + 1), ref outBegIdx2, ref outNbElement2, outMACDSignal_1);
             
-        if (retCode != RetCode.Success)
+        if (retCode != Success)
         {
             outBegIdx = 0;
             outNbElement = 0;
@@ -492,7 +491,7 @@ internal static partial class TACore
             
         outBegIdx = startIdx;
         outNbElement = outNbElement2;
-        return RetCode.Success;
+        return Success;
     }
         
     private static RetCode TA_INT_PO(int startIdx, int endIdx, double[] inReal_0, int optInFastPeriod_0, int optInSlowPeriod_1, MAType optInMethod_2, ref int outBegIdx, ref int outNbElement, double[] outReal_0, double[] tempBuffer, int doPercentageOutput)
@@ -510,13 +509,13 @@ internal static partial class TACore
             
         RetCode retCode = MovingAverage(startIdx, endIdx, inReal_0, optInFastPeriod_0, optInMethod_2, ref outBegIdx2, ref outNbElement2, ref tempBuffer);
             
-        if (retCode == RetCode.Success)
+        if (retCode == Success)
         {
             int outNbElement1 = 0;
             int outBegIdx1 = 0;
             retCode = MovingAverage(startIdx, endIdx, inReal_0, optInSlowPeriod_1, optInMethod_2, ref outBegIdx1, ref outNbElement1, ref outReal_0);
                 
-            if (retCode == RetCode.Success)
+            if (retCode == Success)
             {
                 int i;
                 int j;
@@ -548,7 +547,7 @@ internal static partial class TACore
             }
         }
             
-        if (retCode != RetCode.Success)
+        if (retCode != Success)
         {
             outBegIdx = 0;
             outNbElement = 0;
@@ -570,7 +569,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNbElement = 0;
-            return RetCode.Success;
+            return Success;
         }
             
         double periodTotal = 0.0;
@@ -602,7 +601,7 @@ internal static partial class TACore
             
         outNbElement = outIdx;
         outBegIdx = startIdx;
-        return RetCode.Success;
+        return Success;
     }
         
     private static RetCode TA_INT_SMA(int startIdx, int endIdx, float[] inReal_0, int optInTimePeriod_0, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
@@ -618,7 +617,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNbElement = 0;
-            return RetCode.Success;
+            return Success;
         }
             
         double periodTotal = 0.0;
@@ -650,7 +649,7 @@ internal static partial class TACore
             
         outNbElement = outIdx;
         outBegIdx = startIdx;
-        return RetCode.Success;
+        return Success;
     }
         
     private static void TA_INT_stddev_using_precalc_ma(double[] inReal, double[] inMovAvg, int inMovAvgBegIdx, int inMovAvgNbElement, int timePeriod, double[] output)
@@ -739,7 +738,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNbElement = 0;
-            return RetCode.Success;
+            return Success;
         }
             
         double periodTotal1 = 0.0;
@@ -782,7 +781,7 @@ internal static partial class TACore
             
         outNbElement = outIdx;
         outBegIdx = startIdx;
-        return RetCode.Success;
+        return Success;
     }
         
     private static RetCode TA_INT_VAR(int startIdx, int endIdx, float[] inReal_0, int optInTimePeriod_0, ref int outBegIdx, ref int outNbElement, double[] outReal_0)
@@ -799,7 +798,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNbElement = 0;
-            return RetCode.Success;
+            return Success;
         }
             
         double periodTotal1 = 0.0;
@@ -842,7 +841,7 @@ internal static partial class TACore
             
         outNbElement = outIdx;
         outBegIdx = startIdx;
-        return RetCode.Success;
+        return Success;
     }
 
     internal sealed class CandleSetting

@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleDoji;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlDojiTests

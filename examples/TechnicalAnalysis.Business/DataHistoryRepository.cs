@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
@@ -39,14 +37,14 @@ public static class DataHistoryRepository
 
     private static DataHistory ParseJson(string jsonRaw)
     {
-        var histoResponse = DataHistoryResponse.FromJson(jsonRaw);
+        var dataHistoryResponse = DataHistoryResponse.FromJson(jsonRaw);
 
-        if (histoResponse.Response != "Success")
+        if (dataHistoryResponse?.Response != "Success")
         {
-            throw new Exception("Couldn't create the data hist");
+            throw new Exception("Couldn't create the data history");
         }
 
-        var candles = histoResponse.Data;
+        var candles = dataHistoryResponse.Data;
         return new DataHistory(candles);
     }
 }

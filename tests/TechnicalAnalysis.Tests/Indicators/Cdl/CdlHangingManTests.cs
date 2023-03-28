@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleHangingMan;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlHangingManTests

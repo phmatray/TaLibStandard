@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleXSideGap3Methods;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlXSideGap3MethodsTests

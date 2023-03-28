@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleMorningDojiStar;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlMorningDojiStarTests

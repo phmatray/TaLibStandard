@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleStickSandwich;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlStickSandwichTests

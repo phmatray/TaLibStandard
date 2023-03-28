@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleDarkCloudCover;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlDarkCloudCoverTests

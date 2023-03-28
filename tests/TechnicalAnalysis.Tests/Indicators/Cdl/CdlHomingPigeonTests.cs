@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleHomingPigeon;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlHomingPigeonTests

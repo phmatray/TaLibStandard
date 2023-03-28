@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleAbandonedBaby;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlAbandonedBabyTests

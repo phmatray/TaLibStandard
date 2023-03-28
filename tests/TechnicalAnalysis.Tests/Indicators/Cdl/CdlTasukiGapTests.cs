@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleTasukiGap;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlTasukiGapTests

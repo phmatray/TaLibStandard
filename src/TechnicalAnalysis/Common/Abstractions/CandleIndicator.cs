@@ -1,7 +1,11 @@
-using System.Linq;
-using System.Numerics;
-using static System.Math;
+// Copyright (c) 2023 Philippe Matray. All rights reserved.
+// This file is part of TaLibStandard.
+// TaLibStandard is licensed under the GNU General Public License v3.0.
+// See the LICENSE file in the project root for the full license text.
+// For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using System.Linq;
+using static System.Math;
 namespace TechnicalAnalysis.Common;
 
 /// <summary>
@@ -13,22 +17,22 @@ public abstract class CandleIndicator<T>
     /// <summary>
     /// An array of open prices.
     /// </summary>
-    protected readonly T[] Open;
+    protected T[] Open { get; }
         
     /// <summary>
     /// An array of high prices.
     /// </summary>
-    protected readonly T[] High;
+    protected T[] High { get; }
         
     /// <summary>
     /// An array of low prices.
     /// </summary>
-    protected readonly T[] Low;
+    protected T[] Low { get; }
         
     /// <summary>
     /// An array of close prices.
     /// </summary>
-    protected readonly T[] Close;
+    protected T[] Close { get; }
         
     /// <summary>
     /// Initializes a new instance of the CandleIndicator class.

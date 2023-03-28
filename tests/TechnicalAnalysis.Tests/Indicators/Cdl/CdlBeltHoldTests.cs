@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleBeltHold;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlBeltHoldTests

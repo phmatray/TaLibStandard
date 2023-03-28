@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleKicking;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlKickingTests

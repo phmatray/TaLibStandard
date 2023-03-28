@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleShortLine;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlShortLineTests

@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleCounterAttack;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlCounterAttackTests

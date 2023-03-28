@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleRickshawMan;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlRickshawManTests

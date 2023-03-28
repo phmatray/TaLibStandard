@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using TechnicalAnalysis.Common;
-
-namespace TechnicalAnalysis.Business;
+﻿namespace TechnicalAnalysis.Business;
 
 public class DataHistory
 {

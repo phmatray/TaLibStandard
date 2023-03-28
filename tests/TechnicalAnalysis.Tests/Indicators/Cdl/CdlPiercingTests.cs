@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandlePiercing;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlPiercingTests

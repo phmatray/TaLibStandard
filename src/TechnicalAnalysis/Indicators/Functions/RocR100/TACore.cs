@@ -1,4 +1,8 @@
-using TechnicalAnalysis.Common;
+// Copyright (c) 2023 Philippe Matray. All rights reserved.
+// This file is part of TaLibStandard.
+// TaLibStandard is licensed under the GNU General Public License v3.0.
+// See the LICENSE file in the project root for the full license text.
+// For more information, visit https://github.com/phmatray/TaLibStandard.
 
 namespace TechnicalAnalysis;
 
@@ -15,27 +19,27 @@ internal static partial class TACore
     {
         if (startIdx < 0)
         {
-            return RetCode.OutOfRangeStartIndex;
+            return OutOfRangeStartIndex;
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return RetCode.OutOfRangeEndIndex;
+            return OutOfRangeEndIndex;
         }
 
         if (inReal == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInTimePeriod is < 1 or > 100000)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outReal == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (startIdx < optInTimePeriod)
@@ -47,7 +51,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNBElement = 0;
-            return RetCode.Success;
+            return Success;
         }
 
         int outIdx = 0;
@@ -78,7 +82,7 @@ internal static partial class TACore
 
         outNBElement = outIdx;
         outBegIdx = startIdx;
-        return RetCode.Success;
+        return Success;
     }
 
     public static int RocR100Lookback(int optInTimePeriod)

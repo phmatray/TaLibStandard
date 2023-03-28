@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleRiseFall3Methods;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlRiseFall3MethodsTests

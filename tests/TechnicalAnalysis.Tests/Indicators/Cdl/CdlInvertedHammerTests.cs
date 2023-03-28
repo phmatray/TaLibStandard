@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleInvertedHammer;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlInvertedHammerTests

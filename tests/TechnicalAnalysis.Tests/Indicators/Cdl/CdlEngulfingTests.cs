@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleEngulfing;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlEngulfingTests

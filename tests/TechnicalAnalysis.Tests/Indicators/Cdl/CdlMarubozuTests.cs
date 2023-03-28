@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleMarubozu;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlMarubozuTests

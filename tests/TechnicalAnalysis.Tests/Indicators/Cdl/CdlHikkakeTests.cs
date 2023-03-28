@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleHikkake;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlHikkakeTests

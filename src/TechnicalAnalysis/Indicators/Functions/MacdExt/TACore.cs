@@ -1,5 +1,8 @@
-using System;
-using TechnicalAnalysis.Common;
+// Copyright (c) 2023 Philippe Matray. All rights reserved.
+// This file is part of TaLibStandard.
+// TaLibStandard is licensed under the GNU General Public License v3.0.
+// See the LICENSE file in the project root for the full license text.
+// For more information, visit https://github.com/phmatray/TaLibStandard.
 
 namespace TechnicalAnalysis;
 
@@ -29,47 +32,47 @@ internal static partial class TACore
         int outBegIdx1 = 0;
         if (startIdx < 0)
         {
-            return RetCode.OutOfRangeStartIndex;
+            return OutOfRangeStartIndex;
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return RetCode.OutOfRangeEndIndex;
+            return OutOfRangeEndIndex;
         }
 
         if (inReal == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInFastPeriod is < 2 or > 100000)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInSlowPeriod is < 2 or > 100000)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInSignalPeriod is < 1 or > 100000)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outMACD == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outMACDSignal == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outMACDHist == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInSlowPeriod < optInFastPeriod)
@@ -100,7 +103,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNBElement = 0;
-            return RetCode.Success;
+            return Success;
         }
 
         tempInteger = endIdx - startIdx + 1 + lookbackSignal;
@@ -118,7 +121,7 @@ internal static partial class TACore
             ref outNbElement1,
             ref slowMABuffer);
             
-        if (retCode != RetCode.Success)
+        if (retCode != Success)
         {
             outBegIdx = 0;
             outNBElement = 0;
@@ -135,7 +138,7 @@ internal static partial class TACore
             ref outNbElement2,
             ref fastMABuffer);
             
-        if (retCode != RetCode.Success)
+        if (retCode != Success)
         {
             outBegIdx = 0;
             outNBElement = 0;
@@ -146,7 +149,7 @@ internal static partial class TACore
         {
             outBegIdx = 0;
             outNBElement = 0;
-            return RetCode.InternalError;
+            return InternalError;
         }
 
         for (i = 0; i < outNbElement1; i++)
@@ -165,7 +168,7 @@ internal static partial class TACore
             ref outNbElement2,
             ref outMACDSignal);
             
-        if (retCode != RetCode.Success)
+        if (retCode != Success)
         {
             outBegIdx = 0;
             outNBElement = 0;
@@ -179,7 +182,7 @@ internal static partial class TACore
 
         outBegIdx = startIdx;
         outNBElement = outNbElement2;
-        return RetCode.Success;
+        return Success;
     }
 
     public static int MacdExtLookback(

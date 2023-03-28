@@ -1,5 +1,4 @@
 using TechnicalAnalysis.Candles.CandleUnique3River;
-
 namespace TechnicalAnalysis.Tests.Indicators.Cdl;
 
 public class CdlUnique3RiverTests

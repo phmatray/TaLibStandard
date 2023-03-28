@@ -1,7 +1,4 @@
-﻿using System;
-using TechnicalAnalysis.Common;
-
-namespace TechnicalAnalysis.Business;
+﻿namespace TechnicalAnalysis.Business;
 
 public static class DataHistoryExtension
 {
@@ -796,7 +793,6 @@ public static class DataHistoryExtension
         dataHistory.ComputeIndicator(Indicator.Wma, priceDataPoint);
 
 
-
     public static DataHistory ComputeIndicator(
         this DataHistory dh,
         Indicator indicator,
@@ -816,7 +812,6 @@ public static class DataHistoryExtension
         dh.Indicators.Add(indicator, result);
         return dh;
     }
-
 
 
     private static IndicatorBase ComputeIndicatorBase(

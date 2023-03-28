@@ -1,5 +1,8 @@
-using System;
-using TechnicalAnalysis.Common;
+// Copyright (c) 2023 Philippe Matray. All rights reserved.
+// This file is part of TaLibStandard.
+// TaLibStandard is licensed under the GNU General Public License v3.0.
+// See the LICENSE file in the project root for the full license text.
+// For more information, visit https://github.com/phmatray/TaLibStandard.
 
 namespace TechnicalAnalysis;
 
@@ -26,37 +29,37 @@ internal static partial class TACore
         double[] tempBuffer1;
         if (startIdx < 0)
         {
-            return RetCode.OutOfRangeStartIndex;
+            return OutOfRangeStartIndex;
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return RetCode.OutOfRangeEndIndex;
+            return OutOfRangeEndIndex;
         }
 
         if (inReal == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (optInTimePeriod is < 2 or > 100000)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outRealUpperBand == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outRealMiddleBand == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (outRealLowerBand == null)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         if (inReal == outRealUpperBand)
@@ -82,7 +85,7 @@ internal static partial class TACore
 
         if (tempBuffer1 == inReal || tempBuffer2 == inReal)
         {
-            return RetCode.BadParam;
+            return BadParam;
         }
 
         RetCode retCode = MovingAverage(
@@ -94,7 +97,7 @@ internal static partial class TACore
             ref outBegIdx,
             ref outNBElement,
             ref tempBuffer1);
-        if (retCode != RetCode.Success || outNBElement == 0)
+        if (retCode != Success || outNBElement == 0)
         {
             outNBElement = 0;
             return retCode;
@@ -122,7 +125,7 @@ internal static partial class TACore
                 ref outNBElement,
                 ref tempBuffer2);
                 
-            if (retCode != RetCode.Success)
+            if (retCode != Success)
             {
                 outNBElement = 0;
                 return retCode;
@@ -217,7 +220,7 @@ internal static partial class TACore
         }
 
         Label_02B1:
-        return RetCode.Success;
+        return Success;
     }
 
     public static int BollingerBandsLookback(
