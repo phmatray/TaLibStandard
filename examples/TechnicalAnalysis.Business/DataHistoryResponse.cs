@@ -7,66 +7,66 @@ namespace TechnicalAnalysis.Business;
 public partial class DataHistoryResponse
 {
     [JsonPropertyName("Aggregated")]
-    public bool Aggregated { get; set; }
+    public required bool Aggregated { get; set; }
 
     [JsonPropertyName("ConversionType")]
-    public ConversionType ConversionType { get; set; }
+    public required ConversionType ConversionType { get; set; }
 
     [JsonPropertyName("Data")]
-    public List<Candle> Data { get; set; }
+    public required List<Candle> Data { get; set; }
 
     [JsonPropertyName("FirstValueInArray")]
-    public bool FirstValueInArray { get; set; }
+    public required bool FirstValueInArray { get; set; }
 
     [JsonPropertyName("Response")]
-    public string Response { get; set; }
+    public required string Response { get; set; }
 
     [JsonPropertyName("TimeFrom")]
-    public long TimeFrom { get; set; }
+    public required long TimeFrom { get; set; }
 
     [JsonPropertyName("TimeTo")]
-    public long TimeTo { get; set; }
+    public required long TimeTo { get; set; }
 
     [JsonPropertyName("Type")]
-    public long Type { get; set; }
+    public required long Type { get; set; }
 }
 
-public partial class ConversionType
+public class ConversionType
 {
     [JsonPropertyName("conversionSymbol")]
-    public string ConversionSymbol { get; set; }
+    public required string ConversionSymbol { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; }
+    public required string Type { get; set; }
 }
 
-public partial class Candle
+public class Candle
 {
     [JsonPropertyName("close")]
-    public double Close { get; set; }
+    public required double Close { get; set; }
 
     [JsonPropertyName("high")]
-    public double High { get; set; }
+    public required double High { get; set; }
 
     [JsonPropertyName("low")]
-    public double Low { get; set; }
+    public required double Low { get; set; }
 
     [JsonPropertyName("open")]
-    public double Open { get; set; }
+    public required double Open { get; set; }
 
     [JsonPropertyName("time")]
-    public long Time { get; set; }
+    public required long Time { get; set; }
 
     [JsonPropertyName("volumefrom")]
-    public double Volumefrom { get; set; }
+    public required double Volumefrom { get; set; }
 
     [JsonPropertyName("volumeto")]
-    public double Volumeto { get; set; }
+    public required double Volumeto { get; set; }
 }
 
 public partial class DataHistoryResponse
 {
-    public static DataHistoryResponse FromJson(string json) =>
+    public static DataHistoryResponse? FromJson(string json) =>
         JsonSerializer.Deserialize<DataHistoryResponse>(json);
 }
 
