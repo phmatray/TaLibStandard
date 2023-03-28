@@ -1,6 +1,5 @@
 using System.Numerics;
 using TechnicalAnalysis.Common;
-using static System.Math;
 using static TechnicalAnalysis.Common.CandleSettingType;
 using static TechnicalAnalysis.Common.RetCode;
 
