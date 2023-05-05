@@ -201,10 +201,4 @@ public static partial class TACore
             }
         }
     }
-        
-    internal class MoneyFlow
-    {
-        public double Negative { get; }
-        public double Positive { get; }
-    }
 }

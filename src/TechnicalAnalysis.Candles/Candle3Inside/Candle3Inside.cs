@@ -36,9 +36,7 @@ public class Candle3Inside<T> : CandleIndicator<T>
         }
 
         // Verify required price component.
-        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-        if (Open == null || High == null || Low == null || Close == null)
-        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null! || High == null! || Low == null! || Close == null!)
         {
             return new Candle3InsideResult(BadParam, outBegIdx, outNBElement, outInteger);
         }

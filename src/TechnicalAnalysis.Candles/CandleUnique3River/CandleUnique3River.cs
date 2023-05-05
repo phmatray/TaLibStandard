@@ -36,9 +36,7 @@ public class CandleUnique3River<T> : CandleIndicator<T>
         }
 
         // Verify required price component.
-        // ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-        if (Open == null || High == null || Low == null || Close == null)
-        // ReSharper restore ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+        if (Open == null! || High == null! || Low == null! || Close == null!)
         {
             return new CandleUnique3RiverResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
