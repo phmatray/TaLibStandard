@@ -4,6 +4,8 @@ using TechnicalAnalysis.Business;
 
 Console.WriteLine("TechnicalAnalysis");
 
+#pragma warning disable S125
+
 var dataA = DataHistoryRepository
     .GetDataHistoryFromFile("btc", "eur", "day")
     .ComputeMacd()
@@ -49,3 +51,5 @@ for (int i = 0; i < data.Count; i++)
 }
 
 Console.ReadLine();
+
+#pragma warning restore S125

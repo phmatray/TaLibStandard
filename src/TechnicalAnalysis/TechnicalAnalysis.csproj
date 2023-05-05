@@ -1,44 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <LangVersion>11</LangVersion>
-    <Nullable>enable</Nullable>
-    <NullableReferenceTypes>true</NullableReferenceTypes>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <Authors>Philippe Matray</Authors>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    <AnalysisLevel>7.0-recommended</AnalysisLevel>
-    <AnalysisModeDesign>All</AnalysisModeDesign>
-    <AnalysisModeDocumentation>All</AnalysisModeDocumentation>
-    <AnalysisModeGlobalization>All</AnalysisModeGlobalization>
-    <AnalysisModeInteroperability>All</AnalysisModeInteroperability>
-    <AnalysisModeMaintainability>All</AnalysisModeMaintainability>
-    <AnalysisModeNaming>All</AnalysisModeNaming>
-    <AnalysisModePerformance>All</AnalysisModePerformance>
-    <AnalysisModeSingleFile>All</AnalysisModeSingleFile>
-    <AnalysisModeReliability>All</AnalysisModeReliability>
-    <AnalysisModeSecurity>All</AnalysisModeSecurity>
-    <AnalysisModeStyle>All</AnalysisModeStyle>
-    <AnalysisModeUsage>All</AnalysisModeUsage>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <!-- Documentation -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Code Analyzers -->
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
+    <ProjectReference Include="..\TechnicalAnalysis.Candles\TechnicalAnalysis.Candles.csproj" />
+    <ProjectReference Include="..\TechnicalAnalysis.Functions\TechnicalAnalysis.Functions.csproj" />
   </ItemGroup>
 
 </Project>

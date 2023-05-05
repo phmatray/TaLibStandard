@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+      <ProjectReference Include="..\TechnicalAnalysis.Common\TechnicalAnalysis.Common.csproj" />
+    </ItemGroup>
+
+</Project>
