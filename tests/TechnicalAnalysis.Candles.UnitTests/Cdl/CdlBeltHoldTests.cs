@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleBeltHold;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlBeltHoldTests
+public class CdlBeltHoldTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,21 +17,13 @@ public class CdlBeltHoldTests
     [InlineData(typeof(Half))]
     public void CdlBeltHoldFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlBeltHold), BindingFlags.NonPublic | BindingFlags.Static);
-        
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleBeltHoldResult? result = (CandleBeltHoldResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlBeltHold), floatingPointType);
     }
     
-    private static CandleBeltHoldResult CdlBeltHold<T>()
+    private static void CdlBeltHold<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -41,14 +33,11 @@ public class CdlBeltHoldTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleBeltHoldResult actualResult = TACandle.CdlBeltHold(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleBeltHoldResult result = TACandle.CdlBeltHold(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

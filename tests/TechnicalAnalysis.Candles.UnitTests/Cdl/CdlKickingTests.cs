@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleKicking;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlKickingTests
+public class CdlKickingTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlKickingTests
     [InlineData(typeof(Half))]
     public void CdlKickingFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlKicking), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleKickingResult? result = (CandleKickingResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlKicking), floatingPointType);
     }
     
-    private static CandleKickingResult CdlKicking<T>()
+    private static void CdlKicking<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlKickingTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleKickingResult actualResult = TACandle.CdlKicking(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleKickingResult result = TACandle.CdlKicking(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

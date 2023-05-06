@@ -21,9 +21,37 @@ public static partial class TACore
         return Globals.Compatibility;
     }
         
+    public static RetCode SetCompatibility(Compatibility value)
+    {
+        Globals.Compatibility = value;
+        return Success;
+    }
+        
     public static long GetUnstablePeriod(FuncUnstId id)
     {
         return id >= FuncUnstId.FuncUnstAll ? 0 : Globals.UnstablePeriod[(int)id];
+    }
+        
+    public static RetCode SetUnstablePeriod(FuncUnstId id, long unstablePeriod)
+    {
+        if (id > FuncUnstId.FuncUnstAll)
+        {
+            return BadParam;
+        }
+            
+        if (id != FuncUnstId.FuncUnstAll)
+        {
+            Globals.UnstablePeriod[(int)id] = unstablePeriod;
+        }
+        else
+        {
+            for (int i = 0; i < 23; i++)
+            {
+                Globals.UnstablePeriod[i] = unstablePeriod;
+            }
+        }
+            
+        return Success;
     }
         
     public static RetCode RestoreCandleDefaultSettings(CandleSettingType settingType)
@@ -108,34 +136,6 @@ public static partial class TACore
             
         return Success;
     }
-        
-    public static RetCode SetCompatibility(Compatibility value)
-    {
-        Globals.Compatibility = value;
-        return Success;
-    }
-        
-    public static RetCode SetUnstablePeriod(FuncUnstId id, long unstablePeriod)
-    {
-        if (id > FuncUnstId.FuncUnstAll)
-        {
-            return BadParam;
-        }
-            
-        if (id != FuncUnstId.FuncUnstAll)
-        {
-            Globals.UnstablePeriod[(int)id] = unstablePeriod;
-        }
-        else
-        {
-            for (int i = 0; i < 23; i++)
-            {
-                Globals.UnstablePeriod[i] = unstablePeriod;
-            }
-        }
-            
-        return Success;
-    }
     
     public sealed class CandleSetting
     {
@@ -153,14 +153,13 @@ public static partial class TACore
         
     public enum FuncUnstId
     {
+        FuncUnstNone = -1,
         Adx = 0,
         Adxr = 1,
         Atr = 2,
         Cmo = 3,
         Dx = 4,
         Ema = 5,
-        FuncUnstAll = 23,
-        FuncUnstNone = -1,
         HtDcPeriod = 6,
         HtDcPhase = 7,
         HtPhasor = 8,
@@ -177,7 +176,8 @@ public static partial class TACore
         PlusDM = 19,
         Rsi = 20,
         StochRsi = 21,
-        T3 = 22
+        T3 = 22,
+        FuncUnstAll = 23
     }
         
     public sealed class GlobalsType

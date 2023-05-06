@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleRiseFall3Methods;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlRiseFall3MethodsTests
+public class CdlRiseFall3MethodsTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlRiseFall3MethodsTests
     [InlineData(typeof(Half))]
     public void CdlRiseFall3MethodsFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlRiseFall3Methods), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleRiseFall3MethodsResult? result = (CandleRiseFall3MethodsResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlRiseFall3Methods), floatingPointType);
     }
     
-    private static CandleRiseFall3MethodsResult CdlRiseFall3Methods<T>()
+    private static void CdlRiseFall3Methods<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlRiseFall3MethodsTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleRiseFall3MethodsResult actualResult = TACandle.CdlRiseFall3Methods(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleRiseFall3MethodsResult result = TACandle.CdlRiseFall3Methods(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

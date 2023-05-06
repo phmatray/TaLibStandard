@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.Candle3Inside;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class Cdl3InsideTests
+public class Cdl3InsideTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class Cdl3InsideTests
     [InlineData(typeof(Half))]
     public void Cdl3InsideFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(Cdl3Inside), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        Candle3InsideResult? result = (Candle3InsideResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(Cdl3Inside), floatingPointType);
     }
     
-    private static Candle3InsideResult Cdl3Inside<T>()
+    private static void Cdl3Inside<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class Cdl3InsideTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        Candle3InsideResult actualResult = TACandle.Cdl3Inside(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        Candle3InsideResult result = TACandle.Cdl3Inside(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleShortLine;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlShortLineTests
+public class CdlShortLineTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlShortLineTests
     [InlineData(typeof(Half))]
     public void CdlShortLineFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlShortLine), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleShortLineResult? result = (CandleShortLineResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlShortLine), floatingPointType);
     }
     
-    private static CandleShortLineResult CdlShortLine<T>()
+    private static void CdlShortLine<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlShortLineTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleShortLineResult actualResult = TACandle.CdlShortLine(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleShortLineResult result = TACandle.CdlShortLine(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

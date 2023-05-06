@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleHikkake;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlHikkakeTests
+public class CdlHikkakeTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlHikkakeTests
     [InlineData(typeof(Half))]
     public void CdlHikkakeFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlHikkake), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleHikkakeResult? result = (CandleHikkakeResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlHikkake), floatingPointType);
     }
     
-    private static CandleHikkakeResult CdlHikkake<T>()
+    private static void CdlHikkake<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlHikkakeTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleHikkakeResult actualResult = TACandle.CdlHikkake(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleHikkakeResult result = TACandle.CdlHikkake(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

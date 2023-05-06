@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleIdentical3Crows;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlIdentical3CrowsTests
+public class CdlIdentical3CrowsTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlIdentical3CrowsTests
     [InlineData(typeof(Half))]
     public void CdlIdentical3CrowsFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlIdentical3Crows), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleIdentical3CrowsResult? result = (CandleIdentical3CrowsResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlIdentical3Crows), floatingPointType);
     }
     
-    private static CandleIdentical3CrowsResult CdlIdentical3Crows<T>()
+    private static void CdlIdentical3Crows<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlIdentical3CrowsTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleIdentical3CrowsResult actualResult = TACandle.CdlIdentical3Crows(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleIdentical3CrowsResult result = TACandle.CdlIdentical3Crows(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

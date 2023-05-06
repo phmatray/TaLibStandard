@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleAbandonedBaby;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlAbandonedBabyTests
+public class CdlAbandonedBabyTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -16,21 +16,14 @@ public class CdlAbandonedBabyTests
     [InlineData(typeof(decimal))]
     [InlineData(typeof(Half))]
     public void CdlAbandonedBabyFloatingPoint(Type floatingPointType)
-    {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlAbandonedBaby), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleAbandonedBabyResult? result = (CandleAbandonedBabyResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+    { 
+        InvokeGeneric(nameof(CdlAbandonedBaby), floatingPointType);
     }
     
-    private static CandleAbandonedBabyResult CdlAbandonedBaby<T>()
+    private static void CdlAbandonedBaby<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlAbandonedBabyTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleAbandonedBabyResult actualResult = TACandle.CdlAbandonedBaby(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleAbandonedBabyResult result = TACandle.CdlAbandonedBaby(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

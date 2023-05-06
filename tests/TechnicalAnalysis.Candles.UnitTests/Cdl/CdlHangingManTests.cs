@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleHangingMan;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlHangingManTests
+public class CdlHangingManTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlHangingManTests
     [InlineData(typeof(Half))]
     public void CdlHangingManFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlHangingMan), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleHangingManResult? result = (CandleHangingManResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlHangingMan), floatingPointType);
     }
     
-    private static CandleHangingManResult CdlHangingMan<T>()
+    private static void CdlHangingMan<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlHangingManTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleHangingManResult actualResult = TACandle.CdlHangingMan(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleHangingManResult result = TACandle.CdlHangingMan(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

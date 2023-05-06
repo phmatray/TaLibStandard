@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleHarami;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlHaramiTests
+public class CdlHaramiTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlHaramiTests
     [InlineData(typeof(Half))]
     public void CdlHaramiFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlHarami), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleHaramiResult? result = (CandleHaramiResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlHarami), floatingPointType);
     }
     
-    private static CandleHaramiResult CdlHarami<T>()
+    private static void CdlHarami<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlHaramiTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleHaramiResult actualResult = TACandle.CdlHarami(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleHaramiResult result = TACandle.CdlHarami(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

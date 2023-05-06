@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleHighWave;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlHighWaveTests
+public class CdlHighWaveTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlHighWaveTests
     [InlineData(typeof(Half))]
     public void CdlHighWaveFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlHighWave), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleHighWaveResult? result = (CandleHighWaveResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlHighWave), floatingPointType);
     }
     
-    private static CandleHighWaveResult CdlHighWave<T>()
+    private static void CdlHighWave<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlHighWaveTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleHighWaveResult actualResult = TACandle.CdlHighWave(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleHighWaveResult result = TACandle.CdlHighWave(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

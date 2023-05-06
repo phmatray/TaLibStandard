@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleLadderBottom;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlLadderBottomTests
+public class CdlLadderBottomTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlLadderBottomTests
     [InlineData(typeof(Half))]
     public void CdlLadderBottomFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlLadderBottom), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleLadderBottomResult? result = (CandleLadderBottomResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlLadderBottom), floatingPointType);
     }
     
-    private static CandleLadderBottomResult CdlLadderBottom<T>()
+    private static void CdlLadderBottom<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlLadderBottomTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleLadderBottomResult actualResult = TACandle.CdlLadderBottom(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleLadderBottomResult result = TACandle.CdlLadderBottom(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

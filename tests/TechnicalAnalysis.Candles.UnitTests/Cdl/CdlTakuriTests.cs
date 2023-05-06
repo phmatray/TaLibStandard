@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleTakuri;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlTakuriTests
+public class CdlTakuriTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlTakuriTests
     [InlineData(typeof(Half))]
     public void CdlTakuriFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlTakuri), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleTakuriResult? result = (CandleTakuriResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlTakuri), floatingPointType);
     }
     
-    private static CandleTakuriResult CdlTakuri<T>()
+    private static void CdlTakuri<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlTakuriTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleTakuriResult actualResult = TACandle.CdlTakuri(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleTakuriResult result = TACandle.CdlTakuri(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

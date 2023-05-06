@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleEngulfing;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlEngulfingTests
+public class CdlEngulfingTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlEngulfingTests
     [InlineData(typeof(Half))]
     public void CdlEngulfingFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlEngulfing), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleEngulfingResult? result = (CandleEngulfingResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlEngulfing), floatingPointType);
     }
     
-    private static CandleEngulfingResult CdlEngulfing<T>()
+    private static void CdlEngulfing<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlEngulfingTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleEngulfingResult actualResult = TACandle.CdlEngulfing(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleEngulfingResult result = TACandle.CdlEngulfing(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

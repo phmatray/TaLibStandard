@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.Candle3WhiteSoldiers;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class Cdl3WhiteSoldiersTests
+public class Cdl3WhiteSoldiersTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class Cdl3WhiteSoldiersTests
     [InlineData(typeof(Half))]
     public void Cdl3WhiteSoldiersFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(Cdl3WhiteSoldiers), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        Candle3WhiteSoldiersResult? result = (Candle3WhiteSoldiersResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(Cdl3WhiteSoldiers), floatingPointType);
     }
     
-    private static Candle3WhiteSoldiersResult Cdl3WhiteSoldiers<T>()
+    private static void Cdl3WhiteSoldiers<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class Cdl3WhiteSoldiersTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        Candle3WhiteSoldiersResult actualResult = TACandle.Cdl3WhiteSoldiers(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        Candle3WhiteSoldiersResult result = TACandle.Cdl3WhiteSoldiers(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

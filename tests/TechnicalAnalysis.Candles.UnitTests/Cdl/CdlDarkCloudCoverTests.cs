@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleDarkCloudCover;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlDarkCloudCoverTests
+public class CdlDarkCloudCoverTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlDarkCloudCoverTests
     [InlineData(typeof(Half))]
     public void CdlDarkCloudCoverFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlDarkCloudCover), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleDarkCloudCoverResult? result = (CandleDarkCloudCoverResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlDarkCloudCover), floatingPointType);
     }
     
-    private static CandleDarkCloudCoverResult CdlDarkCloudCover<T>()
+    private static void CdlDarkCloudCover<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlDarkCloudCoverTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleDarkCloudCoverResult actualResult = TACandle.CdlDarkCloudCover(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleDarkCloudCoverResult result = TACandle.CdlDarkCloudCover(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

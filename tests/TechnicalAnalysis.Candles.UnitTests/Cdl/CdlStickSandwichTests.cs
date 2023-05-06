@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleStickSandwich;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlStickSandwichTests
+public class CdlStickSandwichTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlStickSandwichTests
     [InlineData(typeof(Half))]
     public void CdlStickSandwichFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlStickSandwich), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleStickSandwichResult? result = (CandleStickSandwichResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlStickSandwich), floatingPointType);
     }
     
-    private static CandleStickSandwichResult CdlStickSandwich<T>()
+    private static void CdlStickSandwich<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlStickSandwichTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleStickSandwichResult actualResult = TACandle.CdlStickSandwich(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleStickSandwichResult result = TACandle.CdlStickSandwich(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleHammer;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlHammerTests
+public class CdlHammerTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlHammerTests
     [InlineData(typeof(Half))]
     public void CdlHammerFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlHammer), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleHammerResult? result = (CandleHammerResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlHammer), floatingPointType);
     }
     
-    private static CandleHammerResult CdlHammer<T>()
+    private static void CdlHammer<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlHammerTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleHammerResult actualResult = TACandle.CdlHammer(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleHammerResult result = TACandle.CdlHammer(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

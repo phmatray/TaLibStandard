@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandlePiercing;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlPiercingTests
+public class CdlPiercingTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlPiercingTests
     [InlineData(typeof(Half))]
     public void CdlPiercingFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlPiercing), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandlePiercingResult? result = (CandlePiercingResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlPiercing), floatingPointType);
     }
     
-    private static CandlePiercingResult CdlPiercing<T>()
+    private static void CdlPiercing<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlPiercingTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandlePiercingResult actualResult = TACandle.CdlPiercing(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandlePiercingResult result = TACandle.CdlPiercing(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

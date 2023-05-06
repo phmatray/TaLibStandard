@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleClosingMarubozu;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlClosingMarubozuTests
+public class CdlClosingMarubozuTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlClosingMarubozuTests
     [InlineData(typeof(Half))]
     public void CdlClosingMarubozuFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlClosingMarubozu), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleClosingMarubozuResult? result = (CandleClosingMarubozuResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlClosingMarubozu), floatingPointType);
     }
     
-    private static CandleClosingMarubozuResult CdlClosingMarubozu<T>()
+    private static void CdlClosingMarubozu<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlClosingMarubozuTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleClosingMarubozuResult actualResult = TACandle.CdlClosingMarubozu(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleClosingMarubozuResult result = TACandle.CdlClosingMarubozu(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

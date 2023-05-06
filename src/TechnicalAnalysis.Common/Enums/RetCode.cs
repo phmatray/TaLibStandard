@@ -3,6 +3,7 @@
 // TaLibStandard is licensed under the GNU General Public License v3.0.
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
+
 namespace TechnicalAnalysis.Common;
 
 /// <summary>
@@ -11,24 +12,24 @@ namespace TechnicalAnalysis.Common;
 public enum RetCode
 {
     /// <summary>
-    /// Memory allocation error.
+    /// Operation completed successfully.
     /// </summary>
-    AllocErr = 3,
-
+    Success = 0,
+    
     /// <summary>
-    /// Bad object encountered.
+    /// Library not initialized.
     /// </summary>
-    BadObject = 15,
+    LibNotInitialize = 1,
 
     /// <summary>
     /// Bad parameter provided.
     /// </summary>
     BadParam = 2,
-
+    
     /// <summary>
-    /// Function not found.
+    /// Memory allocation error.
     /// </summary>
-    FuncNotFound = 5,
+    AllocErr = 3,
     
     /// <summary>
     /// Group not found.
@@ -36,29 +37,14 @@ public enum RetCode
     GroupNotFound = 4,
 
     /// <summary>
-    /// Not all input values are initialized.
+    /// Function not found.
     /// </summary>
-    InputNotAllInitialize = 10,
-
-    /// <summary>
-    /// Internal error occurred.
-    /// </summary>
-    InternalError = 5000,
+    FuncNotFound = 5,
 
     /// <summary>
     /// Invalid handle encountered.
     /// </summary>
     InvalidHandle = 6,
-    
-    /// <summary>
-    /// Invalid list type encountered.
-    /// </summary>
-    InvalidListType = 14,
-
-    /// <summary>
-    /// Invalid parameter function encountered.
-    /// </summary>
-    InvalidParamFunction = 9,
 
     /// <summary>
     /// Invalid parameter holder encountered.
@@ -69,26 +55,16 @@ public enum RetCode
     /// Invalid parameter holder type encountered.
     /// </summary>
     InvalidParamHolderType = 8,
-    
-    /// <summary>
-    /// Library not initialized.
-    /// </summary>
-    LibNotInitialize = 1,
 
     /// <summary>
-    /// Feature not supported.
+    /// Invalid parameter function encountered.
     /// </summary>
-    NotSupported = 16,
+    InvalidParamFunction = 9,
 
     /// <summary>
-    /// End index is out of range.
+    /// Not all input values are initialized.
     /// </summary>
-    OutOfRangeEndIndex = 13,
-
-    /// <summary>
-    /// Start index is out of range.
-    /// </summary>
-    OutOfRangeStartIndex = 12,
+    InputNotAllInitialize = 10,
     
     /// <summary>
     /// Not all output values are initialized.
@@ -96,9 +72,34 @@ public enum RetCode
     OutputNotAllInitialize = 11,
 
     /// <summary>
-    /// Operation completed successfully.
+    /// Start index is out of range.
     /// </summary>
-    Success = 0,
+    OutOfRangeStartIndex = 12,
+
+    /// <summary>
+    /// End index is out of range.
+    /// </summary>
+    OutOfRangeEndIndex = 13,
+    
+    /// <summary>
+    /// Invalid list type encountered.
+    /// </summary>
+    InvalidListType = 14,
+
+    /// <summary>
+    /// Bad object encountered.
+    /// </summary>
+    BadObject = 15,
+
+    /// <summary>
+    /// Feature not supported.
+    /// </summary>
+    NotSupported = 16,
+
+    /// <summary>
+    /// Internal error occurred.
+    /// </summary>
+    InternalError = 5000,
 
     /// <summary>
     /// Unknown error encountered.

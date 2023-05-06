@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleLongLine;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlLongLineTests
+public class CdlLongLineTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlLongLineTests
     [InlineData(typeof(Half))]
     public void CdlLongLineFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlLongLine), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleLongLineResult? result = (CandleLongLineResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlLongLine), floatingPointType);
     }
     
-    private static CandleLongLineResult CdlLongLine<T>()
+    private static void CdlLongLine<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlLongLineTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleLongLineResult actualResult = TACandle.CdlLongLine(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleLongLineResult result = TACandle.CdlLongLine(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

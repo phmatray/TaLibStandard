@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleEveningDojiStar;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlEveningDojiStarTests
+public class CdlEveningDojiStarTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlEveningDojiStarTests
     [InlineData(typeof(Half))]
     public void CdlEveningDojiStarFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlEveningDojiStar), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleEveningDojiStarResult? result = (CandleEveningDojiStarResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlEveningDojiStar), floatingPointType);
     }
     
-    private static CandleEveningDojiStarResult CdlEveningDojiStar<T>()
+    private static void CdlEveningDojiStar<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlEveningDojiStarTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleEveningDojiStarResult actualResult = TACandle.CdlEveningDojiStar(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleEveningDojiStarResult result = TACandle.CdlEveningDojiStar(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

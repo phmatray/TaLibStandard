@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleCounterAttack;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlCounterAttackTests
+public class CdlCounterAttackTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,21 +17,13 @@ public class CdlCounterAttackTests
     [InlineData(typeof(Half))]
     public void CdlCounterAttackFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlCounterAttack), BindingFlags.NonPublic | BindingFlags.Static);
-        
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleCounterAttackResult? result = (CandleCounterAttackResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlCounterAttack), floatingPointType);
     }
     
-    private static CandleCounterAttackResult CdlCounterAttack<T>()
+    private static void CdlCounterAttack<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -41,14 +33,11 @@ public class CdlCounterAttackTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleCounterAttackResult actualResult = TACandle.CdlCounterAttack(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleCounterAttackResult result = TACandle.CdlCounterAttack(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

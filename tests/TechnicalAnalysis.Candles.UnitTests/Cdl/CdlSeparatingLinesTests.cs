@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleSeparatingLines;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlSeparatingLinesTests
+public class CdlSeparatingLinesTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlSeparatingLinesTests
     [InlineData(typeof(Half))]
     public void CdlSeparatingLinesFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlSeparatingLines), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleSeparatingLinesResult? result = (CandleSeparatingLinesResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlSeparatingLines), floatingPointType);
     }
     
-    private static CandleSeparatingLinesResult CdlSeparatingLines<T>()
+    private static void CdlSeparatingLines<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlSeparatingLinesTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleSeparatingLinesResult actualResult = TACandle.CdlSeparatingLines(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleSeparatingLinesResult result = TACandle.CdlSeparatingLines(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

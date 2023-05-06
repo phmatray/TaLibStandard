@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleTasukiGap;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlTasukiGapTests
+public class CdlTasukiGapTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,21 +17,13 @@ public class CdlTasukiGapTests
     [InlineData(typeof(Half))]
     public void CdlTasukiGapFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlTasukiGap), BindingFlags.NonPublic | BindingFlags.Static);
-
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleTasukiGapResult? result = (CandleTasukiGapResult?)method.Invoke(this, null);
-
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlTasukiGap), floatingPointType);
     }
 
-    private static CandleTasukiGapResult CdlTasukiGap<T>()
+    private static void CdlTasukiGap<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -41,14 +33,11 @@ public class CdlTasukiGapTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
 
         // Act
-        CandleTasukiGapResult actualResult = TACandle.CdlTasukiGap(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleTasukiGapResult result = TACandle.CdlTasukiGap(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

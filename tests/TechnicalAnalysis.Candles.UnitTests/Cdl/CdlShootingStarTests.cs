@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleShootingStar;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlShootingStarTests
+public class CdlShootingStarTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlShootingStarTests
     [InlineData(typeof(Half))]
     public void CdlShootingStarFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlShootingStar), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleShootingStarResult? result = (CandleShootingStarResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlShootingStar), floatingPointType);
     }
     
-    private static CandleShootingStarResult CdlShootingStar<T>()
+    private static void CdlShootingStar<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlShootingStarTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleShootingStarResult actualResult = TACandle.CdlShootingStar(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleShootingStarResult result = TACandle.CdlShootingStar(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

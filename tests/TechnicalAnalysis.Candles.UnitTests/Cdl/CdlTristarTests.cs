@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleTristar;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlTristarTests
+public class CdlTristarTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,21 +17,13 @@ public class CdlTristarTests
     [InlineData(typeof(Half))]
     public void CdlTristarFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlTristar), BindingFlags.NonPublic | BindingFlags.Static);
-        
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleTristarResult? result = (CandleTristarResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlTristar), floatingPointType);
     }
     
-    private static CandleTristarResult CdlTristar<T>()
+    private static void CdlTristar<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -41,14 +33,11 @@ public class CdlTristarTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleTristarResult actualResult = TACandle.CdlTristar(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleTristarResult result = TACandle.CdlTristar(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

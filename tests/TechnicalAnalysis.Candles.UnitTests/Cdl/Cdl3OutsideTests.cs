@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.Candle3Outside;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class Cdl3OutsideTests
+public class Cdl3OutsideTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,21 +17,13 @@ public class Cdl3OutsideTests
     [InlineData(typeof(Half))]
     public void Cdl3OutsideFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(Cdl3Outside), BindingFlags.NonPublic | BindingFlags.Static);
-        
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        Candle3OutsideResult? result = (Candle3OutsideResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(Cdl3Outside), floatingPointType);
     }
     
-    private static Candle3OutsideResult Cdl3Outside<T>()
+    private static void Cdl3Outside<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -41,14 +33,11 @@ public class Cdl3OutsideTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        Candle3OutsideResult actualResult = TACandle.Cdl3Outside(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        Candle3OutsideResult result = TACandle.Cdl3Outside(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

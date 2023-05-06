@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleSpinningTop;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlSpinningTopTests
+public class CdlSpinningTopTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlSpinningTopTests
     [InlineData(typeof(Half))]
     public void CdlSpinningTopFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlSpinningTop), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleSpinningTopResult? result = (CandleSpinningTopResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlSpinningTop), floatingPointType);
     }
     
-    private static CandleSpinningTopResult CdlSpinningTop<T>()
+    private static void CdlSpinningTop<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlSpinningTopTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleSpinningTopResult actualResult = TACandle.CdlSpinningTop(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleSpinningTopResult result = TACandle.CdlSpinningTop(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

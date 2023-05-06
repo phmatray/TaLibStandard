@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleAdvanceBlock;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlAdvanceBlockTests
+public class CdlAdvanceBlockTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlAdvanceBlockTests
     [InlineData(typeof(Half))]
     public void CdlAdvanceBlockFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlAdvanceBlock), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleAdvanceBlockResult? result = (CandleAdvanceBlockResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlAdvanceBlock), floatingPointType);
     }
-    
-    private static CandleAdvanceBlockResult CdlAdvanceBlock<T>()
+
+    private static void CdlAdvanceBlock<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -38,16 +31,13 @@ public class CdlAdvanceBlockTests
         T[] high = fixture.CreateMany<T>(100).ToArray();
         T[] low = fixture.CreateMany<T>(100).ToArray();
         T[] close = fixture.CreateMany<T>(100).ToArray();
-            
-        // Act
-        CandleAdvanceBlockResult actualResult = TACandle.CdlAdvanceBlock(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
 
-        return actualResult;
+        // Act
+        CandleAdvanceBlockResult result = TACandle.CdlAdvanceBlock(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

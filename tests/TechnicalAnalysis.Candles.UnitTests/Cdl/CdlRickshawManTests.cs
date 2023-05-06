@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleRickshawMan;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlRickshawManTests
+public class CdlRickshawManTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlRickshawManTests
     [InlineData(typeof(Half))]
     public void CdlRickshawManFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlRickshawMan), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleRickshawManResult? result = (CandleRickshawManResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlRickshawMan), floatingPointType);
     }
     
-    private static CandleRickshawManResult CdlRickshawMan<T>()
+    private static void CdlRickshawMan<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlRickshawManTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleRickshawManResult actualResult = TACandle.CdlRickshawMan(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleRickshawManResult result = TACandle.CdlRickshawMan(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

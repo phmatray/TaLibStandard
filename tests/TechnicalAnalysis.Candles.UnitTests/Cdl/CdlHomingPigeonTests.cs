@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleHomingPigeon;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlHomingPigeonTests
+public class CdlHomingPigeonTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlHomingPigeonTests
     [InlineData(typeof(Half))]
     public void CdlHomingPigeonFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlHomingPigeon), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleHomingPigeonResult? result = (CandleHomingPigeonResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlHomingPigeon), floatingPointType);
     }
     
-    private static CandleHomingPigeonResult CdlHomingPigeon<T>()
+    private static void CdlHomingPigeon<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlHomingPigeonTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleHomingPigeonResult actualResult = TACandle.CdlHomingPigeon(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleHomingPigeonResult result = TACandle.CdlHomingPigeon(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleThrusting;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlThrustingTests
+public class CdlThrustingTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,21 +17,13 @@ public class CdlThrustingTests
     [InlineData(typeof(Half))]
     public void CdlThrustingFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlThrusting), BindingFlags.NonPublic | BindingFlags.Static);
-        
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleThrustingResult? result = (CandleThrustingResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlThrusting), floatingPointType);
     }
     
-    private static CandleThrustingResult CdlThrusting<T>()
+    private static void CdlThrusting<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -41,14 +33,11 @@ public class CdlThrustingTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleThrustingResult actualResult = TACandle.CdlThrusting(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleThrustingResult result = TACandle.CdlThrusting(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

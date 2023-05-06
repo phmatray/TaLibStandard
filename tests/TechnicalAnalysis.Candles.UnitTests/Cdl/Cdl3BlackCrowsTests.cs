@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.Candle3BlackCrows;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class Cdl3BlackCrowsTests
+public class Cdl3BlackCrowsTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class Cdl3BlackCrowsTests
     [InlineData(typeof(Half))]
     public void Cdl3BlackCrowsFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(Cdl3BlackCrows), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        Candle3BlackCrowsResult? result = (Candle3BlackCrowsResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(Cdl3BlackCrows), floatingPointType);
     }
     
-    private static Candle3BlackCrowsResult Cdl3BlackCrows<T>()
+    private static void Cdl3BlackCrows<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class Cdl3BlackCrowsTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        Candle3BlackCrowsResult actualResult = TACandle.Cdl3BlackCrows(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        Candle3BlackCrowsResult result = TACandle.Cdl3BlackCrows(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

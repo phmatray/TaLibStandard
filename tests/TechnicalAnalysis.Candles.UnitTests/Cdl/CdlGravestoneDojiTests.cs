@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleGravestoneDoji;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlGravestoneDojiTests
+public class CdlGravestoneDojiTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlGravestoneDojiTests
     [InlineData(typeof(Half))]
     public void CdlGravestoneDojiFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlGravestoneDoji), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleGravestoneDojiResult? result = (CandleGravestoneDojiResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlGravestoneDoji), floatingPointType);
     }
     
-    private static CandleGravestoneDojiResult CdlGravestoneDoji<T>()
+    private static void CdlGravestoneDoji<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlGravestoneDojiTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleGravestoneDojiResult actualResult = TACandle.CdlGravestoneDoji(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleGravestoneDojiResult result = TACandle.CdlGravestoneDoji(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

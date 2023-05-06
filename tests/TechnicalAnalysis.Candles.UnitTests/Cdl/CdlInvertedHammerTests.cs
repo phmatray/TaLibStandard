@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleInvertedHammer;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlInvertedHammerTests
+public class CdlInvertedHammerTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlInvertedHammerTests
     [InlineData(typeof(Half))]
     public void CdlInvertedHammerFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlInvertedHammer), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleInvertedHammerResult? result = (CandleInvertedHammerResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlInvertedHammer), floatingPointType);
     }
     
-    private static CandleInvertedHammerResult CdlInvertedHammer<T>()
+    private static void CdlInvertedHammer<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlInvertedHammerTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleInvertedHammerResult actualResult = TACandle.CdlInvertedHammer(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleInvertedHammerResult result = TACandle.CdlInvertedHammer(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

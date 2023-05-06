@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleMorningDojiStar;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlMorningDojiStarTests
+public class CdlMorningDojiStarTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlMorningDojiStarTests
     [InlineData(typeof(Half))]
     public void CdlMorningDojiStarFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlMorningDojiStar), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleMorningDojiStarResult? result = (CandleMorningDojiStarResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlMorningDojiStar), floatingPointType);
     }
     
-    private static CandleMorningDojiStarResult CdlMorningDojiStar<T>()
+    private static void CdlMorningDojiStar<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlMorningDojiStarTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleMorningDojiStarResult actualResult = TACandle.CdlMorningDojiStar(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleMorningDojiStarResult result = TACandle.CdlMorningDojiStar(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

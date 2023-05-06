@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleMatHold;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlMatHoldTests
+public class CdlMatHoldTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlMatHoldTests
     [InlineData(typeof(Half))]
     public void CdlMatHoldFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlMatHold), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleMatHoldResult? result = (CandleMatHoldResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlMatHold), floatingPointType);
     }
     
-    private static CandleMatHoldResult CdlMatHold<T>()
+    private static void CdlMatHold<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlMatHoldTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleMatHoldResult actualResult = TACandle.CdlMatHold(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleMatHoldResult result = TACandle.CdlMatHold(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

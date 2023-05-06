@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleConcealBabySwallow;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlConcealBabySwallowTests
+public class CdlConcealBabySwallowTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlConcealBabySwallowTests
     [InlineData(typeof(Half))]
     public void CdlConcealBabySwallowFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlConcealBabySwallow), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleConcealBabySwallowResult? result = (CandleConcealBabySwallowResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlConcealBabySwallow), floatingPointType);
     }
     
-    private static CandleConcealBabySwallowResult CdlConcealBabySwallow<T>()
+    private static void CdlConcealBabySwallow<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlConcealBabySwallowTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleConcealBabySwallowResult actualResult = TACandle.CdlConcealBabySwallow(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleConcealBabySwallowResult result = TACandle.CdlConcealBabySwallow(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleXSideGap3Methods;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlXSideGap3MethodsTests
+public class CdlXSideGap3MethodsTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlXSideGap3MethodsTests
     [InlineData(typeof(Half))]
     public void CdlXSideGap3MethodsFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlXSideGap3Methods), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleXSideGap3MethodsResult? result = (CandleXSideGap3MethodsResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlXSideGap3Methods), floatingPointType);
     }
     
-    private static CandleXSideGap3MethodsResult CdlXSideGap3Methods<T>()
+    private static void CdlXSideGap3Methods<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlXSideGap3MethodsTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleXSideGap3MethodsResult actualResult = TACandle.CdlXSideGap3Methods(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleXSideGap3MethodsResult result = TACandle.CdlXSideGap3Methods(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

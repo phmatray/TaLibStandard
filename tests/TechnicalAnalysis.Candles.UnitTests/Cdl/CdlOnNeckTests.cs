@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleOnNeck;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlOnNeckTests
+public class CdlOnNeckTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlOnNeckTests
     [InlineData(typeof(Half))]
     public void CdlOnNeckFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlOnNeck), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleOnNeckResult? result = (CandleOnNeckResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlOnNeck), floatingPointType);
     }
     
-    private static CandleOnNeckResult CdlOnNeck<T>()
+    private static void CdlOnNeck<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlOnNeckTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleOnNeckResult actualResult = TACandle.CdlOnNeck(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleOnNeckResult result = TACandle.CdlOnNeck(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

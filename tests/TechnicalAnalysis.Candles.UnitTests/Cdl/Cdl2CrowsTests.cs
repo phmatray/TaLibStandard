@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.Candle2Crows;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class Cdl2CrowsTests
+public class Cdl2CrowsTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,21 +17,13 @@ public class Cdl2CrowsTests
     [InlineData(typeof(Half))]
     public void Cdl2CrowsFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(Cdl2Crows), BindingFlags.NonPublic | BindingFlags.Static);
-        
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        Candle2CrowsResult? result = (Candle2CrowsResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(Cdl2Crows), floatingPointType);
     }
-    
-    private static Candle2CrowsResult Cdl2Crows<T>()
+
+    private static void Cdl2Crows<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -41,14 +33,11 @@ public class Cdl2CrowsTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        Candle2CrowsResult actualResult = TACandle.Cdl2Crows(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        Candle2CrowsResult result = TACandle.Cdl2Crows(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }

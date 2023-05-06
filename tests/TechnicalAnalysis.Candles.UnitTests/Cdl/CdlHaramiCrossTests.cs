@@ -8,7 +8,7 @@ using TechnicalAnalysis.Candles.CandleHaramiCross;
 
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
-public class CdlHaramiCrossTests
+public class CdlHaramiCrossTests : CdlTestsBase
 {
     [Theory]
     [InlineData(typeof(float))]
@@ -17,20 +17,13 @@ public class CdlHaramiCrossTests
     [InlineData(typeof(Half))]
     public void CdlHaramiCrossFloatingPoint(Type floatingPointType)
     {
-        // Arrange
-        MethodInfo? genericMethod = GetType().GetMethod(
-            nameof(CdlHaramiCross), BindingFlags.NonPublic | BindingFlags.Static);
-        MethodInfo method = genericMethod!.MakeGenericMethod(floatingPointType);
-        CandleHaramiCrossResult? result = (CandleHaramiCrossResult?)method.Invoke(this, null);
-        
-        // Assert
-        result.Should().NotBeNull();
-        result!.RetCode.Should().Be(RetCode.Success);
+        InvokeGeneric(nameof(CdlHaramiCross), floatingPointType);
     }
     
-    private static CandleHaramiCrossResult CdlHaramiCross<T>()
+    private static void CdlHaramiCross<T>()
         where T : IFloatingPoint<T>
     {
+        // Arrange
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
@@ -40,14 +33,11 @@ public class CdlHaramiCrossTests
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleHaramiCrossResult actualResult = TACandle.CdlHaramiCross(
-            StartIdx,
-            EndIdx,
-            open,
-            high,
-            low,
-            close);
-
-        return actualResult;
+        CandleHaramiCrossResult result = TACandle.CdlHaramiCross(
+            StartIdx, EndIdx, open, high, low, close);
+        
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
     }
 }
