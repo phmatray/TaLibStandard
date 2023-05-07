@@ -54,7 +54,7 @@ public static partial class TAFunc
         double tempReal = Math.Atan(1.0);
         double rad2Deg = 45.0 / tempReal;
         double constDeg2RadBy360 = tempReal * 8.0;
-        int lookbackTotal = (int)Globals._unstablePeriod[7] + 63;
+        int lookbackTotal = (int)TACore.Globals.UnstablePeriod[FuncUnstId.HtDcPhase] + 63;
         if (startIdx < lookbackTotal)
         {
             startIdx = lookbackTotal;
@@ -378,6 +378,6 @@ public static partial class TAFunc
 
     public static int HtDcPhaseLookback()
     {
-        return (int)Globals._unstablePeriod[7] + 63;
+        return (int)TACore.Globals.UnstablePeriod[FuncUnstId.HtDcPhase] + 63;
     }
 }

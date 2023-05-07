@@ -50,7 +50,7 @@ public static partial class TAFunc
             return BadParam;
         }
 
-        int lookbackTotal = optInTimePeriod * 2 + (int)Globals._unstablePeriod[0] - 1;
+        int lookbackTotal = optInTimePeriod * 2 + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Adx] - 1;
         if (startIdx < lookbackTotal)
         {
             startIdx = lookbackTotal;
@@ -164,7 +164,7 @@ public static partial class TAFunc
         }
 
         double prevADX = sumDX / optInTimePeriod;
-        i = (int)Globals._unstablePeriod[0];
+        i = (int)TACore.Globals.UnstablePeriod[FuncUnstId.Adx];
         while (true)
         {
             i--;
@@ -273,6 +273,6 @@ public static partial class TAFunc
     {
         return optInTimePeriod is < 2 or > 100000
             ? -1
-            : optInTimePeriod * 2 + (int)Globals._unstablePeriod[0] - 1;
+            : optInTimePeriod * 2 + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Adx] - 1;
     }
 }

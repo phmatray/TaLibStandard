@@ -45,7 +45,7 @@ public static partial class TAFunc
             return BadParam;
         }
 
-        int lookbackTotal = optInTimePeriod + (int)Globals._unstablePeriod[12];
+        int lookbackTotal = optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Kama];
         if (startIdx < lookbackTotal)
         {
             startIdx = lookbackTotal;
@@ -143,6 +143,6 @@ public static partial class TAFunc
 
     public static int KamaLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod + (int)Globals._unstablePeriod[12];
+        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Kama];
     }
 }

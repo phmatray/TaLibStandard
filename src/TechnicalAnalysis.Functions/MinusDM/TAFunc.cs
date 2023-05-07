@@ -40,7 +40,7 @@ public static partial class TAFunc
             optInTimePeriod is < 1 or > 100000 ||
             outReal == null! ||
             optInTimePeriod > 1
-                ? optInTimePeriod + (int)Globals._unstablePeriod[16] - 1
+                ? optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.MinusDM] - 1
                 : 1;
 
         if (startIdx < lookbackTotal)
@@ -112,7 +112,7 @@ public static partial class TAFunc
             goto Label_0138;
         }
 
-        i = (int)Globals._unstablePeriod[16];
+        i = (int)TACore.Globals.UnstablePeriod[FuncUnstId.MinusDM];
         Label_0186:
         i--;
         if (i != 0)
@@ -174,7 +174,7 @@ public static partial class TAFunc
         return optInTimePeriod switch
         {
             < 1 or > 100000 => -1,
-            > 1 => optInTimePeriod + (int)Globals._unstablePeriod[16] - 1,
+            > 1 => optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.MinusDM] - 1,
             _ => 1
         };
     }

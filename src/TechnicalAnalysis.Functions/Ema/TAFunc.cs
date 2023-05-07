@@ -49,6 +49,6 @@ public static partial class TAFunc
 
     public static int EmaLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1 + (int)Globals._unstablePeriod[5];
+        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1 + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Ema];
     }
 }

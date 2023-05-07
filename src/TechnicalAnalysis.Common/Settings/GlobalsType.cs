@@ -8,17 +8,16 @@ namespace TechnicalAnalysis.Common;
 
 public sealed class GlobalsType
 {
+    public Dictionary<FuncUnstId, long> UnstablePeriod { get; }
     public Dictionary<CandleSettingType, CandleSetting> CandleSettings { get; }
     public Compatibility Compatibility { get; set; } = Compatibility.Default;
-    public long[] UnstablePeriod { get; } = new long[23];
 
     public GlobalsType()
     {
-        for (int i = 0; i < 23; i++)
-        {
-            UnstablePeriod[i] = 0;
-        }
-                
+        UnstablePeriod = Enumerable
+            .Range(0, 23)
+            .ToDictionary(i => (FuncUnstId)i, _ => 0L);
+        
         CandleSettings = new Dictionary<CandleSettingType, CandleSetting>
         {
             { BodyLong, CandleSetting.DefaultBodyLong },

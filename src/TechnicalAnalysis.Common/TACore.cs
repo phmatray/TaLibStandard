@@ -29,29 +29,28 @@ public static partial class TACore
         
     public static long GetUnstablePeriod(FuncUnstId id)
     {
-        return id >= FuncUnstId.FuncUnstAll ? 0 : Globals.UnstablePeriod[(int)id];
+        return id >= FuncUnstId.FuncUnstAll ? 0 : Globals.UnstablePeriod[id];
     }
         
     public static RetCode SetUnstablePeriod(FuncUnstId id, long unstablePeriod)
     {
-        if (id > FuncUnstId.FuncUnstAll)
+        switch (id)
         {
-            return BadParam;
+            case > FuncUnstId.FuncUnstAll:
+                return BadParam;
+            case FuncUnstId.FuncUnstAll:
+                {
+                    for (int i = 0; i < 23; i++)
+                    {
+                        Globals.UnstablePeriod[(FuncUnstId)i] = unstablePeriod;
+                    }
+
+                    return Success;
+                }
+            default:
+                Globals.UnstablePeriod[id] = unstablePeriod;
+                return Success;
         }
-            
-        if (id != FuncUnstId.FuncUnstAll)
-        {
-            Globals.UnstablePeriod[(int)id] = unstablePeriod;
-        }
-        else
-        {
-            for (int i = 0; i < 23; i++)
-            {
-                Globals.UnstablePeriod[i] = unstablePeriod;
-            }
-        }
-            
-        return Success;
     }
         
     public static RetCode RestoreCandleDefaultSettings(CandleSettingType settingType)
@@ -100,33 +99,4 @@ public enum Compatibility
 {
     Default,
     Metastock
-}
-        
-public enum FuncUnstId
-{
-    FuncUnstNone = -1,
-    Adx = 0,
-    Adxr = 1,
-    Atr = 2,
-    Cmo = 3,
-    Dx = 4,
-    Ema = 5,
-    HtDcPeriod = 6,
-    HtDcPhase = 7,
-    HtPhasor = 8,
-    HtSine = 9,
-    HtTrendline = 10,
-    HtTrendMode = 11,
-    Kama = 12,
-    Mama = 13,
-    Mfi = 14,
-    MinusDI = 15,
-    MinusDM = 16,
-    Natr = 17,
-    PlusDI = 18,
-    PlusDM = 19,
-    Rsi = 20,
-    StochRsi = 21,
-    T3 = 22,
-    FuncUnstAll = 23
 }

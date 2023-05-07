@@ -86,7 +86,7 @@ public static partial class TAFunc
 
             double prevATR = prevATRTemp[0];
             int today = optInTimePeriod;
-            int outIdx = (int)Globals._unstablePeriod[2];
+            int outIdx = (int)TACore.Globals.UnstablePeriod[FuncUnstId.Atr];
             while (true)
             {
                 if (outIdx == 0)
@@ -128,6 +128,6 @@ public static partial class TAFunc
 
     public static int AtrLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod + (int)Globals._unstablePeriod[2];
+        return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Atr];
     }
 }

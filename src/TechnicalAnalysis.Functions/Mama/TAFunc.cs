@@ -49,7 +49,7 @@ public static partial class TAFunc
         }
 
         double rad2Deg = 180.0 / (4.0 * Math.Atan(1.0));
-        int lookbackTotal = (int)Globals._unstablePeriod[13] + 32;
+        int lookbackTotal = (int)TACore.Globals.UnstablePeriod[FuncUnstId.Mama] + 32;
         if (startIdx < lookbackTotal)
         {
             startIdx = lookbackTotal;
@@ -338,6 +338,6 @@ public static partial class TAFunc
         return optInFastLimit is < 0.01 or > 0.99 ||
             optInSlowLimit is < 0.01 or > 0.99
             ? -1
-            : (int)Globals._unstablePeriod[13] + 32;
+            : (int)TACore.Globals.UnstablePeriod[FuncUnstId.Mama] + 32;
     }
 }

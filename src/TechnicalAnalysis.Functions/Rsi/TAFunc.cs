@@ -69,7 +69,7 @@ public static partial class TAFunc
 
             int today = startIdx - lookbackTotal;
             double prevValue = inReal[today];
-            if (Globals._unstablePeriod[20] == 0 && Globals._compatibility == Compatibility.Metastock)
+            if (TACore.Globals.UnstablePeriod[FuncUnstId.Rsi] == 0 && TACore.Globals.Compatibility == Compatibility.Metastock)
             {
                 double savePrevValue = prevValue;
                 prevGain = 0.0;
@@ -196,8 +196,8 @@ public static partial class TAFunc
             return -1;
         }
 
-        int retValue = optInTimePeriod + (int)Globals._unstablePeriod[20];
-        if (Globals._compatibility == Compatibility.Metastock)
+        int retValue = optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Rsi];
+        if (TACore.Globals.Compatibility == Compatibility.Metastock)
         {
             retValue--;
         }

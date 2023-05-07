@@ -51,7 +51,7 @@ public static partial class TAFunc
         maxIdxMoneyFlow = optInTimePeriod - 1;
         outBegIdx = 0;
         outNBElement = 0;
-        int lookbackTotal = optInTimePeriod + (int)Globals._unstablePeriod[14];
+        int lookbackTotal = optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Mfi];
         if (startIdx < lookbackTotal)
         {
             startIdx = lookbackTotal;
@@ -197,6 +197,6 @@ public static partial class TAFunc
 
     public static int MfiLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod + (int)Globals._unstablePeriod[14];
+        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Mfi];
     }
 }

@@ -8,8 +8,6 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
-    public static readonly GlobalsType Globals = new();
-    
     private static RetCode TA_INT_EMA(int startIdx, int endIdx, double[] inReal0, int optInTimePeriod0, double optInK1, ref int outBegIdx, ref int outNbElement, double[] outReal0)
     {
         int today;
@@ -30,7 +28,7 @@ public static partial class TAFunc
             
         outBegIdx = startIdx;
             
-        if (Globals._compatibility != Compatibility.Default)
+        if (TACore.Globals.Compatibility != Compatibility.Default)
         {
             prevMA = inReal0[0];
             today = 1;
@@ -101,7 +99,7 @@ public static partial class TAFunc
             
         outBegIdx = startIdx;
             
-        if (Globals._compatibility != Compatibility.Default)
+        if (TACore.Globals.Compatibility != Compatibility.Default)
         {
             prevMA = inReal0[0];
             today = 1;
@@ -721,42 +719,6 @@ public static partial class TAFunc
         return Success;
     }
 
-    public sealed class CandleSetting
-    {
-        public int _avgPeriod;
-        public double _factor;
-        public RangeType _rangeType;
-        public CandleSettingType _settingType;
-    }
-
-    public enum Compatibility
-    {
-        Default,
-        Metastock
-    }
-
-    public sealed class GlobalsType
-    {
-        public CandleSetting[] _candleSettings;
-        public Compatibility _compatibility = Compatibility.Default;
-        public long[] _unstablePeriod = new long[23];
-
-        public GlobalsType()
-        {
-            for (int i = 0; i < 23; i++)
-            {
-                _unstablePeriod[i] = 0;
-            }
-                
-            _candleSettings = new CandleSetting[11];
-                
-            for (int j = 0; j < _candleSettings.Length; j++)
-            {
-                _candleSettings[j] = new CandleSetting();
-            }
-        }
-    }
-        
     internal class MoneyFlow
     {
         public double Negative { get; set; }
