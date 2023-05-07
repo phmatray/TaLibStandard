@@ -94,9 +94,3 @@ public static partial class TACore
         return Success;
     }
 }
-
-public enum Compatibility
-{
-    Default,
-    Metastock
-}
