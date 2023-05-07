@@ -18,6 +18,16 @@ public abstract class CdlTestsBase
             .Invoke(this, null);
     }
     
+    protected static float[] InitializeArray(int length, params float[] values)
+    {
+        int zeros = length - values.Length;
+        return Enumerable
+            .Range(0, zeros)
+            .Select(_ => 0f)
+            .Concat(values)
+            .ToArray();
+    }
+    
     [Fact]
     public void NullPriceArrays()
     {

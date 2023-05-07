@@ -28,6 +28,31 @@ public class Cdl2CrowsTests : CdlTestsBase
         isPatternDetected.Should().BeTrue();
     }
 
+    [Fact]
+    public void GetPatternRecognitionPatternDetectedFull()
+    {
+        // Arrange
+        const int ArraySize = 15;
+        const int StartIdx = ArraySize - 3;
+        const int EndIdx = ArraySize - 1;
+        float[] open = InitializeArray(ArraySize, 100f, 135f, 130f);
+        float[] close = InitializeArray(ArraySize, 120f, 125f, 110f);
+        float[] high = InitializeArray(ArraySize, 120f, 135f, 130f);
+        float[] low = InitializeArray(ArraySize, 100f, 125f, 110f);
+        
+        // Act
+        Candle2CrowsResult result = TACandle.Cdl2Crows(
+            StartIdx, EndIdx, open, high, low, close);
+
+        // Assert
+        result.Should().NotBeNull();
+        result.RetCode.Should().Be(RetCode.Success);
+        result.Integers.Length.Should().Be(3);
+        result.Integers[0].Should().Be(0);
+        result.Integers[1].Should().Be(0);
+        result.Integers[2].Should().Be(-100);
+    }
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]
