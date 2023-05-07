@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class Cdl3BlackCrowsTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.Cdl3BlackCrows;
+    
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

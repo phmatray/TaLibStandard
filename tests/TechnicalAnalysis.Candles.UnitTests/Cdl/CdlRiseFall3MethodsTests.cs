@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlRiseFall3MethodsTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.CdlRiseFall3Methods;
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

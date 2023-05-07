@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlMarubozuTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.CdlMarubozu;
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

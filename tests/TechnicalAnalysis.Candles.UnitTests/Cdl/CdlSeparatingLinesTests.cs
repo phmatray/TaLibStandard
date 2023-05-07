@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlSeparatingLinesTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.CdlSeparatingLines;
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

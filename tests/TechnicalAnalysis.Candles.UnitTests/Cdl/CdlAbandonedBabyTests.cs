@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlAbandonedBabyTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.CdlAbandonedBaby;
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

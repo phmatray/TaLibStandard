@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlRickshawManTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.CdlRickshawMan;
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

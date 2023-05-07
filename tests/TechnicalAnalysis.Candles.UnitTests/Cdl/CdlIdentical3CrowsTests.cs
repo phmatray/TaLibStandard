@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlIdentical3CrowsTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.CdlIdentical3Crows;
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

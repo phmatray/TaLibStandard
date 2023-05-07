@@ -26,7 +26,7 @@ public class CandleMorningDojiStar<T> : CandleIndicator<T>
         // Initialize output variables 
         int outBegIdx = default;
         int outNBElement = default;
-        int[] outInteger = new int[endIdx - startIdx + 1];
+        int[] outInteger = new int[int.Max(0, endIdx - startIdx + 1)];
             
         // Validate the requested output range.
         if (startIdx < 0)

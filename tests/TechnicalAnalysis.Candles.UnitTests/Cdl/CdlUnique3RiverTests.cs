@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlUnique3RiverTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.CdlUnique3River;
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

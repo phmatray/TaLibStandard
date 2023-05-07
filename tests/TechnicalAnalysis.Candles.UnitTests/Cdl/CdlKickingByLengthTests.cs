@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlKickingByLengthTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.CdlKickingByLength;
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

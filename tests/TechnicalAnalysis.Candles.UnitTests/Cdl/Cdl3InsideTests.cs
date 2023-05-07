@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class Cdl3InsideTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.Cdl3Inside;
+    
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

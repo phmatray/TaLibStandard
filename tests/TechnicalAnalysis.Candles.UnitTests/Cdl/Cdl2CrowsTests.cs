@@ -10,6 +10,24 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class Cdl2CrowsTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], Candle2CrowsResult> SUT { get; }
+        = TACandle.Cdl2Crows;
+
+    [Fact]
+    public void GetPatternRecognitionPatternDetected()
+    {
+        // Arrange
+        float[] open = { 100f, 135f, 130f };
+        float[] close = { 120f, 125f, 110f };
+        Candle2Crows<float> crows = new(open, null!, null!, close);
+        
+        // Act
+        bool isPatternDetected = crows.GetPatternRecognition(2);
+
+        // Assert
+        isPatternDetected.Should().BeTrue();
+    }
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

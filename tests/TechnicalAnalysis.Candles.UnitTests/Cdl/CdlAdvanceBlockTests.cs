@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlAdvanceBlockTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.CdlAdvanceBlock;
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]

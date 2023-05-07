@@ -10,6 +10,9 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlXSideGap3MethodsTests : CdlTestsBase
 {
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+        = TACandle.CdlXSideGap3Methods;
+
     [Theory]
     [InlineData(typeof(float))]
     [InlineData(typeof(double))]
