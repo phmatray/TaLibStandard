@@ -9,11 +9,11 @@ namespace TechnicalAnalysis;
 
 public static partial class TACore
 {
-    public static readonly GlobalsType Globals = new();
-        
+    public static GlobalsType Globals { get; }
+
     static TACore()
     {
-        RestoreCandleDefaultSettings(AllCandleSettings);
+        Globals = new GlobalsType();
     }
         
     public static Compatibility GetCompatibility()
@@ -58,147 +58,144 @@ public static partial class TACore
     {
         switch (settingType)
         {
-            case BodyLong:
-                SetCandleSettings(BodyLong, RangeType.RealBody, 10, 1.0);
-                break;
-
-            case BodyVeryLong:
-                SetCandleSettings(BodyVeryLong, RangeType.RealBody, 10, 3.0);
-                break;
-
-            case BodyShort:
-                SetCandleSettings(BodyShort, RangeType.RealBody, 10, 1.0);
-                break;
-
-            case BodyDoji:
-                SetCandleSettings(BodyDoji, RangeType.HighLow, 10, 0.1);
-                break;
-
-            case ShadowLong:
-                SetCandleSettings(ShadowLong, RangeType.RealBody, 0, 1.0);
-                break;
-
-            case ShadowVeryLong:
-                SetCandleSettings(ShadowVeryLong, RangeType.RealBody, 0, 2.0);
-                break;
-
-            case ShadowShort:
-                SetCandleSettings(ShadowShort, RangeType.Shadows, 10, 1.0);
-                break;
-
-            case ShadowVeryShort:
-                SetCandleSettings(ShadowVeryShort, RangeType.HighLow, 10, 0.1);
-                break;
-
-            case Near:
-                SetCandleSettings(Near, RangeType.HighLow, 5, 0.2);
-                break;
-
-            case Far:
-                SetCandleSettings(Far, RangeType.HighLow, 5, 0.6);
-                break;
-
-            case Equal:
-                SetCandleSettings(Equal, RangeType.HighLow, 5, 0.05);
-                break;
-
+            case > AllCandleSettings:
+                return BadParam;
+            
             case AllCandleSettings:
-                SetCandleSettings(BodyLong, RangeType.RealBody, 10, 1.0);
-                SetCandleSettings(BodyVeryLong, RangeType.RealBody, 10, 3.0);
-                SetCandleSettings(BodyShort, RangeType.RealBody, 10, 1.0);
-                SetCandleSettings(BodyDoji, RangeType.HighLow, 10, 0.1);
-                SetCandleSettings(ShadowLong, RangeType.RealBody, 0, 1.0);
-                SetCandleSettings(ShadowVeryLong, RangeType.RealBody, 0, 2.0);
-                SetCandleSettings(ShadowShort, RangeType.Shadows, 10, 1.0);
-                SetCandleSettings(ShadowVeryShort, RangeType.HighLow, 10, 0.1);
-                SetCandleSettings(Near, RangeType.HighLow, 5, 0.2);
-                SetCandleSettings(Far, RangeType.HighLow, 5, 0.6);
-                SetCandleSettings(Equal, RangeType.HighLow, 5, 0.05);
-                break;
-                
+                SetCandleSettings(CandleSetting.DefaultBodyLong);
+                SetCandleSettings(CandleSetting.DefaultBodyVeryLong);
+                SetCandleSettings(CandleSetting.DefaultBodyShort);
+                SetCandleSettings(CandleSetting.DefaultBodyDoji);
+                SetCandleSettings(CandleSetting.DefaultShadowLong);
+                SetCandleSettings(CandleSetting.DefaultShadowVeryLong);
+                SetCandleSettings(CandleSetting.DefaultShadowShort);
+                SetCandleSettings(CandleSetting.DefaultShadowVeryShort);
+                SetCandleSettings(CandleSetting.DefaultNear);
+                SetCandleSettings(CandleSetting.DefaultFar);
+                SetCandleSettings(CandleSetting.DefaultEqual);
+                return Success;
+            
             default:
-                throw new ArgumentOutOfRangeException(nameof(settingType), settingType, null);
+                {
+                    CandleSetting candleSetting = CandleSetting.GetDefaultByType(settingType);
+                    return SetCandleSettings(candleSetting);
+                }
         }
-        return Success;
     }
         
-    public static RetCode SetCandleSettings(CandleSettingType settingType, RangeType rangeType, int avgPeriod, double factor)
+    public static RetCode SetCandleSettings(CandleSetting candleSetting)
     {
-        if (settingType >= AllCandleSettings)
+        if (candleSetting.SettingType >= AllCandleSettings)
         {
             return BadParam;
         }
-            
-        Globals.CandleSettings[(int)settingType].SettingType = settingType;
-        Globals.CandleSettings[(int)settingType].RangeType = rangeType;
-        Globals.CandleSettings[(int)settingType].AvgPeriod = avgPeriod;
-        Globals.CandleSettings[(int)settingType].Factor = factor;
-            
+        
+        Globals.CandleSettings[candleSetting.SettingType] = candleSetting;
+        
         return Success;
     }
+}
+
+public sealed class CandleSetting
+{
+    public CandleSettingType SettingType { get; }
+    public RangeType RangeType { get; }
+    public int AvgPeriod { get; }
+    public double Factor { get; }
+
+    public CandleSetting(CandleSettingType settingType, RangeType rangeType, int avgPeriod, double factor)
+    {
+        SettingType = settingType;
+        RangeType = rangeType;
+        AvgPeriod = avgPeriod;
+        Factor = factor;
+    }
     
-    public sealed class CandleSetting
+    public static CandleSetting GetDefaultByType(CandleSettingType settingType)
     {
-        public int AvgPeriod { get; set; }
-        public double Factor { get; set; }
-        public RangeType RangeType { get; set; }
-        public CandleSettingType SettingType { get; set; }
-    }
-
-    public enum Compatibility
-    {
-        Default,
-        Metastock
-    }
-        
-    public enum FuncUnstId
-    {
-        FuncUnstNone = -1,
-        Adx = 0,
-        Adxr = 1,
-        Atr = 2,
-        Cmo = 3,
-        Dx = 4,
-        Ema = 5,
-        HtDcPeriod = 6,
-        HtDcPhase = 7,
-        HtPhasor = 8,
-        HtSine = 9,
-        HtTrendline = 10,
-        HtTrendMode = 11,
-        Kama = 12,
-        Mama = 13,
-        Mfi = 14,
-        MinusDI = 15,
-        MinusDM = 16,
-        Natr = 17,
-        PlusDI = 18,
-        PlusDM = 19,
-        Rsi = 20,
-        StochRsi = 21,
-        T3 = 22,
-        FuncUnstAll = 23
-    }
-        
-    public sealed class GlobalsType
-    {
-        public CandleSetting[] CandleSettings { get; }
-        public Compatibility Compatibility { get; set; } = Compatibility.Default;
-        public long[] UnstablePeriod { get; } = new long[23];
-
-        public GlobalsType()
+        return settingType switch
         {
-            for (int i = 0; i < 23; i++)
-            {
-                UnstablePeriod[i] = 0;
-            }
-                
-            CandleSettings = new CandleSetting[11];
-                
-            for (int j = 0; j < CandleSettings.Length; j++)
-            {
-                CandleSettings[j] = new CandleSetting();
-            }
-        }
+            BodyLong => DefaultBodyLong,
+            BodyVeryLong => DefaultBodyVeryLong,
+            BodyShort => DefaultBodyShort,
+            BodyDoji => DefaultBodyDoji,
+            ShadowLong => DefaultShadowLong,
+            ShadowVeryLong => DefaultShadowVeryLong,
+            ShadowShort => DefaultShadowShort,
+            ShadowVeryShort => DefaultShadowVeryShort,
+            Near => DefaultNear,
+            Far => DefaultFar,
+            Equal => DefaultEqual,
+            AllCandleSettings => throw new InvalidOperationException(),
+            _ => throw new ArgumentOutOfRangeException(nameof(settingType), settingType, null)
+        };
     }
+    
+    public static CandleSetting DefaultBodyLong
+        => new(BodyLong, RangeType.RealBody, 10, 1.0);
+    
+    public static CandleSetting DefaultBodyVeryLong
+        => new(BodyVeryLong, RangeType.RealBody, 10, 3.0);
+    
+    public static CandleSetting DefaultBodyShort
+        => new(BodyShort, RangeType.RealBody, 10, 1.0);
+    
+    public static CandleSetting DefaultBodyDoji
+        => new(BodyDoji, RangeType.HighLow, 10, 0.1);
+    
+    public static CandleSetting DefaultShadowLong
+        => new(ShadowLong, RangeType.RealBody, 0, 1.0);
+    
+    public static CandleSetting DefaultShadowVeryLong
+        => new(ShadowVeryLong, RangeType.RealBody, 0, 2.0);
+    
+    public static CandleSetting DefaultShadowShort
+        => new(ShadowShort, RangeType.Shadows, 10, 1.0);
+    
+    public static CandleSetting DefaultShadowVeryShort
+        => new(ShadowVeryShort, RangeType.HighLow, 10, 0.1);
+    
+    public static CandleSetting DefaultNear
+        => new(Near, RangeType.HighLow, 5, 0.2);
+    
+    public static CandleSetting DefaultFar
+        => new(Far, RangeType.HighLow, 5, 0.6);
+    
+    public static CandleSetting DefaultEqual
+        => new(Equal, RangeType.HighLow, 5, 0.05);
+}
+
+public enum Compatibility
+{
+    Default,
+    Metastock
+}
+        
+public enum FuncUnstId
+{
+    FuncUnstNone = -1,
+    Adx = 0,
+    Adxr = 1,
+    Atr = 2,
+    Cmo = 3,
+    Dx = 4,
+    Ema = 5,
+    HtDcPeriod = 6,
+    HtDcPhase = 7,
+    HtPhasor = 8,
+    HtSine = 9,
+    HtTrendline = 10,
+    HtTrendMode = 11,
+    Kama = 12,
+    Mama = 13,
+    Mfi = 14,
+    MinusDI = 15,
+    MinusDM = 16,
+    Natr = 17,
+    PlusDI = 18,
+    PlusDM = 19,
+    Rsi = 20,
+    StochRsi = 21,
+    T3 = 22,
+    FuncUnstAll = 23
 }

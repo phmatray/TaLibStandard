@@ -13,60 +13,60 @@ public enum CandleSettingType
     /// <summary>
     /// Long body setting.
     /// </summary>
-    BodyLong,
+    BodyLong = 0,
 
     /// <summary>
     /// Very long body setting.
     /// </summary>
-    BodyVeryLong,
+    BodyVeryLong = 1,
 
     /// <summary>
     /// Short body setting.
     /// </summary>
-    BodyShort,
+    BodyShort = 2,
 
     /// <summary>
     /// Doji body setting.
     /// </summary>
-    BodyDoji,
+    BodyDoji = 3,
 
     /// <summary>
     /// Long shadow setting.
     /// </summary>
-    ShadowLong,
+    ShadowLong = 4,
 
     /// <summary>
     /// Very long shadow setting.
     /// </summary>
-    ShadowVeryLong,
+    ShadowVeryLong = 5,
 
     /// <summary>
     /// Short shadow setting.
     /// </summary>
-    ShadowShort,
+    ShadowShort = 6,
 
     /// <summary>
     /// Very short shadow setting.
     /// </summary>
-    ShadowVeryShort,
+    ShadowVeryShort = 7,
 
     /// <summary>
     /// Near setting.
     /// </summary>
-    Near,
+    Near = 8,
 
     /// <summary>
     /// Far setting.
     /// </summary>
-    Far,
+    Far = 9,
 
     /// <summary>
     /// Equal setting.
     /// </summary>
-    Equal,
+    Equal = 10,
 
     /// <summary>
     /// All candle settings.
     /// </summary>
-    AllCandleSettings
+    AllCandleSettings = 11
 }

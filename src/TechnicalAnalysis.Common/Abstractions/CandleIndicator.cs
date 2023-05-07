@@ -68,7 +68,7 @@ public abstract class CandleIndicator<T>
     /// <param name="candleSettingType">The candle setting type to get the range type for.</param>
     /// <returns>A RangeType value representing the range type.</returns>
     protected virtual RangeType GetCandleRangeType(CandleSettingType candleSettingType)
-        => TACore.Globals.CandleSettings[(int)candleSettingType].RangeType;
+        => TACore.Globals.CandleSettings[candleSettingType].RangeType;
         
     /// <summary>
     /// Gets the average period of the specified candle setting.
@@ -76,7 +76,7 @@ public abstract class CandleIndicator<T>
     /// <param name="candleSettingType">The candle setting type to get the average period for.</param>
     /// <returns>An integer representing the average period.</returns>
     protected virtual int GetCandleAvgPeriod(CandleSettingType candleSettingType)
-        => TACore.Globals.CandleSettings[(int)candleSettingType].AvgPeriod;
+        => TACore.Globals.CandleSettings[candleSettingType].AvgPeriod;
         
     /// <summary>
     /// Gets the factor of the specified candle setting.
@@ -84,7 +84,7 @@ public abstract class CandleIndicator<T>
     /// <param name="candleSettingType">The candle setting type to get the factor for.</param>
     /// <returns>A double representing the factor.</returns>
     protected virtual double GetCandleFactor(CandleSettingType candleSettingType)
-        => TACore.Globals.CandleSettings[(int)candleSettingType].Factor;
+        => TACore.Globals.CandleSettings[candleSettingType].Factor;
         
     /// <summary>
     /// Gets the candle range of the specified candle setting at a specific index.
