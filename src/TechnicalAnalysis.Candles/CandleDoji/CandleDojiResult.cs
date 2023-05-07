@@ -4,7 +4,7 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
-namespace TechnicalAnalysis.Candles.CandleDoji;
+namespace TechnicalAnalysis.Candles;
 
 public record CandleDojiResult : IndicatorBase
 {

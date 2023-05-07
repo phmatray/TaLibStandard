@@ -6,7 +6,7 @@
 
 using static System.Math;
 
-namespace TechnicalAnalysis.Candles.CandleHikkakeMod;
+namespace TechnicalAnalysis.Candles;
 
 public class CandleHikkakeMod<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>

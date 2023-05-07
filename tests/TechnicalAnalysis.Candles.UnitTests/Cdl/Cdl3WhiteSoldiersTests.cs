@@ -4,8 +4,6 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
-using TechnicalAnalysis.Candles.Candle3WhiteSoldiers;
-
 namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class Cdl3WhiteSoldiersTests : CdlTestsBase

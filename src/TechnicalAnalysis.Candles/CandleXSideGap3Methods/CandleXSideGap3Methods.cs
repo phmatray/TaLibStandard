@@ -4,7 +4,7 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
-namespace TechnicalAnalysis.Candles.CandleXSideGap3Methods;
+namespace TechnicalAnalysis.Candles;
 
 public class CandleXSideGap3Methods<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>

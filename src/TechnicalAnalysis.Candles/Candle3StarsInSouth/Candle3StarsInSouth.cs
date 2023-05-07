@@ -4,7 +4,7 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
-namespace TechnicalAnalysis.Candles.Candle3StarsInSouth;
+namespace TechnicalAnalysis.Candles;
 
 public class Candle3StarsInSouth<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>

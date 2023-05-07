@@ -4,7 +4,7 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
-namespace TechnicalAnalysis.Candles.CandleCounterAttack;
+namespace TechnicalAnalysis.Candles;
 
 /// <summary>
 /// Represents the result of the Counter Attack candlestick pattern indicator.
