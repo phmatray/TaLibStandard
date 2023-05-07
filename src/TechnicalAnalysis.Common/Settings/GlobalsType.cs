@@ -4,7 +4,7 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
-namespace TechnicalAnalysis;
+namespace TechnicalAnalysis.Common;
 
 public sealed class GlobalsType
 {
