@@ -135,9 +135,9 @@ public class CandleGapSideSideWhite<T> : CandleIndicator<T>
                 )
             ) &&
             // 2nd: white
-            GetCandleColor(i - 1) == 1 &&
+            IsColorGreen(i - 1) &&
             // 3rd: white
-            GetCandleColor(i) == 1 &&
+            IsColorGreen(i) &&
             // same size 2 and 3
             GetRealBody(i) >= GetRealBody(i - 1) -
             GetCandleAverage(Near, _nearPeriodTotal, i - 1) &&

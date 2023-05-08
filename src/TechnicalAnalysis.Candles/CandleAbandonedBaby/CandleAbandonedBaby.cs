@@ -112,7 +112,7 @@ public class CandleAbandonedBaby<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = GetPatternRecognition(i) ? (int)GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -155,9 +155,9 @@ public class CandleAbandonedBaby<T> : CandleIndicator<T>
             (
                 (
                     // 1st white
-                    GetCandleColor(i - 2) == 1 &&
+                    IsColorGreen(i - 2) &&
                     // 3rd black
-                    GetCandleColor(i) == -1 &&
+                    IsColorRed(i) &&
                     // 3rd closes well within 1st rb
                     Close[i] < Close[i - 2] - GetRealBody(i - 2) * _penetration &&
                     // upside gap between 1st and 2nd
@@ -168,9 +168,9 @@ public class CandleAbandonedBaby<T> : CandleIndicator<T>
                 ||
                 (
                     // 1st black
-                    GetCandleColor(i - 2) == -1 &&
+                    IsColorRed(i - 2) &&
                     // 3rd white
-                    GetCandleColor(i) == 1 &&
+                    IsColorGreen(i) &&
                     // 3rd closes well within 1st rb
                     Close[i] > Close[i - 2] + GetRealBody(i - 2) * _penetration &&
                     // downside gap between 1st and 2nd

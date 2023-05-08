@@ -91,7 +91,7 @@ public class Candle3Inside<T> : CandleIndicator<T>
         do
         {
             outInteger[outIdx++] = GetPatternRecognition(i) 
-                ? -GetCandleColor(i - 2) * 100
+                ? -(int)GetCandleColor(i - 2) * 100
                 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
@@ -130,13 +130,13 @@ public class Candle3Inside<T> : CandleIndicator<T>
             T.Min(Close[i - 1], Open[i - 1]) > T.Min(Close[i - 2], Open[i - 2]) &&
             (
                 ( // 3rd: opposite to 1st
-                    GetCandleColor(i - 2) == 1 &&
-                    GetCandleColor(i) == -1 &&
+                    IsColorGreen(i - 2) &&
+                    IsColorRed(i) &&
                     Close[i] < Open[i - 2]
                 ) ||
                 ( // and closing out
-                    GetCandleColor(i - 2) == -1 &&
-                    GetCandleColor(i) == 1 &&
+                    IsColorRed(i - 2) &&
+                    IsColorGreen(i) &&
                     Close[i] > Open[i - 2]
                 )
             );

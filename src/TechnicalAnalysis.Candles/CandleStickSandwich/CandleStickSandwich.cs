@@ -106,11 +106,11 @@ public class CandleStickSandwich<T> : CandleIndicator<T>
     {
         bool isStickSandwich =
             // first black
-            GetCandleColor(i - 2) == -1 &&
+            IsColorRed(i - 2) &&
             // second white
-            GetCandleColor(i - 1) == 1 &&
+            IsColorGreen(i - 1) &&
             // third black
-            GetCandleColor(i) == -1 &&
+            IsColorRed(i) &&
             // 2nd low > prior close
             Low[i - 1] > Close[i - 2] &&
             // 1st and 3rd same close

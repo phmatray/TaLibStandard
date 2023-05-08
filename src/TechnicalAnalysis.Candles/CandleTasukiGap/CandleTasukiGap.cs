@@ -83,7 +83,7 @@ public class CandleTasukiGap<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i - 1) * 100 : 0;
+            outInteger[outIdx++] = GetPatternRecognition(i) ? (int)GetCandleColor(i - 1) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -111,9 +111,9 @@ public class CandleTasukiGap<T> : CandleIndicator<T>
                 // upside gap
                 GetRealBodyGapUp(i - 1, i - 2) &&
                 // 1st: white
-                GetCandleColor(i - 1) == 1 &&
+                IsColorGreen(i - 1) &&
                 // 2nd: black
-                GetCandleColor(i) == -1 &&
+                IsColorRed(i) &&
                 // that opens within the white rb
                 Open[i] < Close[i - 1] && Open[i] > Open[i - 1] &&
                 // and closes under the white rb
@@ -127,9 +127,9 @@ public class CandleTasukiGap<T> : CandleIndicator<T>
                 // downside gap
                 GetRealBodyGapDown(i - 1, i - 2) &&
                 // 1st: black
-                GetCandleColor(i - 1) == -1 &&
+                IsColorRed(i - 1) &&
                 // 2nd: white
-                GetCandleColor(i) == 1 &&
+                IsColorGreen(i) &&
                 // that opens within the black rb
                 Open[i] < Open[i - 1] && Open[i] > Close[i - 1] &&
                 // and closes above the black rb

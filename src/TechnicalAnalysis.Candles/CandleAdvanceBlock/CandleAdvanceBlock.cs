@@ -178,11 +178,11 @@ public class CandleAdvanceBlock<T> : CandleIndicator<T>
     {
         bool isAdvanceBlock =
             // 1st white
-            GetCandleColor(i - 2) == 1 &&
+            IsColorGreen(i - 2) &&
             // 2nd white
-            GetCandleColor(i - 1) == 1 &&
+            IsColorGreen(i - 1) &&
             // 3rd white
-            GetCandleColor(i) == 1 &&
+            IsColorGreen(i) &&
             // consecutive higher closes
             Close[i] > Close[i - 1] && Close[i - 1] > Close[i - 2] &&
             // 2nd opens within/near 1st real body

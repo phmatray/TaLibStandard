@@ -68,10 +68,7 @@ public class CandleEngulfing<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            bool isEngulfing = GetPatternRecognition(i);
-
-            outInteger[outIdx++] = isEngulfing ? GetCandleColor(i) * 100 : 0;
-
+            outInteger[outIdx++] = GetPatternRecognition(i) ? (int)GetCandleColor(i) * 100 : 0;
             i++;
         } while (i <= endIdx);
 
@@ -88,16 +85,16 @@ public class CandleEngulfing<T> : CandleIndicator<T>
         bool isEngulfing =
             (
                 // white engulfs black
-                GetCandleColor(i) == 1 &&
-                GetCandleColor(i - 1) == -1 &&
+                IsColorGreen(i) &&
+                IsColorRed(i - 1) &&
                 Close[i] > Open[i - 1] &&
                 Open[i] < Close[i - 1]
             )
             ||
             (
                 // black engulfs white
-                GetCandleColor(i) == -1 &&
-                GetCandleColor(i - 1) == 1 &&
+                IsColorRed(i) &&
+                IsColorGreen(i - 1) &&
                 Open[i] > Close[i - 1] &&
                 Close[i] < Open[i - 1]
             );

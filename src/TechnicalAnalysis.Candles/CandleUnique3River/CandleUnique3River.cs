@@ -124,9 +124,9 @@ public class CandleUnique3River<T> : CandleIndicator<T>
             // 1st: long
             GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
             // black
-            GetCandleColor(i - 2) == -1 &&
+            IsColorRed(i - 2) &&
             // 2nd: black
-            GetCandleColor(i - 1) == -1 &&
+            IsColorRed(i - 1) &&
             // harami
             Close[i - 1] > Close[i - 2] && Open[i - 1] <= Open[i - 2] &&
             // lower low
@@ -134,7 +134,7 @@ public class CandleUnique3River<T> : CandleIndicator<T>
             // 3rd: short
             GetRealBody(i) < GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
             // white
-            GetCandleColor(i) == 1 &&
+            IsColorGreen(i) &&
             // open not lower
             Open[i] > Low[i - 1];
             

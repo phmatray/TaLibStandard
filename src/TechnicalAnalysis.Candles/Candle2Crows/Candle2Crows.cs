@@ -108,15 +108,15 @@ public class Candle2Crows<T> : CandleIndicator<T>
     {
         bool is2Crows =
             // 1st: white
-            GetCandleColor(i - 2) == 1 &&
+            IsColorGreen(i - 2) &&
             // long
             GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
             // 2nd: black
-            GetCandleColor(i - 1) == -1 &&
+            IsColorRed(i - 1) &&
             // gapping up
             GetRealBodyGapUp(i - 1, i - 2) &&
             // 3rd: black
-            GetCandleColor(i) == -1 &&
+            IsColorRed(i) &&
             // opening within 2nd rb
             Open[i] < Open[i - 1] && Open[i] > Close[i - 1] &&
             // closing within 1st rb

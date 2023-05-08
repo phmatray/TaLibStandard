@@ -143,9 +143,9 @@ public class CandleMatHold<T> : CandleIndicator<T>
             GetRealBody(i - 2) < GetCandleAverage(BodyShort, _bodyPeriodTotal[2], i - 2) &&
             GetRealBody(i - 1) < GetCandleAverage(BodyShort, _bodyPeriodTotal[1], i - 1) &&
             // white, black, 2 black or white, white
-            GetCandleColor(i - 4) == 1 &&
-            GetCandleColor(i - 3) == -1 &&
-            GetCandleColor(i) == 1 &&
+            IsColorGreen(i - 4) &&
+            IsColorRed(i - 3) &&
+            IsColorGreen(i) &&
             // upside gap 1st to 2nd
             GetRealBodyGapUp(i - 3, i - 4) &&
             // 3rd to 4th hold within 1st: a part of the real body must be within 1st real body

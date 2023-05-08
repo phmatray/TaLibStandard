@@ -98,7 +98,7 @@ public class CandleSeparatingLines<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = GetPatternRecognition(i) ? (int)GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -133,7 +133,7 @@ public class CandleSeparatingLines<T> : CandleIndicator<T>
     {
         bool isSeparatingLines =
             // opposite candles
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            IsColorOpposite(i - 1, i) &&
             // same open
             Open[i] <= Open[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
             Open[i] >= Open[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
@@ -142,13 +142,13 @@ public class CandleSeparatingLines<T> : CandleIndicator<T>
             (
                 (
                     // with no lower shadow if bullish
-                    GetCandleColor(i) == 1 &&
+                    IsColorGreen(i) &&
                     GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
                 )
                 ||
                 (
                     // with no upper shadow if bearish
-                    GetCandleColor(i) == -1 &&
+                    IsColorRed(i) &&
                     GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
                 )
             );

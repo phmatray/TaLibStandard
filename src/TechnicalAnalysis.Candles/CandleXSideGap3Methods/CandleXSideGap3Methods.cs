@@ -70,9 +70,7 @@ public class CandleXSideGap3Methods<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            bool isXSideGap3Methods = GetPatternRecognition(i);
-
-            outInteger[outIdx++] = isXSideGap3Methods ? GetCandleColor(i - 2) * 100 : 0;
+            outInteger[outIdx++] = GetPatternRecognition(i) ? (int)GetCandleColor(i - 2) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -92,9 +90,9 @@ public class CandleXSideGap3Methods<T> : CandleIndicator<T>
     {
         bool isXSideGap3Methods =
             // 1st and 2nd of same color
-            GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
+            IsColorSame(i - 2, i - 1) &&
             // 3rd opposite color
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            IsColorOpposite(i - 1, i) &&
             // 3rd opens within 2nd rb
             Open[i] < T.Max(Close[i - 1], Open[i - 1]) &&
             Open[i] > T.Min(Close[i - 1], Open[i - 1]) &&
@@ -104,13 +102,13 @@ public class CandleXSideGap3Methods<T> : CandleIndicator<T>
             (
                 (
                     // when 1st is white
-                    GetCandleColor(i - 2) == 1 &&
+                    IsColorGreen(i - 2) &&
                     // upside gap
                     GetRealBodyGapUp(i - 1, i - 2)
                 ) ||
                 (
                     // when 1st is black
-                    GetCandleColor(i - 2) == -1 &&
+                    IsColorRed(i - 2) &&
                     // downside gap
                     GetRealBodyGapDown(i - 1, i - 2)
                 )

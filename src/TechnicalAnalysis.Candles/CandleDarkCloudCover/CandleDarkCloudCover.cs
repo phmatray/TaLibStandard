@@ -115,11 +115,11 @@ public class CandleDarkCloudCover<T> : CandleIndicator<T>
     {
         bool isDarkCloudCover =
             // 1st: white
-            GetCandleColor(i - 1) == 1 &&
+            IsColorGreen(i - 1) &&
             // long
             GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 1) &&
             // 2nd: black
-            GetCandleColor(i) == -1 &&
+            IsColorRed(i) &&
             // open above prior high
             Open[i] > High[i - 1] &&
             // close within prior body

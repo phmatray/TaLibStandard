@@ -122,17 +122,17 @@ public class CandleUpsideGap2Crows<T> : CandleIndicator<T>
     {
         bool isUpsideGap2Crows =
             // 1st: white
-            GetCandleColor(i - 2) == 1 &&
+            IsColorGreen(i - 2) &&
             // long
             GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
             // 2nd: black
-            GetCandleColor(i - 1) == -1 &&
+            IsColorRed(i - 1) &&
             // short
             GetRealBody(i - 1) <= GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i - 1) &&
             // gapping up
             GetRealBodyGapUp(i - 1, i - 2) &&
             // 3rd: black
-            GetCandleColor(i) == -1 &&
+            IsColorRed(i) &&
             // 3rd: engulfing prior rb
             Open[i] > Open[i - 1] && Close[i] < Close[i - 1] &&
             // closing above 1st

@@ -110,17 +110,17 @@ public class Candle3BlackCrows<T> : CandleIndicator<T>
     {
         bool is3BlackCrows =
             // white
-            GetCandleColor(i - 3) == 1 &&
+            IsColorGreen(i - 3) &&
             // 1st black
-            GetCandleColor(i - 2) == -1 &&
+            IsColorRed(i - 2) &&
             // very short lower shadow
             GetLowerShadow(i - 2) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], i - 2) &&
             // 2nd black
-            GetCandleColor(i - 1) == -1 &&
+            IsColorRed(i - 1) &&
             // very short lower shadow
             GetLowerShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
             // 3rd black
-            GetCandleColor(i) == -1 &&
+            IsColorRed(i) &&
             // very short lower shadow
             GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             // 2nd black opens within 1st black's rb

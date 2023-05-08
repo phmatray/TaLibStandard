@@ -112,13 +112,13 @@ public class CandleConcealBabySwallow<T> : CandleIndicator<T>
     {
         bool isConcealBabySwallow =
             // 1st black
-            GetCandleColor(i - 3) == -1 &&
+            IsColorRed(i - 3) &&
             // 2nd black
-            GetCandleColor(i - 2) == -1 &&
+            IsColorRed(i - 2) &&
             // 3rd black
-            GetCandleColor(i - 1) == -1 &&
+            IsColorRed(i - 1) &&
             // 4th black
-            GetCandleColor(i) == -1 &&
+            IsColorRed(i) &&
             // 1st: marubozu
             GetLowerShadow(i - 3) <
             GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[3], i - 3) &&

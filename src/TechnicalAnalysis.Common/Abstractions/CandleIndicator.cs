@@ -161,8 +161,20 @@ public abstract class CandleIndicator<T>
     /// </summary>
     /// <param name="index">The index to get the candle color for.</param>
     /// <returns>1 if the candle is bullish, -1 if the candle is bearish.</returns>
-    protected virtual int GetCandleColor(int index)
-        => Close[index] >= Open[index] ? 1 : -1;
+    protected virtual CandleColor GetCandleColor(int index)
+        => Close[index] >= Open[index] ? CandleColor.Green : CandleColor.Red;
+
+    protected virtual bool IsColorGreen(int index)
+        => GetCandleColor(index) == CandleColor.Green;
+    
+    protected virtual bool IsColorRed(int index)
+        => GetCandleColor(index) == CandleColor.Red;
+
+    protected virtual bool IsColorSame(int index2, int index1)
+        => GetCandleColor(index2) == GetCandleColor(index1);
+
+    protected virtual bool IsColorOpposite(int index2, int index1)
+        => (int)GetCandleColor(index2) == -(int)GetCandleColor(index1);
 
     /// <summary>
     /// Checks if there is a real body gap up between two candles.

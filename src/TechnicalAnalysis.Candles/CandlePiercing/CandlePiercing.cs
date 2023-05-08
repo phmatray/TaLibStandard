@@ -110,11 +110,11 @@ public class CandlePiercing<T> : CandleIndicator<T>
     {
         bool isPiercing =
             // 1st: black
-            GetCandleColor(i - 1) == -1 &&
+            IsColorRed(i - 1) &&
             // long
             GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], i - 1) &&
             // 2nd: white
-            GetCandleColor(i) == 1 &&
+            IsColorGreen(i) &&
             // long
             GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[0], i) &&
             // open below prior low

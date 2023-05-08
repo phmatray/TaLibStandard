@@ -161,15 +161,15 @@ public class Candle3WhiteSoldiers<T> : CandleIndicator<T>
     {
         bool is3WhiteSoldiers =
             // 1st white
-            GetCandleColor(i - 2) == 1 &&
+            IsColorGreen(i - 2) &&
             // very short upper shadow
             GetUpperShadow(i - 2) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[2], i - 2) &&
             // 2nd white                
-            GetCandleColor(i - 1) == 1 &&
+            IsColorGreen(i - 1) &&
             // very short upper shadow
             GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
             // 3rd white   
-            GetCandleColor(i) == 1 &&
+            IsColorGreen(i) &&
             // very short upper shadow
             GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             // consecutive higher closes           

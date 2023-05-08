@@ -89,7 +89,7 @@ public class CandleCounterAttack<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = GetPatternRecognition(i) ? (int)GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -123,7 +123,7 @@ public class CandleCounterAttack<T> : CandleIndicator<T>
     {
         bool isCounterAttack =
             // opposite candles
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            IsColorOpposite(i - 1, i) &&
             // 1st long
             GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], i - 1) &&
             // 2nd long

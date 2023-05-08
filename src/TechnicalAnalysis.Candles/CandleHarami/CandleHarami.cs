@@ -89,7 +89,7 @@ public class CandleHarami<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? -GetCandleColor(i - 1) * 100 : 0;
+            outInteger[outIdx++] = GetPatternRecognition(i) ? -(int)GetCandleColor(i - 1) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)

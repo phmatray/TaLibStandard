@@ -119,11 +119,11 @@ public class CandleOnNeck<T> : CandleIndicator<T>
     {
         bool isOnNeck =
             // 1st: black
-            GetCandleColor(i - 1) == -1 &&
+            IsColorRed(i - 1) &&
             // long
             GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 1) &&
             // 2nd: white
-            GetCandleColor(i) == 1 &&
+            IsColorGreen(i) &&
             // open below prior low
             Open[i] < Low[i - 1] &&
             // close equal to prior low

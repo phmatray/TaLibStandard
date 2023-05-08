@@ -90,7 +90,7 @@ public class CandleKicking<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = GetPatternRecognition(i) ? (int)GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -124,7 +124,7 @@ public class CandleKicking<T> : CandleIndicator<T>
     {
         bool isKicking =
             // opposite candles
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            IsColorOpposite(i - 1, i) &&
             // 1st marubozu
             GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], i - 1) &&
             GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
@@ -135,8 +135,8 @@ public class CandleKicking<T> : CandleIndicator<T>
             GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             // gap
             (
-                (GetCandleColor(i - 1) == -1 && GetCandleGapUp(i, i - 1)) ||
-                (GetCandleColor(i - 1) == 1 && GetCandleGapDown(i, i - 1))
+                (IsColorRed(i - 1) && GetCandleGapUp(i, i - 1)) ||
+                (IsColorGreen(i - 1) && GetCandleGapDown(i, i - 1))
             );
             
         return isKicking;

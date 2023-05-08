@@ -83,7 +83,7 @@ public class CandleBreakaway<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = GetPatternRecognition(i) ? (int)GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -112,11 +112,11 @@ public class CandleBreakaway<T> : CandleIndicator<T>
             // 1st, 2nd, 4th same color, 5th opposite
             GetCandleColor(i - 4) == GetCandleColor(i - 3) &&
             GetCandleColor(i - 3) == GetCandleColor(i - 1) &&
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            IsColorOpposite(i - 1, i) &&
             (
                 (
                     // when 1st is black:
-                    GetCandleColor(i - 4) == -1 &&
+                    IsColorRed(i - 4) &&
                     // 2nd gaps down
                     GetRealBodyGapDown(i - 3, i - 4) &&
                     // 3rd has lower high and low than 2nd
@@ -132,7 +132,7 @@ public class CandleBreakaway<T> : CandleIndicator<T>
                 ||
                 (
                     // when 1st is white:
-                    GetCandleColor(i - 4) == 1 &&
+                    GetCandleColor(i - 4) == CandleColor.Green &&
                     // 2nd gaps up
                     GetRealBodyGapUp(i - 3, i - 4) &&
                     // 3rd has higher high and low than 2nd

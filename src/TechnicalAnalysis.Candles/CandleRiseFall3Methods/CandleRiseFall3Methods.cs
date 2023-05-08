@@ -93,7 +93,7 @@ public class CandleRiseFall3Methods<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 * GetCandleColor(i - 4) : 0;
+            outInteger[outIdx++] = GetPatternRecognition(i) ? 100 * (int)GetCandleColor(i - 4) : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -136,10 +136,10 @@ public class CandleRiseFall3Methods<T> : CandleIndicator<T>
             GetRealBody(i - 1) < GetCandleAverage(BodyShort, _bodyPeriodTotal[1], i - 1) &&
             GetRealBody(i) > GetCandleAverage(BodyLong, _bodyPeriodTotal[0], i) &&
             // white, 3 black, white  ||  black, 3 white, black
-            GetCandleColor(i - 4) == -GetCandleColor(i - 3) &&
-            GetCandleColor(i - 3) == GetCandleColor(i - 2) &&
-            GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            IsColorOpposite(i - 4, i - 3) &&
+            IsColorSame(i - 3, i - 2) &&
+            IsColorSame(i - 2, i - 1) &&
+            IsColorOpposite(i - 1, i) &&
             // 2nd to 4th hold within 1st: a part of the real body must be within 1st range
             T.Min(Open[i - 3], Close[i - 3]) < High[i - 4] &&
             T.Max(Open[i - 3], Close[i - 3]) > Low[i - 4] &&
@@ -148,12 +148,12 @@ public class CandleRiseFall3Methods<T> : CandleIndicator<T>
             T.Min(Open[i - 1], Close[i - 1]) < High[i - 4] &&
             T.Max(Open[i - 1], Close[i - 1]) > Low[i - 4] &&
             // 2nd to 4th are falling (rising)
-            Close[i - 2] * T.CreateChecked(GetCandleColor(i - 4)) < Close[i - 3] * T.CreateChecked(GetCandleColor(i - 4)) &&
-            Close[i - 1] * T.CreateChecked(GetCandleColor(i - 4)) < Close[i - 2] * T.CreateChecked(GetCandleColor(i - 4)) &&
+            Close[i - 2] * T.CreateChecked((int)GetCandleColor(i - 4)) < Close[i - 3] * T.CreateChecked((int)GetCandleColor(i - 4)) &&
+            Close[i - 1] * T.CreateChecked((int)GetCandleColor(i - 4)) < Close[i - 2] * T.CreateChecked((int)GetCandleColor(i - 4)) &&
             // 5th opens above (below) the prior close
-            Open[i] * T.CreateChecked(GetCandleColor(i - 4)) > Close[i - 1] * T.CreateChecked(GetCandleColor(i - 4)) &&
+            Open[i] * T.CreateChecked((int)GetCandleColor(i - 4)) > Close[i - 1] * T.CreateChecked((int)GetCandleColor(i - 4)) &&
             // 5th closes above (below) the 1st close
-            Close[i] * T.CreateChecked(GetCandleColor(i - 4)) > Close[i - 4] * T.CreateChecked(GetCandleColor(i - 4));
+            Close[i] * T.CreateChecked((int)GetCandleColor(i - 4)) > Close[i - 4] * T.CreateChecked((int)GetCandleColor(i - 4));
             
         return isRiseFall3Methods;
     }

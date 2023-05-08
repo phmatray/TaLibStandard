@@ -85,7 +85,7 @@ public class CandleClosingMarubozu<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i) * 100 : 0;
+            outInteger[outIdx++] = GetPatternRecognition(i) ? (int)GetCandleColor(i) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -118,11 +118,11 @@ public class CandleClosingMarubozu<T> : CandleIndicator<T>
             GetRealBody(i) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i) &&
             (
                 ( // white body and very short lower shadow
-                    GetCandleColor(i) == 1 &&
+                    IsColorGreen(i) &&
                     GetUpperShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
                 ) ||
                 ( // black body and very short upper shadow
-                    GetCandleColor(i) == -1 &&
+                    IsColorRed(i) &&
                     GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i)
                 )
             );

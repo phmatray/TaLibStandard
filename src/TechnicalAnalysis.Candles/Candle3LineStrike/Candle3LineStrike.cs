@@ -83,7 +83,7 @@ public class Candle3LineStrike<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            outInteger[outIdx++] = GetPatternRecognition(i) ? GetCandleColor(i - 1) * 100 : 0;
+            outInteger[outIdx++] = GetPatternRecognition(i) ? (int)GetCandleColor(i - 1) * 100 : 0;
 
             /* add the current range and subtract the first range: this is done after the pattern recognition 
              * when avgPeriod is not 0, that means "compare with the previous candles" (it excludes the current candle)
@@ -111,10 +111,10 @@ public class Candle3LineStrike<T> : CandleIndicator<T>
     {
         bool is3LineStrike =
             // three with same color
-            GetCandleColor(i - 3) == GetCandleColor(i - 2) &&
-            GetCandleColor(i - 2) == GetCandleColor(i - 1) &&
+            IsColorSame(i - 3, i - 2) &&
+            IsColorSame(i - 2, i - 1) &&
             // 4th opposite color
-            GetCandleColor(i) == -GetCandleColor(i - 1) &&
+            IsColorOpposite(i - 1, i) &&
             // 2nd opens within/near 1st rb
             Open[i - 2] >= T.Min(Open[i - 3], Close[i - 3]) -
             GetCandleAverage(Near, _nearPeriodTotal[3], i - 3) &&
@@ -127,7 +127,7 @@ public class Candle3LineStrike<T> : CandleIndicator<T>
             GetCandleAverage(Near, _nearPeriodTotal[2], i - 2) &&
             (
                 ( // if three white
-                    GetCandleColor(i - 1) == 1 &&
+                    IsColorGreen(i - 1) &&
                     Close[i - 1] > Close[i - 2] &&
                     // consecutive higher closes
                     Close[i - 2] > Close[i - 3] &&
@@ -137,7 +137,7 @@ public class Candle3LineStrike<T> : CandleIndicator<T>
                     Close[i] < Open[i - 3]
                 ) ||
                 ( // if three black
-                    GetCandleColor(i - 1) == -1 &&
+                    IsColorRed(i - 1) &&
                     Close[i - 1] < Close[i - 2] &&
                     // consecutive lower closes
                     Close[i - 2] < Close[i - 3] &&

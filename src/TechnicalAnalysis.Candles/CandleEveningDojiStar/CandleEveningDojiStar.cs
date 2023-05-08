@@ -147,7 +147,7 @@ public class CandleEveningDojiStar<T> : CandleIndicator<T>
             // 1st: long
             GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
             // white
-            GetCandleColor(i - 2) == 1 &&
+            IsColorGreen(i - 2) &&
             // 2nd: doji
             GetRealBody(i - 1) <= GetCandleAverage(BodyDoji, _bodyDojiPeriodTotal, i - 1) &&
             // gapping up
@@ -155,7 +155,7 @@ public class CandleEveningDojiStar<T> : CandleIndicator<T>
             // 3rd: longer than short
             GetRealBody(i) > GetCandleAverage(BodyShort, _bodyShortPeriodTotal, i) &&
             // black real body
-            GetCandleColor(i) == -1 &&
+            IsColorRed(i) &&
             // closing well within 1st rb
             Close[i] < Close[i - 2] - GetRealBody(i - 2) * _penetration;
             

@@ -121,9 +121,9 @@ public class CandleHomingPigeon<T> : CandleIndicator<T>
     {
         bool isHomingPigeon =
             // 1st black
-            GetCandleColor(i - 1) == -1 &&
+            IsColorRed(i - 1) &&
             // 2nd black
-            GetCandleColor(i) == -1 &&
+            IsColorRed(i) &&
             // 1st long
             GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 1) &&
             // 2nd short

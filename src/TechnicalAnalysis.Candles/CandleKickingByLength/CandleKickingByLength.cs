@@ -94,7 +94,7 @@ public class CandleKickingByLength<T> : CandleIndicator<T>
             if (GetPatternRecognition(i))
             {
                 int index = GetRealBody(i) > GetRealBody(i - 1) ? i : i - 1;
-                outInteger[outIdx++] = GetCandleColor(index) * 100;
+                outInteger[outIdx++] = (int)GetCandleColor(index) * 100;
             }
             else
             {
@@ -132,7 +132,7 @@ public class CandleKickingByLength<T> : CandleIndicator<T>
     {
         bool isKickingByLength =
             // opposite candles
-            GetCandleColor(i - 1) == -GetCandleColor(i) &&
+            IsColorOpposite(i - 1, i) &&
             // 1st marubozu
             GetRealBody(i - 1) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal[1], i - 1) &&
             GetUpperShadow(i - 1) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[1], i - 1) &&
@@ -143,8 +143,8 @@ public class CandleKickingByLength<T> : CandleIndicator<T>
             GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             // gap
             (
-                (GetCandleColor(i - 1) == -1 && GetCandleGapUp(i, i - 1)) ||
-                (GetCandleColor(i - 1) == 1 && GetCandleGapDown(i, i - 1))
+                (IsColorRed(i - 1) && GetCandleGapUp(i, i - 1)) ||
+                (IsColorGreen(i - 1) && GetCandleGapDown(i, i - 1))
             );
             
         return isKickingByLength;

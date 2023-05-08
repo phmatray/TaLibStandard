@@ -103,9 +103,9 @@ public class CandleMatchingLow<T> : CandleIndicator<T>
     {
         bool isMatchingLow =
             // first black
-            GetCandleColor(i - 1) == -1 &&
+            IsColorRed(i - 1) &&
             // second black
-            GetCandleColor(i) == -1 &&
+            IsColorRed(i) &&
             // 1st and 2nd same close
             Close[i] <= Close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
             Close[i] >= Close[i - 1] - GetCandleAverage(Equal, _equalPeriodTotal, i - 1);

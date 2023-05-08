@@ -106,9 +106,9 @@ public class CandleLadderBottom<T> : CandleIndicator<T>
     {
         bool isLadderBottom =
             // 3 black candlesticks
-            GetCandleColor(i - 4) == -1 &&
-            GetCandleColor(i - 3) == -1 &&
-            GetCandleColor(i - 2) == -1 &&
+            IsColorRed(i - 4) &&
+            IsColorRed(i - 3) &&
+            IsColorRed(i - 2) &&
             // with consecutively lower opens
             Open[i - 4] > Open[i - 3] &&
             Open[i - 3] > Open[i - 2] &&
@@ -116,10 +116,10 @@ public class CandleLadderBottom<T> : CandleIndicator<T>
             Close[i - 4] > Close[i - 3] &&
             Close[i - 3] > Close[i - 2] &&
             // 4th: black with an upper shadow
-            GetCandleColor(i - 1) == -1 &&
+            IsColorRed(i - 1) &&
             GetUpperShadow(i - 1) > GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal, i - 1) &&
             // 5th: white
-            GetCandleColor(i) == 1 &&
+            IsColorGreen(i) &&
             // that opens above prior candle's body
             Open[i] > Open[i - 1] &&
             // and closes above prior candle's high

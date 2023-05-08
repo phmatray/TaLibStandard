@@ -154,11 +154,11 @@ public class Candle3StarsInSouth<T> : CandleIndicator<T>
     {
         bool is3StarsInSouth =
             // 1st black
-            GetCandleColor(i - 2) == -1 &&
+            IsColorRed(i - 2) &&
             // 2nd black
-            GetCandleColor(i - 1) == -1 &&
+            IsColorRed(i - 1) &&
             // 3rd black
-            GetCandleColor(i) == -1 &&
+            IsColorRed(i) &&
             // 1st: long
             GetRealBody(i - 2) > GetCandleAverage(BodyLong, _bodyLongPeriodTotal, i - 2) &&
             // with long lower shadow

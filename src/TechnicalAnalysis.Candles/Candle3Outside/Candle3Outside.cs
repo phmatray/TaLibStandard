@@ -69,10 +69,7 @@ public class Candle3Outside<T> : CandleIndicator<T>
         int outIdx = 0;
         do
         {
-            bool is3Outside = GetPatternRecognition(i);
-
-            outInteger[outIdx++] = is3Outside ? GetCandleColor(i - 1) * 100 : 0;
-
+            outInteger[outIdx++] = GetPatternRecognition(i) ? (int)GetCandleColor(i - 1) * 100 : 0;
             i++;
         } while (i <= endIdx);
 
@@ -89,8 +86,8 @@ public class Candle3Outside<T> : CandleIndicator<T>
         bool is3Outside =
             (
                 // white engulfs black
-                GetCandleColor(i - 1) == 1 &&
-                GetCandleColor(i - 2) == -1 &&
+                IsColorGreen(i - 1) &&
+                IsColorRed(i - 2) &&
                 Close[i - 1] > Open[i - 2] &&
                 Open[i - 1] < Close[i - 2] &&
                 // third candle higher
@@ -99,8 +96,8 @@ public class Candle3Outside<T> : CandleIndicator<T>
             ||
             (
                 // black engulfs white
-                GetCandleColor(i - 1) == -1 &&
-                GetCandleColor(i - 2) == 1 &&
+                IsColorRed(i - 1) &&
+                IsColorGreen(i - 2) &&
                 Open[i - 1] > Close[i - 2] &&
                 Close[i - 1] < Open[i - 2] &&
                 // third candle lower
