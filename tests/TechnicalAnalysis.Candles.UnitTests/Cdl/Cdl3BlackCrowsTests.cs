@@ -10,6 +10,21 @@ public class Cdl3BlackCrowsTests : CdlTestsBase
 {
     protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
         = TACandle.Cdl3BlackCrows;
+
+    [Fact]
+    public void GetPatternRecognitionPatternDetected()
+    {
+        // Arrange
+        float[] open = { 100f, 135f, 130f };
+        float[] close = { 120f, 125f, 110f };
+        Candle3BlackCrows<float> crows = new(open, null!, null!, close);
+        
+        // Act
+        bool isPatternDetected = crows.GetPatternRecognition(2);
+
+        // Assert
+        isPatternDetected.Should().BeTrue();
+    }
     
     [Theory]
     [InlineData(typeof(float))]

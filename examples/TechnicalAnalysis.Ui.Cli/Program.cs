@@ -1,23 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TechnicalAnalysis.Business;
+using TechnicalAnalysis.Common;
 
 Console.WriteLine("TechnicalAnalysis");
 
 #pragma warning disable S125
 
-var dataA = DataHistoryRepository
+DataHistory dataA = DataHistoryRepository
     .GetDataHistoryFromFile("btc", "eur", "day")
     .ComputeMacd()
     .ComputeMovingAverage()
     .ComputeBollingerBands()
     .ComputeRsi();
 
-var dataAIndicator = dataA.Indicators[Indicator.Macd];
+IndicatorBase dataAIndicator = dataA.Indicators[Indicator.Macd];
 
-var data = DataHistoryRepository.GetDataHistoryFromFile("eth", "eur", "day");
-var macdResult = data.ComputeMacd().Indicators.Last();
-var movingAverageResult = data.ComputeMovingAverage().Indicators.Last();
+DataHistory data = DataHistoryRepository.GetDataHistoryFromFile("eth", "eur", "day");
+KeyValuePair<Indicator, IndicatorBase> macdResult = data.ComputeMacd().Indicators.Last();
+KeyValuePair<Indicator, IndicatorBase> movingAverageResult = data.ComputeMovingAverage().Indicators.Last();
 
 
 // var historicalDataB = DataHistoryRepository.GetDataHistoryFromService("btc", "eur", "day");
@@ -29,7 +31,8 @@ var movingAverageResult = data.ComputeMovingAverage().Indicators.Last();
 for (int i = 0; i < data.Count; i++)
 {
     Console.WriteLine(
-        $"Candle {i:000}   O: {data.Open[i]:N8}  "
+        $"Candle {i:000}   "
+        + $"O: {data.Open[i]:N8}  "
         + $"H: {data.High[i]:N8}  "
         + $"L: {data.Low[i]:N8}  "
         + $"C: {data.Close[i]:N8}  ");

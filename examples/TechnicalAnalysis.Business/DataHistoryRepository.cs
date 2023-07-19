@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json;
 
 namespace TechnicalAnalysis.Business;
 
@@ -11,8 +12,8 @@ public static class DataHistoryRepository
         string[] paths = {AppContext.BaseDirectory, "Data", $"{fromSymbol}-{toSymbol}-{interval}.json"};
         string fullPath = Path.Combine(paths);
             
-        var jsonRaw = File.ReadAllText(fullPath);
-        var dataHistory = ParseJson(jsonRaw);
+        string jsonRaw = File.ReadAllText(fullPath);
+        DataHistory dataHistory = ParseJson(jsonRaw);
         return dataHistory;
     }
 
@@ -29,22 +30,22 @@ public static class DataHistoryRepository
             new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
         client.DefaultRequestHeaders.Add("User-Agent", "TechnicalAnalysis");
 
-        var endpoint = $@"https://min-api.cryptocompare.com/data/histo{interval}?fsym={fromSymbol.ToUpper()}&tsym={toSymbol.ToUpper()}&limit={limit}&aggregate=1&e=CCCAGG";
-        var jsonRaw = client.GetStringAsync(endpoint).GetAwaiter().GetResult();
-        var dataHistory = ParseJson(jsonRaw);
+        string endpoint = $@"https://min-api.cryptocompare.com/data/histo{interval}?fsym={fromSymbol.ToUpper()}&tsym={toSymbol.ToUpper()}&limit={limit}&aggregate=1&e=CCCAGG";
+        string jsonRaw = client.GetStringAsync(endpoint).GetAwaiter().GetResult();
+        DataHistory dataHistory = ParseJson(jsonRaw);
         return dataHistory;
     }
 
     private static DataHistory ParseJson(string jsonRaw)
     {
-        var dataHistoryResponse = DataHistoryResponse.FromJson(jsonRaw);
+        DataHistoryResponse? dataHistoryResponse = DataHistoryResponse.FromJson(jsonRaw);
 
         if (dataHistoryResponse?.Response != "Success")
         {
-            throw new Exception("Couldn't create the data history");
+            throw new JsonException("Couldn't create the data history");
         }
 
-        var candles = dataHistoryResponse.Data;
+        List<Candle> candles = dataHistoryResponse.Data;
         return new DataHistory(candles);
     }
 }

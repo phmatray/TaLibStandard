@@ -17,8 +17,8 @@ public static partial class TAFunc
         ref int[] outInteger)
     {
         double smoothedValue;
-        const double a = 0.0962;
-        const double b = 0.5769;
+        const double A = 0.0962;
+        const double B = 0.5769;
         double[] detrender_Odd = new double[3];
         double[] detrender_Even = new double[3];
         double[] Q1_Odd = new double[3];
@@ -197,39 +197,39 @@ public static partial class TAFunc
             double Q1 = 0.0;
             if (today % 2 == 0)
             {
-                hilbertTempReal = a * smoothedValue;
+                hilbertTempReal = A * smoothedValue;
                 detrender = -detrender_Even[hilbertIdx];
                 detrender_Even[hilbertIdx] = hilbertTempReal;
                 detrender += hilbertTempReal;
                 detrender -= prev_detrender_Even;
-                prev_detrender_Even = b * prev_detrender_input_Even;
+                prev_detrender_Even = B * prev_detrender_input_Even;
                 detrender += prev_detrender_Even;
                 prev_detrender_input_Even = smoothedValue;
                 detrender *= adjustedPrevPeriod;
-                hilbertTempReal = a * detrender;
+                hilbertTempReal = A * detrender;
                 Q1 = -Q1_Even[hilbertIdx];
                 Q1_Even[hilbertIdx] = hilbertTempReal;
                 Q1 += hilbertTempReal;
                 Q1 -= prev_Q1_Even;
-                prev_Q1_Even = b * prev_Q1_input_Even;
+                prev_Q1_Even = B * prev_Q1_input_Even;
                 Q1 += prev_Q1_Even;
                 prev_Q1_input_Even = detrender;
                 Q1 *= adjustedPrevPeriod;
-                hilbertTempReal = a * I1ForEvenPrev3;
+                hilbertTempReal = A * I1ForEvenPrev3;
                 jI = -jI_Even[hilbertIdx];
                 jI_Even[hilbertIdx] = hilbertTempReal;
                 jI += hilbertTempReal;
                 jI -= prev_jI_Even;
-                prev_jI_Even = b * prev_jI_input_Even;
+                prev_jI_Even = B * prev_jI_input_Even;
                 jI += prev_jI_Even;
                 prev_jI_input_Even = I1ForEvenPrev3;
                 jI *= adjustedPrevPeriod;
-                hilbertTempReal = a * Q1;
+                hilbertTempReal = A * Q1;
                 jQ = -jQ_Even[hilbertIdx];
                 jQ_Even[hilbertIdx] = hilbertTempReal;
                 jQ += hilbertTempReal;
                 jQ -= prev_jQ_Even;
-                prev_jQ_Even = b * prev_jQ_input_Even;
+                prev_jQ_Even = B * prev_jQ_input_Even;
                 jQ += prev_jQ_Even;
                 prev_jQ_input_Even = Q1;
                 jQ *= adjustedPrevPeriod;
@@ -246,39 +246,39 @@ public static partial class TAFunc
             }
             else
             {
-                hilbertTempReal = a * smoothedValue;
+                hilbertTempReal = A * smoothedValue;
                 detrender = -detrender_Odd[hilbertIdx];
                 detrender_Odd[hilbertIdx] = hilbertTempReal;
                 detrender += hilbertTempReal;
                 detrender -= prev_detrender_Odd;
-                prev_detrender_Odd = b * prev_detrender_input_Odd;
+                prev_detrender_Odd = B * prev_detrender_input_Odd;
                 detrender += prev_detrender_Odd;
                 prev_detrender_input_Odd = smoothedValue;
                 detrender *= adjustedPrevPeriod;
-                hilbertTempReal = a * detrender;
+                hilbertTempReal = A * detrender;
                 Q1 = -Q1_Odd[hilbertIdx];
                 Q1_Odd[hilbertIdx] = hilbertTempReal;
                 Q1 += hilbertTempReal;
                 Q1 -= prevQ1Odd;
-                prevQ1Odd = b * prev_Q1_input_Odd;
+                prevQ1Odd = B * prev_Q1_input_Odd;
                 Q1 += prevQ1Odd;
                 prev_Q1_input_Odd = detrender;
                 Q1 *= adjustedPrevPeriod;
-                hilbertTempReal = a * I1ForOddPrev3;
+                hilbertTempReal = A * I1ForOddPrev3;
                 jI = -jI_Odd[hilbertIdx];
                 jI_Odd[hilbertIdx] = hilbertTempReal;
                 jI += hilbertTempReal;
                 jI -= prev_jI_Odd;
-                prev_jI_Odd = b * prev_jI_input_Odd;
+                prev_jI_Odd = B * prev_jI_input_Odd;
                 jI += prev_jI_Odd;
                 prev_jI_input_Odd = I1ForOddPrev3;
                 jI *= adjustedPrevPeriod;
-                hilbertTempReal = a * Q1;
+                hilbertTempReal = A * Q1;
                 jQ = -jQ_Odd[hilbertIdx];
                 jQ_Odd[hilbertIdx] = hilbertTempReal;
                 jQ += hilbertTempReal;
                 jQ -= prev_jQ_Odd;
-                prev_jQ_Odd = b * prev_jQ_input_Odd;
+                prev_jQ_Odd = B * prev_jQ_input_Odd;
                 jQ += prev_jQ_Odd;
                 prev_jQ_input_Odd = Q1;
                 jQ *= adjustedPrevPeriod;

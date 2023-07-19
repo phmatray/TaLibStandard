@@ -4,4 +4,11 @@
       <ProjectReference Include="..\TechnicalAnalysis.Common\TechnicalAnalysis.Common.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Update="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.3">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
 </Project>
