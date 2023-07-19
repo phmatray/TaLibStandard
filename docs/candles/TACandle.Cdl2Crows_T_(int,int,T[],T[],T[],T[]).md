@@ -26,17 +26,25 @@ public static TechnicalAnalysis.Candles.Candle2CrowsResult Cdl2Crows<T>(int star
 
 `open` [T](TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.Cdl2Crows<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of open prices.
+
 <a name='TechnicalAnalysis.Candles.TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).high'></a>
 
 `high` [T](TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.Cdl2Crows<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of high prices.
 
 <a name='TechnicalAnalysis.Candles.TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).low'></a>
 
 `low` [T](TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.Cdl2Crows<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of low prices.
+
 <a name='TechnicalAnalysis.Candles.TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).close'></a>
 
 `close` [T](TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.Cdl2Crows<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of close prices.
 
 #### Returns
 [Candle2CrowsResult](Candle2CrowsResult.md 'TechnicalAnalysis.Candles.Candle2CrowsResult')

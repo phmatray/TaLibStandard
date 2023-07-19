@@ -26,17 +26,25 @@ public static TechnicalAnalysis.Candles.CandleHangingManResult CdlHangingMan<T>(
 
 `open` [T](TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlHangingMan<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of open prices.
+
 <a name='TechnicalAnalysis.Candles.TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).high'></a>
 
 `high` [T](TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlHangingMan<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of high prices.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).low'></a>
 
 `low` [T](TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlHangingMan<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of low prices.
+
 <a name='TechnicalAnalysis.Candles.TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).close'></a>
 
 `close` [T](TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlHangingMan<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of close prices.
 
 #### Returns
 [CandleHangingManResult](CandleHangingManResult.md 'TechnicalAnalysis.Candles.CandleHangingManResult')

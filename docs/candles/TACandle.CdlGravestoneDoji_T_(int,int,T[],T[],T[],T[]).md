@@ -26,17 +26,25 @@ public static TechnicalAnalysis.Candles.CandleGravestoneDojiResult CdlGravestone
 
 `open` [T](TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of open prices.
+
 <a name='TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).high'></a>
 
 `high` [T](TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of high prices.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).low'></a>
 
 `low` [T](TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of low prices.
+
 <a name='TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).close'></a>
 
 `close` [T](TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of close prices.
 
 #### Returns
 [CandleGravestoneDojiResult](CandleGravestoneDojiResult.md 'TechnicalAnalysis.Candles.CandleGravestoneDojiResult')

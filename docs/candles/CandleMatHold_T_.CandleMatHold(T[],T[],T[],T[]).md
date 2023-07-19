@@ -12,14 +12,22 @@ public CandleMatHold(in T[] open, in T[] high, in T[] low, in T[] close);
 
 `open` [T](CandleMatHold_T_.md#TechnicalAnalysis.Candles.CandleMatHold_T_.T 'TechnicalAnalysis.Candles.CandleMatHold<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of open prices.
+
 <a name='TechnicalAnalysis.Candles.CandleMatHold_T_.CandleMatHold(T[],T[],T[],T[]).high'></a>
 
 `high` [T](CandleMatHold_T_.md#TechnicalAnalysis.Candles.CandleMatHold_T_.T 'TechnicalAnalysis.Candles.CandleMatHold<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of high prices.
 
 <a name='TechnicalAnalysis.Candles.CandleMatHold_T_.CandleMatHold(T[],T[],T[],T[]).low'></a>
 
 `low` [T](CandleMatHold_T_.md#TechnicalAnalysis.Candles.CandleMatHold_T_.T 'TechnicalAnalysis.Candles.CandleMatHold<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of low prices.
+
 <a name='TechnicalAnalysis.Candles.CandleMatHold_T_.CandleMatHold(T[],T[],T[],T[]).close'></a>
 
 `close` [T](CandleMatHold_T_.md#TechnicalAnalysis.Candles.CandleMatHold_T_.T 'TechnicalAnalysis.Candles.CandleMatHold<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of close prices.

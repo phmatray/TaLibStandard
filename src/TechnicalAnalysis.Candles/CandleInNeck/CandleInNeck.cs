@@ -19,10 +19,10 @@ public class CandleInNeck<T> : CandleIndicator<T>
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="open"></param>
-    /// <param name="high"></param>
-    /// <param name="low"></param>
-    /// <param name="close"></param>
+    /// <param name="open">An array of open prices.</param>
+    /// <param name="high">An array of high prices.</param>
+    /// <param name="low">An array of low prices.</param>
+    /// <param name="close">An array of close prices.</param>
     public CandleInNeck(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {

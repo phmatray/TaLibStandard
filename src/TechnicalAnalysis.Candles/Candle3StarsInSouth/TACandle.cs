@@ -13,10 +13,10 @@ public static partial class TACandle
     /// </summary>
     /// <param name="startIdx"></param>
     /// <param name="endIdx"></param>
-    /// <param name="open"></param>
-    /// <param name="high"></param>
-    /// <param name="low"></param>
-    /// <param name="close"></param>
+    /// <param name="open">An array of open prices.</param>
+    /// <param name="high">An array of high prices.</param>
+    /// <param name="low">An array of low prices.</param>
+    /// <param name="close">An array of close prices.</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public static Candle3StarsInSouthResult Cdl3StarsInSouth<T>(

@@ -26,17 +26,25 @@ public static TechnicalAnalysis.Candles.CandleBeltHoldResult CdlBeltHold<T>(int 
 
 `open` [T](TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlBeltHold<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of open prices.
+
 <a name='TechnicalAnalysis.Candles.TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).high'></a>
 
 `high` [T](TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlBeltHold<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of high prices.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).low'></a>
 
 `low` [T](TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlBeltHold<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of low prices.
+
 <a name='TechnicalAnalysis.Candles.TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).close'></a>
 
 `close` [T](TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlBeltHold<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of close prices.
 
 #### Returns
 [CandleBeltHoldResult](CandleBeltHoldResult.md 'TechnicalAnalysis.Candles.CandleBeltHoldResult')

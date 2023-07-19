@@ -26,17 +26,25 @@ public static TechnicalAnalysis.Candles.CandleKickingByLengthResult CdlKickingBy
 
 `open` [T](TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlKickingByLength<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of open prices.
+
 <a name='TechnicalAnalysis.Candles.TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).high'></a>
 
 `high` [T](TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlKickingByLength<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of high prices.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).low'></a>
 
 `low` [T](TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlKickingByLength<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
+An array of low prices.
+
 <a name='TechnicalAnalysis.Candles.TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).close'></a>
 
 `close` [T](TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlKickingByLength<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+An array of close prices.
 
 #### Returns
 [CandleKickingByLengthResult](CandleKickingByLengthResult.md 'TechnicalAnalysis.Candles.CandleKickingByLengthResult')
