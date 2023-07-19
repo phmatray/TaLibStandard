@@ -6,17 +6,34 @@
 
 namespace TechnicalAnalysis.Candles;
 
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class CandleDojiStar<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
     private T _bodyLongPeriodTotal = T.Zero;
     private T _bodyDojiPeriodTotal = T.Zero;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="open"></param>
+    /// <param name="high"></param>
+    /// <param name="low"></param>
+    /// <param name="close"></param>
     public CandleDojiStar(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="startIdx"></param>
+    /// <param name="endIdx"></param>
+    /// <returns></returns>
     public CandleDojiStarResult Compute(int startIdx, int endIdx)
     {
         // Initialize output variables 

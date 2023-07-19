@@ -1,0 +1,24 @@
+#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleAbandonedBaby&lt;T&gt;](CandleAbandonedBaby_T_.md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>')
+
+## CandleAbandonedBaby<T>.Compute(int, int, T) Method
+
+```csharp
+public TechnicalAnalysis.Candles.CandleAbandonedBabyResult Compute(int startIdx, int endIdx, in T optInPenetration);
+```
+#### Parameters
+
+<a name='TechnicalAnalysis.Candles.CandleAbandonedBaby_T_.Compute(int,int,T).startIdx'></a>
+
+`startIdx` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='TechnicalAnalysis.Candles.CandleAbandonedBaby_T_.Compute(int,int,T).endIdx'></a>
+
+`endIdx` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+<a name='TechnicalAnalysis.Candles.CandleAbandonedBaby_T_.Compute(int,int,T).optInPenetration'></a>
+
+`optInPenetration` [T](CandleAbandonedBaby_T_.md#TechnicalAnalysis.Candles.CandleAbandonedBaby_T_.T 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.T')
+
+#### Returns
+[CandleAbandonedBabyResult](CandleAbandonedBabyResult.md 'TechnicalAnalysis.Candles.CandleAbandonedBabyResult')

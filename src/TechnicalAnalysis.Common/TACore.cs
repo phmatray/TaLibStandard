@@ -7,8 +7,14 @@
 // ReSharper disable once CheckNamespace
 namespace TechnicalAnalysis;
 
+/// <summary>
+/// 
+/// </summary>
 public static partial class TACore
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static GlobalsType Globals { get; }
 
     static TACore()
@@ -16,22 +22,42 @@ public static partial class TACore
         Globals = new GlobalsType();
     }
         
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public static Compatibility GetCompatibility()
     {
         return Globals.Compatibility;
     }
         
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
     public static RetCode SetCompatibility(Compatibility value)
     {
         Globals.Compatibility = value;
         return Success;
     }
         
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public static long GetUnstablePeriod(FuncUnstId id)
     {
         return id >= FuncUnstId.FuncUnstAll ? 0 : Globals.UnstablePeriod[id];
     }
         
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="unstablePeriod"></param>
+    /// <returns></returns>
     public static RetCode SetUnstablePeriod(FuncUnstId id, long unstablePeriod)
     {
         switch (id)
@@ -53,6 +79,11 @@ public static partial class TACore
         }
     }
         
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="settingType"></param>
+    /// <returns></returns>
     public static RetCode RestoreCandleDefaultSettings(CandleSettingType settingType)
     {
         switch (settingType)
@@ -82,6 +113,11 @@ public static partial class TACore
         }
     }
         
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="candleSetting"></param>
+    /// <returns></returns>
     public static RetCode SetCandleSettings(CandleSetting candleSetting)
     {
         if (candleSetting.SettingType >= AllCandleSettings)

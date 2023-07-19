@@ -8,6 +8,17 @@ namespace TechnicalAnalysis.Candles;
 
 public static partial class TACandle
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="startIdx"></param>
+    /// <param name="endIdx"></param>
+    /// <param name="open"></param>
+    /// <param name="high"></param>
+    /// <param name="low"></param>
+    /// <param name="close"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
     public static CandleShortLineResult CdlShortLine<T>(
         int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
         where T : IFloatingPoint<T>

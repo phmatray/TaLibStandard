@@ -1,0 +1,25 @@
+#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleDragonflyDoji&lt;T&gt;](CandleDragonflyDoji_T_.md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>')
+
+## CandleDragonflyDoji(T[], T[], T[], T[]) Constructor
+
+```csharp
+public CandleDragonflyDoji(in T[] open, in T[] high, in T[] low, in T[] close);
+```
+#### Parameters
+
+<a name='TechnicalAnalysis.Candles.CandleDragonflyDoji_T_.CandleDragonflyDoji(T[],T[],T[],T[]).open'></a>
+
+`open` [T](CandleDragonflyDoji_T_.md#TechnicalAnalysis.Candles.CandleDragonflyDoji_T_.T 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+<a name='TechnicalAnalysis.Candles.CandleDragonflyDoji_T_.CandleDragonflyDoji(T[],T[],T[],T[]).high'></a>
+
+`high` [T](CandleDragonflyDoji_T_.md#TechnicalAnalysis.Candles.CandleDragonflyDoji_T_.T 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+<a name='TechnicalAnalysis.Candles.CandleDragonflyDoji_T_.CandleDragonflyDoji(T[],T[],T[],T[]).low'></a>
+
+`low` [T](CandleDragonflyDoji_T_.md#TechnicalAnalysis.Candles.CandleDragonflyDoji_T_.T 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+
+<a name='TechnicalAnalysis.Candles.CandleDragonflyDoji_T_.CandleDragonflyDoji(T[],T[],T[],T[]).close'></a>
+
+`close` [T](CandleDragonflyDoji_T_.md#TechnicalAnalysis.Candles.CandleDragonflyDoji_T_.T 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')

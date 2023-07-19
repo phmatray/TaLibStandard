@@ -6,17 +6,34 @@
 
 namespace TechnicalAnalysis.Candles;
 
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class CandleIdentical3Crows<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
     private readonly T[] _shadowVeryShortPeriodTotal = new T[3];
     private readonly T[] _equalPeriodTotal = new T[3];
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="open"></param>
+    /// <param name="high"></param>
+    /// <param name="low"></param>
+    /// <param name="close"></param>
     public CandleIdentical3Crows(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="startIdx"></param>
+    /// <param name="endIdx"></param>
+    /// <returns></returns>
     public CandleIdentical3CrowsResult Compute(int startIdx, int endIdx)
     {
         // Initialize output variables 

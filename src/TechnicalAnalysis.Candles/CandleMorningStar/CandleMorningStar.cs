@@ -6,6 +6,10 @@
 
 namespace TechnicalAnalysis.Candles;
 
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class CandleMorningStar<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
@@ -14,11 +18,25 @@ public class CandleMorningStar<T> : CandleIndicator<T>
     private T _bodyShortPeriodTotal = T.Zero;
     private T _bodyShortPeriodTotal2 = T.Zero;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="open"></param>
+    /// <param name="high"></param>
+    /// <param name="low"></param>
+    /// <param name="close"></param>
     public CandleMorningStar(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="startIdx"></param>
+    /// <param name="endIdx"></param>
+    /// <param name="optInPenetration"></param>
+    /// <returns></returns>
     public CandleMorningStarResult Compute(int startIdx, int endIdx, in T optInPenetration)
     {
         _penetration = optInPenetration;

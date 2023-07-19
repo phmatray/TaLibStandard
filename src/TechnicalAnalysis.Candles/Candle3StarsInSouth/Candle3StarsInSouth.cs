@@ -6,6 +6,10 @@
 
 namespace TechnicalAnalysis.Candles;
 
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class Candle3StarsInSouth<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
@@ -14,11 +18,24 @@ public class Candle3StarsInSouth<T> : CandleIndicator<T>
     private T _shadowLongPeriodTotal = T.Zero;
     private T _bodyShortPeriodTotal = T.Zero;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="open"></param>
+    /// <param name="high"></param>
+    /// <param name="low"></param>
+    /// <param name="close"></param>
     public Candle3StarsInSouth(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="startIdx"></param>
+    /// <param name="endIdx"></param>
+    /// <returns></returns>
     public Candle3StarsInSouthResult Compute(int startIdx, int endIdx)
     {
         // Initialize output variables 

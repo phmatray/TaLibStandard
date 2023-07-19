@@ -6,13 +6,26 @@
 
 namespace TechnicalAnalysis.Candles;
 
+/// <summary>
+/// 
+/// </summary>
 public record CandlePiercingResult : IndicatorBase
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="retCode"></param>
+    /// <param name="begIdx"></param>
+    /// <param name="nbElement"></param>
+    /// <param name="integers"></param>
     public CandlePiercingResult(RetCode retCode, int begIdx, int nbElement, int[] integers)
         : base(retCode, begIdx, nbElement)
     {
         Integers = integers;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public int[] Integers { get; }
 }

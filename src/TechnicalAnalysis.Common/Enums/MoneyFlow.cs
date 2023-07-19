@@ -6,8 +6,18 @@
 
 namespace TechnicalAnalysis.Common;
 
+/// <summary>
+/// 
+/// </summary>
 public class MoneyFlow
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public double Negative { get; set; }
+    
+    /// <summary>
+    /// 
+    /// </summary>
     public double Positive { get; set; }
 }

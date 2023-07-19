@@ -6,16 +6,33 @@
 
 namespace TechnicalAnalysis.Candles;
 
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class CandleSpinningTop<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
     private T _bodyPeriodTotal = T.Zero;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="open"></param>
+    /// <param name="high"></param>
+    /// <param name="low"></param>
+    /// <param name="close"></param>
     public CandleSpinningTop(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="startIdx"></param>
+    /// <param name="endIdx"></param>
+    /// <returns></returns>
     public CandleSpinningTopResult Compute(int startIdx, int endIdx)
     {
         // Initialize output variables 

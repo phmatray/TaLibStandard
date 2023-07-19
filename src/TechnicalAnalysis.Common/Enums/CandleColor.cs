@@ -6,8 +6,18 @@
 
 namespace TechnicalAnalysis.Common;
 
+/// <summary>
+/// Represents the color of a candle.
+/// </summary>
 public enum CandleColor
 {
+    /// <summary>
+    /// Green candle (bullish). 
+    /// </summary>
     Green = 1,
+    
+    /// <summary>
+    /// Red candle (bearish).
+    /// </summary>
     Red = -1
 }

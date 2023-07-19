@@ -6,8 +6,18 @@
 
 namespace TechnicalAnalysis.Common;
 
+/// <summary>
+/// 
+/// </summary>
 public enum Compatibility
 {
+    /// <summary>
+    /// 
+    /// </summary>
     Default,
+    
+    /// <summary>
+    /// 
+    /// </summary>
     Metastock
 }

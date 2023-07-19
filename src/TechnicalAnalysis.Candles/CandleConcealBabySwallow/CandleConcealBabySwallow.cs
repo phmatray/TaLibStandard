@@ -6,16 +6,33 @@
 
 namespace TechnicalAnalysis.Candles;
 
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class CandleConcealBabySwallow<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
     private readonly T[] _shadowVeryShortPeriodTotal = new T[4];
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="open"></param>
+    /// <param name="high"></param>
+    /// <param name="low"></param>
+    /// <param name="close"></param>
     public CandleConcealBabySwallow(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="startIdx"></param>
+    /// <param name="endIdx"></param>
+    /// <returns></returns>
     public CandleConcealBabySwallowResult Compute(int startIdx, int endIdx)
     {
         // Initialize output variables 

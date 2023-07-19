@@ -1,0 +1,565 @@
+#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
+
+## TechnicalAnalysis.Candles Assembly
+### Namespaces
+
+<a name='TechnicalAnalysis.Candles'></a>
+
+## TechnicalAnalysis.Candles Namespace
+- **[Candle2Crows&lt;T&gt;](Candle2Crows_T_.md 'TechnicalAnalysis.Candles.Candle2Crows<T>')** `Class`
+  - **[Candle2Crows(T[], T[], T[], T[])](Candle2Crows_T_.Candle2Crows(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.Candle2Crows<T>.Candle2Crows(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](Candle2Crows_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.Candle2Crows<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](Candle2Crows_T_.GetLookback().md 'TechnicalAnalysis.Candles.Candle2Crows<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](Candle2Crows_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.Candle2Crows<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[Candle2CrowsResult](Candle2CrowsResult.md 'TechnicalAnalysis.Candles.Candle2CrowsResult')** `Class` Represents the result of the Two Crows candlestick pattern indicator.
+  - **[Candle2CrowsResult(RetCode, int, int, int[])](Candle2CrowsResult.Candle2CrowsResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.Candle2CrowsResult.Candle2CrowsResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the Candle2CrowsResult class.
+  - **[Integers](Candle2CrowsResult.Integers.md 'TechnicalAnalysis.Candles.Candle2CrowsResult.Integers')** `Property` Gets the array of integers indicating the presence of the Two Crows pattern.
+- **[Candle3BlackCrows&lt;T&gt;](Candle3BlackCrows_T_.md 'TechnicalAnalysis.Candles.Candle3BlackCrows<T>')** `Class`
+  - **[Candle3BlackCrows(T[], T[], T[], T[])](Candle3BlackCrows_T_.Candle3BlackCrows(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.Candle3BlackCrows<T>.Candle3BlackCrows(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](Candle3BlackCrows_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.Candle3BlackCrows<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](Candle3BlackCrows_T_.GetLookback().md 'TechnicalAnalysis.Candles.Candle3BlackCrows<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](Candle3BlackCrows_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.Candle3BlackCrows<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[Candle3BlackCrowsResult](Candle3BlackCrowsResult.md 'TechnicalAnalysis.Candles.Candle3BlackCrowsResult')** `Class` Represents the result of the Three Black Crows candlestick pattern indicator.
+  - **[Candle3BlackCrowsResult(RetCode, int, int, int[])](Candle3BlackCrowsResult.Candle3BlackCrowsResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.Candle3BlackCrowsResult.Candle3BlackCrowsResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the Candle3BlackCrowsResult class.
+  - **[Integers](Candle3BlackCrowsResult.Integers.md 'TechnicalAnalysis.Candles.Candle3BlackCrowsResult.Integers')** `Property` Gets the array of integers indicating the presence of the Three Black Crows pattern.
+- **[Candle3Inside&lt;T&gt;](Candle3Inside_T_.md 'TechnicalAnalysis.Candles.Candle3Inside<T>')** `Class`
+  - **[Candle3Inside(T[], T[], T[], T[])](Candle3Inside_T_.Candle3Inside(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.Candle3Inside<T>.Candle3Inside(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](Candle3Inside_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.Candle3Inside<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](Candle3Inside_T_.GetLookback().md 'TechnicalAnalysis.Candles.Candle3Inside<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](Candle3Inside_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.Candle3Inside<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[Candle3InsideResult](Candle3InsideResult.md 'TechnicalAnalysis.Candles.Candle3InsideResult')** `Class` Represents the result of the Three Inside candlestick pattern indicator.
+  - **[Candle3InsideResult(RetCode, int, int, int[])](Candle3InsideResult.Candle3InsideResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.Candle3InsideResult.Candle3InsideResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the Candle3InsideResult class.
+  - **[Integers](Candle3InsideResult.Integers.md 'TechnicalAnalysis.Candles.Candle3InsideResult.Integers')** `Property` Gets the array of integers indicating the presence of the Three Inside pattern.
+- **[Candle3LineStrike&lt;T&gt;](Candle3LineStrike_T_.md 'TechnicalAnalysis.Candles.Candle3LineStrike<T>')** `Class`
+  - **[Candle3LineStrike(T[], T[], T[], T[])](Candle3LineStrike_T_.Candle3LineStrike(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.Candle3LineStrike<T>.Candle3LineStrike(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](Candle3LineStrike_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.Candle3LineStrike<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](Candle3LineStrike_T_.GetLookback().md 'TechnicalAnalysis.Candles.Candle3LineStrike<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](Candle3LineStrike_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.Candle3LineStrike<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[Candle3LineStrikeResult](Candle3LineStrikeResult.md 'TechnicalAnalysis.Candles.Candle3LineStrikeResult')** `Class` Represents the result of the Three Line Strike candlestick pattern indicator.
+  - **[Candle3LineStrikeResult(RetCode, int, int, int[])](Candle3LineStrikeResult.Candle3LineStrikeResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.Candle3LineStrikeResult.Candle3LineStrikeResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the Candle3LineStrikeResult class.
+  - **[Integers](Candle3LineStrikeResult.Integers.md 'TechnicalAnalysis.Candles.Candle3LineStrikeResult.Integers')** `Property` Gets the array of integers indicating the presence of the Three Line Strike pattern.
+- **[Candle3Outside&lt;T&gt;](Candle3Outside_T_.md 'TechnicalAnalysis.Candles.Candle3Outside<T>')** `Class`
+  - **[Candle3Outside(T[], T[], T[], T[])](Candle3Outside_T_.Candle3Outside(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.Candle3Outside<T>.Candle3Outside(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](Candle3Outside_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.Candle3Outside<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](Candle3Outside_T_.GetLookback().md 'TechnicalAnalysis.Candles.Candle3Outside<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](Candle3Outside_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.Candle3Outside<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[Candle3OutsideResult](Candle3OutsideResult.md 'TechnicalAnalysis.Candles.Candle3OutsideResult')** `Class` Represents the result of the Three Outside Up/Down candlestick pattern indicator.
+  - **[Candle3OutsideResult(RetCode, int, int, int[])](Candle3OutsideResult.Candle3OutsideResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.Candle3OutsideResult.Candle3OutsideResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the Candle3OutsideResult class.
+  - **[Integers](Candle3OutsideResult.Integers.md 'TechnicalAnalysis.Candles.Candle3OutsideResult.Integers')** `Property` Gets the array of integers indicating the presence of the Three Outside Up/Down pattern.
+- **[Candle3StarsInSouth&lt;T&gt;](Candle3StarsInSouth_T_.md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>')** `Class`
+  - **[Candle3StarsInSouth(T[], T[], T[], T[])](Candle3StarsInSouth_T_.Candle3StarsInSouth(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>.Candle3StarsInSouth(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](Candle3StarsInSouth_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](Candle3StarsInSouth_T_.GetLookback().md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](Candle3StarsInSouth_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[Candle3StarsInSouthResult](Candle3StarsInSouthResult.md 'TechnicalAnalysis.Candles.Candle3StarsInSouthResult')** `Class` Represents the result of the Three Stars in the South candlestick pattern indicator.
+  - **[Candle3StarsInSouthResult(RetCode, int, int, int[])](Candle3StarsInSouthResult.Candle3StarsInSouthResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.Candle3StarsInSouthResult.Candle3StarsInSouthResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the Candle3StarsInSouthResult class.
+  - **[Integers](Candle3StarsInSouthResult.Integers.md 'TechnicalAnalysis.Candles.Candle3StarsInSouthResult.Integers')** `Property` Gets the array of integers indicating the presence of the Three Stars in the South pattern.
+- **[Candle3WhiteSoldiers&lt;T&gt;](Candle3WhiteSoldiers_T_.md 'TechnicalAnalysis.Candles.Candle3WhiteSoldiers<T>')** `Class`
+  - **[Candle3WhiteSoldiers(T[], T[], T[], T[])](Candle3WhiteSoldiers_T_.Candle3WhiteSoldiers(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.Candle3WhiteSoldiers<T>.Candle3WhiteSoldiers(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](Candle3WhiteSoldiers_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.Candle3WhiteSoldiers<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](Candle3WhiteSoldiers_T_.GetLookback().md 'TechnicalAnalysis.Candles.Candle3WhiteSoldiers<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](Candle3WhiteSoldiers_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.Candle3WhiteSoldiers<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[Candle3WhiteSoldiersResult](Candle3WhiteSoldiersResult.md 'TechnicalAnalysis.Candles.Candle3WhiteSoldiersResult')** `Class` Represents the result of the Three White Soldiers candlestick pattern indicator.
+  - **[Candle3WhiteSoldiersResult(RetCode, int, int, int[])](Candle3WhiteSoldiersResult.Candle3WhiteSoldiersResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.Candle3WhiteSoldiersResult.Candle3WhiteSoldiersResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the Candle3WhiteSoldiersResult class.
+  - **[Integers](Candle3WhiteSoldiersResult.Integers.md 'TechnicalAnalysis.Candles.Candle3WhiteSoldiersResult.Integers')** `Property` Gets the array of integers indicating the presence of the Three White Soldiers pattern.
+- **[CandleAbandonedBaby&lt;T&gt;](CandleAbandonedBaby_T_.md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>')** `Class`
+  - **[CandleAbandonedBaby(T[], T[], T[], T[])](CandleAbandonedBaby_T_.CandleAbandonedBaby(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.CandleAbandonedBaby(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int, T)](CandleAbandonedBaby_T_.Compute(int,int,T).md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.Compute(int, int, T)')** `Method`
+  - **[GetLookback()](CandleAbandonedBaby_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleAbandonedBaby_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleAbandonedBabyResult](CandleAbandonedBabyResult.md 'TechnicalAnalysis.Candles.CandleAbandonedBabyResult')** `Class` Represents the result of the Abandoned Baby candlestick pattern indicator.
+  - **[CandleAbandonedBabyResult(RetCode, int, int, int[])](CandleAbandonedBabyResult.CandleAbandonedBabyResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleAbandonedBabyResult.CandleAbandonedBabyResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the CandleAbandonedBabyResult class.
+  - **[Integers](CandleAbandonedBabyResult.Integers.md 'TechnicalAnalysis.Candles.CandleAbandonedBabyResult.Integers')** `Property` Gets the array of integers indicating the presence of the Abandoned Baby pattern.
+- **[CandleAdvanceBlock&lt;T&gt;](CandleAdvanceBlock_T_.md 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>')** `Class`
+  - **[CandleAdvanceBlock(T[], T[], T[], T[])](CandleAdvanceBlock_T_.CandleAdvanceBlock(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>.CandleAdvanceBlock(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleAdvanceBlock_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleAdvanceBlock_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleAdvanceBlock_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleAdvanceBlockResult](CandleAdvanceBlockResult.md 'TechnicalAnalysis.Candles.CandleAdvanceBlockResult')** `Class` Represents the result of the Advance Block candlestick pattern indicator.
+  - **[CandleAdvanceBlockResult(RetCode, int, int, int[])](CandleAdvanceBlockResult.CandleAdvanceBlockResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleAdvanceBlockResult.CandleAdvanceBlockResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the CandleAdvanceBlockResult class.
+  - **[Integers](CandleAdvanceBlockResult.Integers.md 'TechnicalAnalysis.Candles.CandleAdvanceBlockResult.Integers')** `Property` Gets the array of integers indicating the presence of the Advance Block pattern.
+- **[CandleBeltHold&lt;T&gt;](CandleBeltHold_T_.md 'TechnicalAnalysis.Candles.CandleBeltHold<T>')** `Class`
+  - **[CandleBeltHold(T[], T[], T[], T[])](CandleBeltHold_T_.CandleBeltHold(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleBeltHold<T>.CandleBeltHold(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleBeltHold_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleBeltHold<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleBeltHold_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleBeltHold<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleBeltHold_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleBeltHold<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleBeltHoldResult](CandleBeltHoldResult.md 'TechnicalAnalysis.Candles.CandleBeltHoldResult')** `Class` Represents the result of the Belt Hold candlestick pattern indicator.
+  - **[CandleBeltHoldResult(RetCode, int, int, int[])](CandleBeltHoldResult.CandleBeltHoldResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleBeltHoldResult.CandleBeltHoldResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the CandleBeltHoldResult class.
+  - **[Integers](CandleBeltHoldResult.Integers.md 'TechnicalAnalysis.Candles.CandleBeltHoldResult.Integers')** `Property` Gets the array of integers indicating the presence of the Belt Hold pattern.
+- **[CandleBreakaway&lt;T&gt;](CandleBreakaway_T_.md 'TechnicalAnalysis.Candles.CandleBreakaway<T>')** `Class`
+  - **[CandleBreakaway(T[], T[], T[], T[])](CandleBreakaway_T_.CandleBreakaway(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleBreakaway<T>.CandleBreakaway(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleBreakaway_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleBreakaway<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleBreakaway_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleBreakaway<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleBreakaway_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleBreakaway<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleBreakawayResult](CandleBreakawayResult.md 'TechnicalAnalysis.Candles.CandleBreakawayResult')** `Class` Represents the result of the Breakaway candlestick pattern indicator.
+  - **[CandleBreakawayResult(RetCode, int, int, int[])](CandleBreakawayResult.CandleBreakawayResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleBreakawayResult.CandleBreakawayResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the CandleBreakawayResult class.
+  - **[Integers](CandleBreakawayResult.Integers.md 'TechnicalAnalysis.Candles.CandleBreakawayResult.Integers')** `Property` Gets the array of integers indicating the presence of the Breakaway pattern.
+- **[CandleClosingMarubozu&lt;T&gt;](CandleClosingMarubozu_T_.md 'TechnicalAnalysis.Candles.CandleClosingMarubozu<T>')** `Class`
+  - **[CandleClosingMarubozu(T[], T[], T[], T[])](CandleClosingMarubozu_T_.CandleClosingMarubozu(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleClosingMarubozu<T>.CandleClosingMarubozu(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleClosingMarubozu_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleClosingMarubozu<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleClosingMarubozu_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleClosingMarubozu<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleClosingMarubozu_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleClosingMarubozu<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleClosingMarubozuResult](CandleClosingMarubozuResult.md 'TechnicalAnalysis.Candles.CandleClosingMarubozuResult')** `Class` Represents the result of the Closing Marubozu candlestick pattern indicator.
+  - **[CandleClosingMarubozuResult(RetCode, int, int, int[])](CandleClosingMarubozuResult.CandleClosingMarubozuResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleClosingMarubozuResult.CandleClosingMarubozuResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the CandleClosingMarubozuResult class.
+  - **[Integers](CandleClosingMarubozuResult.Integers.md 'TechnicalAnalysis.Candles.CandleClosingMarubozuResult.Integers')** `Property` Gets the array of integers indicating the presence of the Closing Marubozu pattern.
+- **[CandleConcealBabySwallow&lt;T&gt;](CandleConcealBabySwallow_T_.md 'TechnicalAnalysis.Candles.CandleConcealBabySwallow<T>')** `Class`
+  - **[CandleConcealBabySwallow(T[], T[], T[], T[])](CandleConcealBabySwallow_T_.CandleConcealBabySwallow(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleConcealBabySwallow<T>.CandleConcealBabySwallow(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleConcealBabySwallow_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleConcealBabySwallow<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleConcealBabySwallow_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleConcealBabySwallow<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleConcealBabySwallow_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleConcealBabySwallow<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleConcealBabySwallowResult](CandleConcealBabySwallowResult.md 'TechnicalAnalysis.Candles.CandleConcealBabySwallowResult')** `Class` Represents the result of the Conceal Baby Swallow candlestick pattern indicator.
+  - **[CandleConcealBabySwallowResult(RetCode, int, int, int[])](CandleConcealBabySwallowResult.CandleConcealBabySwallowResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleConcealBabySwallowResult.CandleConcealBabySwallowResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the CandleConcealBabySwallowResult class.
+  - **[Integers](CandleConcealBabySwallowResult.Integers.md 'TechnicalAnalysis.Candles.CandleConcealBabySwallowResult.Integers')** `Property` Gets the array of integers indicating the presence of the Conceal Baby Swallow pattern.
+- **[CandleCounterAttack&lt;T&gt;](CandleCounterAttack_T_.md 'TechnicalAnalysis.Candles.CandleCounterAttack<T>')** `Class`
+  - **[CandleCounterAttack(T[], T[], T[], T[])](CandleCounterAttack_T_.CandleCounterAttack(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleCounterAttack<T>.CandleCounterAttack(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleCounterAttack_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleCounterAttack<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleCounterAttack_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleCounterAttack<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleCounterAttack_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleCounterAttack<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleCounterAttackResult](CandleCounterAttackResult.md 'TechnicalAnalysis.Candles.CandleCounterAttackResult')** `Class` Represents the result of the Counter Attack candlestick pattern indicator.
+  - **[CandleCounterAttackResult(RetCode, int, int, int[])](CandleCounterAttackResult.CandleCounterAttackResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleCounterAttackResult.CandleCounterAttackResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the CandleCounterAttackResult class.
+  - **[Integers](CandleCounterAttackResult.Integers.md 'TechnicalAnalysis.Candles.CandleCounterAttackResult.Integers')** `Property` Gets the array of integers indicating the presence of the Counter Attack pattern.
+- **[CandleDarkCloudCover&lt;T&gt;](CandleDarkCloudCover_T_.md 'TechnicalAnalysis.Candles.CandleDarkCloudCover<T>')** `Class`
+  - **[CandleDarkCloudCover(T[], T[], T[], T[])](CandleDarkCloudCover_T_.CandleDarkCloudCover(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleDarkCloudCover<T>.CandleDarkCloudCover(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int, T)](CandleDarkCloudCover_T_.Compute(int,int,T).md 'TechnicalAnalysis.Candles.CandleDarkCloudCover<T>.Compute(int, int, T)')** `Method`
+  - **[GetLookback()](CandleDarkCloudCover_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleDarkCloudCover<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleDarkCloudCover_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleDarkCloudCover<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleDarkCloudCoverResult](CandleDarkCloudCoverResult.md 'TechnicalAnalysis.Candles.CandleDarkCloudCoverResult')** `Class`
+  - **[CandleDarkCloudCoverResult(RetCode, int, int, int[])](CandleDarkCloudCoverResult.CandleDarkCloudCoverResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleDarkCloudCoverResult.CandleDarkCloudCoverResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleDarkCloudCoverResult.Integers.md 'TechnicalAnalysis.Candles.CandleDarkCloudCoverResult.Integers')** `Property`
+- **[CandleDoji&lt;T&gt;](CandleDoji_T_.md 'TechnicalAnalysis.Candles.CandleDoji<T>')** `Class`
+  - **[CandleDoji(T[], T[], T[], T[])](CandleDoji_T_.CandleDoji(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleDoji<T>.CandleDoji(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleDoji_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleDoji<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleDoji_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleDoji<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleDoji_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleDoji<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleDojiResult](CandleDojiResult.md 'TechnicalAnalysis.Candles.CandleDojiResult')** `Class`
+  - **[CandleDojiResult(RetCode, int, int, int[])](CandleDojiResult.CandleDojiResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleDojiResult.CandleDojiResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleDojiResult.Integers.md 'TechnicalAnalysis.Candles.CandleDojiResult.Integers')** `Property`
+- **[CandleDojiStar&lt;T&gt;](CandleDojiStar_T_.md 'TechnicalAnalysis.Candles.CandleDojiStar<T>')** `Class`
+  - **[CandleDojiStar(T[], T[], T[], T[])](CandleDojiStar_T_.CandleDojiStar(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleDojiStar<T>.CandleDojiStar(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleDojiStar_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleDojiStar<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleDojiStar_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleDojiStar<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleDojiStar_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleDojiStar<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleDojiStarResult](CandleDojiStarResult.md 'TechnicalAnalysis.Candles.CandleDojiStarResult')** `Class`
+  - **[CandleDojiStarResult(RetCode, int, int, int[])](CandleDojiStarResult.CandleDojiStarResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleDojiStarResult.CandleDojiStarResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleDojiStarResult.Integers.md 'TechnicalAnalysis.Candles.CandleDojiStarResult.Integers')** `Property`
+- **[CandleDragonflyDoji&lt;T&gt;](CandleDragonflyDoji_T_.md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>')** `Class`
+  - **[CandleDragonflyDoji(T[], T[], T[], T[])](CandleDragonflyDoji_T_.CandleDragonflyDoji(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.CandleDragonflyDoji(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleDragonflyDoji_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleDragonflyDoji_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleDragonflyDoji_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleDragonflyDojiResult](CandleDragonflyDojiResult.md 'TechnicalAnalysis.Candles.CandleDragonflyDojiResult')** `Class`
+  - **[CandleDragonflyDojiResult(RetCode, int, int, int[])](CandleDragonflyDojiResult.CandleDragonflyDojiResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleDragonflyDojiResult.CandleDragonflyDojiResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleDragonflyDojiResult.Integers.md 'TechnicalAnalysis.Candles.CandleDragonflyDojiResult.Integers')** `Property`
+- **[CandleEngulfing&lt;T&gt;](CandleEngulfing_T_.md 'TechnicalAnalysis.Candles.CandleEngulfing<T>')** `Class`
+  - **[CandleEngulfing(T[], T[], T[], T[])](CandleEngulfing_T_.CandleEngulfing(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleEngulfing<T>.CandleEngulfing(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleEngulfing_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleEngulfing<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleEngulfing_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleEngulfing<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleEngulfing_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleEngulfing<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleEngulfingResult](CandleEngulfingResult.md 'TechnicalAnalysis.Candles.CandleEngulfingResult')** `Class`
+  - **[CandleEngulfingResult(RetCode, int, int, int[])](CandleEngulfingResult.CandleEngulfingResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleEngulfingResult.CandleEngulfingResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleEngulfingResult.Integers.md 'TechnicalAnalysis.Candles.CandleEngulfingResult.Integers')** `Property`
+- **[CandleEveningDojiStar&lt;T&gt;](CandleEveningDojiStar_T_.md 'TechnicalAnalysis.Candles.CandleEveningDojiStar<T>')** `Class`
+  - **[CandleEveningDojiStar(T[], T[], T[], T[])](CandleEveningDojiStar_T_.CandleEveningDojiStar(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleEveningDojiStar<T>.CandleEveningDojiStar(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int, T)](CandleEveningDojiStar_T_.Compute(int,int,T).md 'TechnicalAnalysis.Candles.CandleEveningDojiStar<T>.Compute(int, int, T)')** `Method`
+  - **[GetLookback()](CandleEveningDojiStar_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleEveningDojiStar<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleEveningDojiStar_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleEveningDojiStar<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleEveningDojiStarResult](CandleEveningDojiStarResult.md 'TechnicalAnalysis.Candles.CandleEveningDojiStarResult')** `Class`
+  - **[CandleEveningDojiStarResult(RetCode, int, int, int[])](CandleEveningDojiStarResult.CandleEveningDojiStarResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleEveningDojiStarResult.CandleEveningDojiStarResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleEveningDojiStarResult.Integers.md 'TechnicalAnalysis.Candles.CandleEveningDojiStarResult.Integers')** `Property`
+- **[CandleEveningStar&lt;T&gt;](CandleEveningStar_T_.md 'TechnicalAnalysis.Candles.CandleEveningStar<T>')** `Class`
+  - **[CandleEveningStar(T[], T[], T[], T[])](CandleEveningStar_T_.CandleEveningStar(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleEveningStar<T>.CandleEveningStar(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int, T)](CandleEveningStar_T_.Compute(int,int,T).md 'TechnicalAnalysis.Candles.CandleEveningStar<T>.Compute(int, int, T)')** `Method`
+  - **[GetLookback()](CandleEveningStar_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleEveningStar<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleEveningStar_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleEveningStar<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleEveningStarResult](CandleEveningStarResult.md 'TechnicalAnalysis.Candles.CandleEveningStarResult')** `Class`
+  - **[CandleEveningStarResult(RetCode, int, int, int[])](CandleEveningStarResult.CandleEveningStarResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleEveningStarResult.CandleEveningStarResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleEveningStarResult.Integers.md 'TechnicalAnalysis.Candles.CandleEveningStarResult.Integers')** `Property`
+- **[CandleGapSideSideWhite&lt;T&gt;](CandleGapSideSideWhite_T_.md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>')** `Class`
+  - **[CandleGapSideSideWhite(T[], T[], T[], T[])](CandleGapSideSideWhite_T_.CandleGapSideSideWhite(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>.CandleGapSideSideWhite(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleGapSideSideWhite_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleGapSideSideWhite_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleGapSideSideWhite_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleGapSideSideWhiteResult](CandleGapSideSideWhiteResult.md 'TechnicalAnalysis.Candles.CandleGapSideSideWhiteResult')** `Class`
+  - **[CandleGapSideSideWhiteResult(RetCode, int, int, int[])](CandleGapSideSideWhiteResult.CandleGapSideSideWhiteResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleGapSideSideWhiteResult.CandleGapSideSideWhiteResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleGapSideSideWhiteResult.Integers.md 'TechnicalAnalysis.Candles.CandleGapSideSideWhiteResult.Integers')** `Property`
+- **[CandleGravestoneDoji&lt;T&gt;](CandleGravestoneDoji_T_.md 'TechnicalAnalysis.Candles.CandleGravestoneDoji<T>')** `Class`
+  - **[CandleGravestoneDoji(T[], T[], T[], T[])](CandleGravestoneDoji_T_.CandleGravestoneDoji(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleGravestoneDoji<T>.CandleGravestoneDoji(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleGravestoneDoji_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleGravestoneDoji<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleGravestoneDoji_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleGravestoneDoji<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleGravestoneDoji_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleGravestoneDoji<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleGravestoneDojiResult](CandleGravestoneDojiResult.md 'TechnicalAnalysis.Candles.CandleGravestoneDojiResult')** `Class`
+  - **[CandleGravestoneDojiResult(RetCode, int, int, int[])](CandleGravestoneDojiResult.CandleGravestoneDojiResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleGravestoneDojiResult.CandleGravestoneDojiResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleGravestoneDojiResult.Integers.md 'TechnicalAnalysis.Candles.CandleGravestoneDojiResult.Integers')** `Property`
+- **[CandleHammer&lt;T&gt;](CandleHammer_T_.md 'TechnicalAnalysis.Candles.CandleHammer<T>')** `Class`
+  - **[CandleHammer(T[], T[], T[], T[])](CandleHammer_T_.CandleHammer(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleHammer<T>.CandleHammer(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleHammer_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleHammer<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleHammer_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleHammer<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleHammer_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleHammer<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleHammerResult](CandleHammerResult.md 'TechnicalAnalysis.Candles.CandleHammerResult')** `Class`
+  - **[CandleHammerResult(RetCode, int, int, int[])](CandleHammerResult.CandleHammerResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleHammerResult.CandleHammerResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleHammerResult.Integers.md 'TechnicalAnalysis.Candles.CandleHammerResult.Integers')** `Property`
+- **[CandleHangingMan&lt;T&gt;](CandleHangingMan_T_.md 'TechnicalAnalysis.Candles.CandleHangingMan<T>')** `Class`
+  - **[CandleHangingMan(T[], T[], T[], T[])](CandleHangingMan_T_.CandleHangingMan(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleHangingMan<T>.CandleHangingMan(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleHangingMan_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleHangingMan<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleHangingMan_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleHangingMan<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleHangingMan_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleHangingMan<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleHangingManResult](CandleHangingManResult.md 'TechnicalAnalysis.Candles.CandleHangingManResult')** `Class`
+  - **[CandleHangingManResult(RetCode, int, int, int[])](CandleHangingManResult.CandleHangingManResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleHangingManResult.CandleHangingManResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleHangingManResult.Integers.md 'TechnicalAnalysis.Candles.CandleHangingManResult.Integers')** `Property`
+- **[CandleHarami&lt;T&gt;](CandleHarami_T_.md 'TechnicalAnalysis.Candles.CandleHarami<T>')** `Class`
+  - **[CandleHarami(T[], T[], T[], T[])](CandleHarami_T_.CandleHarami(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleHarami<T>.CandleHarami(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleHarami_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleHarami<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleHarami_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleHarami<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleHarami_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleHarami<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleHaramiCross&lt;T&gt;](CandleHaramiCross_T_.md 'TechnicalAnalysis.Candles.CandleHaramiCross<T>')** `Class`
+  - **[CandleHaramiCross(T[], T[], T[], T[])](CandleHaramiCross_T_.CandleHaramiCross(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleHaramiCross<T>.CandleHaramiCross(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleHaramiCross_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleHaramiCross<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleHaramiCross_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleHaramiCross<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleHaramiCross_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleHaramiCross<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleHaramiCrossResult](CandleHaramiCrossResult.md 'TechnicalAnalysis.Candles.CandleHaramiCrossResult')** `Class`
+  - **[CandleHaramiCrossResult(RetCode, int, int, int[])](CandleHaramiCrossResult.CandleHaramiCrossResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleHaramiCrossResult.CandleHaramiCrossResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleHaramiCrossResult.Integers.md 'TechnicalAnalysis.Candles.CandleHaramiCrossResult.Integers')** `Property`
+- **[CandleHaramiResult](CandleHaramiResult.md 'TechnicalAnalysis.Candles.CandleHaramiResult')** `Class`
+  - **[CandleHaramiResult(RetCode, int, int, int[])](CandleHaramiResult.CandleHaramiResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleHaramiResult.CandleHaramiResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleHaramiResult.Integers.md 'TechnicalAnalysis.Candles.CandleHaramiResult.Integers')** `Property`
+- **[CandleHighWave&lt;T&gt;](CandleHighWave_T_.md 'TechnicalAnalysis.Candles.CandleHighWave<T>')** `Class`
+  - **[CandleHighWave(T[], T[], T[], T[])](CandleHighWave_T_.CandleHighWave(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleHighWave<T>.CandleHighWave(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleHighWave_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleHighWave<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleHighWave_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleHighWave<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleHighWave_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleHighWave<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleHighWaveResult](CandleHighWaveResult.md 'TechnicalAnalysis.Candles.CandleHighWaveResult')** `Class`
+  - **[CandleHighWaveResult(RetCode, int, int, int[])](CandleHighWaveResult.CandleHighWaveResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleHighWaveResult.CandleHighWaveResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleHighWaveResult.Integers.md 'TechnicalAnalysis.Candles.CandleHighWaveResult.Integers')** `Property`
+- **[CandleHikkake&lt;T&gt;](CandleHikkake_T_.md 'TechnicalAnalysis.Candles.CandleHikkake<T>')** `Class`
+  - **[CandleHikkake(T[], T[], T[], T[])](CandleHikkake_T_.CandleHikkake(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleHikkake<T>.CandleHikkake(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleHikkake_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleHikkake<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleHikkake_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleHikkake<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleHikkake_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleHikkake<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleHikkakeMod&lt;T&gt;](CandleHikkakeMod_T_.md 'TechnicalAnalysis.Candles.CandleHikkakeMod<T>')** `Class`
+  - **[CandleHikkakeMod(T[], T[], T[], T[])](CandleHikkakeMod_T_.CandleHikkakeMod(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleHikkakeMod<T>.CandleHikkakeMod(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleHikkakeMod_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleHikkakeMod<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleHikkakeMod_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleHikkakeMod<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleHikkakeMod_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleHikkakeMod<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleHikkakeModResult](CandleHikkakeModResult.md 'TechnicalAnalysis.Candles.CandleHikkakeModResult')** `Class`
+  - **[CandleHikkakeModResult(RetCode, int, int, int[])](CandleHikkakeModResult.CandleHikkakeModResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleHikkakeModResult.CandleHikkakeModResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleHikkakeModResult.Integers.md 'TechnicalAnalysis.Candles.CandleHikkakeModResult.Integers')** `Property`
+- **[CandleHikkakeResult](CandleHikkakeResult.md 'TechnicalAnalysis.Candles.CandleHikkakeResult')** `Class`
+  - **[CandleHikkakeResult(RetCode, int, int, int[])](CandleHikkakeResult.CandleHikkakeResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleHikkakeResult.CandleHikkakeResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleHikkakeResult.Integers.md 'TechnicalAnalysis.Candles.CandleHikkakeResult.Integers')** `Property`
+- **[CandleHomingPigeon&lt;T&gt;](CandleHomingPigeon_T_.md 'TechnicalAnalysis.Candles.CandleHomingPigeon<T>')** `Class`
+  - **[CandleHomingPigeon(T[], T[], T[], T[])](CandleHomingPigeon_T_.CandleHomingPigeon(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleHomingPigeon<T>.CandleHomingPigeon(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleHomingPigeon_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleHomingPigeon<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleHomingPigeon_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleHomingPigeon<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleHomingPigeon_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleHomingPigeon<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleHomingPigeonResult](CandleHomingPigeonResult.md 'TechnicalAnalysis.Candles.CandleHomingPigeonResult')** `Class`
+  - **[CandleHomingPigeonResult(RetCode, int, int, int[])](CandleHomingPigeonResult.CandleHomingPigeonResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleHomingPigeonResult.CandleHomingPigeonResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleHomingPigeonResult.Integers.md 'TechnicalAnalysis.Candles.CandleHomingPigeonResult.Integers')** `Property`
+- **[CandleIdentical3Crows&lt;T&gt;](CandleIdentical3Crows_T_.md 'TechnicalAnalysis.Candles.CandleIdentical3Crows<T>')** `Class`
+  - **[CandleIdentical3Crows(T[], T[], T[], T[])](CandleIdentical3Crows_T_.CandleIdentical3Crows(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleIdentical3Crows<T>.CandleIdentical3Crows(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleIdentical3Crows_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleIdentical3Crows<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleIdentical3Crows_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleIdentical3Crows<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleIdentical3Crows_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleIdentical3Crows<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleIdentical3CrowsResult](CandleIdentical3CrowsResult.md 'TechnicalAnalysis.Candles.CandleIdentical3CrowsResult')** `Class`
+  - **[CandleIdentical3CrowsResult(RetCode, int, int, int[])](CandleIdentical3CrowsResult.CandleIdentical3CrowsResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleIdentical3CrowsResult.CandleIdentical3CrowsResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleIdentical3CrowsResult.Integers.md 'TechnicalAnalysis.Candles.CandleIdentical3CrowsResult.Integers')** `Property`
+- **[CandleInNeck&lt;T&gt;](CandleInNeck_T_.md 'TechnicalAnalysis.Candles.CandleInNeck<T>')** `Class`
+  - **[CandleInNeck(T[], T[], T[], T[])](CandleInNeck_T_.CandleInNeck(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleInNeck<T>.CandleInNeck(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleInNeck_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleInNeck<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleInNeck_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleInNeck<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleInNeck_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleInNeck<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleInNeckResult](CandleInNeckResult.md 'TechnicalAnalysis.Candles.CandleInNeckResult')** `Class`
+  - **[CandleInNeckResult(RetCode, int, int, int[])](CandleInNeckResult.CandleInNeckResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleInNeckResult.CandleInNeckResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleInNeckResult.Integers.md 'TechnicalAnalysis.Candles.CandleInNeckResult.Integers')** `Property`
+- **[CandleInvertedHammer&lt;T&gt;](CandleInvertedHammer_T_.md 'TechnicalAnalysis.Candles.CandleInvertedHammer<T>')** `Class`
+  - **[CandleInvertedHammer(T[], T[], T[], T[])](CandleInvertedHammer_T_.CandleInvertedHammer(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleInvertedHammer<T>.CandleInvertedHammer(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleInvertedHammer_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleInvertedHammer<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleInvertedHammer_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleInvertedHammer<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleInvertedHammer_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleInvertedHammer<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleInvertedHammerResult](CandleInvertedHammerResult.md 'TechnicalAnalysis.Candles.CandleInvertedHammerResult')** `Class`
+  - **[CandleInvertedHammerResult(RetCode, int, int, int[])](CandleInvertedHammerResult.CandleInvertedHammerResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleInvertedHammerResult.CandleInvertedHammerResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleInvertedHammerResult.Integers.md 'TechnicalAnalysis.Candles.CandleInvertedHammerResult.Integers')** `Property`
+- **[CandleKicking&lt;T&gt;](CandleKicking_T_.md 'TechnicalAnalysis.Candles.CandleKicking<T>')** `Class`
+  - **[CandleKicking(T[], T[], T[], T[])](CandleKicking_T_.CandleKicking(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleKicking<T>.CandleKicking(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleKicking_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleKicking<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleKicking_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleKicking<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleKicking_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleKicking<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleKickingByLength&lt;T&gt;](CandleKickingByLength_T_.md 'TechnicalAnalysis.Candles.CandleKickingByLength<T>')** `Class`
+  - **[CandleKickingByLength(T[], T[], T[], T[])](CandleKickingByLength_T_.CandleKickingByLength(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleKickingByLength<T>.CandleKickingByLength(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleKickingByLength_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleKickingByLength<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleKickingByLength_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleKickingByLength<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleKickingByLength_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleKickingByLength<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleKickingByLengthResult](CandleKickingByLengthResult.md 'TechnicalAnalysis.Candles.CandleKickingByLengthResult')** `Class`
+  - **[CandleKickingByLengthResult(RetCode, int, int, int[])](CandleKickingByLengthResult.CandleKickingByLengthResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleKickingByLengthResult.CandleKickingByLengthResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleKickingByLengthResult.Integers.md 'TechnicalAnalysis.Candles.CandleKickingByLengthResult.Integers')** `Property`
+- **[CandleKickingResult](CandleKickingResult.md 'TechnicalAnalysis.Candles.CandleKickingResult')** `Class`
+  - **[CandleKickingResult(RetCode, int, int, int[])](CandleKickingResult.CandleKickingResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleKickingResult.CandleKickingResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleKickingResult.Integers.md 'TechnicalAnalysis.Candles.CandleKickingResult.Integers')** `Property`
+- **[CandleLadderBottom&lt;T&gt;](CandleLadderBottom_T_.md 'TechnicalAnalysis.Candles.CandleLadderBottom<T>')** `Class`
+  - **[CandleLadderBottom(T[], T[], T[], T[])](CandleLadderBottom_T_.CandleLadderBottom(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleLadderBottom<T>.CandleLadderBottom(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleLadderBottom_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleLadderBottom<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleLadderBottom_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleLadderBottom<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleLadderBottom_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleLadderBottom<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleLadderBottomResult](CandleLadderBottomResult.md 'TechnicalAnalysis.Candles.CandleLadderBottomResult')** `Class`
+  - **[CandleLadderBottomResult(RetCode, int, int, int[])](CandleLadderBottomResult.CandleLadderBottomResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleLadderBottomResult.CandleLadderBottomResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleLadderBottomResult.Integers.md 'TechnicalAnalysis.Candles.CandleLadderBottomResult.Integers')** `Property`
+- **[CandleLongLeggedDoji&lt;T&gt;](CandleLongLeggedDoji_T_.md 'TechnicalAnalysis.Candles.CandleLongLeggedDoji<T>')** `Class`
+  - **[CandleLongLeggedDoji(T[], T[], T[], T[])](CandleLongLeggedDoji_T_.CandleLongLeggedDoji(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleLongLeggedDoji<T>.CandleLongLeggedDoji(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleLongLeggedDoji_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleLongLeggedDoji<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleLongLeggedDoji_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleLongLeggedDoji<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleLongLeggedDoji_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleLongLeggedDoji<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleLongLeggedDojiResult](CandleLongLeggedDojiResult.md 'TechnicalAnalysis.Candles.CandleLongLeggedDojiResult')** `Class`
+  - **[CandleLongLeggedDojiResult(RetCode, int, int, int[])](CandleLongLeggedDojiResult.CandleLongLeggedDojiResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleLongLeggedDojiResult.CandleLongLeggedDojiResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleLongLeggedDojiResult.Integers.md 'TechnicalAnalysis.Candles.CandleLongLeggedDojiResult.Integers')** `Property`
+- **[CandleLongLine&lt;T&gt;](CandleLongLine_T_.md 'TechnicalAnalysis.Candles.CandleLongLine<T>')** `Class`
+  - **[CandleLongLine(T[], T[], T[], T[])](CandleLongLine_T_.CandleLongLine(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleLongLine<T>.CandleLongLine(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleLongLine_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleLongLine<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleLongLine_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleLongLine<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleLongLine_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleLongLine<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleLongLineResult](CandleLongLineResult.md 'TechnicalAnalysis.Candles.CandleLongLineResult')** `Class`
+  - **[CandleLongLineResult(RetCode, int, int, int[])](CandleLongLineResult.CandleLongLineResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleLongLineResult.CandleLongLineResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleLongLineResult.Integers.md 'TechnicalAnalysis.Candles.CandleLongLineResult.Integers')** `Property`
+- **[CandleMarubozu&lt;T&gt;](CandleMarubozu_T_.md 'TechnicalAnalysis.Candles.CandleMarubozu<T>')** `Class`
+  - **[CandleMarubozu(T[], T[], T[], T[])](CandleMarubozu_T_.CandleMarubozu(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleMarubozu<T>.CandleMarubozu(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleMarubozu_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleMarubozu<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleMarubozu_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleMarubozu<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleMarubozu_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleMarubozu<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleMarubozuResult](CandleMarubozuResult.md 'TechnicalAnalysis.Candles.CandleMarubozuResult')** `Class`
+  - **[CandleMarubozuResult(RetCode, int, int, int[])](CandleMarubozuResult.CandleMarubozuResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleMarubozuResult.CandleMarubozuResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleMarubozuResult.Integers.md 'TechnicalAnalysis.Candles.CandleMarubozuResult.Integers')** `Property`
+- **[CandleMatchingLow&lt;T&gt;](CandleMatchingLow_T_.md 'TechnicalAnalysis.Candles.CandleMatchingLow<T>')** `Class`
+  - **[CandleMatchingLow(T[], T[], T[], T[])](CandleMatchingLow_T_.CandleMatchingLow(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleMatchingLow<T>.CandleMatchingLow(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleMatchingLow_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleMatchingLow<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleMatchingLow_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleMatchingLow<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleMatchingLow_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleMatchingLow<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleMatchingLowResult](CandleMatchingLowResult.md 'TechnicalAnalysis.Candles.CandleMatchingLowResult')** `Class`
+  - **[CandleMatchingLowResult(RetCode, int, int, int[])](CandleMatchingLowResult.CandleMatchingLowResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleMatchingLowResult.CandleMatchingLowResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleMatchingLowResult.Integers.md 'TechnicalAnalysis.Candles.CandleMatchingLowResult.Integers')** `Property`
+- **[CandleMatHold&lt;T&gt;](CandleMatHold_T_.md 'TechnicalAnalysis.Candles.CandleMatHold<T>')** `Class`
+  - **[CandleMatHold(T[], T[], T[], T[])](CandleMatHold_T_.CandleMatHold(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleMatHold<T>.CandleMatHold(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int, T)](CandleMatHold_T_.Compute(int,int,T).md 'TechnicalAnalysis.Candles.CandleMatHold<T>.Compute(int, int, T)')** `Method`
+  - **[GetLookback()](CandleMatHold_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleMatHold<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleMatHold_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleMatHold<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleMatHoldResult](CandleMatHoldResult.md 'TechnicalAnalysis.Candles.CandleMatHoldResult')** `Class`
+  - **[CandleMatHoldResult(RetCode, int, int, int[])](CandleMatHoldResult.CandleMatHoldResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleMatHoldResult.CandleMatHoldResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleMatHoldResult.Integers.md 'TechnicalAnalysis.Candles.CandleMatHoldResult.Integers')** `Property`
+- **[CandleMorningDojiStar&lt;T&gt;](CandleMorningDojiStar_T_.md 'TechnicalAnalysis.Candles.CandleMorningDojiStar<T>')** `Class`
+  - **[CandleMorningDojiStar(T[], T[], T[], T[])](CandleMorningDojiStar_T_.CandleMorningDojiStar(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleMorningDojiStar<T>.CandleMorningDojiStar(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int, T)](CandleMorningDojiStar_T_.Compute(int,int,T).md 'TechnicalAnalysis.Candles.CandleMorningDojiStar<T>.Compute(int, int, T)')** `Method`
+  - **[GetLookback()](CandleMorningDojiStar_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleMorningDojiStar<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleMorningDojiStar_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleMorningDojiStar<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleMorningDojiStarResult](CandleMorningDojiStarResult.md 'TechnicalAnalysis.Candles.CandleMorningDojiStarResult')** `Class`
+  - **[CandleMorningDojiStarResult(RetCode, int, int, int[])](CandleMorningDojiStarResult.CandleMorningDojiStarResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleMorningDojiStarResult.CandleMorningDojiStarResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleMorningDojiStarResult.Integers.md 'TechnicalAnalysis.Candles.CandleMorningDojiStarResult.Integers')** `Property`
+- **[CandleMorningStar&lt;T&gt;](CandleMorningStar_T_.md 'TechnicalAnalysis.Candles.CandleMorningStar<T>')** `Class`
+  - **[CandleMorningStar(T[], T[], T[], T[])](CandleMorningStar_T_.CandleMorningStar(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleMorningStar<T>.CandleMorningStar(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int, T)](CandleMorningStar_T_.Compute(int,int,T).md 'TechnicalAnalysis.Candles.CandleMorningStar<T>.Compute(int, int, T)')** `Method`
+  - **[GetLookback()](CandleMorningStar_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleMorningStar<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleMorningStar_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleMorningStar<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleMorningStarResult](CandleMorningStarResult.md 'TechnicalAnalysis.Candles.CandleMorningStarResult')** `Class`
+  - **[CandleMorningStarResult(RetCode, int, int, int[])](CandleMorningStarResult.CandleMorningStarResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleMorningStarResult.CandleMorningStarResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleMorningStarResult.Integers.md 'TechnicalAnalysis.Candles.CandleMorningStarResult.Integers')** `Property`
+- **[CandleOnNeck&lt;T&gt;](CandleOnNeck_T_.md 'TechnicalAnalysis.Candles.CandleOnNeck<T>')** `Class`
+  - **[CandleOnNeck(T[], T[], T[], T[])](CandleOnNeck_T_.CandleOnNeck(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleOnNeck<T>.CandleOnNeck(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleOnNeck_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleOnNeck<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleOnNeck_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleOnNeck<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleOnNeck_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleOnNeck<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleOnNeckResult](CandleOnNeckResult.md 'TechnicalAnalysis.Candles.CandleOnNeckResult')** `Class`
+  - **[CandleOnNeckResult(RetCode, int, int, int[])](CandleOnNeckResult.CandleOnNeckResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleOnNeckResult.CandleOnNeckResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleOnNeckResult.Integers.md 'TechnicalAnalysis.Candles.CandleOnNeckResult.Integers')** `Property`
+- **[CandlePiercing&lt;T&gt;](CandlePiercing_T_.md 'TechnicalAnalysis.Candles.CandlePiercing<T>')** `Class`
+  - **[CandlePiercing(T[], T[], T[], T[])](CandlePiercing_T_.CandlePiercing(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandlePiercing<T>.CandlePiercing(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandlePiercing_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandlePiercing<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandlePiercing_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandlePiercing<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandlePiercing_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandlePiercing<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandlePiercingResult](CandlePiercingResult.md 'TechnicalAnalysis.Candles.CandlePiercingResult')** `Class`
+  - **[CandlePiercingResult(RetCode, int, int, int[])](CandlePiercingResult.CandlePiercingResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandlePiercingResult.CandlePiercingResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandlePiercingResult.Integers.md 'TechnicalAnalysis.Candles.CandlePiercingResult.Integers')** `Property`
+- **[CandleRickshawMan&lt;T&gt;](CandleRickshawMan_T_.md 'TechnicalAnalysis.Candles.CandleRickshawMan<T>')** `Class`
+  - **[CandleRickshawMan(T[], T[], T[], T[])](CandleRickshawMan_T_.CandleRickshawMan(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleRickshawMan<T>.CandleRickshawMan(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleRickshawMan_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleRickshawMan<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleRickshawMan_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleRickshawMan<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleRickshawMan_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleRickshawMan<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleRickshawManResult](CandleRickshawManResult.md 'TechnicalAnalysis.Candles.CandleRickshawManResult')** `Class`
+  - **[CandleRickshawManResult(RetCode, int, int, int[])](CandleRickshawManResult.CandleRickshawManResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleRickshawManResult.CandleRickshawManResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleRickshawManResult.Integers.md 'TechnicalAnalysis.Candles.CandleRickshawManResult.Integers')** `Property`
+- **[CandleRiseFall3Methods&lt;T&gt;](CandleRiseFall3Methods_T_.md 'TechnicalAnalysis.Candles.CandleRiseFall3Methods<T>')** `Class`
+  - **[CandleRiseFall3Methods(T[], T[], T[], T[])](CandleRiseFall3Methods_T_.CandleRiseFall3Methods(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleRiseFall3Methods<T>.CandleRiseFall3Methods(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleRiseFall3Methods_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleRiseFall3Methods<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleRiseFall3Methods_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleRiseFall3Methods<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleRiseFall3Methods_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleRiseFall3Methods<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleRiseFall3MethodsResult](CandleRiseFall3MethodsResult.md 'TechnicalAnalysis.Candles.CandleRiseFall3MethodsResult')** `Class`
+  - **[CandleRiseFall3MethodsResult(RetCode, int, int, int[])](CandleRiseFall3MethodsResult.CandleRiseFall3MethodsResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleRiseFall3MethodsResult.CandleRiseFall3MethodsResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleRiseFall3MethodsResult.Integers.md 'TechnicalAnalysis.Candles.CandleRiseFall3MethodsResult.Integers')** `Property`
+- **[CandleSeparatingLines&lt;T&gt;](CandleSeparatingLines_T_.md 'TechnicalAnalysis.Candles.CandleSeparatingLines<T>')** `Class`
+  - **[CandleSeparatingLines(T[], T[], T[], T[])](CandleSeparatingLines_T_.CandleSeparatingLines(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleSeparatingLines<T>.CandleSeparatingLines(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleSeparatingLines_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleSeparatingLines<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleSeparatingLines_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleSeparatingLines<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleSeparatingLines_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleSeparatingLines<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleSeparatingLinesResult](CandleSeparatingLinesResult.md 'TechnicalAnalysis.Candles.CandleSeparatingLinesResult')** `Class`
+  - **[CandleSeparatingLinesResult(RetCode, int, int, int[])](CandleSeparatingLinesResult.CandleSeparatingLinesResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleSeparatingLinesResult.CandleSeparatingLinesResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleSeparatingLinesResult.Integers.md 'TechnicalAnalysis.Candles.CandleSeparatingLinesResult.Integers')** `Property`
+- **[CandleShootingStar&lt;T&gt;](CandleShootingStar_T_.md 'TechnicalAnalysis.Candles.CandleShootingStar<T>')** `Class`
+  - **[CandleShootingStar(T[], T[], T[], T[])](CandleShootingStar_T_.CandleShootingStar(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleShootingStar<T>.CandleShootingStar(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleShootingStar_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleShootingStar<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleShootingStar_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleShootingStar<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleShootingStar_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleShootingStar<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleShootingStarResult](CandleShootingStarResult.md 'TechnicalAnalysis.Candles.CandleShootingStarResult')** `Class`
+  - **[CandleShootingStarResult(RetCode, int, int, int[])](CandleShootingStarResult.CandleShootingStarResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleShootingStarResult.CandleShootingStarResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleShootingStarResult.Integers.md 'TechnicalAnalysis.Candles.CandleShootingStarResult.Integers')** `Property`
+- **[CandleShortLine&lt;T&gt;](CandleShortLine_T_.md 'TechnicalAnalysis.Candles.CandleShortLine<T>')** `Class`
+  - **[CandleShortLine(T[], T[], T[], T[])](CandleShortLine_T_.CandleShortLine(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleShortLine<T>.CandleShortLine(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleShortLine_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleShortLine<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleShortLine_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleShortLine<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleShortLine_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleShortLine<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleShortLineResult](CandleShortLineResult.md 'TechnicalAnalysis.Candles.CandleShortLineResult')** `Class`
+  - **[CandleShortLineResult(RetCode, int, int, int[])](CandleShortLineResult.CandleShortLineResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleShortLineResult.CandleShortLineResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleShortLineResult.Integers.md 'TechnicalAnalysis.Candles.CandleShortLineResult.Integers')** `Property`
+- **[CandleSpinningTop&lt;T&gt;](CandleSpinningTop_T_.md 'TechnicalAnalysis.Candles.CandleSpinningTop<T>')** `Class`
+  - **[CandleSpinningTop(T[], T[], T[], T[])](CandleSpinningTop_T_.CandleSpinningTop(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleSpinningTop<T>.CandleSpinningTop(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleSpinningTop_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleSpinningTop<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleSpinningTop_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleSpinningTop<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleSpinningTop_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleSpinningTop<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleSpinningTopResult](CandleSpinningTopResult.md 'TechnicalAnalysis.Candles.CandleSpinningTopResult')** `Class`
+  - **[CandleSpinningTopResult(RetCode, int, int, int[])](CandleSpinningTopResult.CandleSpinningTopResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleSpinningTopResult.CandleSpinningTopResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleSpinningTopResult.Integers.md 'TechnicalAnalysis.Candles.CandleSpinningTopResult.Integers')** `Property`
+- **[CandleStalledPattern&lt;T&gt;](CandleStalledPattern_T_.md 'TechnicalAnalysis.Candles.CandleStalledPattern<T>')** `Class`
+  - **[CandleStalledPattern(T[], T[], T[], T[])](CandleStalledPattern_T_.CandleStalledPattern(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleStalledPattern<T>.CandleStalledPattern(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleStalledPattern_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleStalledPattern<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleStalledPattern_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleStalledPattern<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleStalledPattern_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleStalledPattern<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleStalledPatternResult](CandleStalledPatternResult.md 'TechnicalAnalysis.Candles.CandleStalledPatternResult')** `Class`
+  - **[CandleStalledPatternResult(RetCode, int, int, int[])](CandleStalledPatternResult.CandleStalledPatternResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleStalledPatternResult.CandleStalledPatternResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleStalledPatternResult.Integers.md 'TechnicalAnalysis.Candles.CandleStalledPatternResult.Integers')** `Property`
+- **[CandleStickSandwich&lt;T&gt;](CandleStickSandwich_T_.md 'TechnicalAnalysis.Candles.CandleStickSandwich<T>')** `Class`
+  - **[CandleStickSandwich(T[], T[], T[], T[])](CandleStickSandwich_T_.CandleStickSandwich(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleStickSandwich<T>.CandleStickSandwich(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleStickSandwich_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleStickSandwich<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleStickSandwich_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleStickSandwich<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleStickSandwich_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleStickSandwich<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleStickSandwichResult](CandleStickSandwichResult.md 'TechnicalAnalysis.Candles.CandleStickSandwichResult')** `Class`
+  - **[CandleStickSandwichResult(RetCode, int, int, int[])](CandleStickSandwichResult.CandleStickSandwichResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleStickSandwichResult.CandleStickSandwichResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleStickSandwichResult.Integers.md 'TechnicalAnalysis.Candles.CandleStickSandwichResult.Integers')** `Property`
+- **[CandleTakuri&lt;T&gt;](CandleTakuri_T_.md 'TechnicalAnalysis.Candles.CandleTakuri<T>')** `Class`
+  - **[CandleTakuri(T[], T[], T[], T[])](CandleTakuri_T_.CandleTakuri(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleTakuri<T>.CandleTakuri(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleTakuri_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleTakuri<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleTakuri_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleTakuri<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleTakuri_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleTakuri<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleTakuriResult](CandleTakuriResult.md 'TechnicalAnalysis.Candles.CandleTakuriResult')** `Class`
+  - **[CandleTakuriResult(RetCode, int, int, int[])](CandleTakuriResult.CandleTakuriResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleTakuriResult.CandleTakuriResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleTakuriResult.Integers.md 'TechnicalAnalysis.Candles.CandleTakuriResult.Integers')** `Property`
+- **[CandleTasukiGap&lt;T&gt;](CandleTasukiGap_T_.md 'TechnicalAnalysis.Candles.CandleTasukiGap<T>')** `Class`
+  - **[CandleTasukiGap(T[], T[], T[], T[])](CandleTasukiGap_T_.CandleTasukiGap(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleTasukiGap<T>.CandleTasukiGap(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleTasukiGap_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleTasukiGap<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleTasukiGap_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleTasukiGap<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleTasukiGap_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleTasukiGap<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleTasukiGapResult](CandleTasukiGapResult.md 'TechnicalAnalysis.Candles.CandleTasukiGapResult')** `Class`
+  - **[CandleTasukiGapResult(RetCode, int, int, int[])](CandleTasukiGapResult.CandleTasukiGapResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleTasukiGapResult.CandleTasukiGapResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleTasukiGapResult.Integers.md 'TechnicalAnalysis.Candles.CandleTasukiGapResult.Integers')** `Property`
+- **[CandleThrusting&lt;T&gt;](CandleThrusting_T_.md 'TechnicalAnalysis.Candles.CandleThrusting<T>')** `Class`
+  - **[CandleThrusting(T[], T[], T[], T[])](CandleThrusting_T_.CandleThrusting(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleThrusting<T>.CandleThrusting(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleThrusting_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleThrusting<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleThrusting_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleThrusting<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleThrusting_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleThrusting<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleThrustingResult](CandleThrustingResult.md 'TechnicalAnalysis.Candles.CandleThrustingResult')** `Class`
+  - **[CandleThrustingResult(RetCode, int, int, int[])](CandleThrustingResult.CandleThrustingResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleThrustingResult.CandleThrustingResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleThrustingResult.Integers.md 'TechnicalAnalysis.Candles.CandleThrustingResult.Integers')** `Property`
+- **[CandleTristar&lt;T&gt;](CandleTristar_T_.md 'TechnicalAnalysis.Candles.CandleTristar<T>')** `Class`
+  - **[CandleTristar(T[], T[], T[], T[])](CandleTristar_T_.CandleTristar(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleTristar<T>.CandleTristar(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleTristar_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleTristar<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleTristar_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleTristar<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleTristar_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleTristar<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleTristarResult](CandleTristarResult.md 'TechnicalAnalysis.Candles.CandleTristarResult')** `Class`
+  - **[CandleTristarResult(RetCode, int, int, int[])](CandleTristarResult.CandleTristarResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleTristarResult.CandleTristarResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleTristarResult.Integers.md 'TechnicalAnalysis.Candles.CandleTristarResult.Integers')** `Property`
+- **[CandleUnique3River&lt;T&gt;](CandleUnique3River_T_.md 'TechnicalAnalysis.Candles.CandleUnique3River<T>')** `Class`
+  - **[CandleUnique3River(T[], T[], T[], T[])](CandleUnique3River_T_.CandleUnique3River(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleUnique3River<T>.CandleUnique3River(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleUnique3River_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleUnique3River<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleUnique3River_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleUnique3River<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleUnique3River_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleUnique3River<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleUnique3RiverResult](CandleUnique3RiverResult.md 'TechnicalAnalysis.Candles.CandleUnique3RiverResult')** `Class`
+  - **[CandleUnique3RiverResult(RetCode, int, int, int[])](CandleUnique3RiverResult.CandleUnique3RiverResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleUnique3RiverResult.CandleUnique3RiverResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleUnique3RiverResult.Integers.md 'TechnicalAnalysis.Candles.CandleUnique3RiverResult.Integers')** `Property`
+- **[CandleUpsideGap2Crows&lt;T&gt;](CandleUpsideGap2Crows_T_.md 'TechnicalAnalysis.Candles.CandleUpsideGap2Crows<T>')** `Class`
+  - **[CandleUpsideGap2Crows(T[], T[], T[], T[])](CandleUpsideGap2Crows_T_.CandleUpsideGap2Crows(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleUpsideGap2Crows<T>.CandleUpsideGap2Crows(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleUpsideGap2Crows_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleUpsideGap2Crows<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleUpsideGap2Crows_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleUpsideGap2Crows<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleUpsideGap2Crows_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleUpsideGap2Crows<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleUpsideGap2CrowsResult](CandleUpsideGap2CrowsResult.md 'TechnicalAnalysis.Candles.CandleUpsideGap2CrowsResult')** `Class`
+  - **[CandleUpsideGap2CrowsResult(RetCode, int, int, int[])](CandleUpsideGap2CrowsResult.CandleUpsideGap2CrowsResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleUpsideGap2CrowsResult.CandleUpsideGap2CrowsResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleUpsideGap2CrowsResult.Integers.md 'TechnicalAnalysis.Candles.CandleUpsideGap2CrowsResult.Integers')** `Property`
+- **[CandleXSideGap3Methods&lt;T&gt;](CandleXSideGap3Methods_T_.md 'TechnicalAnalysis.Candles.CandleXSideGap3Methods<T>')** `Class`
+  - **[CandleXSideGap3Methods(T[], T[], T[], T[])](CandleXSideGap3Methods_T_.CandleXSideGap3Methods(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleXSideGap3Methods<T>.CandleXSideGap3Methods(T[], T[], T[], T[])')** `Constructor`
+  - **[Compute(int, int)](CandleXSideGap3Methods_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleXSideGap3Methods<T>.Compute(int, int)')** `Method`
+  - **[GetLookback()](CandleXSideGap3Methods_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleXSideGap3Methods<T>.GetLookback()')** `Method` Returns the lookback period for the indicator.
+  - **[GetPatternRecognition(int)](CandleXSideGap3Methods_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleXSideGap3Methods<T>.GetPatternRecognition(int)')** `Method` Checks if the pattern is recognized at a specific index.
+- **[CandleXSideGap3MethodsResult](CandleXSideGap3MethodsResult.md 'TechnicalAnalysis.Candles.CandleXSideGap3MethodsResult')** `Class`
+  - **[CandleXSideGap3MethodsResult(RetCode, int, int, int[])](CandleXSideGap3MethodsResult.CandleXSideGap3MethodsResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Candles.CandleXSideGap3MethodsResult.CandleXSideGap3MethodsResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor`
+  - **[Integers](CandleXSideGap3MethodsResult.Integers.md 'TechnicalAnalysis.Candles.CandleXSideGap3MethodsResult.Integers')** `Property`
+- **[TACandle](TACandle.md 'TechnicalAnalysis.Candles.TACandle')** `Class`
+  - **[Cdl2Crows&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.Cdl2Crows<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[Cdl3BlackCrows&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.Cdl3BlackCrows_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.Cdl3BlackCrows<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[Cdl3Inside&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.Cdl3Inside_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.Cdl3Inside<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[Cdl3LineStrike&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.Cdl3LineStrike_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.Cdl3LineStrike<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[Cdl3Outside&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.Cdl3Outside_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.Cdl3Outside<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[Cdl3StarsInSouth&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.Cdl3StarsInSouth_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.Cdl3StarsInSouth<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[Cdl3WhiteSoldiers&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.Cdl3WhiteSoldiers_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.Cdl3WhiteSoldiers<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlAbandonedBaby&lt;T&gt;(int, int, T[], T[], T[], T[], T)](TACandle.CdlAbandonedBaby_T_(int,int,T[],T[],T[],T[],T).md 'TechnicalAnalysis.Candles.TACandle.CdlAbandonedBaby<T>(int, int, T[], T[], T[], T[], T)')** `Method`
+  - **[CdlAbandonedBaby&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlAbandonedBaby_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlAbandonedBaby<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlAdvanceBlock&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlAdvanceBlock_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlAdvanceBlock<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlBeltHold&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlBeltHold_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlBeltHold<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlBreakaway&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlBreakaway_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlBreakaway<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlClosingMarubozu&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlClosingMarubozu_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlClosingMarubozu<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlConcealBabySwallow&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlConcealBabySwallow_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlConcealBabySwallow<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlCounterAttack&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlCounterAttack_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlCounterAttack<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlDarkCloudCover&lt;T&gt;(int, int, T[], T[], T[], T[], T)](TACandle.CdlDarkCloudCover_T_(int,int,T[],T[],T[],T[],T).md 'TechnicalAnalysis.Candles.TACandle.CdlDarkCloudCover<T>(int, int, T[], T[], T[], T[], T)')** `Method`
+  - **[CdlDarkCloudCover&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlDarkCloudCover_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlDarkCloudCover<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlDoji&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlDoji_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlDoji<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlDojiStar&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlDojiStar<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlDragonflyDoji&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlDragonflyDoji_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlDragonflyDoji<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlEngulfing&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlEngulfing_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlEngulfing<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlEveningDojiStar&lt;T&gt;(int, int, T[], T[], T[], T[], T)](TACandle.CdlEveningDojiStar_T_(int,int,T[],T[],T[],T[],T).md 'TechnicalAnalysis.Candles.TACandle.CdlEveningDojiStar<T>(int, int, T[], T[], T[], T[], T)')** `Method`
+  - **[CdlEveningDojiStar&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlEveningDojiStar_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlEveningDojiStar<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlEveningStar&lt;T&gt;(int, int, T[], T[], T[], T[], T)](TACandle.CdlEveningStar_T_(int,int,T[],T[],T[],T[],T).md 'TechnicalAnalysis.Candles.TACandle.CdlEveningStar<T>(int, int, T[], T[], T[], T[], T)')** `Method`
+  - **[CdlEveningStar&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlEveningStar_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlEveningStar<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlGapSideSideWhite&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlGapSideSideWhite_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlGapSideSideWhite<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlGravestoneDoji&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlHammer&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlHammer_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlHammer<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlHangingMan&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlHangingMan_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlHangingMan<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlHarami&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlHarami_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlHarami<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlHaramiCross&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlHaramiCross_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlHaramiCross<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlHighWave&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlHighWave<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlHikkake&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlHikkake_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlHikkake<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlHikkakeMod&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlHikkakeMod_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlHikkakeMod<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlHomingPigeon&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlHomingPigeon_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlHomingPigeon<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlIdentical3Crows&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlIdentical3Crows_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlIdentical3Crows<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlInNeck&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlInNeck_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlInNeck<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlInvertedHammer&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlInvertedHammer_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlInvertedHammer<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlKicking&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlKicking_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlKicking<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlKickingByLength&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlKickingByLength_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlKickingByLength<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlLadderBottom&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlLadderBottom_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlLadderBottom<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlLongLeggedDoji&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlLongLeggedDoji_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlLongLeggedDoji<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlLongLine&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlLongLine_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlLongLine<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlMarubozu&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlMarubozu_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlMarubozu<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlMatchingLow&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlMatchingLow_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlMatchingLow<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlMatHold&lt;T&gt;(int, int, T[], T[], T[], T[], T)](TACandle.CdlMatHold_T_(int,int,T[],T[],T[],T[],T).md 'TechnicalAnalysis.Candles.TACandle.CdlMatHold<T>(int, int, T[], T[], T[], T[], T)')** `Method`
+  - **[CdlMatHold&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlMatHold_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlMatHold<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlMorningDojiStar&lt;T&gt;(int, int, T[], T[], T[], T[], T)](TACandle.CdlMorningDojiStar_T_(int,int,T[],T[],T[],T[],T).md 'TechnicalAnalysis.Candles.TACandle.CdlMorningDojiStar<T>(int, int, T[], T[], T[], T[], T)')** `Method`
+  - **[CdlMorningDojiStar&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlMorningDojiStar_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlMorningDojiStar<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlMorningStar&lt;T&gt;(int, int, T[], T[], T[], T[], T)](TACandle.CdlMorningStar_T_(int,int,T[],T[],T[],T[],T).md 'TechnicalAnalysis.Candles.TACandle.CdlMorningStar<T>(int, int, T[], T[], T[], T[], T)')** `Method`
+  - **[CdlMorningStar&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlMorningStar_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlMorningStar<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlOnNeck&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlOnNeck_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlOnNeck<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlPiercing&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlPiercing_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlPiercing<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlRickshawMan&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlRickshawMan_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlRickshawMan<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlRiseFall3Methods&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlRiseFall3Methods_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlRiseFall3Methods<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlSeparatingLines&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlSeparatingLines_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlSeparatingLines<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlShootingStar&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlShootingStar_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlShootingStar<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlShortLine&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlShortLine_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlShortLine<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlSpinningTop&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlSpinningTop_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlSpinningTop<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlStalledPattern&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlStalledPattern_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlStalledPattern<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlStickSandwich&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlStickSandwich_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlStickSandwich<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlTakuri&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlTakuri_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlTakuri<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlTasukiGap&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlTasukiGap_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlTasukiGap<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlThrusting&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlThrusting_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlThrusting<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlTristar&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlTristar_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlTristar<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlUnique3River&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlUnique3River_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlUnique3River<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlUpsideGap2Crows&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlUpsideGap2Crows_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlUpsideGap2Crows<T>(int, int, T[], T[], T[], T[])')** `Method`
+  - **[CdlXSideGap3Methods&lt;T&gt;(int, int, T[], T[], T[], T[])](TACandle.CdlXSideGap3Methods_T_(int,int,T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.TACandle.CdlXSideGap3Methods<T>(int, int, T[], T[], T[], T[])')** `Method`

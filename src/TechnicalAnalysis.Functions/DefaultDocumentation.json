@@ -1,0 +1,15 @@
+{
+  "GeneratedAccessModifiers": "Public,Protected,ProtectedInternal",
+  "GeneratedPages": "Assembly,Types,Members",
+  "AssemblyPageName": "DefaultEcs",
+  "FileNameFactory": "Name",
+  "LinksBaseUrl": "https://github.com/phmatray/TaLibStandard/blob/master/docs/",
+  "NamespaceDocItem": {
+    "Sections": [
+      "Title",
+      "summary",
+      "TableOfContents"
+    ],
+    "Markdown.TableOfContentsModes": "IncludeKind,IncludeSummary",
+  }
+}

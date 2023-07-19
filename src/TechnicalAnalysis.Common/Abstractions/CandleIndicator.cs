@@ -164,15 +164,37 @@ public abstract class CandleIndicator<T>
     protected virtual CandleColor GetCandleColor(int index)
         => Close[index] >= Open[index] ? CandleColor.Green : CandleColor.Red;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
     protected virtual bool IsColorGreen(int index)
         => GetCandleColor(index) == CandleColor.Green;
     
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
     protected virtual bool IsColorRed(int index)
         => GetCandleColor(index) == CandleColor.Red;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="index2"></param>
+    /// <param name="index1"></param>
+    /// <returns></returns>
     protected virtual bool IsColorSame(int index2, int index1)
         => GetCandleColor(index2) == GetCandleColor(index1);
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="index2"></param>
+    /// <param name="index1"></param>
+    /// <returns></returns>
     protected virtual bool IsColorOpposite(int index2, int index1)
         => (int)GetCandleColor(index2) == -(int)GetCandleColor(index1);
 

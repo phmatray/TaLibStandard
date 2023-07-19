@@ -6,17 +6,34 @@
 
 namespace TechnicalAnalysis.Candles;
 
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class CandleCounterAttack<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
     private readonly T[] _bodyLongPeriodTotal = new T[2];
     private T _equalPeriodTotal = T.Zero;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="open"></param>
+    /// <param name="high"></param>
+    /// <param name="low"></param>
+    /// <param name="close"></param>
     public CandleCounterAttack(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="startIdx"></param>
+    /// <param name="endIdx"></param>
+    /// <returns></returns>
     public CandleCounterAttackResult Compute(int startIdx, int endIdx)
     {
         // Initialize output variables 

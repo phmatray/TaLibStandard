@@ -6,12 +6,29 @@
 
 namespace TechnicalAnalysis.Common;
 
+/// <summary>
+/// 
+/// </summary>
 public sealed class GlobalsType
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public Dictionary<FuncUnstId, long> UnstablePeriod { get; }
+    
+    /// <summary>
+    /// 
+    /// </summary>
     public Dictionary<CandleSettingType, CandleSetting> CandleSettings { get; }
+    
+    /// <summary>
+    /// 
+    /// </summary>
     public Compatibility Compatibility { get; set; } = Compatibility.Default;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public GlobalsType()
     {
         UnstablePeriod = Enumerable

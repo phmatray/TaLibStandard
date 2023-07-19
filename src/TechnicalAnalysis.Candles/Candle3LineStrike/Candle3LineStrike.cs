@@ -6,16 +6,33 @@
 
 namespace TechnicalAnalysis.Candles;
 
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class Candle3LineStrike<T> : CandleIndicator<T>
     where T : IFloatingPoint<T>
 {
     private readonly T[] _nearPeriodTotal = new T[4];
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="open"></param>
+    /// <param name="high"></param>
+    /// <param name="low"></param>
+    /// <param name="close"></param>
     public Candle3LineStrike(in T[] open, in T[] high, in T[] low, in T[] close)
         : base(open, high, low, close)
     {
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="startIdx"></param>
+    /// <param name="endIdx"></param>
+    /// <returns></returns>
     public Candle3LineStrikeResult Compute(int startIdx, int endIdx)
     {
         // Initialize output variables 
