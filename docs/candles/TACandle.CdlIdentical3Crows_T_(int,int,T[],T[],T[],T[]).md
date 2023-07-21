@@ -4,7 +4,7 @@
 ## TACandle.CdlIdentical3Crows<T>(int, int, T[], T[], T[], T[]) Method
 
 ```csharp
-public static TechnicalAnalysis.Candles.CandleIdentical3CrowsResult CdlIdentical3Crows<T>(int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
+public static TechnicalAnalysis.Common.CandleIndicatorResult CdlIdentical3Crows<T>(int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
     where T : System.Numerics.IFloatingPoint<T>;
 ```
 #### Type parameters
@@ -47,4 +47,4 @@ An array of low prices.
 An array of close prices.
 
 #### Returns
-[CandleIdentical3CrowsResult](CandleIdentical3CrowsResult.md 'TechnicalAnalysis.Candles.CandleIdentical3CrowsResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

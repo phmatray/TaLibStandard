@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record MacdResult : IndicatorBase
+public record MacdResult : IndicatorResult
 {
     public MacdResult(
         RetCode retCode,

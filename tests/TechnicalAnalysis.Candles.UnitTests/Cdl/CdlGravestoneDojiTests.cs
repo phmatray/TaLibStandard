@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlGravestoneDojiTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlGravestoneDoji;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlGravestoneDojiTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleGravestoneDojiResult result = TACandle.CdlGravestoneDoji(
+        CandleIndicatorResult result = TACandle.CdlGravestoneDoji(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

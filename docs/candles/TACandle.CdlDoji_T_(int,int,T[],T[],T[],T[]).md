@@ -4,7 +4,7 @@
 ## TACandle.CdlDoji<T>(int, int, T[], T[], T[], T[]) Method
 
 ```csharp
-public static TechnicalAnalysis.Candles.CandleDojiResult CdlDoji<T>(int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
+public static TechnicalAnalysis.Common.CandleIndicatorResult CdlDoji<T>(int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
     where T : System.Numerics.IFloatingPoint<T>;
 ```
 #### Type parameters
@@ -47,4 +47,4 @@ An array of low prices.
 An array of close prices.
 
 #### Returns
-[CandleDojiResult](CandleDojiResult.md 'TechnicalAnalysis.Candles.CandleDojiResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

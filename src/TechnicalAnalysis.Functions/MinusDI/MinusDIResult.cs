@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record MinusDIResult : IndicatorBase
+public record MinusDIResult : IndicatorResult
 {
     public MinusDIResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

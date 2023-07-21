@@ -47,6 +47,9 @@
   - **[IsColorOpposite(int, int)](CandleIndicator_T_.IsColorOpposite(int,int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.IsColorOpposite(int, int)')** `Method`
   - **[IsColorRed(int)](CandleIndicator_T_.IsColorRed(int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.IsColorRed(int)')** `Method`
   - **[IsColorSame(int, int)](CandleIndicator_T_.IsColorSame(int,int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.IsColorSame(int, int)')** `Method`
+- **[CandleIndicatorResult](CandleIndicatorResult.md 'TechnicalAnalysis.Common.CandleIndicatorResult')** `Class` Represents the result of the candlestick pattern indicator.
+  - **[CandleIndicatorResult(RetCode, int, int, int[])](CandleIndicatorResult.CandleIndicatorResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Common.CandleIndicatorResult.CandleIndicatorResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the CandleResult class.
+  - **[Integers](CandleIndicatorResult.Integers.md 'TechnicalAnalysis.Common.CandleIndicatorResult.Integers')** `Property` Gets the array of integers indicating the presence of the candle pattern.
 - **[CandleSetting](CandleSetting.md 'TechnicalAnalysis.Common.CandleSetting')** `Class`
   - **[CandleSetting(CandleSettingType, RangeType, int, double)](CandleSetting.CandleSetting(CandleSettingType,RangeType,int,double).md 'TechnicalAnalysis.Common.CandleSetting.CandleSetting(TechnicalAnalysis.Common.CandleSettingType, TechnicalAnalysis.Common.RangeType, int, double)')** `Constructor`
   - **[AvgPeriod](CandleSetting.AvgPeriod.md 'TechnicalAnalysis.Common.CandleSetting.AvgPeriod')** `Property`
@@ -70,11 +73,11 @@
   - **[CandleSettings](GlobalsType.CandleSettings.md 'TechnicalAnalysis.Common.GlobalsType.CandleSettings')** `Property`
   - **[Compatibility](GlobalsType.Compatibility.md 'TechnicalAnalysis.Common.GlobalsType.Compatibility')** `Property`
   - **[UnstablePeriod](GlobalsType.UnstablePeriod.md 'TechnicalAnalysis.Common.GlobalsType.UnstablePeriod')** `Property`
-- **[IndicatorBase](IndicatorBase.md 'TechnicalAnalysis.Common.IndicatorBase')** `Class` Represents an abstract base class for technical indicators.
-  - **[IndicatorBase(RetCode, int, int)](IndicatorBase.IndicatorBase(RetCode,int,int).md 'TechnicalAnalysis.Common.IndicatorBase.IndicatorBase(TechnicalAnalysis.Common.RetCode, int, int)')** `Constructor` Initializes a new instance of the IndicatorBase class.
-  - **[BegIdx](IndicatorBase.BegIdx.md 'TechnicalAnalysis.Common.IndicatorBase.BegIdx')** `Property` Gets the beginning index of the calculated output series.
-  - **[NBElement](IndicatorBase.NBElement.md 'TechnicalAnalysis.Common.IndicatorBase.NBElement')** `Property` Gets the number of elements in the calculated output series.
-  - **[RetCode](IndicatorBase.RetCode.md 'TechnicalAnalysis.Common.IndicatorBase.RetCode')** `Property` Gets the return code indicating the status of the indicator calculation.
+- **[IndicatorResult](IndicatorResult.md 'TechnicalAnalysis.Common.IndicatorResult')** `Class` Represents an abstract base class for technical indicators.
+  - **[IndicatorResult(RetCode, int, int)](IndicatorResult.IndicatorResult(RetCode,int,int).md 'TechnicalAnalysis.Common.IndicatorResult.IndicatorResult(TechnicalAnalysis.Common.RetCode, int, int)')** `Constructor` Initializes a new instance of the IndicatorBase class.
+  - **[BegIdx](IndicatorResult.BegIdx.md 'TechnicalAnalysis.Common.IndicatorResult.BegIdx')** `Property` Gets the beginning index of the calculated output series.
+  - **[NBElement](IndicatorResult.NBElement.md 'TechnicalAnalysis.Common.IndicatorResult.NBElement')** `Property` Gets the number of elements in the calculated output series.
+  - **[RetCode](IndicatorResult.RetCode.md 'TechnicalAnalysis.Common.IndicatorResult.RetCode')** `Property` Gets the return code indicating the status of the indicator calculation.
 - **[MoneyFlow](MoneyFlow.md 'TechnicalAnalysis.Common.MoneyFlow')** `Class`
   - **[Negative](MoneyFlow.Negative.md 'TechnicalAnalysis.Common.MoneyFlow.Negative')** `Property`
   - **[Positive](MoneyFlow.Positive.md 'TechnicalAnalysis.Common.MoneyFlow.Positive')** `Property`

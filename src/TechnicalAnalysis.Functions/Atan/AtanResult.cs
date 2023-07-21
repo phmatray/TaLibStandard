@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record AtanResult : IndicatorBase
+public record AtanResult : IndicatorResult
 {
     public AtanResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

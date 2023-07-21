@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlHangingManTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlHangingMan;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlHangingManTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleHangingManResult result = TACandle.CdlHangingMan(
+        CandleIndicatorResult result = TACandle.CdlHangingMan(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlStickSandwichTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlStickSandwich;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlStickSandwichTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleStickSandwichResult result = TACandle.CdlStickSandwich(
+        CandleIndicatorResult result = TACandle.CdlStickSandwich(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

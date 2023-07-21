@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlUnique3RiverTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlUnique3River;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlUnique3RiverTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleUnique3RiverResult result = TACandle.CdlUnique3River(
+        CandleIndicatorResult result = TACandle.CdlUnique3River(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

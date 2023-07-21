@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record TanhResult : IndicatorBase
+public record TanhResult : IndicatorResult
 {
     public TanhResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

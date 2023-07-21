@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record AsinResult : IndicatorBase
+public record AsinResult : IndicatorResult
 {
     public AsinResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

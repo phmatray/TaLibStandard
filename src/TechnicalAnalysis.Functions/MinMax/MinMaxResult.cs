@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record MinMaxResult : IndicatorBase
+public record MinMaxResult : IndicatorResult
 {
     public MinMaxResult(RetCode retCode, int begIdx, int nbElement, double[] min, double[] max)
         : base(retCode, begIdx, nbElement)

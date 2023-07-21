@@ -19,7 +19,7 @@ public static partial class TACandle
     /// <param name="close">An array of close prices.</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static Candle3WhiteSoldiersResult Cdl3WhiteSoldiers<T>(
+    public static CandleIndicatorResult Cdl3WhiteSoldiers<T>(
         int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
         where T : IFloatingPoint<T>
     {

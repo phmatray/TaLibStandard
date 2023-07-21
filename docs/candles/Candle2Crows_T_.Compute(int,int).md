@@ -4,7 +4,7 @@
 ## Candle2Crows<T>.Compute(int, int) Method
 
 ```csharp
-public TechnicalAnalysis.Candles.Candle2CrowsResult Compute(int startIdx, int endIdx);
+public TechnicalAnalysis.Common.CandleIndicatorResult Compute(int startIdx, int endIdx);
 ```
 #### Parameters
 
@@ -17,4 +17,4 @@ public TechnicalAnalysis.Candles.Candle2CrowsResult Compute(int startIdx, int en
 `endIdx` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 #### Returns
-[Candle2CrowsResult](Candle2CrowsResult.md 'TechnicalAnalysis.Candles.Candle2CrowsResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

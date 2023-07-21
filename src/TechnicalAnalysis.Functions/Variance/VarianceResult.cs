@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record VarianceResult : IndicatorBase
+public record VarianceResult : IndicatorResult
 {
     public VarianceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

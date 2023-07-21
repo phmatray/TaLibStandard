@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record HtSineResult : IndicatorBase
+public record HtSineResult : IndicatorResult
 {
     public HtSineResult(RetCode retCode, int begIdx, int nbElement, double[] sine, double[] leadSine)
         : base(retCode, begIdx, nbElement)

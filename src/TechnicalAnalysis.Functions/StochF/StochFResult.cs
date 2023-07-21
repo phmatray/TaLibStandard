@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record StochFResult : IndicatorBase
+public record StochFResult : IndicatorResult
 {
     public StochFResult(RetCode retCode, int begIdx, int nbElement, double[] fastK, double[] fastD)
         : base(retCode, begIdx, nbElement)

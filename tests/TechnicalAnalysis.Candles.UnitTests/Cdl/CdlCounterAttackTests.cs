@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlCounterAttackTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlCounterAttack;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlCounterAttackTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleCounterAttackResult result = TACandle.CdlCounterAttack(
+        CandleIndicatorResult result = TACandle.CdlCounterAttack(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

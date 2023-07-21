@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record AcosResult : IndicatorBase
+public record AcosResult : IndicatorResult
 {
     public AcosResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

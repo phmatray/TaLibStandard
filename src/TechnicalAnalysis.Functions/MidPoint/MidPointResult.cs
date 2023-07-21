@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record MidPointResult : IndicatorBase
+public record MidPointResult : IndicatorResult
 {
     public MidPointResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlHaramiCrossTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlHaramiCross;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlHaramiCrossTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleHaramiCrossResult result = TACandle.CdlHaramiCross(
+        CandleIndicatorResult result = TACandle.CdlHaramiCross(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

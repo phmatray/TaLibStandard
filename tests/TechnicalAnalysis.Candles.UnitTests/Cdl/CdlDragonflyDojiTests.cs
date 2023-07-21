@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlDragonflyDojiTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlDragonflyDoji;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlDragonflyDojiTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleDragonflyDojiResult result = TACandle.CdlDragonflyDoji(
+        CandleIndicatorResult result = TACandle.CdlDragonflyDoji(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

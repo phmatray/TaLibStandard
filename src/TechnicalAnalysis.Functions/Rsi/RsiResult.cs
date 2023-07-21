@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record RsiResult : IndicatorBase
+public record RsiResult : IndicatorResult
 {
     public RsiResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

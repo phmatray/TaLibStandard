@@ -4,7 +4,7 @@
 ## TACandle.CdlAbandonedBaby<T>(int, int, T[], T[], T[], T[], T) Method
 
 ```csharp
-public static TechnicalAnalysis.Candles.CandleAbandonedBabyResult CdlAbandonedBaby<T>(int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close, T penetration)
+public static TechnicalAnalysis.Common.CandleIndicatorResult CdlAbandonedBaby<T>(int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close, T penetration)
     where T : System.Numerics.IFloatingPoint<T>;
 ```
 #### Type parameters
@@ -51,4 +51,4 @@ An array of close prices.
 `penetration` [T](TACandle.CdlAbandonedBaby_T_(int,int,T[],T[],T[],T[],T).md#TechnicalAnalysis.Candles.TACandle.CdlAbandonedBaby_T_(int,int,T[],T[],T[],T[],T).T 'TechnicalAnalysis.Candles.TACandle.CdlAbandonedBaby<T>(int, int, T[], T[], T[], T[], T).T')
 
 #### Returns
-[CandleAbandonedBabyResult](CandleAbandonedBabyResult.md 'TechnicalAnalysis.Candles.CandleAbandonedBabyResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

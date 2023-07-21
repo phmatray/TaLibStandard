@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record AvgPriceResult : IndicatorBase
+public record AvgPriceResult : IndicatorResult
 {
     public AvgPriceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

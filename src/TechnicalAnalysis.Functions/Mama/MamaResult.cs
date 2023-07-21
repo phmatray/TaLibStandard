@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record MamaResult : IndicatorBase
+public record MamaResult : IndicatorResult
 {
     public MamaResult(RetCode retCode, int begIdx, int nbElement, double[] mama, double[] fama)
         : base(retCode, begIdx, nbElement)

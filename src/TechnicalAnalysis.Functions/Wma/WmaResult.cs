@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record WmaResult : IndicatorBase
+public record WmaResult : IndicatorResult
 {
     public WmaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

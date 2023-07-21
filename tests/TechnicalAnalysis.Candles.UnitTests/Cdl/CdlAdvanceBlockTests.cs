@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlAdvanceBlockTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlAdvanceBlock;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlAdvanceBlockTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
 
         // Act
-        CandleAdvanceBlockResult result = TACandle.CdlAdvanceBlock(
+        CandleIndicatorResult result = TACandle.CdlAdvanceBlock(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

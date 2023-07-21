@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class Cdl2CrowsTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], Candle2CrowsResult> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], CandleIndicatorResult> SUT { get; }
         = TACandle.Cdl2Crows;
 
     [Fact]
@@ -39,7 +39,7 @@ public class Cdl2CrowsTests : CdlTestsBase
         float[] low = InitializeArray(ArraySize, 100f, 125f, 110f);
         
         // Act
-        Candle2CrowsResult result = TACandle.Cdl2Crows(
+        CandleIndicatorResult result = TACandle.Cdl2Crows(
             StartIdx, EndIdx, open, high, low, close);
 
         // Assert
@@ -74,7 +74,7 @@ public class Cdl2CrowsTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        Candle2CrowsResult result = TACandle.Cdl2Crows(
+        CandleIndicatorResult result = TACandle.Cdl2Crows(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlShootingStarTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlShootingStar;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlShootingStarTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleShootingStarResult result = TACandle.CdlShootingStar(
+        CandleIndicatorResult result = TACandle.CdlShootingStar(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

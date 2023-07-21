@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record HtTrendlineResult : IndicatorBase
+public record HtTrendlineResult : IndicatorResult
 {
     public HtTrendlineResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

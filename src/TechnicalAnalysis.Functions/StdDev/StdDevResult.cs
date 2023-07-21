@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record StdDevResult : IndicatorBase
+public record StdDevResult : IndicatorResult
 {
     public StdDevResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

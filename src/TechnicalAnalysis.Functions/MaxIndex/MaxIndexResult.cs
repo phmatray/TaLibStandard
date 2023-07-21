@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record MaxIndexResult : IndicatorBase
+public record MaxIndexResult : IndicatorResult
 {
     public MaxIndexResult(RetCode retCode, int begIdx, int nbElement, int[] integers)
         : base(retCode, begIdx, nbElement)

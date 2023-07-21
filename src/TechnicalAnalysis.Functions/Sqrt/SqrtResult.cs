@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record SqrtResult : IndicatorBase
+public record SqrtResult : IndicatorResult
 {
     public SqrtResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

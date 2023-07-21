@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record CosResult : IndicatorBase
+public record CosResult : IndicatorResult
 {
     public CosResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

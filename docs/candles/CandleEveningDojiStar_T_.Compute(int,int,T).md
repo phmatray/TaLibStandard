@@ -4,7 +4,7 @@
 ## CandleEveningDojiStar<T>.Compute(int, int, T) Method
 
 ```csharp
-public TechnicalAnalysis.Candles.CandleEveningDojiStarResult Compute(int startIdx, int endIdx, in T optInPenetration);
+public TechnicalAnalysis.Common.CandleIndicatorResult Compute(int startIdx, int endIdx, in T optInPenetration);
 ```
 #### Parameters
 
@@ -21,4 +21,4 @@ public TechnicalAnalysis.Candles.CandleEveningDojiStarResult Compute(int startId
 `optInPenetration` [T](CandleEveningDojiStar_T_.md#TechnicalAnalysis.Candles.CandleEveningDojiStar_T_.T 'TechnicalAnalysis.Candles.CandleEveningDojiStar<T>.T')
 
 #### Returns
-[CandleEveningDojiStarResult](CandleEveningDojiStarResult.md 'TechnicalAnalysis.Candles.CandleEveningDojiStarResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

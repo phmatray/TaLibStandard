@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record TrixResult : IndicatorBase
+public record TrixResult : IndicatorResult
 {
     public TrixResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

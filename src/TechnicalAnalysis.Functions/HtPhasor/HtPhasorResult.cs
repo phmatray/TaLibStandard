@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record HtPhasorResult : IndicatorBase
+public record HtPhasorResult : IndicatorResult
 {
     public HtPhasorResult(RetCode retCode, int begIdx, int nbElement, double[] inPhase, double[] quadrature)
         : base(retCode, begIdx, nbElement)

@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlKickingByLengthTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlKickingByLength;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlKickingByLengthTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleKickingByLengthResult result = TACandle.CdlKickingByLength(
+        CandleIndicatorResult result = TACandle.CdlKickingByLength(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

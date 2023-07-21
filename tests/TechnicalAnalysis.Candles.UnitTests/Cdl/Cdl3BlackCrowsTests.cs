@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class Cdl3BlackCrowsTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.Cdl3BlackCrows;
 
     [Fact]
@@ -49,7 +49,7 @@ public class Cdl3BlackCrowsTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        Candle3BlackCrowsResult result = TACandle.Cdl3BlackCrows(
+        CandleIndicatorResult result = TACandle.Cdl3BlackCrows(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

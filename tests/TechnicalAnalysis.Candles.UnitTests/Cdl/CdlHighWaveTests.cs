@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlHighWaveTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlHighWave;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlHighWaveTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleHighWaveResult result = TACandle.CdlHighWave(
+        CandleIndicatorResult result = TACandle.CdlHighWave(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlMatHoldTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlMatHold;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlMatHoldTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleMatHoldResult result = TACandle.CdlMatHold(
+        CandleIndicatorResult result = TACandle.CdlMatHold(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlDarkCloudCoverTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlDarkCloudCover;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlDarkCloudCoverTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleDarkCloudCoverResult result = TACandle.CdlDarkCloudCover(
+        CandleIndicatorResult result = TACandle.CdlDarkCloudCover(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record TsfResult : IndicatorBase
+public record TsfResult : IndicatorResult
 {
     public TsfResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

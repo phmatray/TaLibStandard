@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record BollingerBandsResult : IndicatorBase
+public record BollingerBandsResult : IndicatorResult
 {
     public BollingerBandsResult(
         RetCode retCode,

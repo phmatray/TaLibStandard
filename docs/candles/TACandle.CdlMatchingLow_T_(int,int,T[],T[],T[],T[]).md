@@ -4,7 +4,7 @@
 ## TACandle.CdlMatchingLow<T>(int, int, T[], T[], T[], T[]) Method
 
 ```csharp
-public static TechnicalAnalysis.Candles.CandleMatchingLowResult CdlMatchingLow<T>(int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
+public static TechnicalAnalysis.Common.CandleIndicatorResult CdlMatchingLow<T>(int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
     where T : System.Numerics.IFloatingPoint<T>;
 ```
 #### Type parameters
@@ -47,4 +47,4 @@ An array of low prices.
 An array of close prices.
 
 #### Returns
-[CandleMatchingLowResult](CandleMatchingLowResult.md 'TechnicalAnalysis.Candles.CandleMatchingLowResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

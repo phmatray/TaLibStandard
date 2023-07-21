@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlTasukiGapTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlTasukiGap;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlTasukiGapTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
 
         // Act
-        CandleTasukiGapResult result = TACandle.CdlTasukiGap(
+        CandleIndicatorResult result = TACandle.CdlTasukiGap(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

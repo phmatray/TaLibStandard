@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlGapSideSideWhiteTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlGapSideSideWhite;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlGapSideSideWhiteTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleGapSideSideWhiteResult result = TACandle.CdlGapSideSideWhite(
+        CandleIndicatorResult result = TACandle.CdlGapSideSideWhite(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

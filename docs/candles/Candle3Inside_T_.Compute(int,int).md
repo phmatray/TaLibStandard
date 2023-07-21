@@ -4,7 +4,7 @@
 ## Candle3Inside<T>.Compute(int, int) Method
 
 ```csharp
-public TechnicalAnalysis.Candles.Candle3InsideResult Compute(int startIdx, int endIdx);
+public TechnicalAnalysis.Common.CandleIndicatorResult Compute(int startIdx, int endIdx);
 ```
 #### Parameters
 
@@ -17,4 +17,4 @@ public TechnicalAnalysis.Candles.Candle3InsideResult Compute(int startIdx, int e
 `endIdx` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 #### Returns
-[Candle3InsideResult](Candle3InsideResult.md 'TechnicalAnalysis.Candles.Candle3InsideResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

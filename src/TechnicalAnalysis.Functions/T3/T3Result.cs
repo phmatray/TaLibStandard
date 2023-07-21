@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record T3Result : IndicatorBase
+public record T3Result : IndicatorResult
 {
     public T3Result(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

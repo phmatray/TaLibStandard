@@ -35,7 +35,7 @@ public class CandleMatHold<T> : CandleIndicator<T>
     /// <param name="endIdx"></param>
     /// <param name="optInPenetration"></param>
     /// <returns></returns>
-    public CandleMatHoldResult Compute(int startIdx, int endIdx, in T optInPenetration)
+    public CandleIndicatorResult Compute(int startIdx, int endIdx, in T optInPenetration)
     {
         _penetration = optInPenetration;
             
@@ -47,23 +47,23 @@ public class CandleMatHold<T> : CandleIndicator<T>
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new CandleMatHoldResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleIndicatorResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new CandleMatHoldResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleIndicatorResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
         if (Open == null! || High == null! || Low == null! || Close == null!)
         {
-            return new CandleMatHoldResult(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleIndicatorResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         if (optInPenetration < T.Zero)
         {
-            return new CandleMatHoldResult(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleIndicatorResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -78,7 +78,7 @@ public class CandleMatHold<T> : CandleIndicator<T>
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new CandleMatHoldResult(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleIndicatorResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -148,7 +148,7 @@ public class CandleMatHold<T> : CandleIndicator<T>
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new CandleMatHoldResult(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleIndicatorResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
     /// <inheritdoc />

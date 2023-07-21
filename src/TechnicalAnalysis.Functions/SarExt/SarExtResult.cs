@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record SarExtResult : IndicatorBase
+public record SarExtResult : IndicatorResult
 {
     public SarExtResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

@@ -4,7 +4,7 @@
 ## CandleMatHold<T>.Compute(int, int, T) Method
 
 ```csharp
-public TechnicalAnalysis.Candles.CandleMatHoldResult Compute(int startIdx, int endIdx, in T optInPenetration);
+public TechnicalAnalysis.Common.CandleIndicatorResult Compute(int startIdx, int endIdx, in T optInPenetration);
 ```
 #### Parameters
 
@@ -21,4 +21,4 @@ public TechnicalAnalysis.Candles.CandleMatHoldResult Compute(int startIdx, int e
 `optInPenetration` [T](CandleMatHold_T_.md#TechnicalAnalysis.Candles.CandleMatHold_T_.T 'TechnicalAnalysis.Candles.CandleMatHold<T>.T')
 
 #### Returns
-[CandleMatHoldResult](CandleMatHoldResult.md 'TechnicalAnalysis.Candles.CandleMatHoldResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

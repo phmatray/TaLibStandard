@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record CmoResult : IndicatorBase
+public record CmoResult : IndicatorResult
 {
     public CmoResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

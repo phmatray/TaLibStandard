@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record TypPriceResult : IndicatorBase
+public record TypPriceResult : IndicatorResult
 {
     public TypPriceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

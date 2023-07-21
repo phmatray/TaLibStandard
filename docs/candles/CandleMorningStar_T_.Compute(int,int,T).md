@@ -4,7 +4,7 @@
 ## CandleMorningStar<T>.Compute(int, int, T) Method
 
 ```csharp
-public TechnicalAnalysis.Candles.CandleMorningStarResult Compute(int startIdx, int endIdx, in T optInPenetration);
+public TechnicalAnalysis.Common.CandleIndicatorResult Compute(int startIdx, int endIdx, in T optInPenetration);
 ```
 #### Parameters
 
@@ -21,4 +21,4 @@ public TechnicalAnalysis.Candles.CandleMorningStarResult Compute(int startIdx, i
 `optInPenetration` [T](CandleMorningStar_T_.md#TechnicalAnalysis.Candles.CandleMorningStar_T_.T 'TechnicalAnalysis.Candles.CandleMorningStar<T>.T')
 
 #### Returns
-[CandleMorningStarResult](CandleMorningStarResult.md 'TechnicalAnalysis.Candles.CandleMorningStarResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

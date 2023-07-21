@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlSpinningTopTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlSpinningTop;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlSpinningTopTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleSpinningTopResult result = TACandle.CdlSpinningTop(
+        CandleIndicatorResult result = TACandle.CdlSpinningTop(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

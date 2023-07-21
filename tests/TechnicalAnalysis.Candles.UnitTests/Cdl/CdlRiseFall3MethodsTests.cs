@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlRiseFall3MethodsTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlRiseFall3Methods;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlRiseFall3MethodsTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleRiseFall3MethodsResult result = TACandle.CdlRiseFall3Methods(
+        CandleIndicatorResult result = TACandle.CdlRiseFall3Methods(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlSeparatingLinesTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlSeparatingLines;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlSeparatingLinesTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleSeparatingLinesResult result = TACandle.CdlSeparatingLines(
+        CandleIndicatorResult result = TACandle.CdlSeparatingLines(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

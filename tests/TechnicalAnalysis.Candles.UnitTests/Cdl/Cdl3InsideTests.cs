@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class Cdl3InsideTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.Cdl3Inside;
     
     [Theory]
@@ -34,7 +34,7 @@ public class Cdl3InsideTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        Candle3InsideResult result = TACandle.Cdl3Inside(
+        CandleIndicatorResult result = TACandle.Cdl3Inside(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

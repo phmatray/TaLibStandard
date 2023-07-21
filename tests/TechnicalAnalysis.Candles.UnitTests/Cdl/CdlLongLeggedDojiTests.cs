@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlLongLeggedDojiTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlLongLeggedDoji;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlLongLeggedDojiTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleLongLeggedDojiResult result = TACandle.CdlLongLeggedDoji(
+        CandleIndicatorResult result = TACandle.CdlLongLeggedDoji(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

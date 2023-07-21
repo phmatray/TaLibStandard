@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlLongLineTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlLongLine;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlLongLineTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleLongLineResult result = TACandle.CdlLongLine(
+        CandleIndicatorResult result = TACandle.CdlLongLine(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

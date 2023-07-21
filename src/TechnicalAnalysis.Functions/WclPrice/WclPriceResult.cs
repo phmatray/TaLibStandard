@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record WclPriceResult : IndicatorBase
+public record WclPriceResult : IndicatorResult
 {
     public WclPriceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

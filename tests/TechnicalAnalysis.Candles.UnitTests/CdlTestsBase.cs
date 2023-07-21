@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests;
 
 public abstract class CdlTestsBase
 {
-    protected abstract Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected abstract Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
 
     protected void InvokeGeneric(string methodName, Type floatingPointType)
     {
@@ -38,7 +38,7 @@ public abstract class CdlTestsBase
         float[] close = null!;
 
         // Act
-        IndicatorBase result = SUT(0, 0, open, high, low, close);
+        IndicatorResult result = SUT(0, 0, open, high, low, close);
 
         // Assert
         result.RetCode.Should().Be(RetCode.BadParam);
@@ -55,7 +55,7 @@ public abstract class CdlTestsBase
         float[] close = fixture.CreateMany<float>(100).ToArray();
 
         // Act
-        IndicatorBase result = SUT(10, 5, open, high, low, close);
+        IndicatorResult result = SUT(10, 5, open, high, low, close);
 
         // Assert
         result.RetCode.Should().Be(RetCode.OutOfRangeEndIndex);
@@ -72,7 +72,7 @@ public abstract class CdlTestsBase
         float[] close = fixture.CreateMany<float>(100).ToArray();
 
         // Act
-        IndicatorBase result = SUT(-1, 0, open, high, low, close);
+        IndicatorResult result = SUT(-1, 0, open, high, low, close);
 
         // Assert
         result.RetCode.Should().Be(RetCode.OutOfRangeStartIndex);
@@ -89,7 +89,7 @@ public abstract class CdlTestsBase
         float[] close = fixture.CreateMany<float>(100).ToArray();
 
         // Act
-        IndicatorBase result = SUT(0, 0, open, high, low, close);
+        IndicatorResult result = SUT(0, 0, open, high, low, close);
 
         // Assert
         result.RetCode.Should().Be(RetCode.Success);

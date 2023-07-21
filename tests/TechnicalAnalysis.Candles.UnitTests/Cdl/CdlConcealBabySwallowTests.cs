@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlConcealBabySwallowTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlConcealBabySwallow;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlConcealBabySwallowTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleConcealBabySwallowResult result = TACandle.CdlConcealBabySwallow(
+        CandleIndicatorResult result = TACandle.CdlConcealBabySwallow(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

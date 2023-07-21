@@ -4,7 +4,7 @@
 ## CandleDarkCloudCover<T>.Compute(int, int, T) Method
 
 ```csharp
-public TechnicalAnalysis.Candles.CandleDarkCloudCoverResult Compute(int startIdx, int endIdx, in T optInPenetration);
+public TechnicalAnalysis.Common.CandleIndicatorResult Compute(int startIdx, int endIdx, in T optInPenetration);
 ```
 #### Parameters
 
@@ -21,4 +21,4 @@ public TechnicalAnalysis.Candles.CandleDarkCloudCoverResult Compute(int startIdx
 `optInPenetration` [T](CandleDarkCloudCover_T_.md#TechnicalAnalysis.Candles.CandleDarkCloudCover_T_.T 'TechnicalAnalysis.Candles.CandleDarkCloudCover<T>.T')
 
 #### Returns
-[CandleDarkCloudCoverResult](CandleDarkCloudCoverResult.md 'TechnicalAnalysis.Candles.CandleDarkCloudCoverResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

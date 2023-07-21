@@ -5,9 +5,6 @@ M:TechnicalAnalysis.Candles.Candle2Crows`1.GetPatternRecognition(System.Int32)|C
 M:TechnicalAnalysis.Candles.Candle2Crows`1.GetLookback|Candle2Crows_T_.GetLookback().md|GetLookback()
 N:TechnicalAnalysis.Candles|TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles|TechnicalAnalysis.Candles
 T:TechnicalAnalysis.Candles.Candle2Crows`1|Candle2Crows_T_.md|Candle2Crows<T>
-P:TechnicalAnalysis.Candles.Candle2CrowsResult.Integers|Candle2CrowsResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.Candle2CrowsResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|Candle2CrowsResult.Candle2CrowsResult(RetCode,int,int,int[]).md|Candle2CrowsResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.Candle2CrowsResult|Candle2CrowsResult.md|Candle2CrowsResult
 M:TechnicalAnalysis.Candles.TACandle.Cdl2Crows``1(System.Int32,System.Int32,``0[],``0[],``0[],``0[])|TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).md|Cdl2Crows<T>(int, int, T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.TACandle.Cdl3BlackCrows``1(System.Int32,System.Int32,``0[],``0[],``0[],``0[])|TACandle.Cdl3BlackCrows_T_(int,int,T[],T[],T[],T[]).md|Cdl3BlackCrows<T>(int, int, T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.TACandle.Cdl3Inside``1(System.Int32,System.Int32,``0[],``0[],``0[],``0[])|TACandle.Cdl3Inside_T_(int,int,T[],T[],T[],T[]).md|Cdl3Inside<T>(int, int, T[], T[], T[], T[])
@@ -82,478 +79,298 @@ M:TechnicalAnalysis.Candles.Candle3BlackCrows`1.Compute(System.Int32,System.Int3
 M:TechnicalAnalysis.Candles.Candle3BlackCrows`1.GetPatternRecognition(System.Int32)|Candle3BlackCrows_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.Candle3BlackCrows`1.GetLookback|Candle3BlackCrows_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.Candle3BlackCrows`1|Candle3BlackCrows_T_.md|Candle3BlackCrows<T>
-P:TechnicalAnalysis.Candles.Candle3BlackCrowsResult.Integers|Candle3BlackCrowsResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.Candle3BlackCrowsResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|Candle3BlackCrowsResult.Candle3BlackCrowsResult(RetCode,int,int,int[]).md|Candle3BlackCrowsResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.Candle3BlackCrowsResult|Candle3BlackCrowsResult.md|Candle3BlackCrowsResult
 M:TechnicalAnalysis.Candles.Candle3Inside`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|Candle3Inside_T_.Candle3Inside(T[],T[],T[],T[]).md|Candle3Inside(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.Candle3Inside`1.Compute(System.Int32,System.Int32)|Candle3Inside_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.Candle3Inside`1.GetPatternRecognition(System.Int32)|Candle3Inside_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.Candle3Inside`1.GetLookback|Candle3Inside_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.Candle3Inside`1|Candle3Inside_T_.md|Candle3Inside<T>
-P:TechnicalAnalysis.Candles.Candle3InsideResult.Integers|Candle3InsideResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.Candle3InsideResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|Candle3InsideResult.Candle3InsideResult(RetCode,int,int,int[]).md|Candle3InsideResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.Candle3InsideResult|Candle3InsideResult.md|Candle3InsideResult
 M:TechnicalAnalysis.Candles.Candle3LineStrike`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|Candle3LineStrike_T_.Candle3LineStrike(T[],T[],T[],T[]).md|Candle3LineStrike(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.Candle3LineStrike`1.Compute(System.Int32,System.Int32)|Candle3LineStrike_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.Candle3LineStrike`1.GetPatternRecognition(System.Int32)|Candle3LineStrike_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.Candle3LineStrike`1.GetLookback|Candle3LineStrike_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.Candle3LineStrike`1|Candle3LineStrike_T_.md|Candle3LineStrike<T>
-P:TechnicalAnalysis.Candles.Candle3LineStrikeResult.Integers|Candle3LineStrikeResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.Candle3LineStrikeResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|Candle3LineStrikeResult.Candle3LineStrikeResult(RetCode,int,int,int[]).md|Candle3LineStrikeResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.Candle3LineStrikeResult|Candle3LineStrikeResult.md|Candle3LineStrikeResult
 M:TechnicalAnalysis.Candles.Candle3Outside`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|Candle3Outside_T_.Candle3Outside(T[],T[],T[],T[]).md|Candle3Outside(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.Candle3Outside`1.Compute(System.Int32,System.Int32)|Candle3Outside_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.Candle3Outside`1.GetPatternRecognition(System.Int32)|Candle3Outside_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.Candle3Outside`1.GetLookback|Candle3Outside_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.Candle3Outside`1|Candle3Outside_T_.md|Candle3Outside<T>
-P:TechnicalAnalysis.Candles.Candle3OutsideResult.Integers|Candle3OutsideResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.Candle3OutsideResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|Candle3OutsideResult.Candle3OutsideResult(RetCode,int,int,int[]).md|Candle3OutsideResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.Candle3OutsideResult|Candle3OutsideResult.md|Candle3OutsideResult
 M:TechnicalAnalysis.Candles.Candle3StarsInSouth`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|Candle3StarsInSouth_T_.Candle3StarsInSouth(T[],T[],T[],T[]).md|Candle3StarsInSouth(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.Candle3StarsInSouth`1.Compute(System.Int32,System.Int32)|Candle3StarsInSouth_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.Candle3StarsInSouth`1.GetPatternRecognition(System.Int32)|Candle3StarsInSouth_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.Candle3StarsInSouth`1.GetLookback|Candle3StarsInSouth_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.Candle3StarsInSouth`1|Candle3StarsInSouth_T_.md|Candle3StarsInSouth<T>
-P:TechnicalAnalysis.Candles.Candle3StarsInSouthResult.Integers|Candle3StarsInSouthResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.Candle3StarsInSouthResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|Candle3StarsInSouthResult.Candle3StarsInSouthResult(RetCode,int,int,int[]).md|Candle3StarsInSouthResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.Candle3StarsInSouthResult|Candle3StarsInSouthResult.md|Candle3StarsInSouthResult
 M:TechnicalAnalysis.Candles.Candle3WhiteSoldiers`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|Candle3WhiteSoldiers_T_.Candle3WhiteSoldiers(T[],T[],T[],T[]).md|Candle3WhiteSoldiers(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.Candle3WhiteSoldiers`1.Compute(System.Int32,System.Int32)|Candle3WhiteSoldiers_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.Candle3WhiteSoldiers`1.GetPatternRecognition(System.Int32)|Candle3WhiteSoldiers_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.Candle3WhiteSoldiers`1.GetLookback|Candle3WhiteSoldiers_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.Candle3WhiteSoldiers`1|Candle3WhiteSoldiers_T_.md|Candle3WhiteSoldiers<T>
-P:TechnicalAnalysis.Candles.Candle3WhiteSoldiersResult.Integers|Candle3WhiteSoldiersResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.Candle3WhiteSoldiersResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|Candle3WhiteSoldiersResult.Candle3WhiteSoldiersResult(RetCode,int,int,int[]).md|Candle3WhiteSoldiersResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.Candle3WhiteSoldiersResult|Candle3WhiteSoldiersResult.md|Candle3WhiteSoldiersResult
 M:TechnicalAnalysis.Candles.CandleAbandonedBaby`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleAbandonedBaby_T_.CandleAbandonedBaby(T[],T[],T[],T[]).md|CandleAbandonedBaby(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleAbandonedBaby`1.Compute(System.Int32,System.Int32,`0@)|CandleAbandonedBaby_T_.Compute(int,int,T).md|Compute(int, int, T)
 M:TechnicalAnalysis.Candles.CandleAbandonedBaby`1.GetPatternRecognition(System.Int32)|CandleAbandonedBaby_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleAbandonedBaby`1.GetLookback|CandleAbandonedBaby_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleAbandonedBaby`1|CandleAbandonedBaby_T_.md|CandleAbandonedBaby<T>
-P:TechnicalAnalysis.Candles.CandleAbandonedBabyResult.Integers|CandleAbandonedBabyResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleAbandonedBabyResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleAbandonedBabyResult.CandleAbandonedBabyResult(RetCode,int,int,int[]).md|CandleAbandonedBabyResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleAbandonedBabyResult|CandleAbandonedBabyResult.md|CandleAbandonedBabyResult
 M:TechnicalAnalysis.Candles.CandleAdvanceBlock`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleAdvanceBlock_T_.CandleAdvanceBlock(T[],T[],T[],T[]).md|CandleAdvanceBlock(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleAdvanceBlock`1.Compute(System.Int32,System.Int32)|CandleAdvanceBlock_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleAdvanceBlock`1.GetPatternRecognition(System.Int32)|CandleAdvanceBlock_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleAdvanceBlock`1.GetLookback|CandleAdvanceBlock_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleAdvanceBlock`1|CandleAdvanceBlock_T_.md|CandleAdvanceBlock<T>
-P:TechnicalAnalysis.Candles.CandleAdvanceBlockResult.Integers|CandleAdvanceBlockResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleAdvanceBlockResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleAdvanceBlockResult.CandleAdvanceBlockResult(RetCode,int,int,int[]).md|CandleAdvanceBlockResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleAdvanceBlockResult|CandleAdvanceBlockResult.md|CandleAdvanceBlockResult
 M:TechnicalAnalysis.Candles.CandleBeltHold`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleBeltHold_T_.CandleBeltHold(T[],T[],T[],T[]).md|CandleBeltHold(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleBeltHold`1.Compute(System.Int32,System.Int32)|CandleBeltHold_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleBeltHold`1.GetPatternRecognition(System.Int32)|CandleBeltHold_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleBeltHold`1.GetLookback|CandleBeltHold_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleBeltHold`1|CandleBeltHold_T_.md|CandleBeltHold<T>
-P:TechnicalAnalysis.Candles.CandleBeltHoldResult.Integers|CandleBeltHoldResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleBeltHoldResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleBeltHoldResult.CandleBeltHoldResult(RetCode,int,int,int[]).md|CandleBeltHoldResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleBeltHoldResult|CandleBeltHoldResult.md|CandleBeltHoldResult
 M:TechnicalAnalysis.Candles.CandleBreakaway`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleBreakaway_T_.CandleBreakaway(T[],T[],T[],T[]).md|CandleBreakaway(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleBreakaway`1.Compute(System.Int32,System.Int32)|CandleBreakaway_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleBreakaway`1.GetPatternRecognition(System.Int32)|CandleBreakaway_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleBreakaway`1.GetLookback|CandleBreakaway_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleBreakaway`1|CandleBreakaway_T_.md|CandleBreakaway<T>
-P:TechnicalAnalysis.Candles.CandleBreakawayResult.Integers|CandleBreakawayResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleBreakawayResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleBreakawayResult.CandleBreakawayResult(RetCode,int,int,int[]).md|CandleBreakawayResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleBreakawayResult|CandleBreakawayResult.md|CandleBreakawayResult
 M:TechnicalAnalysis.Candles.CandleClosingMarubozu`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleClosingMarubozu_T_.CandleClosingMarubozu(T[],T[],T[],T[]).md|CandleClosingMarubozu(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleClosingMarubozu`1.Compute(System.Int32,System.Int32)|CandleClosingMarubozu_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleClosingMarubozu`1.GetPatternRecognition(System.Int32)|CandleClosingMarubozu_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleClosingMarubozu`1.GetLookback|CandleClosingMarubozu_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleClosingMarubozu`1|CandleClosingMarubozu_T_.md|CandleClosingMarubozu<T>
-P:TechnicalAnalysis.Candles.CandleClosingMarubozuResult.Integers|CandleClosingMarubozuResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleClosingMarubozuResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleClosingMarubozuResult.CandleClosingMarubozuResult(RetCode,int,int,int[]).md|CandleClosingMarubozuResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleClosingMarubozuResult|CandleClosingMarubozuResult.md|CandleClosingMarubozuResult
 M:TechnicalAnalysis.Candles.CandleConcealBabySwallow`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleConcealBabySwallow_T_.CandleConcealBabySwallow(T[],T[],T[],T[]).md|CandleConcealBabySwallow(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleConcealBabySwallow`1.Compute(System.Int32,System.Int32)|CandleConcealBabySwallow_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleConcealBabySwallow`1.GetPatternRecognition(System.Int32)|CandleConcealBabySwallow_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleConcealBabySwallow`1.GetLookback|CandleConcealBabySwallow_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleConcealBabySwallow`1|CandleConcealBabySwallow_T_.md|CandleConcealBabySwallow<T>
-P:TechnicalAnalysis.Candles.CandleConcealBabySwallowResult.Integers|CandleConcealBabySwallowResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleConcealBabySwallowResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleConcealBabySwallowResult.CandleConcealBabySwallowResult(RetCode,int,int,int[]).md|CandleConcealBabySwallowResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleConcealBabySwallowResult|CandleConcealBabySwallowResult.md|CandleConcealBabySwallowResult
 M:TechnicalAnalysis.Candles.CandleCounterAttack`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleCounterAttack_T_.CandleCounterAttack(T[],T[],T[],T[]).md|CandleCounterAttack(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleCounterAttack`1.Compute(System.Int32,System.Int32)|CandleCounterAttack_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleCounterAttack`1.GetPatternRecognition(System.Int32)|CandleCounterAttack_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleCounterAttack`1.GetLookback|CandleCounterAttack_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleCounterAttack`1|CandleCounterAttack_T_.md|CandleCounterAttack<T>
-P:TechnicalAnalysis.Candles.CandleCounterAttackResult.Integers|CandleCounterAttackResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleCounterAttackResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleCounterAttackResult.CandleCounterAttackResult(RetCode,int,int,int[]).md|CandleCounterAttackResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleCounterAttackResult|CandleCounterAttackResult.md|CandleCounterAttackResult
 M:TechnicalAnalysis.Candles.CandleDarkCloudCover`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleDarkCloudCover_T_.CandleDarkCloudCover(T[],T[],T[],T[]).md|CandleDarkCloudCover(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleDarkCloudCover`1.Compute(System.Int32,System.Int32,`0@)|CandleDarkCloudCover_T_.Compute(int,int,T).md|Compute(int, int, T)
 M:TechnicalAnalysis.Candles.CandleDarkCloudCover`1.GetPatternRecognition(System.Int32)|CandleDarkCloudCover_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleDarkCloudCover`1.GetLookback|CandleDarkCloudCover_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleDarkCloudCover`1|CandleDarkCloudCover_T_.md|CandleDarkCloudCover<T>
-P:TechnicalAnalysis.Candles.CandleDarkCloudCoverResult.Integers|CandleDarkCloudCoverResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleDarkCloudCoverResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleDarkCloudCoverResult.CandleDarkCloudCoverResult(RetCode,int,int,int[]).md|CandleDarkCloudCoverResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleDarkCloudCoverResult|CandleDarkCloudCoverResult.md|CandleDarkCloudCoverResult
 M:TechnicalAnalysis.Candles.CandleDoji`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleDoji_T_.CandleDoji(T[],T[],T[],T[]).md|CandleDoji(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleDoji`1.Compute(System.Int32,System.Int32)|CandleDoji_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleDoji`1.GetPatternRecognition(System.Int32)|CandleDoji_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleDoji`1.GetLookback|CandleDoji_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleDoji`1|CandleDoji_T_.md|CandleDoji<T>
-P:TechnicalAnalysis.Candles.CandleDojiResult.Integers|CandleDojiResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleDojiResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleDojiResult.CandleDojiResult(RetCode,int,int,int[]).md|CandleDojiResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleDojiResult|CandleDojiResult.md|CandleDojiResult
 M:TechnicalAnalysis.Candles.CandleDojiStar`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleDojiStar_T_.CandleDojiStar(T[],T[],T[],T[]).md|CandleDojiStar(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleDojiStar`1.Compute(System.Int32,System.Int32)|CandleDojiStar_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleDojiStar`1.GetPatternRecognition(System.Int32)|CandleDojiStar_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleDojiStar`1.GetLookback|CandleDojiStar_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleDojiStar`1|CandleDojiStar_T_.md|CandleDojiStar<T>
-P:TechnicalAnalysis.Candles.CandleDojiStarResult.Integers|CandleDojiStarResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleDojiStarResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleDojiStarResult.CandleDojiStarResult(RetCode,int,int,int[]).md|CandleDojiStarResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleDojiStarResult|CandleDojiStarResult.md|CandleDojiStarResult
 M:TechnicalAnalysis.Candles.CandleDragonflyDoji`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleDragonflyDoji_T_.CandleDragonflyDoji(T[],T[],T[],T[]).md|CandleDragonflyDoji(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleDragonflyDoji`1.Compute(System.Int32,System.Int32)|CandleDragonflyDoji_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleDragonflyDoji`1.GetPatternRecognition(System.Int32)|CandleDragonflyDoji_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleDragonflyDoji`1.GetLookback|CandleDragonflyDoji_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleDragonflyDoji`1|CandleDragonflyDoji_T_.md|CandleDragonflyDoji<T>
-P:TechnicalAnalysis.Candles.CandleDragonflyDojiResult.Integers|CandleDragonflyDojiResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleDragonflyDojiResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleDragonflyDojiResult.CandleDragonflyDojiResult(RetCode,int,int,int[]).md|CandleDragonflyDojiResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleDragonflyDojiResult|CandleDragonflyDojiResult.md|CandleDragonflyDojiResult
 M:TechnicalAnalysis.Candles.CandleEngulfing`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleEngulfing_T_.CandleEngulfing(T[],T[],T[],T[]).md|CandleEngulfing(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleEngulfing`1.Compute(System.Int32,System.Int32)|CandleEngulfing_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleEngulfing`1.GetPatternRecognition(System.Int32)|CandleEngulfing_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleEngulfing`1.GetLookback|CandleEngulfing_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleEngulfing`1|CandleEngulfing_T_.md|CandleEngulfing<T>
-P:TechnicalAnalysis.Candles.CandleEngulfingResult.Integers|CandleEngulfingResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleEngulfingResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleEngulfingResult.CandleEngulfingResult(RetCode,int,int,int[]).md|CandleEngulfingResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleEngulfingResult|CandleEngulfingResult.md|CandleEngulfingResult
 M:TechnicalAnalysis.Candles.CandleEveningDojiStar`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleEveningDojiStar_T_.CandleEveningDojiStar(T[],T[],T[],T[]).md|CandleEveningDojiStar(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleEveningDojiStar`1.Compute(System.Int32,System.Int32,`0@)|CandleEveningDojiStar_T_.Compute(int,int,T).md|Compute(int, int, T)
 M:TechnicalAnalysis.Candles.CandleEveningDojiStar`1.GetPatternRecognition(System.Int32)|CandleEveningDojiStar_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleEveningDojiStar`1.GetLookback|CandleEveningDojiStar_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleEveningDojiStar`1|CandleEveningDojiStar_T_.md|CandleEveningDojiStar<T>
-P:TechnicalAnalysis.Candles.CandleEveningDojiStarResult.Integers|CandleEveningDojiStarResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleEveningDojiStarResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleEveningDojiStarResult.CandleEveningDojiStarResult(RetCode,int,int,int[]).md|CandleEveningDojiStarResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleEveningDojiStarResult|CandleEveningDojiStarResult.md|CandleEveningDojiStarResult
 M:TechnicalAnalysis.Candles.CandleEveningStar`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleEveningStar_T_.CandleEveningStar(T[],T[],T[],T[]).md|CandleEveningStar(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleEveningStar`1.Compute(System.Int32,System.Int32,`0@)|CandleEveningStar_T_.Compute(int,int,T).md|Compute(int, int, T)
 M:TechnicalAnalysis.Candles.CandleEveningStar`1.GetPatternRecognition(System.Int32)|CandleEveningStar_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleEveningStar`1.GetLookback|CandleEveningStar_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleEveningStar`1|CandleEveningStar_T_.md|CandleEveningStar<T>
-P:TechnicalAnalysis.Candles.CandleEveningStarResult.Integers|CandleEveningStarResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleEveningStarResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleEveningStarResult.CandleEveningStarResult(RetCode,int,int,int[]).md|CandleEveningStarResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleEveningStarResult|CandleEveningStarResult.md|CandleEveningStarResult
 M:TechnicalAnalysis.Candles.CandleGapSideSideWhite`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleGapSideSideWhite_T_.CandleGapSideSideWhite(T[],T[],T[],T[]).md|CandleGapSideSideWhite(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleGapSideSideWhite`1.Compute(System.Int32,System.Int32)|CandleGapSideSideWhite_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleGapSideSideWhite`1.GetPatternRecognition(System.Int32)|CandleGapSideSideWhite_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleGapSideSideWhite`1.GetLookback|CandleGapSideSideWhite_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleGapSideSideWhite`1|CandleGapSideSideWhite_T_.md|CandleGapSideSideWhite<T>
-P:TechnicalAnalysis.Candles.CandleGapSideSideWhiteResult.Integers|CandleGapSideSideWhiteResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleGapSideSideWhiteResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleGapSideSideWhiteResult.CandleGapSideSideWhiteResult(RetCode,int,int,int[]).md|CandleGapSideSideWhiteResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleGapSideSideWhiteResult|CandleGapSideSideWhiteResult.md|CandleGapSideSideWhiteResult
 M:TechnicalAnalysis.Candles.CandleGravestoneDoji`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleGravestoneDoji_T_.CandleGravestoneDoji(T[],T[],T[],T[]).md|CandleGravestoneDoji(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleGravestoneDoji`1.Compute(System.Int32,System.Int32)|CandleGravestoneDoji_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleGravestoneDoji`1.GetPatternRecognition(System.Int32)|CandleGravestoneDoji_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleGravestoneDoji`1.GetLookback|CandleGravestoneDoji_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleGravestoneDoji`1|CandleGravestoneDoji_T_.md|CandleGravestoneDoji<T>
-P:TechnicalAnalysis.Candles.CandleGravestoneDojiResult.Integers|CandleGravestoneDojiResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleGravestoneDojiResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleGravestoneDojiResult.CandleGravestoneDojiResult(RetCode,int,int,int[]).md|CandleGravestoneDojiResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleGravestoneDojiResult|CandleGravestoneDojiResult.md|CandleGravestoneDojiResult
 M:TechnicalAnalysis.Candles.CandleHammer`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleHammer_T_.CandleHammer(T[],T[],T[],T[]).md|CandleHammer(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleHammer`1.Compute(System.Int32,System.Int32)|CandleHammer_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleHammer`1.GetPatternRecognition(System.Int32)|CandleHammer_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleHammer`1.GetLookback|CandleHammer_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleHammer`1|CandleHammer_T_.md|CandleHammer<T>
-P:TechnicalAnalysis.Candles.CandleHammerResult.Integers|CandleHammerResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleHammerResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleHammerResult.CandleHammerResult(RetCode,int,int,int[]).md|CandleHammerResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleHammerResult|CandleHammerResult.md|CandleHammerResult
 M:TechnicalAnalysis.Candles.CandleHangingMan`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleHangingMan_T_.CandleHangingMan(T[],T[],T[],T[]).md|CandleHangingMan(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleHangingMan`1.Compute(System.Int32,System.Int32)|CandleHangingMan_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleHangingMan`1.GetPatternRecognition(System.Int32)|CandleHangingMan_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleHangingMan`1.GetLookback|CandleHangingMan_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleHangingMan`1|CandleHangingMan_T_.md|CandleHangingMan<T>
-P:TechnicalAnalysis.Candles.CandleHangingManResult.Integers|CandleHangingManResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleHangingManResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleHangingManResult.CandleHangingManResult(RetCode,int,int,int[]).md|CandleHangingManResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleHangingManResult|CandleHangingManResult.md|CandleHangingManResult
 M:TechnicalAnalysis.Candles.CandleHarami`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleHarami_T_.CandleHarami(T[],T[],T[],T[]).md|CandleHarami(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleHarami`1.Compute(System.Int32,System.Int32)|CandleHarami_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleHarami`1.GetPatternRecognition(System.Int32)|CandleHarami_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleHarami`1.GetLookback|CandleHarami_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleHarami`1|CandleHarami_T_.md|CandleHarami<T>
-P:TechnicalAnalysis.Candles.CandleHaramiResult.Integers|CandleHaramiResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleHaramiResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleHaramiResult.CandleHaramiResult(RetCode,int,int,int[]).md|CandleHaramiResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleHaramiResult|CandleHaramiResult.md|CandleHaramiResult
 M:TechnicalAnalysis.Candles.CandleHaramiCross`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleHaramiCross_T_.CandleHaramiCross(T[],T[],T[],T[]).md|CandleHaramiCross(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleHaramiCross`1.Compute(System.Int32,System.Int32)|CandleHaramiCross_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleHaramiCross`1.GetPatternRecognition(System.Int32)|CandleHaramiCross_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleHaramiCross`1.GetLookback|CandleHaramiCross_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleHaramiCross`1|CandleHaramiCross_T_.md|CandleHaramiCross<T>
-P:TechnicalAnalysis.Candles.CandleHaramiCrossResult.Integers|CandleHaramiCrossResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleHaramiCrossResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleHaramiCrossResult.CandleHaramiCrossResult(RetCode,int,int,int[]).md|CandleHaramiCrossResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleHaramiCrossResult|CandleHaramiCrossResult.md|CandleHaramiCrossResult
 M:TechnicalAnalysis.Candles.CandleHighWave`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleHighWave_T_.CandleHighWave(T[],T[],T[],T[]).md|CandleHighWave(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleHighWave`1.Compute(System.Int32,System.Int32)|CandleHighWave_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleHighWave`1.GetPatternRecognition(System.Int32)|CandleHighWave_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleHighWave`1.GetLookback|CandleHighWave_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleHighWave`1|CandleHighWave_T_.md|CandleHighWave<T>
-P:TechnicalAnalysis.Candles.CandleHighWaveResult.Integers|CandleHighWaveResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleHighWaveResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleHighWaveResult.CandleHighWaveResult(RetCode,int,int,int[]).md|CandleHighWaveResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleHighWaveResult|CandleHighWaveResult.md|CandleHighWaveResult
 M:TechnicalAnalysis.Candles.CandleHikkake`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleHikkake_T_.CandleHikkake(T[],T[],T[],T[]).md|CandleHikkake(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleHikkake`1.Compute(System.Int32,System.Int32)|CandleHikkake_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleHikkake`1.GetPatternRecognition(System.Int32)|CandleHikkake_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleHikkake`1.GetLookback|CandleHikkake_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleHikkake`1|CandleHikkake_T_.md|CandleHikkake<T>
-P:TechnicalAnalysis.Candles.CandleHikkakeResult.Integers|CandleHikkakeResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleHikkakeResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleHikkakeResult.CandleHikkakeResult(RetCode,int,int,int[]).md|CandleHikkakeResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleHikkakeResult|CandleHikkakeResult.md|CandleHikkakeResult
 M:TechnicalAnalysis.Candles.CandleHikkakeMod`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleHikkakeMod_T_.CandleHikkakeMod(T[],T[],T[],T[]).md|CandleHikkakeMod(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleHikkakeMod`1.Compute(System.Int32,System.Int32)|CandleHikkakeMod_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleHikkakeMod`1.GetPatternRecognition(System.Int32)|CandleHikkakeMod_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleHikkakeMod`1.GetLookback|CandleHikkakeMod_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleHikkakeMod`1|CandleHikkakeMod_T_.md|CandleHikkakeMod<T>
-P:TechnicalAnalysis.Candles.CandleHikkakeModResult.Integers|CandleHikkakeModResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleHikkakeModResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleHikkakeModResult.CandleHikkakeModResult(RetCode,int,int,int[]).md|CandleHikkakeModResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleHikkakeModResult|CandleHikkakeModResult.md|CandleHikkakeModResult
 M:TechnicalAnalysis.Candles.CandleHomingPigeon`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleHomingPigeon_T_.CandleHomingPigeon(T[],T[],T[],T[]).md|CandleHomingPigeon(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleHomingPigeon`1.Compute(System.Int32,System.Int32)|CandleHomingPigeon_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleHomingPigeon`1.GetPatternRecognition(System.Int32)|CandleHomingPigeon_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleHomingPigeon`1.GetLookback|CandleHomingPigeon_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleHomingPigeon`1|CandleHomingPigeon_T_.md|CandleHomingPigeon<T>
-P:TechnicalAnalysis.Candles.CandleHomingPigeonResult.Integers|CandleHomingPigeonResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleHomingPigeonResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleHomingPigeonResult.CandleHomingPigeonResult(RetCode,int,int,int[]).md|CandleHomingPigeonResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleHomingPigeonResult|CandleHomingPigeonResult.md|CandleHomingPigeonResult
 M:TechnicalAnalysis.Candles.CandleIdentical3Crows`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleIdentical3Crows_T_.CandleIdentical3Crows(T[],T[],T[],T[]).md|CandleIdentical3Crows(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleIdentical3Crows`1.Compute(System.Int32,System.Int32)|CandleIdentical3Crows_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleIdentical3Crows`1.GetPatternRecognition(System.Int32)|CandleIdentical3Crows_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleIdentical3Crows`1.GetLookback|CandleIdentical3Crows_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleIdentical3Crows`1|CandleIdentical3Crows_T_.md|CandleIdentical3Crows<T>
-P:TechnicalAnalysis.Candles.CandleIdentical3CrowsResult.Integers|CandleIdentical3CrowsResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleIdentical3CrowsResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleIdentical3CrowsResult.CandleIdentical3CrowsResult(RetCode,int,int,int[]).md|CandleIdentical3CrowsResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleIdentical3CrowsResult|CandleIdentical3CrowsResult.md|CandleIdentical3CrowsResult
 M:TechnicalAnalysis.Candles.CandleInNeck`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleInNeck_T_.CandleInNeck(T[],T[],T[],T[]).md|CandleInNeck(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleInNeck`1.Compute(System.Int32,System.Int32)|CandleInNeck_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleInNeck`1.GetPatternRecognition(System.Int32)|CandleInNeck_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleInNeck`1.GetLookback|CandleInNeck_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleInNeck`1|CandleInNeck_T_.md|CandleInNeck<T>
-P:TechnicalAnalysis.Candles.CandleInNeckResult.Integers|CandleInNeckResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleInNeckResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleInNeckResult.CandleInNeckResult(RetCode,int,int,int[]).md|CandleInNeckResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleInNeckResult|CandleInNeckResult.md|CandleInNeckResult
 M:TechnicalAnalysis.Candles.CandleInvertedHammer`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleInvertedHammer_T_.CandleInvertedHammer(T[],T[],T[],T[]).md|CandleInvertedHammer(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleInvertedHammer`1.Compute(System.Int32,System.Int32)|CandleInvertedHammer_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleInvertedHammer`1.GetPatternRecognition(System.Int32)|CandleInvertedHammer_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleInvertedHammer`1.GetLookback|CandleInvertedHammer_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleInvertedHammer`1|CandleInvertedHammer_T_.md|CandleInvertedHammer<T>
-P:TechnicalAnalysis.Candles.CandleInvertedHammerResult.Integers|CandleInvertedHammerResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleInvertedHammerResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleInvertedHammerResult.CandleInvertedHammerResult(RetCode,int,int,int[]).md|CandleInvertedHammerResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleInvertedHammerResult|CandleInvertedHammerResult.md|CandleInvertedHammerResult
 M:TechnicalAnalysis.Candles.CandleKicking`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleKicking_T_.CandleKicking(T[],T[],T[],T[]).md|CandleKicking(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleKicking`1.Compute(System.Int32,System.Int32)|CandleKicking_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleKicking`1.GetPatternRecognition(System.Int32)|CandleKicking_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleKicking`1.GetLookback|CandleKicking_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleKicking`1|CandleKicking_T_.md|CandleKicking<T>
-P:TechnicalAnalysis.Candles.CandleKickingResult.Integers|CandleKickingResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleKickingResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleKickingResult.CandleKickingResult(RetCode,int,int,int[]).md|CandleKickingResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleKickingResult|CandleKickingResult.md|CandleKickingResult
 M:TechnicalAnalysis.Candles.CandleKickingByLength`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleKickingByLength_T_.CandleKickingByLength(T[],T[],T[],T[]).md|CandleKickingByLength(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleKickingByLength`1.Compute(System.Int32,System.Int32)|CandleKickingByLength_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleKickingByLength`1.GetPatternRecognition(System.Int32)|CandleKickingByLength_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleKickingByLength`1.GetLookback|CandleKickingByLength_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleKickingByLength`1|CandleKickingByLength_T_.md|CandleKickingByLength<T>
-P:TechnicalAnalysis.Candles.CandleKickingByLengthResult.Integers|CandleKickingByLengthResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleKickingByLengthResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleKickingByLengthResult.CandleKickingByLengthResult(RetCode,int,int,int[]).md|CandleKickingByLengthResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleKickingByLengthResult|CandleKickingByLengthResult.md|CandleKickingByLengthResult
 M:TechnicalAnalysis.Candles.CandleLadderBottom`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleLadderBottom_T_.CandleLadderBottom(T[],T[],T[],T[]).md|CandleLadderBottom(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleLadderBottom`1.Compute(System.Int32,System.Int32)|CandleLadderBottom_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleLadderBottom`1.GetPatternRecognition(System.Int32)|CandleLadderBottom_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleLadderBottom`1.GetLookback|CandleLadderBottom_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleLadderBottom`1|CandleLadderBottom_T_.md|CandleLadderBottom<T>
-P:TechnicalAnalysis.Candles.CandleLadderBottomResult.Integers|CandleLadderBottomResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleLadderBottomResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleLadderBottomResult.CandleLadderBottomResult(RetCode,int,int,int[]).md|CandleLadderBottomResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleLadderBottomResult|CandleLadderBottomResult.md|CandleLadderBottomResult
 M:TechnicalAnalysis.Candles.CandleLongLeggedDoji`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleLongLeggedDoji_T_.CandleLongLeggedDoji(T[],T[],T[],T[]).md|CandleLongLeggedDoji(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleLongLeggedDoji`1.Compute(System.Int32,System.Int32)|CandleLongLeggedDoji_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleLongLeggedDoji`1.GetPatternRecognition(System.Int32)|CandleLongLeggedDoji_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleLongLeggedDoji`1.GetLookback|CandleLongLeggedDoji_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleLongLeggedDoji`1|CandleLongLeggedDoji_T_.md|CandleLongLeggedDoji<T>
-P:TechnicalAnalysis.Candles.CandleLongLeggedDojiResult.Integers|CandleLongLeggedDojiResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleLongLeggedDojiResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleLongLeggedDojiResult.CandleLongLeggedDojiResult(RetCode,int,int,int[]).md|CandleLongLeggedDojiResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleLongLeggedDojiResult|CandleLongLeggedDojiResult.md|CandleLongLeggedDojiResult
 M:TechnicalAnalysis.Candles.CandleLongLine`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleLongLine_T_.CandleLongLine(T[],T[],T[],T[]).md|CandleLongLine(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleLongLine`1.Compute(System.Int32,System.Int32)|CandleLongLine_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleLongLine`1.GetPatternRecognition(System.Int32)|CandleLongLine_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleLongLine`1.GetLookback|CandleLongLine_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleLongLine`1|CandleLongLine_T_.md|CandleLongLine<T>
-P:TechnicalAnalysis.Candles.CandleLongLineResult.Integers|CandleLongLineResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleLongLineResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleLongLineResult.CandleLongLineResult(RetCode,int,int,int[]).md|CandleLongLineResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleLongLineResult|CandleLongLineResult.md|CandleLongLineResult
 M:TechnicalAnalysis.Candles.CandleMarubozu`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleMarubozu_T_.CandleMarubozu(T[],T[],T[],T[]).md|CandleMarubozu(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleMarubozu`1.Compute(System.Int32,System.Int32)|CandleMarubozu_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleMarubozu`1.GetPatternRecognition(System.Int32)|CandleMarubozu_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleMarubozu`1.GetLookback|CandleMarubozu_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleMarubozu`1|CandleMarubozu_T_.md|CandleMarubozu<T>
-P:TechnicalAnalysis.Candles.CandleMarubozuResult.Integers|CandleMarubozuResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleMarubozuResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleMarubozuResult.CandleMarubozuResult(RetCode,int,int,int[]).md|CandleMarubozuResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleMarubozuResult|CandleMarubozuResult.md|CandleMarubozuResult
 M:TechnicalAnalysis.Candles.CandleMatchingLow`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleMatchingLow_T_.CandleMatchingLow(T[],T[],T[],T[]).md|CandleMatchingLow(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleMatchingLow`1.Compute(System.Int32,System.Int32)|CandleMatchingLow_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleMatchingLow`1.GetPatternRecognition(System.Int32)|CandleMatchingLow_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleMatchingLow`1.GetLookback|CandleMatchingLow_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleMatchingLow`1|CandleMatchingLow_T_.md|CandleMatchingLow<T>
-P:TechnicalAnalysis.Candles.CandleMatchingLowResult.Integers|CandleMatchingLowResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleMatchingLowResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleMatchingLowResult.CandleMatchingLowResult(RetCode,int,int,int[]).md|CandleMatchingLowResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleMatchingLowResult|CandleMatchingLowResult.md|CandleMatchingLowResult
 M:TechnicalAnalysis.Candles.CandleMatHold`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleMatHold_T_.CandleMatHold(T[],T[],T[],T[]).md|CandleMatHold(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleMatHold`1.Compute(System.Int32,System.Int32,`0@)|CandleMatHold_T_.Compute(int,int,T).md|Compute(int, int, T)
 M:TechnicalAnalysis.Candles.CandleMatHold`1.GetPatternRecognition(System.Int32)|CandleMatHold_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleMatHold`1.GetLookback|CandleMatHold_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleMatHold`1|CandleMatHold_T_.md|CandleMatHold<T>
-P:TechnicalAnalysis.Candles.CandleMatHoldResult.Integers|CandleMatHoldResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleMatHoldResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleMatHoldResult.CandleMatHoldResult(RetCode,int,int,int[]).md|CandleMatHoldResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleMatHoldResult|CandleMatHoldResult.md|CandleMatHoldResult
 M:TechnicalAnalysis.Candles.CandleMorningDojiStar`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleMorningDojiStar_T_.CandleMorningDojiStar(T[],T[],T[],T[]).md|CandleMorningDojiStar(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleMorningDojiStar`1.Compute(System.Int32,System.Int32,`0@)|CandleMorningDojiStar_T_.Compute(int,int,T).md|Compute(int, int, T)
 M:TechnicalAnalysis.Candles.CandleMorningDojiStar`1.GetPatternRecognition(System.Int32)|CandleMorningDojiStar_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleMorningDojiStar`1.GetLookback|CandleMorningDojiStar_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleMorningDojiStar`1|CandleMorningDojiStar_T_.md|CandleMorningDojiStar<T>
-P:TechnicalAnalysis.Candles.CandleMorningDojiStarResult.Integers|CandleMorningDojiStarResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleMorningDojiStarResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleMorningDojiStarResult.CandleMorningDojiStarResult(RetCode,int,int,int[]).md|CandleMorningDojiStarResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleMorningDojiStarResult|CandleMorningDojiStarResult.md|CandleMorningDojiStarResult
 M:TechnicalAnalysis.Candles.CandleMorningStar`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleMorningStar_T_.CandleMorningStar(T[],T[],T[],T[]).md|CandleMorningStar(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleMorningStar`1.Compute(System.Int32,System.Int32,`0@)|CandleMorningStar_T_.Compute(int,int,T).md|Compute(int, int, T)
 M:TechnicalAnalysis.Candles.CandleMorningStar`1.GetPatternRecognition(System.Int32)|CandleMorningStar_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleMorningStar`1.GetLookback|CandleMorningStar_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleMorningStar`1|CandleMorningStar_T_.md|CandleMorningStar<T>
-P:TechnicalAnalysis.Candles.CandleMorningStarResult.Integers|CandleMorningStarResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleMorningStarResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleMorningStarResult.CandleMorningStarResult(RetCode,int,int,int[]).md|CandleMorningStarResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleMorningStarResult|CandleMorningStarResult.md|CandleMorningStarResult
 M:TechnicalAnalysis.Candles.CandleOnNeck`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleOnNeck_T_.CandleOnNeck(T[],T[],T[],T[]).md|CandleOnNeck(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleOnNeck`1.Compute(System.Int32,System.Int32)|CandleOnNeck_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleOnNeck`1.GetPatternRecognition(System.Int32)|CandleOnNeck_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleOnNeck`1.GetLookback|CandleOnNeck_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleOnNeck`1|CandleOnNeck_T_.md|CandleOnNeck<T>
-P:TechnicalAnalysis.Candles.CandleOnNeckResult.Integers|CandleOnNeckResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleOnNeckResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleOnNeckResult.CandleOnNeckResult(RetCode,int,int,int[]).md|CandleOnNeckResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleOnNeckResult|CandleOnNeckResult.md|CandleOnNeckResult
 M:TechnicalAnalysis.Candles.CandlePiercing`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandlePiercing_T_.CandlePiercing(T[],T[],T[],T[]).md|CandlePiercing(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandlePiercing`1.Compute(System.Int32,System.Int32)|CandlePiercing_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandlePiercing`1.GetPatternRecognition(System.Int32)|CandlePiercing_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandlePiercing`1.GetLookback|CandlePiercing_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandlePiercing`1|CandlePiercing_T_.md|CandlePiercing<T>
-P:TechnicalAnalysis.Candles.CandlePiercingResult.Integers|CandlePiercingResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandlePiercingResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandlePiercingResult.CandlePiercingResult(RetCode,int,int,int[]).md|CandlePiercingResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandlePiercingResult|CandlePiercingResult.md|CandlePiercingResult
 M:TechnicalAnalysis.Candles.CandleRickshawMan`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleRickshawMan_T_.CandleRickshawMan(T[],T[],T[],T[]).md|CandleRickshawMan(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleRickshawMan`1.Compute(System.Int32,System.Int32)|CandleRickshawMan_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleRickshawMan`1.GetPatternRecognition(System.Int32)|CandleRickshawMan_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleRickshawMan`1.GetLookback|CandleRickshawMan_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleRickshawMan`1|CandleRickshawMan_T_.md|CandleRickshawMan<T>
-P:TechnicalAnalysis.Candles.CandleRickshawManResult.Integers|CandleRickshawManResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleRickshawManResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleRickshawManResult.CandleRickshawManResult(RetCode,int,int,int[]).md|CandleRickshawManResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleRickshawManResult|CandleRickshawManResult.md|CandleRickshawManResult
 M:TechnicalAnalysis.Candles.CandleRiseFall3Methods`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleRiseFall3Methods_T_.CandleRiseFall3Methods(T[],T[],T[],T[]).md|CandleRiseFall3Methods(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleRiseFall3Methods`1.Compute(System.Int32,System.Int32)|CandleRiseFall3Methods_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleRiseFall3Methods`1.GetPatternRecognition(System.Int32)|CandleRiseFall3Methods_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleRiseFall3Methods`1.GetLookback|CandleRiseFall3Methods_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleRiseFall3Methods`1|CandleRiseFall3Methods_T_.md|CandleRiseFall3Methods<T>
-P:TechnicalAnalysis.Candles.CandleRiseFall3MethodsResult.Integers|CandleRiseFall3MethodsResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleRiseFall3MethodsResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleRiseFall3MethodsResult.CandleRiseFall3MethodsResult(RetCode,int,int,int[]).md|CandleRiseFall3MethodsResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleRiseFall3MethodsResult|CandleRiseFall3MethodsResult.md|CandleRiseFall3MethodsResult
 M:TechnicalAnalysis.Candles.CandleSeparatingLines`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleSeparatingLines_T_.CandleSeparatingLines(T[],T[],T[],T[]).md|CandleSeparatingLines(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleSeparatingLines`1.Compute(System.Int32,System.Int32)|CandleSeparatingLines_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleSeparatingLines`1.GetPatternRecognition(System.Int32)|CandleSeparatingLines_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleSeparatingLines`1.GetLookback|CandleSeparatingLines_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleSeparatingLines`1|CandleSeparatingLines_T_.md|CandleSeparatingLines<T>
-P:TechnicalAnalysis.Candles.CandleSeparatingLinesResult.Integers|CandleSeparatingLinesResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleSeparatingLinesResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleSeparatingLinesResult.CandleSeparatingLinesResult(RetCode,int,int,int[]).md|CandleSeparatingLinesResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleSeparatingLinesResult|CandleSeparatingLinesResult.md|CandleSeparatingLinesResult
 M:TechnicalAnalysis.Candles.CandleShootingStar`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleShootingStar_T_.CandleShootingStar(T[],T[],T[],T[]).md|CandleShootingStar(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleShootingStar`1.Compute(System.Int32,System.Int32)|CandleShootingStar_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleShootingStar`1.GetPatternRecognition(System.Int32)|CandleShootingStar_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleShootingStar`1.GetLookback|CandleShootingStar_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleShootingStar`1|CandleShootingStar_T_.md|CandleShootingStar<T>
-P:TechnicalAnalysis.Candles.CandleShootingStarResult.Integers|CandleShootingStarResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleShootingStarResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleShootingStarResult.CandleShootingStarResult(RetCode,int,int,int[]).md|CandleShootingStarResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleShootingStarResult|CandleShootingStarResult.md|CandleShootingStarResult
 M:TechnicalAnalysis.Candles.CandleShortLine`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleShortLine_T_.CandleShortLine(T[],T[],T[],T[]).md|CandleShortLine(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleShortLine`1.Compute(System.Int32,System.Int32)|CandleShortLine_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleShortLine`1.GetPatternRecognition(System.Int32)|CandleShortLine_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleShortLine`1.GetLookback|CandleShortLine_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleShortLine`1|CandleShortLine_T_.md|CandleShortLine<T>
-P:TechnicalAnalysis.Candles.CandleShortLineResult.Integers|CandleShortLineResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleShortLineResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleShortLineResult.CandleShortLineResult(RetCode,int,int,int[]).md|CandleShortLineResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleShortLineResult|CandleShortLineResult.md|CandleShortLineResult
 M:TechnicalAnalysis.Candles.CandleSpinningTop`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleSpinningTop_T_.CandleSpinningTop(T[],T[],T[],T[]).md|CandleSpinningTop(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleSpinningTop`1.Compute(System.Int32,System.Int32)|CandleSpinningTop_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleSpinningTop`1.GetPatternRecognition(System.Int32)|CandleSpinningTop_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleSpinningTop`1.GetLookback|CandleSpinningTop_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleSpinningTop`1|CandleSpinningTop_T_.md|CandleSpinningTop<T>
-P:TechnicalAnalysis.Candles.CandleSpinningTopResult.Integers|CandleSpinningTopResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleSpinningTopResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleSpinningTopResult.CandleSpinningTopResult(RetCode,int,int,int[]).md|CandleSpinningTopResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleSpinningTopResult|CandleSpinningTopResult.md|CandleSpinningTopResult
 M:TechnicalAnalysis.Candles.CandleStalledPattern`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleStalledPattern_T_.CandleStalledPattern(T[],T[],T[],T[]).md|CandleStalledPattern(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleStalledPattern`1.Compute(System.Int32,System.Int32)|CandleStalledPattern_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleStalledPattern`1.GetPatternRecognition(System.Int32)|CandleStalledPattern_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleStalledPattern`1.GetLookback|CandleStalledPattern_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleStalledPattern`1|CandleStalledPattern_T_.md|CandleStalledPattern<T>
-P:TechnicalAnalysis.Candles.CandleStalledPatternResult.Integers|CandleStalledPatternResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleStalledPatternResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleStalledPatternResult.CandleStalledPatternResult(RetCode,int,int,int[]).md|CandleStalledPatternResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleStalledPatternResult|CandleStalledPatternResult.md|CandleStalledPatternResult
 M:TechnicalAnalysis.Candles.CandleStickSandwich`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleStickSandwich_T_.CandleStickSandwich(T[],T[],T[],T[]).md|CandleStickSandwich(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleStickSandwich`1.Compute(System.Int32,System.Int32)|CandleStickSandwich_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleStickSandwich`1.GetPatternRecognition(System.Int32)|CandleStickSandwich_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleStickSandwich`1.GetLookback|CandleStickSandwich_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleStickSandwich`1|CandleStickSandwich_T_.md|CandleStickSandwich<T>
-P:TechnicalAnalysis.Candles.CandleStickSandwichResult.Integers|CandleStickSandwichResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleStickSandwichResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleStickSandwichResult.CandleStickSandwichResult(RetCode,int,int,int[]).md|CandleStickSandwichResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleStickSandwichResult|CandleStickSandwichResult.md|CandleStickSandwichResult
 M:TechnicalAnalysis.Candles.CandleTakuri`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleTakuri_T_.CandleTakuri(T[],T[],T[],T[]).md|CandleTakuri(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleTakuri`1.Compute(System.Int32,System.Int32)|CandleTakuri_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleTakuri`1.GetPatternRecognition(System.Int32)|CandleTakuri_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleTakuri`1.GetLookback|CandleTakuri_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleTakuri`1|CandleTakuri_T_.md|CandleTakuri<T>
-P:TechnicalAnalysis.Candles.CandleTakuriResult.Integers|CandleTakuriResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleTakuriResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleTakuriResult.CandleTakuriResult(RetCode,int,int,int[]).md|CandleTakuriResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleTakuriResult|CandleTakuriResult.md|CandleTakuriResult
 M:TechnicalAnalysis.Candles.CandleTasukiGap`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleTasukiGap_T_.CandleTasukiGap(T[],T[],T[],T[]).md|CandleTasukiGap(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleTasukiGap`1.Compute(System.Int32,System.Int32)|CandleTasukiGap_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleTasukiGap`1.GetPatternRecognition(System.Int32)|CandleTasukiGap_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleTasukiGap`1.GetLookback|CandleTasukiGap_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleTasukiGap`1|CandleTasukiGap_T_.md|CandleTasukiGap<T>
-P:TechnicalAnalysis.Candles.CandleTasukiGapResult.Integers|CandleTasukiGapResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleTasukiGapResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleTasukiGapResult.CandleTasukiGapResult(RetCode,int,int,int[]).md|CandleTasukiGapResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleTasukiGapResult|CandleTasukiGapResult.md|CandleTasukiGapResult
 M:TechnicalAnalysis.Candles.CandleThrusting`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleThrusting_T_.CandleThrusting(T[],T[],T[],T[]).md|CandleThrusting(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleThrusting`1.Compute(System.Int32,System.Int32)|CandleThrusting_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleThrusting`1.GetPatternRecognition(System.Int32)|CandleThrusting_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleThrusting`1.GetLookback|CandleThrusting_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleThrusting`1|CandleThrusting_T_.md|CandleThrusting<T>
-P:TechnicalAnalysis.Candles.CandleThrustingResult.Integers|CandleThrustingResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleThrustingResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleThrustingResult.CandleThrustingResult(RetCode,int,int,int[]).md|CandleThrustingResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleThrustingResult|CandleThrustingResult.md|CandleThrustingResult
 M:TechnicalAnalysis.Candles.CandleTristar`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleTristar_T_.CandleTristar(T[],T[],T[],T[]).md|CandleTristar(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleTristar`1.Compute(System.Int32,System.Int32)|CandleTristar_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleTristar`1.GetPatternRecognition(System.Int32)|CandleTristar_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleTristar`1.GetLookback|CandleTristar_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleTristar`1|CandleTristar_T_.md|CandleTristar<T>
-P:TechnicalAnalysis.Candles.CandleTristarResult.Integers|CandleTristarResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleTristarResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleTristarResult.CandleTristarResult(RetCode,int,int,int[]).md|CandleTristarResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleTristarResult|CandleTristarResult.md|CandleTristarResult
 M:TechnicalAnalysis.Candles.CandleUnique3River`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleUnique3River_T_.CandleUnique3River(T[],T[],T[],T[]).md|CandleUnique3River(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleUnique3River`1.Compute(System.Int32,System.Int32)|CandleUnique3River_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleUnique3River`1.GetPatternRecognition(System.Int32)|CandleUnique3River_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleUnique3River`1.GetLookback|CandleUnique3River_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleUnique3River`1|CandleUnique3River_T_.md|CandleUnique3River<T>
-P:TechnicalAnalysis.Candles.CandleUnique3RiverResult.Integers|CandleUnique3RiverResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleUnique3RiverResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleUnique3RiverResult.CandleUnique3RiverResult(RetCode,int,int,int[]).md|CandleUnique3RiverResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleUnique3RiverResult|CandleUnique3RiverResult.md|CandleUnique3RiverResult
 M:TechnicalAnalysis.Candles.CandleUpsideGap2Crows`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleUpsideGap2Crows_T_.CandleUpsideGap2Crows(T[],T[],T[],T[]).md|CandleUpsideGap2Crows(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleUpsideGap2Crows`1.Compute(System.Int32,System.Int32)|CandleUpsideGap2Crows_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleUpsideGap2Crows`1.GetPatternRecognition(System.Int32)|CandleUpsideGap2Crows_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleUpsideGap2Crows`1.GetLookback|CandleUpsideGap2Crows_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleUpsideGap2Crows`1|CandleUpsideGap2Crows_T_.md|CandleUpsideGap2Crows<T>
-P:TechnicalAnalysis.Candles.CandleUpsideGap2CrowsResult.Integers|CandleUpsideGap2CrowsResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleUpsideGap2CrowsResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleUpsideGap2CrowsResult.CandleUpsideGap2CrowsResult(RetCode,int,int,int[]).md|CandleUpsideGap2CrowsResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleUpsideGap2CrowsResult|CandleUpsideGap2CrowsResult.md|CandleUpsideGap2CrowsResult
 M:TechnicalAnalysis.Candles.CandleXSideGap3Methods`1.#ctor(`0[]@,`0[]@,`0[]@,`0[]@)|CandleXSideGap3Methods_T_.CandleXSideGap3Methods(T[],T[],T[],T[]).md|CandleXSideGap3Methods(T[], T[], T[], T[])
 M:TechnicalAnalysis.Candles.CandleXSideGap3Methods`1.Compute(System.Int32,System.Int32)|CandleXSideGap3Methods_T_.Compute(int,int).md|Compute(int, int)
 M:TechnicalAnalysis.Candles.CandleXSideGap3Methods`1.GetPatternRecognition(System.Int32)|CandleXSideGap3Methods_T_.GetPatternRecognition(int).md|GetPatternRecognition(int)
 M:TechnicalAnalysis.Candles.CandleXSideGap3Methods`1.GetLookback|CandleXSideGap3Methods_T_.GetLookback().md|GetLookback()
 T:TechnicalAnalysis.Candles.CandleXSideGap3Methods`1|CandleXSideGap3Methods_T_.md|CandleXSideGap3Methods<T>
-P:TechnicalAnalysis.Candles.CandleXSideGap3MethodsResult.Integers|CandleXSideGap3MethodsResult.Integers.md|Integers
-M:TechnicalAnalysis.Candles.CandleXSideGap3MethodsResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|CandleXSideGap3MethodsResult.CandleXSideGap3MethodsResult(RetCode,int,int,int[]).md|CandleXSideGap3MethodsResult(RetCode, int, int, int[])
-T:TechnicalAnalysis.Candles.CandleXSideGap3MethodsResult|CandleXSideGap3MethodsResult.md|CandleXSideGap3MethodsResult

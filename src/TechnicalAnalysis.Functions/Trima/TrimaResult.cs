@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record TrimaResult : IndicatorBase
+public record TrimaResult : IndicatorResult
 {
     public TrimaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

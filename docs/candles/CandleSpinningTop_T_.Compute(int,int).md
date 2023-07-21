@@ -4,7 +4,7 @@
 ## CandleSpinningTop<T>.Compute(int, int) Method
 
 ```csharp
-public TechnicalAnalysis.Candles.CandleSpinningTopResult Compute(int startIdx, int endIdx);
+public TechnicalAnalysis.Common.CandleIndicatorResult Compute(int startIdx, int endIdx);
 ```
 #### Parameters
 
@@ -17,4 +17,4 @@ public TechnicalAnalysis.Candles.CandleSpinningTopResult Compute(int startIdx, i
 `endIdx` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
 #### Returns
-[CandleSpinningTopResult](CandleSpinningTopResult.md 'TechnicalAnalysis.Candles.CandleSpinningTopResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

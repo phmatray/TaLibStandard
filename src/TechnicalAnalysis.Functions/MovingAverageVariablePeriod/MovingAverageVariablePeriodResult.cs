@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record MovingAverageVariablePeriodResult : IndicatorBase
+public record MovingAverageVariablePeriodResult : IndicatorResult
 {
     public MovingAverageVariablePeriodResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

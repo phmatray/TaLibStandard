@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record HtTrendModeResult : IndicatorBase
+public record HtTrendModeResult : IndicatorResult
 {
     public HtTrendModeResult(RetCode retCode, int begIdx, int nbElement, int[] integers)
         : base(retCode, begIdx, nbElement)

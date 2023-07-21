@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record MinIndexResult : IndicatorBase
+public record MinIndexResult : IndicatorResult
 {
     public MinIndexResult(RetCode retCode, int begIdx, int nbElement, int[] integers)
         : base(retCode, begIdx, nbElement)

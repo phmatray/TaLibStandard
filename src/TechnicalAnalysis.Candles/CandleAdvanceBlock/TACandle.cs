@@ -19,7 +19,7 @@ public static partial class TACandle
     /// <param name="close">An array of close prices.</param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static CandleAdvanceBlockResult CdlAdvanceBlock<T>(
+    public static CandleIndicatorResult CdlAdvanceBlock<T>(
         int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
         where T : IFloatingPoint<T>
     {

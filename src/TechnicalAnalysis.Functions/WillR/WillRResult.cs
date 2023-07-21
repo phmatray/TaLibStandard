@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record WillRResult : IndicatorBase
+public record WillRResult : IndicatorResult
 {
     public WillRResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record RocResult : IndicatorBase
+public record RocResult : IndicatorResult
 {
     public RocResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

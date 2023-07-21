@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record CorrelResult : IndicatorBase
+public record CorrelResult : IndicatorResult
 {
     public CorrelResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

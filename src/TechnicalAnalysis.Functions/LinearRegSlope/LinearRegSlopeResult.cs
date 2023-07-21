@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record LinearRegSlopeResult : IndicatorBase
+public record LinearRegSlopeResult : IndicatorResult
 {
     public LinearRegSlopeResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

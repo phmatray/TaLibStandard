@@ -34,7 +34,7 @@ public class CandleInNeck<T> : CandleIndicator<T>
     /// <param name="startIdx"></param>
     /// <param name="endIdx"></param>
     /// <returns></returns>
-    public CandleInNeckResult Compute(int startIdx, int endIdx)
+    public CandleIndicatorResult Compute(int startIdx, int endIdx)
     {
         // Initialize output variables 
         int outBegIdx = default;
@@ -44,18 +44,18 @@ public class CandleInNeck<T> : CandleIndicator<T>
         // Validate the requested output range.
         if (startIdx < 0)
         {
-            return new CandleInNeckResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleIndicatorResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
         }
 
         if (endIdx < 0 || endIdx < startIdx)
         {
-            return new CandleInNeckResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
+            return new CandleIndicatorResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
         }
 
         // Verify required price component.
         if (Open == null! || High == null! || Low == null! || Close == null!)
         {
-            return new CandleInNeckResult(BadParam, outBegIdx, outNBElement, outInteger);
+            return new CandleIndicatorResult(BadParam, outBegIdx, outNBElement, outInteger);
         }
 
         // Identify the minimum number of price bar needed to calculate at least one output.
@@ -70,7 +70,7 @@ public class CandleInNeck<T> : CandleIndicator<T>
         // Make sure there is still something to evaluate.
         if (startIdx > endIdx)
         {
-            return new CandleInNeckResult(Success, outBegIdx, outNBElement, outInteger);
+            return new CandleIndicatorResult(Success, outBegIdx, outNBElement, outInteger);
         }
 
         // Do the calculation using tight loops.
@@ -128,7 +128,7 @@ public class CandleInNeck<T> : CandleIndicator<T>
         outNBElement = outIdx;
         outBegIdx = startIdx;
             
-        return new CandleInNeckResult(Success, outBegIdx, outNBElement, outInteger);
+        return new CandleIndicatorResult(Success, outBegIdx, outNBElement, outInteger);
     }
 
     /// <inheritdoc />

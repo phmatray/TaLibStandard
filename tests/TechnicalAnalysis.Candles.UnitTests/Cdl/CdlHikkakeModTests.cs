@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlHikkakeModTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlHikkakeMod;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlHikkakeModTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleHikkakeModResult result = TACandle.CdlHikkakeMod(
+        CandleIndicatorResult result = TACandle.CdlHikkakeMod(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

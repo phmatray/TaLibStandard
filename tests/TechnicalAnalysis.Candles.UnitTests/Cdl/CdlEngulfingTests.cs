@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlEngulfingTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlEngulfing;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlEngulfingTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleEngulfingResult result = TACandle.CdlEngulfing(
+        CandleIndicatorResult result = TACandle.CdlEngulfing(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

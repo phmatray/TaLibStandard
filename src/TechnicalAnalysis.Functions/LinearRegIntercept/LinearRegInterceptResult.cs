@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record LinearRegInterceptResult : IndicatorBase
+public record LinearRegInterceptResult : IndicatorResult
 {
     public LinearRegInterceptResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

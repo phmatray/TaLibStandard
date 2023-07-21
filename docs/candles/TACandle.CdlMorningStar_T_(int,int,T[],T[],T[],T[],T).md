@@ -4,7 +4,7 @@
 ## TACandle.CdlMorningStar<T>(int, int, T[], T[], T[], T[], T) Method
 
 ```csharp
-public static TechnicalAnalysis.Candles.CandleMorningStarResult CdlMorningStar<T>(int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close, T penetration)
+public static TechnicalAnalysis.Common.CandleIndicatorResult CdlMorningStar<T>(int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close, T penetration)
     where T : System.Numerics.IFloatingPoint<T>;
 ```
 #### Type parameters
@@ -51,4 +51,4 @@ An array of close prices.
 `penetration` [T](TACandle.CdlMorningStar_T_(int,int,T[],T[],T[],T[],T).md#TechnicalAnalysis.Candles.TACandle.CdlMorningStar_T_(int,int,T[],T[],T[],T[],T).T 'TechnicalAnalysis.Candles.TACandle.CdlMorningStar<T>(int, int, T[], T[], T[], T[], T).T')
 
 #### Returns
-[CandleMorningStarResult](CandleMorningStarResult.md 'TechnicalAnalysis.Candles.CandleMorningStarResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

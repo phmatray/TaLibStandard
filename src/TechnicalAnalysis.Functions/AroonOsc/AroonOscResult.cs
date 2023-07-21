@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record AroonOscResult : IndicatorBase
+public record AroonOscResult : IndicatorResult
 {
     public AroonOscResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

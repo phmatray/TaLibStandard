@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record MidPriceResult : IndicatorBase
+public record MidPriceResult : IndicatorResult
 {
     public MidPriceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

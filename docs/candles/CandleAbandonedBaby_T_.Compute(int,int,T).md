@@ -4,7 +4,7 @@
 ## CandleAbandonedBaby<T>.Compute(int, int, T) Method
 
 ```csharp
-public TechnicalAnalysis.Candles.CandleAbandonedBabyResult Compute(int startIdx, int endIdx, in T optInPenetration);
+public TechnicalAnalysis.Common.CandleIndicatorResult Compute(int startIdx, int endIdx, in T optInPenetration);
 ```
 #### Parameters
 
@@ -21,4 +21,4 @@ public TechnicalAnalysis.Candles.CandleAbandonedBabyResult Compute(int startIdx,
 `optInPenetration` [T](CandleAbandonedBaby_T_.md#TechnicalAnalysis.Candles.CandleAbandonedBaby_T_.T 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.T')
 
 #### Returns
-[CandleAbandonedBabyResult](CandleAbandonedBabyResult.md 'TechnicalAnalysis.Candles.CandleAbandonedBabyResult')
+[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')

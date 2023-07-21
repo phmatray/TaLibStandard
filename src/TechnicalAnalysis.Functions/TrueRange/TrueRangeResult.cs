@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record TrueRangeResult : IndicatorBase
+public record TrueRangeResult : IndicatorResult
 {
     public TrueRangeResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

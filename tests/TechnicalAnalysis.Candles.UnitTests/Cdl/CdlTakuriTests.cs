@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlTakuriTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorBase> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
         = TACandle.CdlTakuri;
 
     [Theory]
@@ -34,7 +34,7 @@ public class CdlTakuriTests : CdlTestsBase
         T[] close = fixture.CreateMany<T>(100).ToArray();
             
         // Act
-        CandleTakuriResult result = TACandle.CdlTakuri(
+        CandleIndicatorResult result = TACandle.CdlTakuri(
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert

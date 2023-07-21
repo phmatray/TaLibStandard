@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record HtDcPeriodResult : IndicatorBase
+public record HtDcPeriodResult : IndicatorResult
 {
     public HtDcPeriodResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)

@@ -6,7 +6,7 @@
 
 namespace TechnicalAnalysis.Functions;
 
-public record NatrResult : IndicatorBase
+public record NatrResult : IndicatorResult
 {
     public NatrResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
