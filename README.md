@@ -1,6 +1,6 @@
 # TaLibStandard  [![Sparkline](https://stars.medv.io/phmatray/TaLibStandard.svg)](https://stars.medv.io/phmatray/TaLibStandard)
 
-A Technical Analysis library in modern C#.
+A modern and robust C# Technical Analysis library based on the original open-source [TA-Lib](https://ta-lib.org) by Mario Fortier, using Generic Math and supporting Double, Float, and Decimal data types.
 
 ---
 
@@ -21,42 +21,52 @@ A Technical Analysis library in modern C#.
 
 ## Introduction
 
-This library is a modern port written in C# and based on the original [TA-Lib](https://ta-lib.org), an open-source library by Mario Fortier.
+TaLibStandard is a modern interpretation of the widely used [TA-Lib](https://ta-lib.org), reimagined in C# 11. It is designed to be reliable, efficient, and user-friendly for developers performing financial market analysis. The addition of .NET's Generic Math feature allows for a richer, more flexible library that can handle a variety of number types.
 
 ## Goal
 
+The primary objective of TaLibStandard is to provide a comprehensive, feature-rich and accessible library for conducting technical analysis on financial market data.
+
 ## Getting started
 
-You can consult the list of [available functions](./docs/functions.md) from the documentation.
+To familiarize yourself with the library's capabilities, you may refer to the list of [available functions](./docs/functions.md) in the documentation.
 
 ## Features
 
-  * Double of Float
-  * With some basic tests (coverage: 54%)
+  * Support for Double, Float, and Decimal data types, with the help of .NET's Generic Math
+  * With some basic tests (coverage: 85%)
+  * Comprehensive API documentation that is easy to understand
 
 ### Library
 
-  * target framework : .NET Standard 2.1
-  * language version : C# 9
+  * Target framework : .NET 7
+  * Language version : C# 11
 
-### Demo Console App and Tests
+### Tests Specifications
 
-  * target framework : .NET 5
-  * language version : C# 9
+* Target framework : .NET 7
+* Language version : C# 11
+* xUnit and FluentAssertions 
 
 ## Installation
 
+(Add installation instructions here. For instance, steps for installing via NuGet package manager)
+
 ## Code Quality
 
-Codacy is an automated code analysis/quality tool that helps developers ship better software, faster. With Codacy, you get static analysis, cyclomatic complexity, duplication and code unit test coverage changes in every commit and pull request.
+We strive for the highest code quality in TaLibStandard, leveraging Codacy—an automated code analysis/quality tool. Codacy provides static analysis, cyclomatic complexity measures, duplication identification, and code unit test coverage changes for every commit and pull request.
 
-https://app.codacy.com/gh/phmatray/TaLibStandard
+View our Codacy metrics [here](https://app.codacy.com/gh/phmatray/TaLibStandard).
 
 ## Issues and Feature Requests
 
-Please submit bugs and feature requests as an issue to the [TaLibStandard Repository](https://github.com/phmatray/TaLibStandard/issues).
-Before submitting an issue please read others to ensure it is not a duplicate.
+For reporting bugs or suggesting new features, kindly submit these as an issue to the [TaLibStandard Repository](https://github.com/phmatray/TaLibStandard/issues). We value your contributions, but before submitting an issue, please ensure it is not a duplicate of an existing one.
 
 ## Release notes
 
+(Add details of the version history, bug fixes, and new feature additions in each release here)
+
 ## Licence
+
+GNU General Public License v3.0
+
