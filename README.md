@@ -1,4 +1,5 @@
-# TaLibStandard  [![Sparkline](https://stars.medv.io/phmatray/TaLibStandard.svg)](https://stars.medv.io/phmatray/TaLibStandard)
+# TaLibStandard
+[![Sparkline](https://stars.medv.io/phmatray/TaLibStandard.svg)](https://stars.medv.io/phmatray/TaLibStandard)
 
 A modern and robust C# Technical Analysis library based on the original open-source [TA-Lib](https://ta-lib.org) by Mario Fortier, using Generic Math and supporting Double, Float, and Decimal data types.
 
@@ -18,6 +19,21 @@ A modern and robust C# Technical Analysis library based on the original open-sou
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/84e2475f22a04bc1bed551f081029e82)](https://www.codacy.com/gh/phmatray/TaLibStandard/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=phmatray/TaLibStandard&amp;utm_campaign=Badge_Grade)
 
 ---
+
+<!-- TOC -->
+* [TaLibStandard](#talibstandard)
+  * [Introduction](#introduction)
+  * [Goal](#goal)
+  * [Getting started](#getting-started)
+  * [Features](#features)
+    * [Library](#library)
+    * [Tests Specifications](#tests-specifications)
+  * [Installation](#installation)
+  * [Code Quality](#code-quality)
+  * [Issues and Feature Requests](#issues-and-feature-requests)
+  * [Release notes](#release-notes)
+  * [Licence](#licence)
+<!-- TOC -->
 
 ## Introduction
 
