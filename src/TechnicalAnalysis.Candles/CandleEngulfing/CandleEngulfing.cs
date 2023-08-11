@@ -105,14 +105,14 @@ public class CandleEngulfing<T> : CandleIndicator<T>
                 IsColorGreen(i) &&
                 IsColorRed(i - 1) &&
                 Close[i] > Open[i - 1] &&
-                Open[i] < Close[i - 1]
+                Open[i] <= Close[i - 1]
             )
             ||
             (
                 // black engulfs white
                 IsColorRed(i) &&
                 IsColorGreen(i - 1) &&
-                Open[i] > Close[i - 1] &&
+                Open[i] >= Close[i - 1] &&
                 Close[i] < Open[i - 1]
             );
             
