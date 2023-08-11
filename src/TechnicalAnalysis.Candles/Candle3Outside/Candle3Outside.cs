@@ -106,7 +106,7 @@ public class Candle3Outside<T> : CandleIndicator<T>
                 IsColorGreen(i - 1) &&
                 IsColorRed(i - 2) &&
                 Close[i - 1] > Open[i - 2] &&
-                Open[i - 1] < Close[i - 2] &&
+                Open[i - 1] <= Close[i - 2] &&
                 // third candle higher
                 Close[i] > Close[i - 1]
             )
@@ -115,7 +115,7 @@ public class Candle3Outside<T> : CandleIndicator<T>
                 // black engulfs white
                 IsColorRed(i - 1) &&
                 IsColorGreen(i - 2) &&
-                Open[i - 1] > Close[i - 2] &&
+                Open[i - 1] >= Close[i - 2] &&
                 Close[i - 1] < Open[i - 2] &&
                 // third candle lower
                 Close[i] < Close[i - 1]

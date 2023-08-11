@@ -145,7 +145,7 @@ public class Candle3BlackCrows<T> : CandleIndicator<T>
             Open[i - 1] > Close[i - 2] &&
             // 3rd black opens within 2nd black's rb
             Open[i] < Open[i - 1] &&
-            Open[i] > Close[i - 1] &&
+            Open[i] >= Close[i - 1] &&
             // 1st black closes under prior candle's high
             High[i - 3] > Close[i - 2] &&
             // three declining
