@@ -142,10 +142,10 @@ public class Candle3BlackCrows<T> : CandleIndicator<T>
             GetLowerShadow(i) < GetCandleAverage(ShadowVeryShort, _shadowVeryShortPeriodTotal[0], i) &&
             // 2nd black opens within 1st black's rb
             Open[i - 1] < Open[i - 2] &&
-            Open[i - 1] > Close[i - 2] &&
+            Open[i - 1] >= Close[i - 2] &&
             // 3rd black opens within 2nd black's rb
             Open[i] < Open[i - 1] &&
-            Open[i] > Close[i - 1] &&
+            Open[i] >= Close[i - 1] &&
             // 1st black closes under prior candle's high
             High[i - 3] > Close[i - 2] &&
             // three declining

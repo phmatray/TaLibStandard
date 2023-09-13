@@ -135,7 +135,7 @@ public class Candle2Crows<T> : CandleIndicator<T>
             // 3rd: black
             IsColorRed(i) &&
             // opening within 2nd rb
-            Open[i] < Open[i - 1] && Open[i] > Close[i - 1] &&
+            Open[i] < Open[i - 1] && Open[i] >= Close[i - 1] &&
             // closing within 1st rb
             Close[i] > Open[i - 2] && Close[i] < Close[i - 2];
 
