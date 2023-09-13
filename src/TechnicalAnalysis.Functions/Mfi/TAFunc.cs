@@ -74,22 +74,22 @@ public static partial class TAFunc
                 prevValue = tempValue1;
                 tempValue1 *= inVolume[today];
                 today++;
-                if (tempValue2 < 0.0)
+                switch (tempValue2)
                 {
-                    moneyFlow[moneyFlowIdx].Negative = tempValue1;
-                    negSumMF += tempValue1;
-                    moneyFlow[moneyFlowIdx].Positive = 0.0;
-                }
-                else if (tempValue2 > 0.0)
-                {
-                    moneyFlow[moneyFlowIdx].Positive = tempValue1;
-                    posSumMF += tempValue1;
-                    moneyFlow[moneyFlowIdx].Negative = 0.0;
-                }
-                else
-                {
-                    moneyFlow[moneyFlowIdx].Positive = 0.0;
-                    moneyFlow[moneyFlowIdx].Negative = 0.0;
+                    case < 0.0:
+                        moneyFlow[moneyFlowIdx].Negative = tempValue1;
+                        negSumMF += tempValue1;
+                        moneyFlow[moneyFlowIdx].Positive = 0.0;
+                        break;
+                    case > 0.0:
+                        moneyFlow[moneyFlowIdx].Positive = tempValue1;
+                        posSumMF += tempValue1;
+                        moneyFlow[moneyFlowIdx].Negative = 0.0;
+                        break;
+                    default:
+                        moneyFlow[moneyFlowIdx].Positive = 0.0;
+                        moneyFlow[moneyFlowIdx].Negative = 0.0;
+                        break;
                 }
 
                 moneyFlowIdx++;

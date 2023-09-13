@@ -310,14 +310,12 @@ public static partial class TAFunc
                 period = tempReal2;
             }
 
-            if (period < 6.0)
+            period = period switch
             {
-                period = 6.0;
-            }
-            else if (period > 50.0)
-            {
-                period = 50.0;
-            }
+                < 6.0 => 6.0,
+                > 50.0 => 50.0,
+                _ => period
+            };
 
             period = 0.2 * period + 0.8 * tempReal;
             smoothPeriod = 0.33 * period + 0.67 * smoothPeriod;
