@@ -183,7 +183,7 @@ public class Candle3StarsInSouth<T> : CandleIndicator<T>
             // 2nd: smaller candle
             GetRealBody(i - 1) < GetRealBody(i - 2) &&
             // that opens higher but within 1st range
-            Open[i - 1] > Close[i - 2] &&
+            Open[i - 1] >= Close[i - 2] &&
             Open[i - 1] <= High[i - 2] &&
             // and trades lower than 1st close
             Low[i - 1] < Close[i - 2] &&
