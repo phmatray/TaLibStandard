@@ -23,7 +23,7 @@
   <!-- NuGet Package -->
   <PropertyGroup>
     <PackageProjectUrl>https://github.com/phmatray/TaLibStandard</PackageProjectUrl>
-    <PackageLicenseExpression>GPL-3.0</PackageLicenseExpression>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>Technical Analysis, TA-Lib, Finance, Trading, Stocks, Forex, Cryptocurrencies</PackageTags>
