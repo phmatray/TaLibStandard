@@ -4,6 +4,9 @@
     <!-- Documentation -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!-- NuGet -->
+    <IsPackable>false</IsPackable>
+    <PackageId>TaLibStandard</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
