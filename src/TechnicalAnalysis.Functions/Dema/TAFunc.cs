@@ -121,12 +121,7 @@ public static partial class TAFunc
     }
 
     public static int DemaLookback(int optInTimePeriod)
-    {
-        if (optInTimePeriod is < 2 or > 100000)
-        {
-            return -1;
-        }
-
-        return EmaLookback(optInTimePeriod) * 2;
-    }
+        => optInTimePeriod is < 2 or > 100000
+            ? -1
+            : EmaLookback(optInTimePeriod) * 2;
 }

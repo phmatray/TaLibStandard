@@ -106,12 +106,7 @@ public static partial class TAFunc
     }
 
     public static int MaxLookback(int optInTimePeriod)
-    {
-        if (optInTimePeriod is < 2 or > 100000)
-        {
-            return -1;
-        }
-
-        return optInTimePeriod - 1;
-    }
+        => optInTimePeriod is < 2 or > 100000
+            ? -1
+            : optInTimePeriod - 1;
 }

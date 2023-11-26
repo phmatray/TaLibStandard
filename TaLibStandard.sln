@@ -8,11 +8,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5AEBD15B-4E7E-47F2-B8D9-FEA28EBE87EA}"
 	ProjectSection(SolutionItems) = preProject
 		src\Directory.Build.props = src\Directory.Build.props
+		src\.editorconfig = src\.editorconfig
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CC261FDF-BD3D-46D8-9F87-326E86BDEEF2}"
 	ProjectSection(SolutionItems) = preProject
 		tests\Directory.Build.props = tests\Directory.Build.props
+		tests\.editorconfig = tests\.editorconfig
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalAnalysis.Candles", "src\TechnicalAnalysis.Candles\TechnicalAnalysis.Candles.csproj", "{552FF382-7E2F-4566-8DF8-2BA0F752DA36}"

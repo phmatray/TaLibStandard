@@ -5,7 +5,6 @@
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
 global using System.Numerics;
-global using System.Runtime.Serialization;
 global using TechnicalAnalysis.Common;
 global using static TechnicalAnalysis.Common.CandleSettingType;
 global using static TechnicalAnalysis.Common.RetCode;

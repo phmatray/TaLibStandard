@@ -224,6 +224,9 @@ csharp_prefer_braces = true:silent
 csharp_preserve_single_line_blocks = true
 csharp_preserve_single_line_statements = true
 
+# IDE0005: Using directive is unnecessary
+dotnet_diagnostic.IDE0005.severity = suggestion
+
 # IDE0055: Fix formatting
 dotnet_diagnostic.IDE0055.severity = none
 
