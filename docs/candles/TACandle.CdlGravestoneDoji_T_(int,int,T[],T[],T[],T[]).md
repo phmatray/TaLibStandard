@@ -12,6 +12,8 @@ public static TechnicalAnalysis.Common.CandleIndicatorResult CdlGravestoneDoji<T
 <a name='TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).T'></a>
 
 `T`
+
+The type of the array elements.
 #### Parameters
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlGravestoneDoji_T_(int,int,T[],T[],T[],T[]).startIdx'></a>

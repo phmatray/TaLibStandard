@@ -12,6 +12,8 @@ public static TechnicalAnalysis.Common.CandleIndicatorResult CdlAbandonedBaby<T>
 <a name='TechnicalAnalysis.Candles.TACandle.CdlAbandonedBaby_T_(int,int,T[],T[],T[],T[]).T'></a>
 
 `T`
+
+The type of the array elements.
 #### Parameters
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlAbandonedBaby_T_(int,int,T[],T[],T[],T[]).startIdx'></a>

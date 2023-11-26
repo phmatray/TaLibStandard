@@ -12,6 +12,8 @@ public static TechnicalAnalysis.Common.CandleIndicatorResult CdlHarami<T>(int st
 <a name='TechnicalAnalysis.Candles.TACandle.CdlHarami_T_(int,int,T[],T[],T[],T[]).T'></a>
 
 `T`
+
+The type of the array elements.
 #### Parameters
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlHarami_T_(int,int,T[],T[],T[],T[]).startIdx'></a>

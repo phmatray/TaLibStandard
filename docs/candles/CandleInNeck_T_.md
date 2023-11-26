@@ -13,6 +13,8 @@ public class CandleInNeck<T> : TechnicalAnalysis.Common.CandleIndicator<T>
 
 `T`
 
+The type of the array elements.
+
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [TechnicalAnalysis.Common.CandleIndicator&lt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis.Common.CandleIndicator`1')[T](CandleInNeck_T_.md#TechnicalAnalysis.Candles.CandleInNeck_T_.T 'TechnicalAnalysis.Candles.CandleInNeck<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis.Common.CandleIndicator`1') &#129106; CandleInNeck<T>
 
 | Constructors | |

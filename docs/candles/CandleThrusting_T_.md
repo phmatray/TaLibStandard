@@ -13,6 +13,8 @@ public class CandleThrusting<T> : TechnicalAnalysis.Common.CandleIndicator<T>
 
 `T`
 
+The type of the array elements.
+
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [TechnicalAnalysis.Common.CandleIndicator&lt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis.Common.CandleIndicator`1')[T](CandleThrusting_T_.md#TechnicalAnalysis.Candles.CandleThrusting_T_.T 'TechnicalAnalysis.Candles.CandleThrusting<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis.Common.CandleIndicator`1') &#129106; CandleThrusting<T>
 
 | Constructors | |

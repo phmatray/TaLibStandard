@@ -12,6 +12,8 @@ public static TechnicalAnalysis.Common.CandleIndicatorResult Cdl3Outside<T>(int 
 <a name='TechnicalAnalysis.Candles.TACandle.Cdl3Outside_T_(int,int,T[],T[],T[],T[]).T'></a>
 
 `T`
+
+The type of the array elements.
 #### Parameters
 
 <a name='TechnicalAnalysis.Candles.TACandle.Cdl3Outside_T_(int,int,T[],T[],T[],T[]).startIdx'></a>

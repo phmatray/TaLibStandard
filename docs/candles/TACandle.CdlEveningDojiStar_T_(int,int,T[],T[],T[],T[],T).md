@@ -12,6 +12,8 @@ public static TechnicalAnalysis.Common.CandleIndicatorResult CdlEveningDojiStar<
 <a name='TechnicalAnalysis.Candles.TACandle.CdlEveningDojiStar_T_(int,int,T[],T[],T[],T[],T).T'></a>
 
 `T`
+
+The type of the array elements.
 #### Parameters
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlEveningDojiStar_T_(int,int,T[],T[],T[],T[],T).startIdx'></a>

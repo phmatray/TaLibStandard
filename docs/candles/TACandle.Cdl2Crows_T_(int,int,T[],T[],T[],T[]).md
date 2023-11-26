@@ -12,6 +12,8 @@ public static TechnicalAnalysis.Common.CandleIndicatorResult Cdl2Crows<T>(int st
 <a name='TechnicalAnalysis.Candles.TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).T'></a>
 
 `T`
+
+The type of the array elements.
 #### Parameters
 
 <a name='TechnicalAnalysis.Candles.TACandle.Cdl2Crows_T_(int,int,T[],T[],T[],T[]).startIdx'></a>

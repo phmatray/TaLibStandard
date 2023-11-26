@@ -12,6 +12,8 @@ public static TechnicalAnalysis.Common.CandleIndicatorResult CdlUpsideGap2Crows<
 <a name='TechnicalAnalysis.Candles.TACandle.CdlUpsideGap2Crows_T_(int,int,T[],T[],T[],T[]).T'></a>
 
 `T`
+
+The type of the array elements.
 #### Parameters
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlUpsideGap2Crows_T_(int,int,T[],T[],T[],T[]).startIdx'></a>

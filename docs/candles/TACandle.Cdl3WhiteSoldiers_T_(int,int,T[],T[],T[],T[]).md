@@ -12,6 +12,8 @@ public static TechnicalAnalysis.Common.CandleIndicatorResult Cdl3WhiteSoldiers<T
 <a name='TechnicalAnalysis.Candles.TACandle.Cdl3WhiteSoldiers_T_(int,int,T[],T[],T[],T[]).T'></a>
 
 `T`
+
+The type of the array elements.
 #### Parameters
 
 <a name='TechnicalAnalysis.Candles.TACandle.Cdl3WhiteSoldiers_T_(int,int,T[],T[],T[],T[]).startIdx'></a>

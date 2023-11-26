@@ -12,6 +12,8 @@ public static TechnicalAnalysis.Common.CandleIndicatorResult CdlUnique3River<T>(
 <a name='TechnicalAnalysis.Candles.TACandle.CdlUnique3River_T_(int,int,T[],T[],T[],T[]).T'></a>
 
 `T`
+
+The type of the array elements.
 #### Parameters
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlUnique3River_T_(int,int,T[],T[],T[],T[]).startIdx'></a>

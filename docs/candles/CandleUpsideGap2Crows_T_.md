@@ -13,6 +13,8 @@ public class CandleUpsideGap2Crows<T> : TechnicalAnalysis.Common.CandleIndicator
 
 `T`
 
+The type of the array elements.
+
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [TechnicalAnalysis.Common.CandleIndicator&lt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis.Common.CandleIndicator`1')[T](CandleUpsideGap2Crows_T_.md#TechnicalAnalysis.Candles.CandleUpsideGap2Crows_T_.T 'TechnicalAnalysis.Candles.CandleUpsideGap2Crows<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis.Common.CandleIndicator`1') &#129106; CandleUpsideGap2Crows<T>
 
 | Constructors | |
