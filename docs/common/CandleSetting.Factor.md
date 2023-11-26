@@ -3,6 +3,8 @@
 
 ## CandleSetting.Factor Property
 
+Gets the factor to consider for the setting.
+
 ```csharp
 public double Factor { get; }
 ```

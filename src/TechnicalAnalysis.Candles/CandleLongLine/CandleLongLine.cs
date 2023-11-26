@@ -13,7 +13,7 @@ namespace TechnicalAnalysis.Candles;
 /// <param name="high">An array of high prices.</param>
 /// <param name="low">An array of low prices.</param>
 /// <param name="close">An array of close prices.</param>
-/// <typeparam name="T"></typeparam>
+/// <typeparam name="T">The type of the array elements.</typeparam>
 public class CandleLongLine<T>(in T[] open, in T[] high, in T[] low, in T[] close)
     : CandleIndicator<T>(open, high, low, close)
     where T : IFloatingPoint<T>

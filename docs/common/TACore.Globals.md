@@ -3,6 +3,8 @@
 
 ## TACore.Globals Property
 
+Gets the global settings for the Technical Analysis library.
+
 ```csharp
 public static TechnicalAnalysis.Common.GlobalsType Globals { get; }
 ```

@@ -4,50 +4,58 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using static TechnicalAnalysis.Common.CandleSetting;
+
 namespace TechnicalAnalysis.Common;
 
 /// <summary>
-/// 
+/// Represents the global settings for the Technical Analysis library.
 /// </summary>
 public sealed class GlobalsType
 {
     /// <summary>
-    /// 
+    /// Gets the unstable periods for all functions.
     /// </summary>
     public Dictionary<FuncUnstId, long> UnstablePeriod { get; }
     
     /// <summary>
-    /// 
+    /// Gets the candle settings for all candle setting types.
     /// </summary>
     public Dictionary<CandleSettingType, CandleSetting> CandleSettings { get; }
     
     /// <summary>
-    /// 
+    /// Gets or sets the compatibility mode of the Technical Analysis library.
     /// </summary>
-    public Compatibility Compatibility { get; set; } = Compatibility.Default;
+    public Compatibility Compatibility { get; set; }
 
     /// <summary>
-    /// 
+    /// Initializes a new instance of the <see cref="GlobalsType"/> class with default settings.
     /// </summary>
     public GlobalsType()
     {
-        UnstablePeriod = Enumerable
+        UnstablePeriod = InitializeUnstablePeriods();
+        CandleSettings = InitializeCandleSettings();
+        Compatibility = Compatibility.Default;
+    }
+
+    private static Dictionary<FuncUnstId, long> InitializeUnstablePeriods()
+        => Enumerable
             .Range(0, 23)
             .ToDictionary(i => (FuncUnstId)i, _ => 0L);
-        
-        CandleSettings = new Dictionary<CandleSettingType, CandleSetting>
+
+    private static Dictionary<CandleSettingType, CandleSetting> InitializeCandleSettings()
+        => new()
         {
-            { BodyLong, CandleSetting.DefaultBodyLong },
-            { BodyVeryLong, CandleSetting.DefaultBodyVeryLong },
-            { BodyShort, CandleSetting.DefaultBodyShort },
-            { BodyDoji, CandleSetting.DefaultBodyDoji },
-            { ShadowLong, CandleSetting.DefaultShadowLong },
-            { ShadowVeryLong, CandleSetting.DefaultShadowVeryLong },
-            { ShadowShort, CandleSetting.DefaultShadowShort },
-            { ShadowVeryShort, CandleSetting.DefaultShadowVeryShort },
-            { Near, CandleSetting.DefaultNear },
-            { Far, CandleSetting.DefaultFar },
-            { Equal, CandleSetting.DefaultEqual }
+            { BodyLong,        DefaultBodyLong },
+            { BodyVeryLong,    DefaultBodyVeryLong },
+            { BodyShort,       DefaultBodyShort },
+            { BodyDoji,        DefaultBodyDoji },
+            { ShadowLong,      DefaultShadowLong },
+            { ShadowVeryLong,  DefaultShadowVeryLong },
+            { ShadowShort,     DefaultShadowShort },
+            { ShadowVeryShort, DefaultShadowVeryShort },
+            { Near,            DefaultNear },
+            { Far,             DefaultFar },
+            { Equal,           DefaultEqual }
         };
-    }
 }

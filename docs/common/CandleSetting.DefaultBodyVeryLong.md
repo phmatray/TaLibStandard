@@ -3,6 +3,8 @@
 
 ## CandleSetting.DefaultBodyVeryLong Property
 
+Gets the default setting for a very long body.
+
 ```csharp
 public static TechnicalAnalysis.Common.CandleSetting DefaultBodyVeryLong { get; }
 ```

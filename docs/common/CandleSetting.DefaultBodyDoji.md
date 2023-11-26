@@ -3,6 +3,8 @@
 
 ## CandleSetting.DefaultBodyDoji Property
 
+Gets the default setting for a doji body.
+
 ```csharp
 public static TechnicalAnalysis.Common.CandleSetting DefaultBodyDoji { get; }
 ```

@@ -3,6 +3,8 @@
 
 ## GlobalsType.UnstablePeriod Property
 
+Gets the unstable periods for all functions.
+
 ```csharp
 public System.Collections.Generic.Dictionary<TechnicalAnalysis.Common.FuncUnstId,long> UnstablePeriod { get; }
 ```

@@ -8,12 +8,12 @@
 namespace TechnicalAnalysis;
 
 /// <summary>
-/// 
+/// Provides core functionalities for the Technical Analysis library.
 /// </summary>
 public static partial class TACore
 {
     /// <summary>
-    /// 
+    /// Gets the global settings for the Technical Analysis library.
     /// </summary>
     public static GlobalsType Globals { get; }
 
@@ -23,19 +23,19 @@ public static partial class TACore
     }
         
     /// <summary>
-    /// 
+    /// Gets the compatibility mode of the Technical Analysis library.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>The current compatibility mode.</returns>
     public static Compatibility GetCompatibility()
     {
         return Globals.Compatibility;
     }
         
     /// <summary>
-    /// 
+    /// Sets the compatibility mode of the Technical Analysis library.
     /// </summary>
-    /// <param name="value"></param>
-    /// <returns></returns>
+    /// <param name="value">The compatibility mode to set.</param>
+    /// <returns>A return code indicating the result of the operation.</returns>
     public static RetCode SetCompatibility(Compatibility value)
     {
         Globals.Compatibility = value;
@@ -43,21 +43,21 @@ public static partial class TACore
     }
         
     /// <summary>
-    /// 
+    /// Gets the unstable period for a given function.
     /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
+    /// <param name="id">The identifier of the function.</param>
+    /// <returns>The unstable period for the function.</returns>
     public static long GetUnstablePeriod(FuncUnstId id)
     {
         return id >= FuncUnstId.FuncUnstAll ? 0 : Globals.UnstablePeriod[id];
     }
         
     /// <summary>
-    /// 
+    /// Sets the unstable period for a given function.
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="unstablePeriod"></param>
-    /// <returns></returns>
+    /// <param name="id">The identifier of the function.</param>
+    /// <param name="unstablePeriod">The unstable period to set.</param>
+    /// <returns>A return code indicating the result of the operation.</returns>
     public static RetCode SetUnstablePeriod(FuncUnstId id, long unstablePeriod)
     {
         switch (id)
@@ -80,10 +80,10 @@ public static partial class TACore
     }
         
     /// <summary>
-    /// 
+    /// Restores the default settings for a given candle setting type.
     /// </summary>
-    /// <param name="settingType"></param>
-    /// <returns></returns>
+    /// <param name="settingType">The type of the candle setting.</param>
+    /// <returns>A return code indicating the result of the operation.</returns>
     public static RetCode RestoreCandleDefaultSettings(CandleSettingType settingType)
     {
         switch (settingType)
@@ -114,10 +114,10 @@ public static partial class TACore
     }
         
     /// <summary>
-    /// 
+    /// Sets the candle settings for a given candle setting type.
     /// </summary>
-    /// <param name="candleSetting"></param>
-    /// <returns></returns>
+    /// <param name="candleSetting">The candle setting to set.</param>
+    /// <returns>A return code indicating the result of the operation.</returns>
     public static RetCode SetCandleSettings(CandleSetting candleSetting)
     {
         if (candleSetting.SettingType >= AllCandleSettings)

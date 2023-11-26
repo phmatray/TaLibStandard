@@ -3,6 +3,8 @@
 
 ## CandleSetting.DefaultEqual Property
 
+Gets the default setting for an equal range.
+
 ```csharp
 public static TechnicalAnalysis.Common.CandleSetting DefaultEqual { get; }
 ```

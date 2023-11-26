@@ -3,6 +3,8 @@
 
 ## CandleSetting.SettingType Property
 
+Gets the type of the candlestick setting.
+
 ```csharp
 public TechnicalAnalysis.Common.CandleSettingType SettingType { get; }
 ```

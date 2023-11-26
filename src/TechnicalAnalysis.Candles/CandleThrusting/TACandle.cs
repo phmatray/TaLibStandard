@@ -17,7 +17,7 @@ public static partial class TACandle
     /// <param name="high">An array of high prices.</param>
     /// <param name="low">An array of low prices.</param>
     /// <param name="close">An array of close prices.</param>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type of the array elements.</typeparam>
     /// <returns></returns>
     public static CandleIndicatorResult CdlThrusting<T>(
         int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)

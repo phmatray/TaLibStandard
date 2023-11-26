@@ -3,6 +3,8 @@
 
 ## GlobalsType.CandleSettings Property
 
+Gets the candle settings for all candle setting types.
+
 ```csharp
 public System.Collections.Generic.Dictionary<TechnicalAnalysis.Common.CandleSettingType,TechnicalAnalysis.Common.CandleSetting> CandleSettings { get; }
 ```

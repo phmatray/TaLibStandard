@@ -3,6 +3,8 @@
 
 ## CandleSetting.DefaultBodyShort Property
 
+Gets the default setting for a short body.
+
 ```csharp
 public static TechnicalAnalysis.Common.CandleSetting DefaultBodyShort { get; }
 ```

@@ -3,6 +3,8 @@
 
 ## TACore.SetCandleSettings(CandleSetting) Method
 
+Sets the candle settings for a given candle setting type.
+
 ```csharp
 public static TechnicalAnalysis.Common.RetCode SetCandleSettings(TechnicalAnalysis.Common.CandleSetting candleSetting);
 ```
@@ -12,5 +14,8 @@ public static TechnicalAnalysis.Common.RetCode SetCandleSettings(TechnicalAnalys
 
 `candleSetting` [CandleSetting](CandleSetting.md 'TechnicalAnalysis.Common.CandleSetting')
 
+The candle setting to set.
+
 #### Returns
-[RetCode](RetCode.md 'TechnicalAnalysis.Common.RetCode')
+[RetCode](RetCode.md 'TechnicalAnalysis.Common.RetCode')  
+A return code indicating the result of the operation.

@@ -3,6 +3,8 @@
 
 ## CandleSetting.DefaultFar Property
 
+Gets the default setting for a far range.
+
 ```csharp
 public static TechnicalAnalysis.Common.CandleSetting DefaultFar { get; }
 ```

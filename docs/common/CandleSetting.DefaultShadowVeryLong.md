@@ -3,6 +3,8 @@
 
 ## CandleSetting.DefaultShadowVeryLong Property
 
+Gets the default setting for a very long shadow.
+
 ```csharp
 public static TechnicalAnalysis.Common.CandleSetting DefaultShadowVeryLong { get; }
 ```

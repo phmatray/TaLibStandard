@@ -3,6 +3,8 @@
 
 ## CandleSetting.DefaultNear Property
 
+Gets the default setting for a near range.
+
 ```csharp
 public static TechnicalAnalysis.Common.CandleSetting DefaultNear { get; }
 ```

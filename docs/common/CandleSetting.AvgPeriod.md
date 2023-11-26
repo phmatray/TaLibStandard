@@ -3,6 +3,8 @@
 
 ## CandleSetting.AvgPeriod Property
 
+Gets the average period to consider for the setting.
+
 ```csharp
 public int AvgPeriod { get; }
 ```

@@ -6,14 +6,14 @@
 <a name='TechnicalAnalysis'></a>
 
 ## TechnicalAnalysis Namespace
-- **[TACore](TACore.md 'TechnicalAnalysis.TACore')** `Class`
-  - **[Globals](TACore.Globals.md 'TechnicalAnalysis.TACore.Globals')** `Property`
-  - **[GetCompatibility()](TACore.GetCompatibility().md 'TechnicalAnalysis.TACore.GetCompatibility()')** `Method`
-  - **[GetUnstablePeriod(FuncUnstId)](TACore.GetUnstablePeriod(FuncUnstId).md 'TechnicalAnalysis.TACore.GetUnstablePeriod(TechnicalAnalysis.Common.FuncUnstId)')** `Method`
-  - **[RestoreCandleDefaultSettings(CandleSettingType)](TACore.RestoreCandleDefaultSettings(CandleSettingType).md 'TechnicalAnalysis.TACore.RestoreCandleDefaultSettings(TechnicalAnalysis.Common.CandleSettingType)')** `Method`
-  - **[SetCandleSettings(CandleSetting)](TACore.SetCandleSettings(CandleSetting).md 'TechnicalAnalysis.TACore.SetCandleSettings(TechnicalAnalysis.Common.CandleSetting)')** `Method`
-  - **[SetCompatibility(Compatibility)](TACore.SetCompatibility(Compatibility).md 'TechnicalAnalysis.TACore.SetCompatibility(TechnicalAnalysis.Common.Compatibility)')** `Method`
-  - **[SetUnstablePeriod(FuncUnstId, long)](TACore.SetUnstablePeriod(FuncUnstId,long).md 'TechnicalAnalysis.TACore.SetUnstablePeriod(TechnicalAnalysis.Common.FuncUnstId, long)')** `Method`
+- **[TACore](TACore.md 'TechnicalAnalysis.TACore')** `Class` Provides core functionalities for the Technical Analysis library.
+  - **[Globals](TACore.Globals.md 'TechnicalAnalysis.TACore.Globals')** `Property` Gets the global settings for the Technical Analysis library.
+  - **[GetCompatibility()](TACore.GetCompatibility().md 'TechnicalAnalysis.TACore.GetCompatibility()')** `Method` Gets the compatibility mode of the Technical Analysis library.
+  - **[GetUnstablePeriod(FuncUnstId)](TACore.GetUnstablePeriod(FuncUnstId).md 'TechnicalAnalysis.TACore.GetUnstablePeriod(TechnicalAnalysis.Common.FuncUnstId)')** `Method` Gets the unstable period for a given function.
+  - **[RestoreCandleDefaultSettings(CandleSettingType)](TACore.RestoreCandleDefaultSettings(CandleSettingType).md 'TechnicalAnalysis.TACore.RestoreCandleDefaultSettings(TechnicalAnalysis.Common.CandleSettingType)')** `Method` Restores the default settings for a given candle setting type.
+  - **[SetCandleSettings(CandleSetting)](TACore.SetCandleSettings(CandleSetting).md 'TechnicalAnalysis.TACore.SetCandleSettings(TechnicalAnalysis.Common.CandleSetting)')** `Method` Sets the candle settings for a given candle setting type.
+  - **[SetCompatibility(Compatibility)](TACore.SetCompatibility(Compatibility).md 'TechnicalAnalysis.TACore.SetCompatibility(TechnicalAnalysis.Common.Compatibility)')** `Method` Sets the compatibility mode of the Technical Analysis library.
+  - **[SetUnstablePeriod(FuncUnstId, long)](TACore.SetUnstablePeriod(FuncUnstId,long).md 'TechnicalAnalysis.TACore.SetUnstablePeriod(TechnicalAnalysis.Common.FuncUnstId, long)')** `Method` Sets the unstable period for a given function.
 
 <a name='TechnicalAnalysis.Common'></a>
 
@@ -50,29 +50,29 @@
 - **[CandleIndicatorResult](CandleIndicatorResult.md 'TechnicalAnalysis.Common.CandleIndicatorResult')** `Class` Represents the result of the candlestick pattern indicator.
   - **[CandleIndicatorResult(RetCode, int, int, int[])](CandleIndicatorResult.CandleIndicatorResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Common.CandleIndicatorResult.CandleIndicatorResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the CandleResult class.
   - **[Integers](CandleIndicatorResult.Integers.md 'TechnicalAnalysis.Common.CandleIndicatorResult.Integers')** `Property` Gets the array of integers indicating the presence of the candle pattern.
-- **[CandleSetting](CandleSetting.md 'TechnicalAnalysis.Common.CandleSetting')** `Class`
-  - **[CandleSetting(CandleSettingType, RangeType, int, double)](CandleSetting.CandleSetting(CandleSettingType,RangeType,int,double).md 'TechnicalAnalysis.Common.CandleSetting.CandleSetting(TechnicalAnalysis.Common.CandleSettingType, TechnicalAnalysis.Common.RangeType, int, double)')** `Constructor`
-  - **[AvgPeriod](CandleSetting.AvgPeriod.md 'TechnicalAnalysis.Common.CandleSetting.AvgPeriod')** `Property`
-  - **[DefaultBodyDoji](CandleSetting.DefaultBodyDoji.md 'TechnicalAnalysis.Common.CandleSetting.DefaultBodyDoji')** `Property`
-  - **[DefaultBodyLong](CandleSetting.DefaultBodyLong.md 'TechnicalAnalysis.Common.CandleSetting.DefaultBodyLong')** `Property`
-  - **[DefaultBodyShort](CandleSetting.DefaultBodyShort.md 'TechnicalAnalysis.Common.CandleSetting.DefaultBodyShort')** `Property`
-  - **[DefaultBodyVeryLong](CandleSetting.DefaultBodyVeryLong.md 'TechnicalAnalysis.Common.CandleSetting.DefaultBodyVeryLong')** `Property`
-  - **[DefaultEqual](CandleSetting.DefaultEqual.md 'TechnicalAnalysis.Common.CandleSetting.DefaultEqual')** `Property`
-  - **[DefaultFar](CandleSetting.DefaultFar.md 'TechnicalAnalysis.Common.CandleSetting.DefaultFar')** `Property`
-  - **[DefaultNear](CandleSetting.DefaultNear.md 'TechnicalAnalysis.Common.CandleSetting.DefaultNear')** `Property`
-  - **[DefaultShadowLong](CandleSetting.DefaultShadowLong.md 'TechnicalAnalysis.Common.CandleSetting.DefaultShadowLong')** `Property`
-  - **[DefaultShadowShort](CandleSetting.DefaultShadowShort.md 'TechnicalAnalysis.Common.CandleSetting.DefaultShadowShort')** `Property`
-  - **[DefaultShadowVeryLong](CandleSetting.DefaultShadowVeryLong.md 'TechnicalAnalysis.Common.CandleSetting.DefaultShadowVeryLong')** `Property`
-  - **[DefaultShadowVeryShort](CandleSetting.DefaultShadowVeryShort.md 'TechnicalAnalysis.Common.CandleSetting.DefaultShadowVeryShort')** `Property`
-  - **[Factor](CandleSetting.Factor.md 'TechnicalAnalysis.Common.CandleSetting.Factor')** `Property`
-  - **[RangeType](CandleSetting.RangeType.md 'TechnicalAnalysis.Common.CandleSetting.RangeType')** `Property`
-  - **[SettingType](CandleSetting.SettingType.md 'TechnicalAnalysis.Common.CandleSetting.SettingType')** `Property`
-  - **[GetDefaultByType(CandleSettingType)](CandleSetting.GetDefaultByType(CandleSettingType).md 'TechnicalAnalysis.Common.CandleSetting.GetDefaultByType(TechnicalAnalysis.Common.CandleSettingType)')** `Method`
-- **[GlobalsType](GlobalsType.md 'TechnicalAnalysis.Common.GlobalsType')** `Class`
-  - **[GlobalsType()](GlobalsType.GlobalsType().md 'TechnicalAnalysis.Common.GlobalsType.GlobalsType()')** `Constructor`
-  - **[CandleSettings](GlobalsType.CandleSettings.md 'TechnicalAnalysis.Common.GlobalsType.CandleSettings')** `Property`
-  - **[Compatibility](GlobalsType.Compatibility.md 'TechnicalAnalysis.Common.GlobalsType.Compatibility')** `Property`
-  - **[UnstablePeriod](GlobalsType.UnstablePeriod.md 'TechnicalAnalysis.Common.GlobalsType.UnstablePeriod')** `Property`
+- **[CandleSetting](CandleSetting.md 'TechnicalAnalysis.Common.CandleSetting')** `Class` Represents a setting for a candlestick pattern in technical analysis.
+  - **[CandleSetting(CandleSettingType, RangeType, int, double)](CandleSetting.CandleSetting(CandleSettingType,RangeType,int,double).md 'TechnicalAnalysis.Common.CandleSetting.CandleSetting(TechnicalAnalysis.Common.CandleSettingType, TechnicalAnalysis.Common.RangeType, int, double)')** `Constructor` Represents a setting for a candlestick pattern in technical analysis.
+  - **[AvgPeriod](CandleSetting.AvgPeriod.md 'TechnicalAnalysis.Common.CandleSetting.AvgPeriod')** `Property` Gets the average period to consider for the setting.
+  - **[DefaultBodyDoji](CandleSetting.DefaultBodyDoji.md 'TechnicalAnalysis.Common.CandleSetting.DefaultBodyDoji')** `Property` Gets the default setting for a doji body.
+  - **[DefaultBodyLong](CandleSetting.DefaultBodyLong.md 'TechnicalAnalysis.Common.CandleSetting.DefaultBodyLong')** `Property` Gets the default setting for a long body.
+  - **[DefaultBodyShort](CandleSetting.DefaultBodyShort.md 'TechnicalAnalysis.Common.CandleSetting.DefaultBodyShort')** `Property` Gets the default setting for a short body.
+  - **[DefaultBodyVeryLong](CandleSetting.DefaultBodyVeryLong.md 'TechnicalAnalysis.Common.CandleSetting.DefaultBodyVeryLong')** `Property` Gets the default setting for a very long body.
+  - **[DefaultEqual](CandleSetting.DefaultEqual.md 'TechnicalAnalysis.Common.CandleSetting.DefaultEqual')** `Property` Gets the default setting for an equal range.
+  - **[DefaultFar](CandleSetting.DefaultFar.md 'TechnicalAnalysis.Common.CandleSetting.DefaultFar')** `Property` Gets the default setting for a far range.
+  - **[DefaultNear](CandleSetting.DefaultNear.md 'TechnicalAnalysis.Common.CandleSetting.DefaultNear')** `Property` Gets the default setting for a near range.
+  - **[DefaultShadowLong](CandleSetting.DefaultShadowLong.md 'TechnicalAnalysis.Common.CandleSetting.DefaultShadowLong')** `Property` Gets the default setting for a long shadow.
+  - **[DefaultShadowShort](CandleSetting.DefaultShadowShort.md 'TechnicalAnalysis.Common.CandleSetting.DefaultShadowShort')** `Property` Gets the default setting for a short shadow.
+  - **[DefaultShadowVeryLong](CandleSetting.DefaultShadowVeryLong.md 'TechnicalAnalysis.Common.CandleSetting.DefaultShadowVeryLong')** `Property` Gets the default setting for a very long shadow.
+  - **[DefaultShadowVeryShort](CandleSetting.DefaultShadowVeryShort.md 'TechnicalAnalysis.Common.CandleSetting.DefaultShadowVeryShort')** `Property` Gets the default setting for a very short shadow.
+  - **[Factor](CandleSetting.Factor.md 'TechnicalAnalysis.Common.CandleSetting.Factor')** `Property` Gets the factor to consider for the setting.
+  - **[RangeType](CandleSetting.RangeType.md 'TechnicalAnalysis.Common.CandleSetting.RangeType')** `Property` Gets the type of the range to consider for the setting.
+  - **[SettingType](CandleSetting.SettingType.md 'TechnicalAnalysis.Common.CandleSetting.SettingType')** `Property` Gets the type of the candlestick setting.
+  - **[GetDefaultByType(CandleSettingType)](CandleSetting.GetDefaultByType(CandleSettingType).md 'TechnicalAnalysis.Common.CandleSetting.GetDefaultByType(TechnicalAnalysis.Common.CandleSettingType)')** `Method` Gets the default setting for a given type.
+- **[GlobalsType](GlobalsType.md 'TechnicalAnalysis.Common.GlobalsType')** `Class` Represents the global settings for the Technical Analysis library.
+  - **[GlobalsType()](GlobalsType.GlobalsType().md 'TechnicalAnalysis.Common.GlobalsType.GlobalsType()')** `Constructor` Initializes a new instance of the [GlobalsType](GlobalsType.md 'TechnicalAnalysis.Common.GlobalsType') class with default settings.
+  - **[CandleSettings](GlobalsType.CandleSettings.md 'TechnicalAnalysis.Common.GlobalsType.CandleSettings')** `Property` Gets the candle settings for all candle setting types.
+  - **[Compatibility](GlobalsType.Compatibility.md 'TechnicalAnalysis.Common.GlobalsType.Compatibility')** `Property` Gets or sets the compatibility mode of the Technical Analysis library.
+  - **[UnstablePeriod](GlobalsType.UnstablePeriod.md 'TechnicalAnalysis.Common.GlobalsType.UnstablePeriod')** `Property` Gets the unstable periods for all functions.
 - **[IndicatorResult](IndicatorResult.md 'TechnicalAnalysis.Common.IndicatorResult')** `Class` Represents an abstract base class for technical indicators.
   - **[IndicatorResult(RetCode, int, int)](IndicatorResult.IndicatorResult(RetCode,int,int).md 'TechnicalAnalysis.Common.IndicatorResult.IndicatorResult(TechnicalAnalysis.Common.RetCode, int, int)')** `Constructor` Initializes a new instance of the IndicatorBase class.
   - **[BegIdx](IndicatorResult.BegIdx.md 'TechnicalAnalysis.Common.IndicatorResult.BegIdx')** `Property` Gets the beginning index of the calculated output series.
@@ -83,10 +83,8 @@
   - **[Positive](MoneyFlow.Positive.md 'TechnicalAnalysis.Common.MoneyFlow.Positive')** `Property`
 - **[OutOfRangeEndIndexException](OutOfRangeEndIndexException.md 'TechnicalAnalysis.Common.OutOfRangeEndIndexException')** `Class` Represents an exception that is thrown when the end index is out of range.
   - **[OutOfRangeEndIndexException()](OutOfRangeEndIndexException.OutOfRangeEndIndexException().md 'TechnicalAnalysis.Common.OutOfRangeEndIndexException.OutOfRangeEndIndexException()')** `Constructor` Initializes a new instance of the [OutOfRangeEndIndexException](OutOfRangeEndIndexException.md 'TechnicalAnalysis.Common.OutOfRangeEndIndexException') class.
-  - **[OutOfRangeEndIndexException(SerializationInfo, StreamingContext)](OutOfRangeEndIndexException.OutOfRangeEndIndexException(SerializationInfo,StreamingContext).md 'TechnicalAnalysis.Common.OutOfRangeEndIndexException.OutOfRangeEndIndexException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)')** `Constructor` Initializes a new instance of the [OutOfRangeEndIndexException](OutOfRangeEndIndexException.md 'TechnicalAnalysis.Common.OutOfRangeEndIndexException') class with serialized data.
 - **[OutOfRangeStartIndexException](OutOfRangeStartIndexException.md 'TechnicalAnalysis.Common.OutOfRangeStartIndexException')** `Class` Represents an exception that is thrown when the start index is out of range.
   - **[OutOfRangeStartIndexException()](OutOfRangeStartIndexException.OutOfRangeStartIndexException().md 'TechnicalAnalysis.Common.OutOfRangeStartIndexException.OutOfRangeStartIndexException()')** `Constructor` Initializes a new instance of the [OutOfRangeStartIndexException](OutOfRangeStartIndexException.md 'TechnicalAnalysis.Common.OutOfRangeStartIndexException') class.
-  - **[OutOfRangeStartIndexException(SerializationInfo, StreamingContext)](OutOfRangeStartIndexException.OutOfRangeStartIndexException(SerializationInfo,StreamingContext).md 'TechnicalAnalysis.Common.OutOfRangeStartIndexException.OutOfRangeStartIndexException(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)')** `Constructor` Initializes a new instance of the [OutOfRangeStartIndexException](OutOfRangeStartIndexException.md 'TechnicalAnalysis.Common.OutOfRangeStartIndexException') class with serialized data.
 - **[CandleColor](CandleColor.md 'TechnicalAnalysis.Common.CandleColor')** `Enum` Represents the color of a candle.
   - **[Green](CandleColor.md#TechnicalAnalysis.Common.CandleColor.Green 'TechnicalAnalysis.Common.CandleColor.Green')** `Field` Green candle (bullish).
   - **[Red](CandleColor.md#TechnicalAnalysis.Common.CandleColor.Red 'TechnicalAnalysis.Common.CandleColor.Red')** `Field` Red candle (bearish).

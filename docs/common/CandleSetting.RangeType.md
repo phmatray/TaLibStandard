@@ -3,6 +3,8 @@
 
 ## CandleSetting.RangeType Property
 
+Gets the type of the range to consider for the setting.
+
 ```csharp
 public TechnicalAnalysis.Common.RangeType RangeType { get; }
 ```

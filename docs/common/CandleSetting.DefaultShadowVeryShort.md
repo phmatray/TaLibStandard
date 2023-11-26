@@ -3,6 +3,8 @@
 
 ## CandleSetting.DefaultShadowVeryShort Property
 
+Gets the default setting for a very short shadow.
+
 ```csharp
 public static TechnicalAnalysis.Common.CandleSetting DefaultShadowVeryShort { get; }
 ```

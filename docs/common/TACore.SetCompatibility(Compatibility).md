@@ -3,6 +3,8 @@
 
 ## TACore.SetCompatibility(Compatibility) Method
 
+Sets the compatibility mode of the Technical Analysis library.
+
 ```csharp
 public static TechnicalAnalysis.Common.RetCode SetCompatibility(TechnicalAnalysis.Common.Compatibility value);
 ```
@@ -12,5 +14,8 @@ public static TechnicalAnalysis.Common.RetCode SetCompatibility(TechnicalAnalysi
 
 `value` [Compatibility](Compatibility.md 'TechnicalAnalysis.Common.Compatibility')
 
+The compatibility mode to set.
+
 #### Returns
-[RetCode](RetCode.md 'TechnicalAnalysis.Common.RetCode')
+[RetCode](RetCode.md 'TechnicalAnalysis.Common.RetCode')  
+A return code indicating the result of the operation.

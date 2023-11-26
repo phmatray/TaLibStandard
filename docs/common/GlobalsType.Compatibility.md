@@ -3,6 +3,8 @@
 
 ## GlobalsType.Compatibility Property
 
+Gets or sets the compatibility mode of the Technical Analysis library.
+
 ```csharp
 public TechnicalAnalysis.Common.Compatibility Compatibility { get; set; }
 ```
