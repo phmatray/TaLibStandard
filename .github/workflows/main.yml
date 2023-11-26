@@ -13,23 +13,12 @@ permissions:
   contents: read
 
 jobs:
-  define-matrix:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-    steps:
-      - id: set-matrix
-        run: |
-          echo 'matrix=["ubuntu-latest", "windows-latest"]' >> $GITHUB_ENV
-          
   setup:
-    needs: define-matrix
-    runs-on: ${{ fromJson(needs.define-matrix.outputs.matrix) }}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
         dotnet: ['7.x', '8.x']
-
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v3
@@ -52,26 +41,39 @@ jobs:
 
   build:
     needs: setup
-    runs-on: ${{ fromJson(needs.define-matrix.outputs.matrix) }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        dotnet: ['7.x', '8.x']
     steps:
       - name: Build Project
         run: dotnet build --no-restore
 
   test:
     needs: build
-    runs-on: ${{ fromJson(needs.define-matrix.outputs.matrix) }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        dotnet: ['7.x', '8.x']
     steps:
       - name: Run Unit Tests
         run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
 
   upload-coverage:
     needs: test
-    runs-on: ${{ fromJson(needs.define-matrix.outputs.matrix) }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        dotnet: ['7.x', '8.x']
     steps:
       - name: Upload Code Coverage
         uses: codecov/codecov-action@v3
   
   update_release_draft:
+    needs: upload-coverage
     permissions:
       contents: write
       pull-requests: write
