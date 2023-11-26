@@ -1,0 +1,22 @@
+autolabeler:
+  - label: 'feature'
+    branch:
+      - '/feature\/.+/'
+  - label: 'hotfix'
+    branch:
+      - '/hotfix\/.+/'
+  - label: 'release'
+    branch:
+      - '/release\/.+/'
+  - label: 'enhancement'
+    title:
+      - '/enhance/i'
+  - label: 'bug'
+    title:
+      - '/fix/i'
+    branch:
+      - '/bugfix\/.+/'
+  - label: 'documentation'
+    files:
+      - 'docs/*'
+      - '*.md'
