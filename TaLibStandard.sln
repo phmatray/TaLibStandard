@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "about", "about", "{555F802F
 		LICENSE = LICENSE
 		global.json = global.json
 		qodana.yaml = qodana.yaml
+		icon.png = icon.png
 	EndProjectSection
 EndProject
 Global
