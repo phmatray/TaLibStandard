@@ -1,10 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <!-- General -->
+    <PackageId>Atypical.TechnicalAnalysis.Candles</PackageId>
+    <!-- Documentation -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DefaultDocumentationFolder>../../docs/candles</DefaultDocumentationFolder>
     <DefaultDocumentationLinksOutputFile>../../docs/links</DefaultDocumentationLinksOutputFile>
-    <DefaultDocumentationAssemblyPageName>TechnicalAnalysis.Candles</DefaultDocumentationAssemblyPageName>
+    <DefaultDocumentationAssemblyPageName>Atypical.TechnicalAnalysis.Candles</DefaultDocumentationAssemblyPageName>
   </PropertyGroup>
 
   <ItemGroup>

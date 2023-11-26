@@ -1,5 +1,6 @@
 <Project>
 
+  <!-- Project -->
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>12</LangVersion>
@@ -7,7 +8,25 @@
     <Nullable>enable</Nullable>
     <NullableReferenceTypes>true</NullableReferenceTypes>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <!-- General -->
+  <PropertyGroup>
     <Authors>Philippe Matray</Authors>
+    <Description>
+      TaLibStandard is a modern interpretation of the widely used [TA-Lib](https://ta-lib.org),
+      reimagined in C# 12. It is designed to be reliable, efficient, and user-friendly for developers
+      performing financial market analysis.
+    </Description>
+  </PropertyGroup>
+
+  <!-- NuGet Package -->
+  <PropertyGroup>
+    <PackageProjectUrl>https://github.com/phmatray/TaLibStandard</PackageProjectUrl>
+    <PackageLicenseExpression>GPL-3.0</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>Technical Analysis, TA-Lib, Finance, Trading, Stocks, Forex, Cryptocurrencies</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -34,6 +53,17 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None
+      Include="..\..\icon.png"
+      Pack="true"
+      PackagePath=""/>
+    <None
+      Include="..\..\README.md"
+      Pack="true"
+      PackagePath=""/>
   </ItemGroup>
 
 </Project>

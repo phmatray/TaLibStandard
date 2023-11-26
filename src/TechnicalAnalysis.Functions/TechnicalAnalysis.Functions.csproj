@@ -1,10 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <!-- General -->
+    <PackageId>Atypical.TechnicalAnalysis.Functions</PackageId>
+    <!-- Documentation -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DefaultDocumentationFolder>../../docs/functions</DefaultDocumentationFolder>
     <DefaultDocumentationLinksOutputFile>../../docs/links</DefaultDocumentationLinksOutputFile>
-    <DefaultDocumentationAssemblyPageName>TechnicalAnalysis.Functions</DefaultDocumentationAssemblyPageName>
+    <DefaultDocumentationAssemblyPageName>Atypical.TechnicalAnalysis.Functions</DefaultDocumentationAssemblyPageName>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
 

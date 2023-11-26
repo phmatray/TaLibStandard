@@ -1,10 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <!-- General -->
+    <PackageId>Atypical.TechnicalAnalysis.Common</PackageId>
+    <!-- Documentation -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DefaultDocumentationFolder>../../docs/common</DefaultDocumentationFolder>
     <DefaultDocumentationLinksOutputFile>../../docs/links</DefaultDocumentationLinksOutputFile>
-    <DefaultDocumentationAssemblyPageName>TechnicalAnalysis.Common</DefaultDocumentationAssemblyPageName>
+    <DefaultDocumentationAssemblyPageName>Atypical.TechnicalAnalysis.Common</DefaultDocumentationAssemblyPageName>
   </PropertyGroup>
 
   <!-- Development dependencies -->
