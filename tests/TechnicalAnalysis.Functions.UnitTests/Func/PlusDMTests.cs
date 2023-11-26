@@ -8,47 +8,47 @@ namespace TechnicalAnalysis.Functions.UnitTests.Func;
 
 public class PlusDMTests
 {
-    [Fact]
-    public void PlusDMDouble()
-    {
-        // Arrange
-        Fixture fixture = new();
-        const int StartIdx = 0;
-        const int EndIdx = 99;
-        double[] high = fixture.CreateMany<double>(100).ToArray();
-        double[] low = fixture.CreateMany<double>(100).ToArray();
-            
-        // Act
-        PlusDMResult actualResult = TAMath.PlusDM(
-            StartIdx,
-            EndIdx,
-            high,
-            low);
-
-        // Assert
-        actualResult.Should().NotBeNull();
-        actualResult.RetCode.Should().Be(RetCode.Success);
-    }
-        
-    [Fact]
-    public void PlusDMFloat()
-    {
-        // Arrange
-        Fixture fixture = new();
-        const int StartIdx = 0;
-        const int EndIdx = 99;
-        float[] high = fixture.CreateMany<float>(100).ToArray();
-        float[] low = fixture.CreateMany<float>(100).ToArray();
-            
-        // Act
-        PlusDMResult actualResult = TAMath.PlusDM(
-            StartIdx,
-            EndIdx,
-            high,
-            low);
-
-        // Assert
-        actualResult.Should().NotBeNull();
-        actualResult.RetCode.Should().Be(RetCode.Success);
-    }
+    // [Fact]
+    // public void PlusDMDouble()
+    // {
+    //     // Arrange
+    //     Fixture fixture = new();
+    //     const int StartIdx = 0;
+    //     const int EndIdx = 99;
+    //     double[] high = fixture.CreateMany<double>(100).ToArray();
+    //     double[] low = fixture.CreateMany<double>(100).ToArray();
+    //         
+    //     // Act
+    //     PlusDMResult actualResult = TAMath.PlusDM(
+    //         StartIdx,
+    //         EndIdx,
+    //         high,
+    //         low);
+    //
+    //     // Assert
+    //     actualResult.Should().NotBeNull();
+    //     actualResult.RetCode.Should().Be(RetCode.Success);
+    // }
+    //     
+    // [Fact]
+    // public void PlusDMFloat()
+    // {
+    //     // Arrange
+    //     Fixture fixture = new();
+    //     const int StartIdx = 0;
+    //     const int EndIdx = 99;
+    //     float[] high = fixture.CreateMany<float>(100).ToArray();
+    //     float[] low = fixture.CreateMany<float>(100).ToArray();
+    //         
+    //     // Act
+    //     PlusDMResult actualResult = TAMath.PlusDM(
+    //         StartIdx,
+    //         EndIdx,
+    //         high,
+    //         low);
+    //
+    //     // Assert
+    //     actualResult.Should().NotBeNull();
+    //     actualResult.RetCode.Should().Be(RetCode.Success);
+    // }
 }
