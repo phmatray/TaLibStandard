@@ -11,7 +11,8 @@ categories:
       - 'bugfix'
       - 'bug'
   - title: '🧰 Maintenance'
-    label: 'chore'
+    labels:
+      - 'chore'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 version-resolver:
   major:
@@ -23,6 +24,7 @@ version-resolver:
   patch:
     labels:
       - 'fix'
+      - 'maintenance'
   default: patch
 autolabeler:
   - label: 'feature'

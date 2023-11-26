@@ -1,17 +1,21 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+# This workflow triggers on pushes to the hotfix/* branches.
+# It builds the project and runs tests to ensure stability.
 
-name: Build and Test .NET Project
+name: Hotfix Branch CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "hotfix/*"
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - "hotfix/*"
+
+permissions:
+  contents: read
 
 jobs:
-  build-and-test:
-
+  setup:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -38,11 +42,23 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
+  build:
+    needs: setup
+    runs-on: ${{ matrix.os }}
+    steps:
       - name: Build Project
         run: dotnet build --no-restore
 
+  test:
+    needs: build
+    runs-on: ${{ matrix.os }}
+    steps:
       - name: Run Unit Tests
         run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
 
+  upload-coverage:
+    needs: test
+    runs-on: ${{ matrix.os }}
+    steps:
       - name: Upload Code Coverage
         uses: codecov/codecov-action@v3

@@ -1,0 +1,64 @@
+# This workflow triggers on pushes to the feature/* branches.
+# It builds the project and runs tests to ensure stability.
+
+name: Feature Branch CI
+
+on:
+  push:
+    branches:
+      - "feature/*"
+  pull_request:
+    branches:
+      - "feature/*"
+
+permissions:
+  contents: read
+
+jobs:
+  setup:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        dotnet: ['7.x', '8.x']
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+  build:
+    needs: setup
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Build Project
+        run: dotnet build --no-restore
+
+  test:
+    needs: build
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Run Unit Tests
+        run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
+
+  upload-coverage:
+    needs: test
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Upload Code Coverage
+        uses: codecov/codecov-action@v3
