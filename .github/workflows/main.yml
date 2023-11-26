@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  setup:
+  build-and-test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -40,23 +40,17 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-  build:
-    needs: setup
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        dotnet: ['7.x', '8.x']
-    steps:
       - name: Build Project
         run: dotnet build --no-restore
+
       - name: Run Unit Tests
         run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
+
       - name: Upload Code Coverage
         uses: codecov/codecov-action@v3
   
   update_release_draft:
-    needs: build
+    needs: build-and-test
     permissions:
       contents: write
       pull-requests: write
