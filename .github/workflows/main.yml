@@ -38,6 +38,8 @@ jobs:
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.x
 
       - name: Run Unit Tests
         run: dotnet test --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage"
@@ -55,6 +57,8 @@ jobs:
       # Install the .NET SDK indicated in the global.json file
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.x
       
       # Create the NuGet package in the folder from the environment variable NuGetDirectory
       - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
@@ -74,6 +78,8 @@ jobs:
       # Install the .NET SDK indicated in the global.json file
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.x
       
       # Download the NuGet package created in the previous job
       - uses: actions/download-artifact@v3
@@ -90,7 +96,6 @@ jobs:
       # using the --excluded-rules or --excluded-rule-ids option
       - name: Validate package
         run: meziantou.validate-nuget-package (Get-ChildItem "${{ env.NuGetDirectory }}/*.nupkg")
-  
         
   update_release_draft:
     permissions:
