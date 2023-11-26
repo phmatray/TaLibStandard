@@ -16,13 +16,13 @@ change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 version-resolver:
   major:
     labels:
-      - 'major'
+      - 'breaking'
   minor:
     labels:
-      - 'minor'
+      - 'feature'
   patch:
     labels:
-      - 'patch'
+      - 'fix'
   default: patch
 autolabeler:
   - label: 'feature'
@@ -47,6 +47,17 @@ autolabeler:
       - 'docs/*'
       - '*.md'
 template: |
-  ## Changes
+  # Release $RESOLVED_VERSION
+  ## Overview
+  This release includes the following categories of changes:
+  $CATEGORIES
 
+  ## Changes
   $CHANGES
+
+  ## Contributors
+  Thanks to the following people who have contributed to this release:
+  $CONTRIBUTORS
+
+  ## What's next
+  Stay tuned for more updates and improvements in our upcoming releases.
