@@ -31,6 +31,7 @@ A modern and robust C# Technical Analysis library based on the original open-sou
   * [Installation](#installation)
   * [Code Quality](#code-quality)
   * [Issues and Feature Requests](#issues-and-feature-requests)
+  * [Contributing](#contributing)
   * [Release notes](#release-notes)
   * [Licence](#licence)
 <!-- TOC -->
@@ -45,7 +46,7 @@ The primary objective of TaLibStandard is to provide a comprehensive, feature-ri
 
 ## Getting started
 
-To familiarize yourself with the library's capabilities, you may refer to the list of [available functions](./docs/functions.md) in the documentation.
+To get started with TaLibStandard, you can clone the repository and explore the examples provided in the `examples` directory. You can also refer to the list of [available functions](./docs/functions.md) in the documentation for a comprehensive overview of the library's capabilities.
 
 ## Features
 
@@ -55,18 +56,22 @@ To familiarize yourself with the library's capabilities, you may refer to the li
 
 ### Library
 
-  * Target framework : .NET 7
-  * Language version : C# 11
+  * Target framework : .NET 8
+  * Language version : C# 12
 
 ### Tests Specifications
 
-* Target framework : .NET 7
-* Language version : C# 11
+* Target framework : .NET 8
+* Language version : C# 12
 * xUnit and FluentAssertions 
 
 ## Installation
 
-(Add installation instructions here. For instance, steps for installing via NuGet package manager)
+To install TaLibStandard, you can use the NuGet package manager. Run the following command in your terminal:
+
+```shell
+dotnet add package TaLibStandard
+```
 
 ## Code Quality
 
@@ -78,6 +83,10 @@ View our Codacy metrics [here](https://app.codacy.com/gh/phmatray/TaLibStandard)
 
 For reporting bugs or suggesting new features, kindly submit these as an issue to the [TaLibStandard Repository](https://github.com/phmatray/TaLibStandard/issues). We value your contributions, but before submitting an issue, please ensure it is not a duplicate of an existing one.
 
+## Contributing
+
+We welcome contributions from the community! If you'd like to contribute to TaLibStandard, please fork the repository and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
+
 ## Release notes
 
 (Add details of the version history, bug fixes, and new feature additions in each release here)
@@ -85,4 +94,3 @@ For reporting bugs or suggesting new features, kindly submit these as an issue t
 ## Licence
 
 GNU General Public License v3.0
-

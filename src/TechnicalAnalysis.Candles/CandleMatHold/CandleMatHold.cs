@@ -9,24 +9,17 @@ namespace TechnicalAnalysis.Candles;
 /// <summary>
 /// 
 /// </summary>
+/// <param name="open">An array of open prices.</param>
+/// <param name="high">An array of high prices.</param>
+/// <param name="low">An array of low prices.</param>
+/// <param name="close">An array of close prices.</param>
 /// <typeparam name="T"></typeparam>
-public class CandleMatHold<T> : CandleIndicator<T>
+public class CandleMatHold<T>(in T[] open, in T[] high, in T[] low, in T[] close)
+    : CandleIndicator<T>(open, high, low, close)
     where T : IFloatingPoint<T>
 {
     private readonly T[] _bodyPeriodTotal = new T[5];
     private T _penetration = T.Zero;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="open">An array of open prices.</param>
-    /// <param name="high">An array of high prices.</param>
-    /// <param name="low">An array of low prices.</param>
-    /// <param name="close">An array of close prices.</param>
-    public CandleMatHold(in T[] open, in T[] high, in T[] low, in T[] close)
-        : base(open, high, low, close)
-    {
-    }
 
     /// <summary>
     /// 

@@ -9,23 +9,16 @@ namespace TechnicalAnalysis.Candles;
 /// <summary>
 /// 
 /// </summary>
+/// <param name="open">An array of open prices.</param>
+/// <param name="high">An array of high prices.</param>
+/// <param name="low">An array of low prices.</param>
+/// <param name="close">An array of close prices.</param>
 /// <typeparam name="T"></typeparam>
-public class CandleDoji<T> : CandleIndicator<T>
+public class CandleDoji<T>(in T[] open, in T[] high, in T[] low, in T[] close)
+    : CandleIndicator<T>(open, high, low, close)
     where T : IFloatingPoint<T>
 {
     private T _bodyDojiPeriodTotal = T.Zero;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="open">An array of open prices.</param>
-    /// <param name="high">An array of high prices.</param>
-    /// <param name="low">An array of low prices.</param>
-    /// <param name="close">An array of close prices.</param>
-    public CandleDoji(in T[] open, in T[] high, in T[] low, in T[] close)
-        : base(open, high, low, close)
-    {
-    }
 
     /// <summary>
     /// 

@@ -15,8 +15,8 @@ public class Cdl3BlackCrowsTests : CdlTestsBase
     public void GetPatternRecognitionPatternDetected()
     {
         // Arrange
-        float[] open = { 100f, 135f, 130f };
-        float[] close = { 120f, 125f, 110f };
+        float[] open = [100f, 135f, 130f];
+        float[] close = [120f, 125f, 110f];
         Candle3BlackCrows<float> crows = new(open, null!, null!, close);
         
         // Act
