@@ -6,8 +6,14 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechnicalAnalysis", "src\TechnicalAnalysis\TechnicalAnalysis.csproj", "{AE28059B-2495-4229-A90E-5CE9D70334D3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5AEBD15B-4E7E-47F2-B8D9-FEA28EBE87EA}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CC261FDF-BD3D-46D8-9F87-326E86BDEEF2}"
+	ProjectSection(SolutionItems) = preProject
+		tests\Directory.Build.props = tests\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalAnalysis.Candles", "src\TechnicalAnalysis.Candles\TechnicalAnalysis.Candles.csproj", "{552FF382-7E2F-4566-8DF8-2BA0F752DA36}"
 EndProject
@@ -18,6 +24,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalAnalysis.Candles.UnitTests", "tests\TechnicalAnalysis.Candles.UnitTests\TechnicalAnalysis.Candles.UnitTests.csproj", "{EDB2827E-1163-49E6-9120-FED9E1ABDB62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalAnalysis.Functions.UnitTests", "tests\TechnicalAnalysis.Functions.UnitTests\TechnicalAnalysis.Functions.UnitTests.csproj", "{B1B33276-DEFE-4183-8DEC-D068356BD02A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "about", "about", "{555F802F-30B4-48A0-96E7-E09603CF6EDE}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		LICENSE = LICENSE
+		global.json = global.json
+		qodana.yaml = qodana.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
