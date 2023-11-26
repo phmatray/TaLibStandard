@@ -19,6 +19,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         dotnet: ['7.x', '8.x']
+        
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v3
@@ -49,31 +50,13 @@ jobs:
     steps:
       - name: Build Project
         run: dotnet build --no-restore
-
-  test:
-    needs: build
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        dotnet: ['7.x', '8.x']
-    steps:
       - name: Run Unit Tests
         run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
-
-  upload-coverage:
-    needs: test
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        dotnet: ['7.x', '8.x']
-    steps:
       - name: Upload Code Coverage
         uses: codecov/codecov-action@v3
   
   update_release_draft:
-    needs: upload-coverage
+    needs: build
     permissions:
       contents: write
       pull-requests: write
