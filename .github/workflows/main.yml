@@ -42,7 +42,7 @@ jobs:
           dotnet-version: 8.x
 
       - name: Run Unit Tests
-        run: dotnet test --configuration Release --verbosity normal --collect:"XPlat Code Coverage"
+        run: otnet test --configuration Release --verbosity normal --collect:"XPlat Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
       - name: Upload Code Coverage
         uses: codecov/codecov-action@v3
