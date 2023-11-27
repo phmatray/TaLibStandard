@@ -62,6 +62,58 @@ public abstract class CandleIndicator<T>
     /// <returns>True if the pattern is recognized, false otherwise.</returns>
     public abstract bool GetPatternRecognition(int i);
         
+    
+    
+
+    /// <summary>
+    /// Prepares the output variables.
+    /// </summary>
+    /// <param name="startIdx">The start index.</param>
+    /// <param name="endIdx">The end index.</param>
+    /// <returns>A tuple containing the output variables.</returns>
+    protected virtual (int outBegIdx, int outNBElement, int[] outInteger) PrepareOutput(int startIdx, int endIdx)
+    {
+        // Initialize output variables 
+        (int outBegIdx, int outNBElement, int[] outInteger) = PrepareOutput(startIdx, endIdx);
+        
+        // Return the output variables.
+        return (outBegIdx, outNBElement, outInteger);
+    }
+    
+    /// <summary>
+    /// Validates the specified indices.
+    /// </summary>
+    /// <param name="startIdx">The start index.</param>
+    /// <param name="endIdx">The end index.</param>
+    protected virtual void ValidateIndices(ref int startIdx, ref int endIdx)
+    {
+        // Validate the requested output range.
+        ArgumentOutOfRangeException.ThrowIfNegative(startIdx);
+        ArgumentOutOfRangeException.ThrowIfNegative(endIdx - startIdx);
+    }
+    
+    /// <summary>
+    /// Validates the price arrays.
+    /// </summary>
+    protected virtual void ValidatePriceArrays()
+    {
+        // Verify required price component.
+        ArgumentNullException.ThrowIfNull(Open);
+        ArgumentNullException.ThrowIfNull(High);
+        ArgumentNullException.ThrowIfNull(Low);
+        ArgumentNullException.ThrowIfNull(Close);
+    }
+    
+    /// <summary>
+    /// Validates the specified parameters.
+    /// </summary>
+    /// <param name="penetration">The penetration to validate.</param>
+    protected virtual void ValidateParameters(T penetration)
+    {
+        // Verify parameters
+        ArgumentOutOfRangeException.ThrowIfNegative(penetration);
+    }
+    
     /// <summary>
     /// Gets the range type of the specified candle setting.
     /// </summary>

@@ -30,19 +30,11 @@ public class CandleThrusting<T>(in T[] open, in T[] high, in T[] low, in T[] clo
     public CandleIndicatorResult Compute(int startIdx, int endIdx)
     {
         // Initialize output variables 
-        int outBegIdx = default;
-        int outNBElement = default;
-        int[] outInteger = new int[int.Max(0, endIdx - startIdx + 1)];
+        (int outBegIdx, int outNBElement, int[] outInteger) = PrepareOutput(startIdx, endIdx);
             
-        // Validate the requested output range.
-        ArgumentOutOfRangeException.ThrowIfNegative(startIdx);
-        ArgumentOutOfRangeException.ThrowIfNegative(endIdx - startIdx);
-
-        // Verify required price component.
-        ArgumentNullException.ThrowIfNull(Open);
-        ArgumentNullException.ThrowIfNull(High);
-        ArgumentNullException.ThrowIfNull(Low);
-        ArgumentNullException.ThrowIfNull(Close);
+        // Validations
+        ValidateIndices(ref startIdx, ref endIdx);
+        ValidatePriceArrays();
 
         // Identify the minimum number of price bar needed to calculate at least one output.
         int lookbackTotal = GetLookback();

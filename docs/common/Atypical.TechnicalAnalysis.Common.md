@@ -47,6 +47,10 @@
   - **[IsColorOpposite(int, int)](CandleIndicator_T_.IsColorOpposite(int,int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.IsColorOpposite(int, int)')** `Method`
   - **[IsColorRed(int)](CandleIndicator_T_.IsColorRed(int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.IsColorRed(int)')** `Method`
   - **[IsColorSame(int, int)](CandleIndicator_T_.IsColorSame(int,int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.IsColorSame(int, int)')** `Method`
+  - **[PrepareOutput(int, int)](CandleIndicator_T_.PrepareOutput(int,int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.PrepareOutput(int, int)')** `Method` Prepares the output variables.
+  - **[ValidateIndices(int, int)](CandleIndicator_T_.ValidateIndices(int,int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.ValidateIndices(int, int)')** `Method` Validates the specified indices.
+  - **[ValidateParameters(T)](CandleIndicator_T_.ValidateParameters(T).md 'TechnicalAnalysis.Common.CandleIndicator<T>.ValidateParameters(T)')** `Method` Validates the specified parameters.
+  - **[ValidatePriceArrays()](CandleIndicator_T_.ValidatePriceArrays().md 'TechnicalAnalysis.Common.CandleIndicator<T>.ValidatePriceArrays()')** `Method` Validates the price arrays.
 - **[CandleIndicatorResult](CandleIndicatorResult.md 'TechnicalAnalysis.Common.CandleIndicatorResult')** `Class` Represents the result of the candlestick pattern indicator.
   - **[CandleIndicatorResult(RetCode, int, int, int[])](CandleIndicatorResult.CandleIndicatorResult(RetCode,int,int,int[]).md 'TechnicalAnalysis.Common.CandleIndicatorResult.CandleIndicatorResult(TechnicalAnalysis.Common.RetCode, int, int, int[])')** `Constructor` Initializes a new instance of the CandleResult class.
   - **[Integers](CandleIndicatorResult.Integers.md 'TechnicalAnalysis.Common.CandleIndicatorResult.Integers')** `Property` Gets the array of integers indicating the presence of the candle pattern. (values are -100, 0 or 100)

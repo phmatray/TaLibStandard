@@ -51,3 +51,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [IsColorOpposite(int, int)](CandleIndicator_T_.IsColorOpposite(int,int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.IsColorOpposite(int, int)') | |
 | [IsColorRed(int)](CandleIndicator_T_.IsColorRed(int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.IsColorRed(int)') | |
 | [IsColorSame(int, int)](CandleIndicator_T_.IsColorSame(int,int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.IsColorSame(int, int)') | |
+| [PrepareOutput(int, int)](CandleIndicator_T_.PrepareOutput(int,int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.PrepareOutput(int, int)') | Prepares the output variables. |
+| [ValidateIndices(int, int)](CandleIndicator_T_.ValidateIndices(int,int).md 'TechnicalAnalysis.Common.CandleIndicator<T>.ValidateIndices(int, int)') | Validates the specified indices. |
+| [ValidateParameters(T)](CandleIndicator_T_.ValidateParameters(T).md 'TechnicalAnalysis.Common.CandleIndicator<T>.ValidateParameters(T)') | Validates the specified parameters. |
+| [ValidatePriceArrays()](CandleIndicator_T_.ValidatePriceArrays().md 'TechnicalAnalysis.Common.CandleIndicator<T>.ValidatePriceArrays()') | Validates the price arrays. |

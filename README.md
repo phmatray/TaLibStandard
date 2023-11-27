@@ -16,7 +16,7 @@ A modern and robust C# Technical Analysis library based on the original open-sou
 [![GitHub contributors](https://img.shields.io/github/contributors/phmatray/TaLibStandard)](https://github.com/phmatray/TaLibStandard/graphs/contributors)
 [![GitHub last commit](https://img.shields.io/github/last-commit/phmatray/TaLibStandard)](https://github.com/phmatray/TaLibStandard/commits/master)
 [![codecov](https://codecov.io/gh/phmatray/TaLibStandard/branch/main/graph/badge.svg?token=041C4QKW6O)](https://app.codecov.io/gh/phmatray/TaLibStandard/tree/main)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/84e2475f22a04bc1bed551f081029e82)](https://www.codacy.com/gh/phmatray/TaLibStandard/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=phmatray/TaLibStandard&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/84e2475f22a04bc1bed551f081029e82)](https://app.codacy.com/gh/phmatray/TaLibStandard/dashboard)
 
 ---
 
