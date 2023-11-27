@@ -28,20 +28,26 @@ public abstract class CdlTestsBase
             .ToArray();
     }
     
-    [Fact]
-    public void NullPriceArrays()
+    [Theory]
+    [InlineData("Open")]
+    [InlineData("High")]
+    [InlineData("Low")]
+    [InlineData("Close")]
+    public void NullPriceArray(string nullArray)
     {
         // Arrange
-        float[] open = null!;
-        float[] high = null!;
-        float[] low = null!;
-        float[] close = null!;
+        float[]? open = nullArray == "Open" ? null : [];
+        float[]? high = nullArray == "High" ? null : [];
+        float[]? low = nullArray == "Low" ? null : [];
+        float[]? close = nullArray == "Close" ? null :[];
 
         // Act
-        IndicatorResult result = SUT(0, 0, open, high, low, close);
-
+        Action act = () => SUT(0, 0, open, high, low, close);
+        
         // Assert
-        result.RetCode.Should().Be(RetCode.BadParam);
+        act.Should()
+            .ThrowExactly<ArgumentNullException>()
+            .WithMessage($"Value cannot be null. (Parameter '{nullArray}')");
     }
 
     [Fact]
@@ -53,12 +59,14 @@ public abstract class CdlTestsBase
         float[] high = fixture.CreateMany<float>(100).ToArray();
         float[] low = fixture.CreateMany<float>(100).ToArray();
         float[] close = fixture.CreateMany<float>(100).ToArray();
-
+    
         // Act
-        IndicatorResult result = SUT(10, 5, open, high, low, close);
-
+        Action act = () => SUT(10, 5, open, high, low, close);
+    
         // Assert
-        result.RetCode.Should().Be(RetCode.OutOfRangeEndIndex);
+        act.Should()
+            .ThrowExactly<ArgumentOutOfRangeException>()
+            .WithMessage("*endIdx - startIdx ('-5') must be a non-negative value.*");
     }
     
     [Fact]
@@ -72,10 +80,12 @@ public abstract class CdlTestsBase
         float[] close = fixture.CreateMany<float>(100).ToArray();
 
         // Act
-        IndicatorResult result = SUT(-1, 0, open, high, low, close);
+        Action act = () => SUT(-1, 0, open, high, low, close);
 
         // Assert
-        result.RetCode.Should().Be(RetCode.OutOfRangeStartIndex);
+        act.Should()
+            .ThrowExactly<ArgumentOutOfRangeException>()
+            .WithMessage("*startIdx ('-1') must be a non-negative value.*");
     }
 
     [Fact]

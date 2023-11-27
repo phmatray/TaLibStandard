@@ -40,26 +40,17 @@ public class CandleAbandonedBaby<T>(in T[] open, in T[] high, in T[] low, in T[]
         int[] outInteger = new int[int.Max(0, endIdx - startIdx + 1)];
             
         // Validate the requested output range.
-        if (startIdx < 0)
-        {
-            return new CandleIndicatorResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return new CandleIndicatorResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
-        }
+        ArgumentOutOfRangeException.ThrowIfNegative(startIdx);
+        ArgumentOutOfRangeException.ThrowIfNegative(endIdx - startIdx);
 
         // Verify required price component.
-        if (Open == null! || High == null! || Low == null! || Close == null!)
-        {
-            return new CandleIndicatorResult(BadParam, outBegIdx, outNBElement, outInteger);
-        }
-
-        if (optInPenetration < T.Zero)
-        {
-            return new CandleIndicatorResult(BadParam, outBegIdx, outNBElement, outInteger);
-        }
+        ArgumentNullException.ThrowIfNull(Open);
+        ArgumentNullException.ThrowIfNull(High);
+        ArgumentNullException.ThrowIfNull(Low);
+        ArgumentNullException.ThrowIfNull(Close);
+        
+        // Verify parameters
+        ArgumentOutOfRangeException.ThrowIfNegative(optInPenetration);
 
         // Identify the minimum number of price bar needed to calculate at least one output.
         int lookbackTotal = GetLookback();

@@ -19,7 +19,20 @@ public class Candle2Crows<T>(in T[] open, in T[] high, in T[] low, in T[] close)
     where T : IFloatingPoint<T>
 {
     private T _bodyLongPeriodTotal = T.Zero;
+    
+    private void ValidateIndices(ref int startIdx, ref int endIdx)
+    {
+        // Validate the requested output range.
+        ArgumentOutOfRangeException.ThrowIfNegative(startIdx);
+        ArgumentOutOfRangeException.ThrowIfNegative(endIdx - startIdx);
 
+        // Verify required price component.
+        ArgumentNullException.ThrowIfNull(Open);
+        ArgumentNullException.ThrowIfNull(High);
+        ArgumentNullException.ThrowIfNull(Low);
+        ArgumentNullException.ThrowIfNull(Close);
+    }
+    
     /// <summary>
     /// Computes the <see cref="Candle2Crows{T}"/> indicator.
     /// </summary>
@@ -34,21 +47,14 @@ public class Candle2Crows<T>(in T[] open, in T[] high, in T[] low, in T[] close)
         int[] outInteger = new int[int.Max(0, endIdx - startIdx + 1)];
             
         // Validate the requested output range.
-        if (startIdx < 0)
-        {
-            return new CandleIndicatorResult(OutOfRangeStartIndex, outBegIdx, outNBElement, outInteger);
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return new CandleIndicatorResult(OutOfRangeEndIndex, outBegIdx, outNBElement, outInteger);
-        }
+        ArgumentOutOfRangeException.ThrowIfNegative(startIdx);
+        ArgumentOutOfRangeException.ThrowIfNegative(endIdx - startIdx);
 
         // Verify required price component.
-        if (Open == null! || High == null! || Low == null! || Close == null!)
-        {
-            return new CandleIndicatorResult(BadParam, outBegIdx, outNBElement, outInteger);
-        }
+        ArgumentNullException.ThrowIfNull(Open);
+        ArgumentNullException.ThrowIfNull(High);
+        ArgumentNullException.ThrowIfNull(Low);
+        ArgumentNullException.ThrowIfNull(Close);
 
         // Identify the minimum number of price bar needed to calculate at least one output.
         int lookbackTotal = GetLookback();

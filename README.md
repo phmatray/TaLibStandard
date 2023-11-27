@@ -60,18 +60,20 @@ To get started with TaLibStandard, you can clone the repository and explore the 
 
 ## 📌 Features
 
-  * [x] Support for Double, Float, and Decimal data types, with the help of .NET's Generic Math
-  * [x] With some basic tests (coverage: >= 80%)
+* [x] Support for Double, Float, and Decimal data types, with the help of .NET's Generic Math
+* [x] With some basic tests (coverage: >= 80%)
+* [x] .NET Exception handling (BREAKING CHANGE)
 
 ### Roadmap (next features)
 
-  * [ ] Comprehensive API documentation that is easy to understand
-  * [ ] High-Level API for common use cases
-  * [ ] Support for more data types
-  * [ ] Support for more functions
-  * [ ] .NET Exception handling (BREAKING CHANGE)
-  * [ ] More tests
-  * [ ] More examples
+* [ ] Comprehensive API documentation that is easy to understand
+* [ ] High-Level API for common use cases
+* [ ] Support for more data types
+* [ ] Support for more functions
+* [ ] More tests
+* [ ] More examples
+* [ ] Add a Benchmark project
+* [ ] Create a gRPC server to expose the library as a service
 
 ## 📄 Documentation
 
@@ -100,11 +102,11 @@ learn more about these features.
 
 ### 📦 NuGet Packages
 
-| Package Name                         | NuGet Version Badge                                                                                                                                      | NuGet Downloads Badge                                                                                                                                     |
-|--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Atypical.TechnicalAnalysis.Candles   | [![NuGet](https://img.shields.io/nuget/v/Atypical.TechnicalAnalysis.Candles.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Candles)     | [![NuGet](https://img.shields.io/nuget/dt/Atypical.TechnicalAnalysis.Candles.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Candles)     |
-| Atypical.TechnicalAnalysis.Functions | [![NuGet](https://img.shields.io/nuget/v/Atypical.TechnicalAnalysis.Functions.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Functions) | [![NuGet](https://img.shields.io/nuget/dt/Atypical.TechnicalAnalysis.Functions.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Functions) |
-| Atypical.TechnicalAnalysis.Core      | [![NuGet](https://img.shields.io/nuget/v/Atypical.TechnicalAnalysis.Common.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Common)       | [![NuGet](https://img.shields.io/nuget/dt/Atypical.TechnicalAnalysis.Common.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Common)       |
+| Package Name                         | NuGet Version Badge                                                                                                                                      | NuGet Downloads Badge                                                                                                                                     | Package Explorer                                                            |
+|--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| Atypical.TechnicalAnalysis.Candles   | [![NuGet](https://img.shields.io/nuget/v/Atypical.TechnicalAnalysis.Candles.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Candles)     | [![NuGet](https://img.shields.io/nuget/dt/Atypical.TechnicalAnalysis.Candles.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Candles)     | [Explore](https://nuget.info/packages/Atypical.TechnicalAnalysis.Candles)   |
+| Atypical.TechnicalAnalysis.Functions | [![NuGet](https://img.shields.io/nuget/v/Atypical.TechnicalAnalysis.Functions.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Functions) | [![NuGet](https://img.shields.io/nuget/dt/Atypical.TechnicalAnalysis.Functions.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Functions) | [Explore](https://nuget.info/packages/Atypical.TechnicalAnalysis.Functions) |
+| Atypical.TechnicalAnalysis.Core      | [![NuGet](https://img.shields.io/nuget/v/Atypical.TechnicalAnalysis.Common.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Common)       | [![NuGet](https://img.shields.io/nuget/dt/Atypical.TechnicalAnalysis.Common.svg)](https://www.nuget.org/packages/Atypical.TechnicalAnalysis.Common)       | [Explore](https://nuget.info/packages/Atypical.TechnicalAnalysis.Common)    |
 
 This table is automatically updated regularly the latest developments and releases in the Atypical Technical Analysis suite.
 
@@ -147,7 +149,12 @@ You can contact us by opening an issue on this repository.
 
 ## 📝 Release notes
 
-(Add details of the version history, bug fixes, and new feature additions in each release here)
+Here is a list of recent notable changes to TaLibStandard.
+
+- dotnet 8.0 support
+- Generic Math support
+- .NET Exception handling
+- NuGet packages
 
 ## 📜 License
 
