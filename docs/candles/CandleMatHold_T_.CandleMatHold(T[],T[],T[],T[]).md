@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleMatHold&lt;T&gt;](CandleMatHold_T_.md 'TechnicalAnalysis.Candles.CandleMatHold<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleMatHold&lt;T&gt;](CandleMatHold_T_.md 'TechnicalAnalysis.Candles.CandleMatHold<T>')
 
 ## CandleMatHold(T[], T[], T[], T[]) Constructor
+
+Mat Hold (Pattern Recognition)
 
 ```csharp
 public CandleMatHold(in T[] open, in T[] high, in T[] low, in T[] close);

@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleLongLeggedDoji&lt;T&gt;](CandleLongLeggedDoji_T_.md 'TechnicalAnalysis.Candles.CandleLongLeggedDoji<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleLongLeggedDoji&lt;T&gt;](CandleLongLeggedDoji_T_.md 'TechnicalAnalysis.Candles.CandleLongLeggedDoji<T>')
 
 ## CandleLongLeggedDoji<T>.GetPatternRecognition(int) Method
 

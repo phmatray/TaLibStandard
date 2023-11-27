@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleMarubozu&lt;T&gt;](CandleMarubozu_T_.md 'TechnicalAnalysis.Candles.CandleMarubozu<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleMarubozu&lt;T&gt;](CandleMarubozu_T_.md 'TechnicalAnalysis.Candles.CandleMarubozu<T>')
 
 ## CandleMarubozu(T[], T[], T[], T[]) Constructor
+
+Marubozu (Pattern Recognition)
 
 ```csharp
 public CandleMarubozu(in T[] open, in T[] high, in T[] low, in T[] close);

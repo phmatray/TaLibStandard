@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleTasukiGap&lt;T&gt;](CandleTasukiGap_T_.md 'TechnicalAnalysis.Candles.CandleTasukiGap<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleTasukiGap&lt;T&gt;](CandleTasukiGap_T_.md 'TechnicalAnalysis.Candles.CandleTasukiGap<T>')
 
 ## CandleTasukiGap(T[], T[], T[], T[]) Constructor
+
+Tasuki Gap (Pattern Recognition)
 
 ```csharp
 public CandleTasukiGap(in T[] open, in T[] high, in T[] low, in T[] close);

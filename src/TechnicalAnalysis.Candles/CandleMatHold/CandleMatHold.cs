@@ -7,7 +7,7 @@
 namespace TechnicalAnalysis.Candles;
 
 /// <summary>
-/// Mat Hold
+/// Mat Hold (Pattern Recognition)
 /// </summary>
 /// <param name="open">An array of open prices.</param>
 /// <param name="high">An array of high prices.</param>
@@ -22,10 +22,10 @@ public class CandleMatHold<T>(in T[] open, in T[] high, in T[] low, in T[] close
     private T _penetration = T.Zero;
 
     /// <summary>
-    /// 
+    /// Computes the <see cref="CandleMatHold{T}"/> indicator.
     /// </summary>
-    /// <param name="startIdx"></param>
-    /// <param name="endIdx"></param>
+    /// <param name="startIdx">The start index.</param>
+    /// <param name="endIdx">The end index.</param>
     /// <param name="optInPenetration"></param>
     /// <returns></returns>
     public CandleIndicatorResult Compute(int startIdx, int endIdx, in T optInPenetration)

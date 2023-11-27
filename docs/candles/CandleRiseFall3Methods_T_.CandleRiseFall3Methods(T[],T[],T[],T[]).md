@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleRiseFall3Methods&lt;T&gt;](CandleRiseFall3Methods_T_.md 'TechnicalAnalysis.Candles.CandleRiseFall3Methods<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleRiseFall3Methods&lt;T&gt;](CandleRiseFall3Methods_T_.md 'TechnicalAnalysis.Candles.CandleRiseFall3Methods<T>')
 
 ## CandleRiseFall3Methods(T[], T[], T[], T[]) Constructor
+
+Rising/Falling Three Methods (Pattern Recognition)
 
 ```csharp
 public CandleRiseFall3Methods(in T[] open, in T[] high, in T[] low, in T[] close);

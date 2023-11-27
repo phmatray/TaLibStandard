@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleAdvanceBlock&lt;T&gt;](CandleAdvanceBlock_T_.md 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleAdvanceBlock&lt;T&gt;](CandleAdvanceBlock_T_.md 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>')
 
 ## CandleAdvanceBlock<T>.GetPatternRecognition(int) Method
 

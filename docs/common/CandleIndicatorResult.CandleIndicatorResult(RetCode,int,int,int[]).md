@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Common](TechnicalAnalysis.Common.md 'TechnicalAnalysis.Common')
-### [TechnicalAnalysis.Common](TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common').[CandleIndicatorResult](CandleIndicatorResult.md 'TechnicalAnalysis.Common.CandleIndicatorResult')
+#### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical.TechnicalAnalysis.Common')
+### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common').[CandleIndicatorResult](CandleIndicatorResult.md 'TechnicalAnalysis.Common.CandleIndicatorResult')
 
 ## CandleIndicatorResult(RetCode, int, int, int[]) Constructor
 
@@ -32,4 +32,4 @@ The number of elements in the result.
 
 `integers` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
 
-An array of integers indicating the presence of the pattern.
+An array of integers indicating the presence of the pattern. (values are -100, 0 or 100)

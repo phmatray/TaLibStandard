@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleHammer&lt;T&gt;](CandleHammer_T_.md 'TechnicalAnalysis.Candles.CandleHammer<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleHammer&lt;T&gt;](CandleHammer_T_.md 'TechnicalAnalysis.Candles.CandleHammer<T>')
 
 ## CandleHammer(T[], T[], T[], T[]) Constructor
+
+Hammer (Pattern Recognition)
 
 ```csharp
 public CandleHammer(in T[] open, in T[] high, in T[] low, in T[] close);

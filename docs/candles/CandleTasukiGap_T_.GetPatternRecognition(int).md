@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleTasukiGap&lt;T&gt;](CandleTasukiGap_T_.md 'TechnicalAnalysis.Candles.CandleTasukiGap<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleTasukiGap&lt;T&gt;](CandleTasukiGap_T_.md 'TechnicalAnalysis.Candles.CandleTasukiGap<T>')
 
 ## CandleTasukiGap<T>.GetPatternRecognition(int) Method
 

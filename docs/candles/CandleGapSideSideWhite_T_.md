@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
 
 ## CandleGapSideSideWhite<T> Class
+
+Up/Down-gap side-by-side white lines (Pattern Recognition)
 
 ```csharp
 public class CandleGapSideSideWhite<T> : TechnicalAnalysis.Common.CandleIndicator<T>
@@ -19,10 +21,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [CandleGapSideSideWhite(T[], T[], T[], T[])](CandleGapSideSideWhite_T_.CandleGapSideSideWhite(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>.CandleGapSideSideWhite(T[], T[], T[], T[])') | |
+| [CandleGapSideSideWhite(T[], T[], T[], T[])](CandleGapSideSideWhite_T_.CandleGapSideSideWhite(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>.CandleGapSideSideWhite(T[], T[], T[], T[])') | Up/Down-gap side-by-side white lines (Pattern Recognition) |
 
 | Methods | |
 | :--- | :--- |
-| [Compute(int, int)](CandleGapSideSideWhite_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>.Compute(int, int)') | |
+| [Compute(int, int)](CandleGapSideSideWhite_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>.Compute(int, int)') | Computes the [CandleGapSideSideWhite&lt;T&gt;](CandleGapSideSideWhite_T_.md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>') indicator. |
 | [GetLookback()](CandleGapSideSideWhite_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>.GetLookback()') | Returns the lookback period for the indicator. |
 | [GetPatternRecognition(int)](CandleGapSideSideWhite_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>.GetPatternRecognition(int)') | Checks if the pattern is recognized at a specific index. |

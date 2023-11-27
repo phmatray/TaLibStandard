@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleHighWave&lt;T&gt;](CandleHighWave_T_.md 'TechnicalAnalysis.Candles.CandleHighWave<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleHighWave&lt;T&gt;](CandleHighWave_T_.md 'TechnicalAnalysis.Candles.CandleHighWave<T>')
 
 ## CandleHighWave(T[], T[], T[], T[]) Constructor
+
+High-Wave Candle (Pattern Recognition)
 
 ```csharp
 public CandleHighWave(in T[] open, in T[] high, in T[] low, in T[] close);

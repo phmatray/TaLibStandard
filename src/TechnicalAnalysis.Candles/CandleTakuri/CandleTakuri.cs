@@ -7,7 +7,7 @@
 namespace TechnicalAnalysis.Candles;
 
 /// <summary>
-/// Takuri (Dragonfly Doji with very long lower shadow)
+/// Takuri (Dragonfly Doji with very long lower shadow) (Pattern Recognition)
 /// </summary>
 /// <param name="open">An array of open prices.</param>
 /// <param name="high">An array of high prices.</param>
@@ -23,10 +23,10 @@ public class CandleTakuri<T>(in T[] open, in T[] high, in T[] low, in T[] close)
     private T _shadowVeryLongPeriodTotal = T.Zero;
 
     /// <summary>
-    /// 
+    /// Computes the <see cref="CandleTakuri{T}"/> indicator.
     /// </summary>
-    /// <param name="startIdx"></param>
-    /// <param name="endIdx"></param>
+    /// <param name="startIdx">The start index.</param>
+    /// <param name="endIdx">The end index.</param>
     /// <returns></returns>
     public CandleIndicatorResult Compute(int startIdx, int endIdx)
     {

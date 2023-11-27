@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Common](TechnicalAnalysis.Common.md 'TechnicalAnalysis.Common')
-### [TechnicalAnalysis.Common](TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common').[MoneyFlow](MoneyFlow.md 'TechnicalAnalysis.Common.MoneyFlow')
+#### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical.TechnicalAnalysis.Common')
+### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common').[MoneyFlow](MoneyFlow.md 'TechnicalAnalysis.Common.MoneyFlow')
 
 ## MoneyFlow.Positive Property
 

@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleBeltHold&lt;T&gt;](CandleBeltHold_T_.md 'TechnicalAnalysis.Candles.CandleBeltHold<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleBeltHold&lt;T&gt;](CandleBeltHold_T_.md 'TechnicalAnalysis.Candles.CandleBeltHold<T>')
 
 ## CandleBeltHold(T[], T[], T[], T[]) Constructor
+
+Belt-hold (Pattern Recognition)
 
 ```csharp
 public CandleBeltHold(in T[] open, in T[] high, in T[] low, in T[] close);

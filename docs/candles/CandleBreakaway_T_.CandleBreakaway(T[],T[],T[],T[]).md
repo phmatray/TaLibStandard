@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleBreakaway&lt;T&gt;](CandleBreakaway_T_.md 'TechnicalAnalysis.Candles.CandleBreakaway<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleBreakaway&lt;T&gt;](CandleBreakaway_T_.md 'TechnicalAnalysis.Candles.CandleBreakaway<T>')
 
 ## CandleBreakaway(T[], T[], T[], T[]) Constructor
+
+Breakaway (Pattern Recognition)
 
 ```csharp
 public CandleBreakaway(in T[] open, in T[] high, in T[] low, in T[] close);

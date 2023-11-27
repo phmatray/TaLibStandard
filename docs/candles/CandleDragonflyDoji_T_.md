@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
 
 ## CandleDragonflyDoji<T> Class
+
+Dragonfly Doji (Pattern Recognition)
 
 ```csharp
 public class CandleDragonflyDoji<T> : TechnicalAnalysis.Common.CandleIndicator<T>
@@ -19,10 +21,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [CandleDragonflyDoji(T[], T[], T[], T[])](CandleDragonflyDoji_T_.CandleDragonflyDoji(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.CandleDragonflyDoji(T[], T[], T[], T[])') | |
+| [CandleDragonflyDoji(T[], T[], T[], T[])](CandleDragonflyDoji_T_.CandleDragonflyDoji(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.CandleDragonflyDoji(T[], T[], T[], T[])') | Dragonfly Doji (Pattern Recognition) |
 
 | Methods | |
 | :--- | :--- |
-| [Compute(int, int)](CandleDragonflyDoji_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.Compute(int, int)') | |
+| [Compute(int, int)](CandleDragonflyDoji_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.Compute(int, int)') | Computes the [CandleDragonflyDoji&lt;T&gt;](CandleDragonflyDoji_T_.md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>') indicator. |
 | [GetLookback()](CandleDragonflyDoji_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.GetLookback()') | Returns the lookback period for the indicator. |
 | [GetPatternRecognition(int)](CandleDragonflyDoji_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>.GetPatternRecognition(int)') | Checks if the pattern is recognized at a specific index. |

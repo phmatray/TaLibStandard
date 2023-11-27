@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Common](TechnicalAnalysis.Common.md 'TechnicalAnalysis.Common')
-### [TechnicalAnalysis.Common](TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common')
+#### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical.TechnicalAnalysis.Common')
+### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common')
 
 ## CandleIndicatorResult Class
 
@@ -20,4 +20,4 @@ Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/S
 
 | Properties | |
 | :--- | :--- |
-| [Integers](CandleIndicatorResult.Integers.md 'TechnicalAnalysis.Common.CandleIndicatorResult.Integers') | Gets the array of integers indicating the presence of the candle pattern. |
+| [Integers](CandleIndicatorResult.Integers.md 'TechnicalAnalysis.Common.CandleIndicatorResult.Integers') | Gets the array of integers indicating the presence of the candle pattern. (values are -100, 0 or 100) |

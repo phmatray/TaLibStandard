@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
 
 ## CandleOnNeck<T> Class
+
+On-Neck Pattern (Pattern Recognition)
 
 ```csharp
 public class CandleOnNeck<T> : TechnicalAnalysis.Common.CandleIndicator<T>
@@ -19,10 +21,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [CandleOnNeck(T[], T[], T[], T[])](CandleOnNeck_T_.CandleOnNeck(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleOnNeck<T>.CandleOnNeck(T[], T[], T[], T[])') | |
+| [CandleOnNeck(T[], T[], T[], T[])](CandleOnNeck_T_.CandleOnNeck(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleOnNeck<T>.CandleOnNeck(T[], T[], T[], T[])') | On-Neck Pattern (Pattern Recognition) |
 
 | Methods | |
 | :--- | :--- |
-| [Compute(int, int)](CandleOnNeck_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleOnNeck<T>.Compute(int, int)') | |
+| [Compute(int, int)](CandleOnNeck_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleOnNeck<T>.Compute(int, int)') | Computes the [CandleOnNeck&lt;T&gt;](CandleOnNeck_T_.md 'TechnicalAnalysis.Candles.CandleOnNeck<T>') indicator. |
 | [GetLookback()](CandleOnNeck_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleOnNeck<T>.GetLookback()') | Returns the lookback period for the indicator. |
 | [GetPatternRecognition(int)](CandleOnNeck_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleOnNeck<T>.GetPatternRecognition(int)') | Checks if the pattern is recognized at a specific index. |

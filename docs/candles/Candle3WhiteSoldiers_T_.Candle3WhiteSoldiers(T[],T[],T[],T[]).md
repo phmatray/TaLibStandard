@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[Candle3WhiteSoldiers&lt;T&gt;](Candle3WhiteSoldiers_T_.md 'TechnicalAnalysis.Candles.Candle3WhiteSoldiers<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[Candle3WhiteSoldiers&lt;T&gt;](Candle3WhiteSoldiers_T_.md 'TechnicalAnalysis.Candles.Candle3WhiteSoldiers<T>')
 
 ## Candle3WhiteSoldiers(T[], T[], T[], T[]) Constructor
+
+Three Advancing White Soldiers (Pattern Recognition)
 
 ```csharp
 public Candle3WhiteSoldiers(in T[] open, in T[] high, in T[] low, in T[] close);

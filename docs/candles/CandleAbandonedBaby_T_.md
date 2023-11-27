@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
 
 ## CandleAbandonedBaby<T> Class
+
+Abandoned Baby (Pattern Recognition)
 
 ```csharp
 public class CandleAbandonedBaby<T> : TechnicalAnalysis.Common.CandleIndicator<T>
@@ -19,10 +21,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [CandleAbandonedBaby(T[], T[], T[], T[])](CandleAbandonedBaby_T_.CandleAbandonedBaby(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.CandleAbandonedBaby(T[], T[], T[], T[])') | |
+| [CandleAbandonedBaby(T[], T[], T[], T[])](CandleAbandonedBaby_T_.CandleAbandonedBaby(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.CandleAbandonedBaby(T[], T[], T[], T[])') | Abandoned Baby (Pattern Recognition) |
 
 | Methods | |
 | :--- | :--- |
-| [Compute(int, int, T)](CandleAbandonedBaby_T_.Compute(int,int,T).md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.Compute(int, int, T)') | |
+| [Compute(int, int, T)](CandleAbandonedBaby_T_.Compute(int,int,T).md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.Compute(int, int, T)') | Computes the [CandleAbandonedBaby&lt;T&gt;](CandleAbandonedBaby_T_.md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>') indicator. |
 | [GetLookback()](CandleAbandonedBaby_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.GetLookback()') | Returns the lookback period for the indicator. |
 | [GetPatternRecognition(int)](CandleAbandonedBaby_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleAbandonedBaby<T>.GetPatternRecognition(int)') | Checks if the pattern is recognized at a specific index. |

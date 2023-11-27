@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleShortLine&lt;T&gt;](CandleShortLine_T_.md 'TechnicalAnalysis.Candles.CandleShortLine<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleShortLine&lt;T&gt;](CandleShortLine_T_.md 'TechnicalAnalysis.Candles.CandleShortLine<T>')
 
 ## CandleShortLine(T[], T[], T[], T[]) Constructor
+
+Short Line Candle (Pattern Recognition)
 
 ```csharp
 public CandleShortLine(in T[] open, in T[] high, in T[] low, in T[] close);

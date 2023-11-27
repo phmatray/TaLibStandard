@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleConcealBabySwallow&lt;T&gt;](CandleConcealBabySwallow_T_.md 'TechnicalAnalysis.Candles.CandleConcealBabySwallow<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleConcealBabySwallow&lt;T&gt;](CandleConcealBabySwallow_T_.md 'TechnicalAnalysis.Candles.CandleConcealBabySwallow<T>')
 
 ## CandleConcealBabySwallow(T[], T[], T[], T[]) Constructor
+
+Concealing Baby Swallow (Pattern Recognition)
 
 ```csharp
 public CandleConcealBabySwallow(in T[] open, in T[] high, in T[] low, in T[] close);

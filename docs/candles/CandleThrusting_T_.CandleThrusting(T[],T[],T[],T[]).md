@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleThrusting&lt;T&gt;](CandleThrusting_T_.md 'TechnicalAnalysis.Candles.CandleThrusting<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleThrusting&lt;T&gt;](CandleThrusting_T_.md 'TechnicalAnalysis.Candles.CandleThrusting<T>')
 
 ## CandleThrusting(T[], T[], T[], T[]) Constructor
+
+Thrusting Pattern (Pattern Recognition)
 
 ```csharp
 public CandleThrusting(in T[] open, in T[] high, in T[] low, in T[] close);

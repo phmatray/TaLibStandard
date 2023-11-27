@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleEngulfing&lt;T&gt;](CandleEngulfing_T_.md 'TechnicalAnalysis.Candles.CandleEngulfing<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleEngulfing&lt;T&gt;](CandleEngulfing_T_.md 'TechnicalAnalysis.Candles.CandleEngulfing<T>')
 
 ## CandleEngulfing(T[], T[], T[], T[]) Constructor
+
+Engulfing Pattern (Pattern Recognition)
 
 ```csharp
 public CandleEngulfing(in T[] open, in T[] high, in T[] low, in T[] close);

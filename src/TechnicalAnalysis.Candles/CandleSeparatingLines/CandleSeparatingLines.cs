@@ -7,13 +7,13 @@
 namespace TechnicalAnalysis.Candles;
 
 /// <summary>
-/// Separating Lines
+/// Separating Lines (Pattern Recognition)
 /// </summary>
 /// <param name="open">An array of open prices.</param>
 /// <param name="high">An array of high prices.</param>
 /// <param name="low">An array of low prices.</param>
 /// <param name="close">An array of close prices.</param>
-/// <typeparam name="T"></typeparam>
+/// <typeparam name="T">The type of the array elements.</typeparam>
 public class CandleSeparatingLines<T>(in T[] open, in T[] high, in T[] low, in T[] close)
     : CandleIndicator<T>(open, high, low, close)
     where T : IFloatingPoint<T>
@@ -23,10 +23,10 @@ public class CandleSeparatingLines<T>(in T[] open, in T[] high, in T[] low, in T
     private T _equalPeriodTotal = T.Zero;
 
     /// <summary>
-    /// 
+    /// Computes the <see cref="CandleSeparatingLines{T}"/> indicator.
     /// </summary>
-    /// <param name="startIdx"></param>
-    /// <param name="endIdx"></param>
+    /// <param name="startIdx">The start index.</param>
+    /// <param name="endIdx">The end index.</param>
     /// <returns></returns>
     public CandleIndicatorResult Compute(int startIdx, int endIdx)
     {

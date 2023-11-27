@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleShootingStar&lt;T&gt;](CandleShootingStar_T_.md 'TechnicalAnalysis.Candles.CandleShootingStar<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleShootingStar&lt;T&gt;](CandleShootingStar_T_.md 'TechnicalAnalysis.Candles.CandleShootingStar<T>')
 
 ## CandleShootingStar(T[], T[], T[], T[]) Constructor
+
+Shooting Star (Pattern Recognition)
 
 ```csharp
 public CandleShootingStar(in T[] open, in T[] high, in T[] low, in T[] close);

@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleBeltHold&lt;T&gt;](CandleBeltHold_T_.md 'TechnicalAnalysis.Candles.CandleBeltHold<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleBeltHold&lt;T&gt;](CandleBeltHold_T_.md 'TechnicalAnalysis.Candles.CandleBeltHold<T>')
 
 ## CandleBeltHold<T>.GetLookback() Method
 

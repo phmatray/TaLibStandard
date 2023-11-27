@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
 
 ## Candle3StarsInSouth<T> Class
+
+Three Stars In The South (Pattern Recognition)
 
 ```csharp
 public class Candle3StarsInSouth<T> : TechnicalAnalysis.Common.CandleIndicator<T>
@@ -19,10 +21,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [Candle3StarsInSouth(T[], T[], T[], T[])](Candle3StarsInSouth_T_.Candle3StarsInSouth(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>.Candle3StarsInSouth(T[], T[], T[], T[])') | |
+| [Candle3StarsInSouth(T[], T[], T[], T[])](Candle3StarsInSouth_T_.Candle3StarsInSouth(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>.Candle3StarsInSouth(T[], T[], T[], T[])') | Three Stars In The South (Pattern Recognition) |
 
 | Methods | |
 | :--- | :--- |
-| [Compute(int, int)](Candle3StarsInSouth_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>.Compute(int, int)') | |
+| [Compute(int, int)](Candle3StarsInSouth_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>.Compute(int, int)') | Computes the [Candle3StarsInSouth&lt;T&gt;](Candle3StarsInSouth_T_.md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>') indicator. |
 | [GetLookback()](Candle3StarsInSouth_T_.GetLookback().md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>.GetLookback()') | Returns the lookback period for the indicator. |
 | [GetPatternRecognition(int)](Candle3StarsInSouth_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.Candle3StarsInSouth<T>.GetPatternRecognition(int)') | Checks if the pattern is recognized at a specific index. |

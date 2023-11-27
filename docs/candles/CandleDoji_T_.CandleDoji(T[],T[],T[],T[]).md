@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleDoji&lt;T&gt;](CandleDoji_T_.md 'TechnicalAnalysis.Candles.CandleDoji<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleDoji&lt;T&gt;](CandleDoji_T_.md 'TechnicalAnalysis.Candles.CandleDoji<T>')
 
 ## CandleDoji(T[], T[], T[], T[]) Constructor
+
+Doji (Pattern Recognition)
 
 ```csharp
 public CandleDoji(in T[] open, in T[] high, in T[] low, in T[] close);

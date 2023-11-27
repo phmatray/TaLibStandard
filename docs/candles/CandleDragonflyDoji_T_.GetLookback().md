@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleDragonflyDoji&lt;T&gt;](CandleDragonflyDoji_T_.md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleDragonflyDoji&lt;T&gt;](CandleDragonflyDoji_T_.md 'TechnicalAnalysis.Candles.CandleDragonflyDoji<T>')
 
 ## CandleDragonflyDoji<T>.GetLookback() Method
 

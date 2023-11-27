@@ -7,7 +7,7 @@
 namespace TechnicalAnalysis.Candles;
 
 /// <summary>
-/// Concealing Baby Swallow
+/// Concealing Baby Swallow (Pattern Recognition)
 /// </summary>
 /// <param name="open">An array of open prices.</param>
 /// <param name="high">An array of high prices.</param>
@@ -21,10 +21,10 @@ public class CandleConcealBabySwallow<T>(in T[] open, in T[] high, in T[] low, i
     private readonly T[] _shadowVeryShortPeriodTotal = new T[4];
 
     /// <summary>
-    /// 
+    /// Computes the <see cref="CandleConcealBabySwallow{T}"/> indicator.
     /// </summary>
-    /// <param name="startIdx"></param>
-    /// <param name="endIdx"></param>
+    /// <param name="startIdx">The start index.</param>
+    /// <param name="endIdx">The end index.</param>
     /// <returns></returns>
     public CandleIndicatorResult Compute(int startIdx, int endIdx)
     {

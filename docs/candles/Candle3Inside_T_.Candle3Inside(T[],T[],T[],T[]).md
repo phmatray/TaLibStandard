@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[Candle3Inside&lt;T&gt;](Candle3Inside_T_.md 'TechnicalAnalysis.Candles.Candle3Inside<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[Candle3Inside&lt;T&gt;](Candle3Inside_T_.md 'TechnicalAnalysis.Candles.Candle3Inside<T>')
 
 ## Candle3Inside(T[], T[], T[], T[]) Constructor
+
+Three Inside Up/Down (Pattern Recognition)
 
 ```csharp
 public Candle3Inside(in T[] open, in T[] high, in T[] low, in T[] close);

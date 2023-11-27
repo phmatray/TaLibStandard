@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleMorningStar&lt;T&gt;](CandleMorningStar_T_.md 'TechnicalAnalysis.Candles.CandleMorningStar<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleMorningStar&lt;T&gt;](CandleMorningStar_T_.md 'TechnicalAnalysis.Candles.CandleMorningStar<T>')
 
 ## CandleMorningStar<T>.GetLookback() Method
 

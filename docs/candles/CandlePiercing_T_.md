@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
 
 ## CandlePiercing<T> Class
+
+Piercing Pattern (Pattern Recognition)
 
 ```csharp
 public class CandlePiercing<T> : TechnicalAnalysis.Common.CandleIndicator<T>
@@ -19,10 +21,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [CandlePiercing(T[], T[], T[], T[])](CandlePiercing_T_.CandlePiercing(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandlePiercing<T>.CandlePiercing(T[], T[], T[], T[])') | |
+| [CandlePiercing(T[], T[], T[], T[])](CandlePiercing_T_.CandlePiercing(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandlePiercing<T>.CandlePiercing(T[], T[], T[], T[])') | Piercing Pattern (Pattern Recognition) |
 
 | Methods | |
 | :--- | :--- |
-| [Compute(int, int)](CandlePiercing_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandlePiercing<T>.Compute(int, int)') | |
+| [Compute(int, int)](CandlePiercing_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandlePiercing<T>.Compute(int, int)') | Computes the [CandlePiercing&lt;T&gt;](CandlePiercing_T_.md 'TechnicalAnalysis.Candles.CandlePiercing<T>') indicator. |
 | [GetLookback()](CandlePiercing_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandlePiercing<T>.GetLookback()') | Returns the lookback period for the indicator. |
 | [GetPatternRecognition(int)](CandlePiercing_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandlePiercing<T>.GetPatternRecognition(int)') | Checks if the pattern is recognized at a specific index. |

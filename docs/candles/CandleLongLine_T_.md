@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
 
 ## CandleLongLine<T> Class
+
+Long Line Candle (Pattern Recognition)
 
 ```csharp
 public class CandleLongLine<T> : TechnicalAnalysis.Common.CandleIndicator<T>
@@ -19,10 +21,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [CandleLongLine(T[], T[], T[], T[])](CandleLongLine_T_.CandleLongLine(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleLongLine<T>.CandleLongLine(T[], T[], T[], T[])') | |
+| [CandleLongLine(T[], T[], T[], T[])](CandleLongLine_T_.CandleLongLine(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleLongLine<T>.CandleLongLine(T[], T[], T[], T[])') | Long Line Candle (Pattern Recognition) |
 
 | Methods | |
 | :--- | :--- |
-| [Compute(int, int)](CandleLongLine_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleLongLine<T>.Compute(int, int)') | |
+| [Compute(int, int)](CandleLongLine_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleLongLine<T>.Compute(int, int)') | Computes the [CandleLongLine&lt;T&gt;](CandleLongLine_T_.md 'TechnicalAnalysis.Candles.CandleLongLine<T>') indicator. |
 | [GetLookback()](CandleLongLine_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleLongLine<T>.GetLookback()') | Returns the lookback period for the indicator. |
 | [GetPatternRecognition(int)](CandleLongLine_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleLongLine<T>.GetPatternRecognition(int)') | Checks if the pattern is recognized at a specific index. |

@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[Candle3LineStrike&lt;T&gt;](Candle3LineStrike_T_.md 'TechnicalAnalysis.Candles.Candle3LineStrike<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[Candle3LineStrike&lt;T&gt;](Candle3LineStrike_T_.md 'TechnicalAnalysis.Candles.Candle3LineStrike<T>')
 
 ## Candle3LineStrike(T[], T[], T[], T[]) Constructor
+
+Three-Line Strike (Pattern Recognition)
 
 ```csharp
 public Candle3LineStrike(in T[] open, in T[] high, in T[] low, in T[] close);

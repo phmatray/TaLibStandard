@@ -1,9 +1,9 @@
-#### [TechnicalAnalysis.Common](TechnicalAnalysis.Common.md 'TechnicalAnalysis.Common')
-### [TechnicalAnalysis.Common](TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common').[CandleIndicatorResult](CandleIndicatorResult.md 'TechnicalAnalysis.Common.CandleIndicatorResult')
+#### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical.TechnicalAnalysis.Common')
+### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common').[CandleIndicatorResult](CandleIndicatorResult.md 'TechnicalAnalysis.Common.CandleIndicatorResult')
 
 ## CandleIndicatorResult.Integers Property
 
-Gets the array of integers indicating the presence of the candle pattern.
+Gets the array of integers indicating the presence of the candle pattern. (values are -100, 0 or 100)
 
 ```csharp
 public int[] Integers { get; }

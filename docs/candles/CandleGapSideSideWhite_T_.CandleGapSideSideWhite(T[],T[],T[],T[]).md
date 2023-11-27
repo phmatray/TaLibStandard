@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleGapSideSideWhite&lt;T&gt;](CandleGapSideSideWhite_T_.md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleGapSideSideWhite&lt;T&gt;](CandleGapSideSideWhite_T_.md 'TechnicalAnalysis.Candles.CandleGapSideSideWhite<T>')
 
 ## CandleGapSideSideWhite(T[], T[], T[], T[]) Constructor
+
+Up/Down-gap side-by-side white lines (Pattern Recognition)
 
 ```csharp
 public CandleGapSideSideWhite(in T[] open, in T[] high, in T[] low, in T[] close);

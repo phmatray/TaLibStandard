@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
 
 ## CandleThrusting<T> Class
+
+Thrusting Pattern (Pattern Recognition)
 
 ```csharp
 public class CandleThrusting<T> : TechnicalAnalysis.Common.CandleIndicator<T>
@@ -19,10 +21,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [CandleThrusting(T[], T[], T[], T[])](CandleThrusting_T_.CandleThrusting(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleThrusting<T>.CandleThrusting(T[], T[], T[], T[])') | |
+| [CandleThrusting(T[], T[], T[], T[])](CandleThrusting_T_.CandleThrusting(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleThrusting<T>.CandleThrusting(T[], T[], T[], T[])') | Thrusting Pattern (Pattern Recognition) |
 
 | Methods | |
 | :--- | :--- |
-| [Compute(int, int)](CandleThrusting_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleThrusting<T>.Compute(int, int)') | |
+| [Compute(int, int)](CandleThrusting_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleThrusting<T>.Compute(int, int)') | Computes the [CandleThrusting&lt;T&gt;](CandleThrusting_T_.md 'TechnicalAnalysis.Candles.CandleThrusting<T>') indicator. |
 | [GetLookback()](CandleThrusting_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleThrusting<T>.GetLookback()') | Returns the lookback period for the indicator. |
 | [GetPatternRecognition(int)](CandleThrusting_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleThrusting<T>.GetPatternRecognition(int)') | Checks if the pattern is recognized at a specific index. |

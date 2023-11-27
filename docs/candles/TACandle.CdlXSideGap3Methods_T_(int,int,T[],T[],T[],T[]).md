@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[TACandle](TACandle.md 'TechnicalAnalysis.Candles.TACandle')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[TACandle](TACandle.md 'TechnicalAnalysis.Candles.TACandle')
 
 ## TACandle.CdlXSideGap3Methods<T>(int, int, T[], T[], T[], T[]) Method
 
@@ -12,15 +12,21 @@ public static TechnicalAnalysis.Common.CandleIndicatorResult CdlXSideGap3Methods
 <a name='TechnicalAnalysis.Candles.TACandle.CdlXSideGap3Methods_T_(int,int,T[],T[],T[],T[]).T'></a>
 
 `T`
+
+The type of the array elements.
 #### Parameters
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlXSideGap3Methods_T_(int,int,T[],T[],T[],T[]).startIdx'></a>
 
 `startIdx` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
+The start index.
+
 <a name='TechnicalAnalysis.Candles.TACandle.CdlXSideGap3Methods_T_(int,int,T[],T[],T[],T[]).endIdx'></a>
 
 `endIdx` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+
+The end index.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlXSideGap3Methods_T_(int,int,T[],T[],T[],T[]).open'></a>
 

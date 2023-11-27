@@ -7,7 +7,7 @@
 namespace TechnicalAnalysis.Candles;
 
 /// <summary>
-/// Engulfing Pattern
+/// Engulfing Pattern (Pattern Recognition)
 /// </summary>
 /// <param name="open">An array of open prices.</param>
 /// <param name="high">An array of high prices.</param>
@@ -19,10 +19,10 @@ public class CandleEngulfing<T>(in T[] open, in T[] high, in T[] low, in T[] clo
     where T : IFloatingPoint<T>
 {
     /// <summary>
-    /// 
+    /// Computes the <see cref="CandleEngulfing{T}"/> indicator.
     /// </summary>
-    /// <param name="startIdx"></param>
-    /// <param name="endIdx"></param>
+    /// <param name="startIdx">The start index.</param>
+    /// <param name="endIdx">The end index.</param>
     /// <returns></returns>
     public CandleIndicatorResult Compute(int startIdx, int endIdx)
     {

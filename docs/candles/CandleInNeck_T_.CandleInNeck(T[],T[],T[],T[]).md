@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleInNeck&lt;T&gt;](CandleInNeck_T_.md 'TechnicalAnalysis.Candles.CandleInNeck<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleInNeck&lt;T&gt;](CandleInNeck_T_.md 'TechnicalAnalysis.Candles.CandleInNeck<T>')
 
 ## CandleInNeck(T[], T[], T[], T[]) Constructor
+
+In-Neck Pattern (Pattern Recognition)
 
 ```csharp
 public CandleInNeck(in T[] open, in T[] high, in T[] low, in T[] close);

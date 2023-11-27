@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
 
 ## CandleShootingStar<T> Class
+
+Shooting Star (Pattern Recognition)
 
 ```csharp
 public class CandleShootingStar<T> : TechnicalAnalysis.Common.CandleIndicator<T>
@@ -19,10 +21,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [CandleShootingStar(T[], T[], T[], T[])](CandleShootingStar_T_.CandleShootingStar(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleShootingStar<T>.CandleShootingStar(T[], T[], T[], T[])') | |
+| [CandleShootingStar(T[], T[], T[], T[])](CandleShootingStar_T_.CandleShootingStar(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleShootingStar<T>.CandleShootingStar(T[], T[], T[], T[])') | Shooting Star (Pattern Recognition) |
 
 | Methods | |
 | :--- | :--- |
-| [Compute(int, int)](CandleShootingStar_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleShootingStar<T>.Compute(int, int)') | |
+| [Compute(int, int)](CandleShootingStar_T_.Compute(int,int).md 'TechnicalAnalysis.Candles.CandleShootingStar<T>.Compute(int, int)') | Computes the [CandleShootingStar&lt;T&gt;](CandleShootingStar_T_.md 'TechnicalAnalysis.Candles.CandleShootingStar<T>') indicator. |
 | [GetLookback()](CandleShootingStar_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleShootingStar<T>.GetLookback()') | Returns the lookback period for the indicator. |
 | [GetPatternRecognition(int)](CandleShootingStar_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleShootingStar<T>.GetPatternRecognition(int)') | Checks if the pattern is recognized at a specific index. |

@@ -7,7 +7,7 @@
 namespace TechnicalAnalysis.Candles;
 
 /// <summary>
-/// Three Outside Up/Down
+/// Three-Line Strike (Pattern Recognition)
 /// </summary>
 /// <param name="open">An array of open prices.</param>
 /// <param name="high">An array of high prices.</param>
@@ -21,10 +21,10 @@ public class Candle3LineStrike<T>(in T[] open, in T[] high, in T[] low, in T[] c
     private readonly T[] _nearPeriodTotal = new T[4];
 
     /// <summary>
-    /// 
+    /// Computes the <see cref="Candle3LineStrike{T}"/> indicator.
     /// </summary>
-    /// <param name="startIdx"></param>
-    /// <param name="endIdx"></param>
+    /// <param name="startIdx">The start index.</param>
+    /// <param name="endIdx">The end index.</param>
     /// <returns></returns>
     public CandleIndicatorResult Compute(int startIdx, int endIdx)
     {

@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleDarkCloudCover&lt;T&gt;](CandleDarkCloudCover_T_.md 'TechnicalAnalysis.Candles.CandleDarkCloudCover<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleDarkCloudCover&lt;T&gt;](CandleDarkCloudCover_T_.md 'TechnicalAnalysis.Candles.CandleDarkCloudCover<T>')
 
 ## CandleDarkCloudCover(T[], T[], T[], T[]) Constructor
+
+Dark Cloud Cover (Pattern Recognition)
 
 ```csharp
 public CandleDarkCloudCover(in T[] open, in T[] high, in T[] low, in T[] close);

@@ -7,7 +7,7 @@
 namespace TechnicalAnalysis.Candles;
 
 /// <summary>
-/// Morning Star
+/// Morning Star (Pattern Recognition)
 /// </summary>
 /// <param name="open">An array of open prices.</param>
 /// <param name="high">An array of high prices.</param>
@@ -24,10 +24,10 @@ public class CandleMorningStar<T>(in T[] open, in T[] high, in T[] low, in T[] c
     private T _bodyShortPeriodTotal2 = T.Zero;
 
     /// <summary>
-    /// 
+    /// Computes the <see cref="CandleMorningStar{T}"/> indicator.
     /// </summary>
-    /// <param name="startIdx"></param>
-    /// <param name="endIdx"></param>
+    /// <param name="startIdx">The start index.</param>
+    /// <param name="endIdx">The end index.</param>
     /// <param name="optInPenetration"></param>
     /// <returns></returns>
     public CandleIndicatorResult Compute(int startIdx, int endIdx, in T optInPenetration)

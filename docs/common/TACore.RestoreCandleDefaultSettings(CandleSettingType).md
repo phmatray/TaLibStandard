@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Common](TechnicalAnalysis.Common.md 'TechnicalAnalysis.Common')
-### [TechnicalAnalysis](TechnicalAnalysis.Common.md#TechnicalAnalysis 'TechnicalAnalysis').[TACore](TACore.md 'TechnicalAnalysis.TACore')
+#### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical.TechnicalAnalysis.Common')
+### [TechnicalAnalysis](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis 'TechnicalAnalysis').[TACore](TACore.md 'TechnicalAnalysis.TACore')
 
 ## TACore.RestoreCandleDefaultSettings(CandleSettingType) Method
 

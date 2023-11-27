@@ -1,7 +1,9 @@
-#### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md 'TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleUpsideGap2Crows&lt;T&gt;](CandleUpsideGap2Crows_T_.md 'TechnicalAnalysis.Candles.CandleUpsideGap2Crows<T>')
+#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
+### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleUpsideGap2Crows&lt;T&gt;](CandleUpsideGap2Crows_T_.md 'TechnicalAnalysis.Candles.CandleUpsideGap2Crows<T>')
 
 ## CandleUpsideGap2Crows(T[], T[], T[], T[]) Constructor
+
+Upside Gap Two Crows (Pattern Recognition)
 
 ```csharp
 public CandleUpsideGap2Crows(in T[] open, in T[] high, in T[] low, in T[] close);
