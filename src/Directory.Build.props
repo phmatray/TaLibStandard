@@ -14,7 +14,7 @@
   <PropertyGroup>
     <Authors>Philippe Matray</Authors>
     <Description>
-      TaLibStandard is a modern interpretation of the widely used [TA-Lib](https://ta-lib.org),
+      TaLibStandard is a modern interpretation of the widely used TA-Lib,
       reimagined in C# 12. It is designed to be reliable, efficient, and user-friendly for developers
       performing financial market analysis.
     </Description>
