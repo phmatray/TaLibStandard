@@ -14,8 +14,8 @@ public static partial class TACandle
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="startIdx"></param>
-    /// <param name="endIdx"></param>
+    /// <param name="startIdx">The start index.</param>
+    /// <param name="endIdx">The end index.</param>
     /// <param name="open">An array of open prices.</param>
     /// <param name="high">An array of high prices.</param>
     /// <param name="low">An array of low prices.</param>

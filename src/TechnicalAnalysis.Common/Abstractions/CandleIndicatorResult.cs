@@ -17,7 +17,7 @@ public record CandleIndicatorResult : IndicatorResult
     /// <param name="retCode">The return code of the indicator calculation.</param>
     /// <param name="begIdx">The index of the first element in the result.</param>
     /// <param name="nbElement">The number of elements in the result.</param>
-    /// <param name="integers">An array of integers indicating the presence of the pattern.</param>
+    /// <param name="integers">An array of integers indicating the presence of the pattern. (values are -100, 0 or 100)</param>
     public CandleIndicatorResult(RetCode retCode, int begIdx, int nbElement, int[] integers)
         : base(retCode, begIdx, nbElement)
     {
@@ -25,7 +25,7 @@ public record CandleIndicatorResult : IndicatorResult
     }
 
     /// <summary>
-    /// Gets the array of integers indicating the presence of the candle pattern.
+    /// Gets the array of integers indicating the presence of the candle pattern. (values are -100, 0 or 100)
     /// </summary>
     public int[] Integers { get; }
 }
