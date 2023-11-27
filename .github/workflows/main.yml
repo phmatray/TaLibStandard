@@ -42,26 +42,10 @@ jobs:
           dotnet-version: 8.x
 
       - name: Run Unit Tests
-        run: dotnet test --configuration Release --verbosity normal --collect:"XPlat Code Coverage" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+        run: dotnet test --configuration Release --verbosity normal --collect:"XPlat Code Coverage"
 
       - name: Upload Code Coverage
         uses: codecov/codecov-action@v3
-
-      - name: Codacy Coverage Reporter
-        # You may pin to the exact commit or the version.
-        # uses: codacy/codacy-coverage-reporter-action@89d6c85cfafaec52c72b6c5e8b2878d33104c699
-        uses: codacy/codacy-coverage-reporter-action@v1.3.0
-        with:
-          # API project token to retrieve your remote Codacy configuration for the project being analyzed
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          # API account token to retrieve your remote Codacy configuration for the project being analyzed
-          # api-token: # optional
-          # Optional comma separated list of coverage reports to send to Codacy
-          # coverage-reports: # optional, default is 
-          # Optionally force associating a language with your coverage report
-          # language: # optional
-          # Optionally force using a specific coverage report parser
-          # force-coverage-parser: # optional
   
   create_nuget:
     runs-on: ubuntu-latest
