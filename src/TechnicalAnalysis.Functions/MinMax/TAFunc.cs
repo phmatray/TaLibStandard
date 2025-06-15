@@ -69,80 +69,66 @@ public static partial class TAFunc
         double highest = 0.0;
         int lowestIdx = -1;
         double lowest = 0.0;
-        Label_00A5:
-        if (today > endIdx)
+        
+        while (today <= endIdx)
         {
-            outBegIdx = startIdx;
-            outNBElement = outIdx;
-            return Success;
-        }
-
-        double tmpHigh = inReal[today];
-        double tmpLow = tmpHigh;
-        if (highestIdx < trailingIdx)
-        {
-            highestIdx = trailingIdx;
-            highest = inReal[highestIdx];
-            i = highestIdx;
-            while (true)
+            double tmpHigh = inReal[today];
+            double tmpLow = tmpHigh;
+            
+            if (highestIdx < trailingIdx)
             {
-                i++;
-                if (i > today)
+                highestIdx = trailingIdx;
+                highest = inReal[highestIdx];
+                i = highestIdx;
+                while (i <= today)
                 {
-                    goto Label_00EC;
-                }
-
-                tmpHigh = inReal[i];
-                if (tmpHigh > highest)
-                {
-                    highestIdx = i;
-                    highest = tmpHigh;
+                    tmpHigh = inReal[i];
+                    if (tmpHigh > highest)
+                    {
+                        highestIdx = i;
+                        highest = tmpHigh;
+                    }
+                    i++;
                 }
             }
-        }
-
-        if (tmpHigh >= highest)
-        {
-            highestIdx = today;
-            highest = tmpHigh;
-        }
-
-        Label_00EC:
-        if (lowestIdx < trailingIdx)
-        {
-            lowestIdx = trailingIdx;
-            lowest = inReal[lowestIdx];
-            i = lowestIdx;
-            while (true)
+            else if (tmpHigh >= highest)
             {
-                i++;
-                if (i > today)
-                {
-                    goto Label_012A;
-                }
+                highestIdx = today;
+                highest = tmpHigh;
+            }
 
-                tmpLow = inReal[i];
-                if (tmpLow < lowest)
+            if (lowestIdx < trailingIdx)
+            {
+                lowestIdx = trailingIdx;
+                lowest = inReal[lowestIdx];
+                i = lowestIdx;
+                while (i <= today)
                 {
-                    lowestIdx = i;
-                    lowest = tmpLow;
+                    tmpLow = inReal[i];
+                    if (tmpLow < lowest)
+                    {
+                        lowestIdx = i;
+                        lowest = tmpLow;
+                    }
+                    i++;
                 }
             }
-        }
+            else if (tmpLow <= lowest)
+            {
+                lowestIdx = today;
+                lowest = tmpLow;
+            }
 
-        if (tmpLow <= lowest)
-        {
-            lowestIdx = today;
-            lowest = tmpLow;
+            outMax[outIdx] = highest;
+            outMin[outIdx] = lowest;
+            outIdx++;
+            trailingIdx++;
+            today++;
         }
-
-        Label_012A:
-        outMax[outIdx] = highest;
-        outMin[outIdx] = lowest;
-        outIdx++;
-        trailingIdx++;
-        today++;
-        goto Label_00A5;
+        
+        outBegIdx = startIdx;
+        outNBElement = outIdx;
+        return Success;
     }
 
     public static int MinMaxLookback(int optInTimePeriod)

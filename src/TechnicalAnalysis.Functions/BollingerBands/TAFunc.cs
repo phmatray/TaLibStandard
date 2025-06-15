@@ -121,89 +121,69 @@ public static partial class TAFunc
             Array.Copy(tempBuffer1, 0, outRealMiddleBand, 0, outNBElement);
         }
 
-        if (optInNbDevUp != optInNbDevDn)
+        if (optInNbDevUp == optInNbDevDn)
         {
-            if (optInNbDevUp != 1.0)
+            if (optInNbDevUp == 1.0)
             {
-                if (optInNbDevDn != 1.0)
-                {
-                    i = 0;
-                    while (i < outNBElement)
-                    {
-                        tempReal = tempBuffer2[i];
-                        tempReal2 = outRealMiddleBand[i];
-                        outRealUpperBand[i] = tempReal2 + (tempReal * optInNbDevUp);
-                        outRealLowerBand[i] = tempReal2 - (tempReal * optInNbDevDn);
-                        i++;
-                    }
-
-                    goto Label_02B1;
-                }
-
-                i = 0;
-                goto Label_025E;
-            }
-
-            i = 0;
-        }
-        else
-        {
-            if (optInNbDevUp != 1.0)
-            {
-                i = 0;
-            }
-            else
-            {
-                i = 0;
-                while (i < outNBElement)
+                // Both deviations are 1.0
+                for (i = 0; i < outNBElement; i++)
                 {
                     tempReal = tempBuffer2[i];
                     tempReal2 = outRealMiddleBand[i];
                     outRealUpperBand[i] = tempReal2 + tempReal;
                     outRealLowerBand[i] = tempReal2 - tempReal;
-                    i++;
                 }
-
-                goto Label_02B1;
             }
-
-            while (i < outNBElement)
+            else
             {
-                tempReal = tempBuffer2[i] * optInNbDevUp;
-                tempReal2 = outRealMiddleBand[i];
-                outRealUpperBand[i] = tempReal2 + tempReal;
-                outRealLowerBand[i] = tempReal2 - tempReal;
-                i++;
+                // Both deviations are equal but not 1.0
+                for (i = 0; i < outNBElement; i++)
+                {
+                    tempReal = tempBuffer2[i] * optInNbDevUp;
+                    tempReal2 = outRealMiddleBand[i];
+                    outRealUpperBand[i] = tempReal2 + tempReal;
+                    outRealLowerBand[i] = tempReal2 - tempReal;
+                }
             }
-
-            goto Label_02B1;
         }
-
-        while (true)
+        else
         {
-            if (i >= outNBElement)
+            // Different deviations for upper and lower bands
+            if (optInNbDevUp == 1.0)
             {
-                goto Label_02B1;
+                // Upper deviation is 1.0, lower is different
+                for (i = 0; i < outNBElement; i++)
+                {
+                    tempReal = tempBuffer2[i];
+                    tempReal2 = outRealMiddleBand[i];
+                    outRealUpperBand[i] = tempReal2 + tempReal;
+                    outRealLowerBand[i] = tempReal2 - (tempReal * optInNbDevDn);
+                }
             }
-
-            tempReal = tempBuffer2[i];
-            tempReal2 = outRealMiddleBand[i];
-            outRealUpperBand[i] = tempReal2 + tempReal;
-            outRealLowerBand[i] = tempReal2 - (tempReal * optInNbDevDn);
-            i++;
+            else if (optInNbDevDn == 1.0)
+            {
+                // Lower deviation is 1.0, upper is different
+                for (i = 0; i < outNBElement; i++)
+                {
+                    tempReal = tempBuffer2[i];
+                    tempReal2 = outRealMiddleBand[i];
+                    outRealLowerBand[i] = tempReal2 - tempReal;
+                    outRealUpperBand[i] = tempReal2 + (tempReal * optInNbDevUp);
+                }
+            }
+            else
+            {
+                // Both deviations are different and neither is 1.0
+                for (i = 0; i < outNBElement; i++)
+                {
+                    tempReal = tempBuffer2[i];
+                    tempReal2 = outRealMiddleBand[i];
+                    outRealUpperBand[i] = tempReal2 + (tempReal * optInNbDevUp);
+                    outRealLowerBand[i] = tempReal2 - (tempReal * optInNbDevDn);
+                }
+            }
         }
 
-        Label_025E:
-        while (i < outNBElement)
-        {
-            tempReal = tempBuffer2[i];
-            tempReal2 = outRealMiddleBand[i];
-            outRealLowerBand[i] = tempReal2 - tempReal;
-            outRealUpperBand[i] = tempReal2 + (tempReal * optInNbDevUp);
-            i++;
-        }
-
-        Label_02B1:
         return Success;
     }
 

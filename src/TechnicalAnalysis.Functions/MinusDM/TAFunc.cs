@@ -93,10 +93,10 @@ public static partial class TAFunc
         prevHigh = inHigh[today];
         prevLow = inLow[today];
         int i = optInTimePeriod - 1;
-        Label_0138:
-        i--;
-        if (i > 0)
+        
+        while (i > 0)
         {
+            i--;
             today++;
             tempReal = inHigh[today];
             diffP = tempReal - prevHigh;
@@ -108,15 +108,13 @@ public static partial class TAFunc
             {
                 prevMinusDM += diffM;
             }
-
-            goto Label_0138;
         }
 
         i = (int)TACore.Globals.UnstablePeriod[FuncUnstId.MinusDM];
-        Label_0186:
-        i--;
-        if (i != 0)
+        
+        while (i != 0)
         {
+            i--;
             today++;
             tempReal = inHigh[today];
             diffP = tempReal - prevHigh;
@@ -132,8 +130,6 @@ public static partial class TAFunc
             {
                 prevMinusDM -= prevMinusDM / optInTimePeriod;
             }
-
-            goto Label_0186;
         }
 
         outReal[0] = prevMinusDM;

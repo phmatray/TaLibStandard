@@ -60,49 +60,41 @@ public static partial class TAFunc
         int trailingIdx = startIdx - nbInitialElementNeeded;
         int highestIdx = -1;
         double highest = 0.0;
-        Label_008A:
-        if (today > endIdx)
+        
+        while (today <= endIdx)
         {
-            outBegIdx = startIdx;
-            outNBElement = outIdx;
-            return Success;
-        }
-
-        double tmp = inReal[today];
-        if (highestIdx < trailingIdx)
-        {
-            highestIdx = trailingIdx;
-            highest = inReal[highestIdx];
-            int i = highestIdx;
-            while (true)
+            double tmp = inReal[today];
+            if (highestIdx < trailingIdx)
             {
-                i++;
-                if (i > today)
+                highestIdx = trailingIdx;
+                highest = inReal[highestIdx];
+                int i = highestIdx;
+                while (i <= today)
                 {
-                    goto Label_00CC;
-                }
-
-                tmp = inReal[i];
-                if (tmp > highest)
-                {
-                    highestIdx = i;
-                    highest = tmp;
+                    tmp = inReal[i];
+                    if (tmp > highest)
+                    {
+                        highestIdx = i;
+                        highest = tmp;
+                    }
+                    i++;
                 }
             }
-        }
+            else if (tmp >= highest)
+            {
+                highestIdx = today;
+                highest = tmp;
+            }
 
-        if (tmp >= highest)
-        {
-            highestIdx = today;
-            highest = tmp;
+            outReal[outIdx] = highest;
+            outIdx++;
+            trailingIdx++;
+            today++;
         }
-
-        Label_00CC:
-        outReal[outIdx] = highest;
-        outIdx++;
-        trailingIdx++;
-        today++;
-        goto Label_008A;
+        
+        outBegIdx = startIdx;
+        outNBElement = outIdx;
+        return Success;
     }
 
     public static int MaxLookback(int optInTimePeriod)

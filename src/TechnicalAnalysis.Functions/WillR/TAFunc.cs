@@ -59,92 +59,77 @@ public static partial class TAFunc
         double lowest = 0.0;
         double highest = lowest;
         double diff = highest;
-Label_00B1:
-        if (today > endIdx)
+        
+        while (today <= endIdx)
         {
-            outBegIdx = startIdx;
-            outNBElement = outIdx;
-            return Success;
-        }
-
-        double tmp = inLow[today];
-        if (lowestIdx >= trailingIdx)
-        {
-            if (tmp <= lowest)
+            double tmp = inLow[today];
+            if (lowestIdx < trailingIdx)
+            {
+                lowestIdx = trailingIdx;
+                lowest = inLow[lowestIdx];
+                int i = lowestIdx;
+                while (i <= today)
+                {
+                    tmp = inLow[i];
+                    if (tmp < lowest)
+                    {
+                        lowestIdx = i;
+                        lowest = tmp;
+                    }
+                    i++;
+                }
+                diff = (highest - lowest) / -100.0;
+            }
+            else if (tmp <= lowest)
             {
                 lowestIdx = today;
                 lowest = tmp;
                 diff = (highest - lowest) / -100.0;
             }
 
-            goto Label_0112;
-        }
-
-        lowestIdx = trailingIdx;
-        lowest = inLow[lowestIdx];
-        int i = lowestIdx;
-        Label_00D0:
-        i++;
-        if (i <= today)
-        {
-            tmp = inLow[i];
-            if (tmp < lowest)
+            tmp = inHigh[today];
+            if (highestIdx < trailingIdx)
             {
-                lowestIdx = i;
-                lowest = tmp;
+                highestIdx = trailingIdx;
+                highest = inHigh[highestIdx];
+                int i = highestIdx;
+                while (i <= today)
+                {
+                    tmp = inHigh[i];
+                    if (tmp > highest)
+                    {
+                        highestIdx = i;
+                        highest = tmp;
+                    }
+                    i++;
+                }
+                diff = (highest - lowest) / -100.0;
             }
-
-            goto Label_00D0;
-        }
-
-        diff = (highest - lowest) / -100.0;
-        Label_0112:
-        tmp = inHigh[today];
-        if (highestIdx >= trailingIdx)
-        {
-            if (tmp >= highest)
+            else if (tmp >= highest)
             {
                 highestIdx = today;
                 highest = tmp;
                 diff = (highest - lowest) / -100.0;
             }
 
-            goto Label_016B;
-        }
-
-        highestIdx = trailingIdx;
-        highest = inHigh[highestIdx];
-        i = highestIdx;
-        Label_0129:
-        i++;
-        if (i <= today)
-        {
-            tmp = inHigh[i];
-            if (tmp > highest)
+            if (diff != 0.0)
             {
-                highestIdx = i;
-                highest = tmp;
+                outReal[outIdx] = (highest - inClose[today]) / diff;
+                outIdx++;
+            }
+            else
+            {
+                outReal[outIdx] = 0.0;
+                outIdx++;
             }
 
-            goto Label_0129;
+            trailingIdx++;
+            today++;
         }
-
-        diff = (highest - lowest) / -100.0;
-        Label_016B:
-        if (diff != 0.0)
-        {
-            outReal[outIdx] = (highest - inClose[today]) / diff;
-            outIdx++;
-        }
-        else
-        {
-            outReal[outIdx] = 0.0;
-            outIdx++;
-        }
-
-        trailingIdx++;
-        today++;
-        goto Label_00B1;
+        
+        outBegIdx = startIdx;
+        outNBElement = outIdx;
+        return Success;
     }
 
     public static int WillRLookback(int optInTimePeriod)

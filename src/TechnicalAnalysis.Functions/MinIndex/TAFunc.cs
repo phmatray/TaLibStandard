@@ -60,49 +60,41 @@ public static partial class TAFunc
         int trailingIdx = startIdx - nbInitialElementNeeded;
         int lowestIdx = -1;
         double lowest = 0.0;
-        Label_008B:
-        if (today > endIdx)
+        
+        while (today <= endIdx)
         {
-            outBegIdx = startIdx;
-            outNBElement = outIdx;
-            return Success;
-        }
-
-        double tmp = inReal[today];
-        if (lowestIdx < trailingIdx)
-        {
-            lowestIdx = trailingIdx;
-            lowest = inReal[lowestIdx];
-            int i = lowestIdx;
-            while (true)
+            double tmp = inReal[today];
+            if (lowestIdx < trailingIdx)
             {
-                i++;
-                if (i > today)
+                lowestIdx = trailingIdx;
+                lowest = inReal[lowestIdx];
+                int i = lowestIdx;
+                while (i <= today)
                 {
-                    goto Label_00CC;
-                }
-
-                tmp = inReal[i];
-                if (tmp < lowest)
-                {
-                    lowestIdx = i;
-                    lowest = tmp;
+                    tmp = inReal[i];
+                    if (tmp < lowest)
+                    {
+                        lowestIdx = i;
+                        lowest = tmp;
+                    }
+                    i++;
                 }
             }
-        }
+            else if (tmp <= lowest)
+            {
+                lowestIdx = today;
+                lowest = tmp;
+            }
 
-        if (tmp <= lowest)
-        {
-            lowestIdx = today;
-            lowest = tmp;
+            outInteger[outIdx] = lowestIdx;
+            outIdx++;
+            trailingIdx++;
+            today++;
         }
-
-        Label_00CC:
-        outInteger[outIdx] = lowestIdx;
-        outIdx++;
-        trailingIdx++;
-        today++;
-        goto Label_008B;
+        
+        outBegIdx = startIdx;
+        outNBElement = outIdx;
+        return Success;
     }
 
     public static int MinIndexLookback(int optInTimePeriod)

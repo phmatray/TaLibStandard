@@ -76,126 +76,110 @@ public static partial class TAFunc
                 ? outSlowD
                 : new double[endIdx - today + 1];
 
-Label_0156:
-        if (today > endIdx)
+        while (today <= endIdx)
         {
-            RetCode retCode = MovingAverage(
-                0,
-                outIdx - 1,
-                tempBuffer,
-                optInSlowKPeriod,
-                optInSlowKMAType,
-                ref outBegIdx,
-                ref outNBElement,
-                ref tempBuffer);
-                
-            if (retCode != Success || outNBElement == 0)
+            double tmp = inLow[today];
+            if (lowestIdx < trailingIdx)
             {
-                outBegIdx = 0;
-                outNBElement = 0;
-                return retCode;
+                lowestIdx = trailingIdx;
+                lowest = inLow[lowestIdx];
+                int i = lowestIdx;
+                while (i <= today)
+                {
+                    tmp = inLow[i];
+                    if (tmp < lowest)
+                    {
+                        lowestIdx = i;
+                        lowest = tmp;
+                    }
+                    i++;
+                }
+                diff = (highest - lowest) / 100.0;
             }
-
-            retCode = MovingAverage(
-                0,
-                outNBElement - 1,
-                tempBuffer,
-                optInSlowDPeriod,
-                optInSlowDMAType,
-                ref outBegIdx,
-                ref outNBElement,
-                ref outSlowD);
-                
-            Array.Copy(tempBuffer, lookbackDSlow, outSlowK, 0, outNBElement);
-            if (retCode != Success)
-            {
-                outBegIdx = 0;
-                outNBElement = 0;
-                return retCode;
-            }
-
-            outBegIdx = startIdx;
-            return Success;
-        }
-
-        double tmp = inLow[today];
-        if (lowestIdx >= trailingIdx)
-        {
-            if (tmp <= lowest)
+            else if (tmp <= lowest)
             {
                 lowestIdx = today;
                 lowest = tmp;
                 diff = (highest - lowest) / 100.0;
             }
 
-            goto Label_01B5;
-        }
-
-        lowestIdx = trailingIdx;
-        lowest = inLow[lowestIdx];
-        int i = lowestIdx;
-        Label_0173:
-        i++;
-        if (i <= today)
-        {
-            tmp = inLow[i];
-            if (tmp < lowest)
+            tmp = inHigh[today];
+            if (highestIdx < trailingIdx)
             {
-                lowestIdx = i;
-                lowest = tmp;
+                highestIdx = trailingIdx;
+                highest = inHigh[highestIdx];
+                int i = highestIdx;
+                while (i <= today)
+                {
+                    tmp = inHigh[i];
+                    if (tmp > highest)
+                    {
+                        highestIdx = i;
+                        highest = tmp;
+                    }
+                    i++;
+                }
+                diff = (highest - lowest) / 100.0;
             }
-
-            goto Label_0173;
-        }
-
-        diff = (highest - lowest) / 100.0;
-        Label_01B5:
-        tmp = inHigh[today];
-        if (highestIdx >= trailingIdx)
-        {
-            if (tmp >= highest)
+            else if (tmp >= highest)
             {
                 highestIdx = today;
                 highest = tmp;
                 diff = (highest - lowest) / 100.0;
             }
 
-            goto Label_0212;
-        }
-
-        highestIdx = trailingIdx;
-        highest = inHigh[highestIdx];
-        i = highestIdx;
-        Label_01CC:
-        i++;
-        if (i <= today)
-        {
-            tmp = inHigh[i];
-            if (tmp > highest)
+            if (diff != 0.0)
             {
-                highestIdx = i;
-                highest = tmp;
+                tempBuffer[outIdx] = (inClose[today] - lowest) / diff;
+                outIdx++;
+            }
+            else
+            {
+                tempBuffer[outIdx] = 0.0;
+                outIdx++;
             }
 
-            goto Label_01CC;
+            trailingIdx++;
+            today++;
         }
 
-        diff = (highest - lowest) / 100.0;
-        Label_0212:
-        if (diff != 0.0)
+        RetCode retCode = MovingAverage(
+            0,
+            outIdx - 1,
+            tempBuffer,
+            optInSlowKPeriod,
+            optInSlowKMAType,
+            ref outBegIdx,
+            ref outNBElement,
+            ref tempBuffer);
+            
+        if (retCode != Success || outNBElement == 0)
         {
-            tempBuffer[outIdx] = (inClose[today] - lowest) / diff;
-            outIdx++;
-        }
-        else
-        {
-            tempBuffer[outIdx] = 0.0;
-            outIdx++;
+            outBegIdx = 0;
+            outNBElement = 0;
+            return retCode;
         }
 
-        trailingIdx++;
-        today++;
-        goto Label_0156;
+        retCode = MovingAverage(
+            0,
+            outNBElement - 1,
+            tempBuffer,
+            optInSlowDPeriod,
+            optInSlowDMAType,
+            ref outBegIdx,
+            ref outNBElement,
+            ref outSlowD);
+            
+        Array.Copy(tempBuffer, lookbackDSlow, outSlowK, 0, outNBElement);
+        if (retCode != Success)
+        {
+            outBegIdx = 0;
+            outNBElement = 0;
+            return retCode;
+        }
+
+        outBegIdx = startIdx;
+        return Success;
     }
 
     public static int StochLookback(

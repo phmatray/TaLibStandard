@@ -70,80 +70,66 @@ public static partial class TAFunc
         double lowest = 0.0;
         double highest = 0.0;
         double factor = 100.0 / optInTimePeriod;
-        Label_00BB:
-        if (today > endIdx)
+        
+        while (today <= endIdx)
         {
-            outBegIdx = startIdx;
-            outNBElement = outIdx;
-            return Success;
-        }
-
-        double tmp = inLow[today];
-        if (lowestIdx < trailingIdx)
-        {
-            lowestIdx = trailingIdx;
-            lowest = inLow[lowestIdx];
-            i = lowestIdx;
-            while (true)
+            double tmp = inLow[today];
+            
+            // Update lowest value and index
+            if (lowestIdx < trailingIdx)
             {
-                i++;
-                if (i > today)
+                lowestIdx = trailingIdx;
+                lowest = inLow[lowestIdx];
+                for (i = lowestIdx + 1; i <= today; i++)
                 {
-                    goto Label_00FF;
-                }
-
-                tmp = inLow[i];
-                if (tmp <= lowest)
-                {
-                    lowestIdx = i;
-                    lowest = tmp;
+                    tmp = inLow[i];
+                    if (tmp <= lowest)
+                    {
+                        lowestIdx = i;
+                        lowest = tmp;
+                    }
                 }
             }
-        }
-
-        if (tmp <= lowest)
-        {
-            lowestIdx = today;
-            lowest = tmp;
-        }
-
-        Label_00FF:
-        tmp = inHigh[today];
-        if (highestIdx < trailingIdx)
-        {
-            highestIdx = trailingIdx;
-            highest = inHigh[highestIdx];
-            i = highestIdx;
-            while (true)
+            else if (tmp <= lowest)
             {
-                i++;
-                if (i > today)
-                {
-                    goto Label_0136;
-                }
+                lowestIdx = today;
+                lowest = tmp;
+            }
 
-                tmp = inHigh[i];
-                if (tmp >= highest)
+            // Update highest value and index
+            tmp = inHigh[today];
+            if (highestIdx < trailingIdx)
+            {
+                highestIdx = trailingIdx;
+                highest = inHigh[highestIdx];
+                for (i = highestIdx + 1; i <= today; i++)
                 {
-                    highestIdx = i;
-                    highest = tmp;
+                    tmp = inHigh[i];
+                    if (tmp >= highest)
+                    {
+                        highestIdx = i;
+                        highest = tmp;
+                    }
                 }
             }
-        }
+            else if (tmp >= highest)
+            {
+                highestIdx = today;
+                highest = tmp;
+            }
 
-        if (tmp >= highest)
-        {
-            highestIdx = today;
-            highest = tmp;
+            // Calculate Aroon values
+            outAroonUp[outIdx] = factor * (optInTimePeriod - (today - highestIdx));
+            outAroonDown[outIdx] = factor * (optInTimePeriod - (today - lowestIdx));
+            
+            outIdx++;
+            trailingIdx++;
+            today++;
         }
-
-        Label_0136:
-        outAroonUp[outIdx] = factor * (optInTimePeriod - (today - highestIdx));
-        outAroonDown[outIdx] = factor * (optInTimePeriod - (today - lowestIdx));
-        outIdx++;
-        trailingIdx++;
-        today++;
-        goto Label_00BB;
+        
+        outBegIdx = startIdx;
+        outNBElement = outIdx;
+        return Success;
     }
 
     public static int AroonLookback(int optInTimePeriod)
