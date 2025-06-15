@@ -1,13 +1,13 @@
-#### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical.TechnicalAnalysis.Common')
-### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common').[CandleIndicator&lt;T&gt;](CandleIndicator_T_.md 'TechnicalAnalysis.Common.CandleIndicator<T>')
+#### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical\.TechnicalAnalysis\.Common')
+### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis\.Common').[CandleIndicator&lt;T&gt;](CandleIndicator_T_.md 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>')
 
-## CandleIndicator<T>.High Property
+## CandleIndicator\<T\>\.High Property
 
-An array of high prices.
+An array of high prices\.
 
 ```csharp
-protected T[] High { get; }
+protected T[] High { protected get; }
 ```
 
 #### Property Value
-[T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis.Common.CandleIndicator<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+[T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')

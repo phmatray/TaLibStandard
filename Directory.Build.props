@@ -1,0 +1,121 @@
+<Project>
+  <!-- This file is imported by all projects in the solution hierarchy -->
+  
+  <!-- Import Central Package Management -->
+  <Import Project="Directory.Packages.props" />
+  
+  <!-- Common Project Settings -->
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>13</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NullableReferenceTypes>true</NullableReferenceTypes>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <Authors>Philippe Matray</Authors>
+  </PropertyGroup>
+
+  <!-- Code Analysis Settings -->
+  <PropertyGroup>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevel>9.0-recommended</AnalysisLevel>
+    <AnalysisModeDesign>All</AnalysisModeDesign>
+    <AnalysisModeDocumentation>All</AnalysisModeDocumentation>
+    <AnalysisModeGlobalization>All</AnalysisModeGlobalization>
+    <AnalysisModeInteroperability>All</AnalysisModeInteroperability>
+    <AnalysisModeMaintainability>All</AnalysisModeMaintainability>
+    <AnalysisModeNaming>All</AnalysisModeNaming>
+    <AnalysisModePerformance>All</AnalysisModePerformance>
+    <AnalysisModeSingleFile>All</AnalysisModeSingleFile>
+    <AnalysisModeReliability>All</AnalysisModeReliability>
+    <AnalysisModeSecurity>All</AnalysisModeSecurity>
+    <AnalysisModeStyle>All</AnalysisModeStyle>
+    <AnalysisModeUsage>All</AnalysisModeUsage>
+  </PropertyGroup>
+  
+  <!-- NuGet Package Settings for src projects -->
+  <PropertyGroup Condition="'$(IsTestProject)' != 'true' and '$(MSBuildProjectDirectory.Contains(`src`))' == 'true'">
+    <Description>
+      TaLibStandard is a modern interpretation of the widely used TA-Lib,
+      reimagined in C# 13. It is designed to be reliable, efficient, and user-friendly for developers
+      performing financial market analysis.
+    </Description>
+    <PackageProjectUrl>https://github.com/phmatray/TaLibStandard</PackageProjectUrl>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>Technical Analysis, TA-Lib, Finance, Trading, Stocks, Forex, Cryptocurrencies</PackageTags>
+  </PropertyGroup>
+  
+  <!-- Package validation for specific projects -->
+  <PropertyGroup Condition="'$(EnablePackageValidation)' == 'true'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <!-- Test Project Settings -->
+  <PropertyGroup Condition="'$(IsTestProject)' == 'true' or '$(MSBuildProjectDirectory.Contains(`tests`))' == 'true'">
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <OutputType>Exe</OutputType>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+    <TestingPlatformCaptureOutput>true</TestingPlatformCaptureOutput>
+  </PropertyGroup>
+  
+  <!-- Demo Project Settings -->
+  <PropertyGroup Condition="'$(MSBuildProjectDirectory.Contains(`demo`))' == 'true'">
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <!-- Common Package References -->
+  <ItemGroup>
+    <!-- Code Analyzers -->
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+  <!-- Package References for src projects -->
+  <ItemGroup Condition="'$(IsTestProject)' != 'true' and '$(MSBuildProjectDirectory.Contains(`src`))' == 'true'">
+    <!-- Reproducible Builds -->
+    <PackageReference Include="DotNet.ReproducibleBuilds">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <!-- MinVer -->
+    <PackageReference Include="MinVer">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <!-- Test Package References -->
+  <ItemGroup Condition="'$(IsTestProject)' == 'true'">
+    <PackageReference Include="AutoFixture" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+  <!-- Package Icon and Readme for src projects -->
+  <ItemGroup Condition="'$(IsTestProject)' != 'true' and '$(MSBuildProjectDirectory.Contains(`src`))' == 'true'">
+    <None Include="$(MSBuildThisFileDirectory)icon.png" Pack="true" PackagePath="" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
+  <!-- Common test project items -->
+  <ItemGroup Condition="'$(IsTestProject)' == 'true'">
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" Condition="Exists('xunit.runner.json')" />
+    <Using Include="Xunit" />
+    <Using Include="FluentAssertions" />
+  </ItemGroup>
+  
+</Project>

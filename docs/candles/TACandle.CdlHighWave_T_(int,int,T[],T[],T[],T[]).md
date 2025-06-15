@@ -1,7 +1,7 @@
-#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[TACandle](TACandle.md 'TechnicalAnalysis.Candles.TACandle')
+#### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical\.TechnicalAnalysis\.Candles')
+### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis\.Candles').[TACandle](TACandle.md 'TechnicalAnalysis\.Candles\.TACandle')
 
-## TACandle.CdlHighWave<T>(int, int, T[], T[], T[], T[]) Method
+## TACandle\.CdlHighWave\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\) Method
 
 ```csharp
 public static TechnicalAnalysis.Common.CandleIndicatorResult CdlHighWave<T>(int startIdx, int endIdx, T[] open, T[] high, T[] low, T[] close)
@@ -13,44 +13,44 @@ public static TechnicalAnalysis.Common.CandleIndicatorResult CdlHighWave<T>(int 
 
 `T`
 
-The type of the array elements.
+The type of the array elements\.
 #### Parameters
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).startIdx'></a>
 
-`startIdx` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
 
-The start index.
+The start index\.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).endIdx'></a>
 
-`endIdx` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
 
-The end index.
+The end index\.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).open'></a>
 
-`open` [T](TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlHighWave<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`open` [T](TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlHighWave\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of open prices.
+An array of open prices\.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).high'></a>
 
-`high` [T](TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlHighWave<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`high` [T](TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlHighWave\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of high prices.
+An array of high prices\.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).low'></a>
 
-`low` [T](TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlHighWave<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`low` [T](TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlHighWave\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of low prices.
+An array of low prices\.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).close'></a>
 
-`close` [T](TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis.Candles.TACandle.CdlHighWave<T>(int, int, T[], T[], T[], T[]).T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`close` [T](TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlHighWave_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlHighWave\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of close prices.
+An array of close prices\.
 
 #### Returns
-[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')
+[TechnicalAnalysis\.Common\.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis\.Common\.CandleIndicatorResult')

@@ -1,9 +1,9 @@
-#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleTakuri&lt;T&gt;](CandleTakuri_T_.md 'TechnicalAnalysis.Candles.CandleTakuri<T>')
+#### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical\.TechnicalAnalysis\.Candles')
+### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis\.Candles').[CandleTakuri&lt;T&gt;](CandleTakuri_T_.md 'TechnicalAnalysis\.Candles\.CandleTakuri\<T\>')
 
-## CandleTakuri<T>.Compute(int, int) Method
+## CandleTakuri\<T\>\.Compute\(int, int\) Method
 
-Computes the [CandleTakuri&lt;T&gt;](CandleTakuri_T_.md 'TechnicalAnalysis.Candles.CandleTakuri<T>') indicator.
+Computes the [CandleTakuri&lt;T&gt;](CandleTakuri_T_.md 'TechnicalAnalysis\.Candles\.CandleTakuri\<T\>') indicator\.
 
 ```csharp
 public TechnicalAnalysis.Common.CandleIndicatorResult Compute(int startIdx, int endIdx);
@@ -12,15 +12,15 @@ public TechnicalAnalysis.Common.CandleIndicatorResult Compute(int startIdx, int 
 
 <a name='TechnicalAnalysis.Candles.CandleTakuri_T_.Compute(int,int).startIdx'></a>
 
-`startIdx` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
 
-The start index.
+The start index\.
 
 <a name='TechnicalAnalysis.Candles.CandleTakuri_T_.Compute(int,int).endIdx'></a>
 
-`endIdx` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
 
-The end index.
+The end index\.
 
 #### Returns
-[TechnicalAnalysis.Common.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis.Common.CandleIndicatorResult')
+[TechnicalAnalysis\.Common\.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis\.Common\.CandleIndicatorResult')

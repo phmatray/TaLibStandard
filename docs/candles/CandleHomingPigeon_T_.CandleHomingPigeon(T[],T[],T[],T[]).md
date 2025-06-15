@@ -1,9 +1,9 @@
-#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleHomingPigeon&lt;T&gt;](CandleHomingPigeon_T_.md 'TechnicalAnalysis.Candles.CandleHomingPigeon<T>')
+#### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical\.TechnicalAnalysis\.Candles')
+### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis\.Candles').[CandleHomingPigeon&lt;T&gt;](CandleHomingPigeon_T_.md 'TechnicalAnalysis\.Candles\.CandleHomingPigeon\<T\>')
 
-## CandleHomingPigeon(T[], T[], T[], T[]) Constructor
+## CandleHomingPigeon\(T\[\], T\[\], T\[\], T\[\]\) Constructor
 
-Homing Pigeon (Pattern Recognition)
+Homing Pigeon \(Pattern Recognition\)
 
 ```csharp
 public CandleHomingPigeon(in T[] open, in T[] high, in T[] low, in T[] close);
@@ -12,24 +12,24 @@ public CandleHomingPigeon(in T[] open, in T[] high, in T[] low, in T[] close);
 
 <a name='TechnicalAnalysis.Candles.CandleHomingPigeon_T_.CandleHomingPigeon(T[],T[],T[],T[]).open'></a>
 
-`open` [T](CandleHomingPigeon_T_.md#TechnicalAnalysis.Candles.CandleHomingPigeon_T_.T 'TechnicalAnalysis.Candles.CandleHomingPigeon<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`open` [T](CandleHomingPigeon_T_.md#TechnicalAnalysis.Candles.CandleHomingPigeon_T_.T 'TechnicalAnalysis\.Candles\.CandleHomingPigeon\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of open prices.
+An array of open prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleHomingPigeon_T_.CandleHomingPigeon(T[],T[],T[],T[]).high'></a>
 
-`high` [T](CandleHomingPigeon_T_.md#TechnicalAnalysis.Candles.CandleHomingPigeon_T_.T 'TechnicalAnalysis.Candles.CandleHomingPigeon<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`high` [T](CandleHomingPigeon_T_.md#TechnicalAnalysis.Candles.CandleHomingPigeon_T_.T 'TechnicalAnalysis\.Candles\.CandleHomingPigeon\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of high prices.
+An array of high prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleHomingPigeon_T_.CandleHomingPigeon(T[],T[],T[],T[]).low'></a>
 
-`low` [T](CandleHomingPigeon_T_.md#TechnicalAnalysis.Candles.CandleHomingPigeon_T_.T 'TechnicalAnalysis.Candles.CandleHomingPigeon<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`low` [T](CandleHomingPigeon_T_.md#TechnicalAnalysis.Candles.CandleHomingPigeon_T_.T 'TechnicalAnalysis\.Candles\.CandleHomingPigeon\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of low prices.
+An array of low prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleHomingPigeon_T_.CandleHomingPigeon(T[],T[],T[],T[]).close'></a>
 
-`close` [T](CandleHomingPigeon_T_.md#TechnicalAnalysis.Candles.CandleHomingPigeon_T_.T 'TechnicalAnalysis.Candles.CandleHomingPigeon<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`close` [T](CandleHomingPigeon_T_.md#TechnicalAnalysis.Candles.CandleHomingPigeon_T_.T 'TechnicalAnalysis\.Candles\.CandleHomingPigeon\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of close prices.
+An array of close prices\.

@@ -1,9 +1,9 @@
-#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleInNeck&lt;T&gt;](CandleInNeck_T_.md 'TechnicalAnalysis.Candles.CandleInNeck<T>')
+#### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical\.TechnicalAnalysis\.Candles')
+### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis\.Candles').[CandleInNeck&lt;T&gt;](CandleInNeck_T_.md 'TechnicalAnalysis\.Candles\.CandleInNeck\<T\>')
 
-## CandleInNeck(T[], T[], T[], T[]) Constructor
+## CandleInNeck\(T\[\], T\[\], T\[\], T\[\]\) Constructor
 
-In-Neck Pattern (Pattern Recognition)
+In\-Neck Pattern \(Pattern Recognition\)
 
 ```csharp
 public CandleInNeck(in T[] open, in T[] high, in T[] low, in T[] close);
@@ -12,24 +12,24 @@ public CandleInNeck(in T[] open, in T[] high, in T[] low, in T[] close);
 
 <a name='TechnicalAnalysis.Candles.CandleInNeck_T_.CandleInNeck(T[],T[],T[],T[]).open'></a>
 
-`open` [T](CandleInNeck_T_.md#TechnicalAnalysis.Candles.CandleInNeck_T_.T 'TechnicalAnalysis.Candles.CandleInNeck<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`open` [T](CandleInNeck_T_.md#TechnicalAnalysis.Candles.CandleInNeck_T_.T 'TechnicalAnalysis\.Candles\.CandleInNeck\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of open prices.
+An array of open prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleInNeck_T_.CandleInNeck(T[],T[],T[],T[]).high'></a>
 
-`high` [T](CandleInNeck_T_.md#TechnicalAnalysis.Candles.CandleInNeck_T_.T 'TechnicalAnalysis.Candles.CandleInNeck<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`high` [T](CandleInNeck_T_.md#TechnicalAnalysis.Candles.CandleInNeck_T_.T 'TechnicalAnalysis\.Candles\.CandleInNeck\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of high prices.
+An array of high prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleInNeck_T_.CandleInNeck(T[],T[],T[],T[]).low'></a>
 
-`low` [T](CandleInNeck_T_.md#TechnicalAnalysis.Candles.CandleInNeck_T_.T 'TechnicalAnalysis.Candles.CandleInNeck<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`low` [T](CandleInNeck_T_.md#TechnicalAnalysis.Candles.CandleInNeck_T_.T 'TechnicalAnalysis\.Candles\.CandleInNeck\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of low prices.
+An array of low prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleInNeck_T_.CandleInNeck(T[],T[],T[],T[]).close'></a>
 
-`close` [T](CandleInNeck_T_.md#TechnicalAnalysis.Candles.CandleInNeck_T_.T 'TechnicalAnalysis.Candles.CandleInNeck<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`close` [T](CandleInNeck_T_.md#TechnicalAnalysis.Candles.CandleInNeck_T_.T 'TechnicalAnalysis\.Candles\.CandleInNeck\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of close prices.
+An array of close prices\.

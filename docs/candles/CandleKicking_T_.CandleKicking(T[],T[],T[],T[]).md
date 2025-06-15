@@ -1,9 +1,9 @@
-#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleKicking&lt;T&gt;](CandleKicking_T_.md 'TechnicalAnalysis.Candles.CandleKicking<T>')
+#### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical\.TechnicalAnalysis\.Candles')
+### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis\.Candles').[CandleKicking&lt;T&gt;](CandleKicking_T_.md 'TechnicalAnalysis\.Candles\.CandleKicking\<T\>')
 
-## CandleKicking(T[], T[], T[], T[]) Constructor
+## CandleKicking\(T\[\], T\[\], T\[\], T\[\]\) Constructor
 
-Kicking (Pattern Recognition)
+Kicking \(Pattern Recognition\)
 
 ```csharp
 public CandleKicking(in T[] open, in T[] high, in T[] low, in T[] close);
@@ -12,24 +12,24 @@ public CandleKicking(in T[] open, in T[] high, in T[] low, in T[] close);
 
 <a name='TechnicalAnalysis.Candles.CandleKicking_T_.CandleKicking(T[],T[],T[],T[]).open'></a>
 
-`open` [T](CandleKicking_T_.md#TechnicalAnalysis.Candles.CandleKicking_T_.T 'TechnicalAnalysis.Candles.CandleKicking<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`open` [T](CandleKicking_T_.md#TechnicalAnalysis.Candles.CandleKicking_T_.T 'TechnicalAnalysis\.Candles\.CandleKicking\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of open prices.
+An array of open prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleKicking_T_.CandleKicking(T[],T[],T[],T[]).high'></a>
 
-`high` [T](CandleKicking_T_.md#TechnicalAnalysis.Candles.CandleKicking_T_.T 'TechnicalAnalysis.Candles.CandleKicking<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`high` [T](CandleKicking_T_.md#TechnicalAnalysis.Candles.CandleKicking_T_.T 'TechnicalAnalysis\.Candles\.CandleKicking\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of high prices.
+An array of high prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleKicking_T_.CandleKicking(T[],T[],T[],T[]).low'></a>
 
-`low` [T](CandleKicking_T_.md#TechnicalAnalysis.Candles.CandleKicking_T_.T 'TechnicalAnalysis.Candles.CandleKicking<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`low` [T](CandleKicking_T_.md#TechnicalAnalysis.Candles.CandleKicking_T_.T 'TechnicalAnalysis\.Candles\.CandleKicking\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of low prices.
+An array of low prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleKicking_T_.CandleKicking(T[],T[],T[],T[]).close'></a>
 
-`close` [T](CandleKicking_T_.md#TechnicalAnalysis.Candles.CandleKicking_T_.T 'TechnicalAnalysis.Candles.CandleKicking<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`close` [T](CandleKicking_T_.md#TechnicalAnalysis.Candles.CandleKicking_T_.T 'TechnicalAnalysis\.Candles\.CandleKicking\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of close prices.
+An array of close prices\.

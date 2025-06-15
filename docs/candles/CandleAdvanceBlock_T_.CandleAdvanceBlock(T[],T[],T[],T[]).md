@@ -1,9 +1,9 @@
-#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleAdvanceBlock&lt;T&gt;](CandleAdvanceBlock_T_.md 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>')
+#### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical\.TechnicalAnalysis\.Candles')
+### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis\.Candles').[CandleAdvanceBlock&lt;T&gt;](CandleAdvanceBlock_T_.md 'TechnicalAnalysis\.Candles\.CandleAdvanceBlock\<T\>')
 
-## CandleAdvanceBlock(T[], T[], T[], T[]) Constructor
+## CandleAdvanceBlock\(T\[\], T\[\], T\[\], T\[\]\) Constructor
 
-Advance Block (Pattern Recognition)
+Advance Block \(Pattern Recognition\)
 
 ```csharp
 public CandleAdvanceBlock(in T[] open, in T[] high, in T[] low, in T[] close);
@@ -12,24 +12,24 @@ public CandleAdvanceBlock(in T[] open, in T[] high, in T[] low, in T[] close);
 
 <a name='TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.CandleAdvanceBlock(T[],T[],T[],T[]).open'></a>
 
-`open` [T](CandleAdvanceBlock_T_.md#TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.T 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`open` [T](CandleAdvanceBlock_T_.md#TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.T 'TechnicalAnalysis\.Candles\.CandleAdvanceBlock\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of open prices.
+An array of open prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.CandleAdvanceBlock(T[],T[],T[],T[]).high'></a>
 
-`high` [T](CandleAdvanceBlock_T_.md#TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.T 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`high` [T](CandleAdvanceBlock_T_.md#TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.T 'TechnicalAnalysis\.Candles\.CandleAdvanceBlock\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of high prices.
+An array of high prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.CandleAdvanceBlock(T[],T[],T[],T[]).low'></a>
 
-`low` [T](CandleAdvanceBlock_T_.md#TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.T 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`low` [T](CandleAdvanceBlock_T_.md#TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.T 'TechnicalAnalysis\.Candles\.CandleAdvanceBlock\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of low prices.
+An array of low prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.CandleAdvanceBlock(T[],T[],T[],T[]).close'></a>
 
-`close` [T](CandleAdvanceBlock_T_.md#TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.T 'TechnicalAnalysis.Candles.CandleAdvanceBlock<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`close` [T](CandleAdvanceBlock_T_.md#TechnicalAnalysis.Candles.CandleAdvanceBlock_T_.T 'TechnicalAnalysis\.Candles\.CandleAdvanceBlock\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of close prices.
+An array of close prices\.

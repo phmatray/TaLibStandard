@@ -1,13 +1,13 @@
-#### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical.TechnicalAnalysis.Common')
-### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common').[CandleSetting](CandleSetting.md 'TechnicalAnalysis.Common.CandleSetting')
+#### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical\.TechnicalAnalysis\.Common')
+### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis\.Common').[CandleSetting](CandleSetting.md 'TechnicalAnalysis\.Common\.CandleSetting')
 
-## CandleSetting.SettingType Property
+## CandleSetting\.SettingType Property
 
-Gets the type of the candlestick setting.
+Gets the type of the candlestick setting\.
 
 ```csharp
 public TechnicalAnalysis.Common.CandleSettingType SettingType { get; }
 ```
 
 #### Property Value
-[CandleSettingType](CandleSettingType.md 'TechnicalAnalysis.Common.CandleSettingType')
+[CandleSettingType](CandleSettingType.md 'TechnicalAnalysis\.Common\.CandleSettingType')

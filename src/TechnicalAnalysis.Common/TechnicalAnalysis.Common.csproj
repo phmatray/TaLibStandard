@@ -12,7 +12,7 @@
 
   <!-- Development dependencies -->
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="0.8.2">
+    <PackageReference Include="DefaultDocumentation">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

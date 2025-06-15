@@ -1,9 +1,9 @@
-#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles')
+#### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical\.TechnicalAnalysis\.Candles')
+### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis\.Candles')
 
-## CandleEveningStar<T> Class
+## CandleEveningStar\<T\> Class
 
-Evening Star (Pattern Recognition)
+Evening Star \(Pattern Recognition\)
 
 ```csharp
 public class CandleEveningStar<T> : TechnicalAnalysis.Common.CandleIndicator<T>
@@ -15,16 +15,16 @@ public class CandleEveningStar<T> : TechnicalAnalysis.Common.CandleIndicator<T>
 
 `T`
 
-The type of the array elements.
+The type of the array elements\.
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [TechnicalAnalysis.Common.CandleIndicator&lt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis.Common.CandleIndicator`1')[T](CandleEveningStar_T_.md#TechnicalAnalysis.Candles.CandleEveningStar_T_.T 'TechnicalAnalysis.Candles.CandleEveningStar<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis.Common.CandleIndicator`1') &#129106; CandleEveningStar<T>
+Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.CandleIndicator&lt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1')[T](CandleEveningStar_T_.md#TechnicalAnalysis.Candles.CandleEveningStar_T_.T 'TechnicalAnalysis\.Candles\.CandleEveningStar\<T\>\.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1') &#129106; CandleEveningStar\<T\>
 
 | Constructors | |
 | :--- | :--- |
-| [CandleEveningStar(T[], T[], T[], T[])](CandleEveningStar_T_.CandleEveningStar(T[],T[],T[],T[]).md 'TechnicalAnalysis.Candles.CandleEveningStar<T>.CandleEveningStar(T[], T[], T[], T[])') | Evening Star (Pattern Recognition) |
+| [CandleEveningStar\(T\[\], T\[\], T\[\], T\[\]\)](CandleEveningStar_T_.CandleEveningStar(T[],T[],T[],T[]).md 'TechnicalAnalysis\.Candles\.CandleEveningStar\<T\>\.CandleEveningStar\(T\[\], T\[\], T\[\], T\[\]\)') | Evening Star \(Pattern Recognition\) |
 
 | Methods | |
 | :--- | :--- |
-| [Compute(int, int, T)](CandleEveningStar_T_.Compute(int,int,T).md 'TechnicalAnalysis.Candles.CandleEveningStar<T>.Compute(int, int, T)') | Computes the [CandleEveningStar&lt;T&gt;](CandleEveningStar_T_.md 'TechnicalAnalysis.Candles.CandleEveningStar<T>') indicator. |
-| [GetLookback()](CandleEveningStar_T_.GetLookback().md 'TechnicalAnalysis.Candles.CandleEveningStar<T>.GetLookback()') | Returns the lookback period for the indicator. |
-| [GetPatternRecognition(int)](CandleEveningStar_T_.GetPatternRecognition(int).md 'TechnicalAnalysis.Candles.CandleEveningStar<T>.GetPatternRecognition(int)') | Checks if the pattern is recognized at a specific index. |
+| [Compute\(int, int, T\)](CandleEveningStar_T_.Compute(int,int,T).md 'TechnicalAnalysis\.Candles\.CandleEveningStar\<T\>\.Compute\(int, int, T\)') | Computes the [CandleEveningStar&lt;T&gt;](CandleEveningStar_T_.md 'TechnicalAnalysis\.Candles\.CandleEveningStar\<T\>') indicator\. |
+| [GetLookback\(\)](CandleEveningStar_T_.GetLookback().md 'TechnicalAnalysis\.Candles\.CandleEveningStar\<T\>\.GetLookback\(\)') | Returns the lookback period for the indicator\. |
+| [GetPatternRecognition\(int\)](CandleEveningStar_T_.GetPatternRecognition(int).md 'TechnicalAnalysis\.Candles\.CandleEveningStar\<T\>\.GetPatternRecognition\(int\)') | Checks if the pattern is recognized at a specific index\. |

@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical.TechnicalAnalysis.Common')
-### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common')
+#### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical\.TechnicalAnalysis\.Common')
+### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis\.Common')
 
 ## MAType Enum
 
@@ -10,11 +10,11 @@ public enum MAType
 ```
 ### Fields
 
-<a name='TechnicalAnalysis.Common.MAType.Dema'></a>
+<a name='TechnicalAnalysis.Common.MAType.Sma'></a>
 
-`Dema` 3
+`Sma` 0
 
-Double Exponential Moving Average
+Simple Moving Average
 
 <a name='TechnicalAnalysis.Common.MAType.Ema'></a>
 
@@ -22,29 +22,17 @@ Double Exponential Moving Average
 
 Exponential Moving Average
 
-<a name='TechnicalAnalysis.Common.MAType.Kama'></a>
+<a name='TechnicalAnalysis.Common.MAType.Wma'></a>
 
-`Kama` 6
+`Wma` 2
 
-Kaufman's Adaptive Moving Average
+Weight Moving Average
 
-<a name='TechnicalAnalysis.Common.MAType.Mama'></a>
+<a name='TechnicalAnalysis.Common.MAType.Dema'></a>
 
-`Mama` 7
+`Dema` 3
 
-MESA Adaptive Moving Average
-
-<a name='TechnicalAnalysis.Common.MAType.Sma'></a>
-
-`Sma` 0
-
-Simple Moving Average
-
-<a name='TechnicalAnalysis.Common.MAType.T3'></a>
-
-`T3` 8
-
-Tilson T3 Moving Average
+Double Exponential Moving Average
 
 <a name='TechnicalAnalysis.Common.MAType.Tema'></a>
 
@@ -58,8 +46,20 @@ Triple Exponential Moving Average
 
 Triangular Moving Average
 
-<a name='TechnicalAnalysis.Common.MAType.Wma'></a>
+<a name='TechnicalAnalysis.Common.MAType.Kama'></a>
 
-`Wma` 2
+`Kama` 6
 
-Weight Moving Average
+Kaufman's Adaptive Moving Average
+
+<a name='TechnicalAnalysis.Common.MAType.Mama'></a>
+
+`Mama` 7
+
+MESA Adaptive Moving Average
+
+<a name='TechnicalAnalysis.Common.MAType.T3'></a>
+
+`T3` 8
+
+Tilson T3 Moving Average

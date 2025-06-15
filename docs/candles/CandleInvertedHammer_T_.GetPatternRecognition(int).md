@@ -1,9 +1,9 @@
-#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleInvertedHammer&lt;T&gt;](CandleInvertedHammer_T_.md 'TechnicalAnalysis.Candles.CandleInvertedHammer<T>')
+#### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical\.TechnicalAnalysis\.Candles')
+### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis\.Candles').[CandleInvertedHammer&lt;T&gt;](CandleInvertedHammer_T_.md 'TechnicalAnalysis\.Candles\.CandleInvertedHammer\<T\>')
 
-## CandleInvertedHammer<T>.GetPatternRecognition(int) Method
+## CandleInvertedHammer\<T\>\.GetPatternRecognition\(int\) Method
 
-Checks if the pattern is recognized at a specific index.
+Checks if the pattern is recognized at a specific index\.
 
 ```csharp
 public override bool GetPatternRecognition(int i);
@@ -12,10 +12,10 @@ public override bool GetPatternRecognition(int i);
 
 <a name='TechnicalAnalysis.Candles.CandleInvertedHammer_T_.GetPatternRecognition(int).i'></a>
 
-`i` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`i` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
 
-The index to check for pattern recognition.
+The index to check for pattern recognition\.
 
 #### Returns
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
-True if the pattern is recognized, false otherwise.
+[System\.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System\.Boolean')  
+True if the pattern is recognized, false otherwise\.

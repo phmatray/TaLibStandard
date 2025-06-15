@@ -1,3 +1,3 @@
-#### [TechnicalAnalysis.Functions](Atypical.TechnicalAnalysis.Functions.md 'Atypical.TechnicalAnalysis.Functions')
+#### [TechnicalAnalysis\.Functions](Atypical.TechnicalAnalysis.Functions.md 'Atypical\.TechnicalAnalysis\.Functions')
 
-## TechnicalAnalysis.Functions Assembly
+## TechnicalAnalysis\.Functions Assembly

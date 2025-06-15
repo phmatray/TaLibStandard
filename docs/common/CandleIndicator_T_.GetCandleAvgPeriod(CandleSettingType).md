@@ -1,9 +1,9 @@
-#### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical.TechnicalAnalysis.Common')
-### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common').[CandleIndicator&lt;T&gt;](CandleIndicator_T_.md 'TechnicalAnalysis.Common.CandleIndicator<T>')
+#### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical\.TechnicalAnalysis\.Common')
+### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis\.Common').[CandleIndicator&lt;T&gt;](CandleIndicator_T_.md 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>')
 
-## CandleIndicator<T>.GetCandleAvgPeriod(CandleSettingType) Method
+## CandleIndicator\<T\>\.GetCandleAvgPeriod\(CandleSettingType\) Method
 
-Gets the average period of the specified candle setting.
+Gets the average period of the specified candle setting\.
 
 ```csharp
 protected virtual int GetCandleAvgPeriod(TechnicalAnalysis.Common.CandleSettingType candleSettingType);
@@ -12,10 +12,10 @@ protected virtual int GetCandleAvgPeriod(TechnicalAnalysis.Common.CandleSettingT
 
 <a name='TechnicalAnalysis.Common.CandleIndicator_T_.GetCandleAvgPeriod(TechnicalAnalysis.Common.CandleSettingType).candleSettingType'></a>
 
-`candleSettingType` [CandleSettingType](CandleSettingType.md 'TechnicalAnalysis.Common.CandleSettingType')
+`candleSettingType` [CandleSettingType](CandleSettingType.md 'TechnicalAnalysis\.Common\.CandleSettingType')
 
-The candle setting type to get the average period for.
+The candle setting type to get the average period for\.
 
 #### Returns
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
-An integer representing the average period.
+[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+An integer representing the average period\.

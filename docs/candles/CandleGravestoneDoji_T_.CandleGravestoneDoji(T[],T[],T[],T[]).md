@@ -1,9 +1,9 @@
-#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleGravestoneDoji&lt;T&gt;](CandleGravestoneDoji_T_.md 'TechnicalAnalysis.Candles.CandleGravestoneDoji<T>')
+#### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical\.TechnicalAnalysis\.Candles')
+### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis\.Candles').[CandleGravestoneDoji&lt;T&gt;](CandleGravestoneDoji_T_.md 'TechnicalAnalysis\.Candles\.CandleGravestoneDoji\<T\>')
 
-## CandleGravestoneDoji(T[], T[], T[], T[]) Constructor
+## CandleGravestoneDoji\(T\[\], T\[\], T\[\], T\[\]\) Constructor
 
-Gravestone Doji (Pattern Recognition)
+Gravestone Doji \(Pattern Recognition\)
 
 ```csharp
 public CandleGravestoneDoji(in T[] open, in T[] high, in T[] low, in T[] close);
@@ -12,24 +12,24 @@ public CandleGravestoneDoji(in T[] open, in T[] high, in T[] low, in T[] close);
 
 <a name='TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.CandleGravestoneDoji(T[],T[],T[],T[]).open'></a>
 
-`open` [T](CandleGravestoneDoji_T_.md#TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.T 'TechnicalAnalysis.Candles.CandleGravestoneDoji<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`open` [T](CandleGravestoneDoji_T_.md#TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.T 'TechnicalAnalysis\.Candles\.CandleGravestoneDoji\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of open prices.
+An array of open prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.CandleGravestoneDoji(T[],T[],T[],T[]).high'></a>
 
-`high` [T](CandleGravestoneDoji_T_.md#TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.T 'TechnicalAnalysis.Candles.CandleGravestoneDoji<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`high` [T](CandleGravestoneDoji_T_.md#TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.T 'TechnicalAnalysis\.Candles\.CandleGravestoneDoji\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of high prices.
+An array of high prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.CandleGravestoneDoji(T[],T[],T[],T[]).low'></a>
 
-`low` [T](CandleGravestoneDoji_T_.md#TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.T 'TechnicalAnalysis.Candles.CandleGravestoneDoji<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`low` [T](CandleGravestoneDoji_T_.md#TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.T 'TechnicalAnalysis\.Candles\.CandleGravestoneDoji\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of low prices.
+An array of low prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.CandleGravestoneDoji(T[],T[],T[],T[]).close'></a>
 
-`close` [T](CandleGravestoneDoji_T_.md#TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.T 'TechnicalAnalysis.Candles.CandleGravestoneDoji<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`close` [T](CandleGravestoneDoji_T_.md#TechnicalAnalysis.Candles.CandleGravestoneDoji_T_.T 'TechnicalAnalysis\.Candles\.CandleGravestoneDoji\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of close prices.
+An array of close prices\.

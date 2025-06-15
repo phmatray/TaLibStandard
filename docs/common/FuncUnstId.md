@@ -1,5 +1,5 @@
-#### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical.TechnicalAnalysis.Common')
-### [TechnicalAnalysis.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis.Common')
+#### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical\.TechnicalAnalysis\.Common')
+### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis\.Common')
 
 ## FuncUnstId Enum
 
@@ -7,6 +7,10 @@
 public enum FuncUnstId
 ```
 ### Fields
+
+<a name='TechnicalAnalysis.Common.FuncUnstId.FuncUnstNone'></a>
+
+`FuncUnstNone` -1
 
 <a name='TechnicalAnalysis.Common.FuncUnstId.Adx'></a>
 
@@ -31,14 +35,6 @@ public enum FuncUnstId
 <a name='TechnicalAnalysis.Common.FuncUnstId.Ema'></a>
 
 `Ema` 5
-
-<a name='TechnicalAnalysis.Common.FuncUnstId.FuncUnstAll'></a>
-
-`FuncUnstAll` 23
-
-<a name='TechnicalAnalysis.Common.FuncUnstId.FuncUnstNone'></a>
-
-`FuncUnstNone` -1
 
 <a name='TechnicalAnalysis.Common.FuncUnstId.HtDcPeriod'></a>
 
@@ -107,3 +103,7 @@ public enum FuncUnstId
 <a name='TechnicalAnalysis.Common.FuncUnstId.T3'></a>
 
 `T3` 22
+
+<a name='TechnicalAnalysis.Common.FuncUnstId.FuncUnstAll'></a>
+
+`FuncUnstAll` 23

@@ -1,9 +1,9 @@
-#### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical.TechnicalAnalysis.Candles')
-### [TechnicalAnalysis.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis.Candles').[CandleStickSandwich&lt;T&gt;](CandleStickSandwich_T_.md 'TechnicalAnalysis.Candles.CandleStickSandwich<T>')
+#### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md 'Atypical\.TechnicalAnalysis\.Candles')
+### [TechnicalAnalysis\.Candles](Atypical.TechnicalAnalysis.Candles.md#TechnicalAnalysis.Candles 'TechnicalAnalysis\.Candles').[CandleStickSandwich&lt;T&gt;](CandleStickSandwich_T_.md 'TechnicalAnalysis\.Candles\.CandleStickSandwich\<T\>')
 
-## CandleStickSandwich(T[], T[], T[], T[]) Constructor
+## CandleStickSandwich\(T\[\], T\[\], T\[\], T\[\]\) Constructor
 
-Stick Sandwich (Pattern Recognition)
+Stick Sandwich \(Pattern Recognition\)
 
 ```csharp
 public CandleStickSandwich(in T[] open, in T[] high, in T[] low, in T[] close);
@@ -12,24 +12,24 @@ public CandleStickSandwich(in T[] open, in T[] high, in T[] low, in T[] close);
 
 <a name='TechnicalAnalysis.Candles.CandleStickSandwich_T_.CandleStickSandwich(T[],T[],T[],T[]).open'></a>
 
-`open` [T](CandleStickSandwich_T_.md#TechnicalAnalysis.Candles.CandleStickSandwich_T_.T 'TechnicalAnalysis.Candles.CandleStickSandwich<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`open` [T](CandleStickSandwich_T_.md#TechnicalAnalysis.Candles.CandleStickSandwich_T_.T 'TechnicalAnalysis\.Candles\.CandleStickSandwich\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of open prices.
+An array of open prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleStickSandwich_T_.CandleStickSandwich(T[],T[],T[],T[]).high'></a>
 
-`high` [T](CandleStickSandwich_T_.md#TechnicalAnalysis.Candles.CandleStickSandwich_T_.T 'TechnicalAnalysis.Candles.CandleStickSandwich<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`high` [T](CandleStickSandwich_T_.md#TechnicalAnalysis.Candles.CandleStickSandwich_T_.T 'TechnicalAnalysis\.Candles\.CandleStickSandwich\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of high prices.
+An array of high prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleStickSandwich_T_.CandleStickSandwich(T[],T[],T[],T[]).low'></a>
 
-`low` [T](CandleStickSandwich_T_.md#TechnicalAnalysis.Candles.CandleStickSandwich_T_.T 'TechnicalAnalysis.Candles.CandleStickSandwich<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`low` [T](CandleStickSandwich_T_.md#TechnicalAnalysis.Candles.CandleStickSandwich_T_.T 'TechnicalAnalysis\.Candles\.CandleStickSandwich\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of low prices.
+An array of low prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleStickSandwich_T_.CandleStickSandwich(T[],T[],T[],T[]).close'></a>
 
-`close` [T](CandleStickSandwich_T_.md#TechnicalAnalysis.Candles.CandleStickSandwich_T_.T 'TechnicalAnalysis.Candles.CandleStickSandwich<T>.T')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`close` [T](CandleStickSandwich_T_.md#TechnicalAnalysis.Candles.CandleStickSandwich_T_.T 'TechnicalAnalysis\.Candles\.CandleStickSandwich\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
 
-An array of close prices.
+An array of close prices\.
