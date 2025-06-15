@@ -132,8 +132,8 @@ public static partial class TAFunc
                     {
                         tempReal = tempBuffer2[i];
                         tempReal2 = outRealMiddleBand[i];
-                        outRealUpperBand[i] = tempReal2 + tempReal * optInNbDevUp;
-                        outRealLowerBand[i] = tempReal2 - tempReal * optInNbDevDn;
+                        outRealUpperBand[i] = tempReal2 + (tempReal * optInNbDevUp);
+                        outRealLowerBand[i] = tempReal2 - (tempReal * optInNbDevDn);
                         i++;
                     }
 
@@ -189,7 +189,7 @@ public static partial class TAFunc
             tempReal = tempBuffer2[i];
             tempReal2 = outRealMiddleBand[i];
             outRealUpperBand[i] = tempReal2 + tempReal;
-            outRealLowerBand[i] = tempReal2 - tempReal * optInNbDevDn;
+            outRealLowerBand[i] = tempReal2 - (tempReal * optInNbDevDn);
             i++;
         }
 
@@ -199,7 +199,7 @@ public static partial class TAFunc
             tempReal = tempBuffer2[i];
             tempReal2 = outRealMiddleBand[i];
             outRealLowerBand[i] = tempReal2 - tempReal;
-            outRealUpperBand[i] = tempReal2 + tempReal * optInNbDevUp;
+            outRealUpperBand[i] = tempReal2 + (tempReal * optInNbDevUp);
             i++;
         }
 

@@ -15,8 +15,8 @@ public class MultTests
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
-        double[] real0 = fixture.CreateMany<double>(100).ToArray();
-        double[] real1 = fixture.CreateMany<double>(100).ToArray();
+        double[] real0 = [.. fixture.CreateMany<double>(100)];
+        double[] real1 = [.. fixture.CreateMany<double>(100)];
             
         // Act
         MultResult actualResult = TAMath.Mult(
@@ -37,8 +37,8 @@ public class MultTests
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
-        float[] real0 = fixture.CreateMany<float>(100).ToArray();
-        float[] real1 = fixture.CreateMany<float>(100).ToArray();
+        float[] real0 = [.. fixture.CreateMany<float>(100)];
+        float[] real1 = [.. fixture.CreateMany<float>(100)];
             
         // Act
         MultResult actualResult = TAMath.Mult(

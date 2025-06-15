@@ -37,7 +37,7 @@ public static partial class TAFunc
             return BadParam;
         }
 
-        int lookbackTotal = (optInTimePeriod - 1) * 6 + (int)TACore.Globals.UnstablePeriod[FuncUnstId.T3];
+        int lookbackTotal = ((optInTimePeriod - 1) * 6) + (int)TACore.Globals.UnstablePeriod[FuncUnstId.T3];
         if (startIdx <= lookbackTotal)
         {
             startIdx = lookbackTotal;
@@ -66,7 +66,7 @@ public static partial class TAFunc
         tempReal = e1;
         for (i = optInTimePeriod - 1; i > 0; i--)
         {
-            e1 = k * inReal[today] + oneMinusK * e1;
+            e1 = (k * inReal[today]) + (oneMinusK * e1);
             today++;
             tempReal += e1;
         }
@@ -75,9 +75,9 @@ public static partial class TAFunc
         tempReal = e2;
         for (i = optInTimePeriod - 1; i > 0; i--)
         {
-            e1 = k * inReal[today] + oneMinusK * e1;
+            e1 = (k * inReal[today]) + (oneMinusK * e1);
             today++;
-            e2 = k * e1 + oneMinusK * e2;
+            e2 = (k * e1) + (oneMinusK * e2);
             tempReal += e2;
         }
 
@@ -85,10 +85,10 @@ public static partial class TAFunc
         tempReal = e3;
         for (i = optInTimePeriod - 1; i > 0; i--)
         {
-            e1 = k * inReal[today] + oneMinusK * e1;
+            e1 = (k * inReal[today]) + (oneMinusK * e1);
             today++;
-            e2 = k * e1 + oneMinusK * e2;
-            e3 = k * e2 + oneMinusK * e3;
+            e2 = (k * e1) + (oneMinusK * e2);
+            e3 = (k * e2) + (oneMinusK * e3);
             tempReal += e3;
         }
 
@@ -96,11 +96,11 @@ public static partial class TAFunc
         tempReal = e4;
         for (i = optInTimePeriod - 1; i > 0; i--)
         {
-            e1 = k * inReal[today] + oneMinusK * e1;
+            e1 = (k * inReal[today]) + (oneMinusK * e1);
             today++;
-            e2 = k * e1 + oneMinusK * e2;
-            e3 = k * e2 + oneMinusK * e3;
-            e4 = k * e3 + oneMinusK * e4;
+            e2 = (k * e1) + (oneMinusK * e2);
+            e3 = (k * e2) + (oneMinusK * e3);
+            e4 = (k * e3) + (oneMinusK * e4);
             tempReal += e4;
         }
 
@@ -108,12 +108,12 @@ public static partial class TAFunc
         tempReal = e5;
         for (i = optInTimePeriod - 1; i > 0; i--)
         {
-            e1 = k * inReal[today] + oneMinusK * e1;
+            e1 = (k * inReal[today]) + (oneMinusK * e1);
             today++;
-            e2 = k * e1 + oneMinusK * e2;
-            e3 = k * e2 + oneMinusK * e3;
-            e4 = k * e3 + oneMinusK * e4;
-            e5 = k * e4 + oneMinusK * e5;
+            e2 = (k * e1) + (oneMinusK * e2);
+            e3 = (k * e2) + (oneMinusK * e3);
+            e4 = (k * e3) + (oneMinusK * e4);
+            e5 = (k * e4) + (oneMinusK * e5);
             tempReal += e5;
         }
 
@@ -125,22 +125,22 @@ public static partial class TAFunc
                 break;
             }
 
-            e1 = k * inReal[today] + oneMinusK * e1;
+            e1 = (k * inReal[today]) + (oneMinusK * e1);
             today++;
-            e2 = k * e1 + oneMinusK * e2;
-            e3 = k * e2 + oneMinusK * e3;
-            e4 = k * e3 + oneMinusK * e4;
-            e5 = k * e4 + oneMinusK * e5;
-            e6 = k * e5 + oneMinusK * e6;
+            e2 = (k * e1) + (oneMinusK * e2);
+            e3 = (k * e2) + (oneMinusK * e3);
+            e4 = (k * e3) + (oneMinusK * e4);
+            e5 = (k * e4) + (oneMinusK * e5);
+            e6 = (k * e5) + (oneMinusK * e6);
         }
 
         tempReal = optInVFactor * optInVFactor;
         double c1 = -(tempReal * optInVFactor);
         double c2 = 3.0 * (tempReal - c1);
-        double c3 = -6.0 * tempReal - 3.0 * (optInVFactor - c1);
-        double c4 = 1.0 + 3.0 * optInVFactor - c1 + 3.0 * tempReal;
+        double c3 = (-6.0 * tempReal) - (3.0 * (optInVFactor - c1));
+        double c4 = 1.0 + (3.0 * optInVFactor) - c1 + (3.0 * tempReal);
         int outIdx = 0;
-        outReal[outIdx] = c1 * e6 + c2 * e5 + c3 * e4 + c4 * e3;
+        outReal[outIdx] = (c1 * e6) + (c2 * e5) + (c3 * e4) + (c4 * e3);
         outIdx++;
         while (true)
         {
@@ -149,14 +149,14 @@ public static partial class TAFunc
                 break;
             }
 
-            e1 = k * inReal[today] + oneMinusK * e1;
+            e1 = (k * inReal[today]) + (oneMinusK * e1);
             today++;
-            e2 = k * e1 + oneMinusK * e2;
-            e3 = k * e2 + oneMinusK * e3;
-            e4 = k * e3 + oneMinusK * e4;
-            e5 = k * e4 + oneMinusK * e5;
-            e6 = k * e5 + oneMinusK * e6;
-            outReal[outIdx] = c1 * e6 + c2 * e5 + c3 * e4 + c4 * e3;
+            e2 = (k * e1) + (oneMinusK * e2);
+            e3 = (k * e2) + (oneMinusK * e3);
+            e4 = (k * e3) + (oneMinusK * e4);
+            e5 = (k * e4) + (oneMinusK * e5);
+            e6 = (k * e5) + (oneMinusK * e6);
+            outReal[outIdx] = (c1 * e6) + (c2 * e5) + (c3 * e4) + (c4 * e3);
             outIdx++;
         }
 
@@ -169,6 +169,6 @@ public static partial class TAFunc
         return optInTimePeriod is < 2 or > 100000 ||
             optInVFactor is < 0.0 or > 1.0
             ? -1
-            : (optInTimePeriod - 1) * 6 + (int)TACore.Globals.UnstablePeriod[FuncUnstId.T3];
+            : ((optInTimePeriod - 1) * 6) + (int)TACore.Globals.UnstablePeriod[FuncUnstId.T3];
     }
 }

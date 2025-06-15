@@ -1,9 +1,6 @@
 <Project>
   <!-- This file is imported by all projects in the solution hierarchy -->
   
-  <!-- Import Central Package Management -->
-  <Import Project="Directory.Packages.props" />
-  
   <!-- Common Project Settings -->
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -99,6 +96,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
     <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.v3.runner.console" />
     <PackageReference Include="xunit.runner.visualstudio">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -16,8 +16,10 @@ public class Cdl2CrowsTests : CdlTestsBase
     {
         // Arrange
         float[] open = [100f, 135f, 130f];
+        float[] high = [120f, 135f, 130f];
+        float[] low = [100f, 125f, 110f];
         float[] close = [120f, 125f, 110f];
-        Candle2Crows<float> crows = new(open, null!, null!, close);
+        Candle2Crows<float> crows = new(open, high, low, close);
         
         // Act
         bool isPatternDetected = crows.GetPatternRecognition(2);
@@ -68,10 +70,10 @@ public class Cdl2CrowsTests : CdlTestsBase
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
-        T[] open = fixture.CreateMany<T>(100).ToArray();
-        T[] high = fixture.CreateMany<T>(100).ToArray();
-        T[] low = fixture.CreateMany<T>(100).ToArray();
-        T[] close = fixture.CreateMany<T>(100).ToArray();
+        T[] open = [.. fixture.CreateMany<T>(100)];
+        T[] high = [.. fixture.CreateMany<T>(100)];
+        T[] low = [.. fixture.CreateMany<T>(100)];
+        T[] close = [.. fixture.CreateMany<T>(100)];
             
         // Act
         CandleIndicatorResult result = TACandle.Cdl2Crows(

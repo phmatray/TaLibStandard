@@ -55,7 +55,7 @@ public static partial class TAFunc
             
         while (today <= startIdx)
         {
-            prevMA = (inReal0[today] - prevMA) * optInK1 + prevMA;
+            prevMA = ((inReal0[today] - prevMA) * optInK1) + prevMA;
             today++;
         }
             
@@ -69,7 +69,7 @@ public static partial class TAFunc
                 break;
             }
                 
-            prevMA = (inReal0[today] - prevMA) * optInK1 + prevMA;
+            prevMA = ((inReal0[today] - prevMA) * optInK1) + prevMA;
             today++;
             outReal0[outIdx] = prevMA;
             outIdx++;
@@ -385,7 +385,7 @@ public static partial class TAFunc
             periodTotal1 -= tempReal;
             tempReal *= tempReal;
             periodTotal2 -= tempReal;
-            outReal0[outIdx] = meanValue2 - meanValue1 * meanValue1;
+            outReal0[outIdx] = meanValue2 - (meanValue1 * meanValue1);
             outIdx++;
         }
         while (i <= endIdx);

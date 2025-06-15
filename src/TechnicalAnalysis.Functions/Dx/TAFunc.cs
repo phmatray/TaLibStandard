@@ -150,7 +150,7 @@ public static partial class TAFunc
                 tempReal = tempReal2;
             }
 
-            prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
+            prevTR = prevTR - (prevTR / optInTimePeriod) + tempReal;
             prevClose = inClose[today];
         }
 
@@ -198,7 +198,7 @@ public static partial class TAFunc
                 tempReal = tempReal2;
             }
 
-            prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
+            prevTR = prevTR - (prevTR / optInTimePeriod) + tempReal;
             prevClose = inClose[today];
             minusDI = 100.0 * (prevMinusDM / prevTR);
             plusDI = 100.0 * (prevPlusDM / prevTR);

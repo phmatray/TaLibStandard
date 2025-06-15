@@ -123,8 +123,8 @@ public static partial class TAFunc
             y = (tmpReal - trailingLastPriceY) / trailingLastPriceY;
 
             trailingLastPriceY = tmpReal;
-            tmpReal = n * sXX - sX * sX;
-            outReal[outIdx] = (n * sXY - sX * sY) / tmpReal;
+            tmpReal = (n * sXX) - (sX * sX);
+            outReal[outIdx] = ((n * sXY) - (sX * sY)) / tmpReal;
             outIdx++;
 
             sXX -= x * x;

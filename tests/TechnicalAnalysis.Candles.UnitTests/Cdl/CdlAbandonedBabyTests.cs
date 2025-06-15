@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests.Cdl;
 
 public class CdlAbandonedBabyTests : CdlTestsBase
 {
-    protected override Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
+    protected override Func<int, int, float[], float[], float[], float[], CandleIndicatorResult> SUT { get; }
         = TACandle.CdlAbandonedBaby;
 
     [Theory]
@@ -28,10 +28,10 @@ public class CdlAbandonedBabyTests : CdlTestsBase
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
-        T[] open = fixture.CreateMany<T>(100).ToArray();
-        T[] high = fixture.CreateMany<T>(100).ToArray();
-        T[] low = fixture.CreateMany<T>(100).ToArray();
-        T[] close = fixture.CreateMany<T>(100).ToArray();
+        T[] open = [.. fixture.CreateMany<T>(100)];
+        T[] high = [.. fixture.CreateMany<T>(100)];
+        T[] low = [.. fixture.CreateMany<T>(100)];
+        T[] close = [.. fixture.CreateMany<T>(100)];
             
         // Act
         CandleIndicatorResult result = TACandle.CdlAbandonedBaby(

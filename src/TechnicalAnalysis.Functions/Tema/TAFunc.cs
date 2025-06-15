@@ -64,7 +64,7 @@ public static partial class TAFunc
 
             double k = 2.0 / (optInTimePeriod + 1);
             RetCode retCode = TA_INT_EMA(
-                startIdx - lookbackEMA * 2,
+                startIdx - (lookbackEMA * 2),
                 endIdx,
                 inReal,
                 optInTimePeriod,
@@ -118,7 +118,7 @@ public static partial class TAFunc
                     break;
                 }
 
-                outReal[outIdx] += 3.0 * firstEMA[firstEMAIdx] - 3.0 * secondEMA[secondEMAIdx];
+                outReal[outIdx] += (3.0 * firstEMA[firstEMAIdx]) - (3.0 * secondEMA[secondEMAIdx]);
                 secondEMAIdx++;
                 firstEMAIdx++;
                 outIdx++;

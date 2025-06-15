@@ -73,8 +73,13 @@ public abstract class CandleIndicator<T>
     /// <returns>A tuple containing the output variables.</returns>
     protected virtual (int outBegIdx, int outNBElement, int[] outInteger) PrepareOutput(int startIdx, int endIdx)
     {
-        // Initialize output variables 
-        (int outBegIdx, int outNBElement, int[] outInteger) = PrepareOutput(startIdx, endIdx);
+        // Initialize output variables
+        int outBegIdx = 0;
+        int outNBElement = 0;
+        
+        // Ensure we don't create an array with negative size
+        int arraySize = Math.Max(0, endIdx - startIdx + 1);
+        int[] outInteger = new int[arraySize];
         
         // Return the output variables.
         return (outBegIdx, outNBElement, outInteger);
@@ -89,7 +94,13 @@ public abstract class CandleIndicator<T>
     {
         // Validate the requested output range.
         ArgumentOutOfRangeException.ThrowIfNegative(startIdx);
-        ArgumentOutOfRangeException.ThrowIfNegative(endIdx - startIdx);
+        
+        // Check if endIdx is less than startIdx before doing the subtraction
+        if (endIdx < startIdx)
+        {
+            throw new ArgumentOutOfRangeException(nameof(endIdx), 
+                $"endIdx - startIdx ('{endIdx - startIdx}') must be a non-negative value.");
+        }
     }
     
     /// <summary>

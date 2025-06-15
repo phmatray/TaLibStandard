@@ -117,7 +117,7 @@ public class CandlePiercing<T>(in T[] open, in T[] high, in T[] low, in T[] clos
             // close within prior body
             Close[i] < Open[i - 1] &&
             // above midpoint
-            Close[i] > Close[i - 1] + GetRealBody(i - 1) * T.CreateChecked(0.5);
+            Close[i] > Close[i - 1] + (GetRealBody(i - 1) * T.CreateChecked(0.5));
             
         return isPiercing;
     }

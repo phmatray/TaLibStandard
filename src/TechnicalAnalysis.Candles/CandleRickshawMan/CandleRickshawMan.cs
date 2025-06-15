@@ -132,8 +132,8 @@ public class CandleRickshawMan<T>(in T[] open, in T[] high, in T[] low, in T[] c
             // long shadow
             GetUpperShadow(i) > GetCandleAverage(ShadowLong, _shadowLongPeriodTotal, i) &&
             // body near midpoint
-            T.Min(Open[i], Close[i]) <= Low[i] + GetHighLowRange(i) / T.CreateChecked(2) + GetCandleAverage(Near, _nearPeriodTotal, i) &&
-            T.Max(Open[i], Close[i]) >= Low[i] + GetHighLowRange(i) / T.CreateChecked(2) - GetCandleAverage(Near, _nearPeriodTotal, i);
+            T.Min(Open[i], Close[i]) <= Low[i] + (GetHighLowRange(i) / T.CreateChecked(2)) + GetCandleAverage(Near, _nearPeriodTotal, i) &&
+            T.Max(Open[i], Close[i]) >= Low[i] + (GetHighLowRange(i) / T.CreateChecked(2)) - GetCandleAverage(Near, _nearPeriodTotal, i);
             
         return isRickshawMan;
     }

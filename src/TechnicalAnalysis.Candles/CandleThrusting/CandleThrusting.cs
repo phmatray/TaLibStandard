@@ -126,7 +126,7 @@ public class CandleThrusting<T>(in T[] open, in T[] high, in T[] low, in T[] clo
             // close into prior body
             Close[i] > Close[i - 1] + GetCandleAverage(Equal, _equalPeriodTotal, i - 1) &&
             // under the midpoint
-            Close[i] <= Close[i - 1] + GetRealBody(i - 1) * T.CreateChecked(0.5);
+            Close[i] <= Close[i - 1] + (GetRealBody(i - 1) * T.CreateChecked(0.5));
             
         return isThrusting;
     }

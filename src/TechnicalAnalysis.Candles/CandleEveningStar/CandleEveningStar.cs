@@ -141,7 +141,7 @@ public class CandleEveningStar<T>(in T[] open, in T[] high, in T[] low, in T[] c
             // black real body
             IsColorRed(i) &&
             // closing well within 1st rb
-            Close[i] < Close[i - 2] - GetRealBody(i - 2) * _penetration;
+            Close[i] < Close[i - 2] - (GetRealBody(i - 2) * _penetration);
             
         return isEveningStar;
     }

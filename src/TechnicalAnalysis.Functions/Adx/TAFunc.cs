@@ -50,7 +50,7 @@ public static partial class TAFunc
             return BadParam;
         }
 
-        int lookbackTotal = optInTimePeriod * 2 + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Adx] - 1;
+        int lookbackTotal = (optInTimePeriod * 2) + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Adx] - 1;
         if (startIdx < lookbackTotal)
         {
             startIdx = lookbackTotal;
@@ -155,7 +155,7 @@ public static partial class TAFunc
                 tempReal = tempReal2;
             }
 
-            prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
+            prevTR = prevTR - (prevTR / optInTimePeriod) + tempReal;
             prevClose = inClose[today];
             minusDI = 100.0 * (prevMinusDM / prevTR);
             plusDI = 100.0 * (prevPlusDM / prevTR);
@@ -204,13 +204,13 @@ public static partial class TAFunc
                 tempReal = tempReal2;
             }
 
-            prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
+            prevTR = prevTR - (prevTR / optInTimePeriod) + tempReal;
             prevClose = inClose[today];
             minusDI = 100.0 * (prevMinusDM / prevTR);
             plusDI = 100.0 * (prevPlusDM / prevTR);
             tempReal = minusDI + plusDI;
             tempReal = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
-            prevADX = (prevADX * (optInTimePeriod - 1) + tempReal) / optInTimePeriod;
+            prevADX = ((prevADX * (optInTimePeriod - 1)) + tempReal) / optInTimePeriod;
         }
 
         outReal[0] = prevADX;
@@ -253,13 +253,13 @@ public static partial class TAFunc
                 tempReal = tempReal2;
             }
 
-            prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
+            prevTR = prevTR - (prevTR / optInTimePeriod) + tempReal;
             prevClose = inClose[today];
             minusDI = 100.0 * (prevMinusDM / prevTR);
             plusDI = 100.0 * (prevPlusDM / prevTR);
             tempReal = minusDI + plusDI;
             tempReal = 100.0 * (Math.Abs(minusDI - plusDI) / tempReal);
-            prevADX = (prevADX * (optInTimePeriod - 1) + tempReal) / optInTimePeriod;
+            prevADX = ((prevADX * (optInTimePeriod - 1)) + tempReal) / optInTimePeriod;
 
             outReal[outIdx] = prevADX;
             outIdx++;
@@ -273,6 +273,6 @@ public static partial class TAFunc
     {
         return optInTimePeriod is < 2 or > 100000
             ? -1
-            : optInTimePeriod * 2 + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Adx] - 1;
+            : (optInTimePeriod * 2) + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Adx] - 1;
     }
 }

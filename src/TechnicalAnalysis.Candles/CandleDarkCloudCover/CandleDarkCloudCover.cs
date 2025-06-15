@@ -116,7 +116,7 @@ public class CandleDarkCloudCover<T>(in T[] open, in T[] high, in T[] low, in T[
             Open[i] > High[i - 1] &&
             // close within prior body
             Close[i] > Open[i - 1] &&
-            Close[i] < Close[i - 1] - GetRealBody(i - 1) * _penetration;
+            Close[i] < Close[i - 1] - (GetRealBody(i - 1) * _penetration);
             
         return isDarkCloudCover;
     }

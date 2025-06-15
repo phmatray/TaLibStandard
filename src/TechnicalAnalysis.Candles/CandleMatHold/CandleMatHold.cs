@@ -144,8 +144,8 @@ public class CandleMatHold<T>(in T[] open, in T[] high, in T[] low, in T[] close
             T.Min(Open[i - 2], Close[i - 2]) < Close[i - 4] &&
             T.Min(Open[i - 1], Close[i - 1]) < Close[i - 4] &&
             // reaction days penetrate first body less than optInPenetration percent
-            T.Min(Open[i - 2], Close[i - 2]) > Close[i - 4] - GetRealBody(i - 4) * _penetration &&
-            T.Min(Open[i - 1], Close[i - 1]) > Close[i - 4] - GetRealBody(i - 4) * _penetration &&
+            T.Min(Open[i - 2], Close[i - 2]) > Close[i - 4] - (GetRealBody(i - 4) * _penetration) &&
+            T.Min(Open[i - 1], Close[i - 1]) > Close[i - 4] - (GetRealBody(i - 4) * _penetration) &&
             // 2nd to 4th are falling
             T.Max(Close[i - 2], Open[i - 2]) < Open[i - 3] &&
             T.Max(Close[i - 1], Open[i - 1]) < T.Max(Close[i - 2], Open[i - 2]) &&

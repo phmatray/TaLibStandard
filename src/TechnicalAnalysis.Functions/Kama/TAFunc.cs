@@ -84,9 +84,9 @@ public static partial class TAFunc
         double trailingValue = tempReal2;
         tempReal = sumRoc1 <= periodRoc ? 1.0 : Math.Abs(periodRoc / sumRoc1);
 
-        tempReal = tempReal * ConstDiff + ConstMax;
+        tempReal = (tempReal * ConstDiff) + ConstMax;
         tempReal *= tempReal;
-        prevKama = (inReal[today] - prevKama) * tempReal + prevKama;
+        prevKama = ((inReal[today] - prevKama) * tempReal) + prevKama;
         today++;
         while (true)
         {
@@ -104,9 +104,9 @@ public static partial class TAFunc
             trailingValue = tempReal2;
             tempReal = sumRoc1 <= periodRoc ? 1.0 : Math.Abs(periodRoc / sumRoc1);
 
-            tempReal = tempReal * ConstDiff + ConstMax;
+            tempReal = (tempReal * ConstDiff) + ConstMax;
             tempReal *= tempReal;
-            prevKama = (inReal[today] - prevKama) * tempReal + prevKama;
+            prevKama = ((inReal[today] - prevKama) * tempReal) + prevKama;
             today++;
         }
 
@@ -129,9 +129,9 @@ public static partial class TAFunc
             trailingValue = tempReal2;
             tempReal = sumRoc1 <= periodRoc ? 1.0 : Math.Abs(periodRoc / sumRoc1);
 
-            tempReal = tempReal * ConstDiff + ConstMax;
+            tempReal = (tempReal * ConstDiff) + ConstMax;
             tempReal *= tempReal;
-            prevKama = (inReal[today] - prevKama) * tempReal + prevKama;
+            prevKama = ((inReal[today] - prevKama) * tempReal) + prevKama;
             today++;
             outReal[outIdx] = prevKama;
             outIdx++;

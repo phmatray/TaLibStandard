@@ -126,7 +126,7 @@ public static partial class TAFunc
             prevLow = tempReal;
             if (diffM > 0.0 && diffP < diffM)
             {
-                prevMinusDM = prevMinusDM - prevMinusDM / optInTimePeriod + diffM;
+                prevMinusDM = prevMinusDM - (prevMinusDM / optInTimePeriod) + diffM;
             }
             else
             {
@@ -154,7 +154,7 @@ public static partial class TAFunc
             prevLow = tempReal;
             if (diffM > 0.0 && diffP < diffM)
             {
-                prevMinusDM = prevMinusDM - prevMinusDM / optInTimePeriod + diffM;
+                prevMinusDM = prevMinusDM - (prevMinusDM / optInTimePeriod) + diffM;
             }
             else
             {

@@ -92,7 +92,7 @@ public static partial class TAFunc
                         prevLow = tempReal;
                         if (diffM > 0.0 && diffP < diffM)
                         {
-                            prevMinusDM = prevMinusDM - prevMinusDM / optInTimePeriod + diffM;
+                            prevMinusDM = prevMinusDM - (prevMinusDM / optInTimePeriod) + diffM;
                         }
                         else
                         {
@@ -112,7 +112,7 @@ public static partial class TAFunc
                             tempReal = tempReal2;
                         }
 
-                        prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
+                        prevTR = prevTR - (prevTR / optInTimePeriod) + tempReal;
                         prevClose = inClose[today];
                     }
 
@@ -130,7 +130,7 @@ public static partial class TAFunc
                         prevLow = tempReal;
                         if (diffM > 0.0 && diffP < diffM)
                         {
-                            prevMinusDM = prevMinusDM - prevMinusDM / optInTimePeriod + diffM;
+                            prevMinusDM = prevMinusDM - (prevMinusDM / optInTimePeriod) + diffM;
                         }
                         else
                         {
@@ -150,7 +150,7 @@ public static partial class TAFunc
                             tempReal = tempReal2;
                         }
 
-                        prevTR = prevTR - prevTR / optInTimePeriod + tempReal;
+                        prevTR = prevTR - (prevTR / optInTimePeriod) + tempReal;
                         prevClose = inClose[today];
                         outReal[outIdx] = 100.0 * (prevMinusDM / prevTR);
                         outIdx++;

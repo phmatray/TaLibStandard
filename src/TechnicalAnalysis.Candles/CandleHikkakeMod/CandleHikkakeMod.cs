@@ -123,7 +123,7 @@ public class CandleHikkakeMod<T>(in T[] open, in T[] high, in T[] low, in T[] cl
                 /* search for confirmation if modified hikkake was no more than 3 bars ago */
                 if (GetPatternConfirmation(i, patternIdx, patternResult))
                 {
-                    outInteger[outIdx++] = patternResult + 100 * (patternResult > 0 ? 1 : -1);
+                    outInteger[outIdx++] = patternResult + (100 * (patternResult > 0 ? 1 : -1));
                     patternIdx = 0;
                 }
                 else
@@ -157,13 +157,13 @@ public class CandleHikkakeMod<T>(in T[] open, in T[] high, in T[] low, in T[] cl
             High[i - 1] < High[i - 2] && Low[i - 1] > Low[i - 2] &&
             (
                 // (bull) 4th: lower high and lower low
-                High[i] < High[i - 1] && Low[i] < Low[i - 1] &&
+                (High[i] < High[i - 1] && Low[i] < Low[i - 1] &&
                 // (bull) 2nd: close near the low
-                Close[i - 2] <= Low[i - 2] + GetCandleAverage(Near, _nearPeriodTotal, i - 2) ||
+                Close[i - 2] <= Low[i - 2] + GetCandleAverage(Near, _nearPeriodTotal, i - 2)) ||
                 // (bear) 4th: higher high and higher low
-                High[i] > High[i - 1] && Low[i] > Low[i - 1] &&
+                (High[i] > High[i - 1] && Low[i] > Low[i - 1] &&
                 // (bull) 2nd: close near the top
-                Close[i - 2] >= High[i - 2] - GetCandleAverage(Near, _nearPeriodTotal, i - 2)
+                Close[i - 2] >= High[i - 2] - GetCandleAverage(Near, _nearPeriodTotal, i - 2))
             );
             
         return patternRecognition;
@@ -175,9 +175,9 @@ public class CandleHikkakeMod<T>(in T[] open, in T[] high, in T[] low, in T[] cl
             i <= patternIdx + 3 &&
             (
                 // close higher than the high of 3rd
-                patternResult > 0 && Close[i] > High[patternIdx - 1] ||
+                (patternResult > 0 && Close[i] > High[patternIdx - 1]) ||
                 // close lower than the low of 3rd
-                patternResult < 0 && Close[i] < Low[patternIdx - 1]
+                (patternResult < 0 && Close[i] < Low[patternIdx - 1])
             );
             
         return confirmation;

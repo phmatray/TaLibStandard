@@ -1,9 +1,6 @@
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
-using Demo.Extensions;
 using Demo.WIP;
-using TechnicalAnalysis.Candles;
-using TechnicalAnalysis.Common;
 
 Console.WriteLine("Demo Technical Analysis Library");
 Console.WriteLine("------------------------------");
@@ -12,7 +9,7 @@ Console.WriteLine();
 try
 {
     // Create an observable sequence that generates a new candle every second.
-    var candles = Observable.Interval(TimeSpan.FromSeconds(1))
+    IObservable<TACandle<float>> candles = Observable.Interval(TimeSpan.FromSeconds(1))
         .Select(_ => TACandleFactory.Create(RandomValue(), RandomValue(), RandomValue(), RandomValue()))
         .ObserveOn(TaskPoolScheduler.Default); // Ensure that the subscription runs on a separate thread.
 
@@ -44,7 +41,7 @@ return;
 // Generate a random floating point value.
 static float RandomValue()
 {
-    var random = new Random();
+    Random random = new();
     return (float)random.NextDouble() * 100;
 }
 

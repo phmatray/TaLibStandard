@@ -46,7 +46,7 @@ public static partial class TAFunc
 
         int emaLookback = EmaLookback(optInTimePeriod);
         int rocLookback = RocRLookback(1);
-        int totalLookback = emaLookback * 3 + rocLookback;
+        int totalLookback = (emaLookback * 3) + rocLookback;
         if (startIdx < totalLookback)
         {
             startIdx = totalLookback;
@@ -130,6 +130,6 @@ public static partial class TAFunc
 
     public static int TrixLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 1 or > 100000 ? -1 : EmaLookback(optInTimePeriod) * 3 + RocRLookback(1);
+        return optInTimePeriod is < 1 or > 100000 ? -1 : (EmaLookback(optInTimePeriod) * 3) + RocRLookback(1);
     }
 }

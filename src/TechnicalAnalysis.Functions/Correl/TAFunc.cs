@@ -86,9 +86,9 @@ public static partial class TAFunc
         double trailingX = inReal0[trailingIdx];
         double trailingY = inReal1[trailingIdx];
         trailingIdx++;
-        double tempReal = (sumX2 - sumX * sumX / optInTimePeriod)
-                          * (sumY2 - sumY * sumY / optInTimePeriod);
-        outReal[0] = tempReal >= 1E-08 ? (sumXY - sumX * sumY / optInTimePeriod) / Math.Sqrt(tempReal) : 0.0;
+        double tempReal = (sumX2 - (sumX * sumX / optInTimePeriod))
+                          * (sumY2 - (sumY * sumY / optInTimePeriod));
+        outReal[0] = tempReal >= 1E-08 ? (sumXY - (sumX * sumY / optInTimePeriod)) / Math.Sqrt(tempReal) : 0.0;
 
         int outIdx = 1;
         while (today <= endIdx)
@@ -109,11 +109,11 @@ public static partial class TAFunc
             trailingX = inReal0[trailingIdx];
             trailingY = inReal1[trailingIdx];
             trailingIdx++;
-            tempReal = (sumX2 - sumX * sumX / optInTimePeriod)
-                       * (sumY2 - sumY * sumY / optInTimePeriod);
+            tempReal = (sumX2 - (sumX * sumX / optInTimePeriod))
+                       * (sumY2 - (sumY * sumY / optInTimePeriod));
             if (tempReal >= 1E-08)
             {
-                outReal[outIdx] = (sumXY - sumX * sumY / optInTimePeriod) / Math.Sqrt(tempReal);
+                outReal[outIdx] = (sumXY - (sumX * sumY / optInTimePeriod)) / Math.Sqrt(tempReal);
                 outIdx++;
             }
             else

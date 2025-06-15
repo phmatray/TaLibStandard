@@ -149,7 +149,7 @@ public static partial class TAFunc
                 break;
             }
 
-            double adjustedPrevPeriod = 0.075 * period + 0.54;
+            double adjustedPrevPeriod = (0.075 * period) + 0.54;
             double todayValue = inReal[today];
             periodWMASub += todayValue;
             periodWMASub -= trailingWMAValue;
@@ -206,8 +206,8 @@ public static partial class TAFunc
                     hilbertIdx = 0;
                 }
 
-                q2 = 0.2 * (q1 + jI) + 0.8 * prevQ2;
-                i2 = 0.2 * (i1ForEvenPrev3 - jQ) + 0.8 * prevI2;
+                q2 = (0.2 * (q1 + jI)) + (0.8 * prevQ2);
+                i2 = (0.2 * (i1ForEvenPrev3 - jQ)) + (0.8 * prevI2);
                 i1ForOddPrev3 = i1ForOddPrev2;
                 i1ForOddPrev2 = detrender;
             }
@@ -249,14 +249,14 @@ public static partial class TAFunc
                 jQ += prevJqOdd;
                 prevJqInputOdd = q1;
                 jQ *= adjustedPrevPeriod;
-                q2 = 0.2 * (q1 + jI) + 0.8 * prevQ2;
-                i2 = 0.2 * (i1ForOddPrev3 - jQ) + 0.8 * prevI2;
+                q2 = (0.2 * (q1 + jI)) + (0.8 * prevQ2);
+                i2 = (0.2 * (i1ForOddPrev3 - jQ)) + (0.8 * prevI2);
                 i1ForEvenPrev3 = i1ForEvenPrev2;
                 i1ForEvenPrev2 = detrender;
             }
 
-            re = 0.2 * (i2 * prevI2 + q2 * prevQ2) + 0.8 * re;
-            im = 0.2 * (i2 * prevQ2 - q2 * prevI2) + 0.8 * im;
+            re = (0.2 * ((i2 * prevI2) + (q2 * prevQ2))) + (0.8 * re);
+            im = (0.2 * ((i2 * prevQ2) - (q2 * prevI2))) + (0.8 * im);
             prevQ2 = q2;
             prevI2 = i2;
             tempReal = period;
@@ -284,8 +284,8 @@ public static partial class TAFunc
                 _ => period
             };
 
-            period = 0.2 * period + 0.8 * tempReal;
-            smoothPeriod = 0.33 * period + 0.67 * smoothPeriod;
+            period = (0.2 * period) + (0.8 * tempReal);
+            smoothPeriod = (0.33 * period) + (0.67 * smoothPeriod);
             if (today >= startIdx)
             {
                 outReal[outIdx] = smoothPeriod;

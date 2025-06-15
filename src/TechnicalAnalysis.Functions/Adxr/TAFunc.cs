@@ -57,7 +57,7 @@ public static partial class TAFunc
             return Success;
         }
 
-        double[] adx = new double[endIdx - startIdx + 2 * optInTimePeriod];
+        double[] adx = new double[endIdx - startIdx + (2 * optInTimePeriod)];
 
         RetCode retCode = Adx(
             startIdx - (optInTimePeriod - 1),

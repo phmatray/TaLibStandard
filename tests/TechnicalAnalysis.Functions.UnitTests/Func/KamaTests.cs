@@ -15,7 +15,7 @@ public class KamaTests
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
-        double[] real = fixture.CreateMany<double>(100).ToArray();
+        double[] real = [.. fixture.CreateMany<double>(100)];
             
         // Act
         KamaResult actualResult = TAMath.Kama(
@@ -35,7 +35,7 @@ public class KamaTests
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
-        float[] real = fixture.CreateMany<float>(100).ToArray();
+        float[] real = [.. fixture.CreateMany<float>(100)];
             
         // Act
         KamaResult actualResult = TAMath.Kama(

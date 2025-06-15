@@ -104,8 +104,8 @@ public static partial class TAFunc
             }
 
             today++;
-            fastEMA = fastK * ad + oneMinusFastK * fastEMA;
-            slowEMA = slowK * ad + oneMinusSlowK * slowEMA;
+            fastEMA = (fastK * ad) + (oneMinusFastK * fastEMA);
+            slowEMA = (slowK * ad) + (oneMinusSlowK * slowEMA);
         }
 
         int outIdx = 0;
@@ -126,8 +126,8 @@ public static partial class TAFunc
             }
 
             today++;
-            fastEMA = fastK * ad + oneMinusFastK * fastEMA;
-            slowEMA = slowK * ad + oneMinusSlowK * slowEMA;
+            fastEMA = (fastK * ad) + (oneMinusFastK * fastEMA);
+            slowEMA = (slowK * ad) + (oneMinusSlowK * slowEMA);
             outReal[outIdx] = fastEMA - slowEMA;
             outIdx++;
         }

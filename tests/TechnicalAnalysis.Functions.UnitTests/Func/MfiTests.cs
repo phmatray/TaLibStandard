@@ -15,10 +15,10 @@ public class MfiTests
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
-        double[] high = fixture.CreateMany<double>(100).ToArray();
-        double[] low = fixture.CreateMany<double>(100).ToArray();
-        double[] close = fixture.CreateMany<double>(100).ToArray();
-        double[] volume = fixture.CreateMany<double>(100).ToArray();
+        double[] high = [.. fixture.CreateMany<double>(100)];
+        double[] low = [.. fixture.CreateMany<double>(100)];
+        double[] close = [.. fixture.CreateMany<double>(100)];
+        double[] volume = [.. fixture.CreateMany<double>(100)];
             
         // Act
         MfiResult actualResult = TAMath.Mfi(
@@ -41,10 +41,10 @@ public class MfiTests
         Fixture fixture = new();
         const int StartIdx = 0;
         const int EndIdx = 99;
-        float[] high = fixture.CreateMany<float>(100).ToArray();
-        float[] low = fixture.CreateMany<float>(100).ToArray();
-        float[] close = fixture.CreateMany<float>(100).ToArray();
-        float[] volume = fixture.CreateMany<float>(100).ToArray();
+        float[] high = [.. fixture.CreateMany<float>(100)];
+        float[] low = [.. fixture.CreateMany<float>(100)];
+        float[] close = [.. fixture.CreateMany<float>(100)];
+        float[] volume = [.. fixture.CreateMany<float>(100)];
             
         // Act
         MfiResult actualResult = TAMath.Mfi(

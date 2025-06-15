@@ -108,7 +108,7 @@ public static partial class TAFunc
                     break;
                 }
 
-                outReal[outIdx] = 2.0 * firstEMA[firstEMAIdx] - secondEMA[outIdx];
+                outReal[outIdx] = (2.0 * firstEMA[firstEMAIdx]) - secondEMA[outIdx];
                 firstEMAIdx++;
                 outIdx++;
             }

@@ -8,7 +8,7 @@ namespace TechnicalAnalysis.Candles.UnitTests;
 
 public abstract class CdlTestsBase
 {
-    protected abstract Func<int, int, float[], float[], float[], float[], IndicatorResult> SUT { get; }
+    protected abstract Func<int, int, float[], float[], float[], float[], CandleIndicatorResult> SUT { get; }
 
     protected void InvokeGeneric(string methodName, Type floatingPointType)
     {
@@ -21,11 +21,14 @@ public abstract class CdlTestsBase
     protected static float[] InitializeArray(int length, params float[] values)
     {
         int zeros = length - values.Length;
-        return Enumerable
-            .Range(0, zeros)
-            .Select(_ => 0f)
-            .Concat(values)
-            .ToArray();
+        return
+        [
+            .. Enumerable
+                        .Range(0, zeros)
+                        .Select(_ => 0f)
+,
+            .. values,
+        ];
     }
     
     [Theory]
@@ -55,10 +58,10 @@ public abstract class CdlTestsBase
     {
         // Arrange
         Fixture fixture = new();
-        float[] open = fixture.CreateMany<float>(100).ToArray();
-        float[] high = fixture.CreateMany<float>(100).ToArray();
-        float[] low = fixture.CreateMany<float>(100).ToArray();
-        float[] close = fixture.CreateMany<float>(100).ToArray();
+        float[] open = [.. fixture.CreateMany<float>(100)];
+        float[] high = [.. fixture.CreateMany<float>(100)];
+        float[] low = [.. fixture.CreateMany<float>(100)];
+        float[] close = [.. fixture.CreateMany<float>(100)];
     
         // Act
         Action act = () => SUT(10, 5, open, high, low, close);
@@ -74,10 +77,10 @@ public abstract class CdlTestsBase
     {
         // Arrange
         Fixture fixture = new();
-        float[] open = fixture.CreateMany<float>(100).ToArray();
-        float[] high = fixture.CreateMany<float>(100).ToArray();
-        float[] low = fixture.CreateMany<float>(100).ToArray();
-        float[] close = fixture.CreateMany<float>(100).ToArray();
+        float[] open = [.. fixture.CreateMany<float>(100)];
+        float[] high = [.. fixture.CreateMany<float>(100)];
+        float[] low = [.. fixture.CreateMany<float>(100)];
+        float[] close = [.. fixture.CreateMany<float>(100)];
 
         // Act
         Action act = () => SUT(-1, 0, open, high, low, close);
@@ -93,10 +96,10 @@ public abstract class CdlTestsBase
     {
         // Arrange
         Fixture fixture = new();
-        float[] open = fixture.CreateMany<float>(100).ToArray();
-        float[] high = fixture.CreateMany<float>(100).ToArray();
-        float[] low = fixture.CreateMany<float>(100).ToArray();
-        float[] close = fixture.CreateMany<float>(100).ToArray();
+        float[] open = [.. fixture.CreateMany<float>(100)];
+        float[] high = [.. fixture.CreateMany<float>(100)];
+        float[] low = [.. fixture.CreateMany<float>(100)];
+        float[] close = [.. fixture.CreateMany<float>(100)];
 
         // Act
         IndicatorResult result = SUT(0, 0, open, high, low, close);

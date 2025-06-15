@@ -39,7 +39,7 @@ public static partial class TAFunc
         int outIdx = 0;
         for (int i = startIdx; i <= endIdx; i++)
         {
-            outReal[outIdx] = (inHigh[i] + inLow[i] + inClose[i] * 2.0) / 4.0;
+            outReal[outIdx] = (inHigh[i] + inLow[i] + (inClose[i] * 2.0)) / 4.0;
             outIdx++;
         }
 

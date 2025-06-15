@@ -97,7 +97,7 @@ public class CandleHikkake<T>(in T[] open, in T[] high, in T[] low, in T[] close
                 /* search for confirmation if hikkake was no more than 3 bars ago */
                 if (GetPatternConfirmation(i, patternIdx, patternResult))
                 {
-                    outInteger[outIdx++] = patternResult + 100 * (patternResult > 0 ? 1 : -1);
+                    outInteger[outIdx++] = patternResult + (100 * (patternResult > 0 ? 1 : -1));
                     patternIdx = 0;
                 }
                 else

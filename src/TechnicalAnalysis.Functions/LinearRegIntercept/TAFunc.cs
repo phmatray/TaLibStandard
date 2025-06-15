@@ -58,8 +58,8 @@ public static partial class TAFunc
         int outIdx = 0;
         int today = startIdx;
         double sumX = optInTimePeriod * (optInTimePeriod - 1) * 0.5;
-        double sumXSqr = (double)optInTimePeriod * (optInTimePeriod - 1) * (optInTimePeriod * 2 - 1) / 6;
-        double divisor = sumX * sumX - optInTimePeriod * sumXSqr;
+        double sumXSqr = (double)optInTimePeriod * (optInTimePeriod - 1) * ((optInTimePeriod * 2) - 1) / 6;
+        double divisor = (sumX * sumX) - (optInTimePeriod * sumXSqr);
         while (true)
         {
             if (today > endIdx)
@@ -85,8 +85,8 @@ public static partial class TAFunc
                 sumXY += i * tempValue1;
             }
 
-            double m = (optInTimePeriod * sumXY - sumX * sumY) / divisor;
-            outReal[outIdx] = (sumY - m * sumX) / optInTimePeriod;
+            double m = ((optInTimePeriod * sumXY) - (sumX * sumY)) / divisor;
+            outReal[outIdx] = (sumY - (m * sumX)) / optInTimePeriod;
             outIdx++;
             today++;
         }

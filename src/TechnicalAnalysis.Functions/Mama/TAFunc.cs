@@ -158,7 +158,7 @@ public static partial class TAFunc
                 break;
             }
 
-            double adjustedPrevPeriod = 0.075 * period + 0.54;
+            double adjustedPrevPeriod = (0.075 * period) + 0.54;
             double todayValue = inReal[today];
             periodWMASub += todayValue;
             periodWMASub -= trailingWMAValue;
@@ -215,8 +215,8 @@ public static partial class TAFunc
                     hilbertIdx = 0;
                 }
 
-                q2 = 0.2 * (q1 + jI) + 0.8 * prevQ2;
-                i2 = 0.2 * (i1ForEvenPrev3 - jQ) + 0.8 * prevI2;
+                q2 = (0.2 * (q1 + jI)) + (0.8 * prevQ2);
+                i2 = (0.2 * (i1ForEvenPrev3 - jQ)) + (0.8 * prevI2);
                 i1ForOddPrev3 = i1ForOddPrev2;
                 i1ForOddPrev2 = detrender;
                 tempReal2 = i1ForEvenPrev3 != 0.0 ? Math.Atan(q1 / i1ForEvenPrev3) * rad2Deg : 0.0;
@@ -259,8 +259,8 @@ public static partial class TAFunc
                 jQ += prevJQOdd;
                 prevJQInputOdd = q1;
                 jQ *= adjustedPrevPeriod;
-                q2 = 0.2 * (q1 + jI) + 0.8 * prevQ2;
-                i2 = 0.2 * (i1ForOddPrev3 - jQ) + 0.8 * prevI2;
+                q2 = (0.2 * (q1 + jI)) + (0.8 * prevQ2);
+                i2 = (0.2 * (i1ForOddPrev3 - jQ)) + (0.8 * prevI2);
                 i1ForEvenPrev3 = i1ForEvenPrev2;
                 i1ForEvenPrev2 = detrender;
                 tempReal2 = i1ForOddPrev3 != 0.0 ? Math.Atan(q1 / i1ForOddPrev3) * rad2Deg : 0.0;
@@ -286,9 +286,9 @@ public static partial class TAFunc
                 tempReal = optInFastLimit;
             }
 
-            mama = tempReal * todayValue + (1.0 - tempReal) * mama;
+            mama = (tempReal * todayValue) + ((1.0 - tempReal) * mama);
             tempReal *= 0.5;
-            fama = tempReal * mama + (1.0 - tempReal) * fama;
+            fama = (tempReal * mama) + ((1.0 - tempReal) * fama);
             if (today >= startIdx)
             {
                 outMAMA[outIdx] = mama;
@@ -296,8 +296,8 @@ public static partial class TAFunc
                 outIdx++;
             }
 
-            re = 0.2 * (i2 * prevI2 + q2 * prevQ2) + 0.8 * re;
-            im = 0.2 * (i2 * prevQ2 - q2 * prevI2) + 0.8 * im;
+            re = (0.2 * ((i2 * prevI2) + (q2 * prevQ2))) + (0.8 * re);
+            im = (0.2 * ((i2 * prevQ2) - (q2 * prevI2))) + (0.8 * im);
             prevQ2 = q2;
             prevI2 = i2;
             tempReal = period;
@@ -325,7 +325,7 @@ public static partial class TAFunc
                 _ => period
             };
 
-            period = 0.2 * period + 0.8 * tempReal;
+            period = (0.2 * period) + (0.8 * tempReal);
             today++;
         }
 
