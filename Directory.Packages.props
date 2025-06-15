@@ -24,7 +24,7 @@
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.1" />
     
     <!-- Demo Dependencies -->
-    <PackageVersion Include="Atypical.TechnicalAnalysis.Candles" Version="0.0.0-alpha.0.168" />
+    <PackageVersion Include="Atypical.TechnicalAnalysis.Candles" Version="0.0.0-alpha.0.173" />
     <PackageVersion Include="System.Reactive" Version="6.0.1" />
     <PackageVersion Include="System.Reactive.Linq" Version="6.0.1" />
     <PackageVersion Include="System.Reactive.Observable.Aliases" Version="6.0.1" />
