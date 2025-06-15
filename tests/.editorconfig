@@ -230,6 +230,9 @@ dotnet_diagnostic.IDE0005.severity = suggestion
 # IDE0055: Fix formatting
 dotnet_diagnostic.IDE0055.severity = none
 
+# IDE0058: Expression value is never used
+dotnet_diagnostic.IDE0058.severity = none
+
 # IDE0060: Remove unused parameter
 dotnet_diagnostic.IDE0060.severity = warning
 

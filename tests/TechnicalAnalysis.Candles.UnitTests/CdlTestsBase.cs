@@ -17,20 +17,19 @@ public abstract class CdlTestsBase
             .MakeGenericMethod(floatingPointType)
             .Invoke(this, null);
     }
-    
+
     protected static float[] InitializeArray(int length, params float[] values)
     {
         int zeros = length - values.Length;
         return
         [
             .. Enumerable
-                        .Range(0, zeros)
-                        .Select(_ => 0f)
-,
+                .Range(0, zeros)
+                .Select(_ => 0f),
             .. values,
         ];
     }
-    
+
     [Theory]
     [InlineData("Open")]
     [InlineData("High")]
@@ -45,7 +44,7 @@ public abstract class CdlTestsBase
         float[]? close = nullArray == "Close" ? null :[];
 
         // Act & Assert
-        var exception = Should.Throw<ArgumentNullException>(() => SUT(0, 0, open, high, low, close));
+        ArgumentNullException exception = Should.Throw<ArgumentNullException>(() => SUT(0, 0, open!, high!, low!, close!));
         exception.Message.ShouldBe($"Value cannot be null. (Parameter '{nullArray}')");
     }
 
@@ -60,7 +59,7 @@ public abstract class CdlTestsBase
         float[] close = [.. fixture.CreateMany<float>(100)];
     
         // Act & Assert
-        var exception = Should.Throw<ArgumentOutOfRangeException>(() => SUT(10, 5, open, high, low, close));
+        ArgumentOutOfRangeException exception = Should.Throw<ArgumentOutOfRangeException>(() => SUT(10, 5, open, high, low, close));
         exception.Message.ShouldContain("endIdx - startIdx ('-5') must be a non-negative value.");
     }
     
@@ -75,7 +74,7 @@ public abstract class CdlTestsBase
         float[] close = [.. fixture.CreateMany<float>(100)];
 
         // Act & Assert
-        var exception = Should.Throw<ArgumentOutOfRangeException>(() => SUT(-1, 0, open, high, low, close));
+        ArgumentOutOfRangeException exception = Should.Throw<ArgumentOutOfRangeException>(() => SUT(-1, 0, open, high, low, close));
         exception.Message.ShouldContain("startIdx ('-1') must be a non-negative value.");
     }
 

@@ -65,14 +65,14 @@ public class ZigZagTests
         // Create an uptrend then downtrend pattern
         for (int i = 0; i < 10; i++)
         {
-            high[i] = 100 + i * 2; // Rising highs
-            low[i] = 98 + i * 2;   // Rising lows
+            high[i] = 100 + (i * 2); // Rising highs
+            low[i] = 98 + (i * 2);   // Rising lows
         }
         
         for (int i = 10; i < 20; i++)
         {
-            high[i] = 120 - (i - 10) * 2; // Falling highs
-            low[i] = 118 - (i - 10) * 2;  // Falling lows
+            high[i] = 120 - ((i - 10) * 2); // Falling highs
+            low[i] = 118 - ((i - 10) * 2);  // Falling lows
         }
         
         // Act
