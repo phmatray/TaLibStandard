@@ -7,6 +7,6 @@
 global using System.Numerics;
 global using System.Reflection;
 global using AutoFixture;
-global using FluentAssertions;
+global using Shouldly;
 global using TechnicalAnalysis.Common;
 global using Xunit;

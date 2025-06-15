@@ -26,8 +26,8 @@ public class MultTests
             real1);
 
         // Assert
-        actualResult.Should().NotBeNull();
-        actualResult.RetCode.Should().Be(RetCode.Success);
+        actualResult.ShouldNotBeNull();
+        actualResult.RetCode.ShouldBe(RetCode.Success);
     }
         
     [Fact]
@@ -48,7 +48,7 @@ public class MultTests
             real1);
 
         // Assert
-        actualResult.Should().NotBeNull();
-        actualResult.RetCode.Should().Be(RetCode.Success);
+        actualResult.ShouldNotBeNull();
+        actualResult.RetCode.ShouldBe(RetCode.Success);
     }
 }

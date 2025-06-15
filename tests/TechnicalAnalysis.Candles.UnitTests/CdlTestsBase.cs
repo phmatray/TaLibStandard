@@ -44,13 +44,9 @@ public abstract class CdlTestsBase
         float[]? low = nullArray == "Low" ? null : [];
         float[]? close = nullArray == "Close" ? null :[];
 
-        // Act
-        Action act = () => SUT(0, 0, open, high, low, close);
-        
-        // Assert
-        act.Should()
-            .ThrowExactly<ArgumentNullException>()
-            .WithMessage($"Value cannot be null. (Parameter '{nullArray}')");
+        // Act & Assert
+        var exception = Should.Throw<ArgumentNullException>(() => SUT(0, 0, open, high, low, close));
+        exception.Message.ShouldBe($"Value cannot be null. (Parameter '{nullArray}')");
     }
 
     [Fact]
@@ -63,13 +59,9 @@ public abstract class CdlTestsBase
         float[] low = [.. fixture.CreateMany<float>(100)];
         float[] close = [.. fixture.CreateMany<float>(100)];
     
-        // Act
-        Action act = () => SUT(10, 5, open, high, low, close);
-    
-        // Assert
-        act.Should()
-            .ThrowExactly<ArgumentOutOfRangeException>()
-            .WithMessage("*endIdx - startIdx ('-5') must be a non-negative value.*");
+        // Act & Assert
+        var exception = Should.Throw<ArgumentOutOfRangeException>(() => SUT(10, 5, open, high, low, close));
+        exception.Message.ShouldContain("endIdx - startIdx ('-5') must be a non-negative value.");
     }
     
     [Fact]
@@ -82,13 +74,9 @@ public abstract class CdlTestsBase
         float[] low = [.. fixture.CreateMany<float>(100)];
         float[] close = [.. fixture.CreateMany<float>(100)];
 
-        // Act
-        Action act = () => SUT(-1, 0, open, high, low, close);
-
-        // Assert
-        act.Should()
-            .ThrowExactly<ArgumentOutOfRangeException>()
-            .WithMessage("*startIdx ('-1') must be a non-negative value.*");
+        // Act & Assert
+        var exception = Should.Throw<ArgumentOutOfRangeException>(() => SUT(-1, 0, open, high, low, close));
+        exception.Message.ShouldContain("startIdx ('-1') must be a non-negative value.");
     }
 
     [Fact]
@@ -105,6 +93,6 @@ public abstract class CdlTestsBase
         IndicatorResult result = SUT(0, 0, open, high, low, close);
 
         // Assert
-        result.RetCode.Should().Be(RetCode.Success);
+        result.RetCode.ShouldBe(RetCode.Success);
     }
 }

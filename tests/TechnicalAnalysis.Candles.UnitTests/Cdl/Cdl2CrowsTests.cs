@@ -25,7 +25,7 @@ public class Cdl2CrowsTests : CdlTestsBase
         bool isPatternDetected = crows.GetPatternRecognition(2);
 
         // Assert
-        isPatternDetected.Should().BeTrue();
+        isPatternDetected.ShouldBeTrue();
     }
 
     [Fact]
@@ -45,12 +45,12 @@ public class Cdl2CrowsTests : CdlTestsBase
             StartIdx, EndIdx, open, high, low, close);
 
         // Assert
-        result.Should().NotBeNull();
-        result.RetCode.Should().Be(RetCode.Success);
-        result.Integers.Length.Should().Be(3);
-        result.Integers[0].Should().Be(0);
-        result.Integers[1].Should().Be(0);
-        result.Integers[2].Should().Be(-100);
+        result.ShouldNotBeNull();
+        result.RetCode.ShouldBe(RetCode.Success);
+        result.Integers.Length.ShouldBe(3);
+        result.Integers[0].ShouldBe(0);
+        result.Integers[1].ShouldBe(0);
+        result.Integers[2].ShouldBe(-100);
     }
 
     [Theory]
@@ -80,7 +80,7 @@ public class Cdl2CrowsTests : CdlTestsBase
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert
-        result.Should().NotBeNull();
-        result.RetCode.Should().Be(RetCode.Success);
+        result.ShouldNotBeNull();
+        result.RetCode.ShouldBe(RetCode.Success);
     }
 }

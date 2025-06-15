@@ -30,8 +30,8 @@ public class AvgPriceTests
             close);
 
         // Assert
-        actualResult.Should().NotBeNull();
-        actualResult.RetCode.Should().Be(RetCode.Success);
+        actualResult.ShouldNotBeNull();
+        actualResult.RetCode.ShouldBe(RetCode.Success);
     }
         
     [Fact]
@@ -56,7 +56,7 @@ public class AvgPriceTests
             close);
 
         // Assert
-        actualResult.Should().NotBeNull();
-        actualResult.RetCode.Should().Be(RetCode.Success);
+        actualResult.ShouldNotBeNull();
+        actualResult.RetCode.ShouldBe(RetCode.Success);
     }
 }

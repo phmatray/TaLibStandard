@@ -5,6 +5,6 @@
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
 global using AutoFixture;
-global using FluentAssertions;
+global using Shouldly;
 global using TechnicalAnalysis.Common;
 global using Xunit;

@@ -92,7 +92,7 @@
   <!-- Test Package References -->
   <ItemGroup Condition="'$(IsTestProject)' == 'true'">
     <PackageReference Include="AutoFixture" />
-    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="Shouldly" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
     <PackageReference Include="xunit.v3" />
@@ -113,7 +113,7 @@
   <ItemGroup Condition="'$(IsTestProject)' == 'true'">
     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" Condition="Exists('xunit.runner.json')" />
     <Using Include="Xunit" />
-    <Using Include="FluentAssertions" />
+    <Using Include="Shouldly" />
   </ItemGroup>
   
 </Project>

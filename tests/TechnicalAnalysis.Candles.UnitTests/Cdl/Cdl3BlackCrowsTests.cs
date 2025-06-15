@@ -23,7 +23,7 @@ public class Cdl3BlackCrowsTests : CdlTestsBase
     //     bool isPatternDetected = crows.GetPatternRecognition(2);
     //
     //     // Assert
-    //     isPatternDetected.Should().BeTrue();
+    //     isPatternDetected.ShouldBeTrue();
     // }
     
     [Theory]
@@ -53,7 +53,7 @@ public class Cdl3BlackCrowsTests : CdlTestsBase
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert
-        result.Should().NotBeNull();
-        result.RetCode.Should().Be(RetCode.Success);
+        result.ShouldNotBeNull();
+        result.RetCode.ShouldBe(RetCode.Success);
     }
 }

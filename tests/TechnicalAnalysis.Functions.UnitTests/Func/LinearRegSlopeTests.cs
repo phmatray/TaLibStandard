@@ -24,8 +24,8 @@ public class LinearRegSlopeTests
             real);
 
         // Assert
-        actualResult.Should().NotBeNull();
-        actualResult.RetCode.Should().Be(RetCode.Success);
+        actualResult.ShouldNotBeNull();
+        actualResult.RetCode.ShouldBe(RetCode.Success);
     }
         
     [Fact]
@@ -44,7 +44,7 @@ public class LinearRegSlopeTests
             real);
 
         // Assert
-        actualResult.Should().NotBeNull();
-        actualResult.RetCode.Should().Be(RetCode.Success);
+        actualResult.ShouldNotBeNull();
+        actualResult.RetCode.ShouldBe(RetCode.Success);
     }
 }

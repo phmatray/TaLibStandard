@@ -38,7 +38,7 @@ public class CdlTasukiGapTests : CdlTestsBase
             StartIdx, EndIdx, open, high, low, close);
         
         // Assert
-        result.Should().NotBeNull();
-        result.RetCode.Should().Be(RetCode.Success);
+        result.ShouldNotBeNull();
+        result.RetCode.ShouldBe(RetCode.Success);
     }
 }
