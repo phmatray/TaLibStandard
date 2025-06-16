@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly"/>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" PrivateAssets="all"/>
+    <PackageReference Include="MudBlazor" />
+    <PackageReference Include="ApexCharts.Blazor" />
+    <PackageReference Include="System.Text.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\TechnicalAnalysis.Common\TechnicalAnalysis.Common.csproj" />
+    <ProjectReference Include="..\src\TechnicalAnalysis.Functions\TechnicalAnalysis.Functions.csproj" />
+    <ProjectReference Include="..\src\TechnicalAnalysis.Candles\TechnicalAnalysis.Candles.csproj" />
+  </ItemGroup>
+
+</Project>

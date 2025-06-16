@@ -1,0 +1,216 @@
+@page "/math"
+@using TechnicalAnalysis.Functions
+@using System
+
+<PageTitle>Math Functions - TaLibStandard Demo</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Mathematical Functions</MudText>
+
+<MudGrid>
+    <MudItem xs="12" md="6">
+        <MudCard>
+            <MudCardContent>
+                <MudText Typo="Typo.h6" GutterBottom="true">Trigonometric Functions</MudText>
+                <MudTextField @bind-Value="_angleInDegrees" Label="Angle (degrees)" Variant="Variant.Outlined" />
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CalculateTrig" Class="mt-4">
+                    Calculate
+                </MudButton>
+                
+                @if (_trigCalculated)
+                {
+                    <MudSimpleTable Dense="true" Hover="true" Class="mt-4">
+                        <tbody>
+                            <tr>
+                                <td>Radians</td>
+                                <td>@_radians.ToString("F4")</td>
+                            </tr>
+                            <tr>
+                                <td>Sin</td>
+                                <td>@_sinResult.ToString("F4")</td>
+                            </tr>
+                            <tr>
+                                <td>Cos</td>
+                                <td>@_cosResult.ToString("F4")</td>
+                            </tr>
+                            <tr>
+                                <td>Tan</td>
+                                <td>@_tanResult.ToString("F4")</td>
+                            </tr>
+                        </tbody>
+                    </MudSimpleTable>
+                }
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    
+    <MudItem xs="12" md="6">
+        <MudCard>
+            <MudCardContent>
+                <MudText Typo="Typo.h6" GutterBottom="true">Vector Operations</MudText>
+                <MudTextField @bind-Value="_vectorSize" Label="Vector Size" Variant="Variant.Outlined" />
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="GenerateVectorDemo" Class="mt-4">
+                    Generate Demo
+                </MudButton>
+                
+                @if (_vectorCalculated)
+                {
+                    <MudText Typo="Typo.subtitle2" Class="mt-4">Sample Vector: [@string.Join(", ", _vector1.Take(5).Select(v => v.ToString("F2")))]...</MudText>
+                    
+                    <MudSimpleTable Dense="true" Hover="true" Class="mt-4">
+                        <tbody>
+                            <tr>
+                                <td>Sum</td>
+                                <td>@_vectorSum.ToString("F2")</td>
+                            </tr>
+                            <tr>
+                                <td>Min</td>
+                                <td>@_vectorMin.ToString("F2")</td>
+                            </tr>
+                            <tr>
+                                <td>Max</td>
+                                <td>@_vectorMax.ToString("F2")</td>
+                            </tr>
+                            <tr>
+                                <td>Average</td>
+                                <td>@(_vectorSum / _vectorSize).ToString("F2")</td>
+                            </tr>
+                        </tbody>
+                    </MudSimpleTable>
+                }
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    
+    <MudItem xs="12">
+        <MudCard>
+            <MudCardContent>
+                <MudText Typo="Typo.h6" GutterBottom="true">Common Math Operations</MudText>
+                <MudGrid>
+                    <MudItem xs="12" md="4">
+                        <MudTextField @bind-Value="_number1" Label="Number 1" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" md="4">
+                        <MudTextField @bind-Value="_number2" Label="Number 2" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" md="4">
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CalculateMathOps" FullWidth="true">
+                            Calculate
+                        </MudButton>
+                    </MudItem>
+                </MudGrid>
+                
+                @if (_mathOpsCalculated)
+                {
+                    <MudGrid Class="mt-4">
+                        <MudItem xs="6" md="3">
+                            <MudPaper Class="pa-4 text-center" Elevation="2">
+                                <MudText Typo="Typo.subtitle2">Addition</MudText>
+                                <MudText Typo="Typo.h6">@(_number1 + _number2)</MudText>
+                            </MudPaper>
+                        </MudItem>
+                        <MudItem xs="6" md="3">
+                            <MudPaper Class="pa-4 text-center" Elevation="2">
+                                <MudText Typo="Typo.subtitle2">Subtraction</MudText>
+                                <MudText Typo="Typo.h6">@(_number1 - _number2)</MudText>
+                            </MudPaper>
+                        </MudItem>
+                        <MudItem xs="6" md="3">
+                            <MudPaper Class="pa-4 text-center" Elevation="2">
+                                <MudText Typo="Typo.subtitle2">Multiplication</MudText>
+                                <MudText Typo="Typo.h6">@(_number1 * _number2)</MudText>
+                            </MudPaper>
+                        </MudItem>
+                        <MudItem xs="6" md="3">
+                            <MudPaper Class="pa-4 text-center" Elevation="2">
+                                <MudText Typo="Typo.subtitle2">Division</MudText>
+                                <MudText Typo="Typo.h6">@(_number2 != 0 ? (_number1 / _number2).ToString("F4") : "N/A")</MudText>
+                            </MudPaper>
+                        </MudItem>
+                        <MudItem xs="6" md="3">
+                            <MudPaper Class="pa-4 text-center" Elevation="2">
+                                <MudText Typo="Typo.subtitle2">Min</MudText>
+                                <MudText Typo="Typo.h6">@System.Math.Min(_number1, _number2)</MudText>
+                            </MudPaper>
+                        </MudItem>
+                        <MudItem xs="6" md="3">
+                            <MudPaper Class="pa-4 text-center" Elevation="2">
+                                <MudText Typo="Typo.subtitle2">Max</MudText>
+                                <MudText Typo="Typo.h6">@System.Math.Max(_number1, _number2)</MudText>
+                            </MudPaper>
+                        </MudItem>
+                        <MudItem xs="6" md="3">
+                            <MudPaper Class="pa-4 text-center" Elevation="2">
+                                <MudText Typo="Typo.subtitle2">Sqrt(@_number1)</MudText>
+                                <MudText Typo="Typo.h6">@System.Math.Sqrt(_number1).ToString("F4")</MudText>
+                            </MudPaper>
+                        </MudItem>
+                        <MudItem xs="6" md="3">
+                            <MudPaper Class="pa-4 text-center" Elevation="2">
+                                <MudText Typo="Typo.subtitle2">Power</MudText>
+                                <MudText Typo="Typo.h6">@System.Math.Pow(_number1, _number2).ToString("F2")</MudText>
+                            </MudPaper>
+                        </MudItem>
+                    </MudGrid>
+                }
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+@code {
+    // Trigonometric
+    private double _angleInDegrees = 45;
+    private double _radians;
+    private double _sinResult;
+    private double _cosResult;
+    private double _tanResult;
+    private bool _trigCalculated;
+    
+    // Vector operations
+    private int _vectorSize = 100;
+    private double[] _vector1 = Array.Empty<double>();
+    private double _vectorSum;
+    private double _vectorMin;
+    private double _vectorMax;
+    private bool _vectorCalculated;
+    
+    // Math operations
+    private double _number1 = 10;
+    private double _number2 = 3;
+    private bool _mathOpsCalculated;
+    
+    private void CalculateTrig()
+    {
+        _radians = _angleInDegrees * System.Math.PI / 180;
+        
+        // Use System.Math for simple trigonometric calculations
+        _sinResult = System.Math.Sin(_radians);
+        _cosResult = System.Math.Cos(_radians);
+        _tanResult = System.Math.Tan(_radians);
+        
+        _trigCalculated = true;
+    }
+    
+    private void GenerateVectorDemo()
+    {
+        // Generate random vector
+        var random = new Random();
+        _vector1 = new double[_vectorSize];
+        for (int i = 0; i < _vectorSize; i++)
+        {
+            _vector1[i] = random.NextDouble() * 100;
+        }
+        
+        // Use LINQ for simple calculations
+        _vectorSum = _vector1.Sum();
+        _vectorMin = _vector1.Min();
+        _vectorMax = _vector1.Max();
+        
+        _vectorCalculated = true;
+    }
+    
+    private void CalculateMathOps()
+    {
+        _mathOpsCalculated = true;
+    }
+}

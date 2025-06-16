@@ -1,0 +1,134 @@
+@page "/about"
+
+<PageTitle>About - TaLibStandard Demo</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">About TaLibStandard</MudText>
+
+<MudCard Class="mb-4">
+    <MudCardContent>
+        <MudText Typo="Typo.h6" GutterBottom="true">Overview</MudText>
+        <MudText Typo="Typo.body1">
+            TaLibStandard is a comprehensive .NET library for technical analysis, providing over 150 indicators 
+            and 60+ candlestick pattern recognition functions. It's a modern, type-safe implementation optimized 
+            for performance and ease of use.
+        </MudText>
+    </MudCardContent>
+</MudCard>
+
+<MudGrid>
+    <MudItem xs="12" md="6">
+        <MudCard>
+            <MudCardContent>
+                <MudText Typo="Typo.h6" GutterBottom="true">Key Features</MudText>
+                <MudList T="string" Dense="true">
+                    <MudListItem Icon="@Icons.Material.Filled.Check">
+                        <MudText>150+ Technical Indicators</MudText>
+                    </MudListItem>
+                    <MudListItem Icon="@Icons.Material.Filled.Check">
+                        <MudText>60+ Candlestick Patterns</MudText>
+                    </MudListItem>
+                    <MudListItem Icon="@Icons.Material.Filled.Check">
+                        <MudText>Generic Type Support</MudText>
+                    </MudListItem>
+                    <MudListItem Icon="@Icons.Material.Filled.Check">
+                        <MudText>High Performance</MudText>
+                    </MudListItem>
+                    <MudListItem Icon="@Icons.Material.Filled.Check">
+                        <MudText>Comprehensive Documentation</MudText>
+                    </MudListItem>
+                    <MudListItem Icon="@Icons.Material.Filled.Check">
+                        <MudText>Cross-Platform Support</MudText>
+                    </MudListItem>
+                </MudList>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    
+    <MudItem xs="12" md="6">
+        <MudCard>
+            <MudCardContent>
+                <MudText Typo="Typo.h6" GutterBottom="true">Technical Indicators</MudText>
+                <MudText Typo="Typo.subtitle2" Class="mt-2">Moving Averages</MudText>
+                <MudText Typo="Typo.body2">SMA, EMA, WMA, TEMA, TRIMA, KAMA, MAMA</MudText>
+                
+                <MudText Typo="Typo.subtitle2" Class="mt-3">Momentum Indicators</MudText>
+                <MudText Typo="Typo.body2">RSI, MACD, Stochastic, Williams %R, CCI, MFI</MudText>
+                
+                <MudText Typo="Typo.subtitle2" Class="mt-3">Volatility Indicators</MudText>
+                <MudText Typo="Typo.body2">Bollinger Bands, ATR, Standard Deviation</MudText>
+                
+                <MudText Typo="Typo.subtitle2" Class="mt-3">Volume Indicators</MudText>
+                <MudText Typo="Typo.body2">OBV, AD Line, CMF</MudText>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+<MudCard Class="mt-4">
+    <MudCardContent>
+        <MudText Typo="Typo.h6" GutterBottom="true">Installation</MudText>
+        <MudPaper Class="pa-4" Elevation="0" Style="background-color: var(--mud-palette-background-grey);">
+            <code>dotnet add package TechnicalAnalysis.Functions</code><br/>
+            <code>dotnet add package TechnicalAnalysis.Candles</code>
+        </MudPaper>
+    </MudCardContent>
+</MudCard>
+
+<MudCard Class="mt-4">
+    <MudCardContent>
+        <MudText Typo="Typo.h6" GutterBottom="true">Quick Example</MudText>
+        <MudPaper Class="pa-4" Elevation="0" Style="background-color: var(--mud-palette-background-grey);">
+            <pre><code>// Calculate Simple Moving Average
+var closes = new double[] { 10.5, 11.2, 10.8, 11.5, 12.1 };
+var smaOutput = new double[closes.Length];
+
+var result = TAFunc.Sma(
+    startIdx: 0,
+    endIdx: closes.Length - 1,
+    inReal: closes,
+    optInTimePeriod: 3,
+    outReal: ref smaOutput[0],
+    outBegIdx: out int begIdx,
+    outNbElement: out int nbElement
+);
+
+// Detect Doji candlestick pattern
+var dojiOutput = new int[closes.Length];
+var pattern = TACandle.CdlDoji(
+    0, closes.Length - 1,
+    open, high, low, close,
+    ref dojiOutput[0],
+    out begIdx, out nbElement
+);</code></pre>
+        </MudPaper>
+    </MudCardContent>
+</MudCard>
+
+<MudCard Class="mt-4">
+    <MudCardContent>
+        <MudText Typo="Typo.h6" GutterBottom="true">Resources</MudText>
+        <MudList T="string" Dense="true">
+            <MudListItem>
+                <MudLink Href="https://github.com/phmatray/TaLibStandard" Target="_blank">
+                    <MudIcon Icon="@Icons.Custom.Brands.GitHub" Size="Size.Small" Class="mr-2" />
+                    GitHub Repository
+                </MudLink>
+            </MudListItem>
+            <MudListItem>
+                <MudLink Href="https://www.nuget.org/packages/TechnicalAnalysis.Functions" Target="_blank">
+                    <MudIcon Icon="@Icons.Material.Filled.Code" Size="Size.Small" Class="mr-2" />
+                    NuGet Package
+                </MudLink>
+            </MudListItem>
+            <MudListItem>
+                <MudLink Href="https://github.com/phmatray/TaLibStandard/wiki" Target="_blank">
+                    <MudIcon Icon="@Icons.Material.Filled.MenuBook" Size="Size.Small" Class="mr-2" />
+                    Documentation
+                </MudLink>
+            </MudListItem>
+        </MudList>
+    </MudCardContent>
+</MudCard>
+
+@code {
+}

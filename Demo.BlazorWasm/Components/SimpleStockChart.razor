@@ -1,0 +1,235 @@
+@using Demo.BlazorWasm.Models
+@using Demo.BlazorWasm.Services
+
+<MudCard>
+    <MudCardContent>
+        <MudText Typo="Typo.h6" GutterBottom="true">@Title</MudText>
+        
+        @if (StockData != null && StockData.Any())
+        {
+            <div style="height: @(Height)px; overflow-x: auto; overflow-y: hidden;">
+                <svg width="@(Math.Max(800, StockData.Count * 10))" height="@Height" style="border: 1px solid #ddd;">
+                    @{
+                        var chartHeight = Height - 40;
+                        var minPrice = (double)StockData.Min(d => d.Low) * 0.95;
+                        var maxPrice = (double)StockData.Max(d => d.High) * 1.05;
+                        
+                        // Adjust range if we have indicator data
+                        if (IndicatorData != null && IndicatorData.Any())
+                        {
+                            minPrice = Math.Min(minPrice, IndicatorData.Min() * 0.95);
+                            maxPrice = Math.Max(maxPrice, IndicatorData.Max() * 1.05);
+                        }
+                        if (UpperBandData != null && UpperBandData.Any())
+                        {
+                            maxPrice = Math.Max(maxPrice, UpperBandData.Max() * 1.05);
+                        }
+                        if (LowerBandData != null && LowerBandData.Any())
+                        {
+                            minPrice = Math.Min(minPrice, LowerBandData.Min() * 0.95);
+                        }
+                        
+                        var priceRange = maxPrice - minPrice;
+                        var spacing = 10;
+                        
+                        // Draw price line
+                        var pricePath = string.Join(" ", StockData.Select((d, i) => 
+                        {
+                            var x = i * spacing + 5;
+                            var y = 20 + (1 - ((double)d.Close - minPrice) / priceRange) * chartHeight;
+                            return $"{(i == 0 ? "M" : "L")} {x} {y}";
+                        }));
+                        
+                        <path d="@pricePath" stroke="#1976d2" stroke-width="2" fill="none" />
+                        
+                        // Draw indicator line
+                        if (IndicatorData != null && IndicatorData.Any())
+                        {
+                            var indicatorPath = string.Join(" ", IndicatorData.Select((d, i) => 
+                            {
+                                var x = (i + BegIdx) * spacing + 5;
+                                var y = 20 + (1 - (d - minPrice) / priceRange) * chartHeight;
+                                return $"{(i == 0 ? "M" : "L")} {x} {y}";
+                            }));
+                            
+                            <path d="@indicatorPath" stroke="#ff6f00" stroke-width="2" fill="none" />
+                        }
+                        
+                        // Draw upper band
+                        if (UpperBandData != null && UpperBandData.Any())
+                        {
+                            var upperPath = string.Join(" ", UpperBandData.Select((d, i) => 
+                            {
+                                var x = (i + BegIdx) * spacing + 5;
+                                var y = 20 + (1 - (d - minPrice) / priceRange) * chartHeight;
+                                return $"{(i == 0 ? "M" : "L")} {x} {y}";
+                            }));
+                            
+                            <path d="@upperPath" stroke="#4caf50" stroke-width="1" fill="none" stroke-dasharray="5,5" />
+                        }
+                        
+                        // Draw lower band
+                        if (LowerBandData != null && LowerBandData.Any())
+                        {
+                            var lowerPath = string.Join(" ", LowerBandData.Select((d, i) => 
+                            {
+                                var x = (i + BegIdx) * spacing + 5;
+                                var y = 20 + (1 - (d - minPrice) / priceRange) * chartHeight;
+                                return $"{(i == 0 ? "M" : "L")} {x} {y}";
+                            }));
+                            
+                            <path d="@lowerPath" stroke="#f44336" stroke-width="1" fill="none" stroke-dasharray="5,5" />
+                        }
+                        
+                        // Y-axis labels
+                        @for (int i = 0; i <= 5; i++)
+                        {
+                            var price = minPrice + (priceRange * (5 - i) / 5);
+                            var y = 20 + (i * chartHeight / 5);
+                            <g>
+                                <text x="@(StockData.Count * spacing + 20)" y="@y" 
+                                      font-size="10" text-anchor="start" fill="#666">
+                                    @price.ToString("F2")
+                                </text>
+                            </g>
+                        }
+                    }
+                    
+                    <!-- Legend -->
+                    <g>
+                        <text x="20" y="15" font-size="12" fill="#1976d2">Price</text>
+                    </g>
+                    @if (!string.IsNullOrEmpty(IndicatorName))
+                    {
+                        <g>
+                            <text x="80" y="15" font-size="12" fill="#ff6f00">@IndicatorName</text>
+                        </g>
+                    }
+                </svg>
+            </div>
+            
+            @if (SecondaryIndicatorData != null && SecondaryIndicatorData.Any())
+            {
+                <MudText Typo="Typo.subtitle2" Class="mt-4">@SecondaryIndicatorName</MudText>
+                <div style="height: 200px; overflow-x: auto; overflow-y: hidden;">
+                    <svg width="@(Math.Max(800, StockData.Count * 10))" height="200" style="border: 1px solid #ddd;">
+                        @{
+                            var chartHeight2 = 160;
+                            var minValue = SecondaryIndicatorData.Min() * 0.95;
+                            var maxValue = SecondaryIndicatorData.Max() * 1.05;
+                            
+                            if (SignalData != null && SignalData.Any())
+                            {
+                                minValue = Math.Min(minValue, SignalData.Min() * 0.95);
+                                maxValue = Math.Max(maxValue, SignalData.Max() * 1.05);
+                            }
+                            
+                            // For RSI, set fixed range
+                            if (SecondaryIndicatorName == "RSI")
+                            {
+                                minValue = 0;
+                                maxValue = 100;
+                            }
+                            
+                            var valueRange = maxValue - minValue;
+                            var spacing2 = 10;
+                            
+                            // Draw main line
+                            var mainPath = string.Join(" ", SecondaryIndicatorData.Select((d, i) => 
+                            {
+                                var x = (i + BegIdx) * spacing2 + 5;
+                                var y = 20 + (1 - (d - minValue) / valueRange) * chartHeight2;
+                                return $"{(i == 0 ? "M" : "L")} {x} {y}";
+                            }));
+                            
+                            <path d="@mainPath" stroke="#1976d2" stroke-width="2" fill="none" />
+                            
+                            // Draw signal line
+                            if (SignalData != null && SignalData.Any())
+                            {
+                                var signalPath = string.Join(" ", SignalData.Select((d, i) => 
+                                {
+                                    var x = (i + BegIdx) * spacing2 + 5;
+                                    var y = 20 + (1 - (d - minValue) / valueRange) * chartHeight2;
+                                    return $"{(i == 0 ? "M" : "L")} {x} {y}";
+                                }));
+                                
+                                <path d="@signalPath" stroke="#ff6f00" stroke-width="2" fill="none" />
+                            }
+                            
+                            // Draw histogram
+                            if (HistogramData != null && HistogramData.Any())
+                            {
+                                var zeroY = 20 + (1 - (0 - minValue) / valueRange) * chartHeight2;
+                                
+                                for (int i = 0; i < HistogramData.Length; i++)
+                                {
+                                    var x = (i + BegIdx) * spacing2 + 5;
+                                    var value = HistogramData[i];
+                                    var y = 20 + (1 - (value - minValue) / valueRange) * chartHeight2;
+                                    var barHeight = Math.Abs(y - zeroY);
+                                    var barY = Math.Min(y, zeroY);
+                                    var color = value >= 0 ? "#4caf50" : "#f44336";
+                                    
+                                    <rect x="@(x - 3)" y="@barY" width="6" height="@barHeight" 
+                                          fill="@color" opacity="0.5" />
+                                }
+                            }
+                            
+                            // RSI levels
+                            if (SecondaryIndicatorName == "RSI")
+                            {
+                                var y70 = 20 + (1 - (70 - minValue) / valueRange) * chartHeight2;
+                                var y30 = 20 + (1 - (30 - minValue) / valueRange) * chartHeight2;
+                                
+                                <line x1="0" y1="@y70" x2="@(StockData.Count * spacing2)" y2="@y70" 
+                                      stroke="#ff0000" stroke-width="1" stroke-dasharray="5,5" opacity="0.5" />
+                                <line x1="0" y1="@y30" x2="@(StockData.Count * spacing2)" y2="@y30" 
+                                      stroke="#00ff00" stroke-width="1" stroke-dasharray="5,5" opacity="0.5" />
+                                      
+                                <g>
+                                    <text x="5" y="@(y70 - 5)" font-size="10" fill="#ff0000">70</text>
+                                </g>
+                                <g>
+                                    <text x="5" y="@(y30 - 5)" font-size="10" fill="#00ff00">30</text>
+                                </g>
+                            }
+                            
+                            // Y-axis labels
+                            @for (int i = 0; i <= 3; i++)
+                            {
+                                var value = minValue + (valueRange * (3 - i) / 3);
+                                var y = 20 + (i * chartHeight2 / 3);
+                                <g>
+                                    <text x="@(StockData.Count * spacing2 + 20)" y="@y" 
+                                          font-size="10" text-anchor="start" fill="#666">
+                                        @value.ToString("F2")
+                                    </text>
+                                </g>
+                            }
+                        }
+                    </svg>
+                </div>
+            }
+        }
+        else
+        {
+            <MudAlert Severity="Severity.Info">No data available for chart</MudAlert>
+        }
+    </MudCardContent>
+</MudCard>
+
+@code {
+    [Parameter] public string Title { get; set; } = "Stock Chart";
+    [Parameter] public List<StockData>? StockData { get; set; }
+    [Parameter] public string IndicatorName { get; set; } = "Indicator";
+    [Parameter] public double[]? IndicatorData { get; set; }
+    [Parameter] public double[]? UpperBandData { get; set; }
+    [Parameter] public double[]? LowerBandData { get; set; }
+    [Parameter] public int BegIdx { get; set; }
+    [Parameter] public string SecondaryIndicatorName { get; set; } = "";
+    [Parameter] public double[]? SecondaryIndicatorData { get; set; }
+    [Parameter] public double[]? SignalData { get; set; }
+    [Parameter] public double[]? HistogramData { get; set; }
+    [Parameter] public int Height { get; set; } = 400;
+}

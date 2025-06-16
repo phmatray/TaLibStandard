@@ -1,0 +1,139 @@
+@using Demo.BlazorWasm.Models
+@using Demo.BlazorWasm.Services
+
+<MudCard>
+    <MudCardContent>
+        <MudText Typo="Typo.h6" GutterBottom="true">@Title</MudText>
+        
+        @if (StockData != null && StockData.Any())
+        {
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudText Typo="Typo.body2" Class="mb-2">
+                        Latest Price: <strong>@StockData.Last().Close.ToString("C")</strong> | 
+                        Date Range: @StockData.First().Date.ToShortDateString() - @StockData.Last().Date.ToShortDateString()
+                    </MudText>
+                </MudItem>
+                
+                @if (Patterns != null && Patterns.Any())
+                {
+                    <MudItem xs="12">
+                        <MudAlert Severity="Severity.Info" Class="mb-4">
+                            Found @Patterns.Count candlestick patterns
+                        </MudAlert>
+                    </MudItem>
+                }
+                
+                <MudItem xs="12">
+                    <div style="height: 400px; overflow-x: auto; overflow-y: hidden;">
+                        <svg width="@(Math.Max(800, StockData.Count * 10))" height="400" style="border: 1px solid #ddd;">
+                            @{
+                                var minPrice = (double)StockData.Min(d => d.Low) * 0.95;
+                                var maxPrice = (double)StockData.Max(d => d.High) * 1.05;
+                                var priceRange = maxPrice - minPrice;
+                                var candleWidth = 8;
+                                var spacing = 10;
+                                
+                                for (int i = 0; i < StockData.Count; i++)
+                                {
+                                    var data = StockData[i];
+                                    var x = i * spacing + 5;
+                                    
+                                    // Calculate Y positions (inverted because SVG Y grows downward)
+                                    var highY = 20 + (1 - ((double)data.High - minPrice) / priceRange) * 360;
+                                    var lowY = 20 + (1 - ((double)data.Low - minPrice) / priceRange) * 360;
+                                    var openY = 20 + (1 - ((double)data.Open - minPrice) / priceRange) * 360;
+                                    var closeY = 20 + (1 - ((double)data.Close - minPrice) / priceRange) * 360;
+                                    
+                                    var isGreen = data.Close > data.Open;
+                                    var color = isGreen ? "#26a69a" : "#ef5350";
+                                    var bodyTop = Math.Min(openY, closeY);
+                                    var bodyHeight = Math.Abs(openY - closeY);
+                                    
+                                    // Draw high-low line
+                                    <line x1="@(x + candleWidth/2)" y1="@highY" 
+                                          x2="@(x + candleWidth/2)" y2="@lowY" 
+                                          stroke="@color" stroke-width="1" />
+                                    
+                                    // Draw body
+                                    <rect x="@x" y="@bodyTop" 
+                                          width="@candleWidth" height="@Math.Max(bodyHeight, 1)"
+                                          fill="@(isGreen ? color : "white")" 
+                                          stroke="@color" stroke-width="1" />
+                                    
+                                    // Mark patterns
+                                    var pattern = Patterns?.FirstOrDefault(p => p.Index == i);
+                                    if (pattern != null)
+                                    {
+                                        var markerY = pattern.Value > 0 ? highY - 15 : lowY + 15;
+                                        <circle cx="@(x + candleWidth/2)" cy="@markerY" r="3" 
+                                                fill="@(pattern.Value > 0 ? "#26a69a" : "#ef5350")" />
+                                        <g>
+                                            <text x="@(x + candleWidth/2)" y="@(markerY - 5)" 
+                                                  font-size="8" text-anchor="middle" fill="@(pattern.Value > 0 ? "#26a69a" : "#ef5350")">
+                                                @pattern.PatternName[0]
+                                            </text>
+                                        </g>
+                                    }
+                                }
+                            }
+                            
+                            <!-- Y-axis labels -->
+                            @for (int i = 0; i <= 5; i++)
+                            {
+                                var price = minPrice + (priceRange * (5 - i) / 5);
+                                var y = 20 + (i * 72);
+                                <g>
+                                    <text x="@(StockData.Count * spacing + 20)" y="@y" 
+                                          font-size="10" text-anchor="start" fill="#666">
+                                        @price.ToString("F2")
+                                    </text>
+                                </g>
+                            }
+                        </svg>
+                    </div>
+                </MudItem>
+                
+                @if (ShowVolume)
+                {
+                    <MudItem xs="12" Class="mt-4">
+                        <MudText Typo="Typo.subtitle2">Volume</MudText>
+                        <div style="height: 100px; overflow-x: auto; overflow-y: hidden;">
+                            <svg width="@(Math.Max(800, StockData.Count * 10))" height="100" style="border: 1px solid #ddd;">
+                                @{
+                                    var maxVolume = (double)StockData.Max(d => d.Volume);
+                                    var spacing2 = 10;
+                                    var candleWidth2 = 8;
+                                    
+                                    for (int i = 0; i < StockData.Count; i++)
+                                    {
+                                        var data = StockData[i];
+                                        var x = i * spacing2 + 5;
+                                        var volumeHeight = ((double)data.Volume / maxVolume) * 80;
+                                        var isGreen = data.Close > data.Open;
+                                        var color = isGreen ? "#26a69a" : "#ef5350";
+                                        
+                                        <rect x="@x" y="@(90 - volumeHeight)" 
+                                              width="@candleWidth2" height="@volumeHeight"
+                                              fill="@color" opacity="0.5" />
+                                    }
+                                }
+                            </svg>
+                        </div>
+                    </MudItem>
+                }
+            </MudGrid>
+        }
+        else
+        {
+            <MudAlert Severity="Severity.Info">No data available for chart</MudAlert>
+        }
+    </MudCardContent>
+</MudCard>
+
+@code {
+    [Parameter] public string Title { get; set; } = "Candlestick Chart";
+    [Parameter] public List<StockData>? StockData { get; set; }
+    [Parameter] public List<CandlePatternResult>? Patterns { get; set; }
+    [Parameter] public bool ShowVolume { get; set; } = true;
+}

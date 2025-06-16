@@ -1,0 +1,94 @@
+﻿@page "/"
+
+<PageTitle>TaLibStandard Demo</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Welcome to TaLibStandard Demo</MudText>
+<MudText Typo="Typo.subtitle1" Class="mb-8">
+    Explore the power of technical analysis with our comprehensive .NET library
+</MudText>
+
+<MudGrid>
+    <MudItem xs="12" sm="6" md="3">
+        <MudCard>
+            <MudCardContent>
+                <MudIcon Icon="@Icons.Material.Filled.ShowChart" Size="Size.Large" Color="Color.Primary" />
+                <MudText Typo="Typo.h6" Class="mt-2">Technical Indicators</MudText>
+                <MudText Typo="Typo.body2">
+                    Over 150 technical indicators including SMA, EMA, RSI, MACD, Bollinger Bands, and more.
+                </MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" Color="Color.Primary" Href="/indicators">Explore</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+    
+    <MudItem xs="12" sm="6" md="3">
+        <MudCard>
+            <MudCardContent>
+                <MudIcon Icon="@Icons.Material.Filled.CandlestickChart" Size="Size.Large" Color="Color.Secondary" />
+                <MudText Typo="Typo.h6" Class="mt-2">Candlestick Patterns</MudText>
+                <MudText Typo="Typo.body2">
+                    Recognize 60+ candlestick patterns including Doji, Hammer, Engulfing, and more.
+                </MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" Color="Color.Secondary" Href="/candlesticks">Explore</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+    
+    <MudItem xs="12" sm="6" md="3">
+        <MudCard>
+            <MudCardContent>
+                <MudIcon Icon="@Icons.Material.Filled.Analytics" Size="Size.Large" Color="Color.Tertiary" />
+                <MudText Typo="Typo.h6" Class="mt-2">Stock Analysis</MudText>
+                <MudText Typo="Typo.body2">
+                    Comprehensive stock analysis combining multiple indicators and patterns.
+                </MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" Color="Color.Tertiary" Href="/analysis">Analyze</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+    
+    <MudItem xs="12" sm="6" md="3">
+        <MudCard>
+            <MudCardContent>
+                <MudIcon Icon="@Icons.Material.Filled.Functions" Size="Size.Large" Color="Color.Info" />
+                <MudText Typo="Typo.h6" Class="mt-2">Math Functions</MudText>
+                <MudText Typo="Typo.body2">
+                    Mathematical functions optimized for financial calculations.
+                </MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" Color="Color.Info" Href="/math">Explore</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+<MudText Typo="Typo.h4" Class="mt-8 mb-4">Quick Start</MudText>
+<MudPaper Class="pa-4" Elevation="2">
+    <MudText Typo="Typo.body1">
+        This demo application showcases the capabilities of the TaLibStandard library. You can:
+    </MudText>
+    <MudList T="string" Dense="true" Class="mt-2">
+        <MudListItem Icon="@Icons.Material.Filled.CheckCircle">
+            Calculate technical indicators on historical stock data
+        </MudListItem>
+        <MudListItem Icon="@Icons.Material.Filled.CheckCircle">
+            Detect candlestick patterns in price movements
+        </MudListItem>
+        <MudListItem Icon="@Icons.Material.Filled.CheckCircle">
+            Perform comprehensive stock analysis
+        </MudListItem>
+        <MudListItem Icon="@Icons.Material.Filled.CheckCircle">
+            Visualize results with interactive charts
+        </MudListItem>
+    </MudList>
+</MudPaper>
+
+@code {
+}

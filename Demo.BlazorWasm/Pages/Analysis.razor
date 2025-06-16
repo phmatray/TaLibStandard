@@ -1,0 +1,400 @@
+@page "/analysis"
+@inject IMarketDataService MarketDataService
+@inject ITechnicalAnalysisService TechnicalAnalysisService
+
+<PageTitle>Stock Analysis - TaLibStandard Demo</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Comprehensive Stock Analysis</MudText>
+
+<MudGrid>
+    <MudItem xs="12">
+        <MudCard>
+            <MudCardContent>
+                <MudGrid>
+                    <MudItem xs="12" md="6">
+                        <MudTextField @bind-Value="_symbol" Label="Stock Symbol" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" md="6">
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="RunAnalysis" Disabled="_isLoading" FullWidth="true" Class="mt-2">
+                            @if (_isLoading)
+                            {
+                                <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                                <MudText Class="ms-2">Analyzing...</MudText>
+                            }
+                            else
+                            {
+                                <MudText>Run Comprehensive Analysis</MudText>
+                            }
+                        </MudButton>
+                    </MudItem>
+                </MudGrid>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    
+    @if (_analysisComplete)
+    {
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6" GutterBottom="true">Trend Analysis</MudText>
+                    
+                    @if (_sma20 != null && _sma50 != null && _ema20 != null)
+                    {
+                        <MudSimpleTable Dense="true" Hover="true">
+                            <tbody>
+                                <tr>
+                                    <td>Current Price</td>
+                                    <td>@_currentPrice.ToString("C")</td>
+                                </tr>
+                                <tr>
+                                    <td>SMA 20</td>
+                                    <td>
+                                        @_sma20.Values.LastOrDefault().ToString("C")
+                                        @if (_currentPrice > (decimal)_sma20.Values.LastOrDefault())
+                                        {
+                                            <MudIcon Icon="@Icons.Material.Filled.TrendingUp" Color="Color.Success" Size="Size.Small" />
+                                        }
+                                        else
+                                        {
+                                            <MudIcon Icon="@Icons.Material.Filled.TrendingDown" Color="Color.Error" Size="Size.Small" />
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>SMA 50</td>
+                                    <td>
+                                        @_sma50.Values.LastOrDefault().ToString("C")
+                                        @if (_currentPrice > (decimal)_sma50.Values.LastOrDefault())
+                                        {
+                                            <MudIcon Icon="@Icons.Material.Filled.TrendingUp" Color="Color.Success" Size="Size.Small" />
+                                        }
+                                        else
+                                        {
+                                            <MudIcon Icon="@Icons.Material.Filled.TrendingDown" Color="Color.Error" Size="Size.Small" />
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>EMA 20</td>
+                                    <td>
+                                        @_ema20.Values.LastOrDefault().ToString("C")
+                                        @if (_currentPrice > (decimal)_ema20.Values.LastOrDefault())
+                                        {
+                                            <MudIcon Icon="@Icons.Material.Filled.TrendingUp" Color="Color.Success" Size="Size.Small" />
+                                        }
+                                        else
+                                        {
+                                            <MudIcon Icon="@Icons.Material.Filled.TrendingDown" Color="Color.Error" Size="Size.Small" />
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Trend Signal</td>
+                                    <td>
+                                        @if (_sma20.Values.LastOrDefault() > _sma50.Values.LastOrDefault())
+                                        {
+                                            <MudChip T="string" Color="Color.Success" Size="Size.Small">Bullish</MudChip>
+                                        }
+                                        else
+                                        {
+                                            <MudChip T="string" Color="Color.Error" Size="Size.Small">Bearish</MudChip>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </MudSimpleTable>
+                    }
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6" GutterBottom="true">Momentum & Volatility</MudText>
+                    
+                    @if (_rsi != null && _macd != null && _bb != null && _atr != null)
+                    {
+                        <MudSimpleTable Dense="true" Hover="true">
+                            <tbody>
+                                <tr>
+                                    <td>RSI (14)</td>
+                                    <td>
+                                        @_rsi.Values.LastOrDefault().ToString("F2")
+                                        @{
+                                            var rsiValue = _rsi.Values.LastOrDefault();
+                                            if (rsiValue > 70)
+                                            {
+                                                <MudChip T="string" Color="Color.Error" Size="Size.Small">Overbought</MudChip>
+                                            }
+                                            else if (rsiValue < 30)
+                                            {
+                                                <MudChip T="string" Color="Color.Success" Size="Size.Small">Oversold</MudChip>
+                                            }
+                                            else
+                                            {
+                                                <MudChip T="string" Color="Color.Default" Size="Size.Small">Neutral</MudChip>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>MACD</td>
+                                    <td>
+                                        @{
+                                            var macdResult = (Demo.BlazorWasm.Services.MacdResult)_macd;
+                                            var macdValue = macdResult.Values.LastOrDefault();
+                                            var signalValue = macdResult.Signal.LastOrDefault();
+                                        }
+                                        @macdValue.ToString("F4")
+                                        @if (macdValue > signalValue)
+                                        {
+                                            <MudIcon Icon="@Icons.Material.Filled.ArrowUpward" Color="Color.Success" Size="Size.Small" />
+                                        }
+                                        else
+                                        {
+                                            <MudIcon Icon="@Icons.Material.Filled.ArrowDownward" Color="Color.Error" Size="Size.Small" />
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Bollinger Bands</td>
+                                    <td>
+                                        @{
+                                            var bbResult = (Demo.BlazorWasm.Services.BollingerBandsResult)_bb;
+                                            var upperBand = bbResult.UpperBand.LastOrDefault();
+                                            var lowerBand = bbResult.LowerBand.LastOrDefault();
+                                            var position = (_currentPrice - (decimal)lowerBand) / ((decimal)upperBand - (decimal)lowerBand) * 100;
+                                        }
+                                        @position.ToString("F0")% of range
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ATR (14)</td>
+                                    <td>@_atr.Values.LastOrDefault().ToString("C") (Volatility)</td>
+                                </tr>
+                            </tbody>
+                        </MudSimpleTable>
+                    }
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6" GutterBottom="true">Recent Candlestick Patterns</MudText>
+                    
+                    @if (_patterns != null && _patterns.Any())
+                    {
+                        <MudTable Items="@_patterns.TakeLast(10).Reverse()" Dense="true" Hover="true">
+                            <HeaderContent>
+                                <MudTh>Date</MudTh>
+                                <MudTh>Pattern</MudTh>
+                                <MudTh>Signal</MudTh>
+                                <MudTh>Price at Pattern</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Date">@_stockData[context.Index].Date.ToShortDateString()</MudTd>
+                                <MudTd DataLabel="Pattern">@context.PatternName</MudTd>
+                                <MudTd DataLabel="Signal">
+                                    <MudChip T="string" Size="Size.Small" Color="@(context.Value > 0 ? Color.Success : context.Value < 0 ? Color.Error : Color.Default)">
+                                        @context.Signal
+                                    </MudChip>
+                                </MudTd>
+                                <MudTd DataLabel="Price">@_stockData[context.Index].Close.ToString("C")</MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    }
+                    else
+                    {
+                        <MudAlert Severity="Severity.Info">No significant candlestick patterns detected in recent data</MudAlert>
+                    }
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6" GutterBottom="true">Analysis Summary</MudText>
+                    <MudAlert Severity="@GetOverallSentiment()" Class="mt-2">
+                        <MudText Typo="Typo.subtitle1">@GetAnalysisSummary()</MudText>
+                    </MudAlert>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12">
+            <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
+                <MudTabPanel Text="Price & Moving Averages">
+                    @if (_stockData != null && _sma20 != null && _sma50 != null && _ema20 != null)
+                    {
+                        <SimpleStockChart
+                            Title="Price with Moving Averages"
+                            StockData="_stockData"
+                            IndicatorName="SMA 20"
+                            IndicatorData="_sma20.Values"
+                            BegIdx="_sma20.BegIdx"
+                            Height="500" />
+                    }
+                </MudTabPanel>
+                
+                <MudTabPanel Text="Candlestick Patterns">
+                    @if (_stockData != null && _patterns != null)
+                    {
+                        <SimpleCandlestickChart
+                            Title="Candlestick Chart with Patterns"
+                            StockData="_stockData"
+                            Patterns="_patterns"
+                            ShowVolume="true" />
+                    }
+                </MudTabPanel>
+                
+                <MudTabPanel Text="RSI">
+                    @if (_stockData != null && _rsi != null)
+                    {
+                        <SimpleStockChart
+                            Title="Price & RSI"
+                            StockData="_stockData"
+                            IndicatorName=""
+                            BegIdx="0"
+                            SecondaryIndicatorName="RSI"
+                            SecondaryIndicatorData="_rsi.Values"
+                            Height="500" />
+                    }
+                </MudTabPanel>
+                
+                <MudTabPanel Text="MACD">
+                    @if (_stockData != null && _macd != null)
+                    {
+                        var macdResult = (Demo.BlazorWasm.Services.MacdResult)_macd;
+                        <SimpleStockChart
+                            Title="Price & MACD"
+                            StockData="_stockData"
+                            IndicatorName=""
+                            BegIdx="0"
+                            SecondaryIndicatorName="MACD"
+                            SecondaryIndicatorData="macdResult.Values"
+                            SignalData="macdResult.Signal"
+                            HistogramData="macdResult.Histogram"
+                            Height="500" />
+                    }
+                </MudTabPanel>
+                
+                <MudTabPanel Text="Bollinger Bands">
+                    @if (_stockData != null && _bb != null)
+                    {
+                        var bbResult = (Demo.BlazorWasm.Services.BollingerBandsResult)_bb;
+                        <SimpleStockChart
+                            Title="Bollinger Bands"
+                            StockData="_stockData"
+                            IndicatorName="Middle Band"
+                            IndicatorData="bbResult.Values"
+                            UpperBandData="bbResult.UpperBand"
+                            LowerBandData="bbResult.LowerBand"
+                            BegIdx="_bb.BegIdx"
+                            Height="500" />
+                    }
+                </MudTabPanel>
+            </MudTabs>
+        </MudItem>
+    }
+</MudGrid>
+
+@code {
+    private string _symbol = "AAPL";
+    private bool _isLoading;
+    private bool _analysisComplete;
+    private decimal _currentPrice;
+    
+    private List<StockData>? _stockData;
+    private TaIndicatorResult? _sma20;
+    private TaIndicatorResult? _sma50;
+    private TaIndicatorResult? _ema20;
+    private TaIndicatorResult? _rsi;
+    private TaIndicatorResult? _macd;
+    private TaIndicatorResult? _bb;
+    private TaIndicatorResult? _atr;
+    private TaIndicatorResult? _obv;
+    private List<CandlePatternResult>? _patterns;
+    
+    private async Task RunAnalysis()
+    {
+        _isLoading = true;
+        
+        try
+        {
+            // Get stock data
+            _stockData = await MarketDataService.GetHistoricalDataAsync(_symbol, 200);
+            _currentPrice = _stockData.Last().Close;
+            
+            // Calculate all indicators
+            _sma20 = TechnicalAnalysisService.CalculateSMA(_stockData, 20);
+            _sma50 = TechnicalAnalysisService.CalculateSMA(_stockData, 50);
+            _ema20 = TechnicalAnalysisService.CalculateEMA(_stockData, 20);
+            _rsi = TechnicalAnalysisService.CalculateRSI(_stockData);
+            _macd = TechnicalAnalysisService.CalculateMACD(_stockData);
+            _bb = TechnicalAnalysisService.CalculateBollingerBands(_stockData);
+            _atr = TechnicalAnalysisService.CalculateATR(_stockData);
+            _obv = TechnicalAnalysisService.CalculateOBV(_stockData);
+            
+            // Detect patterns
+            _patterns = TechnicalAnalysisService.DetectCandlePatterns(_stockData);
+            
+            _analysisComplete = true;
+        }
+        finally
+        {
+            _isLoading = false;
+        }
+    }
+    
+    private Severity GetOverallSentiment()
+    {
+        if (_rsi == null || _macd == null || _sma20 == null || _sma50 == null)
+            return Severity.Info;
+            
+        var bullishSignals = 0;
+        var bearishSignals = 0;
+        
+        // RSI signals
+        var rsiValue = _rsi.Values.LastOrDefault();
+        if (rsiValue < 30) bullishSignals++;
+        else if (rsiValue > 70) bearishSignals++;
+        
+        // Moving average signals
+        if (_sma20.Values.LastOrDefault() > _sma50.Values.LastOrDefault()) bullishSignals++;
+        else bearishSignals++;
+        
+        // MACD signals
+        var macdResult = (Demo.BlazorWasm.Services.MacdResult)_macd;
+        if (macdResult.Values.LastOrDefault() > macdResult.Signal.LastOrDefault()) bullishSignals++;
+        else bearishSignals++;
+        
+        // Pattern signals
+        if (_patterns != null)
+        {
+            var recentPatterns = _patterns.TakeLast(5);
+            bullishSignals += recentPatterns.Count(p => p.Value > 0);
+            bearishSignals += recentPatterns.Count(p => p.Value < 0);
+        }
+        
+        if (bullishSignals > bearishSignals + 2) return Severity.Success;
+        if (bearishSignals > bullishSignals + 2) return Severity.Error;
+        return Severity.Warning;
+    }
+    
+    private string GetAnalysisSummary()
+    {
+        var sentiment = GetOverallSentiment();
+        
+        return sentiment switch
+        {
+            Severity.Success => $"Overall BULLISH outlook for {_symbol}. Multiple indicators suggest upward momentum.",
+            Severity.Error => $"Overall BEARISH outlook for {_symbol}. Multiple indicators suggest downward pressure.",
+            _ => $"NEUTRAL outlook for {_symbol}. Mixed signals from technical indicators."
+        };
+    }
+}

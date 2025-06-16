@@ -1,0 +1,126 @@
+@page "/candlesticks"
+@inject IMarketDataService MarketDataService
+@inject ITechnicalAnalysisService TechnicalAnalysisService
+
+<PageTitle>Candlestick Patterns - TaLibStandard Demo</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Candlestick Pattern Recognition</MudText>
+
+<MudGrid>
+    <MudItem xs="12" md="4">
+        <MudCard>
+            <MudCardContent>
+                <MudTextField @bind-Value="_symbol" Label="Stock Symbol" Variant="Variant.Outlined" />
+                <MudNumericField @bind-Value="_days" Label="Days of Data" Variant="Variant.Outlined" Class="mt-4" Min="30" Max="365" />
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="DetectPatterns" Disabled="_isLoading" FullWidth="true">
+                    @if (_isLoading)
+                    {
+                        <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                        <MudText Class="ms-2">Analyzing...</MudText>
+                    }
+                    else
+                    {
+                        <MudText>Detect Patterns</MudText>
+                    }
+                </MudButton>
+            </MudCardActions>
+        </MudCard>
+        
+        @if (_patterns != null && _patterns.Any())
+        {
+            <MudCard Class="mt-4">
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Detected Patterns</MudText>
+                    <MudText Typo="Typo.body2" Class="mb-2">Found @_patterns.Count patterns</MudText>
+                    
+                    <MudList T="string" Dense="true">
+                        @foreach (var pattern in _patterns.GroupBy(p => p.PatternName))
+                        {
+                            <MudListItem>
+                                <MudBadge Content="@pattern.Count()" Color="Color.Primary" Origin="Origin.CenterRight" Class="mr-4">
+                                    <MudText>@pattern.Key</MudText>
+                                </MudBadge>
+                            </MudListItem>
+                        }
+                    </MudList>
+                </MudCardContent>
+            </MudCard>
+        }
+    </MudItem>
+    
+    <MudItem xs="12" md="8">
+        @if (_stockData != null)
+        {
+            <SimpleCandlestickChart 
+                Title="@($"{_symbol} - Candlestick Chart")"
+                StockData="_stockData"
+                Patterns="_patterns"
+                ShowVolume="true" />
+            
+            @if (_patterns != null && _patterns.Any())
+            {
+                <MudCard Class="mt-4">
+                    <MudCardContent>
+                        <MudText Typo="Typo.h6">Pattern Details</MudText>
+                        <MudTable Items="@_patterns" Dense="true" Hover="true" Class="mt-2">
+                            <HeaderContent>
+                                <MudTh>Date</MudTh>
+                                <MudTh>Pattern</MudTh>
+                                <MudTh>Signal</MudTh>
+                                <MudTh>Price</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Date">@_stockData[context.Index].Date.ToShortDateString()</MudTd>
+                                <MudTd DataLabel="Pattern">@context.PatternName</MudTd>
+                                <MudTd DataLabel="Signal">
+                                    <MudChip T="string" Size="Size.Small" Color="@(context.Value > 0 ? Color.Success : context.Value < 0 ? Color.Error : Color.Default)">
+                                        @context.Signal
+                                    </MudChip>
+                                </MudTd>
+                                <MudTd DataLabel="Price">@_stockData[context.Index].Close.ToString("C")</MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    </MudCardContent>
+                </MudCard>
+            }
+        }
+        else if (!_hasAnalyzed)
+        {
+            <MudPaper Class="pa-8 text-center" Elevation="0">
+                <MudIcon Icon="@Icons.Material.Filled.CandlestickChart" Size="Size.Large" Color="Color.Default" Style="font-size: 5rem;" />
+                <MudText Typo="Typo.h6" Class="mt-4">Enter a symbol and click Detect Patterns to start analysis</MudText>
+            </MudPaper>
+        }
+    </MudItem>
+</MudGrid>
+
+@code {
+    private string _symbol = "AAPL";
+    private int _days = 100;
+    private bool _isLoading;
+    private bool _hasAnalyzed;
+    
+    private List<StockData>? _stockData;
+    private List<CandlePatternResult>? _patterns;
+    
+    private async Task DetectPatterns()
+    {
+        _isLoading = true;
+        _hasAnalyzed = true;
+        
+        try
+        {
+            // Get stock data
+            _stockData = await MarketDataService.GetHistoricalDataAsync(_symbol, _days);
+            
+            // Detect candlestick patterns
+            _patterns = TechnicalAnalysisService.DetectCandlePatterns(_stockData);
+        }
+        finally
+        {
+            _isLoading = false;
+        }
+    }
+}
