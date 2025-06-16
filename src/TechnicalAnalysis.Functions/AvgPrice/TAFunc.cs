@@ -8,6 +8,34 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Average Price - the mean of open, high, low, and close prices.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inOpen">Input array of opening prices.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the Average Price values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The Average Price provides a single value representation of price action for each period.
+    /// 
+    /// Calculation:
+    /// Average Price = (Open + High + Low + Close) / 4
+    /// 
+    /// Uses:
+    /// - Price smoothing: Reduces noise compared to using close price alone
+    /// - Support/Resistance: Can act as dynamic support/resistance levels
+    /// - Trend confirmation: Price above/below average price confirms trend direction
+    /// - Input for other indicators: Used as input for moving averages or oscillators
+    /// 
+    /// The Average Price is also known as the "Typical Price" when calculated as (High + Low + Close) / 3,
+    /// but this implementation uses all four price points for a more comprehensive average.
+    /// </remarks>
     public static RetCode AvgPrice(
         int startIdx,
         int endIdx,
@@ -50,6 +78,10 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Average Price calculation.
+    /// </summary>
+    /// <returns>Always returns 0 as Average Price requires no historical data beyond the current period.</returns>
     public static int AvgPriceLookback()
     {
         return 0;

@@ -6,13 +6,39 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of calculating a Moving Average with Variable Period (MAVP) indicator.
+/// </summary>
+/// <remarks>
+/// The Moving Average Variable Period indicator is an adaptive moving average that dynamically
+/// adjusts its lookback period based on an external input array. This allows the moving average
+/// to become more or less responsive to price changes based on market conditions or other indicators,
+/// providing a more flexible smoothing mechanism than fixed-period moving averages.
+/// </remarks>
 public record MovingAverageVariablePeriodResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MovingAverageVariablePeriodResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array of variable period moving average values.</param>
     public MovingAverageVariablePeriodResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of variable period moving average values.
+    /// </summary>
+    /// <remarks>
+    /// Each value is calculated using a different period based on the input period array.
+    /// This adaptive approach allows the indicator to:
+    /// - Respond quickly during volatile periods (shorter periods)
+    /// - Smooth more during stable periods (longer periods)
+    /// - Adjust to changing market conditions automatically
+    /// </remarks>
     public double[] Real { get; }
 }

@@ -8,6 +8,51 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Ultimate Oscillator - a momentum oscillator that combines short, intermediate, and long-term price movements.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="optInTimePeriod1">First (shortest) time period. Typical value: 7.</param>
+    /// <param name="optInTimePeriod2">Second (intermediate) time period. Typical value: 14.</param>
+    /// <param name="optInTimePeriod3">Third (longest) time period. Typical value: 28.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the Ultimate Oscillator values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The Ultimate Oscillator was developed by Larry Williams to avoid the pitfalls
+    /// of single-period oscillators by incorporating multiple timeframes.
+    /// 
+    /// Calculation:
+    /// 1. Calculate Buying Pressure (BP) = Close - True Low
+    /// 2. Calculate True Range (TR)
+    /// 3. Calculate averages for each period:
+    ///    - Average7 = Sum(BP,7) / Sum(TR,7)
+    ///    - Average14 = Sum(BP,14) / Sum(TR,14)
+    ///    - Average28 = Sum(BP,28) / Sum(TR,28)
+    /// 4. UO = 100 * [(4 * Average7) + (2 * Average14) + Average28] / 7
+    /// 
+    /// Values range from 0 to 100:
+    /// - Above 70: Overbought condition
+    /// - Below 30: Oversold condition
+    /// - 50: Neutral level
+    /// 
+    /// Trading signals:
+    /// - Bullish divergence + break above divergence high
+    /// - Bearish divergence + break below divergence low
+    /// - Overbought/oversold reversals with confirmation
+    /// 
+    /// Advantages:
+    /// - Reduces false signals by using multiple timeframes
+    /// - Less prone to whipsaws than single-period oscillators
+    /// - Weighted calculation emphasizes short-term movements
+    /// 
+    /// Best used in conjunction with price action and trend analysis.
+    /// </remarks>
     public static RetCode UltOsc(
         int startIdx,
         int endIdx,
@@ -304,6 +349,13 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Ultimate Oscillator calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod1">First time period. Valid range: 1 to 100000.</param>
+    /// <param name="optInTimePeriod2">Second time period. Valid range: 1 to 100000.</param>
+    /// <param name="optInTimePeriod3">Third time period. Valid range: 1 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid Ultimate Oscillator value can be calculated, or -1 if parameters are invalid.</returns>
     public static int UltOscLookback(int optInTimePeriod1, int optInTimePeriod2, int optInTimePeriod3)
     {
         if (optInTimePeriod1 is < 1 or > 100000 ||

@@ -6,13 +6,36 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of calculating the Double Exponential Moving Average (DEMA) indicator.
+/// </summary>
+/// <remarks>
+/// DEMA is a technical indicator that uses two exponential moving averages to eliminate lag.
+/// It provides a smoother and more responsive moving average compared to traditional EMAs,
+/// making it particularly useful for identifying trend changes more quickly.
+/// </remarks>
 public record DemaResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DemaResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array of double exponential moving average values.</param>
     public DemaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of double exponential moving average values.
+    /// </summary>
+    /// <value>
+    /// An array of double values representing the Double Exponential Moving Average at each data point.
+    /// DEMA values are calculated as: 2 * EMA - EMA(EMA), which reduces the lag inherent in
+    /// traditional moving averages.
+    /// </value>
     public double[] Real { get; }
 }

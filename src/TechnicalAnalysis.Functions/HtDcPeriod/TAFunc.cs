@@ -8,6 +8,43 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Hilbert Transform - Dominant Cycle Period.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the dominant cycle period values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The Hilbert Transform - Dominant Cycle Period is an advanced technical indicator
+    /// that identifies the dominant market cycle using digital signal processing techniques.
+    /// 
+    /// This indicator uses the Hilbert Transform to decompose price data into:
+    /// - In-phase (I) component
+    /// - Quadrature (Q) component
+    /// 
+    /// From these components, it calculates:
+    /// - The instantaneous phase of the price movement
+    /// - The dominant cycle period in the market
+    /// 
+    /// Output interpretation:
+    /// - Values typically range from 6 to 50 periods
+    /// - Lower values indicate shorter market cycles
+    /// - Higher values indicate longer market cycles
+    /// - Sudden changes may indicate cycle transitions
+    /// 
+    /// Applications:
+    /// - Adaptive indicator parameters (e.g., using cycle period for moving average length)
+    /// - Market cycle analysis and timing
+    /// - Identifying trend vs. cycling market conditions
+    /// - Filter design for other indicators
+    /// 
+    /// Note: This is a complex indicator that requires significant computation
+    /// and may produce less reliable results in strongly trending markets.
+    /// </remarks>
     public static RetCode HtDcPeriod(
         int startIdx,
         int endIdx,
@@ -299,6 +336,10 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Hilbert Transform - Dominant Cycle Period calculation.
+    /// </summary>
+    /// <returns>The number of historical data points required before the first valid HT-DC Period value can be calculated.</returns>
     public static int HtDcPeriodLookback()
     {
         return (int)TACore.Globals.UnstablePeriod[FuncUnstId.HtDcPeriod] + 32;

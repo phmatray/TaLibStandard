@@ -6,13 +6,40 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of calculating a Moving Average indicator.
+/// </summary>
+/// <remarks>
+/// Moving averages are fundamental technical indicators that smooth price data by creating
+/// a constantly updated average price over a specific period. Various types of moving averages
+/// (Simple, Exponential, Weighted, etc.) can be calculated, each with different characteristics
+/// for trend identification and signal generation.
+/// </remarks>
 public record MovingAverageResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MovingAverageResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array of moving average values.</param>
     public MovingAverageResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of moving average values.
+    /// </summary>
+    /// <remarks>
+    /// The moving average values smooth out price action and help identify trends.
+    /// Common uses include:
+    /// - Trend identification (price above MA = uptrend, below = downtrend)
+    /// - Support and resistance levels
+    /// - Signal generation through crossovers
+    /// - Filtering out market noise
+    /// </remarks>
     public double[] Real { get; }
 }

@@ -8,6 +8,41 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Weighted Close Price - a price that emphasizes the closing price.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the weighted close price values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Weighted Close Price is calculated as:
+    /// WCL = (High + Low + Close + Close) / 4
+    /// 
+    /// This gives double weight to the closing price, making it more influential
+    /// than the high and low prices of the period.
+    /// 
+    /// Common uses:
+    /// - Alternative price input for technical indicators
+    /// - Emphasizing closing price importance in analysis
+    /// - Smoothing price action while maintaining close price significance
+    /// - Trend identification with closing price emphasis
+    /// 
+    /// The weighted close is particularly useful when:
+    /// - Closing price is considered most important (e.g., daily charts)
+    /// - You want to reduce the impact of intraday volatility
+    /// - Creating custom indicators that need close-weighted input
+    /// 
+    /// Compare with:
+    /// - Typical Price: (H+L+C)/3 - equal weight
+    /// - Average Price: (O+H+L+C)/4 - includes open
+    /// - Median Price: (H+L)/2 - ignores close
+    /// </remarks>
     public static RetCode WclPrice(
         int startIdx,
         int endIdx,
@@ -48,6 +83,10 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Weighted Close Price calculation.
+    /// </summary>
+    /// <returns>Always returns 0 since Weighted Close Price requires no historical data.</returns>
     public static int WclPriceLookback()
     {
         return 0;

@@ -6,13 +6,29 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the Plus Directional Indicator (+DI) calculation.
+/// +DI is part of the Directional Movement System and measures the strength of upward price movements.
+/// </summary>
 public record PlusDIResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PlusDIResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the calculated +DI values.</param>
     public PlusDIResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of Plus Directional Indicator values.
+    /// Values range from 0 to 100, representing the strength of upward price movement.
+    /// When +DI is above -DI, it suggests an uptrend; the wider the gap, the stronger the trend.
+    /// </summary>
     public double[] Real { get; }
 }

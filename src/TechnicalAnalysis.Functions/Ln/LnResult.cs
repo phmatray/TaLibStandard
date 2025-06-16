@@ -6,13 +6,35 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the vector natural logarithm operation (LN function).
+/// </summary>
+/// <remarks>
+/// The LN function calculates the natural logarithm (base e) of each element in the input array.
+/// The natural logarithm is the inverse of the exponential function. Input values must be positive.
+/// For example, ln(e) = 1, ln(1) = 0.
+/// </remarks>
 public record LnResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="LnResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the natural logarithm values.</param>
     public LnResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of natural logarithm values resulting from the LN operation.
+    /// </summary>
+    /// <value>
+    /// An array of doubles where each element represents the natural logarithm
+    /// of the corresponding element from the input array.
+    /// </value>
     public double[] Real { get; }
 }

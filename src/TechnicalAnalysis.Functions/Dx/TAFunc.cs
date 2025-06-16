@@ -8,6 +8,46 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Directional Movement Index (DX) - measures the strength of directional movement without regard to direction.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="optInTimePeriod">Number of periods for the DX calculation. Typical value: 14.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the DX values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// DX is the foundation of the ADX (Average Directional Index) indicator.
+    /// It measures the strength of directional movement, regardless of whether it's up or down.
+    /// 
+    /// Calculation:
+    /// DX = 100 * |+DI - -DI| / (+DI + -DI)
+    /// 
+    /// Where:
+    /// - +DI = Positive Directional Indicator (upward movement)
+    /// - -DI = Negative Directional Indicator (downward movement)
+    /// 
+    /// Values range from 0 to 100:
+    /// - 0-25: Weak directional movement
+    /// - 25-50: Moderate directional movement
+    /// - 50-75: Strong directional movement
+    /// - 75-100: Very strong directional movement
+    /// 
+    /// Key differences from ADX:
+    /// - DX is more volatile (not smoothed)
+    /// - DX reacts faster to changes
+    /// - ADX is the smoothed average of DX
+    /// 
+    /// Uses:
+    /// - Identifying trending vs ranging markets
+    /// - Timing entries when combined with +DI/-DI
+    /// - Risk management (avoid trades in low DX environments)
+    /// </remarks>
     public static RetCode Dx(
         int startIdx,
         int endIdx,
@@ -212,6 +252,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for DX calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the DX calculation. Valid range: 2 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid DX value can be calculated, or -1 if parameters are invalid.</returns>
     public static int DxLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Dx];

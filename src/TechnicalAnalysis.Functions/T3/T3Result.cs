@@ -6,13 +6,36 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of calculating the T3 Moving Average indicator.
+/// </summary>
+/// <remarks>
+/// T3 is a smoothed moving average developed by Tim Tillson. It incorporates multiple
+/// exponential smoothing techniques to produce a moving average that is both smooth
+/// and responsive, with minimal lag compared to traditional moving averages.
+/// </remarks>
 public record T3Result : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T3Result"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array of T3 moving average values.</param>
     public T3Result(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of T3 moving average values.
+    /// </summary>
+    /// <value>
+    /// An array of double values representing the T3 Moving Average at each data point.
+    /// The T3 uses a volume factor to control the amount of smoothing, providing
+    /// an excellent balance between smoothness and responsiveness.
+    /// </value>
     public double[] Real { get; }
 }

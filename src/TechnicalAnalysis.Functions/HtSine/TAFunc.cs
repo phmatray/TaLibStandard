@@ -8,6 +8,54 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Hilbert Transform - Sine Wave indicator.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outSine">Output array for the Sine Wave values.</param>
+    /// <param name="outLeadSine">Output array for the Lead Sine Wave values (45 degrees phase lead).</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The Hilbert Transform - Sine Wave indicator was developed by John Ehlers and uses digital signal 
+    /// processing techniques to measure market cycles. It generates two outputs:
+    /// 
+    /// 1. Sine Wave: Oscillates between -1 and +1, representing the current phase of the detected cycle
+    /// 2. Lead Sine: A sine wave with a 45-degree phase lead, used for early cycle detection
+    /// 
+    /// How it works:
+    /// - Applies the Hilbert Transform to decompose price into cycle components
+    /// - Calculates the dominant cycle period using phase accumulation
+    /// - Generates sine waves based on the instantaneous phase
+    /// - The crossing of Sine and Lead Sine indicates cycle turning points
+    /// 
+    /// Interpretation:
+    /// - When Sine crosses above Lead Sine: Potential cycle bottom (buy signal)
+    /// - When Sine crosses below Lead Sine: Potential cycle top (sell signal)
+    /// - Indicator works best in cycling (ranging) markets
+    /// - May produce false signals in strongly trending markets
+    /// 
+    /// Common use cases:
+    /// - Identifying market cycles and their turning points
+    /// - Distinguishing between trending and cycling market conditions
+    /// - Timing entries and exits in range-bound markets
+    /// - Confirming other oscillator signals
+    /// 
+    /// Limitations:
+    /// - Requires significant historical data (lookback period of 63+ bars)
+    /// - Less effective in strongly trending markets
+    /// - Subject to whipsaws during transitions between trends and cycles
+    /// - Best used in conjunction with trend indicators for filtering
+    /// 
+    /// The indicator uses advanced mathematics including:
+    /// - Weighted Moving Average (WMA) for smoothing
+    /// - Hilbert Transform for cycle decomposition
+    /// - Phase accumulation for period detection
+    /// - Trigonometric calculations for sine wave generation
+    /// </remarks>
     public static RetCode HtSine(
         int startIdx,
         int endIdx,
@@ -377,6 +425,24 @@ public static partial class TAFunc
         }
     }
 
+    /// <summary>
+    /// Returns the lookback period required for the Hilbert Transform - Sine Wave calculation.
+    /// </summary>
+    /// <returns>The number of historical data points required before the first valid HT-Sine value can be calculated.</returns>
+    /// <remarks>
+    /// The Hilbert Transform - Sine Wave requires a substantial amount of historical data to properly 
+    /// initialize its internal calculations and produce reliable results. The lookback period consists of:
+    /// 
+    /// - Base period of 63 bars for the Hilbert Transform calculations
+    /// - Additional unstable period that may be configured for this function
+    /// 
+    /// This extended lookback is necessary because:
+    /// - The indicator uses multiple stages of filtering and smoothing
+    /// - Accurate cycle detection requires sufficient historical context
+    /// - The Hilbert Transform needs to establish stable phase relationships
+    /// 
+    /// Typically returns 63 bars plus any additional unstable period configured globally.
+    /// </remarks>
     public static int HtSineLookback()
     {
         return (int)TACore.Globals.UnstablePeriod[FuncUnstId.HtSine] + 63;

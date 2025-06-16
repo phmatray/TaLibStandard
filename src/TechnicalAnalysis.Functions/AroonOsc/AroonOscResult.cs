@@ -6,13 +6,41 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the Aroon Oscillator calculation.
+/// </summary>
+/// <remarks>
+/// The Aroon Oscillator is derived from the Aroon indicator and is calculated as the 
+/// difference between Aroon Up and Aroon Down (Aroon Up - Aroon Down). It oscillates 
+/// between -100 and +100, with zero as the centerline. Positive values indicate an 
+/// upward trend (Aroon Up is greater than Aroon Down), while negative values indicate 
+/// a downward trend. The farther the oscillator is from the zero line, the stronger 
+/// the trend. Crossovers through zero can signal trend changes, making this a valuable 
+/// tool for trend identification and timing entry/exit points.
+/// </remarks>
 public record AroonOscResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AroonOscResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the calculated Aroon Oscillator values.</param>
     public AroonOscResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of Aroon Oscillator values.
+    /// </summary>
+    /// <value>
+    /// An array of doubles representing the oscillator values, ranging from -100 to +100. 
+    /// Positive values indicate upward trend strength, negative values indicate downward 
+    /// trend strength, and values near zero suggest no clear trend. The magnitude indicates 
+    /// trend strength, with values above +50 or below -50 indicating strong trends.
+    /// </value>
     public double[] Real { get; }
 }

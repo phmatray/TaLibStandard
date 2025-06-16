@@ -8,6 +8,45 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Pearson Correlation Coefficient - a measure of linear correlation between two variables.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inReal0">Input array of first variable values (e.g., first security's prices).</param>
+    /// <param name="inReal1">Input array of second variable values (e.g., second security's prices).</param>
+    /// <param name="optInTimePeriod">Number of periods for the correlation calculation. Typical value: 20.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the correlation coefficient values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Correlation measures the strength and direction of the linear relationship between two variables.
+    /// 
+    /// Values range from -1 to +1:
+    /// - +1: Perfect positive correlation (variables move together)
+    /// - 0: No linear correlation
+    /// - -1: Perfect negative correlation (variables move inversely)
+    /// 
+    /// Interpretation:
+    /// - 0.8 to 1.0: Very strong positive correlation
+    /// - 0.6 to 0.8: Strong positive correlation
+    /// - 0.4 to 0.6: Moderate positive correlation
+    /// - 0.2 to 0.4: Weak positive correlation
+    /// - -0.2 to 0.2: No or negligible correlation
+    /// - -0.4 to -0.2: Weak negative correlation
+    /// - -0.6 to -0.4: Moderate negative correlation
+    /// - -0.8 to -0.6: Strong negative correlation
+    /// - -1.0 to -0.8: Very strong negative correlation
+    /// 
+    /// Uses in trading:
+    /// - Pairs trading: Finding highly correlated securities
+    /// - Portfolio diversification: Selecting uncorrelated assets
+    /// - Risk management: Understanding market relationships
+    /// - Intermarket analysis: Studying cross-asset relationships
+    /// 
+    /// Note: Correlation does not imply causation.
+    /// </remarks>
     public static RetCode Correl(
         int startIdx,
         int endIdx,
@@ -127,6 +166,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Correlation calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the correlation calculation. Valid range: 1 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid correlation value can be calculated, or -1 if parameters are invalid.</returns>
     public static int CorrelLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod - 1;

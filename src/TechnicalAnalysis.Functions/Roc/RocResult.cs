@@ -6,13 +6,29 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the Rate of Change (ROC) indicator calculation.
+/// This momentum indicator measures the percentage change in price between the current price and the price n periods ago.
+/// </summary>
 public record RocResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RocResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the calculated ROC values as percentages.</param>
     public RocResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of Rate of Change values.
+    /// Each value represents the percentage change from n periods ago, calculated as: ((price - price[n periods ago]) / price[n periods ago]) * 100.
+    /// Positive values indicate upward momentum, while negative values indicate downward momentum.
+    /// </summary>
     public double[] Real { get; }
 }

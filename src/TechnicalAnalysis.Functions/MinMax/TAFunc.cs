@@ -8,6 +8,26 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the lowest and highest values over a specified period.
+    /// </summary>
+    /// <param name="startIdx">The start index for the calculation.</param>
+    /// <param name="endIdx">The end index for the calculation.</param>
+    /// <param name="inReal">The input array of real values.</param>
+    /// <param name="optInTimePeriod">The time period for the calculation. Valid range is 2 to 100000.</param>
+    /// <param name="outBegIdx">The beginning index of the output values.</param>
+    /// <param name="outNBElement">The number of elements in the output arrays.</param>
+    /// <param name="outMin">The output array containing the minimum values for each period.</param>
+    /// <param name="outMax">The output array containing the maximum values for each period.</param>
+    /// <returns>A <see cref="RetCode"/> indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The MinMax function identifies the lowest and highest values over a specified rolling period.
+    /// This function efficiently tracks both extremes simultaneously, making it useful for:
+    /// - Identifying support and resistance levels
+    /// - Calculating price channels
+    /// - Determining volatility ranges
+    /// - Building other indicators that require min/max values
+    /// </remarks>
     public static RetCode MinMax(
         int startIdx,
         int endIdx,
@@ -131,6 +151,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period for the MinMax function.
+    /// </summary>
+    /// <param name="optInTimePeriod">The time period for the calculation. Valid range is 2 to 100000.</param>
+    /// <returns>The number of elements needed before the first valid value, or -1 if the period is invalid.</returns>
     public static int MinMaxLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;

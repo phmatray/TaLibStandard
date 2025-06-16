@@ -6,8 +6,51 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Provides technical analysis functions for financial market analysis.
+/// </summary>
+/// <remarks>
+/// This class contains a comprehensive set of technical indicators and mathematical functions
+/// commonly used in financial market analysis. All functions are static methods that operate
+/// on arrays of price data (open, high, low, close, volume) and return calculated indicator values.
+/// 
+/// Categories of functions include:
+/// - Overlap Studies (Moving Averages, Bollinger Bands, etc.)
+/// - Momentum Indicators (RSI, MACD, Stochastic, etc.)
+/// - Volume Indicators (OBV, AD, MFI, etc.)
+/// - Volatility Indicators (ATR, Standard Deviation, etc.)
+/// - Price Transform (Typical Price, Weighted Close, etc.)
+/// - Cycle Indicators (Hilbert Transform functions)
+/// - Pattern Recognition (Candlestick patterns - in separate classes)
+/// - Statistical Functions (Correlation, Beta, etc.)
+/// - Mathematical Operations (Trigonometric, Logarithmic, etc.)
+/// 
+/// All functions follow a consistent pattern:
+/// - Input parameters include start/end indices and price arrays
+/// - Output parameters include beginning index, number of elements, and result arrays
+/// - Return value is a RetCode indicating success or failure
+/// - Lookback functions return the number of historical data points required
+/// 
+/// Thread Safety: All methods are thread-safe as they don't modify shared state.
+/// </remarks>
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Internal implementation of Exponential Moving Average calculation.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation.</param>
+    /// <param name="endIdx">The ending index for the calculation.</param>
+    /// <param name="inReal0">Input array of values.</param>
+    /// <param name="optInTimePeriod0">Number of periods for the EMA.</param>
+    /// <param name="optInK1">The smoothing factor (2/(period+1)).</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNbElement">The number of valid output elements.</param>
+    /// <param name="outReal0">Output array for the EMA values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// This internal method provides the core EMA calculation used by multiple public functions.
+    /// It handles both default and compatibility modes for initialization.
+    /// </remarks>
     private static RetCode TA_INT_EMA(int startIdx, int endIdx, double[] inReal0, int optInTimePeriod0, double optInK1, ref int outBegIdx, ref int outNbElement, double[] outReal0)
     {
         int today;
@@ -79,6 +122,25 @@ public static partial class TAFunc
         return Success;
     }
         
+    /// <summary>
+    /// Internal implementation of MACD (Moving Average Convergence Divergence) calculation.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation.</param>
+    /// <param name="endIdx">The ending index for the calculation.</param>
+    /// <param name="inReal0">Input array of values (typically closing prices).</param>
+    /// <param name="optInFastPeriod0">Fast EMA period (typically 12).</param>
+    /// <param name="optInSlowPeriod1">Slow EMA period (typically 26).</param>
+    /// <param name="optInSignalPeriod2">Signal line EMA period (typically 9).</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNbElement">The number of valid output elements.</param>
+    /// <param name="outMACD0">Output array for MACD line values.</param>
+    /// <param name="outMACDSignal1">Output array for signal line values.</param>
+    /// <param name="outMACDHist2">Output array for histogram values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Calculates all three MACD components: MACD line (fast EMA - slow EMA),
+    /// signal line (EMA of MACD), and histogram (MACD - signal).
+    /// </remarks>
     private static RetCode TA_INT_MACD(int startIdx, int endIdx, double[] inReal0, int optInFastPeriod0, int optInSlowPeriod1, int optInSignalPeriod2, ref int outBegIdx, ref int outNbElement, double[] outMACD0, double[] outMACDSignal1, double[] outMACDHist2)
     {
         int i;
@@ -189,6 +251,25 @@ public static partial class TAFunc
         return Success;
     }
         
+    /// <summary>
+    /// Internal implementation for Price Oscillator calculations (APO and PPO).
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation.</param>
+    /// <param name="endIdx">The ending index for the calculation.</param>
+    /// <param name="inReal0">Input array of values.</param>
+    /// <param name="optInFastPeriod0">Fast moving average period.</param>
+    /// <param name="optInSlowPeriod1">Slow moving average period.</param>
+    /// <param name="optInMethod2">Moving average type to use.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNbElement">The number of valid output elements.</param>
+    /// <param name="outReal0">Output array for oscillator values.</param>
+    /// <param name="tempBuffer">Temporary buffer for intermediate calculations.</param>
+    /// <param name="doPercentageOutput">0 for absolute values (APO), 1 for percentage values (PPO).</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// This method calculates the difference between two moving averages,
+    /// either as an absolute value (APO) or as a percentage (PPO).
+    /// </remarks>
     private static RetCode TA_INT_PO(int startIdx, int endIdx, double[] inReal0, int optInFastPeriod0, int optInSlowPeriod1, MAType optInMethod2, ref int outBegIdx, ref int outNbElement, double[] outReal0, double[] tempBuffer, int doPercentageOutput)
     {
         int tempInteger = 0;
@@ -251,6 +332,21 @@ public static partial class TAFunc
         return retCode;
     }
         
+    /// <summary>
+    /// Internal implementation of Simple Moving Average calculation.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation.</param>
+    /// <param name="endIdx">The ending index for the calculation.</param>
+    /// <param name="inReal0">Input array of values.</param>
+    /// <param name="optInTimePeriod0">Number of periods for the moving average.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNbElement">The number of valid output elements.</param>
+    /// <param name="outReal0">Output array for the SMA values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Calculates the arithmetic mean of the last n periods using a sliding window approach
+    /// for efficient computation.
+    /// </remarks>
     private static RetCode TA_INT_SMA(int startIdx, int endIdx, double[] inReal0, int optInTimePeriod0, ref int outBegIdx, ref int outNbElement, double[] outReal0)
     {
         int lookbackTotal = optInTimePeriod0 - 1;
@@ -299,6 +395,20 @@ public static partial class TAFunc
         return Success;
     }
         
+    /// <summary>
+    /// Internal method to calculate standard deviation using pre-calculated moving average values.
+    /// </summary>
+    /// <param name="inReal">Input array of values.</param>
+    /// <param name="inMovAvg">Pre-calculated moving average values.</param>
+    /// <param name="inMovAvgBegIdx">Starting index of the moving average array.</param>
+    /// <param name="inMovAvgNbElement">Number of elements in the moving average array.</param>
+    /// <param name="timePeriod">Period used for the moving average calculation.</param>
+    /// <param name="output">Output array for the standard deviation values.</param>
+    /// <remarks>
+    /// This optimization calculates standard deviation more efficiently when the moving average
+    /// has already been computed, avoiding redundant calculations.
+    /// Uses the formula: StdDev = sqrt(E[X²] - E[X]²)
+    /// </remarks>
     private static void TA_INT_stddev_using_precalc_ma(double[] inReal, double[] inMovAvg, int inMovAvgBegIdx, int inMovAvgNbElement, int timePeriod, double[] output)
     {
         double tempReal;
@@ -335,6 +445,22 @@ public static partial class TAFunc
         }
     }
         
+    /// <summary>
+    /// Internal implementation of Variance calculation.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation.</param>
+    /// <param name="endIdx">The ending index for the calculation.</param>
+    /// <param name="inReal0">Input array of values.</param>
+    /// <param name="optInTimePeriod0">Number of periods for the variance calculation.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNbElement">The number of valid output elements.</param>
+    /// <param name="outReal0">Output array for the variance values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Calculates variance using the formula: Var = E[X²] - E[X]²
+    /// This method uses a sliding window approach for efficient computation,
+    /// maintaining running sums of values and squared values.
+    /// </remarks>
     private static RetCode TA_INT_VAR(int startIdx, int endIdx, double[] inReal0, int optInTimePeriod0, ref int outBegIdx, ref int outNbElement, double[] outReal0)
     {
         double tempReal;

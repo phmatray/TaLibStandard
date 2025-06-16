@@ -8,6 +8,37 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates Williams' %R - a momentum oscillator that measures overbought and oversold levels.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="optInTimePeriod">Number of periods for the calculation. Valid range: 2 to 100000. Default is 14.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for Williams' %R values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Williams' %R is calculated as:
+    /// %R = (Highest High - Close) / (Highest High - Lowest Low) * -100
+    /// 
+    /// The indicator ranges from -100 to 0, where:
+    /// - Values from -20 to 0 indicate overbought conditions
+    /// - Values from -100 to -80 indicate oversold conditions
+    /// - The -50 level is the midpoint
+    /// 
+    /// Williams' %R is used for:
+    /// - Identifying overbought and oversold conditions
+    /// - Momentum confirmation
+    /// - Divergence analysis
+    /// - Entry and exit timing
+    /// 
+    /// This indicator is essentially the inverse of the Fast Stochastic Oscillator.
+    /// While Stochastic ranges from 0 to 100, Williams' %R ranges from -100 to 0.
+    /// </remarks>
     public static RetCode WillR(
         int startIdx,
         int endIdx,
@@ -132,6 +163,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Williams' %R calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the calculation. Valid range: 2 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid Williams' %R value can be calculated, or -1 if parameters are invalid.</returns>
     public static int WillRLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;

@@ -6,13 +6,40 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the Typical Price calculation.
+/// </summary>
+/// <remarks>
+/// The Typical Price is a price transformation that represents the average price of a 
+/// trading period, calculated as the arithmetic mean of the high, low, and close prices. 
+/// It is widely used as a more representative single price point than just the closing 
+/// price, as it incorporates the entire trading range. The formula is: (High + Low + Close) / 3. 
+/// This price is often used as the basis for other indicators like Money Flow Index and 
+/// Commodity Channel Index.
+/// </remarks>
 public record TypPriceResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TypPriceResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the calculated typical price values.</param>
     public TypPriceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of typical price values.
+    /// </summary>
+    /// <value>
+    /// An array of doubles representing the typical price for each period, calculated as 
+    /// the average of high, low, and close prices. This provides a balanced representation 
+    /// of each period's trading activity and is commonly used as input for volume-weighted 
+    /// indicators and pivot point calculations.
+    /// </value>
     public double[] Real { get; }
 }

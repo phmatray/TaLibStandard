@@ -8,6 +8,22 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
 {
+    /// <summary>
+    /// Calculates the MESA Adaptive Moving Average (MAMA) for the input price data.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input price data.</param>
+    /// <param name="fastLimit">The fast limit parameter for adaptation speed (default: 0.5).</param>
+    /// <param name="slowLimit">The slow limit parameter for adaptation speed (default: 0.05).</param>
+    /// <returns>A MamaResult containing the MAMA and FAMA (Following Adaptive Moving Average) values.</returns>
+    /// <remarks>
+    /// MESA Adaptive Moving Average automatically adjusts its smoothing factor based on 
+    /// the dominant market cycle measured by the Hilbert Transform. MAMA closely follows 
+    /// price in trending markets and provides smooth results in cycling markets. FAMA 
+    /// (Following Adaptive Moving Average) is a complementary indicator that can be used 
+    /// for crossover signals.
+    /// </remarks>
     public static MamaResult Mama(int startIdx, int endIdx, double[] real, double fastLimit, double slowLimit)
     {
         int outBegIdx = default;
@@ -29,12 +45,41 @@ public static partial class TAMath
         return new MamaResult(retCode, outBegIdx, outNBElement, outMAMA, outFAMA);
     }
         
+    /// <summary>
+    /// Calculates the MESA Adaptive Moving Average (MAMA) using default parameters.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input price data.</param>
+    /// <returns>A MamaResult containing the MAMA and FAMA values.</returns>
     public static MamaResult Mama(int startIdx, int endIdx, double[] real)
         => Mama(startIdx, endIdx, real, 0.5, 0.05);
 
+    /// <summary>
+    /// Calculates the MESA Adaptive Moving Average (MAMA) for the input price data.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input price data.</param>
+    /// <param name="fastLimit">The fast limit parameter for adaptation speed.</param>
+    /// <param name="slowLimit">The slow limit parameter for adaptation speed.</param>
+    /// <returns>A MamaResult containing the MAMA and FAMA values.</returns>
+    /// <remarks>
+    /// This overload accepts float input and converts it to double for calculation.
+    /// </remarks>
     public static MamaResult Mama(int startIdx, int endIdx, float[] real, double fastLimit, double slowLimit)
         => Mama(startIdx, endIdx, real.ToDouble(), fastLimit, slowLimit);
         
+    /// <summary>
+    /// Calculates the MESA Adaptive Moving Average (MAMA) using default parameters.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input price data.</param>
+    /// <returns>A MamaResult containing the MAMA and FAMA values.</returns>
+    /// <remarks>
+    /// This overload accepts float input and converts it to double for calculation.
+    /// </remarks>
     public static MamaResult Mama(int startIdx, int endIdx, float[] real)
         => Mama(startIdx, endIdx, real, 0.5, 0.05);
 }

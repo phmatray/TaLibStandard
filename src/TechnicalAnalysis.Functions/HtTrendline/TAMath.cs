@@ -8,6 +8,20 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
 {
+    /// <summary>
+    /// Calculates the Hilbert Transform - Instantaneous Trendline for the input price data.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input price data.</param>
+    /// <returns>An HtTrendlineResult containing the calculated trendline values.</returns>
+    /// <remarks>
+    /// The Hilbert Transform - Instantaneous Trendline removes the dominant cycle 
+    /// component from the price data, leaving only the trend component. This creates 
+    /// a smooth trendline that adapts to market conditions with minimal lag. It's 
+    /// particularly useful for identifying the underlying trend direction while 
+    /// filtering out cyclic price movements.
+    /// </remarks>
     public static HtTrendlineResult HtTrendline(int startIdx, int endIdx, double[] real)
     {
         int outBegIdx = default;
@@ -19,6 +33,16 @@ public static partial class TAMath
         return new HtTrendlineResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
+    /// <summary>
+    /// Calculates the Hilbert Transform - Instantaneous Trendline for the input price data.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input price data.</param>
+    /// <returns>An HtTrendlineResult containing the calculated trendline values.</returns>
+    /// <remarks>
+    /// This overload accepts float input and converts it to double for calculation.
+    /// </remarks>
     public static HtTrendlineResult HtTrendline(int startIdx, int endIdx, float[] real)
         => HtTrendline(startIdx, endIdx, real.ToDouble());
 }

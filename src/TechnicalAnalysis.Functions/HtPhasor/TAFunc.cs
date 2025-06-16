@@ -8,6 +8,52 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Hilbert Transform - Phasor Components.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outInPhase">Output array for the In-Phase component values.</param>
+    /// <param name="outQuadrature">Output array for the Quadrature component values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The Hilbert Transform - Phasor Components indicator decomposes price data into two 
+    /// perpendicular components: In-Phase (I) and Quadrature (Q). These components represent 
+    /// the real and imaginary parts of the analytic signal derived from the price series.
+    /// 
+    /// How it works:
+    /// - Uses the Hilbert Transform to convert real-valued price data into complex-valued analytic signals
+    /// - The In-Phase component represents the original detrended price
+    /// - The Quadrature component is 90 degrees out of phase with the In-Phase component
+    /// - Together, these components can be used to determine the instantaneous phase and amplitude
+    /// 
+    /// What it measures:
+    /// - The cyclical nature of price movements
+    /// - The current position within a price cycle
+    /// - The dominant cycle period in the price data
+    /// 
+    /// How to interpret:
+    /// - The relationship between In-Phase and Quadrature indicates the current phase angle
+    /// - Phase angle = arctan(Q/I), which shows position within the current cycle
+    /// - Can be used to identify cycle turning points when phase angle changes rapidly
+    /// - The magnitude sqrt(I² + Q²) represents the cycle amplitude
+    /// 
+    /// Common use cases:
+    /// - Identifying market cycles and their turning points
+    /// - Determining the dominant cycle period
+    /// - Generating trading signals based on phase transitions
+    /// - Used as input for other Hilbert Transform indicators (HT_SINE, HT_TRENDMODE)
+    /// 
+    /// Limitations and considerations:
+    /// - Requires sufficient historical data (minimum 32 bars + unstable period)
+    /// - Works best with cyclic market behavior
+    /// - May produce false signals in strongly trending markets
+    /// - The indicator has an unstable period during which values may be unreliable
+    /// - Not suitable for markets with irregular or non-cyclic price movements
+    /// </remarks>
     public static RetCode HtPhasor(
         int startIdx,
         int endIdx,
@@ -309,6 +355,22 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Calculates the lookback period for the Hilbert Transform - Phasor Components.
+    /// </summary>
+    /// <returns>The number of data points required before the first valid output value.</returns>
+    /// <remarks>
+    /// The lookback period consists of:
+    /// - A fixed period of 32 bars for the Hilbert Transform calculation
+    /// - Plus any additional unstable period configured for this function
+    /// 
+    /// The unstable period can be configured using TACore.SetUnstablePeriod() to adjust
+    /// how many additional bars are needed for the algorithm to stabilize. By default,
+    /// the unstable period is 0, making the total lookback period 32 bars.
+    /// 
+    /// This lookback period ensures that the Hilbert Transform has sufficient data to
+    /// accurately decompose the price series into its phase components.
+    /// </remarks>
     public static int HtPhasorLookback()
     {
         return (int)TACore.Globals.UnstablePeriod[FuncUnstId.HtPhasor] + 32;

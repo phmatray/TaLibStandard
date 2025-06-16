@@ -8,6 +8,40 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the MACD Extended - a flexible version of MACD allowing different moving average types.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="optInFastPeriod">Number of periods for the fast moving average. Typical value: 12.</param>
+    /// <param name="optInFastMAType">Type of moving average to use for the fast MA (SMA, EMA, WMA, etc.).</param>
+    /// <param name="optInSlowPeriod">Number of periods for the slow moving average. Typical value: 26.</param>
+    /// <param name="optInSlowMAType">Type of moving average to use for the slow MA (SMA, EMA, WMA, etc.).</param>
+    /// <param name="optInSignalPeriod">Number of periods for the signal line moving average. Typical value: 9.</param>
+    /// <param name="optInSignalMAType">Type of moving average to use for the signal line (SMA, EMA, WMA, etc.).</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outMACD">Output array for the MACD line values (fast MA - slow MA).</param>
+    /// <param name="outMACDSignal">Output array for the signal line values (MA of MACD line).</param>
+    /// <param name="outMACDHist">Output array for the MACD histogram values (MACD line - signal line).</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// MACD Extended provides the same three components as standard MACD but with customizable moving average types:
+    /// - MACD Line = Fast MA - Slow MA
+    /// - Signal Line = MA of MACD Line
+    /// - MACD Histogram = MACD Line - Signal Line
+    /// 
+    /// This extended version allows experimentation with different MA types (SMA, WMA, DEMA, TEMA, etc.)
+    /// for potentially better responsiveness or smoothing characteristics.
+    /// 
+    /// Common configurations:
+    /// - Standard MACD: All MAs use EMA
+    /// - Responsive MACD: Fast/Slow use DEMA, Signal uses EMA
+    /// - Smooth MACD: Fast/Slow use EMA, Signal uses SMA
+    /// 
+    /// The function automatically swaps fast and slow periods if slow period is less than fast period.
+    /// </remarks>
     public static RetCode MacdExt(
         int startIdx,
         int endIdx,
@@ -183,6 +217,26 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for MACD Extended calculation.
+    /// </summary>
+    /// <param name="optInFastPeriod">Number of periods for the fast moving average. Valid range: 2 to 100000.</param>
+    /// <param name="optInFastMAType">Type of moving average to use for the fast MA.</param>
+    /// <param name="optInSlowPeriod">Number of periods for the slow moving average. Valid range: 2 to 100000.</param>
+    /// <param name="optInSlowMAType">Type of moving average to use for the slow MA.</param>
+    /// <param name="optInSignalPeriod">Number of periods for the signal line moving average. Valid range: 1 to 100000.</param>
+    /// <param name="optInSignalMAType">Type of moving average to use for the signal line.</param>
+    /// <returns>The number of historical data points required before the first valid MACD Extended value can be calculated, or -1 if parameters are invalid.</returns>
+    /// <remarks>
+    /// The lookback period is determined by finding the maximum lookback among the fast and slow moving averages,
+    /// then adding the signal line's lookback period. Different MA types have different lookback requirements:
+    /// - SMA: period - 1
+    /// - EMA: period - 1
+    /// - WMA: period - 1
+    /// - DEMA: 2 * (period - 1)
+    /// - TEMA: 3 * (period - 1)
+    /// - And others as defined by their specific algorithms
+    /// </remarks>
     public static int MacdExtLookback(
         int optInFastPeriod,
         MAType optInFastMAType,

@@ -1,53 +1,158 @@
 https://github.com/phmatray/TaLibStandard/blob/master/docs/
+P:TechnicalAnalysis.Functions.AcosResult.Real|AcosResult.Real.md|Real
+M:TechnicalAnalysis.Functions.AcosResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|AcosResult.AcosResult(RetCode,int,int,double[]).md|AcosResult(RetCode, int, int, double[])
+N:TechnicalAnalysis.Functions|Atypical.TechnicalAnalysis.Functions.md#TechnicalAnalysis.Functions|TechnicalAnalysis.Functions
+T:TechnicalAnalysis.Functions.AcosResult|AcosResult.md|AcosResult
 M:TechnicalAnalysis.Functions.TAFunc.Acos(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Acos(int,int,double[],int,int,double[]).md|Acos(int, int, double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.AcosLookback|TAFunc.AcosLookback().md|AcosLookback()
 M:TechnicalAnalysis.Functions.TAFunc.Ad(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Ad(int,int,double[],double[],double[],double[],int,int,double[]).md|Ad(int, int, double[], double[], double[], double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.AdLookback|TAFunc.AdLookback().md|AdLookback()
 M:TechnicalAnalysis.Functions.TAFunc.Add(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Add(int,int,double[],double[],int,int,double[]).md|Add(int, int, double[], double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.AddLookback|TAFunc.AddLookback().md|AddLookback()
+M:TechnicalAnalysis.Functions.TAFunc.AdOsc(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.AdOsc(int,int,double[],double[],double[],double[],int,int,int,int,double[]).md|AdOsc(int, int, double[], double[], double[], double[], int, int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.AdOscLookback(System.Int32,System.Int32)|TAFunc.AdOscLookback(int,int).md|AdOscLookback(int, int)
 M:TechnicalAnalysis.Functions.TAFunc.Adx(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Adx(int,int,double[],double[],double[],int,int,int,double[]).md|Adx(int, int, double[], double[], double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.AdxLookback(System.Int32)|TAFunc.AdxLookback(int).md|AdxLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.Adxr(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Adxr(int,int,double[],double[],double[],int,int,int,double[]).md|Adxr(int, int, double[], double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.AdxrLookback(System.Int32)|TAFunc.AdxrLookback(int).md|AdxrLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.Apo(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,TechnicalAnalysis.Common.MAType@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Apo(int,int,double[],int,int,MAType,int,int,double[]).md|Apo(int, int, double[], int, int, MAType, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.ApoLookback(System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAFunc.ApoLookback(int,int,MAType).md|ApoLookback(int, int, MAType)
+M:TechnicalAnalysis.Functions.TAFunc.Aroon(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@)|TAFunc.Aroon(int,int,double[],double[],int,int,int,double[],double[]).md|Aroon(int, int, double[], double[], int, int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAFunc.AroonLookback(System.Int32)|TAFunc.AroonLookback(int).md|AroonLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.AroonOsc(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.AroonOsc(int,int,double[],double[],int,int,int,double[]).md|AroonOsc(int, int, double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.AroonOscLookback(System.Int32)|TAFunc.AroonOscLookback(int).md|AroonOscLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.Asin(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Asin(int,int,double[],int,int,double[]).md|Asin(int, int, double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.AsinLookback|TAFunc.AsinLookback().md|AsinLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Atan(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Atan(int,int,double[],int,int,double[]).md|Atan(int, int, double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.AtanLookback|TAFunc.AtanLookback().md|AtanLookback()
 M:TechnicalAnalysis.Functions.TAFunc.Atr(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Atr(int,int,double[],double[],double[],int,int,int,double[]).md|Atr(int, int, double[], double[], double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.AtrLookback(System.Int32)|TAFunc.AtrLookback(int).md|AtrLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.AvgPrice(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.AvgPrice(int,int,double[],double[],double[],double[],int,int,double[]).md|AvgPrice(int, int, double[], double[], double[], double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.AvgPriceLookback|TAFunc.AvgPriceLookback().md|AvgPriceLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Beta(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Beta(int,int,double[],double[],int,int,int,double[]).md|Beta(int, int, double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.BetaLookback(System.Int32)|TAFunc.BetaLookback(int).md|BetaLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.BollingerBands(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Double@,System.Double@,TechnicalAnalysis.Common.MAType@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@,System.Double[]@)|TAFunc.BollingerBands(int,int,double[],int,double,double,MAType,int,int,double[],double[],double[]).md|BollingerBands(int, int, double[], int, double, double, MAType, int, int, double[], double[], double[])
 M:TechnicalAnalysis.Functions.TAFunc.BollingerBandsLookback(System.Int32,TechnicalAnalysis.Common.MAType)|TAFunc.BollingerBandsLookback(int,MAType).md|BollingerBandsLookback(int, MAType)
+M:TechnicalAnalysis.Functions.TAFunc.Bop(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Bop(int,int,double[],double[],double[],double[],int,int,double[]).md|Bop(int, int, double[], double[], double[], double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.BopLookback|TAFunc.BopLookback().md|BopLookback()
 M:TechnicalAnalysis.Functions.TAFunc.Cci(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Cci(int,int,double[],double[],double[],int,int,int,double[]).md|Cci(int, int, double[], double[], double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.CciLookback(System.Int32)|TAFunc.CciLookback(int).md|CciLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.Ceil(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Ceil(int,int,double[],int,int,double[]).md|Ceil(int, int, double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.CeilLookback|TAFunc.CeilLookback().md|CeilLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Cmo(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Cmo(int,int,double[],int,int,int,double[]).md|Cmo(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.CmoLookback(System.Int32)|TAFunc.CmoLookback(int).md|CmoLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.Correl(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Correl(int,int,double[],double[],int,int,int,double[]).md|Correl(int, int, double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.CorrelLookback(System.Int32)|TAFunc.CorrelLookback(int).md|CorrelLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.Cos(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Cos(int,int,double[],int,int,double[]).md|Cos(int, int, double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.CosLookback|TAFunc.CosLookback().md|CosLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Cosh(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Cosh(int,int,double[],int,int,double[]).md|Cosh(int, int, double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.CoshLookback|TAFunc.CoshLookback().md|CoshLookback()
 M:TechnicalAnalysis.Functions.TAFunc.Dema(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Dema(int,int,double[],int,int,int,double[]).md|Dema(int, int, double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.DemaLookback(System.Int32)|TAFunc.DemaLookback(int).md|DemaLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.Div(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Div(int,int,double[],double[],int,int,double[]).md|Div(int, int, double[], double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.DivLookback|TAFunc.DivLookback().md|DivLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Dx(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Dx(int,int,double[],double[],double[],int,int,int,double[]).md|Dx(int, int, double[], double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.DxLookback(System.Int32)|TAFunc.DxLookback(int).md|DxLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.Ema(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Ema(int,int,double[],int,int,int,double[]).md|Ema(int, int, double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.EmaLookback(System.Int32)|TAFunc.EmaLookback(int).md|EmaLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.Exp(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Exp(int,int,double[],int,int,double[]).md|Exp(int, int, double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.ExpLookback|TAFunc.ExpLookback().md|ExpLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Floor(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Floor(int,int,double[],int,int,double[]).md|Floor(int, int, double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.FloorLookback|TAFunc.FloorLookback().md|FloorLookback()
+M:TechnicalAnalysis.Functions.TAFunc.HtDcPeriod(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.HtDcPeriod(int,int,double[],int,int,double[]).md|HtDcPeriod(int, int, double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.HtDcPeriodLookback|TAFunc.HtDcPeriodLookback().md|HtDcPeriodLookback()
+M:TechnicalAnalysis.Functions.TAFunc.HtDcPhase(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.HtDcPhase(int,int,double[],int,int,double[]).md|HtDcPhase(int, int, double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.HtDcPhaseLookback|TAFunc.HtDcPhaseLookback().md|HtDcPhaseLookback()
+M:TechnicalAnalysis.Functions.TAFunc.HtPhasor(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@)|TAFunc.HtPhasor(int,int,double[],int,int,double[],double[]).md|HtPhasor(int, int, double[], int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAFunc.HtPhasorLookback|TAFunc.HtPhasorLookback().md|HtPhasorLookback()
+M:TechnicalAnalysis.Functions.TAFunc.HtSine(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@)|TAFunc.HtSine(int,int,double[],int,int,double[],double[]).md|HtSine(int, int, double[], int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAFunc.HtSineLookback|TAFunc.HtSineLookback().md|HtSineLookback()
+M:TechnicalAnalysis.Functions.TAFunc.HtTrendline(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.HtTrendline(int,int,double[],int,int,double[]).md|HtTrendline(int, int, double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.HtTrendlineLookback|TAFunc.HtTrendlineLookback().md|HtTrendlineLookback()
+M:TechnicalAnalysis.Functions.TAFunc.HtTrendMode(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32[]@)|TAFunc.HtTrendMode(int,int,double[],int,int,int[]).md|HtTrendMode(int, int, double[], int, int, int[])
+M:TechnicalAnalysis.Functions.TAFunc.HtTrendModeLookback|TAFunc.HtTrendModeLookback().md|HtTrendModeLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Kama(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Kama(int,int,double[],int,int,int,double[]).md|Kama(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.KamaLookback(System.Int32)|TAFunc.KamaLookback(int).md|KamaLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.LinearReg(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.LinearReg(int,int,double[],int,int,int,double[]).md|LinearReg(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.LinearRegLookback(System.Int32)|TAFunc.LinearRegLookback(int).md|LinearRegLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.LinearRegAngle(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.LinearRegAngle(int,int,double[],int,int,int,double[]).md|LinearRegAngle(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.LinearRegAngleLookback(System.Int32)|TAFunc.LinearRegAngleLookback(int).md|LinearRegAngleLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.LinearRegIntercept(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.LinearRegIntercept(int,int,double[],int,int,int,double[]).md|LinearRegIntercept(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.LinearRegInterceptLookback(System.Int32)|TAFunc.LinearRegInterceptLookback(int).md|LinearRegInterceptLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.LinearRegSlope(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.LinearRegSlope(int,int,double[],int,int,int,double[]).md|LinearRegSlope(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.LinearRegSlopeLookback(System.Int32)|TAFunc.LinearRegSlopeLookback(int).md|LinearRegSlopeLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.Ln(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Ln(int,int,double[],int,int,double[]).md|Ln(int, int, double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.LnLookback|TAFunc.LnLookback().md|LnLookback()
 M:TechnicalAnalysis.Functions.TAFunc.Log10(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Log10(int,int,double[],int,int,double[]).md|Log10(int, int, double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.Log10Lookback|TAFunc.Log10Lookback().md|Log10Lookback()
 M:TechnicalAnalysis.Functions.TAFunc.Macd(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@,System.Double[]@)|TAFunc.Macd(int,int,double[],int,int,int,int,int,double[],double[],double[]).md|Macd(int, int, double[], int, int, int, int, int, double[], double[], double[])
 M:TechnicalAnalysis.Functions.TAFunc.MacdLookback(System.Int32,System.Int32,System.Int32)|TAFunc.MacdLookback(int,int,int).md|MacdLookback(int, int, int)
+M:TechnicalAnalysis.Functions.TAFunc.MacdExt(System.Int32,System.Int32,System.Double[]@,System.Int32,TechnicalAnalysis.Common.MAType,System.Int32,TechnicalAnalysis.Common.MAType,System.Int32@,TechnicalAnalysis.Common.MAType@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@,System.Double[]@)|TAFunc.MacdExt(int,int,double[],int,MAType,int,MAType,int,MAType,int,int,double[],double[],double[]).md|MacdExt(int, int, double[], int, MAType, int, MAType, int, MAType, int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAFunc.MacdExtLookback(System.Int32,TechnicalAnalysis.Common.MAType,System.Int32,TechnicalAnalysis.Common.MAType,System.Int32,TechnicalAnalysis.Common.MAType)|TAFunc.MacdExtLookback(int,MAType,int,MAType,int,MAType).md|MacdExtLookback(int, MAType, int, MAType, int, MAType)
+M:TechnicalAnalysis.Functions.TAFunc.MacdFix(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@,System.Double[]@)|TAFunc.MacdFix(int,int,double[],int,int,int,double[],double[],double[]).md|MacdFix(int, int, double[], int, int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAFunc.MacdFixLookback(System.Int32)|TAFunc.MacdFixLookback(int).md|MacdFixLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.Mama(System.Int32,System.Int32,System.Double[]@,System.Double@,System.Double@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@)|TAFunc.Mama(int,int,double[],double,double,int,int,double[],double[]).md|Mama(int, int, double[], double, double, int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAFunc.MamaLookback(System.Double,System.Double)|TAFunc.MamaLookback(double,double).md|MamaLookback(double, double)
+M:TechnicalAnalysis.Functions.TAFunc.Max(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Max(int,int,double[],int,int,int,double[]).md|Max(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.MaxLookback(System.Int32)|TAFunc.MaxLookback(int).md|MaxLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.MaxIndex(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Int32[]@)|TAFunc.MaxIndex(int,int,double[],int,int,int,int[]).md|MaxIndex(int, int, double[], int, int, int, int[])
+M:TechnicalAnalysis.Functions.TAFunc.MaxIndexLookback(System.Int32)|TAFunc.MaxIndexLookback(int).md|MaxIndexLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.MedPrice(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.MedPrice(int,int,double[],double[],int,int,double[]).md|MedPrice(int, int, double[], double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.MedPriceLookback|TAFunc.MedPriceLookback().md|MedPriceLookback()
 M:TechnicalAnalysis.Functions.TAFunc.Mfi(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Mfi(int,int,double[],double[],double[],double[],int,int,int,double[]).md|Mfi(int, int, double[], double[], double[], double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.MfiLookback(System.Int32)|TAFunc.MfiLookback(int).md|MfiLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.MidPoint(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.MidPoint(int,int,double[],int,int,int,double[]).md|MidPoint(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.MidPointLookback(System.Int32)|TAFunc.MidPointLookback(int).md|MidPointLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.MidPrice(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.MidPrice(int,int,double[],double[],int,int,int,double[]).md|MidPrice(int, int, double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.MidPriceLookback(System.Int32)|TAFunc.MidPriceLookback(int).md|MidPriceLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.Min(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Min(int,int,double[],int,int,int,double[]).md|Min(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.MinLookback(System.Int32)|TAFunc.MinLookback(int).md|MinLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.MinIndex(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Int32[]@)|TAFunc.MinIndex(int,int,double[],int,int,int,int[]).md|MinIndex(int, int, double[], int, int, int, int[])
+M:TechnicalAnalysis.Functions.TAFunc.MinIndexLookback(System.Int32)|TAFunc.MinIndexLookback(int).md|MinIndexLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.MinMax(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@)|TAFunc.MinMax(int,int,double[],int,int,int,double[],double[]).md|MinMax(int, int, double[], int, int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAFunc.MinMaxLookback(System.Int32)|TAFunc.MinMaxLookback(int).md|MinMaxLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.MinMaxIndex(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Int32[]@,System.Int32[]@)|TAFunc.MinMaxIndex(int,int,double[],int,int,int,int[],int[]).md|MinMaxIndex(int, int, double[], int, int, int, int[], int[])
+M:TechnicalAnalysis.Functions.TAFunc.MinMaxIndexLookback(System.Int32)|TAFunc.MinMaxIndexLookback(int).md|MinMaxIndexLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.MinusDI(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.MinusDI(int,int,double[],double[],double[],int,int,int,double[]).md|MinusDI(int, int, double[], double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.MinusDILookback(System.Int32)|TAFunc.MinusDILookback(int).md|MinusDILookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.MinusDM(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.MinusDM(int,int,double[],double[],int,int,int,double[]).md|MinusDM(int, int, double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.MinusDMLookback(System.Int32)|TAFunc.MinusDMLookback(int).md|MinusDMLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.Mom(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Mom(int,int,double[],int,int,int,double[]).md|Mom(int, int, double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.MomLookback(System.Int32)|TAFunc.MomLookback(int).md|MomLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.MovingAverage(System.Int32,System.Int32,System.Double[]@,System.Int32@,TechnicalAnalysis.Common.MAType@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.MovingAverage(int,int,double[],int,MAType,int,int,double[]).md|MovingAverage(int, int, double[], int, MAType, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.MovingAverageLookback(System.Int32,TechnicalAnalysis.Common.MAType)|TAFunc.MovingAverageLookback(int,MAType).md|MovingAverageLookback(int, MAType)
+M:TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriod(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,TechnicalAnalysis.Common.MAType@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.MovingAverageVariablePeriod(int,int,double[],double[],int,int,MAType,int,int,double[]).md|MovingAverageVariablePeriod(int, int, double[], double[], int, int, MAType, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriodLookback(System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAFunc.MovingAverageVariablePeriodLookback(int,int,MAType).md|MovingAverageVariablePeriodLookback(int, int, MAType)
 M:TechnicalAnalysis.Functions.TAFunc.Mult(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Mult(int,int,double[],double[],int,int,double[]).md|Mult(int, int, double[], double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.MultLookback|TAFunc.MultLookback().md|MultLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Natr(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Natr(int,int,double[],double[],double[],int,int,int,double[]).md|Natr(int, int, double[], double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.NatrLookback(System.Int32)|TAFunc.NatrLookback(int).md|NatrLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.Obv(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Obv(int,int,double[],double[],int,int,double[]).md|Obv(int, int, double[], double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.ObvLookback|TAFunc.ObvLookback().md|ObvLookback()
+M:TechnicalAnalysis.Functions.TAFunc.PlusDI(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.PlusDI(int,int,double[],double[],double[],int,int,int,double[]).md|PlusDI(int, int, double[], double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.PlusDILookback(System.Int32)|TAFunc.PlusDILookback(int).md|PlusDILookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.PlusDM(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.PlusDM(int,int,double[],double[],int,int,int,double[]).md|PlusDM(int, int, double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.PlusDMLookback(System.Int32)|TAFunc.PlusDMLookback(int).md|PlusDMLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.Ppo(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,TechnicalAnalysis.Common.MAType@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Ppo(int,int,double[],int,int,MAType,int,int,double[]).md|Ppo(int, int, double[], int, int, MAType, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.PpoLookback(System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAFunc.PpoLookback(int,int,MAType).md|PpoLookback(int, int, MAType)
 M:TechnicalAnalysis.Functions.TAFunc.Roc(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Roc(int,int,double[],int,int,int,double[]).md|Roc(int, int, double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.RocLookback(System.Int32)|TAFunc.RocLookback(int).md|RocLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.RocP(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.RocP(int,int,double[],int,int,int,double[]).md|RocP(int, int, double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.RocPLookback(System.Int32)|TAFunc.RocPLookback(int).md|RocPLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.RocR(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.RocR(int,int,double[],int,int,int,double[]).md|RocR(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.RocRLookback(System.Int32)|TAFunc.RocRLookback(int).md|RocRLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.RocR100(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.RocR100(int,int,double[],int,int,int,double[]).md|RocR100(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.RocR100Lookback(System.Int32)|TAFunc.RocR100Lookback(int).md|RocR100Lookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.Rsi(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Rsi(int,int,double[],int,int,int,double[]).md|Rsi(int, int, double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.RsiLookback(System.Int32)|TAFunc.RsiLookback(int).md|RsiLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.Sar(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double,System.Double@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Sar(int,int,double[],double[],double,double,int,int,double[]).md|Sar(int, int, double[], double[], double, double, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.SarLookback(System.Double,System.Double)|TAFunc.SarLookback(double,double).md|SarLookback(double, double)
+M:TechnicalAnalysis.Functions.TAFunc.SarExt(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double@,System.Double@,System.Double,System.Double,System.Double@,System.Double,System.Double,System.Double@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).md|SarExt(int, int, double[], double[], double, double, double, double, double, double, double, double, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.SarExtLookback(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)|TAFunc.SarExtLookback(double,double,double,double,double,double,double,double).md|SarExtLookback(double, double, double, double, double, double, double, double)
 M:TechnicalAnalysis.Functions.TAFunc.Sin(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Sin(int,int,double[],int,int,double[]).md|Sin(int, int, double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.SinLookback|TAFunc.SinLookback().md|SinLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Sinh(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Sinh(int,int,double[],int,int,double[]).md|Sinh(int, int, double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.SinhLookback|TAFunc.SinhLookback().md|SinhLookback()
 M:TechnicalAnalysis.Functions.TAFunc.Sma(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Sma(int,int,double[],int,int,int,double[]).md|Sma(int, int, double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.SmaLookback(System.Int32)|TAFunc.SmaLookback(int).md|SmaLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.Sqrt(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Sqrt(int,int,double[],int,int,double[]).md|Sqrt(int, int, double[], int, int, double[])
@@ -56,24 +161,775 @@ M:TechnicalAnalysis.Functions.TAFunc.StdDev(System.Int32,System.Int32,System.Dou
 M:TechnicalAnalysis.Functions.TAFunc.StdDevLookback(System.Int32,System.Double)|TAFunc.StdDevLookback(int,double).md|StdDevLookback(int, double)
 M:TechnicalAnalysis.Functions.TAFunc.Stoch(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,TechnicalAnalysis.Common.MAType@,System.Int32@,TechnicalAnalysis.Common.MAType@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@)|TAFunc.Stoch(int,int,double[],double[],double[],int,int,MAType,int,MAType,int,int,double[],double[]).md|Stoch(int, int, double[], double[], double[], int, int, MAType, int, MAType, int, int, double[], double[])
 M:TechnicalAnalysis.Functions.TAFunc.StochLookback(System.Int32,System.Int32,TechnicalAnalysis.Common.MAType,System.Int32,TechnicalAnalysis.Common.MAType)|TAFunc.StochLookback(int,int,MAType,int,MAType).md|StochLookback(int, int, MAType, int, MAType)
+M:TechnicalAnalysis.Functions.TAFunc.StochF(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,TechnicalAnalysis.Common.MAType@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@)|TAFunc.StochF(int,int,double[],double[],double[],int,int,MAType,int,int,double[],double[]).md|StochF(int, int, double[], double[], double[], int, int, MAType, int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAFunc.StochFLookback(System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAFunc.StochFLookback(int,int,MAType).md|StochFLookback(int, int, MAType)
+M:TechnicalAnalysis.Functions.TAFunc.StochRsi(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,TechnicalAnalysis.Common.MAType@,System.Int32@,System.Int32@,System.Double[]@,System.Double[]@)|TAFunc.StochRsi(int,int,double[],int,int,int,MAType,int,int,double[],double[]).md|StochRsi(int, int, double[], int, int, int, MAType, int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAFunc.StochRsiLookback(System.Int32,System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAFunc.StochRsiLookback(int,int,int,MAType).md|StochRsiLookback(int, int, int, MAType)
 M:TechnicalAnalysis.Functions.TAFunc.Sub(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Sub(int,int,double[],double[],int,int,double[]).md|Sub(int, int, double[], double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.SubLookback|TAFunc.SubLookback().md|SubLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Sum(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Sum(int,int,double[],int,int,int,double[]).md|Sum(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.SumLookback(System.Int32)|TAFunc.SumLookback(int).md|SumLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.T3(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Double@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.T3(int,int,double[],int,double,int,int,double[]).md|T3(int, int, double[], int, double, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.T3Lookback(System.Int32,System.Double)|TAFunc.T3Lookback(int,double).md|T3Lookback(int, double)
 M:TechnicalAnalysis.Functions.TAFunc.Tan(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Tan(int,int,double[],int,int,double[]).md|Tan(int, int, double[], int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.TanLookback|TAFunc.TanLookback().md|TanLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Tanh(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Tanh(int,int,double[],int,int,double[]).md|Tanh(int, int, double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.TanhLookback|TAFunc.TanhLookback().md|TanhLookback()
 M:TechnicalAnalysis.Functions.TAFunc.Tema(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Tema(int,int,double[],int,int,int,double[]).md|Tema(int, int, double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.TemaLookback(System.Int32)|TAFunc.TemaLookback(int).md|TemaLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.Trima(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Trima(int,int,double[],int,int,int,double[]).md|Trima(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.TrimaLookback(System.Int32)|TAFunc.TrimaLookback(int).md|TrimaLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.Trix(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Trix(int,int,double[],int,int,int,double[]).md|Trix(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.TrixLookback(System.Int32)|TAFunc.TrixLookback(int).md|TrixLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.TrueRange(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.TrueRange(int,int,double[],double[],double[],int,int,double[]).md|TrueRange(int, int, double[], double[], double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.TrueRangeLookback|TAFunc.TrueRangeLookback().md|TrueRangeLookback()
+M:TechnicalAnalysis.Functions.TAFunc.Tsf(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Tsf(int,int,double[],int,int,int,double[]).md|Tsf(int, int, double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.TsfLookback(System.Int32)|TAFunc.TsfLookback(int).md|TsfLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.TypPrice(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.TypPrice(int,int,double[],double[],double[],int,int,double[]).md|TypPrice(int, int, double[], double[], double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.TypPriceLookback|TAFunc.TypPriceLookback().md|TypPriceLookback()
+M:TechnicalAnalysis.Functions.TAFunc.UltOsc(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32,System.Int32,System.Int32,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.UltOsc(int,int,double[],double[],double[],int,int,int,int,int,double[]).md|UltOsc(int, int, double[], double[], double[], int, int, int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.UltOscLookback(System.Int32,System.Int32,System.Int32)|TAFunc.UltOscLookback(int,int,int).md|UltOscLookback(int, int, int)
 M:TechnicalAnalysis.Functions.TAFunc.Variance(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Double@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Variance(int,int,double[],int,double,int,int,double[]).md|Variance(int, int, double[], int, double, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.VarianceLookback(System.Int32)|TAFunc.VarianceLookback(int).md|VarianceLookback(int)
+M:TechnicalAnalysis.Functions.TAFunc.WclPrice(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.WclPrice(int,int,double[],double[],double[],int,int,double[]).md|WclPrice(int, int, double[], double[], double[], int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.WclPriceLookback|TAFunc.WclPriceLookback().md|WclPriceLookback()
+M:TechnicalAnalysis.Functions.TAFunc.WillR(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.WillR(int,int,double[],double[],double[],int,int,int,double[]).md|WillR(int, int, double[], double[], double[], int, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.WillRLookback(System.Int32)|TAFunc.WillRLookback(int).md|WillRLookback(int)
 M:TechnicalAnalysis.Functions.TAFunc.Wma(System.Int32,System.Int32,System.Double[]@,System.Int32@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.Wma(int,int,double[],int,int,int,double[]).md|Wma(int, int, double[], int, int, int, double[])
 M:TechnicalAnalysis.Functions.TAFunc.WmaLookback(System.Int32)|TAFunc.WmaLookback(int).md|WmaLookback(int)
-N:TechnicalAnalysis.Functions|Atypical.TechnicalAnalysis.Functions.md#TechnicalAnalysis.Functions|TechnicalAnalysis.Functions
+M:TechnicalAnalysis.Functions.TAFunc.ZigZag(System.Int32,System.Int32,System.Double[]@,System.Double[]@,System.Double@,System.Int32@,System.Int32@,System.Double[]@)|TAFunc.ZigZag(int,int,double[],double[],double,int,int,double[]).md|ZigZag(int, int, double[], double[], double, int, int, double[])
+M:TechnicalAnalysis.Functions.TAFunc.ZigZagLookback(System.Double)|TAFunc.ZigZagLookback(double).md|ZigZagLookback(double)
 T:TechnicalAnalysis.Functions.TAFunc|TAFunc.md|TAFunc
+M:TechnicalAnalysis.Functions.TAMath.Acos(System.Int32,System.Int32,System.Double[])|TAMath.Acos.md#TechnicalAnalysis.Functions.TAMath.Acos(int,int,double[])|Acos(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Acos(System.Int32,System.Int32,System.Single[])|TAMath.Acos.md#TechnicalAnalysis.Functions.TAMath.Acos(int,int,float[])|Acos(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Ad(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Double[])|TAMath.Ad.md#TechnicalAnalysis.Functions.TAMath.Ad(int,int,double[],double[],double[],double[])|Ad(int, int, double[], double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Ad(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Single[])|TAMath.Ad.md#TechnicalAnalysis.Functions.TAMath.Ad(int,int,float[],float[],float[],float[])|Ad(int, int, float[], float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Add(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.Add.md#TechnicalAnalysis.Functions.TAMath.Add(int,int,double[],double[])|Add(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Add(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.Add.md#TechnicalAnalysis.Functions.TAMath.Add(int,int,float[],float[])|Add(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.AdOsc(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Double[],System.Int32,System.Int32)|TAMath.AdOsc.md#TechnicalAnalysis.Functions.TAMath.AdOsc(int,int,double[],double[],double[],double[],int,int)|AdOsc(int, int, double[], double[], double[], double[], int, int)
+M:TechnicalAnalysis.Functions.TAMath.AdOsc(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Double[])|TAMath.AdOsc.md#TechnicalAnalysis.Functions.TAMath.AdOsc(int,int,double[],double[],double[],double[])|AdOsc(int, int, double[], double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.AdOsc(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Single[],System.Int32,System.Int32)|TAMath.AdOsc.md#TechnicalAnalysis.Functions.TAMath.AdOsc(int,int,float[],float[],float[],float[],int,int)|AdOsc(int, int, float[], float[], float[], float[], int, int)
+M:TechnicalAnalysis.Functions.TAMath.AdOsc(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Single[])|TAMath.AdOsc.md#TechnicalAnalysis.Functions.TAMath.AdOsc(int,int,float[],float[],float[],float[])|AdOsc(int, int, float[], float[], float[], float[])
 M:TechnicalAnalysis.Functions.TAMath.Adx(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32)|TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[],int)|Adx(int, int, double[], double[], double[], int)
 M:TechnicalAnalysis.Functions.TAMath.Adx(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[])|Adx(int, int, double[], double[], double[])
 M:TechnicalAnalysis.Functions.TAMath.Adx(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32)|TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[],int)|Adx(int, int, float[], float[], float[], int)
 M:TechnicalAnalysis.Functions.TAMath.Adx(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[])|Adx(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Adxr(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32)|TAMath.Adxr.md#TechnicalAnalysis.Functions.TAMath.Adxr(int,int,double[],double[],double[],int)|Adxr(int, int, double[], double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Adxr(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.Adxr.md#TechnicalAnalysis.Functions.TAMath.Adxr(int,int,double[],double[],double[])|Adxr(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Adxr(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32)|TAMath.Adxr.md#TechnicalAnalysis.Functions.TAMath.Adxr(int,int,float[],float[],float[],int)|Adxr(int, int, float[], float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Adxr(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.Adxr.md#TechnicalAnalysis.Functions.TAMath.Adxr(int,int,float[],float[],float[])|Adxr(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Apo(System.Int32,System.Int32,System.Double[],System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.Apo.md#TechnicalAnalysis.Functions.TAMath.Apo(int,int,double[],int,int,TechnicalAnalysis.Common.MAType)|Apo(int, int, double[], int, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.Apo(System.Int32,System.Int32,System.Double[])|TAMath.Apo.md#TechnicalAnalysis.Functions.TAMath.Apo(int,int,double[])|Apo(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Apo(System.Int32,System.Int32,System.Single[],System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.Apo.md#TechnicalAnalysis.Functions.TAMath.Apo(int,int,float[],int,int,TechnicalAnalysis.Common.MAType)|Apo(int, int, float[], int, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.Apo(System.Int32,System.Int32,System.Single[])|TAMath.Apo.md#TechnicalAnalysis.Functions.TAMath.Apo(int,int,float[])|Apo(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Aroon(System.Int32,System.Int32,System.Double[],System.Double[],System.Int32)|TAMath.Aroon.md#TechnicalAnalysis.Functions.TAMath.Aroon(int,int,double[],double[],int)|Aroon(int, int, double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Aroon(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.Aroon.md#TechnicalAnalysis.Functions.TAMath.Aroon(int,int,double[],double[])|Aroon(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Aroon(System.Int32,System.Int32,System.Single[],System.Single[],System.Int32)|TAMath.Aroon.md#TechnicalAnalysis.Functions.TAMath.Aroon(int,int,float[],float[],int)|Aroon(int, int, float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Aroon(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.Aroon.md#TechnicalAnalysis.Functions.TAMath.Aroon(int,int,float[],float[])|Aroon(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.AroonOsc(System.Int32,System.Int32,System.Double[],System.Double[],System.Int32)|TAMath.AroonOsc.md#TechnicalAnalysis.Functions.TAMath.AroonOsc(int,int,double[],double[],int)|AroonOsc(int, int, double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.AroonOsc(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.AroonOsc.md#TechnicalAnalysis.Functions.TAMath.AroonOsc(int,int,double[],double[])|AroonOsc(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.AroonOsc(System.Int32,System.Int32,System.Single[],System.Single[],System.Int32)|TAMath.AroonOsc.md#TechnicalAnalysis.Functions.TAMath.AroonOsc(int,int,float[],float[],int)|AroonOsc(int, int, float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.AroonOsc(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.AroonOsc.md#TechnicalAnalysis.Functions.TAMath.AroonOsc(int,int,float[],float[])|AroonOsc(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Asin(System.Int32,System.Int32,System.Double[])|TAMath.Asin.md#TechnicalAnalysis.Functions.TAMath.Asin(int,int,double[])|Asin(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Asin(System.Int32,System.Int32,System.Single[])|TAMath.Asin.md#TechnicalAnalysis.Functions.TAMath.Asin(int,int,float[])|Asin(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Atan(System.Int32,System.Int32,System.Double[])|TAMath.Atan.md#TechnicalAnalysis.Functions.TAMath.Atan(int,int,double[])|Atan(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Atan(System.Int32,System.Int32,System.Single[])|TAMath.Atan.md#TechnicalAnalysis.Functions.TAMath.Atan(int,int,float[])|Atan(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Atr(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32)|TAMath.Atr.md#TechnicalAnalysis.Functions.TAMath.Atr(int,int,double[],double[],double[],int)|Atr(int, int, double[], double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Atr(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.Atr.md#TechnicalAnalysis.Functions.TAMath.Atr(int,int,double[],double[],double[])|Atr(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Atr(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32)|TAMath.Atr.md#TechnicalAnalysis.Functions.TAMath.Atr(int,int,float[],float[],float[],int)|Atr(int, int, float[], float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Atr(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.Atr.md#TechnicalAnalysis.Functions.TAMath.Atr(int,int,float[],float[],float[])|Atr(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.AvgPrice(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Double[])|TAMath.AvgPrice.md#TechnicalAnalysis.Functions.TAMath.AvgPrice(int,int,double[],double[],double[],double[])|AvgPrice(int, int, double[], double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.AvgPrice(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Single[])|TAMath.AvgPrice.md#TechnicalAnalysis.Functions.TAMath.AvgPrice(int,int,float[],float[],float[],float[])|AvgPrice(int, int, float[], float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Beta(System.Int32,System.Int32,System.Double[],System.Double[],System.Int32)|TAMath.Beta.md#TechnicalAnalysis.Functions.TAMath.Beta(int,int,double[],double[],int)|Beta(int, int, double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Beta(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.Beta.md#TechnicalAnalysis.Functions.TAMath.Beta(int,int,double[],double[])|Beta(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Beta(System.Int32,System.Int32,System.Single[],System.Single[],System.Int32)|TAMath.Beta.md#TechnicalAnalysis.Functions.TAMath.Beta(int,int,float[],float[],int)|Beta(int, int, float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Beta(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.Beta.md#TechnicalAnalysis.Functions.TAMath.Beta(int,int,float[],float[])|Beta(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.BollingerBands(System.Int32,System.Int32,System.Double[],System.Int32,System.Double,System.Double,TechnicalAnalysis.Common.MAType)|TAMath.BollingerBands.md#TechnicalAnalysis.Functions.TAMath.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType)|BollingerBands(int, int, double[], int, double, double, MAType)
+M:TechnicalAnalysis.Functions.TAMath.BollingerBands(System.Int32,System.Int32,System.Double[])|TAMath.BollingerBands.md#TechnicalAnalysis.Functions.TAMath.BollingerBands(int,int,double[])|BollingerBands(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.BollingerBands(System.Int32,System.Int32,System.Single[],System.Int32,System.Double,System.Double,TechnicalAnalysis.Common.MAType)|TAMath.BollingerBands.md#TechnicalAnalysis.Functions.TAMath.BollingerBands(int,int,float[],int,double,double,TechnicalAnalysis.Common.MAType)|BollingerBands(int, int, float[], int, double, double, MAType)
+M:TechnicalAnalysis.Functions.TAMath.BollingerBands(System.Int32,System.Int32,System.Single[])|TAMath.BollingerBands.md#TechnicalAnalysis.Functions.TAMath.BollingerBands(int,int,float[])|BollingerBands(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Bop(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Double[])|TAMath.Bop.md#TechnicalAnalysis.Functions.TAMath.Bop(int,int,double[],double[],double[],double[])|Bop(int, int, double[], double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Bop(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Single[])|TAMath.Bop.md#TechnicalAnalysis.Functions.TAMath.Bop(int,int,float[],float[],float[],float[])|Bop(int, int, float[], float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Cci(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32)|TAMath.Cci.md#TechnicalAnalysis.Functions.TAMath.Cci(int,int,double[],double[],double[],int)|Cci(int, int, double[], double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Cci(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.Cci.md#TechnicalAnalysis.Functions.TAMath.Cci(int,int,double[],double[],double[])|Cci(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Cci(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32)|TAMath.Cci.md#TechnicalAnalysis.Functions.TAMath.Cci(int,int,float[],float[],float[],int)|Cci(int, int, float[], float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Cci(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.Cci.md#TechnicalAnalysis.Functions.TAMath.Cci(int,int,float[],float[],float[])|Cci(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Ceil(System.Int32,System.Int32,System.Double[])|TAMath.Ceil.md#TechnicalAnalysis.Functions.TAMath.Ceil(int,int,double[])|Ceil(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Ceil(System.Int32,System.Int32,System.Single[])|TAMath.Ceil.md#TechnicalAnalysis.Functions.TAMath.Ceil(int,int,float[])|Ceil(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Cmo(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Cmo.md#TechnicalAnalysis.Functions.TAMath.Cmo(int,int,double[],int)|Cmo(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Cmo(System.Int32,System.Int32,System.Double[])|TAMath.Cmo.md#TechnicalAnalysis.Functions.TAMath.Cmo(int,int,double[])|Cmo(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Cmo(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Cmo.md#TechnicalAnalysis.Functions.TAMath.Cmo(int,int,float[],int)|Cmo(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Cmo(System.Int32,System.Int32,System.Single[])|TAMath.Cmo.md#TechnicalAnalysis.Functions.TAMath.Cmo(int,int,float[])|Cmo(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Correl(System.Int32,System.Int32,System.Double[],System.Double[],System.Int32)|TAMath.Correl.md#TechnicalAnalysis.Functions.TAMath.Correl(int,int,double[],double[],int)|Correl(int, int, double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Correl(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.Correl.md#TechnicalAnalysis.Functions.TAMath.Correl(int,int,double[],double[])|Correl(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Correl(System.Int32,System.Int32,System.Single[],System.Single[],System.Int32)|TAMath.Correl.md#TechnicalAnalysis.Functions.TAMath.Correl(int,int,float[],float[],int)|Correl(int, int, float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Correl(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.Correl.md#TechnicalAnalysis.Functions.TAMath.Correl(int,int,float[],float[])|Correl(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Cos(System.Int32,System.Int32,System.Double[])|TAMath.Cos.md#TechnicalAnalysis.Functions.TAMath.Cos(int,int,double[])|Cos(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Cos(System.Int32,System.Int32,System.Single[])|TAMath.Cos.md#TechnicalAnalysis.Functions.TAMath.Cos(int,int,float[])|Cos(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Cosh(System.Int32,System.Int32,System.Double[])|TAMath.Cosh.md#TechnicalAnalysis.Functions.TAMath.Cosh(int,int,double[])|Cosh(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Cosh(System.Int32,System.Int32,System.Single[])|TAMath.Cosh.md#TechnicalAnalysis.Functions.TAMath.Cosh(int,int,float[])|Cosh(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Dema(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Dema.md#TechnicalAnalysis.Functions.TAMath.Dema(int,int,double[],int)|Dema(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Dema(System.Int32,System.Int32,System.Double[])|TAMath.Dema.md#TechnicalAnalysis.Functions.TAMath.Dema(int,int,double[])|Dema(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Dema(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Dema.md#TechnicalAnalysis.Functions.TAMath.Dema(int,int,float[],int)|Dema(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Dema(System.Int32,System.Int32,System.Single[])|TAMath.Dema.md#TechnicalAnalysis.Functions.TAMath.Dema(int,int,float[])|Dema(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Div(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.Div.md#TechnicalAnalysis.Functions.TAMath.Div(int,int,double[],double[])|Div(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Div(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.Div.md#TechnicalAnalysis.Functions.TAMath.Div(int,int,float[],float[])|Div(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Dx(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32)|TAMath.Dx.md#TechnicalAnalysis.Functions.TAMath.Dx(int,int,double[],double[],double[],int)|Dx(int, int, double[], double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Dx(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.Dx.md#TechnicalAnalysis.Functions.TAMath.Dx(int,int,double[],double[],double[])|Dx(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Dx(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32)|TAMath.Dx.md#TechnicalAnalysis.Functions.TAMath.Dx(int,int,float[],float[],float[],int)|Dx(int, int, float[], float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Dx(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.Dx.md#TechnicalAnalysis.Functions.TAMath.Dx(int,int,float[],float[],float[])|Dx(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Ema(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Ema.md#TechnicalAnalysis.Functions.TAMath.Ema(int,int,double[],int)|Ema(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Ema(System.Int32,System.Int32,System.Double[])|TAMath.Ema.md#TechnicalAnalysis.Functions.TAMath.Ema(int,int,double[])|Ema(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Ema(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Ema.md#TechnicalAnalysis.Functions.TAMath.Ema(int,int,float[],int)|Ema(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Ema(System.Int32,System.Int32,System.Single[])|TAMath.Ema.md#TechnicalAnalysis.Functions.TAMath.Ema(int,int,float[])|Ema(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Exp(System.Int32,System.Int32,System.Double[])|TAMath.Exp.md#TechnicalAnalysis.Functions.TAMath.Exp(int,int,double[])|Exp(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Exp(System.Int32,System.Int32,System.Single[])|TAMath.Exp.md#TechnicalAnalysis.Functions.TAMath.Exp(int,int,float[])|Exp(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Floor(System.Int32,System.Int32,System.Double[])|TAMath.Floor.md#TechnicalAnalysis.Functions.TAMath.Floor(int,int,double[])|Floor(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Floor(System.Int32,System.Int32,System.Single[])|TAMath.Floor.md#TechnicalAnalysis.Functions.TAMath.Floor(int,int,float[])|Floor(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.HtDcPeriod(System.Int32,System.Int32,System.Double[])|TAMath.HtDcPeriod.md#TechnicalAnalysis.Functions.TAMath.HtDcPeriod(int,int,double[])|HtDcPeriod(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.HtDcPeriod(System.Int32,System.Int32,System.Single[])|TAMath.HtDcPeriod.md#TechnicalAnalysis.Functions.TAMath.HtDcPeriod(int,int,float[])|HtDcPeriod(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.HtDcPhase(System.Int32,System.Int32,System.Double[])|TAMath.HtDcPhase.md#TechnicalAnalysis.Functions.TAMath.HtDcPhase(int,int,double[])|HtDcPhase(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.HtDcPhase(System.Int32,System.Int32,System.Single[])|TAMath.HtDcPhase.md#TechnicalAnalysis.Functions.TAMath.HtDcPhase(int,int,float[])|HtDcPhase(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.HtPhasor(System.Int32,System.Int32,System.Double[])|TAMath.HtPhasor.md#TechnicalAnalysis.Functions.TAMath.HtPhasor(int,int,double[])|HtPhasor(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.HtPhasor(System.Int32,System.Int32,System.Single[])|TAMath.HtPhasor.md#TechnicalAnalysis.Functions.TAMath.HtPhasor(int,int,float[])|HtPhasor(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.HtSine(System.Int32,System.Int32,System.Double[])|TAMath.HtSine.md#TechnicalAnalysis.Functions.TAMath.HtSine(int,int,double[])|HtSine(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.HtSine(System.Int32,System.Int32,System.Single[])|TAMath.HtSine.md#TechnicalAnalysis.Functions.TAMath.HtSine(int,int,float[])|HtSine(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.HtTrendline(System.Int32,System.Int32,System.Double[])|TAMath.HtTrendline.md#TechnicalAnalysis.Functions.TAMath.HtTrendline(int,int,double[])|HtTrendline(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.HtTrendline(System.Int32,System.Int32,System.Single[])|TAMath.HtTrendline.md#TechnicalAnalysis.Functions.TAMath.HtTrendline(int,int,float[])|HtTrendline(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.HtTrendMode(System.Int32,System.Int32,System.Double[])|TAMath.HtTrendMode.md#TechnicalAnalysis.Functions.TAMath.HtTrendMode(int,int,double[])|HtTrendMode(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.HtTrendMode(System.Int32,System.Int32,System.Single[])|TAMath.HtTrendMode.md#TechnicalAnalysis.Functions.TAMath.HtTrendMode(int,int,float[])|HtTrendMode(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Kama(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Kama.md#TechnicalAnalysis.Functions.TAMath.Kama(int,int,double[],int)|Kama(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Kama(System.Int32,System.Int32,System.Double[])|TAMath.Kama.md#TechnicalAnalysis.Functions.TAMath.Kama(int,int,double[])|Kama(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Kama(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Kama.md#TechnicalAnalysis.Functions.TAMath.Kama(int,int,float[],int)|Kama(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Kama(System.Int32,System.Int32,System.Single[])|TAMath.Kama.md#TechnicalAnalysis.Functions.TAMath.Kama(int,int,float[])|Kama(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.LinearReg(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.LinearReg.md#TechnicalAnalysis.Functions.TAMath.LinearReg(int,int,double[],int)|LinearReg(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.LinearReg(System.Int32,System.Int32,System.Double[])|TAMath.LinearReg.md#TechnicalAnalysis.Functions.TAMath.LinearReg(int,int,double[])|LinearReg(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.LinearReg(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.LinearReg.md#TechnicalAnalysis.Functions.TAMath.LinearReg(int,int,float[],int)|LinearReg(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.LinearReg(System.Int32,System.Int32,System.Single[])|TAMath.LinearReg.md#TechnicalAnalysis.Functions.TAMath.LinearReg(int,int,float[])|LinearReg(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.LinearRegAngle(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.LinearRegAngle.md#TechnicalAnalysis.Functions.TAMath.LinearRegAngle(int,int,double[],int)|LinearRegAngle(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.LinearRegAngle(System.Int32,System.Int32,System.Double[])|TAMath.LinearRegAngle.md#TechnicalAnalysis.Functions.TAMath.LinearRegAngle(int,int,double[])|LinearRegAngle(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.LinearRegAngle(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.LinearRegAngle.md#TechnicalAnalysis.Functions.TAMath.LinearRegAngle(int,int,float[],int)|LinearRegAngle(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.LinearRegAngle(System.Int32,System.Int32,System.Single[])|TAMath.LinearRegAngle.md#TechnicalAnalysis.Functions.TAMath.LinearRegAngle(int,int,float[])|LinearRegAngle(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.LinearRegIntercept(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.LinearRegIntercept.md#TechnicalAnalysis.Functions.TAMath.LinearRegIntercept(int,int,double[],int)|LinearRegIntercept(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.LinearRegIntercept(System.Int32,System.Int32,System.Double[])|TAMath.LinearRegIntercept.md#TechnicalAnalysis.Functions.TAMath.LinearRegIntercept(int,int,double[])|LinearRegIntercept(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.LinearRegIntercept(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.LinearRegIntercept.md#TechnicalAnalysis.Functions.TAMath.LinearRegIntercept(int,int,float[],int)|LinearRegIntercept(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.LinearRegIntercept(System.Int32,System.Int32,System.Single[])|TAMath.LinearRegIntercept.md#TechnicalAnalysis.Functions.TAMath.LinearRegIntercept(int,int,float[])|LinearRegIntercept(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.LinearRegSlope(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.LinearRegSlope.md#TechnicalAnalysis.Functions.TAMath.LinearRegSlope(int,int,double[],int)|LinearRegSlope(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.LinearRegSlope(System.Int32,System.Int32,System.Double[])|TAMath.LinearRegSlope.md#TechnicalAnalysis.Functions.TAMath.LinearRegSlope(int,int,double[])|LinearRegSlope(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.LinearRegSlope(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.LinearRegSlope.md#TechnicalAnalysis.Functions.TAMath.LinearRegSlope(int,int,float[],int)|LinearRegSlope(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.LinearRegSlope(System.Int32,System.Int32,System.Single[])|TAMath.LinearRegSlope.md#TechnicalAnalysis.Functions.TAMath.LinearRegSlope(int,int,float[])|LinearRegSlope(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Ln(System.Int32,System.Int32,System.Double[])|TAMath.Ln.md#TechnicalAnalysis.Functions.TAMath.Ln(int,int,double[])|Ln(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Ln(System.Int32,System.Int32,System.Single[])|TAMath.Ln.md#TechnicalAnalysis.Functions.TAMath.Ln(int,int,float[])|Ln(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Log10(System.Int32,System.Int32,System.Double[])|TAMath.Log10.md#TechnicalAnalysis.Functions.TAMath.Log10(int,int,double[])|Log10(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Log10(System.Int32,System.Int32,System.Single[])|TAMath.Log10.md#TechnicalAnalysis.Functions.TAMath.Log10(int,int,float[])|Log10(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Macd(System.Int32,System.Int32,System.Double[],System.Int32,System.Int32,System.Int32)|TAMath.Macd.md#TechnicalAnalysis.Functions.TAMath.Macd(int,int,double[],int,int,int)|Macd(int, int, double[], int, int, int)
+M:TechnicalAnalysis.Functions.TAMath.Macd(System.Int32,System.Int32,System.Double[])|TAMath.Macd.md#TechnicalAnalysis.Functions.TAMath.Macd(int,int,double[])|Macd(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Macd(System.Int32,System.Int32,System.Single[],System.Int32,System.Int32,System.Int32)|TAMath.Macd.md#TechnicalAnalysis.Functions.TAMath.Macd(int,int,float[],int,int,int)|Macd(int, int, float[], int, int, int)
+M:TechnicalAnalysis.Functions.TAMath.Macd(System.Int32,System.Int32,System.Single[])|TAMath.Macd.md#TechnicalAnalysis.Functions.TAMath.Macd(int,int,float[])|Macd(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.MacdExt(System.Int32,System.Int32,System.Double[],System.Int32,TechnicalAnalysis.Common.MAType,System.Int32,TechnicalAnalysis.Common.MAType,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.MacdExt.md#TechnicalAnalysis.Functions.TAMath.MacdExt(int,int,double[],int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType)|MacdExt(int, int, double[], int, MAType, int, MAType, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.MacdExt(System.Int32,System.Int32,System.Double[])|TAMath.MacdExt.md#TechnicalAnalysis.Functions.TAMath.MacdExt(int,int,double[])|MacdExt(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.MacdExt(System.Int32,System.Int32,System.Single[],System.Int32,TechnicalAnalysis.Common.MAType,System.Int32,TechnicalAnalysis.Common.MAType,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.MacdExt.md#TechnicalAnalysis.Functions.TAMath.MacdExt(int,int,float[],int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType)|MacdExt(int, int, float[], int, MAType, int, MAType, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.MacdExt(System.Int32,System.Int32,System.Single[])|TAMath.MacdExt.md#TechnicalAnalysis.Functions.TAMath.MacdExt(int,int,float[])|MacdExt(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.MacdFix(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.MacdFix.md#TechnicalAnalysis.Functions.TAMath.MacdFix(int,int,double[],int)|MacdFix(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.MacdFix(System.Int32,System.Int32,System.Double[])|TAMath.MacdFix.md#TechnicalAnalysis.Functions.TAMath.MacdFix(int,int,double[])|MacdFix(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.MacdFix(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.MacdFix.md#TechnicalAnalysis.Functions.TAMath.MacdFix(int,int,float[],int)|MacdFix(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.MacdFix(System.Int32,System.Int32,System.Single[])|TAMath.MacdFix.md#TechnicalAnalysis.Functions.TAMath.MacdFix(int,int,float[])|MacdFix(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Mama(System.Int32,System.Int32,System.Double[],System.Double,System.Double)|TAMath.Mama.md#TechnicalAnalysis.Functions.TAMath.Mama(int,int,double[],double,double)|Mama(int, int, double[], double, double)
+M:TechnicalAnalysis.Functions.TAMath.Mama(System.Int32,System.Int32,System.Double[])|TAMath.Mama.md#TechnicalAnalysis.Functions.TAMath.Mama(int,int,double[])|Mama(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Mama(System.Int32,System.Int32,System.Single[],System.Double,System.Double)|TAMath.Mama.md#TechnicalAnalysis.Functions.TAMath.Mama(int,int,float[],double,double)|Mama(int, int, float[], double, double)
+M:TechnicalAnalysis.Functions.TAMath.Mama(System.Int32,System.Int32,System.Single[])|TAMath.Mama.md#TechnicalAnalysis.Functions.TAMath.Mama(int,int,float[])|Mama(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Max(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Max.md#TechnicalAnalysis.Functions.TAMath.Max(int,int,double[],int)|Max(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Max(System.Int32,System.Int32,System.Double[])|TAMath.Max.md#TechnicalAnalysis.Functions.TAMath.Max(int,int,double[])|Max(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Max(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Max.md#TechnicalAnalysis.Functions.TAMath.Max(int,int,float[],int)|Max(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Max(System.Int32,System.Int32,System.Single[])|TAMath.Max.md#TechnicalAnalysis.Functions.TAMath.Max(int,int,float[])|Max(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.MaxIndex(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.MaxIndex.md#TechnicalAnalysis.Functions.TAMath.MaxIndex(int,int,double[],int)|MaxIndex(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.MaxIndex(System.Int32,System.Int32,System.Double[])|TAMath.MaxIndex.md#TechnicalAnalysis.Functions.TAMath.MaxIndex(int,int,double[])|MaxIndex(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.MaxIndex(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.MaxIndex.md#TechnicalAnalysis.Functions.TAMath.MaxIndex(int,int,float[],int)|MaxIndex(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.MaxIndex(System.Int32,System.Int32,System.Single[])|TAMath.MaxIndex.md#TechnicalAnalysis.Functions.TAMath.MaxIndex(int,int,float[])|MaxIndex(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.MedPrice(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.MedPrice.md#TechnicalAnalysis.Functions.TAMath.MedPrice(int,int,double[],double[])|MedPrice(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.MedPrice(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.MedPrice.md#TechnicalAnalysis.Functions.TAMath.MedPrice(int,int,float[],float[])|MedPrice(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Mfi(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Double[],System.Int32)|TAMath.Mfi.md#TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[],int)|Mfi(int, int, double[], double[], double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Mfi(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Double[])|TAMath.Mfi.md#TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[])|Mfi(int, int, double[], double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Mfi(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Single[],System.Int32)|TAMath.Mfi.md#TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[],int)|Mfi(int, int, float[], float[], float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Mfi(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Single[])|TAMath.Mfi.md#TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[])|Mfi(int, int, float[], float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.MidPoint(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.MidPoint.md#TechnicalAnalysis.Functions.TAMath.MidPoint(int,int,double[],int)|MidPoint(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.MidPoint(System.Int32,System.Int32,System.Double[])|TAMath.MidPoint.md#TechnicalAnalysis.Functions.TAMath.MidPoint(int,int,double[])|MidPoint(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.MidPoint(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.MidPoint.md#TechnicalAnalysis.Functions.TAMath.MidPoint(int,int,float[],int)|MidPoint(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.MidPoint(System.Int32,System.Int32,System.Single[])|TAMath.MidPoint.md#TechnicalAnalysis.Functions.TAMath.MidPoint(int,int,float[])|MidPoint(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.MidPrice(System.Int32,System.Int32,System.Double[],System.Double[],System.Int32)|TAMath.MidPrice.md#TechnicalAnalysis.Functions.TAMath.MidPrice(int,int,double[],double[],int)|MidPrice(int, int, double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.MidPrice(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.MidPrice.md#TechnicalAnalysis.Functions.TAMath.MidPrice(int,int,double[],double[])|MidPrice(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.MidPrice(System.Int32,System.Int32,System.Single[],System.Single[],System.Int32)|TAMath.MidPrice.md#TechnicalAnalysis.Functions.TAMath.MidPrice(int,int,float[],float[],int)|MidPrice(int, int, float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.MidPrice(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.MidPrice.md#TechnicalAnalysis.Functions.TAMath.MidPrice(int,int,float[],float[])|MidPrice(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Min(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Min.md#TechnicalAnalysis.Functions.TAMath.Min(int,int,double[],int)|Min(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Min(System.Int32,System.Int32,System.Double[])|TAMath.Min.md#TechnicalAnalysis.Functions.TAMath.Min(int,int,double[])|Min(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Min(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Min.md#TechnicalAnalysis.Functions.TAMath.Min(int,int,float[],int)|Min(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Min(System.Int32,System.Int32,System.Single[])|TAMath.Min.md#TechnicalAnalysis.Functions.TAMath.Min(int,int,float[])|Min(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.MinIndex(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.MinIndex.md#TechnicalAnalysis.Functions.TAMath.MinIndex(int,int,double[],int)|MinIndex(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.MinIndex(System.Int32,System.Int32,System.Double[])|TAMath.MinIndex.md#TechnicalAnalysis.Functions.TAMath.MinIndex(int,int,double[])|MinIndex(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.MinIndex(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.MinIndex.md#TechnicalAnalysis.Functions.TAMath.MinIndex(int,int,float[],int)|MinIndex(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.MinIndex(System.Int32,System.Int32,System.Single[])|TAMath.MinIndex.md#TechnicalAnalysis.Functions.TAMath.MinIndex(int,int,float[])|MinIndex(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.MinMax(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.MinMax.md#TechnicalAnalysis.Functions.TAMath.MinMax(int,int,double[],int)|MinMax(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.MinMax(System.Int32,System.Int32,System.Double[])|TAMath.MinMax.md#TechnicalAnalysis.Functions.TAMath.MinMax(int,int,double[])|MinMax(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.MinMax(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.MinMax.md#TechnicalAnalysis.Functions.TAMath.MinMax(int,int,float[],int)|MinMax(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.MinMax(System.Int32,System.Int32,System.Single[])|TAMath.MinMax.md#TechnicalAnalysis.Functions.TAMath.MinMax(int,int,float[])|MinMax(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.MinMaxIndex(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.MinMaxIndex.md#TechnicalAnalysis.Functions.TAMath.MinMaxIndex(int,int,double[],int)|MinMaxIndex(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.MinMaxIndex(System.Int32,System.Int32,System.Double[])|TAMath.MinMaxIndex.md#TechnicalAnalysis.Functions.TAMath.MinMaxIndex(int,int,double[])|MinMaxIndex(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.MinMaxIndex(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.MinMaxIndex.md#TechnicalAnalysis.Functions.TAMath.MinMaxIndex(int,int,float[],int)|MinMaxIndex(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.MinMaxIndex(System.Int32,System.Int32,System.Single[])|TAMath.MinMaxIndex.md#TechnicalAnalysis.Functions.TAMath.MinMaxIndex(int,int,float[])|MinMaxIndex(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.MinusDI(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32)|TAMath.MinusDI.md#TechnicalAnalysis.Functions.TAMath.MinusDI(int,int,double[],double[],double[],int)|MinusDI(int, int, double[], double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.MinusDI(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.MinusDI.md#TechnicalAnalysis.Functions.TAMath.MinusDI(int,int,double[],double[],double[])|MinusDI(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.MinusDI(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32)|TAMath.MinusDI.md#TechnicalAnalysis.Functions.TAMath.MinusDI(int,int,float[],float[],float[],int)|MinusDI(int, int, float[], float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.MinusDI(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.MinusDI.md#TechnicalAnalysis.Functions.TAMath.MinusDI(int,int,float[],float[],float[])|MinusDI(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.MinusDM(System.Int32,System.Int32,System.Double[],System.Double[],System.Int32)|TAMath.MinusDM.md#TechnicalAnalysis.Functions.TAMath.MinusDM(int,int,double[],double[],int)|MinusDM(int, int, double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.MinusDM(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.MinusDM.md#TechnicalAnalysis.Functions.TAMath.MinusDM(int,int,double[],double[])|MinusDM(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.MinusDM(System.Int32,System.Int32,System.Single[],System.Single[],System.Int32)|TAMath.MinusDM.md#TechnicalAnalysis.Functions.TAMath.MinusDM(int,int,float[],float[],int)|MinusDM(int, int, float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.MinusDM(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.MinusDM.md#TechnicalAnalysis.Functions.TAMath.MinusDM(int,int,float[],float[])|MinusDM(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Mom(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Mom.md#TechnicalAnalysis.Functions.TAMath.Mom(int,int,double[],int)|Mom(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Mom(System.Int32,System.Int32,System.Double[])|TAMath.Mom.md#TechnicalAnalysis.Functions.TAMath.Mom(int,int,double[])|Mom(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Mom(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Mom.md#TechnicalAnalysis.Functions.TAMath.Mom(int,int,float[],int)|Mom(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Mom(System.Int32,System.Int32,System.Single[])|TAMath.Mom.md#TechnicalAnalysis.Functions.TAMath.Mom(int,int,float[])|Mom(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.MovingAverage(System.Int32,System.Int32,System.Double[],System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.MovingAverage.md#TechnicalAnalysis.Functions.TAMath.MovingAverage(int,int,double[],int,TechnicalAnalysis.Common.MAType)|MovingAverage(int, int, double[], int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.MovingAverage(System.Int32,System.Int32,System.Double[])|TAMath.MovingAverage.md#TechnicalAnalysis.Functions.TAMath.MovingAverage(int,int,double[])|MovingAverage(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.MovingAverage(System.Int32,System.Int32,System.Single[],System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.MovingAverage.md#TechnicalAnalysis.Functions.TAMath.MovingAverage(int,int,float[],int,TechnicalAnalysis.Common.MAType)|MovingAverage(int, int, float[], int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.MovingAverage(System.Int32,System.Int32,System.Single[])|TAMath.MovingAverage.md#TechnicalAnalysis.Functions.TAMath.MovingAverage(int,int,float[])|MovingAverage(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.MovingAverageVariablePeriod(System.Int32,System.Int32,System.Double[],System.Double[],System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.MovingAverageVariablePeriod.md#TechnicalAnalysis.Functions.TAMath.MovingAverageVariablePeriod(int,int,double[],double[],int,int,TechnicalAnalysis.Common.MAType)|MovingAverageVariablePeriod(int, int, double[], double[], int, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.MovingAverageVariablePeriod(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.MovingAverageVariablePeriod.md#TechnicalAnalysis.Functions.TAMath.MovingAverageVariablePeriod(int,int,double[],double[])|MovingAverageVariablePeriod(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.MovingAverageVariablePeriod(System.Int32,System.Int32,System.Single[],System.Single[],System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.MovingAverageVariablePeriod.md#TechnicalAnalysis.Functions.TAMath.MovingAverageVariablePeriod(int,int,float[],float[],int,int,TechnicalAnalysis.Common.MAType)|MovingAverageVariablePeriod(int, int, float[], float[], int, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.MovingAverageVariablePeriod(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.MovingAverageVariablePeriod.md#TechnicalAnalysis.Functions.TAMath.MovingAverageVariablePeriod(int,int,float[],float[])|MovingAverageVariablePeriod(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Mult(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.Mult.md#TechnicalAnalysis.Functions.TAMath.Mult(int,int,double[],double[])|Mult(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Mult(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.Mult.md#TechnicalAnalysis.Functions.TAMath.Mult(int,int,float[],float[])|Mult(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Natr(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32)|TAMath.Natr.md#TechnicalAnalysis.Functions.TAMath.Natr(int,int,double[],double[],double[],int)|Natr(int, int, double[], double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Natr(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.Natr.md#TechnicalAnalysis.Functions.TAMath.Natr(int,int,double[],double[],double[])|Natr(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Natr(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32)|TAMath.Natr.md#TechnicalAnalysis.Functions.TAMath.Natr(int,int,float[],float[],float[],int)|Natr(int, int, float[], float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Natr(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.Natr.md#TechnicalAnalysis.Functions.TAMath.Natr(int,int,float[],float[],float[])|Natr(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Obv(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.Obv.md#TechnicalAnalysis.Functions.TAMath.Obv(int,int,double[],double[])|Obv(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Obv(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.Obv.md#TechnicalAnalysis.Functions.TAMath.Obv(int,int,float[],float[])|Obv(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.PlusDI(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32)|TAMath.PlusDI.md#TechnicalAnalysis.Functions.TAMath.PlusDI(int,int,double[],double[],double[],int)|PlusDI(int, int, double[], double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.PlusDI(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.PlusDI.md#TechnicalAnalysis.Functions.TAMath.PlusDI(int,int,double[],double[],double[])|PlusDI(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.PlusDI(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32)|TAMath.PlusDI.md#TechnicalAnalysis.Functions.TAMath.PlusDI(int,int,float[],float[],float[],int)|PlusDI(int, int, float[], float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.PlusDI(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.PlusDI.md#TechnicalAnalysis.Functions.TAMath.PlusDI(int,int,float[],float[],float[])|PlusDI(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.PlusDM(System.Int32,System.Int32,System.Double[],System.Double[],System.Int32)|TAMath.PlusDM.md#TechnicalAnalysis.Functions.TAMath.PlusDM(int,int,double[],double[],int)|PlusDM(int, int, double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.PlusDM(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.PlusDM.md#TechnicalAnalysis.Functions.TAMath.PlusDM(int,int,double[],double[])|PlusDM(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.PlusDM(System.Int32,System.Int32,System.Single[],System.Single[],System.Int32)|TAMath.PlusDM.md#TechnicalAnalysis.Functions.TAMath.PlusDM(int,int,float[],float[],int)|PlusDM(int, int, float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.PlusDM(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.PlusDM.md#TechnicalAnalysis.Functions.TAMath.PlusDM(int,int,float[],float[])|PlusDM(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Ppo(System.Int32,System.Int32,System.Double[],System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.Ppo.md#TechnicalAnalysis.Functions.TAMath.Ppo(int,int,double[],int,int,TechnicalAnalysis.Common.MAType)|Ppo(int, int, double[], int, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.Ppo(System.Int32,System.Int32,System.Double[])|TAMath.Ppo.md#TechnicalAnalysis.Functions.TAMath.Ppo(int,int,double[])|Ppo(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Ppo(System.Int32,System.Int32,System.Single[],System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.Ppo.md#TechnicalAnalysis.Functions.TAMath.Ppo(int,int,float[],int,int,TechnicalAnalysis.Common.MAType)|Ppo(int, int, float[], int, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.Ppo(System.Int32,System.Int32,System.Single[])|TAMath.Ppo.md#TechnicalAnalysis.Functions.TAMath.Ppo(int,int,float[])|Ppo(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Roc(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Roc.md#TechnicalAnalysis.Functions.TAMath.Roc(int,int,double[],int)|Roc(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Roc(System.Int32,System.Int32,System.Double[])|TAMath.Roc.md#TechnicalAnalysis.Functions.TAMath.Roc(int,int,double[])|Roc(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Roc(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Roc.md#TechnicalAnalysis.Functions.TAMath.Roc(int,int,float[],int)|Roc(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Roc(System.Int32,System.Int32,System.Single[])|TAMath.Roc.md#TechnicalAnalysis.Functions.TAMath.Roc(int,int,float[])|Roc(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.RocP(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.RocP.md#TechnicalAnalysis.Functions.TAMath.RocP(int,int,double[],int)|RocP(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.RocP(System.Int32,System.Int32,System.Double[])|TAMath.RocP.md#TechnicalAnalysis.Functions.TAMath.RocP(int,int,double[])|RocP(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.RocP(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.RocP.md#TechnicalAnalysis.Functions.TAMath.RocP(int,int,float[],int)|RocP(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.RocP(System.Int32,System.Int32,System.Single[])|TAMath.RocP.md#TechnicalAnalysis.Functions.TAMath.RocP(int,int,float[])|RocP(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.RocR(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.RocR.md#TechnicalAnalysis.Functions.TAMath.RocR(int,int,double[],int)|RocR(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.RocR(System.Int32,System.Int32,System.Double[])|TAMath.RocR.md#TechnicalAnalysis.Functions.TAMath.RocR(int,int,double[])|RocR(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.RocR(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.RocR.md#TechnicalAnalysis.Functions.TAMath.RocR(int,int,float[],int)|RocR(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.RocR(System.Int32,System.Int32,System.Single[])|TAMath.RocR.md#TechnicalAnalysis.Functions.TAMath.RocR(int,int,float[])|RocR(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.RocR100(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.RocR100.md#TechnicalAnalysis.Functions.TAMath.RocR100(int,int,double[],int)|RocR100(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.RocR100(System.Int32,System.Int32,System.Double[])|TAMath.RocR100.md#TechnicalAnalysis.Functions.TAMath.RocR100(int,int,double[])|RocR100(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.RocR100(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.RocR100.md#TechnicalAnalysis.Functions.TAMath.RocR100(int,int,float[],int)|RocR100(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.RocR100(System.Int32,System.Int32,System.Single[])|TAMath.RocR100.md#TechnicalAnalysis.Functions.TAMath.RocR100(int,int,float[])|RocR100(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Rsi(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Rsi.md#TechnicalAnalysis.Functions.TAMath.Rsi(int,int,double[],int)|Rsi(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Rsi(System.Int32,System.Int32,System.Double[])|TAMath.Rsi.md#TechnicalAnalysis.Functions.TAMath.Rsi(int,int,double[])|Rsi(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Rsi(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Rsi.md#TechnicalAnalysis.Functions.TAMath.Rsi(int,int,float[],int)|Rsi(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Rsi(System.Int32,System.Int32,System.Single[])|TAMath.Rsi.md#TechnicalAnalysis.Functions.TAMath.Rsi(int,int,float[])|Rsi(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Sar(System.Int32,System.Int32,System.Double[],System.Double[],System.Double,System.Double)|TAMath.Sar.md#TechnicalAnalysis.Functions.TAMath.Sar(int,int,double[],double[],double,double)|Sar(int, int, double[], double[], double, double)
+M:TechnicalAnalysis.Functions.TAMath.Sar(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.Sar.md#TechnicalAnalysis.Functions.TAMath.Sar(int,int,double[],double[])|Sar(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Sar(System.Int32,System.Int32,System.Single[],System.Single[],System.Double,System.Double)|TAMath.Sar.md#TechnicalAnalysis.Functions.TAMath.Sar(int,int,float[],float[],double,double)|Sar(int, int, float[], float[], double, double)
+M:TechnicalAnalysis.Functions.TAMath.Sar(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.Sar.md#TechnicalAnalysis.Functions.TAMath.Sar(int,int,float[],float[])|Sar(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.SarExt(System.Int32,System.Int32,System.Double[],System.Double[],System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)|TAMath.SarExt.md#TechnicalAnalysis.Functions.TAMath.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double)|SarExt(int, int, double[], double[], double, double, double, double, double, double, double, double)
+M:TechnicalAnalysis.Functions.TAMath.SarExt(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.SarExt.md#TechnicalAnalysis.Functions.TAMath.SarExt(int,int,double[],double[])|SarExt(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.SarExt(System.Int32,System.Int32,System.Single[],System.Single[],System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)|TAMath.SarExt.md#TechnicalAnalysis.Functions.TAMath.SarExt(int,int,float[],float[],double,double,double,double,double,double,double,double)|SarExt(int, int, float[], float[], double, double, double, double, double, double, double, double)
+M:TechnicalAnalysis.Functions.TAMath.SarExt(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.SarExt.md#TechnicalAnalysis.Functions.TAMath.SarExt(int,int,float[],float[])|SarExt(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Sin(System.Int32,System.Int32,System.Double[])|TAMath.Sin.md#TechnicalAnalysis.Functions.TAMath.Sin(int,int,double[])|Sin(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Sin(System.Int32,System.Int32,System.Single[])|TAMath.Sin.md#TechnicalAnalysis.Functions.TAMath.Sin(int,int,float[])|Sin(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Sinh(System.Int32,System.Int32,System.Double[])|TAMath.Sinh.md#TechnicalAnalysis.Functions.TAMath.Sinh(int,int,double[])|Sinh(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Sinh(System.Int32,System.Int32,System.Single[])|TAMath.Sinh.md#TechnicalAnalysis.Functions.TAMath.Sinh(int,int,float[])|Sinh(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Sma(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Sma.md#TechnicalAnalysis.Functions.TAMath.Sma(int,int,double[],int)|Sma(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Sma(System.Int32,System.Int32,System.Double[])|TAMath.Sma.md#TechnicalAnalysis.Functions.TAMath.Sma(int,int,double[])|Sma(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Sma(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Sma.md#TechnicalAnalysis.Functions.TAMath.Sma(int,int,float[],int)|Sma(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Sma(System.Int32,System.Int32,System.Single[])|TAMath.Sma.md#TechnicalAnalysis.Functions.TAMath.Sma(int,int,float[])|Sma(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Sqrt(System.Int32,System.Int32,System.Double[])|TAMath.Sqrt.md#TechnicalAnalysis.Functions.TAMath.Sqrt(int,int,double[])|Sqrt(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Sqrt(System.Int32,System.Int32,System.Single[])|TAMath.Sqrt.md#TechnicalAnalysis.Functions.TAMath.Sqrt(int,int,float[])|Sqrt(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.StdDev(System.Int32,System.Int32,System.Double[],System.Int32,System.Double)|TAMath.StdDev.md#TechnicalAnalysis.Functions.TAMath.StdDev(int,int,double[],int,double)|StdDev(int, int, double[], int, double)
+M:TechnicalAnalysis.Functions.TAMath.StdDev(System.Int32,System.Int32,System.Double[])|TAMath.StdDev.md#TechnicalAnalysis.Functions.TAMath.StdDev(int,int,double[])|StdDev(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.StdDev(System.Int32,System.Int32,System.Single[],System.Int32,System.Double)|TAMath.StdDev.md#TechnicalAnalysis.Functions.TAMath.StdDev(int,int,float[],int,double)|StdDev(int, int, float[], int, double)
+M:TechnicalAnalysis.Functions.TAMath.StdDev(System.Int32,System.Int32,System.Single[])|TAMath.StdDev.md#TechnicalAnalysis.Functions.TAMath.StdDev(int,int,float[])|StdDev(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Stoch(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32,System.Int32,TechnicalAnalysis.Common.MAType,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.Stoch.md#TechnicalAnalysis.Functions.TAMath.Stoch(int,int,double[],double[],double[],int,int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType)|Stoch(int, int, double[], double[], double[], int, int, MAType, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.Stoch(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.Stoch.md#TechnicalAnalysis.Functions.TAMath.Stoch(int,int,double[],double[],double[])|Stoch(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Stoch(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32,System.Int32,TechnicalAnalysis.Common.MAType,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.Stoch.md#TechnicalAnalysis.Functions.TAMath.Stoch(int,int,float[],float[],float[],int,int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType)|Stoch(int, int, float[], float[], float[], int, int, MAType, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.Stoch(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.Stoch.md#TechnicalAnalysis.Functions.TAMath.Stoch(int,int,float[],float[],float[])|Stoch(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.StochF(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.StochF.md#TechnicalAnalysis.Functions.TAMath.StochF(int,int,double[],double[],double[],int,int,TechnicalAnalysis.Common.MAType)|StochF(int, int, double[], double[], double[], int, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.StochF(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.StochF.md#TechnicalAnalysis.Functions.TAMath.StochF(int,int,double[],double[],double[])|StochF(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.StochF(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.StochF.md#TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[],int,int,TechnicalAnalysis.Common.MAType)|StochF(int, int, float[], float[], float[], int, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.StochF(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.StochF.md#TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[])|StochF(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.StochRsi(System.Int32,System.Int32,System.Double[],System.Int32,System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.StochRsi.md#TechnicalAnalysis.Functions.TAMath.StochRsi(int,int,double[],int,int,int,TechnicalAnalysis.Common.MAType)|StochRsi(int, int, double[], int, int, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.StochRsi(System.Int32,System.Int32,System.Double[])|TAMath.StochRsi.md#TechnicalAnalysis.Functions.TAMath.StochRsi(int,int,double[])|StochRsi(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.StochRsi(System.Int32,System.Int32,System.Single[],System.Int32,System.Int32,System.Int32,TechnicalAnalysis.Common.MAType)|TAMath.StochRsi.md#TechnicalAnalysis.Functions.TAMath.StochRsi(int,int,float[],int,int,int,TechnicalAnalysis.Common.MAType)|StochRsi(int, int, float[], int, int, int, MAType)
+M:TechnicalAnalysis.Functions.TAMath.StochRsi(System.Int32,System.Int32,System.Single[])|TAMath.StochRsi.md#TechnicalAnalysis.Functions.TAMath.StochRsi(int,int,float[])|StochRsi(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Sub(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.Sub.md#TechnicalAnalysis.Functions.TAMath.Sub(int,int,double[],double[])|Sub(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.Sub(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.Sub.md#TechnicalAnalysis.Functions.TAMath.Sub(int,int,float[],float[])|Sub(int, int, float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Sum(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Sum.md#TechnicalAnalysis.Functions.TAMath.Sum(int,int,double[],int)|Sum(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Sum(System.Int32,System.Int32,System.Double[])|TAMath.Sum.md#TechnicalAnalysis.Functions.TAMath.Sum(int,int,double[])|Sum(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Sum(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Sum.md#TechnicalAnalysis.Functions.TAMath.Sum(int,int,float[],int)|Sum(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Sum(System.Int32,System.Int32,System.Single[])|TAMath.Sum.md#TechnicalAnalysis.Functions.TAMath.Sum(int,int,float[])|Sum(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.T3(System.Int32,System.Int32,System.Double[],System.Int32,System.Double)|TAMath.T3.md#TechnicalAnalysis.Functions.TAMath.T3(int,int,double[],int,double)|T3(int, int, double[], int, double)
+M:TechnicalAnalysis.Functions.TAMath.T3(System.Int32,System.Int32,System.Double[])|TAMath.T3.md#TechnicalAnalysis.Functions.TAMath.T3(int,int,double[])|T3(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.T3(System.Int32,System.Int32,System.Single[],System.Int32,System.Double)|TAMath.T3.md#TechnicalAnalysis.Functions.TAMath.T3(int,int,float[],int,double)|T3(int, int, float[], int, double)
+M:TechnicalAnalysis.Functions.TAMath.T3(System.Int32,System.Int32,System.Single[])|TAMath.T3.md#TechnicalAnalysis.Functions.TAMath.T3(int,int,float[])|T3(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Tan(System.Int32,System.Int32,System.Double[])|TAMath.Tan.md#TechnicalAnalysis.Functions.TAMath.Tan(int,int,double[])|Tan(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Tan(System.Int32,System.Int32,System.Single[])|TAMath.Tan.md#TechnicalAnalysis.Functions.TAMath.Tan(int,int,float[])|Tan(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Tanh(System.Int32,System.Int32,System.Double[])|TAMath.Tanh.md#TechnicalAnalysis.Functions.TAMath.Tanh(int,int,double[])|Tanh(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Tanh(System.Int32,System.Int32,System.Single[])|TAMath.Tanh.md#TechnicalAnalysis.Functions.TAMath.Tanh(int,int,float[])|Tanh(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Tema(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Tema.md#TechnicalAnalysis.Functions.TAMath.Tema(int,int,double[],int)|Tema(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Tema(System.Int32,System.Int32,System.Double[])|TAMath.Tema.md#TechnicalAnalysis.Functions.TAMath.Tema(int,int,double[])|Tema(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Tema(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Tema.md#TechnicalAnalysis.Functions.TAMath.Tema(int,int,float[],int)|Tema(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Tema(System.Int32,System.Int32,System.Single[])|TAMath.Tema.md#TechnicalAnalysis.Functions.TAMath.Tema(int,int,float[])|Tema(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Trima(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Trima.md#TechnicalAnalysis.Functions.TAMath.Trima(int,int,double[],int)|Trima(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Trima(System.Int32,System.Int32,System.Double[])|TAMath.Trima.md#TechnicalAnalysis.Functions.TAMath.Trima(int,int,double[])|Trima(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Trima(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Trima.md#TechnicalAnalysis.Functions.TAMath.Trima(int,int,float[],int)|Trima(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Trima(System.Int32,System.Int32,System.Single[])|TAMath.Trima.md#TechnicalAnalysis.Functions.TAMath.Trima(int,int,float[])|Trima(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.Trix(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Trix.md#TechnicalAnalysis.Functions.TAMath.Trix(int,int,double[],int)|Trix(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Trix(System.Int32,System.Int32,System.Double[])|TAMath.Trix.md#TechnicalAnalysis.Functions.TAMath.Trix(int,int,double[])|Trix(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Trix(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Trix.md#TechnicalAnalysis.Functions.TAMath.Trix(int,int,float[],int)|Trix(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Trix(System.Int32,System.Int32,System.Single[])|TAMath.Trix.md#TechnicalAnalysis.Functions.TAMath.Trix(int,int,float[])|Trix(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.TrueRange(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.TrueRange.md#TechnicalAnalysis.Functions.TAMath.TrueRange(int,int,double[],double[],double[])|TrueRange(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.TrueRange(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.TrueRange.md#TechnicalAnalysis.Functions.TAMath.TrueRange(int,int,float[],float[],float[])|TrueRange(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Tsf(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Tsf.md#TechnicalAnalysis.Functions.TAMath.Tsf(int,int,double[],int)|Tsf(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Tsf(System.Int32,System.Int32,System.Double[])|TAMath.Tsf.md#TechnicalAnalysis.Functions.TAMath.Tsf(int,int,double[])|Tsf(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Tsf(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Tsf.md#TechnicalAnalysis.Functions.TAMath.Tsf(int,int,float[],int)|Tsf(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Tsf(System.Int32,System.Int32,System.Single[])|TAMath.Tsf.md#TechnicalAnalysis.Functions.TAMath.Tsf(int,int,float[])|Tsf(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.TypPrice(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.TypPrice.md#TechnicalAnalysis.Functions.TAMath.TypPrice(int,int,double[],double[],double[])|TypPrice(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.TypPrice(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.TypPrice.md#TechnicalAnalysis.Functions.TAMath.TypPrice(int,int,float[],float[],float[])|TypPrice(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.UltOsc(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32,System.Int32,System.Int32)|TAMath.UltOsc.md#TechnicalAnalysis.Functions.TAMath.UltOsc(int,int,double[],double[],double[],int,int,int)|UltOsc(int, int, double[], double[], double[], int, int, int)
+M:TechnicalAnalysis.Functions.TAMath.UltOsc(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.UltOsc.md#TechnicalAnalysis.Functions.TAMath.UltOsc(int,int,double[],double[],double[])|UltOsc(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.UltOsc(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32,System.Int32,System.Int32)|TAMath.UltOsc.md#TechnicalAnalysis.Functions.TAMath.UltOsc(int,int,float[],float[],float[],int,int,int)|UltOsc(int, int, float[], float[], float[], int, int, int)
+M:TechnicalAnalysis.Functions.TAMath.UltOsc(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.UltOsc.md#TechnicalAnalysis.Functions.TAMath.UltOsc(int,int,float[],float[],float[])|UltOsc(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Variance(System.Int32,System.Int32,System.Double[],System.Int32,System.Double)|TAMath.Variance.md#TechnicalAnalysis.Functions.TAMath.Variance(int,int,double[],int,double)|Variance(int, int, double[], int, double)
+M:TechnicalAnalysis.Functions.TAMath.Variance(System.Int32,System.Int32,System.Double[])|TAMath.Variance.md#TechnicalAnalysis.Functions.TAMath.Variance(int,int,double[])|Variance(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Variance(System.Int32,System.Int32,System.Single[],System.Int32,System.Double)|TAMath.Variance.md#TechnicalAnalysis.Functions.TAMath.Variance(int,int,float[],int,double)|Variance(int, int, float[], int, double)
+M:TechnicalAnalysis.Functions.TAMath.Variance(System.Int32,System.Int32,System.Single[])|TAMath.Variance.md#TechnicalAnalysis.Functions.TAMath.Variance(int,int,float[])|Variance(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.WclPrice(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.WclPrice.md#TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,double[],double[],double[])|WclPrice(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.WclPrice(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.WclPrice.md#TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,float[],float[],float[])|WclPrice(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.WillR(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32)|TAMath.WillR.md#TechnicalAnalysis.Functions.TAMath.WillR(int,int,double[],double[],double[],int)|WillR(int, int, double[], double[], double[], int)
+M:TechnicalAnalysis.Functions.TAMath.WillR(System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|TAMath.WillR.md#TechnicalAnalysis.Functions.TAMath.WillR(int,int,double[],double[],double[])|WillR(int, int, double[], double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.WillR(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32)|TAMath.WillR.md#TechnicalAnalysis.Functions.TAMath.WillR(int,int,float[],float[],float[],int)|WillR(int, int, float[], float[], float[], int)
+M:TechnicalAnalysis.Functions.TAMath.WillR(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])|TAMath.WillR.md#TechnicalAnalysis.Functions.TAMath.WillR(int,int,float[],float[],float[])|WillR(int, int, float[], float[], float[])
+M:TechnicalAnalysis.Functions.TAMath.Wma(System.Int32,System.Int32,System.Double[],System.Int32)|TAMath.Wma.md#TechnicalAnalysis.Functions.TAMath.Wma(int,int,double[],int)|Wma(int, int, double[], int)
+M:TechnicalAnalysis.Functions.TAMath.Wma(System.Int32,System.Int32,System.Double[])|TAMath.Wma.md#TechnicalAnalysis.Functions.TAMath.Wma(int,int,double[])|Wma(int, int, double[])
+M:TechnicalAnalysis.Functions.TAMath.Wma(System.Int32,System.Int32,System.Single[],System.Int32)|TAMath.Wma.md#TechnicalAnalysis.Functions.TAMath.Wma(int,int,float[],int)|Wma(int, int, float[], int)
+M:TechnicalAnalysis.Functions.TAMath.Wma(System.Int32,System.Int32,System.Single[])|TAMath.Wma.md#TechnicalAnalysis.Functions.TAMath.Wma(int,int,float[])|Wma(int, int, float[])
+M:TechnicalAnalysis.Functions.TAMath.ZigZag(System.Int32,System.Int32,System.Double[],System.Double[],System.Double)|TAMath.ZigZag.md#TechnicalAnalysis.Functions.TAMath.ZigZag(int,int,double[],double[],double)|ZigZag(int, int, double[], double[], double)
+M:TechnicalAnalysis.Functions.TAMath.ZigZag(System.Int32,System.Int32,System.Double[],System.Double[])|TAMath.ZigZag.md#TechnicalAnalysis.Functions.TAMath.ZigZag(int,int,double[],double[])|ZigZag(int, int, double[], double[])
+M:TechnicalAnalysis.Functions.TAMath.ZigZag(System.Int32,System.Int32,System.Single[],System.Single[],System.Double)|TAMath.ZigZag.md#TechnicalAnalysis.Functions.TAMath.ZigZag(int,int,float[],float[],double)|ZigZag(int, int, float[], float[], double)
+M:TechnicalAnalysis.Functions.TAMath.ZigZag(System.Int32,System.Int32,System.Single[],System.Single[])|TAMath.ZigZag.md#TechnicalAnalysis.Functions.TAMath.ZigZag(int,int,float[],float[])|ZigZag(int, int, float[], float[])
 T:TechnicalAnalysis.Functions.TAMath|TAMath.md|TAMath
+P:TechnicalAnalysis.Functions.AdResult.Real|AdResult.Real.md|Real
+M:TechnicalAnalysis.Functions.AdResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|AdResult.AdResult(RetCode,int,int,double[]).md|AdResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.AdResult|AdResult.md|AdResult
+P:TechnicalAnalysis.Functions.AddResult.Real|AddResult.Real.md|Real
+M:TechnicalAnalysis.Functions.AddResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|AddResult.AddResult(RetCode,int,int,double[]).md|AddResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.AddResult|AddResult.md|AddResult
+P:TechnicalAnalysis.Functions.AdOscResult.Real|AdOscResult.Real.md|Real
+M:TechnicalAnalysis.Functions.AdOscResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|AdOscResult.AdOscResult(RetCode,int,int,double[]).md|AdOscResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.AdOscResult|AdOscResult.md|AdOscResult
 P:TechnicalAnalysis.Functions.AdxResult.Real|AdxResult.Real.md|Real
 M:TechnicalAnalysis.Functions.AdxResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|AdxResult.AdxResult(RetCode,int,int,double[]).md|AdxResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.AdxResult|AdxResult.md|AdxResult
+P:TechnicalAnalysis.Functions.AdxrResult.Real|AdxrResult.Real.md|Real
+M:TechnicalAnalysis.Functions.AdxrResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|AdxrResult.AdxrResult(RetCode,int,int,double[]).md|AdxrResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.AdxrResult|AdxrResult.md|AdxrResult
+P:TechnicalAnalysis.Functions.ApoResult.Real|ApoResult.Real.md|Real
+M:TechnicalAnalysis.Functions.ApoResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|ApoResult.ApoResult(RetCode,int,int,double[]).md|ApoResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.ApoResult|ApoResult.md|ApoResult
+P:TechnicalAnalysis.Functions.AroonResult.AroonDown|AroonResult.AroonDown.md|AroonDown
+P:TechnicalAnalysis.Functions.AroonResult.AroonUp|AroonResult.AroonUp.md|AroonUp
+M:TechnicalAnalysis.Functions.AroonResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[])|AroonResult.AroonResult(RetCode,int,int,double[],double[]).md|AroonResult(RetCode, int, int, double[], double[])
+T:TechnicalAnalysis.Functions.AroonResult|AroonResult.md|AroonResult
+P:TechnicalAnalysis.Functions.AroonOscResult.Real|AroonOscResult.Real.md|Real
+M:TechnicalAnalysis.Functions.AroonOscResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|AroonOscResult.AroonOscResult(RetCode,int,int,double[]).md|AroonOscResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.AroonOscResult|AroonOscResult.md|AroonOscResult
+P:TechnicalAnalysis.Functions.AsinResult.Real|AsinResult.Real.md|Real
+M:TechnicalAnalysis.Functions.AsinResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|AsinResult.AsinResult(RetCode,int,int,double[]).md|AsinResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.AsinResult|AsinResult.md|AsinResult
+P:TechnicalAnalysis.Functions.AtanResult.Real|AtanResult.Real.md|Real
+M:TechnicalAnalysis.Functions.AtanResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|AtanResult.AtanResult(RetCode,int,int,double[]).md|AtanResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.AtanResult|AtanResult.md|AtanResult
+P:TechnicalAnalysis.Functions.AtrResult.Real|AtrResult.Real.md|Real
+M:TechnicalAnalysis.Functions.AtrResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|AtrResult.AtrResult(RetCode,int,int,double[]).md|AtrResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.AtrResult|AtrResult.md|AtrResult
+P:TechnicalAnalysis.Functions.AvgPriceResult.Real|AvgPriceResult.Real.md|Real
+M:TechnicalAnalysis.Functions.AvgPriceResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|AvgPriceResult.AvgPriceResult(RetCode,int,int,double[]).md|AvgPriceResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.AvgPriceResult|AvgPriceResult.md|AvgPriceResult
+P:TechnicalAnalysis.Functions.BetaResult.Real|BetaResult.Real.md|Real
+M:TechnicalAnalysis.Functions.BetaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|BetaResult.BetaResult(RetCode,int,int,double[]).md|BetaResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.BetaResult|BetaResult.md|BetaResult
+P:TechnicalAnalysis.Functions.BollingerBandsResult.RealLowerBand|BollingerBandsResult.RealLowerBand.md|RealLowerBand
+P:TechnicalAnalysis.Functions.BollingerBandsResult.RealMiddleBand|BollingerBandsResult.RealMiddleBand.md|RealMiddleBand
+P:TechnicalAnalysis.Functions.BollingerBandsResult.RealUpperBand|BollingerBandsResult.RealUpperBand.md|RealUpperBand
+M:TechnicalAnalysis.Functions.BollingerBandsResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|BollingerBandsResult.BollingerBandsResult(RetCode,int,int,double[],double[],double[]).md|BollingerBandsResult(RetCode, int, int, double[], double[], double[])
+T:TechnicalAnalysis.Functions.BollingerBandsResult|BollingerBandsResult.md|BollingerBandsResult
+P:TechnicalAnalysis.Functions.BopResult.Real|BopResult.Real.md|Real
+M:TechnicalAnalysis.Functions.BopResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|BopResult.BopResult(RetCode,int,int,double[]).md|BopResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.BopResult|BopResult.md|BopResult
+P:TechnicalAnalysis.Functions.CciResult.Real|CciResult.Real.md|Real
+M:TechnicalAnalysis.Functions.CciResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|CciResult.CciResult(RetCode,int,int,double[]).md|CciResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.CciResult|CciResult.md|CciResult
+P:TechnicalAnalysis.Functions.CeilResult.Real|CeilResult.Real.md|Real
+M:TechnicalAnalysis.Functions.CeilResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|CeilResult.CeilResult(RetCode,int,int,double[]).md|CeilResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.CeilResult|CeilResult.md|CeilResult
+P:TechnicalAnalysis.Functions.CmoResult.Real|CmoResult.Real.md|Real
+M:TechnicalAnalysis.Functions.CmoResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|CmoResult.CmoResult(RetCode,int,int,double[]).md|CmoResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.CmoResult|CmoResult.md|CmoResult
+P:TechnicalAnalysis.Functions.CorrelResult.Real|CorrelResult.Real.md|Real
+M:TechnicalAnalysis.Functions.CorrelResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|CorrelResult.CorrelResult(RetCode,int,int,double[]).md|CorrelResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.CorrelResult|CorrelResult.md|CorrelResult
+P:TechnicalAnalysis.Functions.CosResult.Real|CosResult.Real.md|Real
+M:TechnicalAnalysis.Functions.CosResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|CosResult.CosResult(RetCode,int,int,double[]).md|CosResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.CosResult|CosResult.md|CosResult
+P:TechnicalAnalysis.Functions.CoshResult.Real|CoshResult.Real.md|Real
+M:TechnicalAnalysis.Functions.CoshResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|CoshResult.CoshResult(RetCode,int,int,double[]).md|CoshResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.CoshResult|CoshResult.md|CoshResult
+P:TechnicalAnalysis.Functions.DemaResult.Real|DemaResult.Real.md|Real
+M:TechnicalAnalysis.Functions.DemaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|DemaResult.DemaResult(RetCode,int,int,double[]).md|DemaResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.DemaResult|DemaResult.md|DemaResult
+P:TechnicalAnalysis.Functions.DivResult.Real|DivResult.Real.md|Real
+M:TechnicalAnalysis.Functions.DivResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|DivResult.DivResult(RetCode,int,int,double[]).md|DivResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.DivResult|DivResult.md|DivResult
+P:TechnicalAnalysis.Functions.DxResult.Real|DxResult.Real.md|Real
+M:TechnicalAnalysis.Functions.DxResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|DxResult.DxResult(RetCode,int,int,double[]).md|DxResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.DxResult|DxResult.md|DxResult
+P:TechnicalAnalysis.Functions.EmaResult.Real|EmaResult.Real.md|Real
+M:TechnicalAnalysis.Functions.EmaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|EmaResult.EmaResult(RetCode,int,int,double[]).md|EmaResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.EmaResult|EmaResult.md|EmaResult
+P:TechnicalAnalysis.Functions.ExpResult.Real|ExpResult.Real.md|Real
+M:TechnicalAnalysis.Functions.ExpResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|ExpResult.ExpResult(RetCode,int,int,double[]).md|ExpResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.ExpResult|ExpResult.md|ExpResult
+P:TechnicalAnalysis.Functions.FloorResult.Real|FloorResult.Real.md|Real
+M:TechnicalAnalysis.Functions.FloorResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|FloorResult.FloorResult(RetCode,int,int,double[]).md|FloorResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.FloorResult|FloorResult.md|FloorResult
+P:TechnicalAnalysis.Functions.HtDcPeriodResult.Real|HtDcPeriodResult.Real.md|Real
+M:TechnicalAnalysis.Functions.HtDcPeriodResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|HtDcPeriodResult.HtDcPeriodResult(RetCode,int,int,double[]).md|HtDcPeriodResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.HtDcPeriodResult|HtDcPeriodResult.md|HtDcPeriodResult
+P:TechnicalAnalysis.Functions.HtDcPhaseResult.Real|HtDcPhaseResult.Real.md|Real
+M:TechnicalAnalysis.Functions.HtDcPhaseResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|HtDcPhaseResult.HtDcPhaseResult(RetCode,int,int,double[]).md|HtDcPhaseResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.HtDcPhaseResult|HtDcPhaseResult.md|HtDcPhaseResult
+P:TechnicalAnalysis.Functions.HtPhasorResult.InPhase|HtPhasorResult.InPhase.md|InPhase
+P:TechnicalAnalysis.Functions.HtPhasorResult.Quadrature|HtPhasorResult.Quadrature.md|Quadrature
+M:TechnicalAnalysis.Functions.HtPhasorResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[])|HtPhasorResult.HtPhasorResult(RetCode,int,int,double[],double[]).md|HtPhasorResult(RetCode, int, int, double[], double[])
+T:TechnicalAnalysis.Functions.HtPhasorResult|HtPhasorResult.md|HtPhasorResult
+P:TechnicalAnalysis.Functions.HtSineResult.LeadSine|HtSineResult.LeadSine.md|LeadSine
+P:TechnicalAnalysis.Functions.HtSineResult.Sine|HtSineResult.Sine.md|Sine
+M:TechnicalAnalysis.Functions.HtSineResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[])|HtSineResult.HtSineResult(RetCode,int,int,double[],double[]).md|HtSineResult(RetCode, int, int, double[], double[])
+T:TechnicalAnalysis.Functions.HtSineResult|HtSineResult.md|HtSineResult
+P:TechnicalAnalysis.Functions.HtTrendlineResult.Real|HtTrendlineResult.Real.md|Real
+M:TechnicalAnalysis.Functions.HtTrendlineResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|HtTrendlineResult.HtTrendlineResult(RetCode,int,int,double[]).md|HtTrendlineResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.HtTrendlineResult|HtTrendlineResult.md|HtTrendlineResult
+P:TechnicalAnalysis.Functions.HtTrendModeResult.Integers|HtTrendModeResult.Integers.md|Integers
+M:TechnicalAnalysis.Functions.HtTrendModeResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|HtTrendModeResult.HtTrendModeResult(RetCode,int,int,int[]).md|HtTrendModeResult(RetCode, int, int, int[])
+T:TechnicalAnalysis.Functions.HtTrendModeResult|HtTrendModeResult.md|HtTrendModeResult
+P:TechnicalAnalysis.Functions.KamaResult.Real|KamaResult.Real.md|Real
+M:TechnicalAnalysis.Functions.KamaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|KamaResult.KamaResult(RetCode,int,int,double[]).md|KamaResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.KamaResult|KamaResult.md|KamaResult
+P:TechnicalAnalysis.Functions.LinearRegResult.Real|LinearRegResult.Real.md|Real
+M:TechnicalAnalysis.Functions.LinearRegResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|LinearRegResult.LinearRegResult(RetCode,int,int,double[]).md|LinearRegResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.LinearRegResult|LinearRegResult.md|LinearRegResult
+P:TechnicalAnalysis.Functions.LinearRegAngleResult.Real|LinearRegAngleResult.Real.md|Real
+M:TechnicalAnalysis.Functions.LinearRegAngleResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|LinearRegAngleResult.LinearRegAngleResult(RetCode,int,int,double[]).md|LinearRegAngleResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.LinearRegAngleResult|LinearRegAngleResult.md|LinearRegAngleResult
+P:TechnicalAnalysis.Functions.LinearRegInterceptResult.Real|LinearRegInterceptResult.Real.md|Real
+M:TechnicalAnalysis.Functions.LinearRegInterceptResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|LinearRegInterceptResult.LinearRegInterceptResult(RetCode,int,int,double[]).md|LinearRegInterceptResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.LinearRegInterceptResult|LinearRegInterceptResult.md|LinearRegInterceptResult
+P:TechnicalAnalysis.Functions.LinearRegSlopeResult.Real|LinearRegSlopeResult.Real.md|Real
+M:TechnicalAnalysis.Functions.LinearRegSlopeResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|LinearRegSlopeResult.LinearRegSlopeResult(RetCode,int,int,double[]).md|LinearRegSlopeResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.LinearRegSlopeResult|LinearRegSlopeResult.md|LinearRegSlopeResult
+P:TechnicalAnalysis.Functions.LnResult.Real|LnResult.Real.md|Real
+M:TechnicalAnalysis.Functions.LnResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|LnResult.LnResult(RetCode,int,int,double[]).md|LnResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.LnResult|LnResult.md|LnResult
+P:TechnicalAnalysis.Functions.Log10Result.Real|Log10Result.Real.md|Real
+M:TechnicalAnalysis.Functions.Log10Result.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|Log10Result.Log10Result(RetCode,int,int,double[]).md|Log10Result(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.Log10Result|Log10Result.md|Log10Result
+P:TechnicalAnalysis.Functions.MacdResult.MacdValue|MacdResult.MacdValue.md|MacdValue
+P:TechnicalAnalysis.Functions.MacdResult.MacdHist|MacdResult.MacdHist.md|MacdHist
+P:TechnicalAnalysis.Functions.MacdResult.MacdSignal|MacdResult.MacdSignal.md|MacdSignal
+M:TechnicalAnalysis.Functions.MacdResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|MacdResult.MacdResult(RetCode,int,int,double[],double[],double[]).md|MacdResult(RetCode, int, int, double[], double[], double[])
+T:TechnicalAnalysis.Functions.MacdResult|MacdResult.md|MacdResult
+P:TechnicalAnalysis.Functions.MacdExtResult.MACD|MacdExtResult.MACD.md|MACD
+P:TechnicalAnalysis.Functions.MacdExtResult.MACDHist|MacdExtResult.MACDHist.md|MACDHist
+P:TechnicalAnalysis.Functions.MacdExtResult.MACDSignal|MacdExtResult.MACDSignal.md|MACDSignal
+M:TechnicalAnalysis.Functions.MacdExtResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|MacdExtResult.MacdExtResult(RetCode,int,int,double[],double[],double[]).md|MacdExtResult(RetCode, int, int, double[], double[], double[])
+T:TechnicalAnalysis.Functions.MacdExtResult|MacdExtResult.md|MacdExtResult
+P:TechnicalAnalysis.Functions.MacdFixResult.MACD|MacdFixResult.MACD.md|MACD
+P:TechnicalAnalysis.Functions.MacdFixResult.MACDHist|MacdFixResult.MACDHist.md|MACDHist
+P:TechnicalAnalysis.Functions.MacdFixResult.MACDSignal|MacdFixResult.MACDSignal.md|MACDSignal
+M:TechnicalAnalysis.Functions.MacdFixResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[],System.Double[])|MacdFixResult.MacdFixResult(RetCode,int,int,double[],double[],double[]).md|MacdFixResult(RetCode, int, int, double[], double[], double[])
+T:TechnicalAnalysis.Functions.MacdFixResult|MacdFixResult.md|MacdFixResult
+P:TechnicalAnalysis.Functions.MamaResult.FAMA|MamaResult.FAMA.md|FAMA
+P:TechnicalAnalysis.Functions.MamaResult.MAMA|MamaResult.MAMA.md|MAMA
+M:TechnicalAnalysis.Functions.MamaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[])|MamaResult.MamaResult(RetCode,int,int,double[],double[]).md|MamaResult(RetCode, int, int, double[], double[])
+T:TechnicalAnalysis.Functions.MamaResult|MamaResult.md|MamaResult
+P:TechnicalAnalysis.Functions.MaxResult.Real|MaxResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MaxResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MaxResult.MaxResult(RetCode,int,int,double[]).md|MaxResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MaxResult|MaxResult.md|MaxResult
+P:TechnicalAnalysis.Functions.MaxIndexResult.Integers|MaxIndexResult.Integers.md|Integers
+M:TechnicalAnalysis.Functions.MaxIndexResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|MaxIndexResult.MaxIndexResult(RetCode,int,int,int[]).md|MaxIndexResult(RetCode, int, int, int[])
+T:TechnicalAnalysis.Functions.MaxIndexResult|MaxIndexResult.md|MaxIndexResult
+P:TechnicalAnalysis.Functions.MedPriceResult.Real|MedPriceResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MedPriceResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MedPriceResult.MedPriceResult(RetCode,int,int,double[]).md|MedPriceResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MedPriceResult|MedPriceResult.md|MedPriceResult
+P:TechnicalAnalysis.Functions.MfiResult.Real|MfiResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MfiResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MfiResult.MfiResult(RetCode,int,int,double[]).md|MfiResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MfiResult|MfiResult.md|MfiResult
+P:TechnicalAnalysis.Functions.MidPointResult.Real|MidPointResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MidPointResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MidPointResult.MidPointResult(RetCode,int,int,double[]).md|MidPointResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MidPointResult|MidPointResult.md|MidPointResult
+P:TechnicalAnalysis.Functions.MidPriceResult.Real|MidPriceResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MidPriceResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MidPriceResult.MidPriceResult(RetCode,int,int,double[]).md|MidPriceResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MidPriceResult|MidPriceResult.md|MidPriceResult
+P:TechnicalAnalysis.Functions.MinResult.Real|MinResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MinResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MinResult.MinResult(RetCode,int,int,double[]).md|MinResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MinResult|MinResult.md|MinResult
+P:TechnicalAnalysis.Functions.MinIndexResult.Integers|MinIndexResult.Integers.md|Integers
+M:TechnicalAnalysis.Functions.MinIndexResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|MinIndexResult.MinIndexResult(RetCode,int,int,int[]).md|MinIndexResult(RetCode, int, int, int[])
+T:TechnicalAnalysis.Functions.MinIndexResult|MinIndexResult.md|MinIndexResult
+P:TechnicalAnalysis.Functions.MinMaxResult.Max|MinMaxResult.Max.md|Max
+P:TechnicalAnalysis.Functions.MinMaxResult.Min|MinMaxResult.Min.md|Min
+M:TechnicalAnalysis.Functions.MinMaxResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[])|MinMaxResult.MinMaxResult(RetCode,int,int,double[],double[]).md|MinMaxResult(RetCode, int, int, double[], double[])
+T:TechnicalAnalysis.Functions.MinMaxResult|MinMaxResult.md|MinMaxResult
+P:TechnicalAnalysis.Functions.MinMaxIndexResult.MaxIdx|MinMaxIndexResult.MaxIdx.md|MaxIdx
+P:TechnicalAnalysis.Functions.MinMaxIndexResult.MinIdx|MinMaxIndexResult.MinIdx.md|MinIdx
+M:TechnicalAnalysis.Functions.MinMaxIndexResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[],System.Int32[])|MinMaxIndexResult.MinMaxIndexResult(RetCode,int,int,int[],int[]).md|MinMaxIndexResult(RetCode, int, int, int[], int[])
+T:TechnicalAnalysis.Functions.MinMaxIndexResult|MinMaxIndexResult.md|MinMaxIndexResult
+P:TechnicalAnalysis.Functions.MinusDIResult.Real|MinusDIResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MinusDIResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MinusDIResult.MinusDIResult(RetCode,int,int,double[]).md|MinusDIResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MinusDIResult|MinusDIResult.md|MinusDIResult
+P:TechnicalAnalysis.Functions.MinusDMResult.Real|MinusDMResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MinusDMResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MinusDMResult.MinusDMResult(RetCode,int,int,double[]).md|MinusDMResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MinusDMResult|MinusDMResult.md|MinusDMResult
+P:TechnicalAnalysis.Functions.MomResult.Real|MomResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MomResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MomResult.MomResult(RetCode,int,int,double[]).md|MomResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MomResult|MomResult.md|MomResult
+P:TechnicalAnalysis.Functions.MovingAverageResult.Real|MovingAverageResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MovingAverageResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MovingAverageResult.MovingAverageResult(RetCode,int,int,double[]).md|MovingAverageResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MovingAverageResult|MovingAverageResult.md|MovingAverageResult
+P:TechnicalAnalysis.Functions.MovingAverageVariablePeriodResult.Real|MovingAverageVariablePeriodResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MovingAverageVariablePeriodResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MovingAverageVariablePeriodResult.MovingAverageVariablePeriodResult(RetCode,int,int,double[]).md|MovingAverageVariablePeriodResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MovingAverageVariablePeriodResult|MovingAverageVariablePeriodResult.md|MovingAverageVariablePeriodResult
+P:TechnicalAnalysis.Functions.MultResult.Real|MultResult.Real.md|Real
+M:TechnicalAnalysis.Functions.MultResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MultResult.MultResult(RetCode,int,int,double[]).md|MultResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.MultResult|MultResult.md|MultResult
+P:TechnicalAnalysis.Functions.NatrResult.Real|NatrResult.Real.md|Real
+M:TechnicalAnalysis.Functions.NatrResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|NatrResult.NatrResult(RetCode,int,int,double[]).md|NatrResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.NatrResult|NatrResult.md|NatrResult
+P:TechnicalAnalysis.Functions.ObvResult.Real|ObvResult.Real.md|Real
+M:TechnicalAnalysis.Functions.ObvResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|ObvResult.ObvResult(RetCode,int,int,double[]).md|ObvResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.ObvResult|ObvResult.md|ObvResult
+P:TechnicalAnalysis.Functions.PlusDIResult.Real|PlusDIResult.Real.md|Real
+M:TechnicalAnalysis.Functions.PlusDIResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|PlusDIResult.PlusDIResult(RetCode,int,int,double[]).md|PlusDIResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.PlusDIResult|PlusDIResult.md|PlusDIResult
+P:TechnicalAnalysis.Functions.PlusDMResult.Real|PlusDMResult.Real.md|Real
+M:TechnicalAnalysis.Functions.PlusDMResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|PlusDMResult.PlusDMResult(RetCode,int,int,double[]).md|PlusDMResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.PlusDMResult|PlusDMResult.md|PlusDMResult
+P:TechnicalAnalysis.Functions.PpoResult.Real|PpoResult.Real.md|Real
+M:TechnicalAnalysis.Functions.PpoResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|PpoResult.PpoResult(RetCode,int,int,double[]).md|PpoResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.PpoResult|PpoResult.md|PpoResult
+P:TechnicalAnalysis.Functions.RocResult.Real|RocResult.Real.md|Real
+M:TechnicalAnalysis.Functions.RocResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|RocResult.RocResult(RetCode,int,int,double[]).md|RocResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.RocResult|RocResult.md|RocResult
+P:TechnicalAnalysis.Functions.RocPResult.Real|RocPResult.Real.md|Real
+M:TechnicalAnalysis.Functions.RocPResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|RocPResult.RocPResult(RetCode,int,int,double[]).md|RocPResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.RocPResult|RocPResult.md|RocPResult
+P:TechnicalAnalysis.Functions.RocRResult.Real|RocRResult.Real.md|Real
+M:TechnicalAnalysis.Functions.RocRResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|RocRResult.RocRResult(RetCode,int,int,double[]).md|RocRResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.RocRResult|RocRResult.md|RocRResult
+P:TechnicalAnalysis.Functions.RocR100Result.Real|RocR100Result.Real.md|Real
+M:TechnicalAnalysis.Functions.RocR100Result.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|RocR100Result.RocR100Result(RetCode,int,int,double[]).md|RocR100Result(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.RocR100Result|RocR100Result.md|RocR100Result
+P:TechnicalAnalysis.Functions.RsiResult.Real|RsiResult.Real.md|Real
+M:TechnicalAnalysis.Functions.RsiResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|RsiResult.RsiResult(RetCode,int,int,double[]).md|RsiResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.RsiResult|RsiResult.md|RsiResult
+P:TechnicalAnalysis.Functions.SarResult.Real|SarResult.Real.md|Real
+M:TechnicalAnalysis.Functions.SarResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SarResult.SarResult(RetCode,int,int,double[]).md|SarResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.SarResult|SarResult.md|SarResult
+P:TechnicalAnalysis.Functions.SarExtResult.Real|SarExtResult.Real.md|Real
+M:TechnicalAnalysis.Functions.SarExtResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SarExtResult.SarExtResult(RetCode,int,int,double[]).md|SarExtResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.SarExtResult|SarExtResult.md|SarExtResult
+P:TechnicalAnalysis.Functions.SinResult.Real|SinResult.Real.md|Real
+M:TechnicalAnalysis.Functions.SinResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SinResult.SinResult(RetCode,int,int,double[]).md|SinResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.SinResult|SinResult.md|SinResult
+P:TechnicalAnalysis.Functions.SinhResult.Real|SinhResult.Real.md|Real
+M:TechnicalAnalysis.Functions.SinhResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SinhResult.SinhResult(RetCode,int,int,double[]).md|SinhResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.SinhResult|SinhResult.md|SinhResult
+P:TechnicalAnalysis.Functions.SmaResult.Real|SmaResult.Real.md|Real
+M:TechnicalAnalysis.Functions.SmaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SmaResult.SmaResult(RetCode,int,int,double[]).md|SmaResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.SmaResult|SmaResult.md|SmaResult
+P:TechnicalAnalysis.Functions.SqrtResult.Real|SqrtResult.Real.md|Real
+M:TechnicalAnalysis.Functions.SqrtResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SqrtResult.SqrtResult(RetCode,int,int,double[]).md|SqrtResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.SqrtResult|SqrtResult.md|SqrtResult
+P:TechnicalAnalysis.Functions.StdDevResult.Real|StdDevResult.Real.md|Real
+M:TechnicalAnalysis.Functions.StdDevResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|StdDevResult.StdDevResult(RetCode,int,int,double[]).md|StdDevResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.StdDevResult|StdDevResult.md|StdDevResult
+P:TechnicalAnalysis.Functions.StochResult.SlowD|StochResult.SlowD.md|SlowD
+P:TechnicalAnalysis.Functions.StochResult.SlowK|StochResult.SlowK.md|SlowK
+M:TechnicalAnalysis.Functions.StochResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[])|StochResult.StochResult(RetCode,int,int,double[],double[]).md|StochResult(RetCode, int, int, double[], double[])
+T:TechnicalAnalysis.Functions.StochResult|StochResult.md|StochResult
+P:TechnicalAnalysis.Functions.StochFResult.FastD|StochFResult.FastD.md|FastD
+P:TechnicalAnalysis.Functions.StochFResult.FastK|StochFResult.FastK.md|FastK
+M:TechnicalAnalysis.Functions.StochFResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[])|StochFResult.StochFResult(RetCode,int,int,double[],double[]).md|StochFResult(RetCode, int, int, double[], double[])
+T:TechnicalAnalysis.Functions.StochFResult|StochFResult.md|StochFResult
+P:TechnicalAnalysis.Functions.StochRsiResult.FastD|StochRsiResult.FastD.md|FastD
+P:TechnicalAnalysis.Functions.StochRsiResult.FastK|StochRsiResult.FastK.md|FastK
+M:TechnicalAnalysis.Functions.StochRsiResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[])|StochRsiResult.StochRsiResult(RetCode,int,int,double[],double[]).md|StochRsiResult(RetCode, int, int, double[], double[])
+T:TechnicalAnalysis.Functions.StochRsiResult|StochRsiResult.md|StochRsiResult
+P:TechnicalAnalysis.Functions.SubResult.Real|SubResult.Real.md|Real
+M:TechnicalAnalysis.Functions.SubResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SubResult.SubResult(RetCode,int,int,double[]).md|SubResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.SubResult|SubResult.md|SubResult
+P:TechnicalAnalysis.Functions.SumResult.Real|SumResult.Real.md|Real
+M:TechnicalAnalysis.Functions.SumResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SumResult.SumResult(RetCode,int,int,double[]).md|SumResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.SumResult|SumResult.md|SumResult
+P:TechnicalAnalysis.Functions.T3Result.Real|T3Result.Real.md|Real
+M:TechnicalAnalysis.Functions.T3Result.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|T3Result.T3Result(RetCode,int,int,double[]).md|T3Result(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.T3Result|T3Result.md|T3Result
+P:TechnicalAnalysis.Functions.TanResult.Real|TanResult.Real.md|Real
+M:TechnicalAnalysis.Functions.TanResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TanResult.TanResult(RetCode,int,int,double[]).md|TanResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.TanResult|TanResult.md|TanResult
+P:TechnicalAnalysis.Functions.TanhResult.Real|TanhResult.Real.md|Real
+M:TechnicalAnalysis.Functions.TanhResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TanhResult.TanhResult(RetCode,int,int,double[]).md|TanhResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.TanhResult|TanhResult.md|TanhResult
+P:TechnicalAnalysis.Functions.TemaResult.Real|TemaResult.Real.md|Real
+M:TechnicalAnalysis.Functions.TemaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TemaResult.TemaResult(RetCode,int,int,double[]).md|TemaResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.TemaResult|TemaResult.md|TemaResult
+P:TechnicalAnalysis.Functions.TrimaResult.Real|TrimaResult.Real.md|Real
+M:TechnicalAnalysis.Functions.TrimaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TrimaResult.TrimaResult(RetCode,int,int,double[]).md|TrimaResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.TrimaResult|TrimaResult.md|TrimaResult
+P:TechnicalAnalysis.Functions.TrixResult.Real|TrixResult.Real.md|Real
+M:TechnicalAnalysis.Functions.TrixResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TrixResult.TrixResult(RetCode,int,int,double[]).md|TrixResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.TrixResult|TrixResult.md|TrixResult
+P:TechnicalAnalysis.Functions.TrueRangeResult.Real|TrueRangeResult.Real.md|Real
+M:TechnicalAnalysis.Functions.TrueRangeResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TrueRangeResult.TrueRangeResult(RetCode,int,int,double[]).md|TrueRangeResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.TrueRangeResult|TrueRangeResult.md|TrueRangeResult
+P:TechnicalAnalysis.Functions.TsfResult.Real|TsfResult.Real.md|Real
+M:TechnicalAnalysis.Functions.TsfResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TsfResult.TsfResult(RetCode,int,int,double[]).md|TsfResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.TsfResult|TsfResult.md|TsfResult
+P:TechnicalAnalysis.Functions.TypPriceResult.Real|TypPriceResult.Real.md|Real
+M:TechnicalAnalysis.Functions.TypPriceResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TypPriceResult.TypPriceResult(RetCode,int,int,double[]).md|TypPriceResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.TypPriceResult|TypPriceResult.md|TypPriceResult
+P:TechnicalAnalysis.Functions.UltOscResult.Real|UltOscResult.Real.md|Real
+M:TechnicalAnalysis.Functions.UltOscResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|UltOscResult.UltOscResult(RetCode,int,int,double[]).md|UltOscResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.UltOscResult|UltOscResult.md|UltOscResult
+P:TechnicalAnalysis.Functions.VarianceResult.Real|VarianceResult.Real.md|Real
+M:TechnicalAnalysis.Functions.VarianceResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|VarianceResult.VarianceResult(RetCode,int,int,double[]).md|VarianceResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.VarianceResult|VarianceResult.md|VarianceResult
+P:TechnicalAnalysis.Functions.WclPriceResult.Real|WclPriceResult.Real.md|Real
+M:TechnicalAnalysis.Functions.WclPriceResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|WclPriceResult.WclPriceResult(RetCode,int,int,double[]).md|WclPriceResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.WclPriceResult|WclPriceResult.md|WclPriceResult
+P:TechnicalAnalysis.Functions.WillRResult.Real|WillRResult.Real.md|Real
+M:TechnicalAnalysis.Functions.WillRResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|WillRResult.WillRResult(RetCode,int,int,double[]).md|WillRResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.WillRResult|WillRResult.md|WillRResult
+P:TechnicalAnalysis.Functions.WmaResult.Real|WmaResult.Real.md|Real
+M:TechnicalAnalysis.Functions.WmaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|WmaResult.WmaResult(RetCode,int,int,double[]).md|WmaResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.WmaResult|WmaResult.md|WmaResult
+P:TechnicalAnalysis.Functions.ZigZagResult.Real|ZigZagResult.Real.md|Real
+M:TechnicalAnalysis.Functions.ZigZagResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|ZigZagResult.ZigZagResult(RetCode,int,int,double[]).md|ZigZagResult(RetCode, int, int, double[])
+T:TechnicalAnalysis.Functions.ZigZagResult|ZigZagResult.md|ZigZagResult
+?:TechnicalAnalysis.Functions.TAMath.Acos|TAMath.Acos.md|Acos
+?:TechnicalAnalysis.Functions.TAMath.Ad|TAMath.Ad.md|Ad
+?:TechnicalAnalysis.Functions.TAMath.Add|TAMath.Add.md|Add
+?:TechnicalAnalysis.Functions.TAMath.AdOsc|TAMath.AdOsc.md|AdOsc
 ?:TechnicalAnalysis.Functions.TAMath.Adx|TAMath.Adx.md|Adx
+?:TechnicalAnalysis.Functions.TAMath.Adxr|TAMath.Adxr.md|Adxr
+?:TechnicalAnalysis.Functions.TAMath.Apo|TAMath.Apo.md|Apo
+?:TechnicalAnalysis.Functions.TAMath.Aroon|TAMath.Aroon.md|Aroon
+?:TechnicalAnalysis.Functions.TAMath.AroonOsc|TAMath.AroonOsc.md|AroonOsc
+?:TechnicalAnalysis.Functions.TAMath.Asin|TAMath.Asin.md|Asin
+?:TechnicalAnalysis.Functions.TAMath.Atan|TAMath.Atan.md|Atan
+?:TechnicalAnalysis.Functions.TAMath.Atr|TAMath.Atr.md|Atr
+?:TechnicalAnalysis.Functions.TAMath.AvgPrice|TAMath.AvgPrice.md|AvgPrice
+?:TechnicalAnalysis.Functions.TAMath.Beta|TAMath.Beta.md|Beta
+?:TechnicalAnalysis.Functions.TAMath.BollingerBands|TAMath.BollingerBands.md|BollingerBands
+?:TechnicalAnalysis.Functions.TAMath.Bop|TAMath.Bop.md|Bop
+?:TechnicalAnalysis.Functions.TAMath.Cci|TAMath.Cci.md|Cci
+?:TechnicalAnalysis.Functions.TAMath.Ceil|TAMath.Ceil.md|Ceil
+?:TechnicalAnalysis.Functions.TAMath.Cmo|TAMath.Cmo.md|Cmo
+?:TechnicalAnalysis.Functions.TAMath.Correl|TAMath.Correl.md|Correl
+?:TechnicalAnalysis.Functions.TAMath.Cos|TAMath.Cos.md|Cos
+?:TechnicalAnalysis.Functions.TAMath.Cosh|TAMath.Cosh.md|Cosh
+?:TechnicalAnalysis.Functions.TAMath.Dema|TAMath.Dema.md|Dema
+?:TechnicalAnalysis.Functions.TAMath.Div|TAMath.Div.md|Div
+?:TechnicalAnalysis.Functions.TAMath.Dx|TAMath.Dx.md|Dx
+?:TechnicalAnalysis.Functions.TAMath.Ema|TAMath.Ema.md|Ema
+?:TechnicalAnalysis.Functions.TAMath.Exp|TAMath.Exp.md|Exp
+?:TechnicalAnalysis.Functions.TAMath.Floor|TAMath.Floor.md|Floor
+?:TechnicalAnalysis.Functions.TAMath.HtDcPeriod|TAMath.HtDcPeriod.md|HtDcPeriod
+?:TechnicalAnalysis.Functions.TAMath.HtDcPhase|TAMath.HtDcPhase.md|HtDcPhase
+?:TechnicalAnalysis.Functions.TAMath.HtPhasor|TAMath.HtPhasor.md|HtPhasor
+?:TechnicalAnalysis.Functions.TAMath.HtSine|TAMath.HtSine.md|HtSine
+?:TechnicalAnalysis.Functions.TAMath.HtTrendline|TAMath.HtTrendline.md|HtTrendline
+?:TechnicalAnalysis.Functions.TAMath.HtTrendMode|TAMath.HtTrendMode.md|HtTrendMode
+?:TechnicalAnalysis.Functions.TAMath.Kama|TAMath.Kama.md|Kama
+?:TechnicalAnalysis.Functions.TAMath.LinearReg|TAMath.LinearReg.md|LinearReg
+?:TechnicalAnalysis.Functions.TAMath.LinearRegAngle|TAMath.LinearRegAngle.md|LinearRegAngle
+?:TechnicalAnalysis.Functions.TAMath.LinearRegIntercept|TAMath.LinearRegIntercept.md|LinearRegIntercept
+?:TechnicalAnalysis.Functions.TAMath.LinearRegSlope|TAMath.LinearRegSlope.md|LinearRegSlope
+?:TechnicalAnalysis.Functions.TAMath.Ln|TAMath.Ln.md|Ln
+?:TechnicalAnalysis.Functions.TAMath.Log10|TAMath.Log10.md|Log10
+?:TechnicalAnalysis.Functions.TAMath.Macd|TAMath.Macd.md|Macd
+?:TechnicalAnalysis.Functions.TAMath.MacdExt|TAMath.MacdExt.md|MacdExt
+?:TechnicalAnalysis.Functions.TAMath.MacdFix|TAMath.MacdFix.md|MacdFix
+?:TechnicalAnalysis.Functions.TAMath.Mama|TAMath.Mama.md|Mama
+?:TechnicalAnalysis.Functions.TAMath.Max|TAMath.Max.md|Max
+?:TechnicalAnalysis.Functions.TAMath.MaxIndex|TAMath.MaxIndex.md|MaxIndex
+?:TechnicalAnalysis.Functions.TAMath.MedPrice|TAMath.MedPrice.md|MedPrice
+?:TechnicalAnalysis.Functions.TAMath.Mfi|TAMath.Mfi.md|Mfi
+?:TechnicalAnalysis.Functions.TAMath.MidPoint|TAMath.MidPoint.md|MidPoint
+?:TechnicalAnalysis.Functions.TAMath.MidPrice|TAMath.MidPrice.md|MidPrice
+?:TechnicalAnalysis.Functions.TAMath.Min|TAMath.Min.md|Min
+?:TechnicalAnalysis.Functions.TAMath.MinIndex|TAMath.MinIndex.md|MinIndex
+?:TechnicalAnalysis.Functions.TAMath.MinMax|TAMath.MinMax.md|MinMax
+?:TechnicalAnalysis.Functions.TAMath.MinMaxIndex|TAMath.MinMaxIndex.md|MinMaxIndex
+?:TechnicalAnalysis.Functions.TAMath.MinusDI|TAMath.MinusDI.md|MinusDI
+?:TechnicalAnalysis.Functions.TAMath.MinusDM|TAMath.MinusDM.md|MinusDM
+?:TechnicalAnalysis.Functions.TAMath.Mom|TAMath.Mom.md|Mom
+?:TechnicalAnalysis.Functions.TAMath.MovingAverage|TAMath.MovingAverage.md|MovingAverage
+?:TechnicalAnalysis.Functions.TAMath.MovingAverageVariablePeriod|TAMath.MovingAverageVariablePeriod.md|MovingAverageVariablePeriod
+?:TechnicalAnalysis.Functions.TAMath.Mult|TAMath.Mult.md|Mult
+?:TechnicalAnalysis.Functions.TAMath.Natr|TAMath.Natr.md|Natr
+?:TechnicalAnalysis.Functions.TAMath.Obv|TAMath.Obv.md|Obv
+?:TechnicalAnalysis.Functions.TAMath.PlusDI|TAMath.PlusDI.md|PlusDI
+?:TechnicalAnalysis.Functions.TAMath.PlusDM|TAMath.PlusDM.md|PlusDM
+?:TechnicalAnalysis.Functions.TAMath.Ppo|TAMath.Ppo.md|Ppo
+?:TechnicalAnalysis.Functions.TAMath.Roc|TAMath.Roc.md|Roc
+?:TechnicalAnalysis.Functions.TAMath.RocP|TAMath.RocP.md|RocP
+?:TechnicalAnalysis.Functions.TAMath.RocR|TAMath.RocR.md|RocR
+?:TechnicalAnalysis.Functions.TAMath.RocR100|TAMath.RocR100.md|RocR100
+?:TechnicalAnalysis.Functions.TAMath.Rsi|TAMath.Rsi.md|Rsi
+?:TechnicalAnalysis.Functions.TAMath.Sar|TAMath.Sar.md|Sar
+?:TechnicalAnalysis.Functions.TAMath.SarExt|TAMath.SarExt.md|SarExt
+?:TechnicalAnalysis.Functions.TAMath.Sin|TAMath.Sin.md|Sin
+?:TechnicalAnalysis.Functions.TAMath.Sinh|TAMath.Sinh.md|Sinh
+?:TechnicalAnalysis.Functions.TAMath.Sma|TAMath.Sma.md|Sma
+?:TechnicalAnalysis.Functions.TAMath.Sqrt|TAMath.Sqrt.md|Sqrt
+?:TechnicalAnalysis.Functions.TAMath.StdDev|TAMath.StdDev.md|StdDev
+?:TechnicalAnalysis.Functions.TAMath.Stoch|TAMath.Stoch.md|Stoch
+?:TechnicalAnalysis.Functions.TAMath.StochF|TAMath.StochF.md|StochF
+?:TechnicalAnalysis.Functions.TAMath.StochRsi|TAMath.StochRsi.md|StochRsi
+?:TechnicalAnalysis.Functions.TAMath.Sub|TAMath.Sub.md|Sub
+?:TechnicalAnalysis.Functions.TAMath.Sum|TAMath.Sum.md|Sum
+?:TechnicalAnalysis.Functions.TAMath.T3|TAMath.T3.md|T3
+?:TechnicalAnalysis.Functions.TAMath.Tan|TAMath.Tan.md|Tan
+?:TechnicalAnalysis.Functions.TAMath.Tanh|TAMath.Tanh.md|Tanh
+?:TechnicalAnalysis.Functions.TAMath.Tema|TAMath.Tema.md|Tema
+?:TechnicalAnalysis.Functions.TAMath.Trima|TAMath.Trima.md|Trima
+?:TechnicalAnalysis.Functions.TAMath.Trix|TAMath.Trix.md|Trix
+?:TechnicalAnalysis.Functions.TAMath.TrueRange|TAMath.TrueRange.md|TrueRange
+?:TechnicalAnalysis.Functions.TAMath.Tsf|TAMath.Tsf.md|Tsf
+?:TechnicalAnalysis.Functions.TAMath.TypPrice|TAMath.TypPrice.md|TypPrice
+?:TechnicalAnalysis.Functions.TAMath.UltOsc|TAMath.UltOsc.md|UltOsc
+?:TechnicalAnalysis.Functions.TAMath.Variance|TAMath.Variance.md|Variance
+?:TechnicalAnalysis.Functions.TAMath.WclPrice|TAMath.WclPrice.md|WclPrice
+?:TechnicalAnalysis.Functions.TAMath.WillR|TAMath.WillR.md|WillR
+?:TechnicalAnalysis.Functions.TAMath.Wma|TAMath.Wma.md|Wma
+?:TechnicalAnalysis.Functions.TAMath.ZigZag|TAMath.ZigZag.md|ZigZag

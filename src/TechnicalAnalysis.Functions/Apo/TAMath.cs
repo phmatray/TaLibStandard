@@ -8,6 +8,21 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
 {
+    /// <summary>
+    /// Calculates the Absolute Price Oscillator (APO) which shows the difference between two moving averages.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">Array of input values (usually closing prices).</param>
+    /// <param name="fastPeriod">The number of periods for the fast moving average (default: 12).</param>
+    /// <param name="slowPeriod">The number of periods for the slow moving average (default: 26).</param>
+    /// <param name="maType">The type of moving average to use (default: Simple Moving Average).</param>
+    /// <returns>An ApoResult containing the calculated values and metadata.</returns>
+    /// <remarks>
+    /// The APO is calculated as: Fast MA - Slow MA.
+    /// Unlike the PPO (Percentage Price Oscillator), the APO provides the absolute difference,
+    /// making it useful for comparing momentum across different time periods of the same security.
+    /// </remarks>
     public static ApoResult Apo(int startIdx, int endIdx, double[] real, int fastPeriod, int slowPeriod, MAType maType)
     {
         int outBegIdx = default;
@@ -28,12 +43,46 @@ public static partial class TAMath
         return new ApoResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
+    /// <summary>
+    /// Calculates the Absolute Price Oscillator (APO) using default parameters.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">Array of input values (usually closing prices).</param>
+    /// <returns>An ApoResult containing the calculated values and metadata.</returns>
+    /// <remarks>
+    /// Uses default values: fastPeriod=12, slowPeriod=26, maType=Simple Moving Average.
+    /// </remarks>
     public static ApoResult Apo(int startIdx, int endIdx, double[] real)
         => Apo(startIdx, endIdx, real, 12, 26, MAType.Sma);
 
+    /// <summary>
+    /// Calculates the Absolute Price Oscillator (APO) which shows the difference between two moving averages.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">Array of input values (usually closing prices).</param>
+    /// <param name="fastPeriod">The number of periods for the fast moving average.</param>
+    /// <param name="slowPeriod">The number of periods for the slow moving average.</param>
+    /// <param name="maType">The type of moving average to use.</param>
+    /// <returns>An ApoResult containing the calculated values and metadata.</returns>
+    /// <remarks>
+    /// This overload accepts float arrays and converts them to double arrays for calculation.
+    /// </remarks>
     public static ApoResult Apo(int startIdx, int endIdx, float[] real, int fastPeriod, int slowPeriod, MAType maType)
         => Apo(startIdx, endIdx, real.ToDouble(), fastPeriod, slowPeriod, maType);
 
+    /// <summary>
+    /// Calculates the Absolute Price Oscillator (APO) using default parameters.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">Array of input values (usually closing prices).</param>
+    /// <returns>An ApoResult containing the calculated values and metadata.</returns>
+    /// <remarks>
+    /// This overload accepts float arrays and converts them to double arrays for calculation.
+    /// Uses default values: fastPeriod=12, slowPeriod=26, maType=Simple Moving Average.
+    /// </remarks>
     public static ApoResult Apo(int startIdx, int endIdx, float[] real)
         => Apo(startIdx, endIdx, real, 12, 26, MAType.Sma);
 }

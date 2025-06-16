@@ -8,6 +8,33 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the True Range (TR) - a volatility measure that captures the full range of price movement.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the True Range values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// True Range is the greatest of:
+    /// - Current High - Current Low
+    /// - |Current High - Previous Close|
+    /// - |Current Low - Previous Close|
+    /// 
+    /// TR is used:
+    /// - As the foundation for ATR (Average True Range)
+    /// - To measure volatility including gaps
+    /// - For position sizing and stop-loss placement
+    /// - As a component in other indicators like ADX
+    /// 
+    /// Unlike simple range (High - Low), True Range accounts for gaps between periods,
+    /// providing a more complete picture of price volatility.
+    /// </remarks>
     public static RetCode TrueRange(
         int startIdx,
         int endIdx,
@@ -83,6 +110,10 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for True Range calculation.
+    /// </summary>
+    /// <returns>The number of historical data points required before the first valid True Range value can be calculated.</returns>
     public static int TrueRangeLookback()
     {
         return 1;

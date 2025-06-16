@@ -6,13 +6,38 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the Average Price calculation.
+/// </summary>
+/// <remarks>
+/// The Average Price is a simple price transformation that calculates the arithmetic mean 
+/// of the high, low, close, and open prices for each period. This provides a single value 
+/// that represents the average trading price for the period, smoothing out price fluctuations 
+/// and potentially providing a clearer view of the overall price trend. It is calculated as: 
+/// (High + Low + Close + Open) / 4.
+/// </remarks>
 public record AvgPriceResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AvgPriceResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the calculated average price values.</param>
     public AvgPriceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of average price values.
+    /// </summary>
+    /// <value>
+    /// An array of doubles representing the average price for each period, calculated as 
+    /// the mean of open, high, low, and close prices. This smoothed price series can be 
+    /// used as input for other indicators or as a reference for support and resistance levels.
+    /// </value>
     public double[] Real { get; }
 }

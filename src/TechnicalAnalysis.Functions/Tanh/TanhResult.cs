@@ -6,13 +6,35 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the vector hyperbolic tangent operation (TANH function).
+/// </summary>
+/// <remarks>
+/// The TANH function calculates the hyperbolic tangent of each element in the input array.
+/// The hyperbolic tangent is defined as tanh(x) = sinh(x)/cosh(x) = (e^x - e^(-x))/(e^x + e^(-x)).
+/// The output values are always in the range (-1, 1), making it useful for normalization.
+/// </remarks>
 public record TanhResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TanhResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the hyperbolic tangent values.</param>
     public TanhResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of hyperbolic tangent values resulting from the TANH operation.
+    /// </summary>
+    /// <value>
+    /// An array of doubles where each element represents the hyperbolic tangent
+    /// of the corresponding element from the input array, with values in the range (-1, 1).
+    /// </value>
     public double[] Real { get; }
 }

@@ -6,8 +6,25 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of calculating the MESA Adaptive Moving Average (MAMA) indicator.
+/// </summary>
+/// <remarks>
+/// MAMA is an adaptive moving average developed by John Ehlers that automatically adjusts
+/// to price movement based on the rate of change of phase. It consists of two lines:
+/// MAMA (the adaptive moving average) and FAMA (Following Adaptive Moving Average),
+/// which work together to identify trends with minimal lag.
+/// </remarks>
 public record MamaResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MamaResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output arrays.</param>
+    /// <param name="nbElement">The number of valid data points in the output arrays.</param>
+    /// <param name="mama">The array of MESA Adaptive Moving Average values.</param>
+    /// <param name="fama">The array of Following Adaptive Moving Average values.</param>
     public MamaResult(RetCode retCode, int begIdx, int nbElement, double[] mama, double[] fama)
         : base(retCode, begIdx, nbElement)
     {
@@ -15,7 +32,24 @@ public record MamaResult : IndicatorResult
         FAMA = fama;
     }
 
+    /// <summary>
+    /// Gets the array of Following Adaptive Moving Average (FAMA) values.
+    /// </summary>
+    /// <remarks>
+    /// FAMA is a slower-moving average that follows MAMA. The relationship between
+    /// MAMA and FAMA can be used to generate trading signals:
+    /// - When MAMA crosses above FAMA, it may signal a buy opportunity
+    /// - When MAMA crosses below FAMA, it may signal a sell opportunity
+    /// </remarks>
     public double[] FAMA { get; }
 
+    /// <summary>
+    /// Gets the array of MESA Adaptive Moving Average (MAMA) values.
+    /// </summary>
+    /// <remarks>
+    /// MAMA adapts quickly to price changes while maintaining smoothness.
+    /// It automatically adjusts its smoothing based on the measured cycle period,
+    /// providing faster response to market changes than traditional moving averages.
+    /// </remarks>
     public double[] MAMA { get; }
 }

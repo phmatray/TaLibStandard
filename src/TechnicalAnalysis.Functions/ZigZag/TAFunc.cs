@@ -8,6 +8,33 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the ZigZag indicator - filters out price movements smaller than a specified threshold.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="optInDeviation">Minimum percentage price movement required for a reversal (0.0 to 100.0). Typical value: 5.0.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outZigZag">Output array containing the ZigZag values (0.0 for non-pivot points).</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The ZigZag indicator:
+    /// - Identifies significant price reversals by filtering out minor price movements
+    /// - Connects swing highs and swing lows with straight lines
+    /// - A reversal is confirmed when price moves by at least the specified deviation percentage
+    /// - Non-pivot points in the output array are set to 0.0
+    /// - Only pivot points (peaks and troughs) contain actual price values
+    /// 
+    /// Interpretation:
+    /// - Useful for identifying support/resistance levels and chart patterns
+    /// - Helps visualize the overall price trend by removing noise
+    /// - The deviation parameter controls sensitivity (higher values = fewer reversals)
+    /// - Note: This is a lagging indicator that repaints past values
+    /// - Should not be used alone for trading signals due to its retrospective nature
+    /// </remarks>
     public static RetCode ZigZag(
         int startIdx,
         int endIdx,
@@ -160,6 +187,15 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Calculates the lookback period for the ZigZag indicator.
+    /// </summary>
+    /// <param name="optInDeviation">Minimum percentage price movement required for a reversal (0.0 to 100.0).</param>
+    /// <returns>The number of historical data points needed before the first ZigZag value can be calculated, or -1 if the deviation is invalid.</returns>
+    /// <remarks>
+    /// The ZigZag indicator requires at least 1 prior bar to establish an initial reference point
+    /// for determining subsequent peaks and troughs.
+    /// </remarks>
     public static int ZigZagLookback(double optInDeviation)
     {
         // ZigZag deviation parameter validation

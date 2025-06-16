@@ -6,13 +6,36 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of calculating the Triangular Moving Average (TRIMA) indicator.
+/// </summary>
+/// <remarks>
+/// TRIMA is a double-smoothed moving average that places greater weight on values in the
+/// middle of the period. It creates a smoother line than a simple moving average,
+/// making it useful for identifying longer-term trends while filtering out short-term noise.
+/// </remarks>
 public record TrimaResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TrimaResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array of triangular moving average values.</param>
     public TrimaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of triangular moving average values.
+    /// </summary>
+    /// <value>
+    /// An array of double values representing the Triangular Moving Average at each data point.
+    /// Each value is calculated by averaging a simple moving average, which creates a
+    /// double-smoothed result with emphasis on the middle values of the period.
+    /// </value>
     public double[] Real { get; }
 }

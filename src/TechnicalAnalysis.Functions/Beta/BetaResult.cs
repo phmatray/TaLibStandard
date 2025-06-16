@@ -6,13 +6,40 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the Beta coefficient calculation.
+/// </summary>
+/// <remarks>
+/// Beta is a statistical measure that compares the volatility of a security or portfolio 
+/// to the volatility of a benchmark (typically a market index). It measures the systematic 
+/// risk of an investment. A beta of 1.0 indicates the security moves in line with the market, 
+/// greater than 1.0 indicates higher volatility than the market, and less than 1.0 indicates 
+/// lower volatility. Negative beta indicates inverse correlation with the market. Beta is 
+/// fundamental in the Capital Asset Pricing Model (CAPM) for calculating expected returns.
+/// </remarks>
 public record BetaResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BetaResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the calculated beta coefficient values.</param>
     public BetaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of beta coefficient values.
+    /// </summary>
+    /// <value>
+    /// An array of doubles representing the beta values over time. Values above 1.0 indicate 
+    /// the security is more volatile than the benchmark, values below 1.0 indicate less 
+    /// volatility, and negative values indicate inverse movement. These values are essential 
+    /// for portfolio risk assessment and hedging strategies.
+    /// </value>
     public double[] Real { get; }
 }

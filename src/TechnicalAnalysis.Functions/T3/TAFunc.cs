@@ -8,6 +8,37 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the T3 Moving Average (Triple Exponential Moving Average) - a smoother and less lagging moving average.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="optInTimePeriod">Number of periods for the T3 calculation. Valid range: 2 to 100000.</param>
+    /// <param name="optInVFactor">Volume Factor controls the smoothing. Valid range: 0.0 to 1.0. Default: 0.7.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the T3 values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The T3 Moving Average is a sophisticated smoothing indicator developed by Tim Tillson.
+    /// It uses multiple exponential moving averages and a volume factor to create a smooth line
+    /// that is responsive to market movements while filtering out market noise.
+    /// 
+    /// Key characteristics:
+    /// - Less lag than traditional moving averages
+    /// - Smoother than EMA or DEMA
+    /// - The volume factor (V-Factor) controls the amount of smoothing:
+    ///   - V-Factor = 0: Equivalent to an EMA
+    ///   - V-Factor = 1: Maximum smoothing
+    ///   - V-Factor = 0.7: Common default value
+    /// 
+    /// Common uses:
+    /// - Trend identification with reduced false signals
+    /// - Dynamic support and resistance levels
+    /// - Entry/exit signals when price crosses the T3
+    /// - Smoothing other indicators to reduce noise
+    /// </remarks>
     public static RetCode T3(
         int startIdx,
         int endIdx,
@@ -164,6 +195,12 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for T3 calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the T3 calculation. Valid range: 2 to 100000.</param>
+    /// <param name="optInVFactor">Volume Factor controls the smoothing. Valid range: 0.0 to 1.0.</param>
+    /// <returns>The number of historical data points required before the first valid T3 value can be calculated, or -1 if parameters are invalid.</returns>
     public static int T3Lookback(int optInTimePeriod, double optInVFactor)
     {
         return optInTimePeriod is < 2 or > 100000 ||

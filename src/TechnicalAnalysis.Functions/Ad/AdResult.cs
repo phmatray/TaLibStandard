@@ -6,13 +6,37 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the Accumulation/Distribution Line (A/D) indicator calculation.
+/// </summary>
+/// <remarks>
+/// The A/D Line is a volume-based indicator that measures the cumulative flow of money into 
+/// and out of a security. It combines price and volume to show how money may be flowing 
+/// into or out of a stock. Rising A/D values indicate accumulation (buying pressure), 
+/// while falling values indicate distribution (selling pressure).
+/// </remarks>
 public record AdResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AdResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the calculated A/D Line values.</param>
     public AdResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of Accumulation/Distribution Line values.
+    /// </summary>
+    /// <value>
+    /// An array of doubles representing the cumulative A/D Line values, where each value 
+    /// indicates the running total of money flow volume. Positive trends suggest buying 
+    /// pressure, while negative trends suggest selling pressure.
+    /// </value>
     public double[] Real { get; }
 }

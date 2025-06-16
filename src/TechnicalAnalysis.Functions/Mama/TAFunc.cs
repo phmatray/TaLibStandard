@@ -8,6 +8,40 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the MESA Adaptive Moving Average (MAMA) and Following Adaptive Moving Average (FAMA).
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="optInFastLimit">Controls the maximum alpha for the fast-moving average. Range: 0.01 to 0.99. Typical value: 0.5.</param>
+    /// <param name="optInSlowLimit">Controls the maximum alpha for the slow-moving average. Range: 0.01 to 0.99. Typical value: 0.05.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outMAMA">Output array for the MESA Adaptive Moving Average values.</param>
+    /// <param name="outFAMA">Output array for the Following Adaptive Moving Average values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// MAMA is an adaptive moving average developed by John Ehlers that uses Hilbert Transform
+    /// techniques to measure the dominant cycle period in the price data. The moving average
+    /// adapts its smoothing factor based on the measured phase rate of change.
+    /// 
+    /// Key characteristics:
+    /// - MAMA adapts quickly to price changes when the market is trending
+    /// - It becomes more stable during cycling markets
+    /// - FAMA is a smoothed version of MAMA that follows behind it
+    /// - The difference between MAMA and FAMA can indicate trend strength
+    /// 
+    /// Trading signals:
+    /// - Buy when MAMA crosses above FAMA
+    /// - Sell when MAMA crosses below FAMA
+    /// - The vertical distance between lines indicates trend strength
+    /// - Convergence suggests potential trend change
+    /// 
+    /// The fast and slow limits control the adaptation range:
+    /// - Fast limit: Maximum adaptation speed (typical: 0.5)
+    /// - Slow limit: Minimum adaptation speed (typical: 0.05)
+    /// </remarks>
     public static RetCode Mama(
         int startIdx,
         int endIdx,
@@ -333,6 +367,17 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Calculates the lookback period for the MAMA indicator.
+    /// </summary>
+    /// <param name="optInFastLimit">Controls the maximum alpha for the fast-moving average. Range: 0.01 to 0.99.</param>
+    /// <param name="optInSlowLimit">Controls the maximum alpha for the slow-moving average. Range: 0.01 to 0.99.</param>
+    /// <returns>The number of historical data points needed before the first MAMA/FAMA values can be calculated, or -1 if parameters are invalid.</returns>
+    /// <remarks>
+    /// The MAMA indicator requires a significant lookback period due to its use of the Hilbert Transform
+    /// for cycle measurement. The base lookback period is 32 bars plus any additional unstable period
+    /// configured for the MAMA function.
+    /// </remarks>
     public static int MamaLookback(double optInFastLimit, double optInSlowLimit)
     {
         return optInFastLimit is < 0.01 or > 0.99 ||

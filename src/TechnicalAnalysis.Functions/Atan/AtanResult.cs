@@ -6,13 +6,35 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the vector arctangent operation (ATAN function).
+/// </summary>
+/// <remarks>
+/// The ATAN function calculates the arctangent (inverse tangent) of each element in the input array.
+/// The result is an array of angles in radians, where each element represents the arctangent
+/// of the corresponding input value. The output range is (-π/2, π/2).
+/// </remarks>
 public record AtanResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AtanResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the arctangent values in radians.</param>
     public AtanResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of arctangent values resulting from the ATAN operation.
+    /// </summary>
+    /// <value>
+    /// An array of doubles where each element represents the arctangent (in radians)
+    /// of the corresponding element from the input array.
+    /// </value>
     public double[] Real { get; }
 }

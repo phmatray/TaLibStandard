@@ -8,6 +8,44 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Hilbert Transform - Dominant Cycle Phase.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="inReal">Array of input values (typically closing prices).</param>
+    /// <param name="outBegIdx">The starting index of the output values.</param>
+    /// <param name="outNBElement">The number of output values generated.</param>
+    /// <param name="outReal">Array to store the calculated dominant cycle phase values in degrees.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The Hilbert Transform - Dominant Cycle Phase is part of John Ehlers' suite of cycle analysis indicators.
+    /// This indicator measures the phase angle of the dominant market cycle at each point in time.
+    /// 
+    /// Key characteristics:
+    /// - Output values range from -45 to 315 degrees
+    /// - The phase advances through a full 360-degree cycle as the dominant cycle completes
+    /// - Rapid phase changes can indicate cycle turning points
+    /// - Phase discontinuities (jumps from 315 to -45) mark cycle completions
+    /// 
+    /// How it works:
+    /// 1. Applies a 4-period weighted moving average for smoothing
+    /// 2. Uses the Hilbert Transform to decompose the signal into quadrature components
+    /// 3. Calculates the instantaneous phase from the quadrature components
+    /// 4. Applies adaptive smoothing based on the measured dominant cycle period
+    /// 
+    /// Common use cases:
+    /// - Identifying market cycle turning points
+    /// - Confirming trend changes when phase crosses certain thresholds
+    /// - Timing entries and exits based on cycle position
+    /// - Combining with HtDcPeriod to understand both cycle length and position
+    /// 
+    /// Limitations:
+    /// - Requires significant historical data (minimum 63 bars plus unstable period)
+    /// - Most effective in cyclic markets; less reliable in strong trending conditions
+    /// - Subject to lag due to smoothing operations
+    /// - Phase measurements can be noisy in choppy or low-volatility markets
+    /// </remarks>
     public static RetCode HtDcPhase(
         int startIdx,
         int endIdx,
@@ -374,6 +412,18 @@ public static partial class TAFunc
         }
     }
 
+    /// <summary>
+    /// Returns the lookback period required for the Hilbert Transform - Dominant Cycle Phase calculation.
+    /// </summary>
+    /// <returns>The number of historical data points required before the first valid HtDcPhase value can be calculated.</returns>
+    /// <remarks>
+    /// The lookback period for HtDcPhase consists of:
+    /// - A fixed component of 63 bars for the Hilbert Transform calculations
+    /// - An additional unstable period that can be configured via TACore.SetUnstablePeriod()
+    /// 
+    /// The default lookback is 63 bars, but this can be increased if you require more stable results
+    /// by setting a larger unstable period for the HtDcPhase function.
+    /// </remarks>
     public static int HtDcPhaseLookback()
     {
         return (int)TACore.Globals.UnstablePeriod[FuncUnstId.HtDcPhase] + 63;

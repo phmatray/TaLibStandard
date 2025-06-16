@@ -6,13 +6,37 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of calculating the Ultimate Oscillator (UltOsc) indicator.
+/// </summary>
+/// <remarks>
+/// The Ultimate Oscillator is a momentum oscillator designed to capture momentum across three different timeframes.
+/// It combines short-term (7 periods), intermediate-term (14 periods), and long-term (28 periods) market cycles
+/// to reduce false signals and provide more reliable overbought/oversold readings.
+/// </remarks>
 public record UltOscResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="UltOscResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array of Ultimate Oscillator values ranging from 0 to 100.</param>
     public UltOscResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of Ultimate Oscillator values.
+    /// </summary>
+    /// <remarks>
+    /// Values range from 0 to 100, where:
+    /// - Values above 70 typically indicate overbought conditions
+    /// - Values below 30 typically indicate oversold conditions
+    /// - The indicator is less prone to false signals due to its multi-timeframe approach
+    /// </remarks>
     public double[] Real { get; }
 }

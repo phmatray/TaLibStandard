@@ -8,6 +8,20 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
 {
+    /// <summary>
+    /// Calculates the Hilbert Transform - Trend vs Cycle Mode for the input price data.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input price data.</param>
+    /// <returns>An HtTrendModeResult containing integer values indicating market mode.</returns>
+    /// <remarks>
+    /// The Hilbert Transform - Trend vs Cycle Mode indicator determines whether the 
+    /// market is in a trending or cycling mode. It returns integer values where:
+    /// 0 indicates a cycling (ranging) market, and 1 indicates a trending market.
+    /// This helps traders choose appropriate strategies - trend-following strategies 
+    /// work better in trending markets, while oscillators work better in cycling markets.
+    /// </remarks>
     public static HtTrendModeResult HtTrendMode(int startIdx, int endIdx, double[] real)
     {
         int outBegIdx = default;
@@ -19,6 +33,16 @@ public static partial class TAMath
         return new HtTrendModeResult(retCode, outBegIdx, outNBElement, outInteger);
     }
 
+    /// <summary>
+    /// Calculates the Hilbert Transform - Trend vs Cycle Mode for the input price data.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input price data.</param>
+    /// <returns>An HtTrendModeResult containing integer values indicating market mode.</returns>
+    /// <remarks>
+    /// This overload accepts float input and converts it to double for calculation.
+    /// </remarks>
     public static HtTrendModeResult HtTrendMode(int startIdx, int endIdx, float[] real)
         => HtTrendMode(startIdx, endIdx, real.ToDouble());
 }

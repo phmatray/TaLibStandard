@@ -6,13 +6,29 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of calculating the summation of values over a specified period.
+/// The SUM function calculates the total of all values within a rolling window.
+/// </summary>
 public record SumResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SumResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">An array containing the calculated sums. Each element represents
+    /// the total of all values within the specified period ending at that index.</param>
     public SumResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of calculated sum values.
+    /// Each value represents the total of all data points within the specified rolling period.
+    /// </summary>
     public double[] Real { get; }
 }

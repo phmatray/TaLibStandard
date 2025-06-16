@@ -72,7 +72,7 @@ A RetCode indicating the success or failure of the calculation\.
 CCI measures the difference between a security's price change and its average price change\.
 
 Calculation:
-CCI = \(Typical Price \- SMA of Typical Price\) / \(0\.015 × Mean Deviation\)
+CCI = \(Typical Price \- SMA of Typical Price\) / \(0\.015 \* Mean Deviation\)
 Where Typical Price = \(High \+ Low \+ Close\) / 3
 
 Interpretation:

@@ -8,6 +8,39 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Chaikin Accumulation/Distribution Oscillator - a momentum indicator of the A/D Line.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="inVolume">Input array of volume data.</param>
+    /// <param name="optInFastPeriod">Number of periods for the fast EMA. Typical value: 3.</param>
+    /// <param name="optInSlowPeriod">Number of periods for the slow EMA. Typical value: 10.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the A/D Oscillator values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The A/D Oscillator is the difference between fast and slow EMAs of the A/D Line.
+    /// 
+    /// Calculation:
+    /// 1. Calculate A/D Line (cumulative)
+    /// 2. Fast EMA of A/D Line (typically 3-period)
+    /// 3. Slow EMA of A/D Line (typically 10-period)
+    /// 4. A/D Oscillator = Fast EMA - Slow EMA
+    /// 
+    /// Interpretation:
+    /// - Positive values: Buying pressure (bullish)
+    /// - Negative values: Selling pressure (bearish)
+    /// - Zero line crossovers signal momentum changes
+    /// - Divergences with price indicate potential reversals
+    /// 
+    /// The oscillator helps identify when money flow momentum is accelerating
+    /// or decelerating, often leading price movements.
+    /// </remarks>
     public static RetCode AdOsc(
         int startIdx,
         int endIdx,
@@ -136,6 +169,12 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for A/D Oscillator calculation.
+    /// </summary>
+    /// <param name="optInFastPeriod">Number of periods for the fast EMA. Valid range: 2 to 100000.</param>
+    /// <param name="optInSlowPeriod">Number of periods for the slow EMA. Valid range: 2 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid A/D Oscillator value can be calculated, or -1 if parameters are invalid.</returns>
     public static int AdOscLookback(int optInFastPeriod, int optInSlowPeriod)
     {
         if (optInFastPeriod is < 2 or > 100000)

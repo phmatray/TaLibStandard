@@ -6,13 +6,35 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the vector base-10 logarithm operation (LOG10 function).
+/// </summary>
+/// <remarks>
+/// The LOG10 function calculates the base-10 logarithm of each element in the input array.
+/// The base-10 logarithm answers the question: "10 to what power equals this number?".
+/// Input values must be positive. For example, log10(100) = 2, log10(10) = 1, log10(1) = 0.
+/// </remarks>
 public record Log10Result : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Log10Result"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the base-10 logarithm values.</param>
     public Log10Result(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of base-10 logarithm values resulting from the LOG10 operation.
+    /// </summary>
+    /// <value>
+    /// An array of doubles where each element represents the base-10 logarithm
+    /// of the corresponding element from the input array.
+    /// </value>
     public double[] Real { get; }
 }

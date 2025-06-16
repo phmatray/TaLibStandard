@@ -8,6 +8,37 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Aroon indicator - identifies trend changes and measures trend strength.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="optInTimePeriod">Number of periods for the calculation. Typical value: 25.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outAroonDown">Output array for Aroon Down values.</param>
+    /// <param name="outAroonUp">Output array for Aroon Up values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Aroon measures the time since the most recent high/low within the lookback period.
+    /// 
+    /// Calculation:
+    /// - Aroon Up = ((Period - Days Since Period High) / Period) * 100
+    /// - Aroon Down = ((Period - Days Since Period Low) / Period) * 100
+    /// 
+    /// Values range from 0 to 100:
+    /// - Aroon Up near 100: Strong uptrend (recent new highs)
+    /// - Aroon Down near 100: Strong downtrend (recent new lows)
+    /// - Both near 50: No clear trend
+    /// 
+    /// Trading signals:
+    /// - Aroon Up crosses above Aroon Down: Bullish signal
+    /// - Aroon Down crosses above Aroon Up: Bearish signal
+    /// - Either line above 70: Strong trend in that direction
+    /// - Either line below 30: Weak trend in that direction
+    /// </remarks>
     public static RetCode Aroon(
         int startIdx,
         int endIdx,
@@ -132,6 +163,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Aroon calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the calculation. Valid range: 2 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid Aroon values can be calculated, or -1 if parameters are invalid.</returns>
     public static int AroonLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod;

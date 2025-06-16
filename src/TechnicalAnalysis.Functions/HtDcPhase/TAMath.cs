@@ -8,6 +8,19 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
 {
+    /// <summary>
+    /// Calculates the Hilbert Transform - Dominant Cycle Phase for the input price data.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input price data.</param>
+    /// <returns>An HtDcPhaseResult containing the calculated dominant cycle phase values.</returns>
+    /// <remarks>
+    /// The Hilbert Transform - Dominant Cycle Phase measures the phase angle of the 
+    /// dominant market cycle. The phase ranges from 0 to 360 degrees, indicating 
+    /// where the current price is within the identified cycle. This helps traders 
+    /// identify cycle tops and bottoms and can be used for timing entries and exits.
+    /// </remarks>
     public static HtDcPhaseResult HtDcPhase(int startIdx, int endIdx, double[] real)
     {
         int outBegIdx = default;
@@ -19,6 +32,16 @@ public static partial class TAMath
         return new HtDcPhaseResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
+    /// <summary>
+    /// Calculates the Hilbert Transform - Dominant Cycle Phase for the input price data.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input price data.</param>
+    /// <returns>An HtDcPhaseResult containing the calculated dominant cycle phase values.</returns>
+    /// <remarks>
+    /// This overload accepts float input and converts it to double for calculation.
+    /// </remarks>
     public static HtDcPhaseResult HtDcPhase(int startIdx, int endIdx, float[] real)
         => HtDcPhase(startIdx, endIdx, real.ToDouble());
 }

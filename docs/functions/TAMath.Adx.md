@@ -5,7 +5,7 @@
 
 | Overloads | |
 | :--- | :--- |
-| [Adx\(int, int, double\[\], double\[\], double\[\], int\)](TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Adx\(int, int, double\[\], double\[\], double\[\], int\)') | Calculates the Average Directional Index \(ADX\) for the specified period\. |
+| [Adx\(int, int, double\[\], double\[\], double\[\], int\)](TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Adx\(int, int, double\[\], double\[\], double\[\], int\)') | Calculates the Average Directional Index \(ADX\) indicator\. |
 | [Adx\(int, int, double\[\], double\[\], double\[\]\)](TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[]) 'TechnicalAnalysis\.Functions\.TAMath\.Adx\(int, int, double\[\], double\[\], double\[\]\)') | Calculates the Average Directional Index \(ADX\) using the default period of 14\. |
 | [Adx\(int, int, float\[\], float\[\], float\[\], int\)](TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Adx\(int, int, float\[\], float\[\], float\[\], int\)') | Calculates the Average Directional Index \(ADX\) for the specified period using float arrays\. |
 | [Adx\(int, int, float\[\], float\[\], float\[\]\)](TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[]) 'TechnicalAnalysis\.Functions\.TAMath\.Adx\(int, int, float\[\], float\[\], float\[\]\)') | Calculates the Average Directional Index \(ADX\) using the default period of 14 with float arrays\. |
@@ -14,7 +14,7 @@
 
 ## TAMath\.Adx\(int, int, double\[\], double\[\], double\[\], int\) Method
 
-Calculates the Average Directional Index \(ADX\) for the specified period\.
+Calculates the Average Directional Index \(ADX\) indicator\.
 
 ```csharp
 public static TechnicalAnalysis.Functions.AdxResult Adx(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod);
@@ -55,11 +55,29 @@ Array of closing prices\.
 
 `timePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
 
-Number of periods for the ADX calculation\.
+Number of periods for the ADX calculation \(default: 14\)\.
 
 #### Returns
 [AdxResult](AdxResult.md 'TechnicalAnalysis\.Functions\.AdxResult')  
 An AdxResult containing the calculated values and metadata\.
+
+### Remarks
+The Average Directional Index \(ADX\) is a trend strength indicator developed by J\. Welles Wilder\.
+It is a smoothed average of the Directional Movement Index \(DX\) and is used to determine whether 
+a market is trending or ranging, regardless of trend direction\.
+
+The ADX is derived from two other indicators:
+\- \+DI \(Positive Directional Indicator\): measures upward trend strength
+\- \-DI \(Negative Directional Indicator\): measures downward trend strength
+
+ADX values help identify trend strength:
+\- 0\-25: Absent or weak trend
+\- 25\-50: Strong trend
+\- 50\-75: Very strong trend
+\- 75\-100: Extremely strong trend
+
+The ADX does not indicate trend direction, only trend strength\. Traders often use it in combination 
+with the \+DI and \-DI lines to determine both trend direction and strength\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[])'></a>
 
@@ -105,6 +123,10 @@ Array of closing prices\.
 #### Returns
 [AdxResult](AdxResult.md 'TechnicalAnalysis\.Functions\.AdxResult')  
 An AdxResult containing the calculated values and metadata\.
+
+### Remarks
+This overload uses a default time period of 14\.
+See the main overload for a detailed description of the ADX indicator\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[],int)'></a>
 
@@ -157,6 +179,10 @@ Number of periods for the ADX calculation\.
 [AdxResult](AdxResult.md 'TechnicalAnalysis\.Functions\.AdxResult')  
 An AdxResult containing the calculated values and metadata\.
 
+### Remarks
+This is a float overload that converts input arrays to double arrays before processing\.
+See the double array overload for a detailed description of the ADX indicator\.
+
 <a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[])'></a>
 
 ## TAMath\.Adx\(int, int, float\[\], float\[\], float\[\]\) Method
@@ -201,3 +227,7 @@ Array of closing prices\.
 #### Returns
 [AdxResult](AdxResult.md 'TechnicalAnalysis\.Functions\.AdxResult')  
 An AdxResult containing the calculated values and metadata\.
+
+### Remarks
+This is a float overload that converts input arrays to double arrays before processing\.
+Uses a default time period of 14\.

@@ -8,6 +8,23 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
 {
+    /// <summary>
+    /// Calculates the median price of a security for each period.
+    /// </summary>
+    /// <remarks>
+    /// The median price is calculated as (High + Low) / 2 for each period. This provides
+    /// a simple mid-point price that represents the center of the trading range for each period.
+    /// It is often used as a simplified price input for other indicators or as a basic
+    /// representation of price levels that filters out opening and closing price gaps.
+    /// </remarks>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="high">Array of high prices.</param>
+    /// <param name="low">Array of low prices.</param>
+    /// <returns>
+    /// A <see cref="MedPriceResult"/> object containing the calculated median price values
+    /// and associated metadata.
+    /// </returns>
     public static MedPriceResult MedPrice(int startIdx, int endIdx, double[] high, double[] low)
     {
         int outBegIdx = default;
@@ -19,6 +36,21 @@ public static partial class TAMath
         return new MedPriceResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
+    /// <summary>
+    /// Calculates the median price of a security for each period using float arrays.
+    /// </summary>
+    /// <remarks>
+    /// This overload accepts float arrays and converts them to double arrays before performing the calculation.
+    /// The median price is calculated as (High + Low) / 2 for each period.
+    /// </remarks>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="high">Array of high prices.</param>
+    /// <param name="low">Array of low prices.</param>
+    /// <returns>
+    /// A <see cref="MedPriceResult"/> object containing the calculated median price values
+    /// and associated metadata.
+    /// </returns>
     public static MedPriceResult MedPrice(int startIdx, int endIdx, float[] high, float[] low)
         => MedPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble());
 }

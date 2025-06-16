@@ -8,6 +8,41 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Normalized Average True Range (NATR) - ATR expressed as a percentage of closing price.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="optInTimePeriod">Number of periods for the NATR calculation. Typical value: 14.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the NATR values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// NATR normalizes the ATR by dividing it by the closing price, making it comparable across different price levels.
+    /// 
+    /// Calculation:
+    /// NATR = (ATR / Close) * 100
+    /// 
+    /// Advantages over standard ATR:
+    /// - Percentage-based: Comparable across different securities and price levels
+    /// - Better for position sizing: Direct percentage risk measurement
+    /// - Useful for scanning: Can compare volatility across entire market
+    /// - Price-independent: A $10 stock and $1000 stock can be compared
+    /// 
+    /// Trading applications:
+    /// - Volatility comparison across multiple securities
+    /// - Position sizing based on equal volatility exposure
+    /// - Stop-loss placement as percentage of price
+    /// - Market regime identification (high/low volatility periods)
+    /// - Options trading: Estimating potential price movement ranges
+    /// 
+    /// NATR values typically range from 1% to 10% for most securities,
+    /// with higher values indicating more volatile instruments.
+    /// </remarks>
     public static RetCode Natr(
         int startIdx,
         int endIdx,
@@ -132,6 +167,11 @@ public static partial class TAFunc
         return retCode;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for NATR calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the NATR calculation. Valid range: 1 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid NATR value can be calculated, or -1 if parameters are invalid.</returns>
     public static int NatrLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Natr];

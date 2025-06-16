@@ -8,6 +8,49 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Fast Stochastic Oscillator - a momentum indicator showing the location of the close relative to the high-low range.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="optInFastKPeriod">Number of periods for Fast %K calculation. Typical value: 14.</param>
+    /// <param name="optInFastDPeriod">Number of periods for Fast %D calculation. Typical value: 3.</param>
+    /// <param name="optInFastDMAType">Moving average type for Fast %D calculation. Typical: SMA.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outFastK">Output array for Fast %K values (raw stochastic).</param>
+    /// <param name="outFastD">Output array for Fast %D values (moving average of Fast %K).</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The Fast Stochastic Oscillator calculation:
+    /// - Fast %K = 100 × (Close - Lowest Low) / (Highest High - Lowest Low)
+    /// - Fast %D = Moving Average of Fast %K
+    /// 
+    /// Key differences from Slow Stochastic:
+    /// - Fast Stochastic uses raw %K values (no smoothing)
+    /// - More responsive but generates more signals
+    /// - Can be more prone to whipsaws
+    /// 
+    /// Interpretation:
+    /// - Values range from 0 to 100
+    /// - Above 80: Potentially overbought
+    /// - Below 20: Potentially oversold
+    /// - %K crossing above %D: Bullish signal
+    /// - %K crossing below %D: Bearish signal
+    /// 
+    /// Trading strategies:
+    /// - Overbought/Oversold: Look for reversals when extreme levels are reached
+    /// - Crossovers: Trade when %K crosses %D in the direction of the trend
+    /// - Divergences: Price making new highs/lows while oscillator doesn't
+    /// 
+    /// The Fast Stochastic is best used:
+    /// - In trending markets with clear support/resistance levels
+    /// - For short-term trading due to its sensitivity
+    /// - In combination with trend-following indicators to filter signals
+    /// </remarks>
     public static RetCode StochF(
         int startIdx,
         int endIdx,
@@ -163,6 +206,13 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Calculates the lookback period for the Fast Stochastic Oscillator function.
+    /// </summary>
+    /// <param name="optInFastKPeriod">Number of periods for Fast %K calculation.</param>
+    /// <param name="optInFastDPeriod">Number of periods for Fast %D calculation.</param>
+    /// <param name="optInFastDMAType">Moving average type for Fast %D calculation.</param>
+    /// <returns>The minimum number of data points required, or -1 for invalid parameters.</returns>
     public static int StochFLookback(int optInFastKPeriod, int optInFastDPeriod, MAType optInFastDMAType)
     {
         if (optInFastKPeriod is < 1 or > 100000 ||

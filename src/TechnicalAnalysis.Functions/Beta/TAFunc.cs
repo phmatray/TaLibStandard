@@ -8,6 +8,39 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Beta coefficient - a measure of a security's volatility relative to a benchmark.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inReal0">Input array of security prices (the asset being analyzed).</param>
+    /// <param name="inReal1">Input array of benchmark prices (typically market index).</param>
+    /// <param name="optInTimePeriod">Number of periods for the Beta calculation. Typical value: 20.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the Beta values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Beta measures the systematic risk of a security relative to the overall market.
+    /// It's calculated using linear regression of security returns against market returns.
+    /// 
+    /// Calculation:
+    /// Beta = Covariance(Security Returns, Market Returns) / Variance(Market Returns)
+    /// 
+    /// Interpretation:
+    /// - Beta = 1.0: Security moves with the market
+    /// - Beta &gt; 1.0: Security is more volatile than the market
+    /// - Beta &lt; 1.0: Security is less volatile than the market
+    /// - Beta &lt; 0: Security moves opposite to the market
+    /// 
+    /// Uses:
+    /// - Portfolio risk assessment
+    /// - CAPM (Capital Asset Pricing Model) calculations
+    /// - Hedging strategies
+    /// - Performance attribution
+    /// 
+    /// Note: This implementation uses percentage returns for calculations.
+    /// </remarks>
     public static RetCode Beta(
         int startIdx,
         int endIdx,
@@ -139,6 +172,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Beta calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the Beta calculation. Valid range: 1 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid Beta value can be calculated, or -1 if parameters are invalid.</returns>
     public static int BetaLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod;

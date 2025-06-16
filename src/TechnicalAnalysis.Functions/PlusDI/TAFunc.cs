@@ -8,6 +8,41 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Plus Directional Indicator (+DI) - measures the strength of upward price movement.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="optInTimePeriod">Number of periods for the +DI calculation. Typical value: 14.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the +DI values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// +DI is part of the Directional Movement System developed by Welles Wilder.
+    /// It quantifies the strength of upward price movements.
+    /// 
+    /// Calculation:
+    /// 1. Plus Directional Movement (+DM) = Current High - Previous High (if positive and greater than -DM)
+    /// 2. True Range (TR) = Max(High-Low, |High-Previous Close|, |Low-Previous Close|)
+    /// 3. Smoothed +DM and TR over the period
+    /// 4. +DI = 100 * Smoothed +DM / Smoothed TR
+    /// 
+    /// Values range from 0 to 100:
+    /// - Higher values indicate stronger upward movement
+    /// - Values above 25 suggest a strong uptrend
+    /// 
+    /// Trading signals (used with -DI):
+    /// - +DI crossing above -DI: Bullish signal
+    /// - +DI above -DI: Uptrend in progress
+    /// - +DI and -DI diverging: Trend strengthening
+    /// - +DI and -DI converging: Trend weakening
+    /// 
+    /// +DI is commonly used with -DI and ADX to form a complete trend analysis system.
+    /// </remarks>
     public static RetCode PlusDI(
         int startIdx,
         int endIdx,
@@ -208,6 +243,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for +DI calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the +DI calculation. Valid range: 1 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid +DI value can be calculated, or -1 if parameters are invalid.</returns>
     public static int PlusDILookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 1 or > 100000

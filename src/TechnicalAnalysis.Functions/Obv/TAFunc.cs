@@ -23,8 +23,8 @@ public static partial class TAFunc
     /// OBV is a cumulative indicator that adds volume on up days and subtracts volume on down days.
     /// 
     /// Calculation:
-    /// - If Close > Previous Close: OBV = Previous OBV + Volume
-    /// - If Close < Previous Close: OBV = Previous OBV - Volume
+    /// - If Close &gt; Previous Close: OBV = Previous OBV + Volume
+    /// - If Close &lt; Previous Close: OBV = Previous OBV - Volume
     /// - If Close = Previous Close: OBV = Previous OBV
     /// 
     /// Interpretation:

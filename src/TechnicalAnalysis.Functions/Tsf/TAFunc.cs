@@ -8,6 +8,45 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Time Series Forecast (TSF) - a linear regression indicator that projects the regression line forward.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="optInTimePeriod">Number of periods for the linear regression. Typical values: 14, 20.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the TSF values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// TSF fits a linear regression line through the specified number of price points
+    /// and then projects that line forward by one period. This creates a forecast
+    /// of where prices might be if the current trend continues.
+    /// 
+    /// Calculation:
+    /// 1. Calculate linear regression line: y = mx + b
+    /// 2. Project forward: TSF = b + m * (period + 1)
+    /// 
+    /// Key characteristics:
+    /// - Acts as a moving average with predictive capabilities
+    /// - Smooths price data while maintaining trend direction
+    /// - Less lag than traditional moving averages
+    /// - Provides one-period-ahead price forecast
+    /// 
+    /// Trading applications:
+    /// - Trend identification: Price above TSF = uptrend
+    /// - Support/resistance: TSF acts as dynamic support/resistance
+    /// - Crossover signals: Price crossing TSF indicates trend changes
+    /// - Divergence analysis: TSF diverging from price suggests weakness
+    /// 
+    /// Advantages:
+    /// - Forward-looking indicator
+    /// - Smooth trend representation
+    /// - Adapts quickly to trend changes
+    /// 
+    /// Best combined with momentum indicators for confirmation.
+    /// </remarks>
     public static RetCode Tsf(
         int startIdx,
         int endIdx,
@@ -93,6 +132,11 @@ public static partial class TAFunc
         }
     }
 
+    /// <summary>
+    /// Returns the lookback period required for TSF calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the linear regression. Valid range: 2 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid TSF value can be calculated, or -1 if parameters are invalid.</returns>
     public static int TsfLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;

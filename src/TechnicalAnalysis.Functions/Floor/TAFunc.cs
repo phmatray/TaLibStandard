@@ -8,6 +8,35 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the floor (largest integer less than or equal to) of input values.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of values.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array containing the floor of each input value.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The floor function rounds down to the nearest integer:
+    /// - floor(4.1) = 4
+    /// - floor(4.9) = 4
+    /// - floor(5.0) = 5
+    /// - floor(-4.1) = -5
+    /// - floor(-4.9) = -5
+    /// 
+    /// Common uses in technical analysis:
+    /// - Rounding down price levels for support calculations
+    /// - Creating discrete trading levels from continuous prices
+    /// - Position sizing (round down to stay within capital limits)
+    /// - Calculating whole number profit targets
+    /// - Grid trading level calculations
+    /// - Converting fractional shares to whole lots
+    /// 
+    /// Floor is often used when you need conservative estimates
+    /// or when dealing with discrete units that cannot be fractional.
+    /// </remarks>
     public static RetCode Floor(
         int startIdx,
         int endIdx,
@@ -50,6 +79,10 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Floor calculation.
+    /// </summary>
+    /// <returns>Always returns 0 as floor requires no historical data.</returns>
     public static int FloorLookback()
     {
         return 0;

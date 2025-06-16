@@ -6,13 +6,29 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Represents the result of the Commodity Channel Index (CCI) indicator calculation.
+/// CCI is a momentum oscillator that measures the difference between a security's price and its statistical mean, used to identify overbought and oversold conditions.
+/// </summary>
 public record CciResult : IndicatorResult
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CciResult"/> class.
+    /// </summary>
+    /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
+    /// <param name="begIdx">The index of the first valid data point in the output array.</param>
+    /// <param name="nbElement">The number of valid data points in the output array.</param>
+    /// <param name="real">The array containing the calculated CCI values.</param>
     public CciResult(RetCode retCode, int begIdx, int nbElement, double[] real)
         : base(retCode, begIdx, nbElement)
     {
         Real = real;
     }
 
+    /// <summary>
+    /// Gets the array of Commodity Channel Index values.
+    /// Values above +100 indicate overbought conditions, while values below -100 indicate oversold conditions.
+    /// Values between -100 and +100 indicate normal trading conditions.
+    /// </summary>
     public double[] Real { get; }
 }

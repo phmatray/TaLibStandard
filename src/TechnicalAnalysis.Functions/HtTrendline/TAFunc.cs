@@ -8,6 +8,56 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Hilbert Transform - Instantaneous Trendline indicator.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the Instantaneous Trendline values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The Hilbert Transform - Instantaneous Trendline was developed by John Ehlers as part of his
+    /// suite of digital signal processing indicators for financial markets. It creates an adaptive
+    /// moving average that adjusts to the dominant market cycle.
+    /// 
+    /// How it works:
+    /// - Uses the Hilbert Transform to decompose price into in-phase and quadrature components
+    /// - Calculates the dominant cycle period from these components
+    /// - Creates a moving average using the dominant cycle period as its length
+    /// - Applies additional smoothing using a weighted moving average formula
+    /// 
+    /// Key features:
+    /// - Automatically adapts to changing market cycles
+    /// - Provides smoother results than fixed-period moving averages
+    /// - Minimizes lag while maintaining smoothness
+    /// - Works best in cycling (non-trending) markets
+    /// 
+    /// Interpretation:
+    /// - Price above trendline: Upward bias in the current cycle
+    /// - Price below trendline: Downward bias in the current cycle
+    /// - Trendline slope indicates short-term trend direction
+    /// - Crossovers can signal cycle-based entry/exit points
+    /// 
+    /// Common use cases:
+    /// - Dynamic support and resistance levels
+    /// - Trend identification that adapts to market conditions
+    /// - Smoothing price data while preserving important turning points
+    /// - Generating trading signals in conjunction with other indicators
+    /// 
+    /// Implementation details:
+    /// - Uses Weighted Moving Average (WMA) for initial smoothing
+    /// - Applies complex Hilbert Transform calculations for cycle detection
+    /// - Final output is smoothed using the formula: (4*current + 3*prev1 + 2*prev2 + prev3) / 10
+    /// 
+    /// Limitations:
+    /// - Requires significant historical data (lookback period of 63+ bars)
+    /// - May lag during rapid trend changes
+    /// - Less effective in strongly trending markets where cycles are less apparent
+    /// - Can produce whipsaws during transition periods between trends and cycles
+    /// </remarks>
     public static RetCode HtTrendline(
         int startIdx,
         int endIdx,
@@ -338,6 +388,31 @@ public static partial class TAFunc
         }
     }
 
+    /// <summary>
+    /// Calculates the lookback period required for the Hilbert Transform - Instantaneous Trendline.
+    /// </summary>
+    /// <returns>The number of historical data points required before the first valid HT-Trendline value can be calculated.</returns>
+    /// <remarks>
+    /// The Hilbert Transform - Instantaneous Trendline requires a substantial amount of historical data 
+    /// to properly initialize its internal calculations and produce reliable results. The lookback period consists of:
+    /// 
+    /// - Base period of 63 bars for the Hilbert Transform calculations
+    /// - Additional unstable period that may be configured for this function
+    /// 
+    /// This extended lookback is necessary because:
+    /// - The indicator uses a 4-bar Weighted Moving Average for initial smoothing
+    /// - Multiple stages of Hilbert Transform filtering require initialization
+    /// - The dominant cycle period calculation needs sufficient data to stabilize
+    /// - The final smoothing formula uses 4 historical values
+    /// 
+    /// The 63-bar base period includes:
+    /// - 34 bars for the initial WMA calculations
+    /// - Additional bars for the Hilbert Transform decomposition
+    /// - Buffer for the cycle period detection algorithm
+    /// 
+    /// Typically returns 63 bars plus any additional unstable period configured globally.
+    /// Users should ensure they have sufficient historical data before relying on the indicator's output.
+    /// </remarks>
     public static int HtTrendlineLookback()
     {
         return (int)TACore.Globals.UnstablePeriod[FuncUnstId.HtTrendline] + 63;

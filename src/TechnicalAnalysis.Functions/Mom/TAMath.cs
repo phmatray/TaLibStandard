@@ -8,6 +8,20 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
 {
+    /// <summary>
+    /// Calculates the Momentum indicator for the specified range of data.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input data array containing price values.</param>
+    /// <param name="timePeriod">The number of periods to use in the momentum calculation. Default is 10.</param>
+    /// <returns>A MomResult object containing the calculated values and metadata.</returns>
+    /// <remarks>
+    /// The Momentum indicator measures the rate of change in price over a specified period.
+    /// It is calculated as the difference between the current price and the price n periods ago.
+    /// Positive values indicate upward momentum, while negative values indicate downward momentum.
+    /// The indicator is useful for identifying the strength and direction of price trends.
+    /// </remarks>
     public static MomResult Mom(int startIdx, int endIdx, double[] real, int timePeriod)
     {
         int outBegIdx = default;
@@ -19,12 +33,42 @@ public static partial class TAMath
         return new MomResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
+    /// <summary>
+    /// Calculates the Momentum indicator using a default period of 10.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input data array containing price values.</param>
+    /// <returns>A MomResult object containing the calculated values and metadata.</returns>
     public static MomResult Mom(int startIdx, int endIdx, double[] real)
         => Mom(startIdx, endIdx, real, 10);
 
+    /// <summary>
+    /// Calculates the Momentum indicator for float input data.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input data array containing price values as floats.</param>
+    /// <param name="timePeriod">The number of periods to use in the momentum calculation.</param>
+    /// <returns>A MomResult object containing the calculated values and metadata.</returns>
+    /// <remarks>
+    /// This overload converts the float array to double array before performing the calculation,
+    /// as the underlying TAFunc library operates on double precision values.
+    /// </remarks>
     public static MomResult Mom(int startIdx, int endIdx, float[] real, int timePeriod)
         => Mom(startIdx, endIdx, real.ToDouble(), timePeriod);
         
+    /// <summary>
+    /// Calculates the Momentum indicator for float input data using a default period of 10.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="real">The input data array containing price values as floats.</param>
+    /// <returns>A MomResult object containing the calculated values and metadata.</returns>
+    /// <remarks>
+    /// This overload converts the float array to double array before performing the calculation,
+    /// as the underlying TAFunc library operates on double precision values.
+    /// </remarks>
     public static MomResult Mom(int startIdx, int endIdx, float[] real)
         => Mom(startIdx, endIdx, real, 10);
 }

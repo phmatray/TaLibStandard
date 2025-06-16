@@ -8,6 +8,44 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the TRIX indicator - a triple exponentially smoothed momentum oscillator.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="optInTimePeriod">Number of periods for the EMA calculations. Typical value: 14.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the TRIX values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// TRIX is calculated by:
+    /// 1. Applying EMA three times (triple exponential smoothing)
+    /// 2. Calculating the 1-period rate of change of the triple EMA
+    /// 
+    /// The triple smoothing filters out insignificant price movements and market noise,
+    /// making TRIX excellent for identifying significant trend changes.
+    /// 
+    /// Key characteristics:
+    /// - Values oscillate around zero
+    /// - Positive values indicate upward momentum
+    /// - Negative values indicate downward momentum
+    /// - Zero line crossovers signal trend changes
+    /// 
+    /// Trading signals:
+    /// - TRIX crossing above zero: Buy signal
+    /// - TRIX crossing below zero: Sell signal
+    /// - Divergences with price: Potential reversals
+    /// - Signal line crossovers (9-period EMA of TRIX)
+    /// 
+    /// Advantages:
+    /// - Excellent filter for market noise
+    /// - Leading indicator for trend changes
+    /// - Minimal lag despite triple smoothing
+    /// 
+    /// Best used for medium to long-term trend identification.
+    /// </remarks>
     public static RetCode Trix(
         int startIdx,
         int endIdx,
@@ -128,6 +166,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for TRIX calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the EMA calculations. Valid range: 1 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid TRIX value can be calculated, or -1 if parameters are invalid.</returns>
     public static int TrixLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 1 or > 100000 ? -1 : (EmaLookback(optInTimePeriod) * 3) + RocRLookback(1);

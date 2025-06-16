@@ -8,6 +8,52 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Parabolic SAR - Extended (Enhanced SAR with additional parameters for better control).
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="optInStartValue">Initial SAR value. Use 0 for automatic, positive for long, negative for short.</param>
+    /// <param name="optInOffsetOnReverse">Percentage offset added when SAR reverses. Typical value: 0.0.</param>
+    /// <param name="optInAccelerationInitLong">Initial acceleration factor for long positions. Typical value: 0.02.</param>
+    /// <param name="optInAccelerationLong">Acceleration increment for long positions. Typical value: 0.02.</param>
+    /// <param name="optInAccelerationMaxLong">Maximum acceleration factor for long positions. Typical value: 0.20.</param>
+    /// <param name="optInAccelerationInitShort">Initial acceleration factor for short positions. Typical value: 0.02.</param>
+    /// <param name="optInAccelerationShort">Acceleration increment for short positions. Typical value: 0.02.</param>
+    /// <param name="optInAccelerationMaxShort">Maximum acceleration factor for short positions. Typical value: 0.20.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the SAR values (negative values indicate short position).</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Extended Parabolic SAR provides enhanced control over the standard SAR indicator.
+    /// 
+    /// Key enhancements:
+    /// - Separate acceleration parameters for long and short positions
+    /// - Customizable starting value and direction
+    /// - Optional offset on reversal for reduced whipsaws
+    /// - Negative output values indicate short positions
+    /// 
+    /// StartValue parameter:
+    /// - 0: Automatic detection based on price movement
+    /// - Positive: Start with long position at specified SAR value
+    /// - Negative: Start with short position at absolute SAR value
+    /// 
+    /// Output interpretation:
+    /// - Positive values: Long position (SAR below price)
+    /// - Negative values: Short position (SAR above price)
+    /// - Magnitude represents the actual SAR level
+    /// 
+    /// The offset parameter adds a percentage buffer when SAR reverses,
+    /// helping to reduce false signals in choppy markets.
+    /// 
+    /// This extended version is particularly useful for:
+    /// - Asymmetric market conditions (different behavior in uptrends vs downtrends)
+    /// - Fine-tuning entry/exit levels
+    /// - Reducing whipsaws through the offset parameter
+    /// </remarks>
     public static RetCode SarExt(
         int startIdx,
         int endIdx,
@@ -268,6 +314,18 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Calculates the lookback period for the Extended Parabolic SAR function.
+    /// </summary>
+    /// <param name="optInStartValue">Initial SAR value (ignored for lookback calculation).</param>
+    /// <param name="optInOffsetOnReverse">Percentage offset added when SAR reverses.</param>
+    /// <param name="optInAccelerationInitLong">Initial acceleration factor for long positions.</param>
+    /// <param name="optInAccelerationLong">Acceleration increment for long positions.</param>
+    /// <param name="optInAccelerationMaxLong">Maximum acceleration factor for long positions.</param>
+    /// <param name="optInAccelerationInitShort">Initial acceleration factor for short positions.</param>
+    /// <param name="optInAccelerationShort">Acceleration increment for short positions.</param>
+    /// <param name="optInAccelerationMaxShort">Maximum acceleration factor for short positions.</param>
+    /// <returns>The minimum number of data points required (1), or -1 for invalid parameters.</returns>
     public static int SarExtLookback(
         double optInStartValue,
         double optInOffsetOnReverse,

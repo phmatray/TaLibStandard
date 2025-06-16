@@ -8,6 +8,24 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the midpoint price over a specified period.
+    /// </summary>
+    /// <param name="startIdx">The start index for the calculation.</param>
+    /// <param name="endIdx">The end index for the calculation.</param>
+    /// <param name="inHigh">The input array of high prices.</param>
+    /// <param name="inLow">The input array of low prices.</param>
+    /// <param name="optInTimePeriod">The time period for the calculation. Valid range is 2 to 100000.</param>
+    /// <param name="outBegIdx">The beginning index of the output values.</param>
+    /// <param name="outNBElement">The number of elements in the output array.</param>
+    /// <param name="outReal">The output array containing the midpoint price values.</param>
+    /// <returns>A <see cref="RetCode"/> indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The MidPrice function calculates the midpoint of the highest high and lowest low over the specified period.
+    /// It is calculated as: (Highest High + Lowest Low) / 2 over the given time period.
+    /// This indicator is particularly useful in identifying the median price level in a given timeframe,
+    /// and can be used to determine support and resistance levels.
+    /// </remarks>
     public static RetCode MidPrice(
         int startIdx,
         int endIdx,
@@ -85,6 +103,11 @@ public static partial class TAFunc
         }
     }
 
+    /// <summary>
+    /// Returns the lookback period for the MidPrice function.
+    /// </summary>
+    /// <param name="optInTimePeriod">The time period for the calculation. Valid range is 2 to 100000.</param>
+    /// <returns>The number of elements needed before the first valid value, or -1 if the period is invalid.</returns>
     public static int MidPriceLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;
