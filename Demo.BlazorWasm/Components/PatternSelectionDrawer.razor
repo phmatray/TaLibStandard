@@ -1,0 +1,254 @@
+<MudDrawer
+    @bind-Open="IsOpen" 
+    Anchor="Anchor.End" 
+    Elevation="2" 
+    Variant="@DrawerVariant.Temporary"
+    Width="400px"
+    OverlayAutoClose="true">
+    <MudDrawerHeader Class="d-flex align-center">
+        <MudIcon Icon="@Icons.Material.Filled.ManageSearch" Class="mr-3" />
+        <MudText Typo="Typo.h6">Pattern Selection</MudText>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="CloseDrawer" />
+    </MudDrawerHeader>
+    <MudDivider />
+    <div style="height: calc(100% - 64px); overflow-y: auto;">
+        <MudContainer Class="pa-4">
+            <MudStack Spacing="3">
+                <MudPaper Elevation="0" Class="pa-3 mud-theme-primary">
+                    <MudText Typo="Typo.body2" Align="Align.Center">
+                        <strong>@EnabledPatterns.Count</strong> of 61 patterns selected
+                    </MudText>
+                </MudPaper>
+                
+                <MudGrid Spacing="1">
+                    <MudItem xs="6">
+                        <MudButton
+                            Variant="Variant.Outlined" 
+                            Color="Color.Primary" 
+                            StartIcon="@Icons.Material.Filled.CheckBox" 
+                            FullWidth="true"
+                            Size="Size.Small"
+                            OnClick="() => SelectAllPatterns()">
+                            Select All
+                        </MudButton>
+                    </MudItem>
+                    <MudItem xs="6">
+                        <MudButton
+                            Variant="Variant.Outlined" 
+                            Color="Color.Secondary" 
+                            StartIcon="@Icons.Material.Filled.CheckBoxOutlineBlank" 
+                            FullWidth="true"
+                            Size="Size.Small"
+                            OnClick="() => ClearAllPatterns()">
+                            Clear All
+                        </MudButton>
+                    </MudItem>
+                </MudGrid>
+                
+                <MudExpansionPanels Elevation="0">
+                    @foreach (var group in PatternGroups)
+                    {
+                        <MudExpansionPanel MaxHeight="1000">
+                            <TitleContent>
+                                <div class="d-flex align-center" style="width: 100%;">
+                                    <MudIcon Icon="@GetGroupIcon(group.Key)" Color="@GetChipColor(group.Key)" Class="mr-3" />
+                                    <MudText>@group.Key</MudText>
+                                    <MudSpacer />
+                                    <MudChip
+                                        T="string"
+                                        Size="Size.Small" 
+                                        Color="@GetChipColor(group.Key)" 
+                                        Variant="@(group.Value.Any(p => p.IsEnabled) ? Variant.Filled : Variant.Outlined)">
+                                        @group.Value.Count(p => p.IsEnabled) / @group.Value.Count
+                                    </MudChip>
+                                </div>
+                            </TitleContent>
+                            <ChildContent>
+                                <MudStack Spacing="2" Class="pa-2">
+                                    <div class="d-flex justify-end mb-2">
+                                        <MudButtonGroup Variant="Variant.Text" Size="Size.Small">
+                                            <MudButton
+                                                Color="@GetChipColor(group.Key)" 
+                                                OnClick="() => SelectGroup(group.Key)">
+                                                Select All
+                                            </MudButton>
+                                            <MudButton
+                                                Color="Color.Secondary" 
+                                                OnClick="() => ClearGroup(group.Key)">
+                                                Clear
+                                            </MudButton>
+                                        </MudButtonGroup>
+                                    </div>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                        @foreach (var pattern in group.Value)
+                                        {
+                                            <MudTooltip
+                                                Text="@GetPatternDescription(pattern.Name)" 
+                                                Arrow="true" 
+                                                Placement="Placement.Top">
+                                                <MudChip
+                                                    T="string" 
+                                                    Color="@(pattern.IsEnabled ? GetChipColor(group.Key) : Color.Default)"
+                                                    Size="Size.Small"
+                                                    Variant="@(pattern.IsEnabled ? Variant.Filled : Variant.Outlined)"
+                                                    OnClick="@(() => TogglePattern(pattern.Name))"
+                                                    Icon="@(pattern.IsEnabled ? Icons.Material.Filled.Check : null)">
+                                                    @pattern.DisplayName
+                                                </MudChip>
+                                            </MudTooltip>
+                                        }
+                                    </div>
+                                </MudStack>
+                            </ChildContent>
+                        </MudExpansionPanel>
+                    }
+                </MudExpansionPanels>
+            </MudStack>
+        </MudContainer>
+    </div>
+</MudDrawer>
+
+@code {
+    private bool _isOpen;
+    
+    [Parameter] 
+    public bool IsOpen 
+    { 
+        get => _isOpen;
+        set
+        {
+            if (_isOpen != value)
+            {
+                _isOpen = value;
+                IsOpenChanged.InvokeAsync(value);
+            }
+        }
+    }
+    
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public Dictionary<string, List<PatternInfo>> PatternGroups { get; set; } = new();
+    [Parameter] public HashSet<string> EnabledPatterns { get; set; } = new();
+    [Parameter] public EventCallback<HashSet<string>> EnabledPatternsChanged { get; set; }
+    
+    // Pattern definition class
+    public class PatternInfo
+    {
+        public string Name { get; set; } = "";
+        public string DisplayName { get; set; } = "";
+        public bool IsEnabled { get; set; }
+    }
+    
+    private Color GetChipColor(string groupName) => groupName switch
+    {
+        "Basic Single" => Color.Primary,
+        "Basic Multi" => Color.Secondary,
+        "Three Line" => Color.Tertiary,
+        "Trend Continuation" => Color.Info,
+        "Complex" => Color.Warning,
+        _ => Color.Default
+    };
+    
+    private string GetGroupIcon(string groupName) => groupName switch
+    {
+        "Basic Single" => Icons.Material.Filled.LooksOne,
+        "Basic Multi" => Icons.Material.Filled.LooksTwo,
+        "Three Line" => Icons.Material.Filled.Looks3,
+        "Trend Continuation" => Icons.Material.Filled.TrendingUp,
+        "Complex" => Icons.Material.Filled.AutoGraph,
+        _ => Icons.Material.Filled.ShowChart
+    };
+    
+    private string GetPatternDescription(string patternName) => patternName switch
+    {
+        "Doji" => "Indicates market indecision with open and close nearly equal",
+        "Hammer" => "Bullish reversal pattern with small body and long lower shadow",
+        "InvertedHammer" => "Potential bullish reversal with small body and long upper shadow",
+        "Engulfing" => "Strong reversal pattern where current candle engulfs the previous",
+        "Harami" => "Potential reversal pattern with small body inside previous candle",
+        "MorningStar" => "Bullish reversal pattern occurring at the bottom of downtrend",
+        "EveningStar" => "Bearish reversal pattern occurring at the top of uptrend",
+        "ShootingStar" => "Bearish reversal pattern with small body and long upper shadow",
+        "HangingMan" => "Bearish reversal pattern appearing at the top of uptrend",
+        "DarkCloudCover" => "Bearish reversal pattern with penetration into previous candle",
+        "Piercing" => "Bullish reversal pattern penetrating previous bearish candle",
+        "3WhiteSoldiers" => "Strong bullish continuation with three consecutive green candles",
+        "3BlackCrows" => "Strong bearish continuation with three consecutive red candles",
+        "AbandonedBaby" => "Rare reversal pattern with gap and doji",
+        "Breakaway" => "Five-candle pattern indicating trend reversal",
+        "RiseFall3Methods" => "Continuation pattern with retracement within trend",
+        _ => "Advanced candlestick pattern for technical analysis"
+    };
+    
+    private async Task TogglePattern(string patternName)
+    {
+        if (!EnabledPatterns.Add(patternName))
+        {
+            EnabledPatterns.Remove(patternName);
+        }
+
+        // Update the IsEnabled state in pattern groups
+        IEnumerable<PatternInfo> patternInfos = PatternGroups.Values
+            .Select(group => group.FirstOrDefault(p => p.Name == patternName))
+            .OfType<PatternInfo>();
+        
+        foreach (PatternInfo pattern in patternInfos)
+        {
+            pattern.IsEnabled = EnabledPatterns.Contains(patternName);
+        }
+        
+        await EnabledPatternsChanged.InvokeAsync(EnabledPatterns);
+    }
+    
+    private async Task SelectAllPatterns()
+    {
+        foreach (PatternInfo pattern in PatternGroups.Values.SelectMany(group => group))
+        {
+            pattern.IsEnabled = true;
+            EnabledPatterns.Add(pattern.Name);
+        }
+
+        await EnabledPatternsChanged.InvokeAsync(EnabledPatterns);
+    }
+    
+    private async Task ClearAllPatterns()
+    {
+        foreach (PatternInfo pattern in PatternGroups.Values.SelectMany(group => group))
+        {
+            pattern.IsEnabled = false;
+        }
+        EnabledPatterns.Clear();
+        await EnabledPatternsChanged.InvokeAsync(EnabledPatterns);
+    }
+    
+    private async Task SelectGroup(string groupName)
+    {
+        if (PatternGroups.TryGetValue(groupName, out List<PatternInfo>? group))
+        {
+            foreach (var pattern in group)
+            {
+                pattern.IsEnabled = true;
+                EnabledPatterns.Add(pattern.Name);
+            }
+        }
+        await EnabledPatternsChanged.InvokeAsync(EnabledPatterns);
+    }
+    
+    private async Task ClearGroup(string groupName)
+    {
+        if (PatternGroups.TryGetValue(groupName, out List<PatternInfo>? group))
+        {
+            foreach (var pattern in group)
+            {
+                pattern.IsEnabled = false;
+                EnabledPatterns.Remove(pattern.Name);
+            }
+        }
+        await EnabledPatternsChanged.InvokeAsync(EnabledPatterns);
+    }
+    
+    private void CloseDrawer()
+    {
+        IsOpen = false;
+    }
+}

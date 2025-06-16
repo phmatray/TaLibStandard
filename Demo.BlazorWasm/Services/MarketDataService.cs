@@ -24,36 +24,38 @@ public class MarketDataService : IMarketDataService
     {
         // Simulate symbol search
         await Task.Delay(300);
-        
-        var symbols = new List<string>
-        {
+
+        List<string> symbols =
+        [
             "AAPL", "MSFT", "GOOGL", "AMZN", "META", "TSLA", "NVDA", "JPM", "JNJ", "V",
             "PG", "UNH", "MA", "HD", "DIS", "PYPL", "BAC", "VZ", "ADBE", "NFLX"
-        };
+        ];
 
-        return symbols
-            .Where(s => s.Contains(query, StringComparison.OrdinalIgnoreCase))
-            .Take(10)
-            .ToList();
+        return
+        [
+            .. symbols
+                .Where(s => s.Contains(query, StringComparison.OrdinalIgnoreCase))
+                .Take(10)
+        ];
     }
 
     public List<StockData> GenerateSampleData(int days = 100)
     {
-        var data = new List<StockData>();
-        var basePrice = 100m + _random.Next(50, 200);
-        var currentDate = DateTime.Now.Date;
+        List<StockData> data = [];
+        decimal basePrice = 100m + _random.Next(50, 200);
+        DateTime currentDate = DateTime.Now.Date;
 
         for (int i = days - 1; i >= 0; i--)
         {
-            var date = currentDate.AddDays(-i);
-            var dailyChange = (decimal)(_random.NextDouble() * 10 - 5); // -5% to +5%
-            basePrice *= (1 + dailyChange / 100);
+            DateTime date = currentDate.AddDays(-i);
+            decimal dailyChange = (decimal)((_random.NextDouble() * 10) - 5); // -5% to +5%
+            basePrice *= 1 + (dailyChange / 100);
 
-            var open = basePrice + (decimal)(_random.NextDouble() * 2 - 1);
-            var close = basePrice + (decimal)(_random.NextDouble() * 2 - 1);
-            var high = Math.Max(open, close) + (decimal)(_random.NextDouble() * 2);
-            var low = Math.Min(open, close) - (decimal)(_random.NextDouble() * 2);
-            var volume = _random.Next(1000000, 10000000);
+            decimal open = basePrice + (decimal)((_random.NextDouble() * 2) - 1);
+            decimal close = basePrice + (decimal)((_random.NextDouble() * 2) - 1);
+            decimal high = Math.Max(open, close) + (decimal)(_random.NextDouble() * 2);
+            decimal low = Math.Min(open, close) - (decimal)(_random.NextDouble() * 2);
+            int volume = _random.Next(1000000, 10000000);
 
             data.Add(new StockData
             {

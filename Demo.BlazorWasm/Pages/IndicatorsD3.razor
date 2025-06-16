@@ -1,0 +1,261 @@
+@page "/indicators-d3"
+@inject IMarketDataService MarketDataService
+@inject ITechnicalAnalysisService TechnicalAnalysisService
+
+<PageTitle>Technical Indicators with D3.js - TaLibStandard Demo</PageTitle>
+
+<MudText Typo="Typo.h4" GutterBottom="true">Technical Indicators with D3.js Charts</MudText>
+
+<MudGrid>
+    <MudItem xs="12" md="4">
+        <MudCard>
+            <MudCardContent>
+                <MudTextField @bind-Value="_symbol" Label="Stock Symbol" Variant="Variant.Outlined" />
+                <MudSelect @bind-Value="_selectedIndicator" Label="Select Indicator" Variant="Variant.Outlined" Class="mt-4">
+                    <MudSelectItem Value="@("SMA")">Simple Moving Average (SMA)</MudSelectItem>
+                    <MudSelectItem Value="@("EMA")">Exponential Moving Average (EMA)</MudSelectItem>
+                    <MudSelectItem Value="@("RSI")">Relative Strength Index (RSI)</MudSelectItem>
+                    <MudSelectItem Value="@("MACD")">MACD</MudSelectItem>
+                    <MudSelectItem Value="@("BB")">Bollinger Bands</MudSelectItem>
+                    <MudSelectItem Value="@("ATR")">Average True Range (ATR)</MudSelectItem>
+                    <MudSelectItem Value="@("OBV")">On-Balance Volume (OBV)</MudSelectItem>
+                </MudSelect>
+                
+                @if (_selectedIndicator == "SMA" || _selectedIndicator == "EMA" || _selectedIndicator == "RSI" || _selectedIndicator == "ATR")
+                {
+                    <MudNumericField @bind-Value="_period" Label="Period" Variant="Variant.Outlined" Class="mt-4" Min="1" Max="200" />
+                }
+                
+                @if (_selectedIndicator == "BB")
+                {
+                    <MudNumericField @bind-Value="_period" Label="Period" Variant="Variant.Outlined" Class="mt-4" Min="1" Max="200" />
+                    <MudNumericField @bind-Value="_stdDev" Label="Standard Deviations" Variant="Variant.Outlined" Class="mt-4" Min="0.1" Max="5" Step="0.1" />
+                }
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CalculateIndicator" Disabled="_isLoading">
+                    @if (_isLoading)
+                    {
+                        <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                        <MudText Class="ms-2">Calculating...</MudText>
+                    }
+                    else
+                    {
+                        <MudText>Calculate</MudText>
+                    }
+                </MudButton>
+            </MudCardActions>
+        </MudCard>
+        
+        @if (_lastResult != null && _lastResult.RetCode == RetCode.Success)
+        {
+            <MudCard Class="mt-4">
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Results</MudText>
+                    <MudSimpleTable Dense="true" Hover="true" Class="mt-2">
+                        <tbody>
+                            <tr>
+                                <td>Indicator</td>
+                                <td>@_selectedIndicator</td>
+                            </tr>
+                            <tr>
+                                <td>Data Points</td>
+                                <td>@_lastResult.NBElement</td>
+                            </tr>
+                            <tr>
+                                <td>Latest Value</td>
+                                <td>@_lastResult.Values.LastOrDefault().ToString("F2")</td>
+                            </tr>
+                            @if (_selectedIndicator == "RSI")
+                            {
+                                var rsiValue = _lastResult.Values.LastOrDefault();
+                                <tr>
+                                    <td>Signal</td>
+                                    <td>
+                                        @if (rsiValue > 70)
+                                        {
+                                            <MudChip T="string" Color="Color.Error" Size="Size.Small">Overbought</MudChip>
+                                        }
+                                        else if (rsiValue < 30)
+                                        {
+                                            <MudChip T="string" Color="Color.Success" Size="Size.Small">Oversold</MudChip>
+                                        }
+                                        else
+                                        {
+                                            <MudChip T="string" Color="Color.Default" Size="Size.Small">Neutral</MudChip>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </MudSimpleTable>
+                </MudCardContent>
+            </MudCard>
+        }
+    </MudItem>
+    
+    <MudItem xs="12" md="8">
+        @if (_stockData != null && _lastResult != null)
+        {
+            <D3CandlestickChart
+                Title="@($"{_symbol} - {_selectedIndicator} Chart")"
+                StockData="_stockData"
+                ShowVolume="true"
+                Width="900"
+                Height="500"
+                Indicators="_indicators"
+                Bands="_bands"
+                SecondaryIndicators="_secondaryIndicators" />
+        }
+        else if (!_hasCalculated)
+        {
+            <MudPaper Class="pa-8 text-center" Elevation="0">
+                <MudIcon Icon="@Icons.Material.Filled.ShowChart" Size="Size.Large" Color="Color.Default" Style="font-size: 5rem;" />
+                <MudText Typo="Typo.h6" Class="mt-4">Select an indicator and click Calculate to visualize</MudText>
+            </MudPaper>
+        }
+    </MudItem>
+</MudGrid>
+
+@code {
+    private string _symbol = "AAPL";
+    private string _selectedIndicator = "SMA";
+    private int _period = 20;
+    private double _stdDev = 2.0;
+    private bool _isLoading;
+    private bool _hasCalculated;
+    
+    private List<StockData>? _stockData;
+    private TaIndicatorResult? _lastResult;
+    
+    private List<D3CandlestickChart.IndicatorData> _indicators = new();
+    private List<D3CandlestickChart.BandData> _bands = new();
+    private List<D3CandlestickChart.SecondaryIndicatorData> _secondaryIndicators = new();
+    
+    private async Task CalculateIndicator()
+    {
+        _isLoading = true;
+        _hasCalculated = true;
+        
+        // Clear previous data
+        _indicators.Clear();
+        _bands.Clear();
+        _secondaryIndicators.Clear();
+        
+        try
+        {
+            // Get stock data
+            _stockData = await MarketDataService.GetHistoricalDataAsync(_symbol, 200);
+            
+            // Calculate the selected indicator
+            _lastResult = _selectedIndicator switch
+            {
+                "SMA" => TechnicalAnalysisService.CalculateSMA(_stockData, _period),
+                "EMA" => TechnicalAnalysisService.CalculateEMA(_stockData, _period),
+                "RSI" => TechnicalAnalysisService.CalculateRSI(_stockData, _period),
+                "MACD" => TechnicalAnalysisService.CalculateMACD(_stockData),
+                "BB" => TechnicalAnalysisService.CalculateBollingerBands(_stockData, _period, _stdDev, _stdDev),
+                "ATR" => TechnicalAnalysisService.CalculateATR(_stockData, _period),
+                "OBV" => TechnicalAnalysisService.CalculateOBV(_stockData),
+                _ => null
+            };
+            
+            // Prepare data for D3 chart based on indicator type
+            if (_lastResult != null)
+            {
+                switch (_selectedIndicator)
+                {
+                    case "SMA":
+                    case "EMA":
+                        _indicators.Add(new D3CandlestickChart.IndicatorData
+                        {
+                            Name = _selectedIndicator,
+                            Values = _lastResult.Values,
+                            BegIdx = _lastResult.BegIdx,
+                            Color = "#ff6f00",
+                            StrokeWidth = 2
+                        });
+                        break;
+                        
+                    case "RSI":
+                        _secondaryIndicators.Add(new D3CandlestickChart.SecondaryIndicatorData
+                        {
+                            Name = "RSI",
+                            Values = _lastResult.Values,
+                            BegIdx = _lastResult.BegIdx,
+                            Color = "#1976d2"
+                        });
+                        break;
+                        
+                    case "MACD":
+                        var macdResult = _lastResult as Services.MacdResult;
+                        if (macdResult != null)
+                        {
+                            _secondaryIndicators.Add(new D3CandlestickChart.SecondaryIndicatorData
+                            {
+                                Name = "MACD",
+                                Values = macdResult.Values,
+                                SignalValues = macdResult.Signal,
+                                HistogramValues = macdResult.Histogram,
+                                BegIdx = macdResult.BegIdx,
+                                Color = "#1976d2",
+                                SignalColor = "#ff6f00"
+                            });
+                        }
+                        break;
+                        
+                    case "BB":
+                        var bbResult = _lastResult as Services.BollingerBandsResult;
+                        if (bbResult != null)
+                        {
+                            _indicators.Add(new D3CandlestickChart.IndicatorData
+                            {
+                                Name = "Middle Band",
+                                Values = bbResult.Values,
+                                BegIdx = bbResult.BegIdx,
+                                Color = "#1976d2",
+                                StrokeWidth = 2
+                            });
+                            
+                            _bands.Add(new D3CandlestickChart.BandData
+                            {
+                                Name = "Bollinger Bands",
+                                UpperValues = bbResult.UpperBand,
+                                LowerValues = bbResult.LowerBand,
+                                BegIdx = bbResult.BegIdx,
+                                UpperColor = "#4caf50",
+                                LowerColor = "#f44336",
+                                FillColor = "#1976d2",
+                                FillOpacity = 0.1
+                            });
+                        }
+                        break;
+                        
+                    case "ATR":
+                        _secondaryIndicators.Add(new D3CandlestickChart.SecondaryIndicatorData
+                        {
+                            Name = "ATR",
+                            Values = _lastResult.Values,
+                            BegIdx = _lastResult.BegIdx,
+                            Color = "#ff6f00"
+                        });
+                        break;
+                        
+                    case "OBV":
+                        _secondaryIndicators.Add(new D3CandlestickChart.SecondaryIndicatorData
+                        {
+                            Name = "OBV",
+                            Values = _lastResult.Values,
+                            BegIdx = _lastResult.BegIdx,
+                            Color = "#4caf50"
+                        });
+                        break;
+                }
+            }
+        }
+        finally
+        {
+            _isLoading = false;
+        }
+    }
+}

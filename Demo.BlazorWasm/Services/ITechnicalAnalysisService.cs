@@ -22,6 +22,7 @@ public interface ITechnicalAnalysisService
     
     // Pattern Recognition
     List<CandlePatternResult> DetectCandlePatterns(List<StockData> data);
+    List<CandlePatternResult> DetectCandlePatterns(List<StockData> data, HashSet<string> enabledPatterns);
 }
 
 public class TaIndicatorResult

@@ -10,7 +10,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly"/>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" PrivateAssets="all"/>
     <PackageReference Include="MudBlazor" />
-    <PackageReference Include="ApexCharts.Blazor" />
     <PackageReference Include="System.Text.Json" />
   </ItemGroup>
 

@@ -1,0 +1,313 @@
+@using Demo.BlazorWasm.Models
+@using Demo.BlazorWasm.Services
+@using Microsoft.JSInterop
+@implements IAsyncDisposable
+
+<MudCard>
+    <MudCardContent>
+        <MudText Typo="Typo.h6" GutterBottom="true">@Title</MudText>
+        
+        @if (StockData != null && StockData.Any())
+        {
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudText Typo="Typo.body2" Class="mb-2">
+                        Latest Price: <strong>@StockData.Last().Close.ToString("C")</strong> | 
+                        Date Range: @StockData.First().Date.ToShortDateString() - @StockData.Last().Date.ToShortDateString()
+                    </MudText>
+                </MudItem>
+                
+                @if (Patterns != null && Patterns.Any())
+                {
+                    <MudItem xs="12">
+                        <MudAlert Severity="Severity.Info" Class="mb-4">
+                            Found @Patterns.Count candlestick patterns
+                        </MudAlert>
+                    </MudItem>
+                }
+                
+                <MudItem xs="12">
+                    <div id="@chartId"></div>
+                </MudItem>
+                
+                @if (ShowIndicatorLegend && (Indicators.Any() || Bands.Any()))
+                {
+                    <MudItem xs="12" Class="mt-2">
+                        <MudPaper Class="pa-2" Elevation="0" Outlined="true">
+                            <MudText Typo="Typo.subtitle2">Indicators:</MudText>
+                            <MudChipSet T="string">
+                                @foreach (var indicator in Indicators)
+                                {
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">@indicator.Name</MudChip>
+                                }
+                                @foreach (var band in Bands)
+                                {
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary">@band.Name</MudChip>
+                                }
+                            </MudChipSet>
+                        </MudPaper>
+                    </MudItem>
+                }
+            </MudGrid>
+        }
+        else
+        {
+            <MudAlert Severity="Severity.Info">No data available for chart</MudAlert>
+        }
+    </MudCardContent>
+</MudCard>
+
+@code {
+    [Inject] private IJSRuntime JSRuntime { get; set; } = default!;
+    
+    [Parameter] public string Title { get; set; } = "D3.js Candlestick Chart";
+    [Parameter] public List<StockData>? StockData { get; set; }
+    [Parameter] public List<CandlePatternResult>? Patterns { get; set; }
+    [Parameter] public bool ShowVolume { get; set; } = true;
+    [Parameter] public bool ShowIndicatorLegend { get; set; } = true;
+    [Parameter] public int Width { get; set; } = 900;
+    [Parameter] public int Height { get; set; } = 500;
+    [Parameter] public List<IndicatorData> Indicators { get; set; } = new();
+    [Parameter] public List<BandData> Bands { get; set; } = new();
+    [Parameter] public List<SecondaryIndicatorData> SecondaryIndicators { get; set; } = new();
+    
+    private string chartId = $"chart-{Guid.NewGuid():N}";
+    private IJSObjectReference? chartInstance;
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender || StockData != null)
+        {
+            await RenderChart();
+        }
+    }
+    
+    private async Task RenderChart()
+    {
+        if (StockData == null || !StockData.Any())
+            return;
+            
+        try
+        {
+            // Prepare data for JavaScript
+            var chartData = StockData.Select(d => new
+            {
+                date = d.Date.ToString("yyyy-MM-dd"),
+                open = d.Open,
+                high = d.High,
+                low = d.Low,
+                close = d.Close,
+                volume = d.Volume
+            }).ToArray();
+            
+            var config = new
+            {
+                width = Width,
+                height = Height,
+                showVolume = ShowVolume
+            };
+            
+            // Create main chart
+            chartInstance = await JSRuntime.InvokeAsync<IJSObjectReference>(
+                "D3Charts.createCandlestickChart", 
+                chartId, 
+                chartData, 
+                config);
+            
+            // Add indicators
+            foreach (var indicator in Indicators)
+            {
+                if (indicator.Values != null && indicator.Values.Any())
+                {
+                    var indicatorData = new
+                    {
+                        values = indicator.Values,
+                        dates = StockData.Skip(indicator.BegIdx).Take(indicator.Values.Length)
+                                       .Select(d => d.Date.ToString("yyyy-MM-dd")).ToArray()
+                    };
+                    
+                    var indicatorConfig = new
+                    {
+                        name = indicator.Name,
+                        color = indicator.Color,
+                        strokeWidth = indicator.StrokeWidth
+                    };
+                    
+                    await JSRuntime.InvokeVoidAsync(
+                        "D3Charts.addIndicator",
+                        chartId,
+                        chartInstance,
+                        indicatorData,
+                        indicatorConfig);
+                }
+            }
+            
+            // Add bands
+            foreach (var band in Bands)
+            {
+                if (band.UpperValues != null && band.LowerValues != null)
+                {
+                    var upperData = new
+                    {
+                        values = band.UpperValues,
+                        dates = StockData.Skip(band.BegIdx).Take(band.UpperValues.Length)
+                                       .Select(d => d.Date.ToString("yyyy-MM-dd")).ToArray()
+                    };
+                    
+                    var lowerData = new
+                    {
+                        values = band.LowerValues,
+                        dates = StockData.Skip(band.BegIdx).Take(band.LowerValues.Length)
+                                       .Select(d => d.Date.ToString("yyyy-MM-dd")).ToArray()
+                    };
+                    
+                    var bandConfig = new
+                    {
+                        name = band.Name,
+                        upperColor = band.UpperColor,
+                        lowerColor = band.LowerColor,
+                        fillColor = band.FillColor,
+                        fillOpacity = band.FillOpacity
+                    };
+                    
+                    await JSRuntime.InvokeVoidAsync(
+                        "D3Charts.addBands",
+                        chartId,
+                        chartInstance,
+                        upperData,
+                        lowerData,
+                        bandConfig);
+                }
+            }
+            
+            // Add pattern markers
+            if (Patterns != null && Patterns.Any())
+            {
+                await JSRuntime.InvokeVoidAsync(
+                    "D3Charts.addPatternMarkers",
+                    chartId,
+                    chartInstance,
+                    Patterns,
+                    chartData);
+            }
+            
+            // Add secondary indicators
+            foreach (var secondary in SecondaryIndicators)
+            {
+                if (secondary.Values != null && secondary.Values.Any())
+                {
+                    var secondaryData = new
+                    {
+                        values = secondary.Values,
+                        dates = StockData.Skip(secondary.BegIdx).Take(secondary.Values.Length)
+                                       .Select(d => d.Date.ToString("yyyy-MM-dd")).ToArray()
+                    };
+                    
+                    var secondaryConfig = new
+                    {
+                        name = secondary.Name,
+                        color = secondary.Color,
+                        width = Width,
+                        height = 200
+                    };
+                    
+                    var secondaryInstance = await JSRuntime.InvokeAsync<IJSObjectReference>(
+                        "D3Charts.createSecondaryIndicator",
+                        chartId,
+                        chartData,
+                        secondaryData,
+                        secondaryConfig);
+                    
+                    // Add signal line if present
+                    if (secondary.SignalValues != null && secondary.SignalValues.Any())
+                    {
+                        var signalData = new
+                        {
+                            values = secondary.SignalValues,
+                            dates = StockData.Skip(secondary.BegIdx).Take(secondary.SignalValues.Length)
+                                           .Select(d => d.Date.ToString("yyyy-MM-dd")).ToArray()
+                        };
+                        
+                        var signalConfig = new
+                        {
+                            color = secondary.SignalColor
+                        };
+                        
+                        await JSRuntime.InvokeVoidAsync(
+                            "D3Charts.addSignalLine",
+                            chartId,
+                            secondaryInstance,
+                            signalData,
+                            signalConfig);
+                    }
+                    
+                    // Add histogram if present
+                    if (secondary.HistogramValues != null && secondary.HistogramValues.Any())
+                    {
+                        var histogramData = new
+                        {
+                            values = secondary.HistogramValues,
+                            dates = StockData.Skip(secondary.BegIdx).Take(secondary.HistogramValues.Length)
+                                           .Select(d => d.Date.ToString("yyyy-MM-dd")).ToArray()
+                        };
+                        
+                        await JSRuntime.InvokeVoidAsync(
+                            "D3Charts.addHistogram",
+                            chartId,
+                            secondaryInstance,
+                            histogramData,
+                            new { });
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error rendering D3 chart: {ex.Message}");
+        }
+    }
+    
+    public async ValueTask DisposeAsync()
+    {
+        if (chartInstance != null)
+        {
+            await JSRuntime.InvokeVoidAsync("D3Charts.dispose", chartId);
+            await chartInstance.DisposeAsync();
+        }
+    }
+}
+
+@* Data models for indicators *@
+@code {
+    public class IndicatorData
+    {
+        public string Name { get; set; } = "";
+        public double[]? Values { get; set; }
+        public int BegIdx { get; set; }
+        public string Color { get; set; } = "#ff6f00";
+        public int StrokeWidth { get; set; } = 2;
+    }
+    
+    public class BandData
+    {
+        public string Name { get; set; } = "";
+        public double[]? UpperValues { get; set; }
+        public double[]? LowerValues { get; set; }
+        public int BegIdx { get; set; }
+        public string UpperColor { get; set; } = "#4caf50";
+        public string LowerColor { get; set; } = "#f44336";
+        public string FillColor { get; set; } = "#1976d2";
+        public double FillOpacity { get; set; } = 0.1;
+    }
+    
+    public class SecondaryIndicatorData
+    {
+        public string Name { get; set; } = "";
+        public double[]? Values { get; set; }
+        public double[]? SignalValues { get; set; }
+        public double[]? HistogramValues { get; set; }
+        public int BegIdx { get; set; }
+        public string Color { get; set; } = "#1976d2";
+        public string SignalColor { get; set; } = "#ff6f00";
+    }
+}

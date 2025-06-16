@@ -4,123 +4,421 @@
 
 <PageTitle>Candlestick Patterns - TaLibStandard Demo</PageTitle>
 
-<MudText Typo="Typo.h4" GutterBottom="true">Candlestick Pattern Recognition</MudText>
+<PatternSelectionDrawer 
+    @bind-IsOpen="_drawerOpen" 
+    PatternGroups="_patternGroups"
+    @bind-EnabledPatterns="_enabledPatterns" />
 
-<MudGrid>
-    <MudItem xs="12" md="4">
-        <MudCard>
-            <MudCardContent>
-                <MudTextField @bind-Value="_symbol" Label="Stock Symbol" Variant="Variant.Outlined" />
-                <MudNumericField @bind-Value="_days" Label="Days of Data" Variant="Variant.Outlined" Class="mt-4" Min="30" Max="365" />
-            </MudCardContent>
-            <MudCardActions>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="DetectPatterns" Disabled="_isLoading" FullWidth="true">
-                    @if (_isLoading)
-                    {
-                        <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
-                        <MudText Class="ms-2">Analyzing...</MudText>
-                    }
-                    else
-                    {
-                        <MudText>Detect Patterns</MudText>
-                    }
+<MudContainer MaxWidth="MaxWidth.False" Class="pa-0">
+    <MudStack Row Class="px-4 py-2 rounded-0" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
+        <MudStack Row>
+            <MudIcon
+                Icon="@Icons.Material.Filled.CandlestickChart"
+                Size="Size.Large"
+                Color="Color.Primary"
+                Class="mr-3"/>
+            <MudText Typo="Typo.h6" Class="mr-4">Candlestick Analysis</MudText>
+        </MudStack>
+
+        <MudStack Row>
+            <MudTextField
+                @bind-Value="_symbol"
+                Label="Symbol"
+                Variant="Variant.Outlined"
+                Margin="Margin.Dense"
+                Adornment="Adornment.Start"
+                AdornmentIcon="@Icons.Material.Filled.ShowChart"
+                Style="max-width: 150px;"
+                Class="mr-3"/>
+
+            <MudNumericField
+                @bind-Value="_days"
+                Label="Days"
+                Variant="Variant.Outlined"
+                Margin="Margin.Dense"
+                Min="30"
+                Max="365"
+                Style="max-width: 100px;"
+                Class="mr-3"/>
+        </MudStack>
+
+        <MudStack Row>
+            <MudButton
+                Variant="Variant.Filled"
+                Color="Color.Primary"
+                @onclick="HandleAnalyzeClick"
+                Disabled="@(_isLoading || !_enabledPatterns.Any())"
+                Class="mr-3">
+                @if (_isLoading)
+                {
+                    <MudProgressCircular Size="Size.Small" Indeterminate="true" Class="mr-2"/>
+                    <span>Analyzing...</span>
+                }
+                else
+                {
+                    <MudIcon Icon="@Icons.Material.Filled.Search" Class="mr-1"/>
+                    <span>Analyze</span>
+                }
+            </MudButton>
+
+            <MudDivider Vertical="true" FlexItem="true" Class="mx-3"/>
+
+            <MudBadge
+                Content="@_enabledPatterns.Count"
+                Color="Color.Primary"
+                Overlap="true"
+                Class="mr-3"
+                Visible="@(_enabledPatterns.Count > 0)">
+                <MudButton
+                    Variant="Variant.Text"
+                    Color="Color.Primary"
+                    @onclick="HandleDrawerClick">
+                    <MudIcon Icon="@Icons.Material.Filled.Tune" Class="mr-1"/>
+                    <span>Patterns</span>
+                    <MudIcon Icon="@(_drawerOpen ? Icons.Material.Filled.ChevronRight : Icons.Material.Filled.ChevronLeft)" Class="ml-1"/>
                 </MudButton>
-            </MudCardActions>
-        </MudCard>
+            </MudBadge>
+        </MudStack>
+    </MudStack>
+
+    @if (_stockData != null)
+    {
+        <MudPaper Elevation="2" Class="pa-4 mb-4">
+            <D3CandlestickChart 
+                Title="@($"{_symbol} - Pattern Analysis")"
+                StockData="_stockData"
+                Patterns="_patterns"
+                ShowVolume="true"
+                Width="1100"
+                Height="500" />
+        </MudPaper>
         
         @if (_patterns != null && _patterns.Any())
         {
-            <MudCard Class="mt-4">
-                <MudCardContent>
-                    <MudText Typo="Typo.h6">Detected Patterns</MudText>
-                    <MudText Typo="Typo.body2" Class="mb-2">Found @_patterns.Count patterns</MudText>
-                    
-                    <MudList T="string" Dense="true">
-                        @foreach (var pattern in _patterns.GroupBy(p => p.PatternName))
-                        {
-                            <MudListItem>
-                                <MudBadge Content="@pattern.Count()" Color="Color.Primary" Origin="Origin.CenterRight" Class="mr-4">
-                                    <MudText>@pattern.Key</MudText>
-                                </MudBadge>
-                            </MudListItem>
-                        }
-                    </MudList>
-                </MudCardContent>
-            </MudCard>
+            <MudGrid Spacing="3">
+                <MudItem xs="12" lg="4">
+                    <MudCard Elevation="2">
+                        <MudCardHeader Class="pb-2">
+                            <CardHeaderContent>
+                                <div class="d-flex align-center">
+                                    <MudIcon Icon="@Icons.Material.Filled.Analytics" Class="mr-2" />
+                                    <MudText Typo="Typo.h6">Pattern Summary</MudText>
+                                </div>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent>
+                            <MudGrid Spacing="2">
+                                <MudItem xs="6">
+                                    <MudPaper Elevation="0" Class="pa-3 text-center">
+                                        <MudText Typo="Typo.caption" Color="Color.Secondary">Total</MudText>
+                                        <MudText Typo="Typo.h4">@_patterns.Count</MudText>
+                                    </MudPaper>
+                                </MudItem>
+                                <MudItem xs="6">
+                                    <MudPaper Elevation="0" Class="pa-3 text-center">
+                                        <MudText Typo="Typo.caption" Color="Color.Secondary">Unique</MudText>
+                                        <MudText Typo="Typo.h4">@_patterns.GroupBy(p => p.PatternName).Count()</MudText>
+                                    </MudPaper>
+                                </MudItem>
+                                <MudItem xs="6">
+                                    <MudPaper Elevation="0" Class="pa-3 text-center mud-theme-success">
+                                        <MudText Typo="Typo.caption">Bullish</MudText>
+                                        <MudText Typo="Typo.h4">@_patterns.Count(p => p.Value > 0)</MudText>
+                                    </MudPaper>
+                                </MudItem>
+                                <MudItem xs="6">
+                                    <MudPaper Elevation="0" Class="pa-3 text-center mud-theme-error">
+                                        <MudText Typo="Typo.caption">Bearish</MudText>
+                                        <MudText Typo="Typo.h4">@_patterns.Count(p => p.Value < 0)</MudText>
+                                    </MudPaper>
+                                </MudItem>
+                            </MudGrid>
+                            
+                            <MudDivider Class="my-3" />
+                            
+                            <MudText Typo="Typo.subtitle2" Class="mb-2">Top Patterns</MudText>
+                            <MudList T="string" Dense="true">
+                                @foreach (var pattern in _patterns.GroupBy(p => p.PatternName)
+                                              .OrderByDescending(g => g.Count())
+                                              .Take(5))
+                                {
+                                    <MudListItem T="string" Class="py-1">
+                                        <div class="d-flex align-center justify-space-between">
+                                            <MudText Typo="Typo.body2">@pattern.Key</MudText>
+                                            <MudChip T="string" Size="Size.Small" Color="Color.Primary">@pattern.Count()</MudChip>
+                                        </div>
+                                    </MudListItem>
+                                }
+                            </MudList>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+                
+                <MudItem xs="12" lg="8">
+                    <MudCard Elevation="2">
+                        <MudCardHeader Class="pb-2">
+                            <CardHeaderContent>
+                                <div class="d-flex align-center">
+                                    <MudIcon Icon="@Icons.Material.Filled.TableChart" Class="mr-2" />
+                                    <MudText Typo="Typo.h6">Pattern Details</MudText>
+                                </div>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent Class="pa-0">
+                            <MudTable 
+                                Items="@_patterns" 
+                                Dense="true" 
+                                Hover="true" 
+                                Striped="true"
+                                Breakpoint="Breakpoint.Sm"
+                                FixedHeader="true"
+                                Height="400px"
+                                Elevation="0">
+                                <HeaderContent>
+                                    <MudTh>Date</MudTh>
+                                    <MudTh>Pattern</MudTh>
+                                    <MudTh>Signal</MudTh>
+                                    <MudTh Style="text-align: right">Price</MudTh>
+                                    <MudTh Style="text-align: right">Volume</MudTh>
+                                </HeaderContent>
+                                <RowTemplate>
+                                    <MudTd DataLabel="Date">
+                                        <MudText Typo="Typo.body2">@_stockData[context.Index].Date.ToString("MMM dd, yyyy")</MudText>
+                                    </MudTd>
+                                    <MudTd DataLabel="Pattern">
+                                        <MudTooltip Text="@GetPatternDescription(context.PatternName)">
+                                            <MudText Typo="Typo.body2">@context.PatternName</MudText>
+                                        </MudTooltip>
+                                    </MudTd>
+                                    <MudTd DataLabel="Signal">
+                                        <MudChip
+                                            T="string" 
+                                            Size="Size.Small" 
+                                            Color="@(context.Value > 0 ? Color.Success : context.Value < 0 ? Color.Error : Color.Default)"
+                                            Icon="@(context.Value > 0 ? Icons.Material.Filled.TrendingUp : context.Value < 0 ? Icons.Material.Filled.TrendingDown : Icons.Material.Filled.Remove)">
+                                            @context.Signal
+                                        </MudChip>
+                                    </MudTd>
+                                    <MudTd DataLabel="Price" Style="text-align: right">
+                                        <MudText Typo="Typo.body2">@_stockData[context.Index].Close.ToString("C")</MudText>
+                                    </MudTd>
+                                    <MudTd DataLabel="Volume" Style="text-align: right">
+                                        <MudText Typo="Typo.body2">@_stockData[context.Index].Volume.ToString("N0")</MudText>
+                                    </MudTd>
+                                </RowTemplate>
+                            </MudTable>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+            </MudGrid>
         }
-    </MudItem>
-    
-    <MudItem xs="12" md="8">
-        @if (_stockData != null)
+        else
         {
-            <SimpleCandlestickChart 
-                Title="@($"{_symbol} - Candlestick Chart")"
-                StockData="_stockData"
-                Patterns="_patterns"
-                ShowVolume="true" />
-            
-            @if (_patterns != null && _patterns.Any())
-            {
-                <MudCard Class="mt-4">
-                    <MudCardContent>
-                        <MudText Typo="Typo.h6">Pattern Details</MudText>
-                        <MudTable Items="@_patterns" Dense="true" Hover="true" Class="mt-2">
-                            <HeaderContent>
-                                <MudTh>Date</MudTh>
-                                <MudTh>Pattern</MudTh>
-                                <MudTh>Signal</MudTh>
-                                <MudTh>Price</MudTh>
-                            </HeaderContent>
-                            <RowTemplate>
-                                <MudTd DataLabel="Date">@_stockData[context.Index].Date.ToShortDateString()</MudTd>
-                                <MudTd DataLabel="Pattern">@context.PatternName</MudTd>
-                                <MudTd DataLabel="Signal">
-                                    <MudChip T="string" Size="Size.Small" Color="@(context.Value > 0 ? Color.Success : context.Value < 0 ? Color.Error : Color.Default)">
-                                        @context.Signal
-                                    </MudChip>
-                                </MudTd>
-                                <MudTd DataLabel="Price">@_stockData[context.Index].Close.ToString("C")</MudTd>
-                            </RowTemplate>
-                        </MudTable>
+            <MudAlert Severity="Severity.Info" Elevation="2">
+                <MudText>No patterns detected with the selected criteria. Try selecting more patterns or adjusting the date range.</MudText>
+            </MudAlert>
+        }
+    }
+    else if (!_hasAnalyzed)
+    {
+        <MudGrid Justify="Justify.Center" Class="mt-8">
+            <MudItem xs="12" sm="10" md="8" lg="6">
+                <MudCard Elevation="2">
+                    <MudCardContent Class="text-center py-8">
+                        <MudIcon
+                            Icon="@Icons.Material.Filled.CandlestickChart" 
+                            Color="Color.Primary" 
+                            Style="font-size: 5rem;" />
+                        <MudText Typo="Typo.h4" Class="mt-4">Welcome to Candlestick Analysis</MudText>
+                        <MudText Typo="Typo.body1" Color="Color.Secondary" Class="mt-2 mb-6">
+                            Enter a stock symbol and select patterns to begin your technical analysis
+                        </MudText>
+                        <MudStack Row="true" Spacing="2" Justify="Justify.Center">
+                            <MudButton
+                                Variant="Variant.Filled" 
+                                Color="Color.Primary" 
+                                Size="Size.Large"
+                                StartIcon="@Icons.Material.Filled.Tune"
+                                OnClick="@(() => _drawerOpen = true)">
+                                Configure Patterns
+                            </MudButton>
+                            <MudButton
+                                Variant="Variant.Outlined" 
+                                Color="Color.Primary" 
+                                Size="Size.Large"
+                                StartIcon="@Icons.Material.Filled.School"
+                                Href="https://www.investopedia.com/articles/active-trading/092315/5-most-powerful-candlestick-patterns.asp"
+                                Target="_blank">
+                                Learn More
+                            </MudButton>
+                        </MudStack>
                     </MudCardContent>
                 </MudCard>
-            }
-        }
-        else if (!_hasAnalyzed)
-        {
-            <MudPaper Class="pa-8 text-center" Elevation="0">
-                <MudIcon Icon="@Icons.Material.Filled.CandlestickChart" Size="Size.Large" Color="Color.Default" Style="font-size: 5rem;" />
-                <MudText Typo="Typo.h6" Class="mt-4">Enter a symbol and click Detect Patterns to start analysis</MudText>
-            </MudPaper>
-        }
-    </MudItem>
-</MudGrid>
+            </MudItem>
+        </MudGrid>
+    }
+</MudContainer>
 
 @code {
     private string _symbol = "AAPL";
     private int _days = 100;
     private bool _isLoading;
     private bool _hasAnalyzed;
+    private bool _drawerOpen;
     
     private List<StockData>? _stockData;
     private List<CandlePatternResult>? _patterns;
+    private HashSet<string> _enabledPatterns = [];
+    
+    // Define pattern groups
+    private Dictionary<string, List<PatternSelectionDrawer.PatternInfo>> _patternGroups = new();
+    
+    protected override void OnInitialized()
+    {
+        InitializePatternGroups();
+    }
+    
+    private void InitializePatternGroups()
+    {
+        _patternGroups = new Dictionary<string, List<PatternSelectionDrawer.PatternInfo>>
+        {
+            ["Basic Single"] =
+            [
+                new() { Name = "Doji", DisplayName = "Doji", IsEnabled = true },
+                new() { Name = "DragonflyDoji", DisplayName = "Dragonfly Doji", IsEnabled = false },
+                new() { Name = "GravestoneDoji", DisplayName = "Gravestone Doji", IsEnabled = false },
+                new() { Name = "LongLeggedDoji", DisplayName = "Long Legged Doji", IsEnabled = false },
+                new() { Name = "Hammer", DisplayName = "Hammer", IsEnabled = true },
+                new() { Name = "InvertedHammer", DisplayName = "Inverted Hammer", IsEnabled = false },
+                new() { Name = "HangingMan", DisplayName = "Hanging Man", IsEnabled = false },
+                new() { Name = "ShootingStar", DisplayName = "Shooting Star", IsEnabled = false },
+                new() { Name = "SpinningTop", DisplayName = "Spinning Top", IsEnabled = false },
+                new() { Name = "Marubozu", DisplayName = "Marubozu", IsEnabled = false },
+                new() { Name = "ClosingMarubozu", DisplayName = "Closing Marubozu", IsEnabled = false },
+                new() { Name = "LongLine", DisplayName = "Long Line", IsEnabled = false },
+                new() { Name = "ShortLine", DisplayName = "Short Line", IsEnabled = false },
+                new() { Name = "HighWave", DisplayName = "High Wave", IsEnabled = false },
+                new() { Name = "RickshawMan", DisplayName = "Rickshaw Man", IsEnabled = false },
+                new() { Name = "Takuri", DisplayName = "Takuri", IsEnabled = false },
+                new() { Name = "BeltHold", DisplayName = "Belt Hold", IsEnabled = false }
+            ],
+            ["Basic Multi"] =
+            [
+                new() { Name = "Engulfing", DisplayName = "Engulfing", IsEnabled = true },
+                new() { Name = "Harami", DisplayName = "Harami", IsEnabled = false },
+                new() { Name = "HaramiCross", DisplayName = "Harami Cross", IsEnabled = false },
+                new() { Name = "Piercing", DisplayName = "Piercing", IsEnabled = false },
+                new() { Name = "DarkCloudCover", DisplayName = "Dark Cloud Cover", IsEnabled = false },
+                new() { Name = "CounterAttack", DisplayName = "Counter Attack", IsEnabled = false },
+                new() { Name = "InNeck", DisplayName = "In-Neck", IsEnabled = false },
+                new() { Name = "OnNeck", DisplayName = "On-Neck", IsEnabled = false },
+                new() { Name = "Thrusting", DisplayName = "Thrusting", IsEnabled = false },
+                new() { Name = "MatchingLow", DisplayName = "Matching Low", IsEnabled = false },
+                new() { Name = "HomingPigeon", DisplayName = "Homing Pigeon", IsEnabled = false },
+                new() { Name = "DojiStar", DisplayName = "Doji Star", IsEnabled = false }
+            ],
+            ["Three Line"] =
+            [
+                new() { Name = "MorningStar", DisplayName = "Morning Star", IsEnabled = false },
+                new() { Name = "EveningStar", DisplayName = "Evening Star", IsEnabled = false },
+                new() { Name = "MorningDojiStar", DisplayName = "Morning Doji Star", IsEnabled = false },
+                new() { Name = "EveningDojiStar", DisplayName = "Evening Doji Star", IsEnabled = false },
+                new() { Name = "3WhiteSoldiers", DisplayName = "Three White Soldiers", IsEnabled = false },
+                new() { Name = "3BlackCrows", DisplayName = "Three Black Crows", IsEnabled = false },
+                new() { Name = "3Inside", DisplayName = "Three Inside Up/Down", IsEnabled = false },
+                new() { Name = "3Outside", DisplayName = "Three Outside Up/Down", IsEnabled = false },
+                new() { Name = "3StarsInSouth", DisplayName = "Three Stars in South", IsEnabled = false },
+                new() { Name = "Tristar", DisplayName = "Tristar", IsEnabled = false },
+                new() { Name = "Identical3Crows", DisplayName = "Identical Three Crows", IsEnabled = false },
+                new() { Name = "Unique3River", DisplayName = "Unique Three River", IsEnabled = false },
+                new() { Name = "AbandonedBaby", DisplayName = "Abandoned Baby", IsEnabled = false },
+                new() { Name = "StalledPattern", DisplayName = "Stalled Pattern", IsEnabled = false },
+                new() { Name = "AdvanceBlock", DisplayName = "Advance Block", IsEnabled = false }
+            ],
+            ["Trend Continuation"] =
+            [
+                new() { Name = "RiseFall3Methods", DisplayName = "Rising/Falling Three Methods", IsEnabled = false },
+                new() { Name = "MatHold", DisplayName = "Mat Hold", IsEnabled = false },
+                new() { Name = "TasukiGap", DisplayName = "Tasuki Gap", IsEnabled = false },
+                new() { Name = "GapSideSideWhite", DisplayName = "Gap Side-by-Side White", IsEnabled = false },
+                new() { Name = "SeparatingLines", DisplayName = "Separating Lines", IsEnabled = false }
+            ],
+            ["Complex"] =
+            [
+                new() { Name = "2Crows", DisplayName = "Two Crows", IsEnabled = false },
+                new() { Name = "UpsideGap2Crows", DisplayName = "Upside Gap Two Crows", IsEnabled = false },
+                new() { Name = "3LineStrike", DisplayName = "Three Line Strike", IsEnabled = false },
+                new() { Name = "Breakaway", DisplayName = "Breakaway", IsEnabled = false },
+                new() { Name = "LadderBottom", DisplayName = "Ladder Bottom", IsEnabled = false },
+                new() { Name = "Kicking", DisplayName = "Kicking", IsEnabled = false },
+                new() { Name = "KickingByLength", DisplayName = "Kicking By Length", IsEnabled = false },
+                new() { Name = "ConcealBabySwallow", DisplayName = "Concealing Baby Swallow", IsEnabled = false },
+                new() { Name = "StickSandwich", DisplayName = "Stick Sandwich", IsEnabled = false },
+                new() { Name = "XSideGap3Methods", DisplayName = "Up/Down Gap Three Methods", IsEnabled = false },
+                new() { Name = "Hikkake", DisplayName = "Hikkake", IsEnabled = false },
+                new() { Name = "HikkakeMod", DisplayName = "Modified Hikkake", IsEnabled = false }
+            ]
+        };
+        
+        // Initialize enabled patterns
+        foreach (var group in _patternGroups.Values)
+        {
+            foreach (var pattern in group.Where(p => p.IsEnabled))
+            {
+                _enabledPatterns.Add(pattern.Name);
+            }
+        }
+    }
+    
+    private string GetPatternDescription(string patternName) => patternName switch
+    {
+        "Doji" => "Indicates market indecision with open and close nearly equal",
+        "Hammer" => "Bullish reversal pattern with small body and long lower shadow",
+        "InvertedHammer" => "Potential bullish reversal with small body and long upper shadow",
+        "Engulfing" => "Strong reversal pattern where current candle engulfs the previous",
+        "Harami" => "Potential reversal pattern with small body inside previous candle",
+        "MorningStar" => "Bullish reversal pattern occurring at the bottom of downtrend",
+        "EveningStar" => "Bearish reversal pattern occurring at the top of uptrend",
+        "ShootingStar" => "Bearish reversal pattern with small body and long upper shadow",
+        "HangingMan" => "Bearish reversal pattern appearing at the top of uptrend",
+        "DarkCloudCover" => "Bearish reversal pattern with penetration into previous candle",
+        "Piercing" => "Bullish reversal pattern penetrating previous bearish candle",
+        "3WhiteSoldiers" => "Strong bullish continuation with three consecutive green candles",
+        "3BlackCrows" => "Strong bearish continuation with three consecutive red candles",
+        "AbandonedBaby" => "Rare reversal pattern with gap and doji",
+        "Breakaway" => "Five-candle pattern indicating trend reversal",
+        "RiseFall3Methods" => "Continuation pattern with retracement within trend",
+        _ => "Advanced candlestick pattern for technical analysis"
+    };
+    
+    private async Task HandleAnalyzeClick()
+    {
+        await DetectPatterns();
+    }
+    
+    private void HandleDrawerClick()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
     
     private async Task DetectPatterns()
     {
         _isLoading = true;
         _hasAnalyzed = true;
+        StateHasChanged();
         
         try
         {
             // Get stock data
             _stockData = await MarketDataService.GetHistoricalDataAsync(_symbol, _days);
             
-            // Detect candlestick patterns
-            _patterns = TechnicalAnalysisService.DetectCandlePatterns(_stockData);
+            // Detect patterns using the enabled patterns filter
+            _patterns = TechnicalAnalysisService.DetectCandlePatterns(_stockData, _enabledPatterns);
         }
         finally
         {
             _isLoading = false;
+            StateHasChanged();
         }
     }
 }
