@@ -8,6 +8,31 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Momentum indicator - the difference between current price and price N periods ago.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="optInTimePeriod">Number of periods to look back. Typical values: 10, 12, 14.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the momentum values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Momentum is calculated as:
+    /// MOM = Price(today) - Price(N periods ago)
+    /// 
+    /// Interpretation:
+    /// - Positive values indicate upward momentum
+    /// - Negative values indicate downward momentum
+    /// - Zero line crossovers signal potential trend changes
+    /// - Divergences with price can signal potential reversals
+    /// 
+    /// The raw momentum value represents the absolute price change.
+    /// Often normalized or used with other indicators for better signals.
+    /// Higher time periods smooth the indicator but increase lag.
+    /// </remarks>
     public static RetCode Mom(
         int startIdx,
         int endIdx,
@@ -75,6 +100,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Momentum calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods to look back. Valid range: 1 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid Momentum value can be calculated, or -1 if parameters are invalid.</returns>
     public static int MomLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod;

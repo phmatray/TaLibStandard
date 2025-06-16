@@ -8,6 +8,28 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Performs vector subtraction of two input arrays.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inReal0">First input array (minuend).</param>
+    /// <param name="inReal1">Second input array (subtrahend).</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array containing the difference of corresponding elements (inReal0 - inReal1).</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// This function performs element-wise subtraction:
+    /// outReal[i] = inReal0[i] - inReal1[i]
+    /// 
+    /// Common uses:
+    /// - Calculating price differences or spreads between instruments
+    /// - Computing indicator divergences
+    /// - Removing trend components from price series
+    /// - Creating oscillators by subtracting moving averages
+    /// - Calculating profit/loss series
+    /// </remarks>
     public static RetCode Sub(
         int startIdx,
         int endIdx,
@@ -48,6 +70,10 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Sub calculation.
+    /// </summary>
+    /// <returns>Always returns 0 as subtraction requires no historical data.</returns>
     public static int SubLookback()
     {
         return 0;

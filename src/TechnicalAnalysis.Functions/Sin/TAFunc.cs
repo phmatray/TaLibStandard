@@ -8,6 +8,30 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the trigonometric sine of input values.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of values (in radians).</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array containing the sine of each input value.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// This function calculates:
+    /// outReal[i] = sin(inReal[i])
+    /// 
+    /// Input values are expected to be in radians.
+    /// Output values will be in the range [-1, 1].
+    /// 
+    /// Common uses in technical analysis:
+    /// - Cycle analysis and wave theory applications
+    /// - Detrending price data
+    /// - Creating synthetic wave patterns
+    /// - Hilbert Transform and other advanced cycle indicators
+    /// - Fourier analysis components
+    /// </remarks>
     public static RetCode Sin(
         int startIdx,
         int endIdx,
@@ -50,6 +74,10 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Sin calculation.
+    /// </summary>
+    /// <returns>Always returns 0 as sine calculation requires no historical data.</returns>
     public static int SinLookback()
     {
         return 0;

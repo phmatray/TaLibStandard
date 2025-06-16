@@ -8,6 +8,30 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Performs vector division of two input arrays.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inReal0">First input array (dividend).</param>
+    /// <param name="inReal1">Second input array (divisor).</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array containing the quotient of corresponding elements (inReal0 / inReal1).</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// This function performs element-wise division:
+    /// outReal[i] = inReal0[i] / inReal1[i]
+    /// 
+    /// Common uses:
+    /// - Calculating ratios between price series
+    /// - Normalizing indicators or price data
+    /// - Computing relative strength between instruments
+    /// - Creating percentage-based indicators
+    /// - Price-to-volume ratios
+    /// 
+    /// Note: Division by zero will result in infinity or NaN values in the output.
+    /// </remarks>
     public static RetCode Div(
         int startIdx,
         int endIdx,
@@ -56,6 +80,10 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Div calculation.
+    /// </summary>
+    /// <returns>Always returns 0 as division requires no historical data.</returns>
     public static int DivLookback()
     {
         return 0;

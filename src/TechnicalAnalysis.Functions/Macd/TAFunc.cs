@@ -8,6 +8,33 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Moving Average Convergence Divergence (MACD) - a trend-following momentum indicator.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="optInFastPeriod">Number of periods for the fast EMA. Typical value: 12.</param>
+    /// <param name="optInSlowPeriod">Number of periods for the slow EMA. Typical value: 26.</param>
+    /// <param name="optInSignalPeriod">Number of periods for the signal line EMA. Typical value: 9.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outMACD">Output array for the MACD line values (fast EMA - slow EMA).</param>
+    /// <param name="outMACDSignal">Output array for the signal line values (EMA of MACD line).</param>
+    /// <param name="outMACDHist">Output array for the MACD histogram values (MACD line - signal line).</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// MACD consists of three components:
+    /// - MACD Line = Fast EMA - Slow EMA (typically 12-day EMA - 26-day EMA)
+    /// - Signal Line = EMA of MACD Line (typically 9-day EMA)
+    /// - MACD Histogram = MACD Line - Signal Line
+    /// 
+    /// Trading signals:
+    /// - Bullish: MACD line crosses above signal line
+    /// - Bearish: MACD line crosses below signal line
+    /// - Divergence: Price makes new high/low but MACD doesn't confirm
+    /// - Zero line crossovers also provide trend change signals
+    /// </remarks>
     public static RetCode Macd(
         int startIdx,
         int endIdx,
@@ -58,6 +85,13 @@ public static partial class TAFunc
         return taIntMACD;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for MACD calculation.
+    /// </summary>
+    /// <param name="optInFastPeriod">Number of periods for the fast EMA. Valid range: 2 to 100000.</param>
+    /// <param name="optInSlowPeriod">Number of periods for the slow EMA. Valid range: 2 to 100000.</param>
+    /// <param name="optInSignalPeriod">Number of periods for the signal line EMA. Valid range: 1 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid MACD value can be calculated, or -1 if parameters are invalid.</returns>
     public static int MacdLookback(int optInFastPeriod, int optInSlowPeriod, int optInSignalPeriod)
     {
         if (optInFastPeriod is < 2 or > 100000 ||

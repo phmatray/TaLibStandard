@@ -8,6 +8,30 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the exponential function (e^x) of input values.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of values.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array containing e raised to the power of each input value.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// This function calculates:
+    /// outReal[i] = e^(inReal[i])
+    /// Where e is Euler's number (approximately 2.71828).
+    /// 
+    /// Common uses in technical analysis:
+    /// - Converting log returns to simple returns
+    /// - Exponential growth/decay models
+    /// - Options pricing (Black-Scholes and related models)
+    /// - Compound interest calculations
+    /// - Probability distributions (log-normal conversions)
+    /// 
+    /// Note: Large positive values may result in infinity, while large negative values approach zero.
+    /// </remarks>
     public static RetCode Exp(
         int startIdx,
         int endIdx,
@@ -50,6 +74,10 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Exp calculation.
+    /// </summary>
+    /// <returns>Always returns 0 as exponential calculation requires no historical data.</returns>
     public static int ExpLookback()
     {
         return 0;

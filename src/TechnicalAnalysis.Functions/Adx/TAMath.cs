@@ -6,8 +6,21 @@
 
 namespace TechnicalAnalysis.Functions;
 
+/// <summary>
+/// Provides mathematical functions for technical analysis.
+/// </summary>
 public static partial class TAMath
 {
+    /// <summary>
+    /// Calculates the Average Directional Index (ADX) for the specified period.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="high">Array of high prices.</param>
+    /// <param name="low">Array of low prices.</param>
+    /// <param name="close">Array of closing prices.</param>
+    /// <param name="timePeriod">Number of periods for the ADX calculation.</param>
+    /// <returns>An AdxResult containing the calculated values and metadata.</returns>
     public static AdxResult Adx(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod)
     {
         int outBegIdx = default;
@@ -28,12 +41,40 @@ public static partial class TAMath
         return new AdxResult(retCode, outBegIdx, outNBElement, outReal);
     }
 
+    /// <summary>
+    /// Calculates the Average Directional Index (ADX) using the default period of 14.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="high">Array of high prices.</param>
+    /// <param name="low">Array of low prices.</param>
+    /// <param name="close">Array of closing prices.</param>
+    /// <returns>An AdxResult containing the calculated values and metadata.</returns>
     public static AdxResult Adx(int startIdx, int endIdx, double[] high, double[] low, double[] close)
         => Adx(startIdx, endIdx, high, low, close, 14);
 
+    /// <summary>
+    /// Calculates the Average Directional Index (ADX) for the specified period using float arrays.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="high">Array of high prices.</param>
+    /// <param name="low">Array of low prices.</param>
+    /// <param name="close">Array of closing prices.</param>
+    /// <param name="timePeriod">Number of periods for the ADX calculation.</param>
+    /// <returns>An AdxResult containing the calculated values and metadata.</returns>
     public static AdxResult Adx(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod)
         => Adx(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), timePeriod);
 
+    /// <summary>
+    /// Calculates the Average Directional Index (ADX) using the default period of 14 with float arrays.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="high">Array of high prices.</param>
+    /// <param name="low">Array of low prices.</param>
+    /// <param name="close">Array of closing prices.</param>
+    /// <returns>An AdxResult containing the calculated values and metadata.</returns>
     public static AdxResult Adx(int startIdx, int endIdx, float[] high, float[] low, float[] close)
         => Adx(startIdx, endIdx, high, low, close, 14);
 }

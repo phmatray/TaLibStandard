@@ -8,6 +8,35 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Commodity Channel Index (CCI) - a momentum oscillator used to identify cyclical trends.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="optInTimePeriod">Number of periods for the CCI calculation. Typical value: 20.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the CCI values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// CCI measures the difference between a security's price change and its average price change.
+    /// 
+    /// Calculation:
+    /// CCI = (Typical Price - SMA of Typical Price) / (0.015 × Mean Deviation)
+    /// Where Typical Price = (High + Low + Close) / 3
+    /// 
+    /// Interpretation:
+    /// - Values typically range between -200 and +200
+    /// - Above +100: Potentially overbought
+    /// - Below -100: Potentially oversold
+    /// - Zero line crossovers can signal trend changes
+    /// - Divergences with price indicate potential reversals
+    /// 
+    /// Originally developed for commodities but now used across all markets.
+    /// </remarks>
     public static RetCode Cci(
         int startIdx,
         int endIdx,
@@ -116,6 +145,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for CCI calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the CCI calculation. Valid range: 2 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid CCI value can be calculated, or -1 if parameters are invalid.</returns>
     public static int CciLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;

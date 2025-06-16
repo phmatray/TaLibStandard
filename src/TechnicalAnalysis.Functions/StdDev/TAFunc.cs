@@ -8,6 +8,32 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Standard Deviation - a measure of volatility and dispersion from the mean.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="optInTimePeriod">Number of periods for the calculation. Typical values: 20, 50.</param>
+    /// <param name="optInNbDev">Number of standard deviations to calculate. Typical value: 1.0.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the standard deviation values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Standard Deviation measures how spread out values are from their average.
+    /// It's calculated as the square root of variance.
+    /// 
+    /// In technical analysis, standard deviation is used to:
+    /// - Measure market volatility
+    /// - Calculate Bollinger Bands (typically 2 standard deviations)
+    /// - Identify periods of high/low volatility
+    /// - Risk assessment and position sizing
+    /// 
+    /// Higher values indicate greater volatility/risk, while lower values
+    /// suggest more stable price action. The optInNbDev parameter allows
+    /// scaling the output (e.g., 2.0 for Bollinger Bands).
+    /// </remarks>
     public static RetCode StdDev(
         int startIdx,
         int endIdx,
@@ -71,6 +97,12 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Standard Deviation calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the calculation. Valid range: 2 to 100000.</param>
+    /// <param name="optInNbDev">Number of standard deviations (not used in lookback calculation).</param>
+    /// <returns>The number of historical data points required before the first valid standard deviation value can be calculated, or -1 if parameters are invalid.</returns>
     public static int StdDevLookback(int optInTimePeriod, double optInNbDev)
     {
         return optInTimePeriod is < 2 or > 100000 ? -1 : VarianceLookback(optInTimePeriod);

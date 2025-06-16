@@ -8,6 +8,24 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Relative Strength Index (RSI).
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="inReal">Array of input values (typically closing prices).</param>
+    /// <param name="optInTimePeriod">Number of periods (2 to 100000). Default is 14.</param>
+    /// <param name="outBegIdx">The starting index of the output values.</param>
+    /// <param name="outNBElement">The number of output values generated.</param>
+    /// <param name="outReal">Array to store the calculated RSI values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The RSI is a momentum oscillator that measures the speed and magnitude of price changes.
+    /// RSI values range from 0 to 100, where:
+    /// - Values above 70 typically indicate overbought conditions
+    /// - Values below 30 typically indicate oversold conditions
+    /// - The centerline at 50 can indicate the overall trend direction
+    /// </remarks>
     public static RetCode Rsi(
         int startIdx,
         int endIdx,
@@ -189,6 +207,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Calculates the lookback period for the RSI indicator.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods (2 to 100000).</param>
+    /// <returns>The number of historical data points needed before the first RSI value can be calculated, or -1 if the period is invalid.</returns>
     public static int RsiLookback(int optInTimePeriod)
     {
         if (optInTimePeriod is < 2 or > 100000)

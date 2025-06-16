@@ -8,6 +8,28 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Performs vector multiplication of two input arrays.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inReal0">First input array of values.</param>
+    /// <param name="inReal1">Second input array of values.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array containing the product of corresponding elements from inReal0 and inReal1.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// This function performs element-wise multiplication:
+    /// outReal[i] = inReal0[i] × inReal1[i]
+    /// 
+    /// Common uses:
+    /// - Scaling price series or indicators
+    /// - Calculating weighted values (price × volume)
+    /// - Applying percentage changes to series
+    /// - Creating composite indicators with multiplicative relationships
+    /// - Risk-adjusted returns calculations
+    /// </remarks>
     public static RetCode Mult(
         int startIdx,
         int endIdx,
@@ -48,6 +70,10 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Mult calculation.
+    /// </summary>
+    /// <returns>Always returns 0 as multiplication requires no historical data.</returns>
     public static int MultLookback()
     {
         return 0;

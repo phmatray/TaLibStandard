@@ -8,6 +8,24 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Average Directional Index (ADX).
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation range.</param>
+    /// <param name="endIdx">The ending index for the calculation range.</param>
+    /// <param name="inHigh">Array of high prices.</param>
+    /// <param name="inLow">Array of low prices.</param>
+    /// <param name="inClose">Array of closing prices.</param>
+    /// <param name="optInTimePeriod">Number of periods (2 to 100000). Default is 14.</param>
+    /// <param name="outBegIdx">The starting index of the output values.</param>
+    /// <param name="outNBElement">The number of output values generated.</param>
+    /// <param name="outReal">Array to store the calculated ADX values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The ADX is a trend strength indicator that ranges from 0 to 100.
+    /// Values above 25 typically indicate a strong trend, while values below 20 suggest a weak trend.
+    /// The indicator does not indicate trend direction, only strength.
+    /// </remarks>
     public static RetCode Adx(
         int startIdx,
         int endIdx,
@@ -269,6 +287,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Calculates the lookback period for the ADX indicator.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods (2 to 100000).</param>
+    /// <returns>The number of historical data points needed before the first ADX value can be calculated, or -1 if the period is invalid.</returns>
     public static int AdxLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 2 or > 100000

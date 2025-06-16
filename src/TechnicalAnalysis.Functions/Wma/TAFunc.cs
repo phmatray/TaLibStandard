@@ -8,6 +8,35 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Weighted Moving Average (WMA) - a moving average that gives more weight to recent data.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="optInTimePeriod">Number of periods for the WMA calculation. Typical values: 10, 20.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the WMA values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// WMA assigns linearly decreasing weights to older data points:
+    /// - Most recent value: weight = n
+    /// - Second most recent: weight = n-1
+    /// - Oldest value: weight = 1
+    /// Where n is the period.
+    /// 
+    /// Formula: WMA = Σ(Price[i] × Weight[i]) / Σ(Weight[i])
+    /// 
+    /// Characteristics:
+    /// - More responsive than SMA but less than EMA
+    /// - Linear weighting scheme is intuitive
+    /// - Smoother than EMA, less lag than SMA
+    /// - Good balance between responsiveness and smoothness
+    /// 
+    /// WMA is often used when you want more weight on recent data
+    /// but prefer a predictable linear weighting scheme.
+    /// </remarks>
     public static RetCode Wma(
         int startIdx,
         int endIdx,
@@ -110,6 +139,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for WMA calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the WMA calculation. Valid range: 2 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid WMA value can be calculated, or -1 if parameters are invalid.</returns>
     public static int WmaLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;

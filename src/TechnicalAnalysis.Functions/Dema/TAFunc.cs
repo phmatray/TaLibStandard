@@ -8,6 +8,33 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Double Exponential Moving Average (DEMA) - a smoothing indicator with reduced lag.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="optInTimePeriod">Number of periods for the EMA calculation. Typical values: 12, 20.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the DEMA values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// DEMA is calculated as:
+    /// DEMA = 2 × EMA - EMA(EMA)
+    /// 
+    /// This formula reduces the lag inherent in traditional moving averages while
+    /// maintaining smoothness. DEMA responds more quickly to price changes than
+    /// a standard EMA with the same period.
+    /// 
+    /// Benefits:
+    /// - Reduced lag compared to EMA or SMA
+    /// - Smoother than raw price data
+    /// - Better trend following in fast-moving markets
+    /// 
+    /// Note: Despite the name, DEMA is not simply an EMA applied twice,
+    /// but uses a specific formula to achieve lag reduction.
+    /// </remarks>
     public static RetCode Dema(
         int startIdx,
         int endIdx,
@@ -120,6 +147,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for DEMA calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the EMA calculation. Valid range: 2 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid DEMA value can be calculated, or -1 if parameters are invalid.</returns>
     public static int DemaLookback(int optInTimePeriod)
         => optInTimePeriod is < 2 or > 100000
             ? -1

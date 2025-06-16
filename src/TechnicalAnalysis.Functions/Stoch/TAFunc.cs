@@ -8,6 +8,38 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Stochastic Oscillator - a momentum indicator comparing closing price to price range.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="optInFastKPeriod">Number of periods for %K calculation. Typical value: 14.</param>
+    /// <param name="optInSlowKPeriod">Smoothing periods for %K (to create Slow %K). Typical value: 3.</param>
+    /// <param name="optInSlowKMAType">Moving average type for Slow %K smoothing. Typical: SMA.</param>
+    /// <param name="optInSlowDPeriod">Number of periods for %D calculation. Typical value: 3.</param>
+    /// <param name="optInSlowDMAType">Moving average type for %D calculation. Typical: SMA.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outSlowK">Output array for Slow %K values (smoothed %K).</param>
+    /// <param name="outSlowD">Output array for Slow %D values (moving average of Slow %K).</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// The Stochastic Oscillator calculation:
+    /// - Fast %K = 100 × (Close - Lowest Low) / (Highest High - Lowest Low)
+    /// - Slow %K = Moving Average of Fast %K
+    /// - Slow %D = Moving Average of Slow %K
+    /// 
+    /// Interpretation:
+    /// - Values range from 0 to 100
+    /// - Above 80: Potentially overbought
+    /// - Below 20: Potentially oversold
+    /// - %K crossing above %D: Bullish signal
+    /// - %K crossing below %D: Bearish signal
+    /// - Divergences between price and oscillator indicate potential reversals
+    /// </remarks>
     public static RetCode Stoch(
         int startIdx,
         int endIdx,
@@ -182,6 +214,15 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Stochastic Oscillator calculation.
+    /// </summary>
+    /// <param name="optInFastKPeriod">Number of periods for %K calculation. Valid range: 1 to 100000.</param>
+    /// <param name="optInSlowKPeriod">Smoothing periods for %K. Valid range: 1 to 100000.</param>
+    /// <param name="optInSlowKMAType">Moving average type for Slow %K smoothing.</param>
+    /// <param name="optInSlowDPeriod">Number of periods for %D calculation. Valid range: 1 to 100000.</param>
+    /// <param name="optInSlowDMAType">Moving average type for %D calculation.</param>
+    /// <returns>The number of historical data points required before the first valid Stochastic value can be calculated, or -1 if parameters are invalid.</returns>
     public static int StochLookback(
         int optInFastKPeriod,
         int optInSlowKPeriod,

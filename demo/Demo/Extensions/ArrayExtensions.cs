@@ -8,7 +8,7 @@ internal static class IntegersExtensions
     {
         StringBuilder sb = new();
         sb.Append('[');
-        
+
         for (int i = 0; i < integers.Length; i++)
         {
             sb.Append(integers[i]);
@@ -17,7 +17,7 @@ internal static class IntegersExtensions
                 sb.Append(", ");
             }
         }
-        
+
         sb.Append(']');
         return sb.ToString();
     }

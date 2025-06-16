@@ -1,7 +1,4 @@
 using System.Numerics;
-using System.Reactive;
-using TechnicalAnalysis.Candles;
-using TechnicalAnalysis.Common;
 
 namespace Demo.WIP;
 
@@ -23,8 +20,10 @@ public static class TACandleFactory
     /// <returns>A <see cref="TACandle{T}"/>.</returns>
     public static TACandle<T> Create<T>(T open, T high, T low, T close)
         where T : IFloatingPoint<T>
-        => new(open, high, low, close);
-    
+    {
+        return new(open, high, low, close);
+    }
+
     /// <summary>
     /// Create a collection of <see cref="TACandle{T}"/> from the specified arrays.
     /// </summary>
@@ -48,7 +47,7 @@ public static class TACandleFactory
         {
             throw new ArgumentException("The arrays must have the same length.");
         }
-        
+
         for (int i = 0; i < open.Length; i++)
         {
             yield return Create(open[i], high[i], low[i], close[i]);

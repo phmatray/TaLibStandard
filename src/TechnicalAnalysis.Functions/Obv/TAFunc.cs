@@ -8,6 +8,33 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the On Balance Volume (OBV) - a momentum indicator that uses volume flow to predict price changes.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="inVolume">Input array of volume data.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the OBV values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// OBV is a cumulative indicator that adds volume on up days and subtracts volume on down days.
+    /// 
+    /// Calculation:
+    /// - If Close > Previous Close: OBV = Previous OBV + Volume
+    /// - If Close < Previous Close: OBV = Previous OBV - Volume
+    /// - If Close = Previous Close: OBV = Previous OBV
+    /// 
+    /// Interpretation:
+    /// - Rising OBV confirms an uptrend (buying pressure)
+    /// - Falling OBV confirms a downtrend (selling pressure)
+    /// - Divergence between OBV and price suggests potential reversal
+    /// - OBV breakouts often precede price breakouts
+    /// 
+    /// The absolute value of OBV is not important; focus on the direction and divergences.
+    /// </remarks>
     public static RetCode Obv(
         int startIdx,
         int endIdx,
@@ -59,6 +86,10 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for OBV calculation.
+    /// </summary>
+    /// <returns>Always returns 0 as OBV can be calculated from the first data point.</returns>
     public static int ObvLookback()
     {
         return 0;

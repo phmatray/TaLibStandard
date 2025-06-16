@@ -8,6 +8,37 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates the Money Flow Index (MFI) - a momentum indicator that uses price and volume to identify overbought/oversold conditions.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input arrays.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input arrays.</param>
+    /// <param name="inHigh">Input array of high prices.</param>
+    /// <param name="inLow">Input array of low prices.</param>
+    /// <param name="inClose">Input array of closing prices.</param>
+    /// <param name="inVolume">Input array of volume data.</param>
+    /// <param name="optInTimePeriod">Number of periods for the MFI calculation. Typical value: 14.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outReal">Output array for the MFI values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// MFI is often called the volume-weighted RSI. It incorporates volume to show money flow in/out of a security.
+    /// 
+    /// Calculation:
+    /// 1. Typical Price = (High + Low + Close) / 3
+    /// 2. Money Flow = Typical Price × Volume
+    /// 3. Positive Money Flow = Sum of Money Flow on up days
+    /// 4. Negative Money Flow = Sum of Money Flow on down days
+    /// 5. MFI = 100 - (100 / (1 + Positive Money Flow / Negative Money Flow))
+    /// 
+    /// Interpretation:
+    /// - Range: 0 to 100
+    /// - Above 80: Potentially overbought
+    /// - Below 20: Potentially oversold
+    /// - Divergences with price suggest potential reversals
+    /// - Volume confirmation makes MFI more reliable than price-only indicators
+    /// </remarks>
     public static RetCode Mfi(
         int startIdx,
         int endIdx,
@@ -195,6 +226,11 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for MFI calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the MFI calculation. Valid range: 2 to 100000.</param>
+    /// <returns>The number of historical data points required before the first valid MFI value can be calculated, or -1 if parameters are invalid.</returns>
     public static int MfiLookback(int optInTimePeriod)
     {
         return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Mfi];

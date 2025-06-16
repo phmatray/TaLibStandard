@@ -8,6 +8,33 @@ namespace TechnicalAnalysis.Functions;
 
 public static partial class TAFunc
 {
+    /// <summary>
+    /// Calculates Bollinger Bands - a volatility indicator that creates upper and lower bands around a moving average.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation within the input array.</param>
+    /// <param name="endIdx">The ending index for the calculation within the input array.</param>
+    /// <param name="inReal">Input array of price data (typically closing prices).</param>
+    /// <param name="optInTimePeriod">Number of periods for the moving average calculation. Typical value: 20.</param>
+    /// <param name="optInNbDevUp">Number of standard deviations for the upper band. Typical value: 2.0.</param>
+    /// <param name="optInNbDevDn">Number of standard deviations for the lower band. Typical value: 2.0.</param>
+    /// <param name="optInMAType">Type of moving average to use (SMA, EMA, etc.). Default: SMA.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outRealUpperBand">Output array for the upper band values.</param>
+    /// <param name="outRealMiddleBand">Output array for the middle band (moving average) values.</param>
+    /// <param name="outRealLowerBand">Output array for the lower band values.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// Bollinger Bands consist of three lines:
+    /// - Upper Band = Moving Average + (Standard Deviation × Number of Deviations)
+    /// - Middle Band = Moving Average (typically 20-period SMA)
+    /// - Lower Band = Moving Average - (Standard Deviation × Number of Deviations)
+    /// 
+    /// The bands expand during volatile periods and contract during consolidation.
+    /// Price touching the upper band may indicate overbought conditions, while touching
+    /// the lower band may indicate oversold conditions. However, prices can remain at
+    /// band extremes during strong trends.
+    /// </remarks>
     public static RetCode BollingerBands(
         int startIdx,
         int endIdx,
@@ -187,6 +214,12 @@ public static partial class TAFunc
         return Success;
     }
 
+    /// <summary>
+    /// Returns the lookback period required for Bollinger Bands calculation.
+    /// </summary>
+    /// <param name="optInTimePeriod">Number of periods for the moving average calculation. Valid range: 2 to 100000.</param>
+    /// <param name="optInMAType">Type of moving average to use (SMA, EMA, etc.).</param>
+    /// <returns>The number of historical data points required before the first valid Bollinger Bands value can be calculated, or -1 if parameters are invalid.</returns>
     public static int BollingerBandsLookback(
         int optInTimePeriod,
         MAType optInMAType)
