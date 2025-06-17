@@ -132,9 +132,9 @@ jobs:
     - name: Push to NuGet
       if: steps.should_release.outputs.new_release == 'true'
       run: |
-        dotnet nuget push ./artifacts/*.nupkg \
-          --api-key ${{ secrets.NUGET_API_KEY }} \
-          --source https://api.nuget.org/v3/index.json \
+        dotnet nuget push "./artifacts/*.nupkg" \
+          --api-key "${{ secrets.NUGET_API_KEY }}" \
+          --source "https://api.nuget.org/v3/index.json" \
           --skip-duplicate
     
     - name: Create GitHub Release
