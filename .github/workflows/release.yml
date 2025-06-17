@@ -1,0 +1,153 @@
+name: Release
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Check for existing tags
+      id: check_tags
+      run: |
+        if git describe --tags --abbrev=0 2>/dev/null; then
+          echo "has_tags=true" >> $GITHUB_OUTPUT
+          echo "Found existing tags"
+        else
+          echo "has_tags=false" >> $GITHUB_OUTPUT
+          echo "No tags found - will create initial release"
+        fi
+    
+    - name: Get next version
+      id: get_version
+      uses: mathieudutour/github-tag-action@v6.2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        release_branches: main
+        pre_release_branches: develop
+        dry_run: true
+        default_bump: ${{ steps.check_tags.outputs.has_tags == 'false' && 'major' || 'false' }}
+        custom_release_rules: |
+          breaking:major,
+          feat:minor,
+          fix:patch,
+          perf:patch,
+          revert:patch,
+          docs:patch:README,
+          refactor:patch,
+          test:false,
+          style:false,
+          chore:false,
+          ci:false
+    
+    - name: Check if should release
+      id: should_release
+      run: |
+        if [[ "${{ steps.get_version.outputs.new_version }}" != "" ]]; then
+          echo "new_release=true" >> $GITHUB_OUTPUT
+          echo "New version will be: ${{ steps.get_version.outputs.new_version }}"
+        else
+          echo "new_release=false" >> $GITHUB_OUTPUT
+          echo "No new version to release"
+        fi
+    
+    - name: Setup .NET
+      if: steps.should_release.outputs.new_release == 'true'
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+    
+    - name: Update version in csproj files
+      if: steps.should_release.outputs.new_release == 'true'
+      run: |
+        VERSION=${{ steps.get_version.outputs.new_version }}
+        find . -name "*.csproj" -type f | while read -r file; do
+          if grep -q "<Version>" "$file"; then
+            sed -i "s|<Version>.*</Version>|<Version>${VERSION}</Version>|g" "$file"
+          fi
+        done
+    
+    - name: Restore dependencies
+      if: steps.should_release.outputs.new_release == 'true'
+      run: dotnet restore
+    
+    - name: Build
+      if: steps.should_release.outputs.new_release == 'true'
+      run: dotnet build --configuration Release --no-restore
+    
+    - name: Test
+      if: steps.should_release.outputs.new_release == 'true'
+      run: dotnet test --configuration Release --no-build --verbosity normal
+    
+    - name: Pack
+      if: steps.should_release.outputs.new_release == 'true'
+      run: |
+        dotnet pack src/TechnicalAnalysis.Common/TechnicalAnalysis.Common.csproj --configuration Release --no-build --output ./artifacts
+        dotnet pack src/TechnicalAnalysis.Functions/TechnicalAnalysis.Functions.csproj --configuration Release --no-build --output ./artifacts
+        dotnet pack src/TechnicalAnalysis.Candles/TechnicalAnalysis.Candles.csproj --configuration Release --no-build --output ./artifacts
+    
+    - name: Install NuGet validator
+      if: steps.should_release.outputs.new_release == 'true'
+      run: dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
+    
+    - name: Validate NuGet packages
+      if: steps.should_release.outputs.new_release == 'true'
+      run: |
+        for file in ./artifacts/*.nupkg; do
+          echo "Validating $file"
+          meziantou.validate-nuget-package "$file"
+        done
+    
+    - name: Generate changelog
+      if: steps.should_release.outputs.new_release == 'true'
+      id: changelog
+      uses: TriPSs/conventional-changelog-action@v6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        skip-commit: true
+        output-file: false
+    
+    - name: Create tag
+      if: steps.should_release.outputs.new_release == 'true'
+      uses: mathieudutour/github-tag-action@v6.2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        custom_tag: ${{ steps.get_version.outputs.new_version }}
+    
+    - name: Push to NuGet
+      if: steps.should_release.outputs.new_release == 'true'
+      run: |
+        dotnet nuget push ./artifacts/*.nupkg \
+          --api-key ${{ secrets.NUGET_API_KEY }} \
+          --source https://api.nuget.org/v3/index.json \
+          --skip-duplicate
+    
+    - name: Create GitHub Release
+      if: steps.should_release.outputs.new_release == 'true'
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: v${{ steps.get_version.outputs.new_version }}
+        name: Release v${{ steps.get_version.outputs.new_version }}
+        body: ${{ steps.changelog.outputs.clean_changelog }}
+        files: |
+          ./artifacts/*.nupkg
+          ./artifacts/*.snupkg
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

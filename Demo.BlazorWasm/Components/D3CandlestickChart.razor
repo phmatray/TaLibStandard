@@ -24,7 +24,7 @@
                 }
                 
                 <MudItem xs="12">
-                    <div id="@chartId"></div>
+                    <div id="@_chartId"></div>
                 </MudItem>
                 
                 @if (ShowIndicatorLegend && (Indicators.Any() || Bands.Any()))
@@ -68,8 +68,8 @@
     [Parameter] public List<BandData> Bands { get; set; } = new();
     [Parameter] public List<SecondaryIndicatorData> SecondaryIndicators { get; set; } = new();
     
-    private string chartId = $"chart-{Guid.NewGuid():N}";
-    private IJSObjectReference? chartInstance;
+    private readonly string _chartId = $"chart-{Guid.NewGuid():N}";
+    private IJSObjectReference? _chartInstance;
     
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -105,9 +105,9 @@
             };
             
             // Create main chart
-            chartInstance = await JSRuntime.InvokeAsync<IJSObjectReference>(
+            _chartInstance = await JSRuntime.InvokeAsync<IJSObjectReference>(
                 "D3Charts.createCandlestickChart", 
-                chartId, 
+                _chartId, 
                 chartData, 
                 config);
             
@@ -132,8 +132,8 @@
                     
                     await JSRuntime.InvokeVoidAsync(
                         "D3Charts.addIndicator",
-                        chartId,
-                        chartInstance,
+                        _chartId,
+                        _chartInstance,
                         indicatorData,
                         indicatorConfig);
                 }
@@ -169,8 +169,8 @@
                     
                     await JSRuntime.InvokeVoidAsync(
                         "D3Charts.addBands",
-                        chartId,
-                        chartInstance,
+                        _chartId,
+                        _chartInstance,
                         upperData,
                         lowerData,
                         bandConfig);
@@ -182,8 +182,8 @@
             {
                 await JSRuntime.InvokeVoidAsync(
                     "D3Charts.addPatternMarkers",
-                    chartId,
-                    chartInstance,
+                    _chartId,
+                    _chartInstance,
                     Patterns,
                     chartData);
             }
@@ -210,7 +210,7 @@
                     
                     var secondaryInstance = await JSRuntime.InvokeAsync<IJSObjectReference>(
                         "D3Charts.createSecondaryIndicator",
-                        chartId,
+                        _chartId,
                         chartData,
                         secondaryData,
                         secondaryConfig);
@@ -232,7 +232,7 @@
                         
                         await JSRuntime.InvokeVoidAsync(
                             "D3Charts.addSignalLine",
-                            chartId,
+                            _chartId,
                             secondaryInstance,
                             signalData,
                             signalConfig);
@@ -250,7 +250,7 @@
                         
                         await JSRuntime.InvokeVoidAsync(
                             "D3Charts.addHistogram",
-                            chartId,
+                            _chartId,
                             secondaryInstance,
                             histogramData,
                             new { });
@@ -266,10 +266,10 @@
     
     public async ValueTask DisposeAsync()
     {
-        if (chartInstance != null)
+        if (_chartInstance != null)
         {
-            await JSRuntime.InvokeVoidAsync("D3Charts.dispose", chartId);
-            await chartInstance.DisposeAsync();
+            await JSRuntime.InvokeVoidAsync("D3Charts.dispose", _chartId);
+            await _chartInstance.DisposeAsync();
         }
     }
 }

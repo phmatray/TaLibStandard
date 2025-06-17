@@ -13,6 +13,13 @@ window.D3Charts = {
             .attr("width", config.width)
             .attr("height", config.height);
 
+        // Add a clip path to prevent drawing outside the chart area
+        svg.append("defs").append("clipPath")
+            .attr("id", `clip-${elementId}`)
+            .append("rect")
+            .attr("width", width)
+            .attr("height", height);
+
         const g = svg.append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -48,7 +55,8 @@ window.D3Charts = {
             .attr("transform", "rotate(-45)");
 
         // Add Y axis with dollar formatting
-        g.append("g")
+        const yAxis = g.append("g")
+            .attr("class", "y-axis")
             .call(d3.axisLeft(y)
                 .tickFormat(d => `$${d.toFixed(2)}`));
 
@@ -60,6 +68,11 @@ window.D3Charts = {
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text("Price ($)");
+
+        // Create chart content group with clipping
+        const chartContent = g.append("g")
+            .attr("class", "chart-content")
+            .attr("clip-path", `url(#clip-${elementId})`);
 
         // Create tooltip
         const tooltip = d3.select("body").append("div")
@@ -73,7 +86,7 @@ window.D3Charts = {
             .style("font-size", "12px");
 
         // Draw high-low lines
-        g.selectAll(".highlow")
+        const highLowLines = chartContent.selectAll(".highlow")
             .data(data)
             .enter().append("line")
             .attr("class", "highlow")
@@ -85,7 +98,7 @@ window.D3Charts = {
             .attr("stroke-width", 1);
 
         // Draw candlestick bodies
-        g.selectAll(".candle")
+        const candles = chartContent.selectAll(".candle")
             .data(data)
             .enter().append("rect")
             .attr("class", "candle")
@@ -113,6 +126,132 @@ window.D3Charts = {
                     .duration(500)
                     .style("opacity", 0);
             });
+
+        // Store original x scale domain
+        const xOriginalDomain = x.domain();
+        
+        // Add zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([0.5, 10])
+            .extent([[0, 0], [width, height]])
+            .translateExtent([[-width, -Infinity], [width * 2, Infinity]])
+            .on("zoom", function(event) {
+                // For band scales, we need to adjust the domain based on zoom
+                const t = event.transform;
+                const scaleFactor = t.k;
+                const xPos = t.x;
+                
+                // Calculate visible range
+                const domainLength = xOriginalDomain.length;
+                const visibleItems = Math.min(domainLength, Math.floor(domainLength / scaleFactor));
+                const startIdx = Math.max(0, Math.min(domainLength - visibleItems, 
+                    Math.floor(-xPos / (width / domainLength) / scaleFactor)));
+                
+                // Update domain
+                const newDomain = xOriginalDomain.slice(startIdx, startIdx + visibleItems);
+                x.domain(newDomain);
+                
+                // Update x axis
+                xAxis.call(d3.axisBottom(x)
+                    .tickFormat(d3.timeFormat("%b %d"))
+                    .tickValues(x.domain().filter((d, i) => i % Math.ceil(newDomain.length / 10) === 0)));
+                
+                xAxis.selectAll("text")
+                    .style("text-anchor", "end")
+                    .attr("dx", "-.8em")
+                    .attr("dy", ".15em")
+                    .attr("transform", "rotate(-45)");
+                
+                // Update candles
+                candles
+                    .attr("x", d => x(d.date) !== undefined ? x(d.date) : -1000)
+                    .attr("width", x.bandwidth());
+                
+                // Update high-low lines
+                highLowLines
+                    .attr("x1", d => x(d.date) !== undefined ? x(d.date) + x.bandwidth() / 2 : -1000)
+                    .attr("x2", d => x(d.date) !== undefined ? x(d.date) + x.bandwidth() / 2 : -1000);
+                
+                // Update indicator lines
+                chartContent.selectAll(".indicator-line").each(function() {
+                    const indicatorPath = d3.select(this);
+                    const indicatorData = indicatorPath.datum();
+                    const dates = indicatorPath.property("dates");
+                    const line = d3.line()
+                        .x((d, i) => {
+                            const date = new Date(dates[i]);
+                            const xPos = x(date);
+                            return xPos !== undefined ? xPos + x.bandwidth() / 2 : null;
+                        })
+                        .y(d => y(d))
+                        .defined((d, i) => {
+                            const date = new Date(dates[i]);
+                            return d !== null && !isNaN(d) && x(date) !== undefined;
+                        });
+                    indicatorPath.attr("d", line);
+                });
+                
+                // Update pattern markers
+                chartContent.selectAll(".pattern-marker").each(function() {
+                    const marker = d3.select(this);
+                    const date = marker.property("patternDate");
+                    if (date) {
+                        const xPos = x(date);
+                        if (xPos !== undefined) {
+                            const newMarkerX = xPos + x.bandwidth() / 2;
+                            marker.selectAll("text").attr("x", newMarkerX);
+                            marker.selectAll("circle").attr("cx", newMarkerX);
+                        } else {
+                            marker.style("display", "none");
+                        }
+                    }
+                });
+                
+                // Update band areas and lines
+                chartContent.selectAll("path[class*='band-']").each(function() {
+                    const bandPath = d3.select(this);
+                    const bandData = bandPath.datum();
+                    const dates = bandPath.property("dates");
+                    
+                    if (bandPath.attr("class").includes("band-upper-") || bandPath.attr("class").includes("band-lower-")) {
+                        // It's a line
+                        const line = d3.line()
+                            .x((d, i) => {
+                                const date = new Date(dates[i]);
+                                const xPos = x(date);
+                                return xPos !== undefined ? xPos + x.bandwidth() / 2 : null;
+                            })
+                            .y(d => y(d))
+                            .defined((d, i) => {
+                                const date = new Date(dates[i]);
+                                return d !== null && !isNaN(d) && x(date) !== undefined;
+                            });
+                        bandPath.attr("d", line);
+                    } else {
+                        // It's an area
+                        const lowerValues = bandPath.property("lowerValues");
+                        const area = d3.area()
+                            .x((d, i) => {
+                                const date = new Date(dates[i]);
+                                const xPos = x(date);
+                                return xPos !== undefined ? xPos + x.bandwidth() / 2 : null;
+                            })
+                            .y0((d, i) => y(lowerValues[i]))
+                            .y1((d, i) => y(bandData[i]))
+                            .defined((d, i) => {
+                                const date = new Date(dates[i]);
+                                return bandData[i] !== null && lowerValues[i] !== null && x(date) !== undefined;
+                            });
+                        bandPath.attr("d", area);
+                    }
+                });
+                
+                // Store transform for other chart elements
+                g.property("zoomTransform", event.transform);
+            });
+
+        // Apply zoom to svg
+        svg.call(zoom);
 
         // Add volume chart if enabled
         if (config.showVolume) {
@@ -160,26 +299,32 @@ window.D3Charts = {
             x: x,
             y: y,
             g: g,
+            chartContent: chartContent,
             width: width,
-            height: height
+            height: height,
+            svg: svg
         };
     },
 
     addIndicator: function (elementId, chartInstance, indicatorData, config) {
-        const { x, y, g, width, height } = chartInstance;
+        const { x, y, g, chartContent, width, height } = chartInstance;
+
+        // Parse dates in indicatorData
+        const parsedDates = indicatorData.dates.map(d => new Date(d));
 
         const line = d3.line()
-            .x((d, i) => x(indicatorData.dates[i]) + x.bandwidth() / 2)
+            .x((d, i) => x(parsedDates[i]) + x.bandwidth() / 2)
             .y(d => y(d))
             .defined(d => d !== null && !isNaN(d));
 
-        g.append("path")
+        chartContent.append("path")
             .datum(indicatorData.values)
-            .attr("class", `indicator-${config.name}`)
+            .attr("class", `indicator-${config.name} indicator-line`)
             .attr("fill", "none")
             .attr("stroke", config.color || "#ff6f00")
             .attr("stroke-width", config.strokeWidth || 2)
-            .attr("d", line);
+            .attr("d", line)
+            .property("dates", indicatorData.dates);
 
         // Add to legend
         const legend = g.select(".legend");
@@ -201,57 +346,65 @@ window.D3Charts = {
     },
 
     addBands: function (elementId, chartInstance, upperData, lowerData, config) {
-        const { x, y, g } = chartInstance;
+        const { x, y, g, chartContent } = chartInstance;
+
+        // Parse dates
+        const parsedDates = upperData.dates.map(d => new Date(d));
 
         const area = d3.area()
-            .x((d, i) => x(upperData.dates[i]) + x.bandwidth() / 2)
+            .x((d, i) => x(parsedDates[i]) + x.bandwidth() / 2)
             .y0((d, i) => y(lowerData.values[i]))
             .y1((d, i) => y(upperData.values[i]))
             .defined((d, i) => upperData.values[i] !== null && lowerData.values[i] !== null);
 
-        g.append("path")
+        chartContent.append("path")
             .datum(upperData.values)
             .attr("class", `band-${config.name}`)
             .attr("fill", config.fillColor || "#1976d2")
             .attr("opacity", config.fillOpacity || 0.1)
-            .attr("d", area);
+            .attr("d", area)
+            .property("dates", upperData.dates)
+            .property("lowerValues", lowerData.values);
 
         // Add upper band line
         const upperLine = d3.line()
-            .x((d, i) => x(upperData.dates[i]) + x.bandwidth() / 2)
+            .x((d, i) => x(parsedDates[i]) + x.bandwidth() / 2)
             .y(d => y(d))
             .defined(d => d !== null && !isNaN(d));
 
-        g.append("path")
+        chartContent.append("path")
             .datum(upperData.values)
             .attr("class", `band-upper-${config.name}`)
             .attr("fill", "none")
             .attr("stroke", config.upperColor || "#4caf50")
             .attr("stroke-width", 1)
             .attr("stroke-dasharray", "5,5")
-            .attr("d", upperLine);
+            .attr("d", upperLine)
+            .property("dates", upperData.dates);
 
         // Add lower band line
         const lowerLine = d3.line()
-            .x((d, i) => x(lowerData.dates[i]) + x.bandwidth() / 2)
+            .x((d, i) => x(parsedDates[i]) + x.bandwidth() / 2)
             .y(d => y(d))
             .defined(d => d !== null && !isNaN(d));
 
-        g.append("path")
+        chartContent.append("path")
             .datum(lowerData.values)
             .attr("class", `band-lower-${config.name}`)
             .attr("fill", "none")
             .attr("stroke", config.lowerColor || "#f44336")
             .attr("stroke-width", 1)
             .attr("stroke-dasharray", "5,5")
-            .attr("d", lowerLine);
+            .attr("d", lowerLine)
+            .property("dates", lowerData.dates);
     },
 
     addPatternMarkers: function (elementId, chartInstance, patterns, data) {
-        const { x, y, g } = chartInstance;
+        const { x, y, g, chartContent } = chartInstance;
 
-        const patternGroup = g.append("g")
-            .attr("class", "pattern-markers");
+        const patternGroup = chartContent.append("g")
+            .attr("class", "pattern-markers")
+            .attr("clip-path", `url(#clip-${elementId})`);
 
         // Create pattern tooltip
         const patternTooltip = d3.select("body").append("div")
@@ -288,7 +441,8 @@ window.D3Charts = {
             // Create a group for each pattern
             const markerGroup = patternGroup.append("g")
                 .attr("class", "pattern-marker")
-                .style("cursor", "pointer");
+                .style("cursor", "pointer")
+                .property("patternDate", dataPoint.date);
 
             // Add pattern name (above for bullish, below for bearish)
             markerGroup.append("text")

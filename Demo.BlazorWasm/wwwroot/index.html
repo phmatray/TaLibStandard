@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaLibStandard Demo - Technical Analysis Library</title>
     <base href="/" />
+    
+    <!-- PWA meta tags -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#7e57c2" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
@@ -30,6 +36,7 @@
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="js/d3-charts.js"></script>
+    <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
 
 </html>

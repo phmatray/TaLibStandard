@@ -4,6 +4,8 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <GHPages>true</GHPages>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +13,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" PrivateAssets="all"/>
     <PackageReference Include="MudBlazor" />
     <PackageReference Include="System.Text.Json" />
+    <PackageReference Include="PublishSPAforGitHubPages.Build" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot/service-worker.js" PublishedContent="wwwroot/service-worker.published.js" />
   </ItemGroup>
 
   <ItemGroup>
