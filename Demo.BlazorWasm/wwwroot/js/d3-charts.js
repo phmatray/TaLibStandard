@@ -267,11 +267,21 @@ window.D3Charts = {
             .style("box-shadow", "0 2px 8px rgba(0,0,0,0.3)");
 
         patterns.forEach(pattern => {
+            // Find the data point that matches the pattern index
             const dataPoint = data[pattern.index];
-            if (!dataPoint) return;
+            if (!dataPoint) {
+                console.warn(`Pattern at index ${pattern.index} has no matching data point`);
+                return;
+            }
 
+            // Ensure date is parsed correctly for the data point
+            if (!(dataPoint.date instanceof Date)) {
+                dataPoint.date = new Date(dataPoint.date);
+            }
+
+            // Get the exact position using the parsed date
             const markerX = x(dataPoint.date) + x.bandwidth() / 2;
-            const markerY = pattern.value > 0 ? y(dataPoint.high) - 20 : y(dataPoint.low) + 20;
+            const markerY = pattern.value > 0 ? y(dataPoint.high) - 35 : y(dataPoint.low) + 35;
             const color = pattern.value > 0 ? "#4caf50" : "#f44336";
             const icon = pattern.value > 0 ? "▲" : "▼";
 
@@ -280,22 +290,22 @@ window.D3Charts = {
                 .attr("class", "pattern-marker")
                 .style("cursor", "pointer");
 
-            // Add connecting line
-            markerGroup.append("line")
-                .attr("x1", markerX)
-                .attr("y1", pattern.value > 0 ? y(dataPoint.high) : y(dataPoint.low))
-                .attr("x2", markerX)
-                .attr("y2", markerY)
-                .attr("stroke", color)
-                .attr("stroke-width", 1)
-                .attr("stroke-dasharray", "2,2")
-                .attr("opacity", 0.6);
+            // Add pattern name (above for bullish, below for bearish)
+            markerGroup.append("text")
+                .attr("x", markerX)
+                .attr("y", pattern.value > 0 ? markerY - 15 : markerY + 20)
+                .attr("text-anchor", "middle")
+                .attr("fill", color)
+                .style("font-size", "10px")
+                .style("font-weight", "600")
+                .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)")
+                .text(pattern.patternName);
 
             // Add background circle
             markerGroup.append("circle")
                 .attr("cx", markerX)
                 .attr("cy", markerY)
-                .attr("r", 12)
+                .attr("r", 8)
                 .attr("fill", "white")
                 .attr("stroke", color)
                 .attr("stroke-width", 2);
@@ -303,23 +313,12 @@ window.D3Charts = {
             // Add pattern icon
             markerGroup.append("text")
                 .attr("x", markerX)
-                .attr("y", markerY + 4)
+                .attr("y", markerY + 3)
                 .attr("text-anchor", "middle")
                 .attr("fill", color)
-                .style("font-size", "14px")
+                .style("font-size", "10px")
                 .style("font-weight", "bold")
                 .text(icon);
-
-            // Add pattern name below
-            markerGroup.append("text")
-                .attr("x", markerX)
-                .attr("y", markerY + 25)
-                .attr("text-anchor", "middle")
-                .attr("fill", color)
-                .style("font-size", "11px")
-                .style("font-weight", "600")
-                .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)")
-                .text(pattern.patternName);
 
             // Add hover effects
             markerGroup
@@ -327,7 +326,7 @@ window.D3Charts = {
                     d3.select(this).select("circle")
                         .transition()
                         .duration(200)
-                        .attr("r", 15);
+                        .attr("r", 10);
                     
                     patternTooltip.transition()
                         .duration(200)
@@ -360,7 +359,7 @@ window.D3Charts = {
                     d3.select(this).select("circle")
                         .transition()
                         .duration(200)
-                        .attr("r", 12);
+                        .attr("r", 8);
                     
                     patternTooltip.transition()
                         .duration(500)
