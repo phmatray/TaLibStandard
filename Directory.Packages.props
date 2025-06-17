@@ -19,18 +19,13 @@
     <PackageVersion Include="xunit.v3.runner.console" Version="2.0.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.1" />
     <!-- Demo Dependencies -->
-    <PackageVersion Include="System.Reactive" Version="6.0.1" />
-    <PackageVersion Include="System.Reactive.Linq" Version="6.0.1" />
-    <PackageVersion Include="System.Reactive.Observable.Aliases" Version="6.0.1" />
     <PackageVersion Include="YahooFinanceApi" Version="2.3.1" />
-    <PackageVersion Include="Spectre.Console" Version="0.49.1" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.1" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.1" />
     <!-- Blazor Demo Dependencies -->
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.6" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.6" />
     <PackageVersion Include="MudBlazor" Version="8.8.0" />
-    <PackageVersion Include="ApexCharts.Blazor" Version="0.9.6-alpha" />
     <PackageVersion Include="System.Text.Json" Version="9.0.6" />
     <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.0" />
   </ItemGroup>
