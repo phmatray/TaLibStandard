@@ -10,6 +10,8 @@
     <NullableReferenceTypes>true</NullableReferenceTypes>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <Authors>Philippe Matray</Authors>
+    <!-- MinVer Configuration for all projects -->
+    <MinVerTagPrefix>v</MinVerTagPrefix>
   </PropertyGroup>
 
   <!-- Code Analysis Settings -->
