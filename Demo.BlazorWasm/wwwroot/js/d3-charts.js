@@ -47,10 +47,10 @@ window.D3Charts = {
             .attr("dy", ".15em")
             .attr("transform", "rotate(-45)");
 
-        // Add Y axis
+        // Add Y axis with dollar formatting
         g.append("g")
             .call(d3.axisLeft(y)
-                .tickFormat(d3.format(".2f")));
+                .tickFormat(d => `$${d.toFixed(2)}`));
 
         // Add Y axis label
         g.append("text")
@@ -59,7 +59,7 @@ window.D3Charts = {
             .attr("x", 0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text("Price");
+            .text("Price ($)");
 
         // Create tooltip
         const tooltip = d3.select("body").append("div")
@@ -100,10 +100,10 @@ window.D3Charts = {
                     .duration(200)
                     .style("opacity", .9);
                 tooltip.html(`Date: ${d3.timeFormat("%Y-%m-%d")(d.date)}<br/>
-                             Open: ${d.open.toFixed(2)}<br/>
-                             High: ${d.high.toFixed(2)}<br/>
-                             Low: ${d.low.toFixed(2)}<br/>
-                             Close: ${d.close.toFixed(2)}<br/>
+                             Open: $${d.open.toFixed(2)}<br/>
+                             High: $${d.high.toFixed(2)}<br/>
+                             Low: $${d.low.toFixed(2)}<br/>
+                             Close: $${d.close.toFixed(2)}<br/>
                              Volume: ${d.volume.toLocaleString()}`)
                     .style("left", (event.pageX + 10) + "px")
                     .style("top", (event.pageY - 28) + "px");
@@ -253,30 +253,119 @@ window.D3Charts = {
         const patternGroup = g.append("g")
             .attr("class", "pattern-markers");
 
+        // Create pattern tooltip
+        const patternTooltip = d3.select("body").append("div")
+            .attr("class", "d3-pattern-tooltip")
+            .style("opacity", 0)
+            .style("position", "absolute")
+            .style("background", "rgba(0, 0, 0, 0.9)")
+            .style("color", "white")
+            .style("padding", "12px")
+            .style("border-radius", "6px")
+            .style("font-size", "12px")
+            .style("pointer-events", "none")
+            .style("box-shadow", "0 2px 8px rgba(0,0,0,0.3)");
+
         patterns.forEach(pattern => {
             const dataPoint = data[pattern.index];
             if (!dataPoint) return;
 
             const markerX = x(dataPoint.date) + x.bandwidth() / 2;
-            const markerY = pattern.value > 0 ? y(dataPoint.high) - 15 : y(dataPoint.low) + 15;
-            const color = pattern.value > 0 ? "#26a69a" : "#ef5350";
+            const markerY = pattern.value > 0 ? y(dataPoint.high) - 20 : y(dataPoint.low) + 20;
+            const color = pattern.value > 0 ? "#4caf50" : "#f44336";
+            const icon = pattern.value > 0 ? "▲" : "▼";
 
-            // Add circle marker
-            patternGroup.append("circle")
+            // Create a group for each pattern
+            const markerGroup = patternGroup.append("g")
+                .attr("class", "pattern-marker")
+                .style("cursor", "pointer");
+
+            // Add connecting line
+            markerGroup.append("line")
+                .attr("x1", markerX)
+                .attr("y1", pattern.value > 0 ? y(dataPoint.high) : y(dataPoint.low))
+                .attr("x2", markerX)
+                .attr("y2", markerY)
+                .attr("stroke", color)
+                .attr("stroke-width", 1)
+                .attr("stroke-dasharray", "2,2")
+                .attr("opacity", 0.6);
+
+            // Add background circle
+            markerGroup.append("circle")
                 .attr("cx", markerX)
                 .attr("cy", markerY)
-                .attr("r", 4)
-                .attr("fill", color);
+                .attr("r", 12)
+                .attr("fill", "white")
+                .attr("stroke", color)
+                .attr("stroke-width", 2);
 
-            // Add pattern label
-            patternGroup.append("text")
+            // Add pattern icon
+            markerGroup.append("text")
                 .attr("x", markerX)
-                .attr("y", markerY - 8)
+                .attr("y", markerY + 4)
                 .attr("text-anchor", "middle")
                 .attr("fill", color)
-                .style("font-size", "10px")
+                .style("font-size", "14px")
                 .style("font-weight", "bold")
-                .text(pattern.patternName.substring(0, 3));
+                .text(icon);
+
+            // Add pattern name below
+            markerGroup.append("text")
+                .attr("x", markerX)
+                .attr("y", markerY + 25)
+                .attr("text-anchor", "middle")
+                .attr("fill", color)
+                .style("font-size", "11px")
+                .style("font-weight", "600")
+                .style("text-shadow", "1px 1px 2px rgba(255,255,255,0.8)")
+                .text(pattern.patternName);
+
+            // Add hover effects
+            markerGroup
+                .on("mouseover", function(event) {
+                    d3.select(this).select("circle")
+                        .transition()
+                        .duration(200)
+                        .attr("r", 15);
+                    
+                    patternTooltip.transition()
+                        .duration(200)
+                        .style("opacity", .95);
+                    
+                    const signal = pattern.value > 0 ? "Bullish" : pattern.value < 0 ? "Bearish" : "Neutral";
+                    const signalColor = pattern.value > 0 ? "#4caf50" : pattern.value < 0 ? "#f44336" : "#999";
+                    
+                    patternTooltip.html(`
+                        <div style="font-weight: bold; margin-bottom: 8px; color: ${signalColor}">
+                            ${pattern.patternName}
+                        </div>
+                        <div style="margin-bottom: 4px;">
+                            <strong>Date:</strong> ${d3.timeFormat("%Y-%m-%d")(dataPoint.date)}
+                        </div>
+                        <div style="margin-bottom: 4px;">
+                            <strong>Signal:</strong> <span style="color: ${signalColor}">${signal}</span>
+                        </div>
+                        <div style="margin-bottom: 4px;">
+                            <strong>Price:</strong> $${dataPoint.close.toFixed(2)}
+                        </div>
+                        <div>
+                            <strong>Volume:</strong> ${dataPoint.volume.toLocaleString()}
+                        </div>
+                    `)
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 28) + "px");
+                })
+                .on("mouseout", function() {
+                    d3.select(this).select("circle")
+                        .transition()
+                        .duration(200)
+                        .attr("r", 12);
+                    
+                    patternTooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
         });
     },
 
@@ -413,5 +502,6 @@ window.D3Charts = {
     dispose: function (elementId) {
         d3.select(`#${elementId}`).selectAll("*").remove();
         d3.select("body").selectAll(".d3-tooltip").remove();
+        d3.select("body").selectAll(".d3-pattern-tooltip").remove();
     }
 };

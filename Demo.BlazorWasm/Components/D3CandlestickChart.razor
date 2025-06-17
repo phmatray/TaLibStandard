@@ -1,6 +1,3 @@
-@using Demo.BlazorWasm.Models
-@using Demo.BlazorWasm.Services
-@using Microsoft.JSInterop
 @implements IAsyncDisposable
 
 <MudCard>
@@ -12,7 +9,7 @@
             <MudGrid>
                 <MudItem xs="12">
                     <MudText Typo="Typo.body2" Class="mb-2">
-                        Latest Price: <strong>@StockData.Last().Close.ToString("C")</strong> | 
+                        Latest Price: <strong>$@StockData.Last().Close.ToString("F2")</strong> | 
                         Date Range: @StockData.First().Date.ToShortDateString() - @StockData.Last().Date.ToShortDateString()
                     </MudText>
                 </MudItem>
@@ -145,7 +142,7 @@
             // Add bands
             foreach (var band in Bands)
             {
-                if (band.UpperValues != null && band.LowerValues != null)
+                if (band is { UpperValues: not null, LowerValues: not null })
                 {
                     var upperData = new
                     {
@@ -281,33 +278,33 @@
 @code {
     public class IndicatorData
     {
-        public string Name { get; set; } = "";
-        public double[]? Values { get; set; }
-        public int BegIdx { get; set; }
-        public string Color { get; set; } = "#ff6f00";
-        public int StrokeWidth { get; set; } = 2;
+        public string Name { get; init; } = "";
+        public double[]? Values { get; init; }
+        public int BegIdx { get; init; }
+        public string Color { get; init; } = "#ff6f00";
+        public int StrokeWidth { get; init; } = 2;
     }
     
     public class BandData
     {
-        public string Name { get; set; } = "";
-        public double[]? UpperValues { get; set; }
-        public double[]? LowerValues { get; set; }
-        public int BegIdx { get; set; }
-        public string UpperColor { get; set; } = "#4caf50";
-        public string LowerColor { get; set; } = "#f44336";
-        public string FillColor { get; set; } = "#1976d2";
-        public double FillOpacity { get; set; } = 0.1;
+        public string Name { get; init; } = "";
+        public double[]? UpperValues { get; init; }
+        public double[]? LowerValues { get; init; }
+        public int BegIdx { get; init; }
+        public string UpperColor { get; init; } = "#4caf50";
+        public string LowerColor { get; init; } = "#f44336";
+        public string FillColor { get; init; } = "#1976d2";
+        public double FillOpacity { get; init; } = 0.1;
     }
     
     public class SecondaryIndicatorData
     {
-        public string Name { get; set; } = "";
-        public double[]? Values { get; set; }
-        public double[]? SignalValues { get; set; }
-        public double[]? HistogramValues { get; set; }
-        public int BegIdx { get; set; }
-        public string Color { get; set; } = "#1976d2";
-        public string SignalColor { get; set; } = "#ff6f00";
+        public string Name { get; init; } = "";
+        public double[]? Values { get; init; }
+        public double[]? SignalValues { get; init; }
+        public double[]? HistogramValues { get; init; }
+        public int BegIdx { get; init; }
+        public string Color { get; init; } = "#1976d2";
+        public string SignalColor { get; init; } = "#ff6f00";
     }
 }

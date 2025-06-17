@@ -200,7 +200,7 @@
                                         </MudChip>
                                     </MudTd>
                                     <MudTd DataLabel="Price" Style="text-align: right">
-                                        <MudText Typo="Typo.body2">@_stockData[context.Index].Close.ToString("C")</MudText>
+                                        <MudText Typo="Typo.body2">$@_stockData[context.Index].Close.ToString("F2")</MudText>
                                     </MudTd>
                                     <MudTd DataLabel="Volume" Style="text-align: right">
                                         <MudText Typo="Typo.body2">@_stockData[context.Index].Volume.ToString("N0")</MudText>
