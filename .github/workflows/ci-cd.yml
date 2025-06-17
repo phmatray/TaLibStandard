@@ -1,7 +1,9 @@
-name: Release
+name: CI/CD
 
 on:
   push:
+    branches: [ main, develop ]
+  pull_request:
     branches: [ main ]
   workflow_dispatch:
 
@@ -9,10 +11,46 @@ permissions:
   contents: write
   packages: write
   pull-requests: write
+  pages: write
+  id-token: write
 
 jobs:
+  build-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        dotnet-version: ['9.0.x']
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for MinVer
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --configuration Release --logger "trx;LogFileName=test-results.trx"
+      
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results-${{ matrix.os }}
+        path: "**/test-results.trx"
+
   release:
     runs-on: ubuntu-latest
+    needs: build-and-test
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     
     steps:
@@ -94,7 +132,7 @@ jobs:
       if: steps.should_release.outputs.new_release == 'true'
       run: dotnet test --configuration Release --no-build --verbosity normal
     
-    - name: Pack
+    - name: Pack NuGet packages
       if: steps.should_release.outputs.new_release == 'true'
       run: |
         dotnet pack src/TechnicalAnalysis.Common/TechnicalAnalysis.Common.csproj --configuration Release --no-build --output ./artifacts
@@ -112,6 +150,12 @@ jobs:
           echo "Validating $file"
           meziantou.validate-nuget-package "$file"
         done
+    
+    - name: Build Blazor Demo
+      if: steps.should_release.outputs.new_release == 'true'
+      run: |
+        dotnet build Demo.BlazorWasm/Demo.BlazorWasm.csproj --configuration Release
+        dotnet publish Demo.BlazorWasm/Demo.BlazorWasm.csproj --configuration Release --output ./dist -p:GHPages=true
     
     - name: Generate changelog
       if: steps.should_release.outputs.new_release == 'true'
@@ -151,3 +195,11 @@ jobs:
         prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Deploy Demo to GitHub Pages
+      if: steps.should_release.outputs.new_release == 'true'
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist/wwwroot
+        force_orphan: true
