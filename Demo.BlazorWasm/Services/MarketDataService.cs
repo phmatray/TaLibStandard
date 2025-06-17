@@ -1,23 +1,90 @@
+using System.Text.Json;
 using Demo.BlazorWasm.Models;
 
 namespace Demo.BlazorWasm.Services;
 
-public class MarketDataService : IMarketDataService
+public class MarketDataService(HttpClient httpClient) : IMarketDataService
 {
-    private readonly HttpClient _httpClient;
-    private readonly Random _random = new();
-
-    public MarketDataService(HttpClient httpClient)
-    {
-        _httpClient = httpClient;
-    }
-
     public async Task<List<StockData>> GetHistoricalDataAsync(string symbol, int days = 100)
     {
-        // In a real application, this would call Yahoo Finance API
-        // For the demo, we'll generate sample data
-        await Task.Delay(500); // Simulate API call
-        return GenerateSampleData(days);
+        try
+        {
+            // Calculate date range
+            DateTime endDate = DateTime.Now;
+            DateTime startDate = endDate.AddDays(-days);
+
+            // Convert to Unix timestamps
+            long period1 = ((DateTimeOffset)startDate).ToUnixTimeSeconds();
+            long period2 = ((DateTimeOffset)endDate).ToUnixTimeSeconds();
+
+            // Yahoo Finance API v8 endpoint with CORS proxy
+            // Note: In production, you should use your own backend API to proxy these requests
+            string yahooUrl =
+                $"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?period1={period1}&period2={period2}&interval=1d";
+            string url = $"https://corsproxy.io/?{Uri.EscapeDataString(yahooUrl)}";
+
+            HttpResponseMessage response = await httpClient.GetAsync(url);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException($"Failed to fetch data from Yahoo Finance. Status: {response.StatusCode}");
+            }
+
+            string json = await response.Content.ReadAsStringAsync();
+            JsonDocument data = JsonDocument.Parse(json);
+
+            JsonElement result = data.RootElement
+                .GetProperty("chart")
+                .GetProperty("result")[0];
+
+            List<DateTime> timestamps =
+            [
+                .. result
+                    .GetProperty("timestamp")
+                    .EnumerateArray()
+                    .Select(t => DateTimeOffset.FromUnixTimeSeconds(t.GetInt64()).DateTime)
+            ];
+
+            JsonElement quote = result.GetProperty("indicators").GetProperty("quote")[0];
+            List<JsonElement> opens = [.. quote.GetProperty("open").EnumerateArray()];
+            List<JsonElement> highs = [.. quote.GetProperty("high").EnumerateArray()];
+            List<JsonElement> lows = [.. quote.GetProperty("low").EnumerateArray()];
+            List<JsonElement> closes = [.. quote.GetProperty("close").EnumerateArray()];
+            List<JsonElement> volumes = [.. quote.GetProperty("volume").EnumerateArray()];
+
+            List<StockData> stockData = [];
+
+            for (int i = 0; i < timestamps.Count; i++)
+            {
+                // Skip entries with null values
+                if (opens[i].ValueKind == JsonValueKind.Null ||
+                    highs[i].ValueKind == JsonValueKind.Null ||
+                    lows[i].ValueKind == JsonValueKind.Null ||
+                    closes[i].ValueKind == JsonValueKind.Null ||
+                    volumes[i].ValueKind == JsonValueKind.Null)
+                {
+                    continue;
+                }
+
+                stockData.Add(new StockData
+                {
+                    Date = timestamps[i],
+                    Open = Math.Round(opens[i].GetDecimal(), 2),
+                    High = Math.Round(highs[i].GetDecimal(), 2),
+                    Low = Math.Round(lows[i].GetDecimal(), 2),
+                    Close = Math.Round(closes[i].GetDecimal(), 2),
+                    Volume = volumes[i].GetInt64()
+                });
+            }
+
+            return stockData;
+        }
+        catch (Exception ex)
+        {
+            // Log the exception in a real application
+            Console.WriteLine($"Error fetching data from Yahoo Finance: {ex.Message}");
+            throw;
+        }
     }
 
     public async Task<List<string>> SearchSymbolsAsync(string query)
@@ -37,37 +104,5 @@ public class MarketDataService : IMarketDataService
                 .Where(s => s.Contains(query, StringComparison.OrdinalIgnoreCase))
                 .Take(10)
         ];
-    }
-
-    public List<StockData> GenerateSampleData(int days = 100)
-    {
-        List<StockData> data = [];
-        decimal basePrice = 100m + _random.Next(50, 200);
-        DateTime currentDate = DateTime.Now.Date;
-
-        for (int i = days - 1; i >= 0; i--)
-        {
-            DateTime date = currentDate.AddDays(-i);
-            decimal dailyChange = (decimal)((_random.NextDouble() * 10) - 5); // -5% to +5%
-            basePrice *= 1 + (dailyChange / 100);
-
-            decimal open = basePrice + (decimal)((_random.NextDouble() * 2) - 1);
-            decimal close = basePrice + (decimal)((_random.NextDouble() * 2) - 1);
-            decimal high = Math.Max(open, close) + (decimal)(_random.NextDouble() * 2);
-            decimal low = Math.Min(open, close) - (decimal)(_random.NextDouble() * 2);
-            int volume = _random.Next(1000000, 10000000);
-
-            data.Add(new StockData
-            {
-                Date = date,
-                Open = Math.Round(open, 2),
-                High = Math.Round(high, 2),
-                Low = Math.Round(low, 2),
-                Close = Math.Round(close, 2),
-                Volume = volume
-            });
-        }
-
-        return data;
     }
 }

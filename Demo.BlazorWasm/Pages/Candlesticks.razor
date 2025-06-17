@@ -219,6 +219,12 @@
             </MudAlert>
         }
     }
+    else if (_errorMessage != null)
+    {
+        <MudAlert Severity="Severity.Error" Elevation="2" Class="mt-4">
+            <MudText>@_errorMessage</MudText>
+        </MudAlert>
+    }
     else if (!_hasAnalyzed)
     {
         <MudGrid Justify="Justify.Center" Class="mt-8">
@@ -265,6 +271,7 @@
     private bool _isLoading;
     private bool _hasAnalyzed;
     private bool _drawerOpen;
+    private string? _errorMessage;
     
     private List<StockData>? _stockData;
     private List<CandlePatternResult>? _patterns;
@@ -405,6 +412,7 @@
     {
         _isLoading = true;
         _hasAnalyzed = true;
+        _errorMessage = null;
         StateHasChanged();
         
         try
@@ -414,6 +422,13 @@
             
             // Detect patterns using the enabled patterns filter
             _patterns = TechnicalAnalysisService.DetectCandlePatterns(_stockData, _enabledPatterns);
+        }
+        catch (Exception ex)
+        {
+            _errorMessage = $"Failed to fetch data for {_symbol}. Please check the symbol and try again.";
+            _stockData = null;
+            _patterns = null;
+            Console.WriteLine($"Error in DetectPatterns: {ex.Message}");
         }
         finally
         {
