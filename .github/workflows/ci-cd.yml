@@ -28,7 +28,7 @@ jobs:
         fetch-depth: 0  # Full history for MinVer
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
         
@@ -106,7 +106,7 @@ jobs:
     
     - name: Setup .NET
       if: steps.should_release.outputs.new_release == 'true'
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: '9.0.x'
     
