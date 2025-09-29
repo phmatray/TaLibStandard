@@ -6,7 +6,7 @@
     <!-- Code Analyzers -->
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0" />
     <!-- Build Tools -->
-    <PackageVersion Include="DotNet.ReproducibleBuilds" Version="1.2.25" />
+    <PackageVersion Include="DotNet.ReproducibleBuilds" Version="1.2.39" />
     <PackageVersion Include="MinVer" Version="6.0.0" />
     <!-- Documentation -->
     <PackageVersion Include="DefaultDocumentation" Version="1.1.1" />
