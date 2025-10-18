@@ -9,7 +9,7 @@
     <PackageVersion Include="DotNet.ReproducibleBuilds" Version="1.2.25" />
     <PackageVersion Include="MinVer" Version="6.0.0" />
     <!-- Documentation -->
-    <PackageVersion Include="DefaultDocumentation" Version="1.1.1" />
+    <PackageVersion Include="DefaultDocumentation" Version="1.2.2" />
     <!-- Testing -->
     <PackageVersion Include="AutoFixture" Version="4.18.1" />
     <PackageVersion Include="Shouldly" Version="4.3.0" />
