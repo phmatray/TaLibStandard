@@ -20,13 +20,13 @@
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.1" />
     <!-- Demo Dependencies -->
     <PackageVersion Include="YahooFinanceApi" Version="2.3.3" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.6" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.11" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.11" />
     <!-- Blazor Demo Dependencies -->
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.6" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.6" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.11" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.11" />
     <PackageVersion Include="MudBlazor" Version="8.8.0" />
-    <PackageVersion Include="System.Text.Json" Version="9.0.6" />
+    <PackageVersion Include="System.Text.Json" Version="9.0.11" />
     <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.0" />
   </ItemGroup>
 </Project>
