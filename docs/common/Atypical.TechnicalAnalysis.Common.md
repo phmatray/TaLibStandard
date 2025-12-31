@@ -8,12 +8,6 @@
 ## TechnicalAnalysis Namespace
 - **[TACore](TACore.md 'TechnicalAnalysis\.TACore')** `Class` Provides core functionalities for the Technical Analysis library\.
   - **[Globals](TACore.Globals.md 'TechnicalAnalysis\.TACore\.Globals')** `Property` Gets the global settings for the Technical Analysis library\.
-  - **[GetCompatibility\(\)](TACore.GetCompatibility().md 'TechnicalAnalysis\.TACore\.GetCompatibility\(\)')** `Method` Gets the compatibility mode of the Technical Analysis library\.
-  - **[GetUnstablePeriod\(FuncUnstId\)](TACore.GetUnstablePeriod(FuncUnstId).md 'TechnicalAnalysis\.TACore\.GetUnstablePeriod\(TechnicalAnalysis\.Common\.FuncUnstId\)')** `Method` Gets the unstable period for a given function\.
-  - **[RestoreCandleDefaultSettings\(CandleSettingType\)](TACore.RestoreCandleDefaultSettings(CandleSettingType).md 'TechnicalAnalysis\.TACore\.RestoreCandleDefaultSettings\(TechnicalAnalysis\.Common\.CandleSettingType\)')** `Method` Restores the default settings for a given candle setting type\.
-  - **[SetCandleSettings\(CandleSetting\)](TACore.SetCandleSettings(CandleSetting).md 'TechnicalAnalysis\.TACore\.SetCandleSettings\(TechnicalAnalysis\.Common\.CandleSetting\)')** `Method` Sets the candle settings for a given candle setting type\.
-  - **[SetCompatibility\(Compatibility\)](TACore.SetCompatibility(Compatibility).md 'TechnicalAnalysis\.TACore\.SetCompatibility\(TechnicalAnalysis\.Common\.Compatibility\)')** `Method` Sets the compatibility mode of the Technical Analysis library\.
-  - **[SetUnstablePeriod\(FuncUnstId, long\)](TACore.SetUnstablePeriod(FuncUnstId,long).md 'TechnicalAnalysis\.TACore\.SetUnstablePeriod\(TechnicalAnalysis\.Common\.FuncUnstId, long\)')** `Method` Sets the unstable period for a given function\.
 
 <a name='TechnicalAnalysis.Common'></a>
 

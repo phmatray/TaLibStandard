@@ -18,7 +18,7 @@ The lookback period consists of:
 \- A fixed period of 32 bars for the Hilbert Transform calculation
 \- Plus any additional unstable period configured for this function
 
-The unstable period can be configured using TACore\.SetUnstablePeriod\(\) to adjust
+The unstable period can be configured by modifying TACore\.Globals\.UnstablePeriod\[FuncUnstId\.HtPhasor\] to adjust
 how many additional bars are needed for the algorithm to stabilize\. By default,
 the unstable period is 0, making the total lookback period 32 bars\.
 
