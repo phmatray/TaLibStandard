@@ -751,18 +751,14 @@ M:TechnicalAnalysis.Functions.TypPriceResult.#ctor(TechnicalAnalysis.Common.RetC
 T:TechnicalAnalysis.Functions.TypPriceResult|TypPriceResult.md|TypPriceResult
 M:TechnicalAnalysis.Functions.UltOscResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|UltOscResult.UltOscResult(RetCode,int,int,double[]).md|UltOscResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.UltOscResult|UltOscResult.md|UltOscResult
-P:TechnicalAnalysis.Functions.VarianceResult.Real|VarianceResult.Real.md|Real
 M:TechnicalAnalysis.Functions.VarianceResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|VarianceResult.VarianceResult(RetCode,int,int,double[]).md|VarianceResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.VarianceResult|VarianceResult.md|VarianceResult
-P:TechnicalAnalysis.Functions.WclPriceResult.Real|WclPriceResult.Real.md|Real
 M:TechnicalAnalysis.Functions.WclPriceResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|WclPriceResult.WclPriceResult(RetCode,int,int,double[]).md|WclPriceResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.WclPriceResult|WclPriceResult.md|WclPriceResult
-P:TechnicalAnalysis.Functions.WillRResult.Real|WillRResult.Real.md|Real
 M:TechnicalAnalysis.Functions.WillRResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|WillRResult.WillRResult(RetCode,int,int,double[]).md|WillRResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.WillRResult|WillRResult.md|WillRResult
 M:TechnicalAnalysis.Functions.WmaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|WmaResult.WmaResult(RetCode,int,int,double[]).md|WmaResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.WmaResult|WmaResult.md|WmaResult
-P:TechnicalAnalysis.Functions.ZigZagResult.Real|ZigZagResult.Real.md|Real
 M:TechnicalAnalysis.Functions.ZigZagResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|ZigZagResult.ZigZagResult(RetCode,int,int,double[]).md|ZigZagResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.ZigZagResult|ZigZagResult.md|ZigZagResult
 ?:TechnicalAnalysis.Functions.TAMath.Acos|TAMath.Acos.md|Acos
