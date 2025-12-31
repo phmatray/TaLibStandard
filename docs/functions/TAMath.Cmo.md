@@ -5,43 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [Cmo\(int, int, double\[\]\)](TAMath.Cmo.md#TechnicalAnalysis.Functions.TAMath.Cmo(int,int,double[]) 'TechnicalAnalysis\.Functions\.TAMath\.Cmo\(int, int, double\[\]\)') | Calculates the Chande Momentum Oscillator \(CMO\) using the default time period of 14\. |
 | [Cmo\(int, int, double\[\], int\)](TAMath.Cmo.md#TechnicalAnalysis.Functions.TAMath.Cmo(int,int,double[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Cmo\(int, int, double\[\], int\)') | Calculates the Chande Momentum Oscillator \(CMO\) which measures momentum on both up and down days\. |
-| [Cmo\(int, int, float\[\]\)](TAMath.Cmo.md#TechnicalAnalysis.Functions.TAMath.Cmo(int,int,float[]) 'TechnicalAnalysis\.Functions\.TAMath\.Cmo\(int, int, float\[\]\)') | Calculates the Chande Momentum Oscillator \(CMO\) using the default time period of 14\. |
 | [Cmo\(int, int, float\[\], int\)](TAMath.Cmo.md#TechnicalAnalysis.Functions.TAMath.Cmo(int,int,float[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Cmo\(int, int, float\[\], int\)') | Calculates the Chande Momentum Oscillator \(CMO\) which measures momentum on both up and down days\. |
-
-<a name='TechnicalAnalysis.Functions.TAMath.Cmo(int,int,double[])'></a>
-
-## TAMath\.Cmo\(int, int, double\[\]\) Method
-
-Calculates the Chande Momentum Oscillator \(CMO\) using the default time period of 14\.
-
-```csharp
-public static TechnicalAnalysis.Functions.CmoResult Cmo(int startIdx, int endIdx, double[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Cmo(int,int,double[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Cmo(int,int,double[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Cmo(int,int,double[]).real'></a>
-
-`real` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of input values \(usually closing prices\)\.
-
-#### Returns
-[CmoResult](CmoResult.md 'TechnicalAnalysis\.Functions\.CmoResult')  
-A CmoResult containing the calculated values and metadata\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Cmo(int,int,double[],int)'></a>
 
@@ -50,7 +15,7 @@ A CmoResult containing the calculated values and metadata\.
 Calculates the Chande Momentum Oscillator \(CMO\) which measures momentum on both up and down days\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.CmoResult Cmo(int startIdx, int endIdx, double[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.CmoResult Cmo(int startIdx, int endIdx, double[] real, int timePeriod=14);
 ```
 #### Parameters
 
@@ -87,42 +52,6 @@ The CMO is calculated as: \(\(Sum of up days \- Sum of down days\) / \(Sum of up
 It oscillates between \-100 and \+100, with values above \+50 indicating overbought conditions
 and values below \-50 indicating oversold conditions\.
 
-<a name='TechnicalAnalysis.Functions.TAMath.Cmo(int,int,float[])'></a>
-
-## TAMath\.Cmo\(int, int, float\[\]\) Method
-
-Calculates the Chande Momentum Oscillator \(CMO\) using the default time period of 14\.
-
-```csharp
-public static TechnicalAnalysis.Functions.CmoResult Cmo(int startIdx, int endIdx, float[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Cmo(int,int,float[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Cmo(int,int,float[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Cmo(int,int,float[]).real'></a>
-
-`real` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of input values \(usually closing prices\)\.
-
-#### Returns
-[CmoResult](CmoResult.md 'TechnicalAnalysis\.Functions\.CmoResult')  
-A CmoResult containing the calculated values and metadata\.
-
-### Remarks
-This overload accepts float arrays and converts them to double arrays for calculation\.
-
 <a name='TechnicalAnalysis.Functions.TAMath.Cmo(int,int,float[],int)'></a>
 
 ## TAMath\.Cmo\(int, int, float\[\], int\) Method
@@ -130,7 +59,7 @@ This overload accepts float arrays and converts them to double arrays for calcul
 Calculates the Chande Momentum Oscillator \(CMO\) which measures momentum on both up and down days\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.CmoResult Cmo(int startIdx, int endIdx, float[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.CmoResult Cmo(int startIdx, int endIdx, float[] real, int timePeriod=14);
 ```
 #### Parameters
 
@@ -156,7 +85,7 @@ Array of input values \(usually closing prices\)\.
 
 `timePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The number of periods to use in the calculation\.
+The number of periods to use in the calculation \(default: 14\)\.
 
 #### Returns
 [CmoResult](CmoResult.md 'TechnicalAnalysis\.Functions\.CmoResult')  

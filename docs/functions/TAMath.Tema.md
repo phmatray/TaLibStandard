@@ -5,43 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [Tema\(int, int, double\[\]\)](TAMath.Tema.md#TechnicalAnalysis.Functions.TAMath.Tema(int,int,double[]) 'TechnicalAnalysis\.Functions\.TAMath\.Tema\(int, int, double\[\]\)') | Calculates the Triple Exponential Moving Average \(TEMA\) using a default period of 30\. |
 | [Tema\(int, int, double\[\], int\)](TAMath.Tema.md#TechnicalAnalysis.Functions.TAMath.Tema(int,int,double[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Tema\(int, int, double\[\], int\)') | Calculates the Triple Exponential Moving Average \(TEMA\) for the specified range of data\. |
-| [Tema\(int, int, float\[\]\)](TAMath.Tema.md#TechnicalAnalysis.Functions.TAMath.Tema(int,int,float[]) 'TechnicalAnalysis\.Functions\.TAMath\.Tema\(int, int, float\[\]\)') | Calculates the Triple Exponential Moving Average \(TEMA\) for float input data using a default period of 30\. |
 | [Tema\(int, int, float\[\], int\)](TAMath.Tema.md#TechnicalAnalysis.Functions.TAMath.Tema(int,int,float[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Tema\(int, int, float\[\], int\)') | Calculates the Triple Exponential Moving Average \(TEMA\) for float input data\. |
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tema(int,int,double[])'></a>
-
-## TAMath\.Tema\(int, int, double\[\]\) Method
-
-Calculates the Triple Exponential Moving Average \(TEMA\) using a default period of 30\.
-
-```csharp
-public static TechnicalAnalysis.Functions.TemaResult Tema(int startIdx, int endIdx, double[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tema(int,int,double[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tema(int,int,double[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tema(int,int,double[]).real'></a>
-
-`real` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-The input data array containing price values\.
-
-#### Returns
-[TemaResult](TemaResult.md 'TechnicalAnalysis\.Functions\.TemaResult')  
-A TemaResult object containing the calculated values and metadata\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Tema(int,int,double[],int)'></a>
 
@@ -50,7 +15,7 @@ A TemaResult object containing the calculated values and metadata\.
 Calculates the Triple Exponential Moving Average \(TEMA\) for the specified range of data\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.TemaResult Tema(int startIdx, int endIdx, double[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.TemaResult Tema(int startIdx, int endIdx, double[] real, int timePeriod=30);
 ```
 #### Parameters
 
@@ -88,43 +53,6 @@ inherent in moving averages\. It uses a combination of a single, double, and tri
 moving average\. The formula is: TEMA = 3\*EMA \- 3\*EMA\(EMA\) \+ EMA\(EMA\(EMA\)\)\.
 TEMA is more responsive to price changes than DEMA or traditional moving averages\.
 
-<a name='TechnicalAnalysis.Functions.TAMath.Tema(int,int,float[])'></a>
-
-## TAMath\.Tema\(int, int, float\[\]\) Method
-
-Calculates the Triple Exponential Moving Average \(TEMA\) for float input data using a default period of 30\.
-
-```csharp
-public static TechnicalAnalysis.Functions.TemaResult Tema(int startIdx, int endIdx, float[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tema(int,int,float[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tema(int,int,float[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tema(int,int,float[]).real'></a>
-
-`real` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-The input data array containing price values as floats\.
-
-#### Returns
-[TemaResult](TemaResult.md 'TechnicalAnalysis\.Functions\.TemaResult')  
-A TemaResult object containing the calculated values and metadata\.
-
-### Remarks
-This overload converts the float array to double array before performing the calculation,
-as the underlying TAFunc library operates on double precision values\.
-
 <a name='TechnicalAnalysis.Functions.TAMath.Tema(int,int,float[],int)'></a>
 
 ## TAMath\.Tema\(int, int, float\[\], int\) Method
@@ -132,7 +60,7 @@ as the underlying TAFunc library operates on double precision values\.
 Calculates the Triple Exponential Moving Average \(TEMA\) for float input data\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.TemaResult Tema(int startIdx, int endIdx, float[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.TemaResult Tema(int startIdx, int endIdx, float[] real, int timePeriod=30);
 ```
 #### Parameters
 
@@ -158,7 +86,7 @@ The input data array containing price values as floats\.
 
 `timePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The number of periods to use in the TEMA calculation\.
+The number of periods to use in the TEMA calculation\. Default is 30\.
 
 #### Returns
 [TemaResult](TemaResult.md 'TechnicalAnalysis\.Functions\.TemaResult')  

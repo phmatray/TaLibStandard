@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -23,7 +25,7 @@ public static partial class TAMath
     /// better smoothing with reduced lag. The vFactor parameter controls the amount of smoothing,
     /// where higher values (closer to 1) provide more smoothing but may introduce more lag.
     /// </remarks>
-    public static T3Result T3(int startIdx, int endIdx, double[] real, int timePeriod, double vFactor)
+    public static T3Result T3(int startIdx, int endIdx, double[] real, int timePeriod = 5, double vFactor = 0.7)
     {
         int outBegIdx = 0;
         int outNBElement = 0;
@@ -38,19 +40,9 @@ public static partial class TAMath
             ref outBegIdx,
             ref outNBElement,
             ref outReal);
-            
+
         return new T3Result(retCode, outBegIdx, outNBElement, outReal);
     }
-
-    /// <summary>
-    /// Calculates the T3 Triple Exponential Moving Average using default parameters (period=5, vFactor=0.7).
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">The input data array containing price values.</param>
-    /// <returns>A T3Result object containing the calculated values and metadata.</returns>
-    public static T3Result T3(int startIdx, int endIdx, double[] real)
-        => T3(startIdx, endIdx, real, 5, 0.7);
 
     /// <summary>
     /// Calculates the T3 Triple Exponential Moving Average for float input data.
@@ -58,28 +50,13 @@ public static partial class TAMath
     /// <param name="startIdx">The starting index for the calculation range.</param>
     /// <param name="endIdx">The ending index for the calculation range.</param>
     /// <param name="real">The input data array containing price values as floats.</param>
-    /// <param name="timePeriod">The number of periods to use in the T3 calculation.</param>
-    /// <param name="vFactor">The volume factor (0-1) that controls the smoothing.</param>
+    /// <param name="timePeriod">The number of periods to use in the T3 calculation. Default is 5.</param>
+    /// <param name="vFactor">The volume factor (0-1) that controls the smoothing. Default is 0.7.</param>
     /// <returns>A T3Result object containing the calculated values and metadata.</returns>
     /// <remarks>
     /// This overload converts the float array to double array before performing the calculation,
     /// as the underlying TAFunc library operates on double precision values.
     /// </remarks>
-    public static T3Result T3(int startIdx, int endIdx, float[] real, int timePeriod, double vFactor)
-        => T3(startIdx, endIdx, real.ToDouble(), timePeriod, vFactor);
-        
-    /// <summary>
-    /// Calculates the T3 Triple Exponential Moving Average for float input data using default parameters.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">The input data array containing price values as floats.</param>
-    /// <returns>A T3Result object containing the calculated values and metadata.</returns>
-    /// <remarks>
-    /// This overload converts the float array to double array before performing the calculation,
-    /// as the underlying TAFunc library operates on double precision values.
-    /// Uses default parameters: period=5, vFactor=0.7.
-    /// </remarks>
-    public static T3Result T3(int startIdx, int endIdx, float[] real)
-        => T3(startIdx, endIdx, real, 5, 0.7);
+    public static T3Result T3(int startIdx, int endIdx, float[] real, int timePeriod = 5, double vFactor = 0.7)
+        => TAMathHelper.Execute(startIdx, endIdx, real, (s, e, r) => T3(s, e, r, timePeriod, vFactor));
 }
