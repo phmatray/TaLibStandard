@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -60,5 +62,5 @@ public static partial class TAMath
     /// <param name="volume">Array of trading volumes.</param>
     /// <returns>An AdResult object containing the calculated values.</returns>
     public static AdResult Ad(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume)
-        => Ad(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), volume.ToDouble());
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, close, volume, Ad);
 }
