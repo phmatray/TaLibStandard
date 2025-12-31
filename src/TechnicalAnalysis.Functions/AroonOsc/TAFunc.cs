@@ -51,29 +51,22 @@ public static partial class TAFunc
         ref double[] outReal)
     {
         int i;
-        if (startIdx < 0)
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
         {
-            return OutOfRangeStartIndex;
+            return indexCheck;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inHigh, inLow, outReal);
+        if (arrayCheck != Success)
         {
-            return OutOfRangeEndIndex;
+            return arrayCheck;
         }
 
-        if (inHigh == null! || inLow == null!)
+        RetCode periodCheck = ValidationHelper.ValidatePeriodRange(optInTimePeriod);
+        if (periodCheck != Success)
         {
-            return BadParam;
-        }
-
-        if (optInTimePeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
+            return periodCheck;
         }
 
         if (startIdx < optInTimePeriod)

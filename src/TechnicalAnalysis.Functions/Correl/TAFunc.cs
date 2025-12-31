@@ -59,34 +59,22 @@ public static partial class TAFunc
     {
         double y;
         double x;
-        if (startIdx < 0)
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
         {
-            return OutOfRangeStartIndex;
+            return indexCheck;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inReal0, inReal1, outReal);
+        if (arrayCheck != Success)
         {
-            return OutOfRangeEndIndex;
+            return arrayCheck;
         }
 
-        if (inReal0 == null!)
+        RetCode periodCheck = ValidationHelper.ValidatePeriodRange(optInTimePeriod, 1);
+        if (periodCheck != Success)
         {
-            return BadParam;
-        }
-
-        if (inReal1 == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInTimePeriod is < 1 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
+            return periodCheck;
         }
 
         int lookbackTotal = optInTimePeriod - 1;
