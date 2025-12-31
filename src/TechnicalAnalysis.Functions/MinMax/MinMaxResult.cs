@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,7 +16,7 @@ namespace TechnicalAnalysis.Functions;
 /// This is useful for identifying price ranges, calculating channels, and determining
 /// support and resistance levels based on recent price extremes.
 /// </remarks>
-public record MinMaxResult : IndicatorResult
+public record MinMaxResult : DualOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MinMaxResult"/> class.
@@ -25,10 +27,8 @@ public record MinMaxResult : IndicatorResult
     /// <param name="min">The array of minimum values found within each period.</param>
     /// <param name="max">The array of maximum values found within each period.</param>
     public MinMaxResult(RetCode retCode, int begIdx, int nbElement, double[] min, double[] max)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, min, max)
     {
-        Min = min;
-        Max = max;
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public record MinMaxResult : IndicatorResult
     /// ending at that point. These values can be used as dynamic resistance levels
     /// or to calculate price channels and bands.
     /// </remarks>
-    public double[] Max { get; }
+    public double[] Max => Real1;
 
     /// <summary>
     /// Gets the array of minimum values.
@@ -49,5 +49,5 @@ public record MinMaxResult : IndicatorResult
     /// ending at that point. These values can be used as dynamic support levels
     /// or to calculate price channels and bands.
     /// </remarks>
-    public double[] Min { get; }
+    public double[] Min => Real0;
 }

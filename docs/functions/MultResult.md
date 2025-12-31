@@ -17,3 +17,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 The MULT function performs element\-wise multiplication of two input arrays,
 producing an output array where each element is the product of the corresponding
 elements from the input arrays\.
+
+| Constructors | |
+| :--- | :--- |
+| [MultResult\(RetCode, int, int, double\[\]\)](MultResult.MultResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.MultResult\.MultResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [MultResult](MultResult.md 'TechnicalAnalysis\.Functions\.MultResult') class\. |

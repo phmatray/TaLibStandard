@@ -17,3 +17,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 The TAN function calculates the tangent of each element in the input array\.
 Input values are expected to be in radians\. The tangent is defined as sin\(x\)/cos\(x\)\.
 Note that tangent has vertical asymptotes at odd multiples of π/2, where the function is undefined\.
+
+| Constructors | |
+| :--- | :--- |
+| [TanResult\(RetCode, int, int, double\[\]\)](TanResult.TanResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.TanResult\.TanResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [TanResult](TanResult.md 'TechnicalAnalysis\.Functions\.TanResult') class\. |

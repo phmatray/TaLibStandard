@@ -17,3 +17,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 The SUB function performs element\-wise subtraction of two input arrays,
 producing an output array where each element is the difference between the corresponding
 elements from the input arrays \(first array minus second array\)\.
+
+| Constructors | |
+| :--- | :--- |
+| [SubResult\(RetCode, int, int, double\[\]\)](SubResult.SubResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.SubResult\.SubResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [SubResult](SubResult.md 'TechnicalAnalysis\.Functions\.SubResult') class\. |

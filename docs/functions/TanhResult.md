@@ -17,3 +17,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 The TANH function calculates the hyperbolic tangent of each element in the input array\.
 The hyperbolic tangent is defined as tanh\(x\) = sinh\(x\)/cosh\(x\) = \(e^x \- e^\(\-x\)\)/\(e^x \+ e^\(\-x\)\)\.
 The output values are always in the range \(\-1, 1\), making it useful for normalization\.
+
+| Constructors | |
+| :--- | :--- |
+| [TanhResult\(RetCode, int, int, double\[\]\)](TanhResult.TanhResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.TanhResult\.TanhResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [TanhResult](TanhResult.md 'TechnicalAnalysis\.Functions\.TanhResult') class\. |

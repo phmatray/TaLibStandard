@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -11,7 +13,7 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator generates sine and leading sine wave indicators from price data using Hilbert Transform,
 /// useful for identifying cycle turns and generating trading signals in trending markets.
 /// </summary>
-public record HtSineResult : IndicatorResult
+public record HtSineResult : DualOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="HtSineResult"/> class.
@@ -22,10 +24,8 @@ public record HtSineResult : IndicatorResult
     /// <param name="sine">The array of sine wave values derived from the dominant cycle.</param>
     /// <param name="leadSine">The array of leading sine wave values, phase-advanced for early signal generation.</param>
     public HtSineResult(RetCode retCode, int begIdx, int nbElement, double[] sine, double[] leadSine)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, sine, leadSine)
     {
-        Sine = sine;
-        LeadSine = leadSine;
     }
 
     /// <summary>
@@ -33,12 +33,12 @@ public record HtSineResult : IndicatorResult
     /// The lead sine is phase-advanced by 45 degrees from the sine wave,
     /// providing early signals for potential cycle turns.
     /// </summary>
-    public double[] LeadSine { get; }
+    public double[] LeadSine => Real1;
 
     /// <summary>
     /// Gets the array of sine wave values.
     /// Values oscillate between -1 and +1, representing the smoothed cyclic component of price movement.
     /// Crossovers between sine and lead sine can indicate cycle turning points.
     /// </summary>
-    public double[] Sine { get; }
+    public double[] Sine => Real0;
 }

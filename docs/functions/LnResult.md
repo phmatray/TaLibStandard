@@ -17,3 +17,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 The LN function calculates the natural logarithm \(base e\) of each element in the input array\.
 The natural logarithm is the inverse of the exponential function\. Input values must be positive\.
 For example, ln\(e\) = 1, ln\(1\) = 0\.
+
+| Constructors | |
+| :--- | :--- |
+| [LnResult\(RetCode, int, int, double\[\]\)](LnResult.LnResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.LnResult\.LnResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [LnResult](LnResult.md 'TechnicalAnalysis\.Functions\.LnResult') class\. |

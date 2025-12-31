@@ -17,3 +17,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 The RSI is a momentum oscillator that measures the speed and magnitude of price changes\.
 It oscillates between 0 and 100, helping identify overbought and oversold conditions\.
 Values above 70 typically indicate overbought conditions, while values below 30 indicate oversold conditions\.
+
+| Constructors | |
+| :--- | :--- |
+| [RsiResult\(RetCode, int, int, double\[\]\)](RsiResult.RsiResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.RsiResult\.RsiResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [RsiResult](RsiResult.md 'TechnicalAnalysis\.Functions\.RsiResult') class\. |
