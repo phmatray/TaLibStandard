@@ -49,29 +49,29 @@ public static partial class TAFunc
         ref double[] outRealMiddleBand,
         ref double[] outRealLowerBand)
     {
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
+        {
+            return indexCheck;
+        }
+
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inReal, outRealUpperBand, outRealMiddleBand, outRealLowerBand);
+        if (arrayCheck != Success)
+        {
+            return arrayCheck;
+        }
+
+        RetCode periodCheck = ValidationHelper.ValidatePeriodRange(optInTimePeriod);
+        if (periodCheck != Success)
+        {
+            return periodCheck;
+        }
+
         int i;
         double tempReal2;
         double tempReal;
         double[] tempBuffer2;
         double[] tempBuffer1;
-        if (startIdx < 0)
-        {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null! ||
-            optInTimePeriod is < 2 or > 100000 ||
-            outRealUpperBand == null! ||
-            outRealMiddleBand == null! ||
-            outRealLowerBand == null!)
-        {
-            return BadParam;
-        }
 
         if (inReal == outRealUpperBand)
         {

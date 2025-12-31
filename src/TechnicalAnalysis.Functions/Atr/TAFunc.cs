@@ -47,27 +47,27 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
+        {
+            return indexCheck;
+        }
+
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outReal);
+        if (arrayCheck != Success)
+        {
+            return arrayCheck;
+        }
+
+        RetCode periodCheck = ValidationHelper.ValidatePeriodRange(optInTimePeriod, 1);
+        if (periodCheck != Success)
+        {
+            return periodCheck;
+        }
+
         int outNbElement1 = 0;
         int outBegIdx1 = 0;
         double[] prevATRTemp = new double[1];
-        if (startIdx < 0)
-        {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! ||
-            inLow == null! ||
-            inClose == null! ||
-            optInTimePeriod is < 1 or > 100000 ||
-            outReal == null!)
-        {
-            return BadParam;
-        }
 
         outBegIdx = 0;
         outNBElement = 0;

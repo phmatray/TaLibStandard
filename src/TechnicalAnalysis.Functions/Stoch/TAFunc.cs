@@ -56,26 +56,34 @@ public static partial class TAFunc
         ref double[] outSlowK,
         ref double[] outSlowD)
     {
-        if (startIdx < 0)
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
         {
-            return OutOfRangeStartIndex;
+            return indexCheck;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outSlowK, outSlowD);
+        if (arrayCheck != Success)
         {
-            return OutOfRangeEndIndex;
+            return arrayCheck;
         }
 
-        if (inHigh == null! ||
-            inLow == null! ||
-            inClose == null! ||
-            optInFastKPeriod is < 1 or > 100000 ||
-            optInSlowKPeriod is < 1 or > 100000 ||
-            optInSlowDPeriod is < 1 or > 100000 ||
-            outSlowK == null! ||
-            outSlowD == null!)
+        RetCode fastKCheck = ValidationHelper.ValidatePeriodRange(optInFastKPeriod, 1);
+        if (fastKCheck != Success)
         {
-            return BadParam;
+            return fastKCheck;
+        }
+
+        RetCode slowKCheck = ValidationHelper.ValidatePeriodRange(optInSlowKPeriod, 1);
+        if (slowKCheck != Success)
+        {
+            return slowKCheck;
+        }
+
+        RetCode slowDCheck = ValidationHelper.ValidatePeriodRange(optInSlowDPeriod, 1);
+        if (slowDCheck != Success)
+        {
+            return slowDCheck;
         }
 
         int lookbackK = optInFastKPeriod - 1;

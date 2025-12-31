@@ -48,25 +48,34 @@ public static partial class TAFunc
         ref double[] outMACDSignal,
         ref double[] outMACDHist)
     {
-        if (startIdx < 0)
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
         {
-            return OutOfRangeStartIndex;
+            return indexCheck;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inReal, outMACD, outMACDSignal, outMACDHist);
+        if (arrayCheck != Success)
         {
-            return OutOfRangeEndIndex;
+            return arrayCheck;
         }
 
-        if (inReal == null! ||
-            optInFastPeriod is < 2 or > 100000 ||
-            optInSlowPeriod is < 2 or > 100000 ||
-            optInSignalPeriod is < 1 or > 100000 ||
-            outMACD == null! ||
-            outMACDSignal == null! ||
-            outMACDHist == null!)
+        RetCode fastPeriodCheck = ValidationHelper.ValidatePeriodRange(optInFastPeriod);
+        if (fastPeriodCheck != Success)
         {
-            return BadParam;
+            return fastPeriodCheck;
+        }
+
+        RetCode slowPeriodCheck = ValidationHelper.ValidatePeriodRange(optInSlowPeriod);
+        if (slowPeriodCheck != Success)
+        {
+            return slowPeriodCheck;
+        }
+
+        RetCode signalPeriodCheck = ValidationHelper.ValidatePeriodRange(optInSignalPeriod, 1);
+        if (signalPeriodCheck != Success)
+        {
+            return signalPeriodCheck;
         }
 
         RetCode taIntMACD = TA_INT_MACD(
@@ -94,9 +103,11 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid MACD value can be calculated, or -1 if parameters are invalid.</returns>
     public static int MacdLookback(int optInFastPeriod, int optInSlowPeriod, int optInSignalPeriod)
     {
-        if (optInFastPeriod is < 2 or > 100000 ||
-            optInSlowPeriod is < 2 or > 100000 ||
-            optInSignalPeriod is < 1 or > 100000)
+        int validatedFastPeriod = ValidationHelper.ValidateLookbackPeriod(optInFastPeriod);
+        int validatedSlowPeriod = ValidationHelper.ValidateLookbackPeriod(optInSlowPeriod);
+        int validatedSignalPeriod = ValidationHelper.ValidateLookbackPeriod(optInSignalPeriod, 1);
+
+        if (validatedFastPeriod == -1 || validatedSlowPeriod == -1 || validatedSignalPeriod == -1)
         {
             return -1;
         }

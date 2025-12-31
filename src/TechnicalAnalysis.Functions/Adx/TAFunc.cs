@@ -37,36 +37,30 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
+        {
+            return indexCheck;
+        }
+
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outReal);
+        if (arrayCheck != Success)
+        {
+            return arrayCheck;
+        }
+
+        RetCode periodCheck = ValidationHelper.ValidatePeriodRange(optInTimePeriod);
+        if (periodCheck != Success)
+        {
+            return periodCheck;
+        }
+
         double tempReal;
         double tempReal2;
         double diffM;
         double diffP;
         double plusDI;
         double minusDI;
-        if (startIdx < 0)
-        {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! || inLow == null! || inClose == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInTimePeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
-        }
 
         int lookbackTotal = (optInTimePeriod * 2) + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Adx] - 1;
         if (startIdx < lookbackTotal)
