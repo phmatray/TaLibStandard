@@ -8,17 +8,13 @@ This indicator calculates the angle of the linear regression line in degrees, pr
 into the strength and direction of the trend over a specified period\.
 
 ```csharp
-public record LinearRegAngleResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.LinearRegAngleResult>
+public record LinearRegAngleResult : TechnicalAnalysis.Common.SingleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.LinearRegAngleResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; LinearRegAngleResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.SingleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.singleoutputresult 'TechnicalAnalysis\.Common\.SingleOutputResult') &#129106; LinearRegAngleResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[LinearRegAngleResult](LinearRegAngleResult.md 'TechnicalAnalysis\.Functions\.LinearRegAngleResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
 | Constructors | |
 | :--- | :--- |
 | [LinearRegAngleResult\(RetCode, int, int, double\[\]\)](LinearRegAngleResult.LinearRegAngleResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.LinearRegAngleResult\.LinearRegAngleResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [LinearRegAngleResult](LinearRegAngleResult.md 'TechnicalAnalysis\.Functions\.LinearRegAngleResult') class\. |
-
-| Properties | |
-| :--- | :--- |
-| [Real](LinearRegAngleResult.Real.md 'TechnicalAnalysis\.Functions\.LinearRegAngleResult\.Real') | Gets the array of linear regression angle values in degrees\. Positive angles indicate an upward trend, negative angles indicate a downward trend\. The magnitude of the angle reflects the steepness of the trend\. |

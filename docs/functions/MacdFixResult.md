@@ -6,10 +6,10 @@
 Represents the result of calculating the MACD Fix indicator with fixed 12/26 periods\.
 
 ```csharp
-public record MacdFixResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.MacdFixResult>
+public record MacdFixResult : TechnicalAnalysis.Common.TripleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.MacdFixResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; MacdFixResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.TripleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.tripleoutputresult 'TechnicalAnalysis\.Common\.TripleOutputResult') &#129106; MacdFixResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[MacdFixResult](MacdFixResult.md 'TechnicalAnalysis\.Functions\.MacdFixResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 

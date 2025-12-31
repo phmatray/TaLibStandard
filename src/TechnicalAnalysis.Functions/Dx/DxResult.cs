@@ -4,13 +4,15 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
 /// Represents the result of the Directional Movement Index (DX) indicator calculation.
 /// DX measures the strength of a trend regardless of its direction, derived from comparing directional movements.
 /// </summary>
-public record DxResult : IndicatorResult
+public record DxResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="DxResult"/> class.
@@ -20,9 +22,8 @@ public record DxResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the calculated DX values.</param>
     public DxResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
     /// <summary>
@@ -30,5 +31,4 @@ public record DxResult : IndicatorResult
     /// Values range from 0 to 100, where higher values indicate stronger trends (either up or down).
     /// Values below 20 typically indicate weak trends, while values above 40 suggest strong trends.
     /// </summary>
-    public double[] Real { get; }
 }

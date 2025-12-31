@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -11,7 +13,7 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator calculates the linear regression line value at each point, providing a statistical
 /// best-fit line through the price data over a specified period.
 /// </summary>
-public record LinearRegResult : IndicatorResult
+public record LinearRegResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="LinearRegResult"/> class.
@@ -21,9 +23,8 @@ public record LinearRegResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of linear regression values representing the best-fit line through the data.</param>
     public LinearRegResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
     /// <summary>
@@ -31,5 +32,4 @@ public record LinearRegResult : IndicatorResult
     /// Each value represents the y-coordinate of the regression line at that point in time,
     /// calculated using least squares method over the specified lookback period.
     /// </summary>
-    public double[] Real { get; }
 }

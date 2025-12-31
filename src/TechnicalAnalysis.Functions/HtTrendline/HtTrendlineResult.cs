@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -11,7 +13,7 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator creates a smooth trendline by removing the dominant cycle component from price data,
 /// effectively filtering out short-term fluctuations to reveal the underlying trend.
 /// </summary>
-public record HtTrendlineResult : IndicatorResult
+public record HtTrendlineResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="HtTrendlineResult"/> class.
@@ -21,9 +23,8 @@ public record HtTrendlineResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of trendline values representing the smoothed price trend with cycles removed.</param>
     public HtTrendlineResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
     /// <summary>
@@ -31,5 +32,4 @@ public record HtTrendlineResult : IndicatorResult
     /// These values represent a smoothed version of the price with dominant cycles filtered out,
     /// providing a clear view of the underlying trend direction and strength.
     /// </summary>
-    public double[] Real { get; }
 }

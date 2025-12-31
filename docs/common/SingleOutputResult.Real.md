@@ -1,5 +1,5 @@
 #### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical\.TechnicalAnalysis\.Common')
-### [TechnicalAnalysis\.Common\.Abstractions](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common.Abstractions 'TechnicalAnalysis\.Common\.Abstractions').[SingleOutputResult](SingleOutputResult.md 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult')
+### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis\.Common').[SingleOutputResult](SingleOutputResult.md 'TechnicalAnalysis\.Common\.SingleOutputResult')
 
 ## SingleOutputResult\.Real Property
 

@@ -1,17 +1,17 @@
 #### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md 'Atypical\.TechnicalAnalysis\.Common')
-### [TechnicalAnalysis\.Common\.Abstractions](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common.Abstractions 'TechnicalAnalysis\.Common\.Abstractions')
+### [TechnicalAnalysis\.Common](Atypical.TechnicalAnalysis.Common.md#TechnicalAnalysis.Common 'TechnicalAnalysis\.Common')
 
 ## SingleOutputResult Class
 
 Base class for indicator results that produce a single output array\.
 
 ```csharp
-public abstract record SingleOutputResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Common.Abstractions.SingleOutputResult>
+public abstract record SingleOutputResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Common.SingleOutputResult>
 ```
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [IndicatorResult](IndicatorResult.md 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; SingleOutputResult
 
-Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[SingleOutputResult](SingleOutputResult.md 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
+Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[SingleOutputResult](SingleOutputResult.md 'TechnicalAnalysis\.Common\.SingleOutputResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
 ### Remarks
 This abstract class provides common functionality for technical indicators
@@ -20,8 +20,8 @@ and inherits the metadata properties \(RetCode, BegIdx, NbElement\) from Indicat
 
 | Constructors | |
 | :--- | :--- |
-| [SingleOutputResult\(RetCode, int, int, double\[\]\)](SingleOutputResult.SingleOutputResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult\.SingleOutputResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [SingleOutputResult](SingleOutputResult.md 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult') class\. |
+| [SingleOutputResult\(RetCode, int, int, double\[\]\)](SingleOutputResult.SingleOutputResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Common\.SingleOutputResult\.SingleOutputResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [SingleOutputResult](SingleOutputResult.md 'TechnicalAnalysis\.Common\.SingleOutputResult') class\. |
 
 | Properties | |
 | :--- | :--- |
-| [Real](SingleOutputResult.Real.md 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult\.Real') | Gets the array of calculated indicator values\. |
+| [Real](SingleOutputResult.Real.md 'TechnicalAnalysis\.Common\.SingleOutputResult\.Real') | Gets the array of calculated indicator values\. |

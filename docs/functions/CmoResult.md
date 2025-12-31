@@ -8,17 +8,13 @@ This indicator measures momentum by calculating the difference between the sum o
 over a specified period, normalized to oscillate between \-100 and \+100\.
 
 ```csharp
-public record CmoResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.CmoResult>
+public record CmoResult : TechnicalAnalysis.Common.SingleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.CmoResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; CmoResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.SingleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.singleoutputresult 'TechnicalAnalysis\.Common\.SingleOutputResult') &#129106; CmoResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[CmoResult](CmoResult.md 'TechnicalAnalysis\.Functions\.CmoResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
 | Constructors | |
 | :--- | :--- |
 | [CmoResult\(RetCode, int, int, double\[\]\)](CmoResult.CmoResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.CmoResult\.CmoResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [CmoResult](CmoResult.md 'TechnicalAnalysis\.Functions\.CmoResult') class\. |
-
-| Properties | |
-| :--- | :--- |
-| [Real](CmoResult.Real.md 'TechnicalAnalysis\.Functions\.CmoResult\.Real') | Gets the array of Chande Momentum Oscillator values\. Values range from \-100 to \+100, where positive values indicate upward momentum and negative values indicate downward momentum\. Readings above \+50 or below \-50 suggest strong momentum\. |

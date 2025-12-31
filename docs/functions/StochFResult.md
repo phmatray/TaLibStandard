@@ -7,10 +7,10 @@ Represents the result of the Fast Stochastic \(StochF\) indicator calculation\.
 The Fast Stochastic is a momentum indicator that provides a more responsive version of the standard Stochastic Oscillator\.
 
 ```csharp
-public record StochFResult : TechnicalAnalysis.Common.Abstractions.DualOutputResult, System.IEquatable<TechnicalAnalysis.Functions.StochFResult>
+public record StochFResult : TechnicalAnalysis.Common.DualOutputResult, System.IEquatable<TechnicalAnalysis.Functions.StochFResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.Abstractions\.DualOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.abstractions.dualoutputresult 'TechnicalAnalysis\.Common\.Abstractions\.DualOutputResult') &#129106; StochFResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.DualOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.dualoutputresult 'TechnicalAnalysis\.Common\.DualOutputResult') &#129106; StochFResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[StochFResult](StochFResult.md 'TechnicalAnalysis\.Functions\.StochFResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 

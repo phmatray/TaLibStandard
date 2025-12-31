@@ -6,10 +6,10 @@
 Represents the result of calculating the Moving Average Convergence Divergence \(MACD\) indicator\.
 
 ```csharp
-public record MacdResult : TechnicalAnalysis.Common.Abstractions.TripleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.MacdResult>
+public record MacdResult : TechnicalAnalysis.Common.TripleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.MacdResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.Abstractions\.TripleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.abstractions.tripleoutputresult 'TechnicalAnalysis\.Common\.Abstractions\.TripleOutputResult') &#129106; MacdResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.TripleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.tripleoutputresult 'TechnicalAnalysis\.Common\.TripleOutputResult') &#129106; MacdResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[MacdResult](MacdResult.md 'TechnicalAnalysis\.Functions\.MacdResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 

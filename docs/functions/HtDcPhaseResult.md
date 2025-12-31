@@ -8,17 +8,13 @@ This indicator measures the phase angle of the dominant market cycle using Hilbe
 helping to identify the current position within a price cycle\.
 
 ```csharp
-public record HtDcPhaseResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.HtDcPhaseResult>
+public record HtDcPhaseResult : TechnicalAnalysis.Common.SingleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.HtDcPhaseResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; HtDcPhaseResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.SingleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.singleoutputresult 'TechnicalAnalysis\.Common\.SingleOutputResult') &#129106; HtDcPhaseResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[HtDcPhaseResult](HtDcPhaseResult.md 'TechnicalAnalysis\.Functions\.HtDcPhaseResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
 | Constructors | |
 | :--- | :--- |
 | [HtDcPhaseResult\(RetCode, int, int, double\[\]\)](HtDcPhaseResult.HtDcPhaseResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.HtDcPhaseResult\.HtDcPhaseResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [HtDcPhaseResult](HtDcPhaseResult.md 'TechnicalAnalysis\.Functions\.HtDcPhaseResult') class\. |
-
-| Properties | |
-| :--- | :--- |
-| [Real](HtDcPhaseResult.Real.md 'TechnicalAnalysis\.Functions\.HtDcPhaseResult\.Real') | Gets the array of dominant cycle phase values\. Each value represents the phase angle in degrees \(\-180 to \+180\) of the dominant cycle\. Positive values indicate the cycle is in an upward phase, while negative values indicate a downward phase\. |
