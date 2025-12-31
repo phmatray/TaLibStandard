@@ -247,7 +247,6 @@
   - **[Real](SinResult.Real.md 'TechnicalAnalysis\.Functions\.SinResult\.Real')** `Property` Gets the array of sine values resulting from the SIN operation\.
 - **[SmaResult](SmaResult.md 'TechnicalAnalysis\.Functions\.SmaResult')** `Class` Represents the result of calculating the Simple Moving Average \(SMA\) indicator\.
   - **[SmaResult\(RetCode, int, int, double\[\]\)](SmaResult.SmaResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.SmaResult\.SmaResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)')** `Constructor` Initializes a new instance of the [SmaResult](SmaResult.md 'TechnicalAnalysis\.Functions\.SmaResult') class\.
-  - **[Real](SmaResult.Real.md 'TechnicalAnalysis\.Functions\.SmaResult\.Real')** `Property` Gets the array of simple moving average values\.
 - **[SqrtResult](SqrtResult.md 'TechnicalAnalysis\.Functions\.SqrtResult')** `Class` Represents the result of the vector square root operation \(SQRT function\)\.
   - **[SqrtResult\(RetCode, int, int, double\[\]\)](SqrtResult.SqrtResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.SqrtResult\.SqrtResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)')** `Constructor` Initializes a new instance of the [SqrtResult](SqrtResult.md 'TechnicalAnalysis\.Functions\.SqrtResult') class\.
   - **[Real](SqrtResult.Real.md 'TechnicalAnalysis\.Functions\.SqrtResult\.Real')** `Property` Gets the array of square root values resulting from the SQRT operation\.

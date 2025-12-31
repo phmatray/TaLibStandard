@@ -6,10 +6,10 @@
 Represents the result of calculating the Simple Moving Average \(SMA\) indicator\.
 
 ```csharp
-public record SmaResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.SmaResult>
+public record SmaResult : TechnicalAnalysis.Common.Abstractions.SingleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.SmaResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; SmaResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.abstractions.singleoutputresult 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult') &#129106; SmaResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[SmaResult](SmaResult.md 'TechnicalAnalysis\.Functions\.SmaResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
@@ -21,7 +21,3 @@ by filtering out short\-term price fluctuations\.
 | Constructors | |
 | :--- | :--- |
 | [SmaResult\(RetCode, int, int, double\[\]\)](SmaResult.SmaResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.SmaResult\.SmaResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [SmaResult](SmaResult.md 'TechnicalAnalysis\.Functions\.SmaResult') class\. |
-
-| Properties | |
-| :--- | :--- |
-| [Real](SmaResult.Real.md 'TechnicalAnalysis\.Functions\.SmaResult\.Real') | Gets the array of simple moving average values\. |

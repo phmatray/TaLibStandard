@@ -177,3 +177,19 @@
   - **[OutputNotAllInitialize](RetCode.md#TechnicalAnalysis.Common.RetCode.OutputNotAllInitialize 'TechnicalAnalysis\.Common\.RetCode\.OutputNotAllInitialize')** `Field` Not all output values are initialized\.
   - **[Success](RetCode.md#TechnicalAnalysis.Common.RetCode.Success 'TechnicalAnalysis\.Common\.RetCode\.Success')** `Field` Operation completed successfully\.
   - **[UnknownErr](RetCode.md#TechnicalAnalysis.Common.RetCode.UnknownErr 'TechnicalAnalysis\.Common\.RetCode\.UnknownErr')** `Field` Unknown error encountered\.
+
+<a name='TechnicalAnalysis.Common.Abstractions'></a>
+
+## TechnicalAnalysis\.Common\.Abstractions Namespace
+- **[DualOutputResult](DualOutputResult.md 'TechnicalAnalysis\.Common\.Abstractions\.DualOutputResult')** `Class` Base class for indicator results that produce two output arrays\.
+  - **[DualOutputResult\(RetCode, int, int, double\[\], double\[\]\)](DualOutputResult.DualOutputResult(RetCode,int,int,double[],double[]).md 'TechnicalAnalysis\.Common\.Abstractions\.DualOutputResult\.DualOutputResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\], double\[\]\)')** `Constructor` Initializes a new instance of the [DualOutputResult](DualOutputResult.md 'TechnicalAnalysis\.Common\.Abstractions\.DualOutputResult') class\.
+  - **[Real0](DualOutputResult.Real0.md 'TechnicalAnalysis\.Common\.Abstractions\.DualOutputResult\.Real0')** `Property` Gets the first array of calculated indicator values\.
+  - **[Real1](DualOutputResult.Real1.md 'TechnicalAnalysis\.Common\.Abstractions\.DualOutputResult\.Real1')** `Property` Gets the second array of calculated indicator values\.
+- **[SingleOutputResult](SingleOutputResult.md 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult')** `Class` Base class for indicator results that produce a single output array\.
+  - **[SingleOutputResult\(RetCode, int, int, double\[\]\)](SingleOutputResult.SingleOutputResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult\.SingleOutputResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)')** `Constructor` Initializes a new instance of the [SingleOutputResult](SingleOutputResult.md 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult') class\.
+  - **[Real](SingleOutputResult.Real.md 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult\.Real')** `Property` Gets the array of calculated indicator values\.
+- **[TripleOutputResult](TripleOutputResult.md 'TechnicalAnalysis\.Common\.Abstractions\.TripleOutputResult')** `Class` Base class for indicator results that produce three output arrays\.
+  - **[TripleOutputResult\(RetCode, int, int, double\[\], double\[\], double\[\]\)](TripleOutputResult.TripleOutputResult(RetCode,int,int,double[],double[],double[]).md 'TechnicalAnalysis\.Common\.Abstractions\.TripleOutputResult\.TripleOutputResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\], double\[\], double\[\]\)')** `Constructor` Initializes a new instance of the [TripleOutputResult](TripleOutputResult.md 'TechnicalAnalysis\.Common\.Abstractions\.TripleOutputResult') class\.
+  - **[Real0](TripleOutputResult.Real0.md 'TechnicalAnalysis\.Common\.Abstractions\.TripleOutputResult\.Real0')** `Property` Gets the first array of calculated indicator values\.
+  - **[Real1](TripleOutputResult.Real1.md 'TechnicalAnalysis\.Common\.Abstractions\.TripleOutputResult\.Real1')** `Property` Gets the second array of calculated indicator values\.
+  - **[Real2](TripleOutputResult.Real2.md 'TechnicalAnalysis\.Common\.Abstractions\.TripleOutputResult\.Real2')** `Property` Gets the third array of calculated indicator values\.

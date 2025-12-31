@@ -763,7 +763,6 @@ T:TechnicalAnalysis.Functions.SinResult|SinResult.md|SinResult
 P:TechnicalAnalysis.Functions.SinhResult.Real|SinhResult.Real.md|Real
 M:TechnicalAnalysis.Functions.SinhResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SinhResult.SinhResult(RetCode,int,int,double[]).md|SinhResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.SinhResult|SinhResult.md|SinhResult
-P:TechnicalAnalysis.Functions.SmaResult.Real|SmaResult.Real.md|Real
 M:TechnicalAnalysis.Functions.SmaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SmaResult.SmaResult(RetCode,int,int,double[]).md|SmaResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.SmaResult|SmaResult.md|SmaResult
 P:TechnicalAnalysis.Functions.SqrtResult.Real|SqrtResult.Real.md|Real
