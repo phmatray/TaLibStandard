@@ -80,22 +80,13 @@ public static partial class TAFunc
         double[] jQ_Even = new double[3];
         int smoothPrice_Idx = 0;
         int maxIdx_smoothPrice = 49;
-        if (startIdx < 0)
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
         {
-            return OutOfRangeStartIndex;
+            return indexCheck;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null!)
-        {
-            return BadParam;
-        }
-
-        if (outInteger == null)
+        if (inReal == null! || outInteger == null!)
         {
             return BadParam;
         }

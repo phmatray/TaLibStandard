@@ -63,20 +63,11 @@ public static partial class TAFunc
         double[] jIEven = new double[3];
         double[] jQOdd = new double[3];
         double[] jQEven = new double[3];
-        if (startIdx < 0)
+        RetCode validationResult = ValidationHelper.ValidateSingleInputIndicator(
+            startIdx, endIdx, inReal, outReal);
+        if (validationResult != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null! ||
-            outReal == null!)
-        {
-            return BadParam;
+            return validationResult;
         }
 
         double rad2Deg = 180.0 / (4.0 * Math.Atan(1.0));

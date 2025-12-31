@@ -63,21 +63,19 @@ public static partial class TAFunc
         double[] jIEven = new double[3];
         double[] jQOdd = new double[3];
         double[] jQEven = new double[3];
-        if (startIdx < 0)
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
         {
-            return OutOfRangeStartIndex;
+            return indexCheck;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inReal, outMAMA, outFAMA);
+        if (arrayCheck != Success)
         {
-            return OutOfRangeEndIndex;
+            return arrayCheck;
         }
 
-        if (inReal == null! ||
-            optInFastLimit is < 0.01 or > 0.99 ||
-            optInSlowLimit is < 0.01 or > 0.99 ||
-            outMAMA == null! ||
-            outFAMA == null!)
+        if (optInFastLimit is < 0.01 or > 0.99 || optInSlowLimit is < 0.01 or > 0.99)
         {
             return BadParam;
         }

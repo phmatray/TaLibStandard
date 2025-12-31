@@ -54,29 +54,11 @@ public static partial class TAFunc
         double tempReal;
         const double ConstMax = 0.064516129032258063;
         const double ConstDiff = 0.66666666666666663 - ConstMax;
-        if (startIdx < 0)
+        RetCode validationResult = ValidationHelper.ValidateSingleInputIndicator(
+            startIdx, endIdx, inReal, outReal, optInTimePeriod);
+        if (validationResult != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInTimePeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
+            return validationResult;
         }
 
         int lookbackTotal = optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Kama];
