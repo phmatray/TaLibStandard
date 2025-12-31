@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -50,5 +52,5 @@ public static partial class TAMath
     /// using double values directly.
     /// </remarks>
     public static Log10Result Log10(int startIdx, int endIdx, float[] real)
-        => Log10(startIdx, endIdx, real.ToDouble());
+        => TAMathHelper.Execute(startIdx, endIdx, real, Log10);
 }
