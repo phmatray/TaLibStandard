@@ -23,8 +23,8 @@ public static partial class TAMath
     /// </remarks>
     public static MinIndexResult MinIndex(int startIdx, int endIdx, double[] real, int timePeriod)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         int[] outInteger = new int[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.MinIndex(

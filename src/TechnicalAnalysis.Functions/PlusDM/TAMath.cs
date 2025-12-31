@@ -25,8 +25,8 @@ public static partial class TAMath
     /// </remarks>
     public static PlusDMResult PlusDM(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.PlusDM(

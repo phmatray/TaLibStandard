@@ -27,8 +27,8 @@ public static partial class TAMath
     /// </remarks>
     public static RsiResult Rsi(int startIdx, int endIdx, double[] real, int timePeriod)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.Rsi(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);

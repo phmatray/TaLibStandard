@@ -37,8 +37,8 @@ public static partial class TAMath
         double nbDevDn,
         MAType maType)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outRealUpperBand = new double[endIdx - startIdx + 1];
         double[] outRealMiddleBand = new double[endIdx - startIdx + 1];
         double[] outRealLowerBand = new double[endIdx - startIdx + 1];

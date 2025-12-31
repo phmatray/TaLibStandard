@@ -41,8 +41,8 @@ public static partial class TAMath
         int slowDPeriod,
         MAType slowDMAType)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outSlowK = new double[endIdx - startIdx + 1];
         double[] outSlowD = new double[endIdx - startIdx + 1];
 

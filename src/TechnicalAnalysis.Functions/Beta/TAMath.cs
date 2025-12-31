@@ -28,8 +28,8 @@ public static partial class TAMath
     /// </returns>
     public static BetaResult Beta(int startIdx, int endIdx, double[] real0, double[] real1, int timePeriod)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.Beta(

@@ -37,8 +37,8 @@ public static partial class TAMath
         int fastDPeriod,
         MAType fastDMAType)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outFastK = new double[endIdx - startIdx + 1];
         double[] outFastD = new double[endIdx - startIdx + 1];
 

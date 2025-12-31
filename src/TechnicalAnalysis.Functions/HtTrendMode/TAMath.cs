@@ -24,8 +24,8 @@ public static partial class TAMath
     /// </remarks>
     public static HtTrendModeResult HtTrendMode(int startIdx, int endIdx, double[] real)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         int[] outInteger = new int[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.HtTrendMode(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outInteger);

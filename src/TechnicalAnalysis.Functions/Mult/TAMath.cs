@@ -22,8 +22,8 @@ public static partial class TAMath
     /// </remarks>
     public static MultResult Mult(int startIdx, int endIdx, double[] real0, double[] real1)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.Mult(startIdx, endIdx, real0, real1, ref outBegIdx, ref outNBElement, ref outReal);

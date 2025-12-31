@@ -22,8 +22,8 @@ public static partial class TAMath
     /// </remarks>
     public static MinMaxResult MinMax(int startIdx, int endIdx, double[] real, int timePeriod)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outMin = new double[endIdx - startIdx + 1];
         double[] outMax = new double[endIdx - startIdx + 1];
 

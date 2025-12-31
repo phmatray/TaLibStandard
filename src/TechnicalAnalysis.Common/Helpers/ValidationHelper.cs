@@ -68,15 +68,9 @@ public static class ValidationHelper
     /// </returns>
     public static RetCode ValidateArrays(params double[]?[] arrays)
     {
-        foreach (double[]? array in arrays)
-        {
-            if (array == null)
-            {
-                return BadParam;
-            }
-        }
-
-        return Success;
+        return arrays.Any(array => array == null)
+            ? BadParam
+            : Success;
     }
 
     /// <summary>
@@ -96,12 +90,9 @@ public static class ValidationHelper
         double[]? low,
         double[]? close)
     {
-        if (open == null || high == null || low == null || close == null)
-        {
-            return BadParam;
-        }
-
-        return Success;
+        return open == null || high == null || low == null || close == null
+            ? BadParam
+            : Success;
     }
 
     /// <summary>
@@ -123,12 +114,9 @@ public static class ValidationHelper
         double[]? close,
         double[]? volume)
     {
-        if (open == null || high == null || low == null || close == null || volume == null)
-        {
-            return BadParam;
-        }
-
-        return Success;
+        return open == null || high == null || low == null || close == null || volume == null
+            ? BadParam 
+            : Success;
     }
 
     /// <summary>

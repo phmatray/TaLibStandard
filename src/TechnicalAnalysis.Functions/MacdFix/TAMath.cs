@@ -23,8 +23,8 @@ public static partial class TAMath
     /// </remarks>
     public static MacdFixResult MacdFix(int startIdx, int endIdx, double[] real, int signalPeriod)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outMACD = new double[endIdx - startIdx + 1];
         double[] outMACDSignal = new double[endIdx - startIdx + 1];
         double[] outMACDHist = new double[endIdx - startIdx + 1];

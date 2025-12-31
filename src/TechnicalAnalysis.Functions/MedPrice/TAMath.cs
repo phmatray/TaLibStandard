@@ -27,8 +27,8 @@ public static partial class TAMath
     /// </returns>
     public static MedPriceResult MedPrice(int startIdx, int endIdx, double[] high, double[] low)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.MedPrice(startIdx, endIdx, high, low, ref outBegIdx, ref outNBElement, ref outReal);

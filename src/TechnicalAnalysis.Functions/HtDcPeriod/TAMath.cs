@@ -23,8 +23,8 @@ public static partial class TAMath
     /// </remarks>
     public static HtDcPeriodResult HtDcPeriod(int startIdx, int endIdx, double[] real)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.HtDcPeriod(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);

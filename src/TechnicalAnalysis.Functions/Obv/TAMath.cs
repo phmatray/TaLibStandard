@@ -27,8 +27,8 @@ public static partial class TAMath
     /// <returns>An ObvResult object containing the calculated OBV values.</returns>
     public static ObvResult Obv(int startIdx, int endIdx, double[] real, double[] volume)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.Obv(startIdx, endIdx, real, volume, ref outBegIdx, ref outNBElement, ref outReal);

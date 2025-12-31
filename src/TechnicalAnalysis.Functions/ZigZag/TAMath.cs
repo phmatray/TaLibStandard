@@ -31,8 +31,8 @@ public static partial class TAMath
         double[] low,
         double deviation)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outZigZag = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.ZigZag(

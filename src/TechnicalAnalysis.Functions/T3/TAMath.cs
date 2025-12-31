@@ -25,8 +25,8 @@ public static partial class TAMath
     /// </remarks>
     public static T3Result T3(int startIdx, int endIdx, double[] real, int timePeriod, double vFactor)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.T3(

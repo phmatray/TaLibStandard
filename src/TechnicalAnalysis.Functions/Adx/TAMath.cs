@@ -41,8 +41,8 @@ public static partial class TAMath
     /// <returns>An AdxResult containing the calculated values and metadata.</returns>
     public static AdxResult Adx(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.Adx(

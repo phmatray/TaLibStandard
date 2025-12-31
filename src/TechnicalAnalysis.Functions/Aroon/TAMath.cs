@@ -36,8 +36,8 @@ public static partial class TAMath
     /// <returns>An AroonResult object containing both Aroon Down and Aroon Up values.</returns>
     public static AroonResult Aroon(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outAroonDown = new double[endIdx - startIdx + 1];
         double[] outAroonUp = new double[endIdx - startIdx + 1];
 

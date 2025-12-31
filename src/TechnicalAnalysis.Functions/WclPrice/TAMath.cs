@@ -28,8 +28,8 @@ public static partial class TAMath
     /// </returns>
     public static WclPriceResult WclPrice(int startIdx, int endIdx, double[] high, double[] low, double[] close)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.WclPrice(startIdx, endIdx, high, low, close, ref outBegIdx, ref outNBElement, ref outReal);
