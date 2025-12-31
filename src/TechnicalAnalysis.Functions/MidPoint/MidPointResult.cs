@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// over a specified period. It represents the center of the price range and can be used
 /// as a simple trend indicator or as a component in other technical analysis calculations.
 /// </remarks>
-public record MidPointResult : IndicatorResult
+public record MidPointResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MidPointResult"/> class.
@@ -24,18 +24,7 @@ public record MidPointResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of midpoint values calculated as (highest + lowest) / 2.</param>
     public MidPointResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of midpoint values.
-    /// </summary>
-    /// <remarks>
-    /// Each value represents the midpoint of the price range over the lookback period,
-    /// calculated as (highest + lowest) / 2. The midpoint line can act as a dynamic
-    /// support/resistance level and helps identify the central tendency of price movement.
-    /// </remarks>
-    public double[] Real { get; }
 }

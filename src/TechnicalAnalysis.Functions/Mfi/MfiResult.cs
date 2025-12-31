@@ -16,7 +16,7 @@ namespace TechnicalAnalysis.Functions;
 /// while values below 20 indicate oversold conditions. The indicator is particularly useful 
 /// for identifying potential reversals and divergences between price and volume flow.
 /// </remarks>
-public record MfiResult : IndicatorResult
+public record MfiResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MfiResult"/> class.
@@ -26,19 +26,7 @@ public record MfiResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the calculated MFI values.</param>
     public MfiResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Money Flow Index values.
-    /// </summary>
-    /// <value>
-    /// An array of doubles representing the MFI values, ranging from 0 to 100. 
-    /// Values above 80 suggest overbought conditions and potential selling opportunities, 
-    /// values below 20 suggest oversold conditions and potential buying opportunities. 
-    /// Divergences between MFI and price action can signal potential trend reversals.
-    /// </value>
-    public double[] Real { get; }
 }

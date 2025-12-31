@@ -16,7 +16,7 @@ namespace TechnicalAnalysis.Functions;
 /// of price action. It is calculated as: (High + Low) / 2. This indicator is useful for 
 /// identifying the central tendency of price movement within each period.
 /// </remarks>
-public record MedPriceResult : IndicatorResult
+public record MedPriceResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MedPriceResult"/> class.
@@ -26,19 +26,7 @@ public record MedPriceResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the calculated median price values.</param>
     public MedPriceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of median price values.
-    /// </summary>
-    /// <value>
-    /// An array of doubles representing the median price for each period, calculated as 
-    /// the average of high and low prices. This provides the midpoint of each period's 
-    /// trading range and can be used as a baseline for trend analysis or as input to 
-    /// other technical indicators.
-    /// </value>
-    public double[] Real { get; }
 }

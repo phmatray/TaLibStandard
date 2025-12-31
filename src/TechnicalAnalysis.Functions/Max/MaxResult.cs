@@ -10,7 +10,7 @@ namespace TechnicalAnalysis.Functions;
 /// Represents the result of calculating the highest values over a specified period.
 /// The MAX function identifies the maximum value within a rolling window of data points.
 /// </summary>
-public record MaxResult : IndicatorResult
+public record MaxResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MaxResult"/> class.
@@ -21,14 +21,7 @@ public record MaxResult : IndicatorResult
     /// <param name="real">An array containing the maximum values. Each element represents
     /// the highest value found within the specified period ending at that index.</param>
     public MaxResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of maximum values.
-    /// Each value represents the highest data point within the specified rolling period.
-    /// </summary>
-    public double[] Real { get; }
 }

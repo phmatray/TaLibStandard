@@ -6,10 +6,10 @@
 Represents the result of calculating the MidPoint indicator\.
 
 ```csharp
-public record MidPointResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.MidPointResult>
+public record MidPointResult : TechnicalAnalysis.Common.SingleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.MidPointResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; MidPointResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.SingleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.singleoutputresult 'TechnicalAnalysis\.Common\.SingleOutputResult') &#129106; MidPointResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[MidPointResult](MidPointResult.md 'TechnicalAnalysis\.Functions\.MidPointResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
@@ -21,7 +21,3 @@ as a simple trend indicator or as a component in other technical analysis calcul
 | Constructors | |
 | :--- | :--- |
 | [MidPointResult\(RetCode, int, int, double\[\]\)](MidPointResult.MidPointResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.MidPointResult\.MidPointResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [MidPointResult](MidPointResult.md 'TechnicalAnalysis\.Functions\.MidPointResult') class\. |
-
-| Properties | |
-| :--- | :--- |
-| [Real](MidPointResult.Real.md 'TechnicalAnalysis\.Functions\.MidPointResult\.Real') | Gets the array of midpoint values\. |

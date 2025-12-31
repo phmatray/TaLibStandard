@@ -517,25 +517,19 @@ P:TechnicalAnalysis.Functions.MamaResult.FAMA|MamaResult.FAMA.md|FAMA
 P:TechnicalAnalysis.Functions.MamaResult.MAMA|MamaResult.MAMA.md|MAMA
 M:TechnicalAnalysis.Functions.MamaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Double[])|MamaResult.MamaResult(RetCode,int,int,double[],double[]).md|MamaResult(RetCode, int, int, double[], double[])
 T:TechnicalAnalysis.Functions.MamaResult|MamaResult.md|MamaResult
-P:TechnicalAnalysis.Functions.MaxResult.Real|MaxResult.Real.md|Real
 M:TechnicalAnalysis.Functions.MaxResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MaxResult.MaxResult(RetCode,int,int,double[]).md|MaxResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.MaxResult|MaxResult.md|MaxResult
 P:TechnicalAnalysis.Functions.MaxIndexResult.Integers|MaxIndexResult.Integers.md|Integers
 M:TechnicalAnalysis.Functions.MaxIndexResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[])|MaxIndexResult.MaxIndexResult(RetCode,int,int,int[]).md|MaxIndexResult(RetCode, int, int, int[])
 T:TechnicalAnalysis.Functions.MaxIndexResult|MaxIndexResult.md|MaxIndexResult
-P:TechnicalAnalysis.Functions.MedPriceResult.Real|MedPriceResult.Real.md|Real
 M:TechnicalAnalysis.Functions.MedPriceResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MedPriceResult.MedPriceResult(RetCode,int,int,double[]).md|MedPriceResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.MedPriceResult|MedPriceResult.md|MedPriceResult
-P:TechnicalAnalysis.Functions.MfiResult.Real|MfiResult.Real.md|Real
 M:TechnicalAnalysis.Functions.MfiResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MfiResult.MfiResult(RetCode,int,int,double[]).md|MfiResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.MfiResult|MfiResult.md|MfiResult
-P:TechnicalAnalysis.Functions.MidPointResult.Real|MidPointResult.Real.md|Real
 M:TechnicalAnalysis.Functions.MidPointResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MidPointResult.MidPointResult(RetCode,int,int,double[]).md|MidPointResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.MidPointResult|MidPointResult.md|MidPointResult
-P:TechnicalAnalysis.Functions.MidPriceResult.Real|MidPriceResult.Real.md|Real
 M:TechnicalAnalysis.Functions.MidPriceResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MidPriceResult.MidPriceResult(RetCode,int,int,double[]).md|MidPriceResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.MidPriceResult|MidPriceResult.md|MidPriceResult
-P:TechnicalAnalysis.Functions.MinResult.Real|MinResult.Real.md|Real
 M:TechnicalAnalysis.Functions.MinResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MinResult.MinResult(RetCode,int,int,double[]).md|MinResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.MinResult|MinResult.md|MinResult
 P:TechnicalAnalysis.Functions.MinIndexResult.Integers|MinIndexResult.Integers.md|Integers
@@ -549,10 +543,8 @@ P:TechnicalAnalysis.Functions.MinMaxIndexResult.MaxIdx|MinMaxIndexResult.MaxIdx.
 P:TechnicalAnalysis.Functions.MinMaxIndexResult.MinIdx|MinMaxIndexResult.MinIdx.md|MinIdx
 M:TechnicalAnalysis.Functions.MinMaxIndexResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Int32[],System.Int32[])|MinMaxIndexResult.MinMaxIndexResult(RetCode,int,int,int[],int[]).md|MinMaxIndexResult(RetCode, int, int, int[], int[])
 T:TechnicalAnalysis.Functions.MinMaxIndexResult|MinMaxIndexResult.md|MinMaxIndexResult
-P:TechnicalAnalysis.Functions.MinusDIResult.Real|MinusDIResult.Real.md|Real
 M:TechnicalAnalysis.Functions.MinusDIResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MinusDIResult.MinusDIResult(RetCode,int,int,double[]).md|MinusDIResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.MinusDIResult|MinusDIResult.md|MinusDIResult
-P:TechnicalAnalysis.Functions.MinusDMResult.Real|MinusDMResult.Real.md|Real
 M:TechnicalAnalysis.Functions.MinusDMResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MinusDMResult.MinusDMResult(RetCode,int,int,double[]).md|MinusDMResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.MinusDMResult|MinusDMResult.md|MinusDMResult
 M:TechnicalAnalysis.Functions.MomResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|MomResult.MomResult(RetCode,int,int,double[]).md|MomResult(RetCode, int, int, double[])

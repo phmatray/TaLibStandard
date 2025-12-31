@@ -10,7 +10,7 @@ namespace TechnicalAnalysis.Functions;
 /// Represents the result of the Minus Directional Movement (-DM) indicator calculation.
 /// -DM measures downward price movement and is used as a component in calculating the Directional Movement System indicators.
 /// </summary>
-public record MinusDMResult : IndicatorResult
+public record MinusDMResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MinusDMResult"/> class.
@@ -20,15 +20,7 @@ public record MinusDMResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the calculated -DM values.</param>
     public MinusDMResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Minus Directional Movement values.
-    /// Each value represents the negative (downward) directional movement for the period.
-    /// Calculated as the difference between previous low and current low when it's positive and greater than the upward movement.
-    /// </summary>
-    public double[] Real { get; }
 }
