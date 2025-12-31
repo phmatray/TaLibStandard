@@ -163,6 +163,43 @@ public static class ValidationHelper
     }
 
     /// <summary>
+    /// Executes multiple validation functions sequentially, returning the first error encountered.
+    /// </summary>
+    /// <param name="validations">One or more validation functions that return RetCode.</param>
+    /// <returns>
+    /// <see cref="RetCode.Success"/> if all validations pass;
+    /// the first non-Success RetCode encountered otherwise.
+    /// </returns>
+    /// <remarks>
+    /// This method consolidates the common pattern of running multiple validation checks
+    /// and returning early on the first failure. It reduces boilerplate code across
+    /// indicator functions that typically perform 3-5 sequential validation checks.
+    ///
+    /// Example usage:
+    /// <code>
+    /// RetCode validation = ValidationHelper.ValidateAll(
+    ///     () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+    ///     () => ValidationHelper.ValidateArrays(inReal, outReal),
+    ///     () => ValidationHelper.ValidatePeriodRange(optInTimePeriod)
+    /// );
+    /// if (validation != Success) return validation;
+    /// </code>
+    /// </remarks>
+    public static RetCode ValidateAll(params Func<RetCode>[] validations)
+    {
+        foreach (var validate in validations)
+        {
+            RetCode result = validate();
+            if (result != Success)
+            {
+                return result;
+            }
+        }
+
+        return Success;
+    }
+
+    /// <summary>
     /// Adjusts the start index based on lookback period and validates the calculation range.
     /// </summary>
     /// <param name="lookbackTotal">The total lookback period required.</param>

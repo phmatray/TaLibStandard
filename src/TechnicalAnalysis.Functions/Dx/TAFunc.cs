@@ -66,22 +66,14 @@ public static partial class TAFunc
         double plusDI;
         double minusDI;
         int lookbackTotal;
-        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
-        if (indexCheck != Success)
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outReal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod)
+        );
+        if (validation != Success)
         {
-            return indexCheck;
-        }
-
-        RetCode arrayCheck = ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outReal);
-        if (arrayCheck != Success)
-        {
-            return arrayCheck;
-        }
-
-        RetCode periodCheck = ValidationHelper.ValidatePeriodRange(optInTimePeriod);
-        if (periodCheck != Success)
-        {
-            return periodCheck;
+            return validation;
         }
 
         lookbackTotal = optInTimePeriod > 1 ? optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Dx] : 2;
