@@ -68,8 +68,8 @@ public static partial class TAFunc
         ref int[] outInteger)
     {
         double smoothedValue;
-        const double A = 0.0962;
-        const double B = 0.5769;
+        const double A = HilbertTransformConstants.A;
+        const double B = HilbertTransformConstants.B;
         double[] detrender_Odd = new double[3];
         double[] detrender_Even = new double[3];
         double[] Q1_Odd = new double[3];

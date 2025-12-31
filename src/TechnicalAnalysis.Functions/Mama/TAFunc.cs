@@ -53,8 +53,8 @@ public static partial class TAFunc
         ref double[] outMAMA,
         ref double[] outFAMA)
     {
-        const double A = 0.0962;
-        const double B = 0.5769;
+        const double A = HilbertTransformConstants.A;
+        const double B = HilbertTransformConstants.B;
         double[] detrenderOdd = new double[3];
         double[] detrenderEven = new double[3];
         double[] q1Odd = new double[3];
