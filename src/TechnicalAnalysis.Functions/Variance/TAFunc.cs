@@ -45,20 +45,14 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        if (startIdx < 0)
+        RetCode validationResult = ValidationHelper.ValidateSingleInputIndicator(
+            startIdx, endIdx, inReal, outReal, optInTimePeriod, 1);
+        if (validationResult != Success)
         {
-            return OutOfRangeStartIndex;
+            return validationResult;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null! ||
-            optInTimePeriod is < 1 or > 100000 ||
-            optInNbDev <= 0 ||
-            outReal == null!)
+        if (optInNbDev <= 0)
         {
             return BadParam;
         }

@@ -46,27 +46,19 @@ public static partial class TAFunc
         ref double[] outZigZag)
     {
         // Validate parameters
-        if (startIdx < 0)
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
         {
-            return OutOfRangeStartIndex;
+            return indexCheck;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inHigh, inLow, outZigZag);
+        if (arrayCheck != Success)
         {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! || inLow == null!)
-        {
-            return BadParam;
+            return arrayCheck;
         }
 
         if (optInDeviation is < 0.0 or > 100.0)
-        {
-            return BadParam;
-        }
-
-        if (outZigZag == null!)
         {
             return BadParam;
         }

@@ -63,21 +63,19 @@ public static partial class TAFunc
         double ep;
         int tempInt = 0;
         double[] epTemp = new double[1];
-        if (startIdx < 0)
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
         {
-            return OutOfRangeStartIndex;
+            return indexCheck;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inHigh, inLow, outReal);
+        if (arrayCheck != Success)
         {
-            return OutOfRangeEndIndex;
+            return arrayCheck;
         }
 
-        if (inHigh == null! || 
-            inLow == null! ||
-            optInAcceleration < 0.0 ||
-            optInMaximum < 0.0 ||
-            outReal == null!)
+        if (optInAcceleration < 0.0 || optInMaximum < 0.0)
         {
             return BadParam;
         }

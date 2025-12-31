@@ -67,24 +67,34 @@ public static partial class TAFunc
         int outNbElement1 = 0;
         int outBegIdx2 = 0;
         int outBegIdx1 = 0;
-        if (startIdx < 0)
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
         {
-            return OutOfRangeStartIndex;
+            return indexCheck;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inReal, outFastK, outFastD);
+        if (arrayCheck != Success)
         {
-            return OutOfRangeEndIndex;
+            return arrayCheck;
         }
 
-        if (inReal == null! ||
-            optInTimePeriod is < 2 or > 100000 ||
-            optInFastKPeriod is < 1 or > 100000 ||
-            optInFastDPeriod is < 1 or > 100000 ||
-            outFastK == null! ||
-            outFastD == null!)
+        RetCode timePeriodCheck = ValidationHelper.ValidatePeriodRange(optInTimePeriod);
+        if (timePeriodCheck != Success)
         {
-            return BadParam;
+            return timePeriodCheck;
+        }
+
+        RetCode kPeriodCheck = ValidationHelper.ValidatePeriodRange(optInFastKPeriod, 1);
+        if (kPeriodCheck != Success)
+        {
+            return kPeriodCheck;
+        }
+
+        RetCode dPeriodCheck = ValidationHelper.ValidatePeriodRange(optInFastDPeriod, 1);
+        if (dPeriodCheck != Success)
+        {
+            return dPeriodCheck;
         }
 
         outNBElement = 0;
