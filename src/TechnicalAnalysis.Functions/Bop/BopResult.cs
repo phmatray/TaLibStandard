@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,7 +16,7 @@ namespace TechnicalAnalysis.Functions;
 /// comparing the close price relative to the high-low range. Values range from -1 to +1,
 /// where positive values indicate buying pressure and negative values indicate selling pressure.
 /// </remarks>
-public record BopResult : IndicatorResult
+public record BopResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="BopResult"/> class.
@@ -24,19 +26,7 @@ public record BopResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of Balance Of Power values ranging from -1 to +1.</param>
     public BopResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Balance Of Power values.
-    /// </summary>
-    /// <remarks>
-    /// Values range from -1 to +1, where:
-    /// - Positive values (0 to +1) indicate buying pressure
-    /// - Negative values (-1 to 0) indicate selling pressure
-    /// - Values near zero indicate balanced market conditions
-    /// </remarks>
-    public double[] Real { get; }
 }

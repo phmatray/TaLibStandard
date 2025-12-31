@@ -4,21 +4,23 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
 /// Represents the result of the Aroon Oscillator calculation.
 /// </summary>
 /// <remarks>
-/// The Aroon Oscillator is derived from the Aroon indicator and is calculated as the 
-/// difference between Aroon Up and Aroon Down (Aroon Up - Aroon Down). It oscillates 
-/// between -100 and +100, with zero as the centerline. Positive values indicate an 
-/// upward trend (Aroon Up is greater than Aroon Down), while negative values indicate 
-/// a downward trend. The farther the oscillator is from the zero line, the stronger 
-/// the trend. Crossovers through zero can signal trend changes, making this a valuable 
+/// The Aroon Oscillator is derived from the Aroon indicator and is calculated as the
+/// difference between Aroon Up and Aroon Down (Aroon Up - Aroon Down). It oscillates
+/// between -100 and +100, with zero as the centerline. Positive values indicate an
+/// upward trend (Aroon Up is greater than Aroon Down), while negative values indicate
+/// a downward trend. The farther the oscillator is from the zero line, the stronger
+/// the trend. Crossovers through zero can signal trend changes, making this a valuable
 /// tool for trend identification and timing entry/exit points.
 /// </remarks>
-public record AroonOscResult : IndicatorResult
+public record AroonOscResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AroonOscResult"/> class.
@@ -28,19 +30,7 @@ public record AroonOscResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the calculated Aroon Oscillator values.</param>
     public AroonOscResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Aroon Oscillator values.
-    /// </summary>
-    /// <value>
-    /// An array of doubles representing the oscillator values, ranging from -100 to +100. 
-    /// Positive values indicate upward trend strength, negative values indicate downward 
-    /// trend strength, and values near zero suggest no clear trend. The magnitude indicates 
-    /// trend strength, with values above +50 or below -50 indicating strong trends.
-    /// </value>
-    public double[] Real { get; }
 }

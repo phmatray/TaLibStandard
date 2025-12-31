@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -15,7 +17,7 @@ namespace TechnicalAnalysis.Functions;
 /// into or out of a stock. Rising A/D values indicate accumulation (buying pressure), 
 /// while falling values indicate distribution (selling pressure).
 /// </remarks>
-public record AdResult : IndicatorResult
+public record AdResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AdResult"/> class.
@@ -25,18 +27,7 @@ public record AdResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the calculated A/D Line values.</param>
     public AdResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Accumulation/Distribution Line values.
-    /// </summary>
-    /// <value>
-    /// An array of doubles representing the cumulative A/D Line values, where each value 
-    /// indicates the running total of money flow volume. Positive trends suggest buying 
-    /// pressure, while negative trends suggest selling pressure.
-    /// </value>
-    public double[] Real { get; }
 }
