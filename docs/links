@@ -703,7 +703,6 @@ M:TechnicalAnalysis.Functions.RsiResult.#ctor(TechnicalAnalysis.Common.RetCode,S
 T:TechnicalAnalysis.Functions.RsiResult|RsiResult.md|RsiResult
 M:TechnicalAnalysis.Functions.SarResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SarResult.SarResult(RetCode,int,int,double[]).md|SarResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.SarResult|SarResult.md|SarResult
-P:TechnicalAnalysis.Functions.SarExtResult.Real|SarExtResult.Real.md|Real
 M:TechnicalAnalysis.Functions.SarExtResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SarExtResult.SarExtResult(RetCode,int,int,double[]).md|SarExtResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.SarExtResult|SarExtResult.md|SarExtResult
 M:TechnicalAnalysis.Functions.SinResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SinResult.SinResult(RetCode,int,int,double[]).md|SinResult(RetCode, int, int, double[])
@@ -714,7 +713,6 @@ M:TechnicalAnalysis.Functions.SmaResult.#ctor(TechnicalAnalysis.Common.RetCode,S
 T:TechnicalAnalysis.Functions.SmaResult|SmaResult.md|SmaResult
 M:TechnicalAnalysis.Functions.SqrtResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SqrtResult.SqrtResult(RetCode,int,int,double[]).md|SqrtResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.SqrtResult|SqrtResult.md|SqrtResult
-P:TechnicalAnalysis.Functions.StdDevResult.Real|StdDevResult.Real.md|Real
 M:TechnicalAnalysis.Functions.StdDevResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|StdDevResult.StdDevResult(RetCode,int,int,double[]).md|StdDevResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.StdDevResult|StdDevResult.md|StdDevResult
 P:TechnicalAnalysis.Functions.StochResult.SlowD|StochResult.SlowD.md|SlowD
@@ -731,7 +729,6 @@ M:TechnicalAnalysis.Functions.StochRsiResult.#ctor(TechnicalAnalysis.Common.RetC
 T:TechnicalAnalysis.Functions.StochRsiResult|StochRsiResult.md|StochRsiResult
 M:TechnicalAnalysis.Functions.SubResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SubResult.SubResult(RetCode,int,int,double[]).md|SubResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.SubResult|SubResult.md|SubResult
-P:TechnicalAnalysis.Functions.SumResult.Real|SumResult.Real.md|Real
 M:TechnicalAnalysis.Functions.SumResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|SumResult.SumResult(RetCode,int,int,double[]).md|SumResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.SumResult|SumResult.md|SumResult
 M:TechnicalAnalysis.Functions.T3Result.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|T3Result.T3Result(RetCode,int,int,double[]).md|T3Result(RetCode, int, int, double[])
@@ -744,19 +741,14 @@ M:TechnicalAnalysis.Functions.TemaResult.#ctor(TechnicalAnalysis.Common.RetCode,
 T:TechnicalAnalysis.Functions.TemaResult|TemaResult.md|TemaResult
 M:TechnicalAnalysis.Functions.TrimaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TrimaResult.TrimaResult(RetCode,int,int,double[]).md|TrimaResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.TrimaResult|TrimaResult.md|TrimaResult
-P:TechnicalAnalysis.Functions.TrixResult.Real|TrixResult.Real.md|Real
 M:TechnicalAnalysis.Functions.TrixResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TrixResult.TrixResult(RetCode,int,int,double[]).md|TrixResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.TrixResult|TrixResult.md|TrixResult
-P:TechnicalAnalysis.Functions.TrueRangeResult.Real|TrueRangeResult.Real.md|Real
 M:TechnicalAnalysis.Functions.TrueRangeResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TrueRangeResult.TrueRangeResult(RetCode,int,int,double[]).md|TrueRangeResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.TrueRangeResult|TrueRangeResult.md|TrueRangeResult
-P:TechnicalAnalysis.Functions.TsfResult.Real|TsfResult.Real.md|Real
 M:TechnicalAnalysis.Functions.TsfResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TsfResult.TsfResult(RetCode,int,int,double[]).md|TsfResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.TsfResult|TsfResult.md|TsfResult
-P:TechnicalAnalysis.Functions.TypPriceResult.Real|TypPriceResult.Real.md|Real
 M:TechnicalAnalysis.Functions.TypPriceResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|TypPriceResult.TypPriceResult(RetCode,int,int,double[]).md|TypPriceResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.TypPriceResult|TypPriceResult.md|TypPriceResult
-P:TechnicalAnalysis.Functions.UltOscResult.Real|UltOscResult.Real.md|Real
 M:TechnicalAnalysis.Functions.UltOscResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|UltOscResult.UltOscResult(RetCode,int,int,double[]).md|UltOscResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.UltOscResult|UltOscResult.md|UltOscResult
 P:TechnicalAnalysis.Functions.VarianceResult.Real|VarianceResult.Real.md|Real

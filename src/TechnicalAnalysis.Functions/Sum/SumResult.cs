@@ -4,13 +4,15 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
 /// Represents the result of calculating the summation of values over a specified period.
 /// The SUM function calculates the total of all values within a rolling window.
 /// </summary>
-public record SumResult : IndicatorResult
+public record SumResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="SumResult"/> class.
@@ -21,14 +23,7 @@ public record SumResult : IndicatorResult
     /// <param name="real">An array containing the calculated sums. Each element represents
     /// the total of all values within the specified period ending at that index.</param>
     public SumResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of calculated sum values.
-    /// Each value represents the total of all data points within the specified rolling period.
-    /// </summary>
-    public double[] Real { get; }
 }

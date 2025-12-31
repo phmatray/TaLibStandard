@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,7 +16,7 @@ namespace TechnicalAnalysis.Functions;
 /// It filters out insignificant price movements and helps identify oversold and overbought markets.
 /// The indicator oscillates around a zero line and is excellent for identifying divergences.
 /// </remarks>
-public record TrixResult : IndicatorResult
+public record TrixResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="TrixResult"/> class.
@@ -24,20 +26,7 @@ public record TrixResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of TRIX values representing the rate of change of the triple EMA.</param>
     public TrixResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of TRIX values.
-    /// </summary>
-    /// <remarks>
-    /// TRIX oscillates around zero, where:
-    /// - Positive values indicate upward momentum
-    /// - Negative values indicate downward momentum
-    /// - Crossovers of the zero line can signal trend changes
-    /// - Divergences between price and TRIX can indicate potential reversals
-    /// </remarks>
-    public double[] Real { get; }
 }
