@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -15,7 +17,7 @@ namespace TechnicalAnalysis.Functions;
 /// to become more or less responsive to price changes based on market conditions or other indicators,
 /// providing a more flexible smoothing mechanism than fixed-period moving averages.
 /// </remarks>
-public record MovingAverageVariablePeriodResult : IndicatorResult
+public record MovingAverageVariablePeriodResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MovingAverageVariablePeriodResult"/> class.
@@ -25,20 +27,7 @@ public record MovingAverageVariablePeriodResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of variable period moving average values.</param>
     public MovingAverageVariablePeriodResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of variable period moving average values.
-    /// </summary>
-    /// <remarks>
-    /// Each value is calculated using a different period based on the input period array.
-    /// This adaptive approach allows the indicator to:
-    /// - Respond quickly during volatile periods (shorter periods)
-    /// - Smooth more during stable periods (longer periods)
-    /// - Adjust to changing market conditions automatically
-    /// </remarks>
-    public double[] Real { get; }
 }

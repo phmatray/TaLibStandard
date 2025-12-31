@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -15,7 +17,7 @@ namespace TechnicalAnalysis.Functions;
 /// (Simple, Exponential, Weighted, etc.) can be calculated, each with different characteristics
 /// for trend identification and signal generation.
 /// </remarks>
-public record MovingAverageResult : IndicatorResult
+public record MovingAverageResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MovingAverageResult"/> class.
@@ -25,21 +27,7 @@ public record MovingAverageResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of moving average values.</param>
     public MovingAverageResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of moving average values.
-    /// </summary>
-    /// <remarks>
-    /// The moving average values smooth out price action and help identify trends.
-    /// Common uses include:
-    /// - Trend identification (price above MA = uptrend, below = downtrend)
-    /// - Support and resistance levels
-    /// - Signal generation through crossovers
-    /// - Filtering out market noise
-    /// </remarks>
-    public double[] Real { get; }
 }
