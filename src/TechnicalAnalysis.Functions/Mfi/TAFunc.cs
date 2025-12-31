@@ -53,24 +53,22 @@ public static partial class TAFunc
     {
         int moneyFlowIdx = 0;
         int maxIdxMoneyFlow = 49;
-        if (startIdx < 0)
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
         {
-            return OutOfRangeStartIndex;
+            return indexCheck;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inHigh, inLow, inClose, inVolume, outReal);
+        if (arrayCheck != Success)
         {
-            return OutOfRangeEndIndex;
+            return arrayCheck;
         }
 
-        if (inHigh == null! || 
-            inLow == null! ||
-            inClose == null! ||
-            inVolume == null! ||
-            optInTimePeriod is < 2 or > 100000 ||
-            outReal == null!)
+        RetCode periodCheck = ValidationHelper.ValidatePeriodRange(optInTimePeriod);
+        if (periodCheck != Success)
         {
-            return BadParam;
+            return periodCheck;
         }
 
         MoneyFlow[] moneyFlow = new MoneyFlow[optInTimePeriod];

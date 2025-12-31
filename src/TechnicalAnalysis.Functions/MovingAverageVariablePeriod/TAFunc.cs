@@ -107,23 +107,28 @@ public static partial class TAFunc
         ref double[] outReal)
     {
         int i;
-        if (startIdx < 0)
+        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
+        if (indexCheck != Success)
         {
-            return OutOfRangeStartIndex;
+            return indexCheck;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
+        RetCode arrayCheck = ValidationHelper.ValidateArrays(inReal, inPeriods, outReal);
+        if (arrayCheck != Success)
         {
-            return OutOfRangeEndIndex;
+            return arrayCheck;
         }
 
-        if (inReal == null! ||
-            inPeriods == null! ||
-            optInMinPeriod is < 2 or > 100000 ||
-            optInMaxPeriod is < 2 or > 100000 ||
-            outReal == null!)
+        RetCode minPeriodCheck = ValidationHelper.ValidatePeriodRange(optInMinPeriod);
+        if (minPeriodCheck != Success)
         {
-            return BadParam;
+            return minPeriodCheck;
+        }
+
+        RetCode maxPeriodCheck = ValidationHelper.ValidatePeriodRange(optInMaxPeriod);
+        if (maxPeriodCheck != Success)
+        {
+            return maxPeriodCheck;
         }
 
         int lookbackTotal = MovingAverageLookback(optInMaxPeriod, optInMAType);
