@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,7 +16,7 @@ namespace TechnicalAnalysis.Functions;
 /// the fast MA, slow MA, and signal line. This provides more flexibility than the
 /// standard MACD which uses only exponential moving averages.
 /// </remarks>
-public record MacdExtResult : IndicatorResult
+public record MacdExtResult : TripleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MacdExtResult"/> class.
@@ -32,11 +34,8 @@ public record MacdExtResult : IndicatorResult
         double[] macd,
         double[] macdSignal,
         double[] macdHist)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, macd, macdSignal, macdHist)
     {
-        MACD = macd;
-        MACDSignal = macdSignal;
-        MACDHist = macdHist;
     }
 
     /// <summary>
@@ -46,7 +45,7 @@ public record MacdExtResult : IndicatorResult
     /// An array of double values representing the MACD line, calculated as the difference
     /// between the fast moving average and the slow moving average using the specified MA types.
     /// </value>
-    public double[] MACD { get; }
+    public double[] MACD => Real0;
 
     /// <summary>
     /// Gets the array of MACD histogram values.
@@ -55,7 +54,7 @@ public record MacdExtResult : IndicatorResult
     /// An array of double values representing the MACD histogram, calculated as the difference
     /// between the MACD line and the signal line. Used to visualize convergence and divergence.
     /// </value>
-    public double[] MACDHist { get; }
+    public double[] MACDHist => Real2;
 
     /// <summary>
     /// Gets the array of signal line values.
@@ -64,5 +63,5 @@ public record MacdExtResult : IndicatorResult
     /// An array of double values representing the signal line, which is a moving average
     /// of the MACD line using the specified signal MA type.
     /// </value>
-    public double[] MACDSignal { get; }
+    public double[] MACDSignal => Real1;
 }

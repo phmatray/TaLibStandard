@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,7 +16,7 @@ namespace TechnicalAnalysis.Functions;
 /// with a customizable signal period. This is a variation of the MACD indicator that
 /// maintains the traditional period settings while allowing signal line customization.
 /// </remarks>
-public record MacdFixResult : IndicatorResult
+public record MacdFixResult : TripleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MacdFixResult"/> class.
@@ -32,11 +34,8 @@ public record MacdFixResult : IndicatorResult
         double[] macd,
         double[] macdSignal,
         double[] macdHist)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, macd, macdSignal, macdHist)
     {
-        MACD = macd;
-        MACDSignal = macdSignal;
-        MACDHist = macdHist;
     }
 
     /// <summary>
@@ -46,7 +45,7 @@ public record MacdFixResult : IndicatorResult
     /// An array of double values representing the MACD line, calculated as the difference
     /// between the 12-period EMA and the 26-period EMA.
     /// </value>
-    public double[] MACD { get; }
+    public double[] MACD => Real0;
 
     /// <summary>
     /// Gets the array of MACD histogram values.
@@ -55,7 +54,7 @@ public record MacdFixResult : IndicatorResult
     /// An array of double values representing the MACD histogram, showing the difference
     /// between the MACD line and the signal line as a bar chart visualization.
     /// </value>
-    public double[] MACDHist { get; }
+    public double[] MACDHist => Real2;
 
     /// <summary>
     /// Gets the array of signal line values.
@@ -64,5 +63,5 @@ public record MacdFixResult : IndicatorResult
     /// An array of double values representing the signal line, which is an EMA
     /// of the MACD line with a customizable period.
     /// </value>
-    public double[] MACDSignal { get; }
+    public double[] MACDSignal => Real1;
 }
