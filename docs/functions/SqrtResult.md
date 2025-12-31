@@ -17,3 +17,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 The SQRT function calculates the square root of each element in the input array\.
 Input values must be non\-negative \(zero or positive\)\. The square root is the value that,
 when multiplied by itself, gives the original number\. For example, sqrt\(4\) = 2, sqrt\(9\) = 3\.
+
+| Constructors | |
+| :--- | :--- |
+| [SqrtResult\(RetCode, int, int, double\[\]\)](SqrtResult.SqrtResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.SqrtResult\.SqrtResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [SqrtResult](SqrtResult.md 'TechnicalAnalysis\.Functions\.SqrtResult') class\. |

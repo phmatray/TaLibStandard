@@ -18,6 +18,7 @@ namespace TechnicalAnalysis.Functions;
 /// </remarks>
 public record SubResult : SingleOutputResult
 {
+    /// <summary>
     /// Initializes a new instance of the <see cref="SubResult"/> class.
     /// </summary>
     /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
@@ -28,5 +29,4 @@ public record SubResult : SingleOutputResult
         : base(retCode, begIdx, nbElement, real)
     {
     }
-
 }

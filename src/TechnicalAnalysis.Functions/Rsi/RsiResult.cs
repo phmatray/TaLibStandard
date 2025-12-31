@@ -18,6 +18,7 @@ namespace TechnicalAnalysis.Functions;
 /// </remarks>
 public record RsiResult : SingleOutputResult
 {
+    /// <summary>
     /// Initializes a new instance of the <see cref="RsiResult"/> class.
     /// </summary>
     /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
@@ -28,5 +29,4 @@ public record RsiResult : SingleOutputResult
         : base(retCode, begIdx, nbElement, real)
     {
     }
-
 }

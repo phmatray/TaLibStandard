@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,7 +16,7 @@ namespace TechnicalAnalysis.Functions;
 /// making it more responsive to new information compared to the Simple Moving Average (SMA).
 /// It is commonly used to identify trends and generate trading signals.
 /// </remarks>
-public record EmaResult : IndicatorResult
+public record EmaResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="EmaResult"/> class.
@@ -24,18 +26,7 @@ public record EmaResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of exponential moving average values.</param>
     public EmaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of exponential moving average values.
-    /// </summary>
-    /// <value>
-    /// An array of double values representing the Exponential Moving Average at each data point.
-    /// Each value is calculated using an exponential weighting factor that gives more importance
-    /// to recent price data.
-    /// </value>
-    public double[] Real { get; }
 }

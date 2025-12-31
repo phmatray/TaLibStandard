@@ -18,6 +18,7 @@ namespace TechnicalAnalysis.Functions;
 /// </remarks>
 public record Log10Result : SingleOutputResult
 {
+    /// <summary>
     /// Initializes a new instance of the <see cref="Log10Result"/> class.
     /// </summary>
     /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
@@ -28,5 +29,4 @@ public record Log10Result : SingleOutputResult
         : base(retCode, begIdx, nbElement, real)
     {
     }
-
 }

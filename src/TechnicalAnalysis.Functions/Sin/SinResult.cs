@@ -18,6 +18,7 @@ namespace TechnicalAnalysis.Functions;
 /// </remarks>
 public record SinResult : SingleOutputResult
 {
+    /// <summary>
     /// Initializes a new instance of the <see cref="SinResult"/> class.
     /// </summary>
     /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>

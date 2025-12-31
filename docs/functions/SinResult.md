@@ -17,3 +17,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 The SIN function calculates the sine of each element in the input array\.
 Input values are expected to be in radians\. The result is an array where each
 element represents the sine of the corresponding input angle, with values in the range \[\-1, 1\]\.
+
+| Constructors | |
+| :--- | :--- |
+| [SinResult\(RetCode, int, int, double\[\]\)](SinResult.SinResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.SinResult\.SinResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [SinResult](SinResult.md 'TechnicalAnalysis\.Functions\.SinResult') class\. |

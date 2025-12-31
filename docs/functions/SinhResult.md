@@ -17,3 +17,7 @@ Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api
 The SINH function calculates the hyperbolic sine of each element in the input array\.
 The hyperbolic sine is defined as sinh\(x\) = \(e^x \- e^\(\-x\)\) / 2\.
 Unlike the regular sine function, hyperbolic sine can produce values outside the range \[\-1, 1\]\.
+
+| Constructors | |
+| :--- | :--- |
+| [SinhResult\(RetCode, int, int, double\[\]\)](SinhResult.SinhResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.SinhResult\.SinhResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [SinhResult](SinhResult.md 'TechnicalAnalysis\.Functions\.SinhResult') class\. |
