@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath

@@ -5,43 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [RocR100\(int, int, double\[\]\)](TAMath.RocR100.md#TechnicalAnalysis.Functions.TAMath.RocR100(int,int,double[]) 'TechnicalAnalysis\.Functions\.TAMath\.RocR100\(int, int, double\[\]\)') | Calculates the Rate of Change Ratio 100 scale \(ROCR100\) using a default time period of 10\. |
 | [RocR100\(int, int, double\[\], int\)](TAMath.RocR100.md#TechnicalAnalysis.Functions.TAMath.RocR100(int,int,double[],int) 'TechnicalAnalysis\.Functions\.TAMath\.RocR100\(int, int, double\[\], int\)') | Calculates the Rate of Change Ratio 100 scale \(ROCR100\) which measures price momentum as a percentage\. |
-| [RocR100\(int, int, float\[\]\)](TAMath.RocR100.md#TechnicalAnalysis.Functions.TAMath.RocR100(int,int,float[]) 'TechnicalAnalysis\.Functions\.TAMath\.RocR100\(int, int, float\[\]\)') | Calculates the Rate of Change Ratio 100 scale \(ROCR100\) for float arrays using a default time period of 10\. |
 | [RocR100\(int, int, float\[\], int\)](TAMath.RocR100.md#TechnicalAnalysis.Functions.TAMath.RocR100(int,int,float[],int) 'TechnicalAnalysis\.Functions\.TAMath\.RocR100\(int, int, float\[\], int\)') | Calculates the Rate of Change Ratio 100 scale \(ROCR100\) for float arrays\. |
-
-<a name='TechnicalAnalysis.Functions.TAMath.RocR100(int,int,double[])'></a>
-
-## TAMath\.RocR100\(int, int, double\[\]\) Method
-
-Calculates the Rate of Change Ratio 100 scale \(ROCR100\) using a default time period of 10\.
-
-```csharp
-public static TechnicalAnalysis.Functions.RocR100Result RocR100(int startIdx, int endIdx, double[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.RocR100(int,int,double[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.RocR100(int,int,double[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.RocR100(int,int,double[]).real'></a>
-
-`real` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of input values \(typically closing prices\)\.
-
-#### Returns
-[RocR100Result](RocR100Result.md 'TechnicalAnalysis\.Functions\.RocR100Result')  
-A RocR100Result object containing the calculated values and metadata\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.RocR100(int,int,double[],int)'></a>
 
@@ -50,7 +15,7 @@ A RocR100Result object containing the calculated values and metadata\.
 Calculates the Rate of Change Ratio 100 scale \(ROCR100\) which measures price momentum as a percentage\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.RocR100Result RocR100(int startIdx, int endIdx, double[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.RocR100Result RocR100(int startIdx, int endIdx, double[] real, int timePeriod=10);
 ```
 #### Parameters
 
@@ -88,42 +53,6 @@ change in price from n periods ago, scaled by 100\. It is calculated as: \(\(Cur
 Values above 100 indicate upward momentum, while values below 100 indicate downward momentum\.
 A value of 100 indicates no change\. This is essentially ROCR multiplied by 100 for easier interpretation\.
 
-<a name='TechnicalAnalysis.Functions.TAMath.RocR100(int,int,float[])'></a>
-
-## TAMath\.RocR100\(int, int, float\[\]\) Method
-
-Calculates the Rate of Change Ratio 100 scale \(ROCR100\) for float arrays using a default time period of 10\.
-
-```csharp
-public static TechnicalAnalysis.Functions.RocR100Result RocR100(int startIdx, int endIdx, float[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.RocR100(int,int,float[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.RocR100(int,int,float[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.RocR100(int,int,float[]).real'></a>
-
-`real` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of input values \(typically closing prices\)\.
-
-#### Returns
-[RocR100Result](RocR100Result.md 'TechnicalAnalysis\.Functions\.RocR100Result')  
-A RocR100Result object containing the calculated values and metadata\.
-
-### Remarks
-This overload accepts float arrays and converts them to double arrays before performing the calculation\.
-
 <a name='TechnicalAnalysis.Functions.TAMath.RocR100(int,int,float[],int)'></a>
 
 ## TAMath\.RocR100\(int, int, float\[\], int\) Method
@@ -131,7 +60,7 @@ This overload accepts float arrays and converts them to double arrays before per
 Calculates the Rate of Change Ratio 100 scale \(ROCR100\) for float arrays\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.RocR100Result RocR100(int startIdx, int endIdx, float[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.RocR100Result RocR100(int startIdx, int endIdx, float[] real, int timePeriod=10);
 ```
 #### Parameters
 

@@ -5,46 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [Tsf\(int, int, double\[\]\)](TAMath.Tsf.md#TechnicalAnalysis.Functions.TAMath.Tsf(int,int,double[]) 'TechnicalAnalysis\.Functions\.TAMath\.Tsf\(int, int, double\[\]\)') | Calculates the Time Series Forecast \(TSF\) indicator using the default time period\. |
 | [Tsf\(int, int, double\[\], int\)](TAMath.Tsf.md#TechnicalAnalysis.Functions.TAMath.Tsf(int,int,double[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Tsf\(int, int, double\[\], int\)') | Calculates the Time Series Forecast \(TSF\) indicator\. |
-| [Tsf\(int, int, float\[\]\)](TAMath.Tsf.md#TechnicalAnalysis.Functions.TAMath.Tsf(int,int,float[]) 'TechnicalAnalysis\.Functions\.TAMath\.Tsf\(int, int, float\[\]\)') | Calculates the Time Series Forecast \(TSF\) indicator using float arrays and the default time period\. |
 | [Tsf\(int, int, float\[\], int\)](TAMath.Tsf.md#TechnicalAnalysis.Functions.TAMath.Tsf(int,int,float[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Tsf\(int, int, float\[\], int\)') | Calculates the Time Series Forecast \(TSF\) indicator using float arrays\. |
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tsf(int,int,double[])'></a>
-
-## TAMath\.Tsf\(int, int, double\[\]\) Method
-
-Calculates the Time Series Forecast \(TSF\) indicator using the default time period\.
-
-```csharp
-public static TechnicalAnalysis.Functions.TsfResult Tsf(int startIdx, int endIdx, double[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tsf(int,int,double[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tsf(int,int,double[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tsf(int,int,double[]).real'></a>
-
-`real` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-An array of real values \(typically closing prices\)\.
-
-#### Returns
-[TsfResult](TsfResult.md 'TechnicalAnalysis\.Functions\.TsfResult')  
-A TsfResult object containing the calculated values\.
-
-### Remarks
-Uses the default time period of 14\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Tsf(int,int,double[],int)'></a>
 
@@ -53,7 +15,7 @@ Uses the default time period of 14\.
 Calculates the Time Series Forecast \(TSF\) indicator\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.TsfResult Tsf(int startIdx, int endIdx, double[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.TsfResult Tsf(int startIdx, int endIdx, double[] real, int timePeriod=14);
 ```
 #### Parameters
 
@@ -91,42 +53,6 @@ It uses the least squares method to fit a straight line to the data for the sele
 TSF can be used to identify the underlying trend and potential support/resistance levels\.
 The indicator attempts to predict future values based on historical linear regression analysis\.
 
-<a name='TechnicalAnalysis.Functions.TAMath.Tsf(int,int,float[])'></a>
-
-## TAMath\.Tsf\(int, int, float\[\]\) Method
-
-Calculates the Time Series Forecast \(TSF\) indicator using float arrays and the default time period\.
-
-```csharp
-public static TechnicalAnalysis.Functions.TsfResult Tsf(int startIdx, int endIdx, float[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tsf(int,int,float[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tsf(int,int,float[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Tsf(int,int,float[]).real'></a>
-
-`real` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-An array of real values \(typically closing prices\)\.
-
-#### Returns
-[TsfResult](TsfResult.md 'TechnicalAnalysis\.Functions\.TsfResult')  
-A TsfResult object containing the calculated values\.
-
-### Remarks
-Uses the default time period of 14\. This overload accepts float arrays and converts them to double arrays\.
-
 <a name='TechnicalAnalysis.Functions.TAMath.Tsf(int,int,float[],int)'></a>
 
 ## TAMath\.Tsf\(int, int, float\[\], int\) Method
@@ -134,7 +60,7 @@ Uses the default time period of 14\. This overload accepts float arrays and conv
 Calculates the Time Series Forecast \(TSF\) indicator using float arrays\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.TsfResult Tsf(int startIdx, int endIdx, float[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.TsfResult Tsf(int startIdx, int endIdx, float[] real, int timePeriod=14);
 ```
 #### Parameters
 
@@ -160,7 +86,7 @@ An array of real values \(typically closing prices\)\.
 
 `timePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The number of periods for the linear regression\.
+The number of periods for the linear regression \(default: 14\)\.
 
 #### Returns
 [TsfResult](TsfResult.md 'TechnicalAnalysis\.Functions\.TsfResult')  

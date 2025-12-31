@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -34,8 +36,8 @@ public static partial class TAMath
         double[] low,
         double[] close,
         double[] volume,
-        int fastPeriod,
-        int slowPeriod)
+        int fastPeriod = 3,
+        int slowPeriod = 10)
     {
         int outBegIdx = 0;
         int outNBElement = 0;
@@ -56,29 +58,6 @@ public static partial class TAMath
             
         return new AdOscResult(retCode, outBegIdx, outNBElement, outReal);
     }
-        
-    /// <summary>
-    /// Calculates the Chaikin Accumulation/Distribution Oscillator (ADOSC) with default periods.
-    /// </summary>
-    /// <remarks>
-    /// This overload uses default values of 3 for the fast period and 10 for the slow period.
-    /// See the main overload for a detailed description of the ADOSC indicator.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <param name="close">Array of closing prices.</param>
-    /// <param name="volume">Array of trading volumes.</param>
-    /// <returns>An AdOscResult object containing the calculated oscillator values.</returns>
-    public static AdOscResult AdOsc(
-        int startIdx,
-        int endIdx,
-        double[] high,
-        double[] low,
-        double[] close,
-        double[] volume)
-        => AdOsc(startIdx, endIdx, high, low, close, volume, 3, 10);
 
     /// <summary>
     /// Calculates the Chaikin Accumulation/Distribution Oscillator (ADOSC) using float arrays.
@@ -93,8 +72,8 @@ public static partial class TAMath
     /// <param name="low">Array of low prices.</param>
     /// <param name="close">Array of closing prices.</param>
     /// <param name="volume">Array of trading volumes.</param>
-    /// <param name="fastPeriod">The period for the fast exponential moving average.</param>
-    /// <param name="slowPeriod">The period for the slow exponential moving average.</param>
+    /// <param name="fastPeriod">The period for the fast exponential moving average (default: 3).</param>
+    /// <param name="slowPeriod">The period for the slow exponential moving average (default: 10).</param>
     /// <returns>An AdOscResult object containing the calculated oscillator values.</returns>
     public static AdOscResult AdOsc(
         int startIdx,
@@ -103,32 +82,7 @@ public static partial class TAMath
         float[] low,
         float[] close,
         float[] volume,
-        int fastPeriod,
-        int slowPeriod)
-        => AdOsc(
-            startIdx,
-            endIdx,
-            high.ToDouble(),
-            low.ToDouble(),
-            close.ToDouble(),
-            volume.ToDouble(),
-            fastPeriod,
-            slowPeriod);
-        
-    /// <summary>
-    /// Calculates the Chaikin Accumulation/Distribution Oscillator (ADOSC) using float arrays with default periods.
-    /// </summary>
-    /// <remarks>
-    /// This is a float overload that converts input arrays to double arrays before processing.
-    /// Uses default values of 3 for the fast period and 10 for the slow period.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <param name="close">Array of closing prices.</param>
-    /// <param name="volume">Array of trading volumes.</param>
-    /// <returns>An AdOscResult object containing the calculated oscillator values.</returns>
-    public static AdOscResult AdOsc(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume)
-        => AdOsc(startIdx, endIdx, high, low, close, volume, 3, 10);
+        int fastPeriod = 3,
+        int slowPeriod = 10)
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, close, volume, (s, e, h, l, c, v) => AdOsc(s, e, h, l, c, v, fastPeriod, slowPeriod));
 }

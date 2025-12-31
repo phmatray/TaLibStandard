@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -34,7 +36,7 @@ public static partial class TAMath
     /// <param name="low">Array of low prices.</param>
     /// <param name="timePeriod">The lookback period for the calculation (default: 14).</param>
     /// <returns>An AroonResult object containing both Aroon Down and Aroon Up values.</returns>
-    public static AroonResult Aroon(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
+    public static AroonResult Aroon(int startIdx, int endIdx, double[] high, double[] low, int timePeriod = 14)
     {
         int outBegIdx = 0;
         int outNBElement = 0;
@@ -56,21 +58,6 @@ public static partial class TAMath
     }
 
     /// <summary>
-    /// Calculates the Aroon indicator with default period.
-    /// </summary>
-    /// <remarks>
-    /// This overload uses a default time period of 14.
-    /// See the main overload for a detailed description of the Aroon indicator.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <returns>An AroonResult object containing both Aroon Down and Aroon Up values.</returns>
-    public static AroonResult Aroon(int startIdx, int endIdx, double[] high, double[] low)
-        => Aroon(startIdx, endIdx, high, low, 14);
-
-    /// <summary>
     /// Calculates the Aroon indicator using float arrays.
     /// </summary>
     /// <remarks>
@@ -81,23 +68,8 @@ public static partial class TAMath
     /// <param name="endIdx">The ending index for the calculation.</param>
     /// <param name="high">Array of high prices.</param>
     /// <param name="low">Array of low prices.</param>
-    /// <param name="timePeriod">The lookback period for the calculation.</param>
+    /// <param name="timePeriod">The lookback period for the calculation (default: 14).</param>
     /// <returns>An AroonResult object containing both Aroon Down and Aroon Up values.</returns>
-    public static AroonResult Aroon(int startIdx, int endIdx, float[] high, float[] low, int timePeriod)
-        => Aroon(startIdx, endIdx, high.ToDouble(), low.ToDouble(), timePeriod);
-
-    /// <summary>
-    /// Calculates the Aroon indicator using float arrays with default period.
-    /// </summary>
-    /// <remarks>
-    /// This is a float overload that converts input arrays to double arrays before processing.
-    /// Uses a default time period of 14.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <returns>An AroonResult object containing both Aroon Down and Aroon Up values.</returns>
-    public static AroonResult Aroon(int startIdx, int endIdx, float[] high, float[] low)
-        => Aroon(startIdx, endIdx, high, low, 14);
+    public static AroonResult Aroon(int startIdx, int endIdx, float[] high, float[] low, int timePeriod = 14)
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, (s, e, h, l) => Aroon(s, e, h, l, timePeriod));
 }

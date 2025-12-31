@@ -5,53 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [Aroon\(int, int, double\[\], double\[\]\)](TAMath.Aroon.md#TechnicalAnalysis.Functions.TAMath.Aroon(int,int,double[],double[]) 'TechnicalAnalysis\.Functions\.TAMath\.Aroon\(int, int, double\[\], double\[\]\)') | Calculates the Aroon indicator with default period\. |
 | [Aroon\(int, int, double\[\], double\[\], int\)](TAMath.Aroon.md#TechnicalAnalysis.Functions.TAMath.Aroon(int,int,double[],double[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Aroon\(int, int, double\[\], double\[\], int\)') | Calculates the Aroon indicator \(Aroon Up and Aroon Down\)\. |
-| [Aroon\(int, int, float\[\], float\[\]\)](TAMath.Aroon.md#TechnicalAnalysis.Functions.TAMath.Aroon(int,int,float[],float[]) 'TechnicalAnalysis\.Functions\.TAMath\.Aroon\(int, int, float\[\], float\[\]\)') | Calculates the Aroon indicator using float arrays with default period\. |
 | [Aroon\(int, int, float\[\], float\[\], int\)](TAMath.Aroon.md#TechnicalAnalysis.Functions.TAMath.Aroon(int,int,float[],float[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Aroon\(int, int, float\[\], float\[\], int\)') | Calculates the Aroon indicator using float arrays\. |
-
-<a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,double[],double[])'></a>
-
-## TAMath\.Aroon\(int, int, double\[\], double\[\]\) Method
-
-Calculates the Aroon indicator with default period\.
-
-```csharp
-public static TechnicalAnalysis.Functions.AroonResult Aroon(int startIdx, int endIdx, double[] high, double[] low);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,double[],double[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,double[],double[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,double[],double[]).high'></a>
-
-`high` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of high prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,double[],double[]).low'></a>
-
-`low` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of low prices\.
-
-#### Returns
-[AroonResult](AroonResult.md 'TechnicalAnalysis\.Functions\.AroonResult')  
-An AroonResult object containing both Aroon Down and Aroon Up values\.
-
-### Remarks
-This overload uses a default time period of 14\.
-See the main overload for a detailed description of the Aroon indicator\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,double[],double[],int)'></a>
 
@@ -60,7 +15,7 @@ See the main overload for a detailed description of the Aroon indicator\.
 Calculates the Aroon indicator \(Aroon Up and Aroon Down\)\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.AroonResult Aroon(int startIdx, int endIdx, double[] high, double[] low, int timePeriod);
+public static TechnicalAnalysis.Functions.AroonResult Aroon(int startIdx, int endIdx, double[] high, double[] low, int timePeriod=14);
 ```
 #### Parameters
 
@@ -115,49 +70,6 @@ Trading signals:
 \- When Aroon Down crosses above Aroon Up, it may signal a new downtrend
 \- When both lines are below 50, it indicates a weak or absent trend
 
-<a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,float[],float[])'></a>
-
-## TAMath\.Aroon\(int, int, float\[\], float\[\]\) Method
-
-Calculates the Aroon indicator using float arrays with default period\.
-
-```csharp
-public static TechnicalAnalysis.Functions.AroonResult Aroon(int startIdx, int endIdx, float[] high, float[] low);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,float[],float[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,float[],float[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,float[],float[]).high'></a>
-
-`high` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of high prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,float[],float[]).low'></a>
-
-`low` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of low prices\.
-
-#### Returns
-[AroonResult](AroonResult.md 'TechnicalAnalysis\.Functions\.AroonResult')  
-An AroonResult object containing both Aroon Down and Aroon Up values\.
-
-### Remarks
-This is a float overload that converts input arrays to double arrays before processing\.
-Uses a default time period of 14\.
-
 <a name='TechnicalAnalysis.Functions.TAMath.Aroon(int,int,float[],float[],int)'></a>
 
 ## TAMath\.Aroon\(int, int, float\[\], float\[\], int\) Method
@@ -165,7 +77,7 @@ Uses a default time period of 14\.
 Calculates the Aroon indicator using float arrays\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.AroonResult Aroon(int startIdx, int endIdx, float[] high, float[] low, int timePeriod);
+public static TechnicalAnalysis.Functions.AroonResult Aroon(int startIdx, int endIdx, float[] high, float[] low, int timePeriod=14);
 ```
 #### Parameters
 
@@ -197,7 +109,7 @@ Array of low prices\.
 
 `timePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The lookback period for the calculation\.
+The lookback period for the calculation \(default: 14\)\.
 
 #### Returns
 [AroonResult](AroonResult.md 'TechnicalAnalysis\.Functions\.AroonResult')  

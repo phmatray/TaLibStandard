@@ -5,59 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [Adx\(int, int, double\[\], double\[\], double\[\]\)](TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[]) 'TechnicalAnalysis\.Functions\.TAMath\.Adx\(int, int, double\[\], double\[\], double\[\]\)') | Calculates the Average Directional Index \(ADX\) using the default period of 14\. |
 | [Adx\(int, int, double\[\], double\[\], double\[\], int\)](TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Adx\(int, int, double\[\], double\[\], double\[\], int\)') | Calculates the Average Directional Index \(ADX\) indicator\. |
-| [Adx\(int, int, float\[\], float\[\], float\[\]\)](TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[]) 'TechnicalAnalysis\.Functions\.TAMath\.Adx\(int, int, float\[\], float\[\], float\[\]\)') | Calculates the Average Directional Index \(ADX\) using the default period of 14 with float arrays\. |
 | [Adx\(int, int, float\[\], float\[\], float\[\], int\)](TAMath.Adx.md#TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Adx\(int, int, float\[\], float\[\], float\[\], int\)') | Calculates the Average Directional Index \(ADX\) for the specified period using float arrays\. |
-
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[])'></a>
-
-## TAMath\.Adx\(int, int, double\[\], double\[\], double\[\]\) Method
-
-Calculates the Average Directional Index \(ADX\) using the default period of 14\.
-
-```csharp
-public static TechnicalAnalysis.Functions.AdxResult Adx(int startIdx, int endIdx, double[] high, double[] low, double[] close);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[]).high'></a>
-
-`high` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of high prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[]).low'></a>
-
-`low` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of low prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[]).close'></a>
-
-`close` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of closing prices\.
-
-#### Returns
-[AdxResult](AdxResult.md 'TechnicalAnalysis\.Functions\.AdxResult')  
-An AdxResult containing the calculated values and metadata\.
-
-### Remarks
-This overload uses a default time period of 14\.
-See the main overload for a detailed description of the ADX indicator\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,double[],double[],double[],int)'></a>
 
@@ -66,7 +15,7 @@ See the main overload for a detailed description of the ADX indicator\.
 Calculates the Average Directional Index \(ADX\) indicator\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.AdxResult Adx(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod);
+public static TechnicalAnalysis.Functions.AdxResult Adx(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod=14);
 ```
 #### Parameters
 
@@ -128,55 +77,6 @@ ADX values help identify trend strength:
 The ADX does not indicate trend direction, only trend strength\. Traders often use it in combination 
 with the \+DI and \-DI lines to determine both trend direction and strength\.
 
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[])'></a>
-
-## TAMath\.Adx\(int, int, float\[\], float\[\], float\[\]\) Method
-
-Calculates the Average Directional Index \(ADX\) using the default period of 14 with float arrays\.
-
-```csharp
-public static TechnicalAnalysis.Functions.AdxResult Adx(int startIdx, int endIdx, float[] high, float[] low, float[] close);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[]).high'></a>
-
-`high` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of high prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[]).low'></a>
-
-`low` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of low prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[]).close'></a>
-
-`close` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of closing prices\.
-
-#### Returns
-[AdxResult](AdxResult.md 'TechnicalAnalysis\.Functions\.AdxResult')  
-An AdxResult containing the calculated values and metadata\.
-
-### Remarks
-This is a float overload that converts input arrays to double arrays before processing\.
-Uses a default time period of 14\.
-
 <a name='TechnicalAnalysis.Functions.TAMath.Adx(int,int,float[],float[],float[],int)'></a>
 
 ## TAMath\.Adx\(int, int, float\[\], float\[\], float\[\], int\) Method
@@ -184,7 +84,7 @@ Uses a default time period of 14\.
 Calculates the Average Directional Index \(ADX\) for the specified period using float arrays\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.AdxResult Adx(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod);
+public static TechnicalAnalysis.Functions.AdxResult Adx(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod=14);
 ```
 #### Parameters
 
@@ -222,7 +122,7 @@ Array of closing prices\.
 
 `timePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-Number of periods for the ADX calculation\.
+Number of periods for the ADX calculation \(default: 14\)\.
 
 #### Returns
 [AdxResult](AdxResult.md 'TechnicalAnalysis\.Functions\.AdxResult')  
