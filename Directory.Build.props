@@ -57,10 +57,6 @@
   <PropertyGroup Condition="'$(IsTestProject)' == 'true' or '$(MSBuildProjectDirectory.Contains(`tests`))' == 'true'">
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <OutputType>Exe</OutputType>
-    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
-    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
-    <TestingPlatformCaptureOutput>true</TestingPlatformCaptureOutput>
   </PropertyGroup>
   
   <!-- Demo Project Settings -->
