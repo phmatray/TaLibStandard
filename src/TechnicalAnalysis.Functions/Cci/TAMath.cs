@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -31,7 +33,7 @@ public static partial class TAMath
     /// <param name="close">Array of closing prices.</param>
     /// <param name="timePeriod">The number of periods to use in the calculation (default: 14).</param>
     /// <returns>A CciResult object containing the calculated CCI values.</returns>
-    public static CciResult Cci(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod)
+    public static CciResult Cci(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod = 14)
     {
         int outBegIdx = 0;
         int outNBElement = 0;
@@ -47,25 +49,9 @@ public static partial class TAMath
             ref outBegIdx,
             ref outNBElement,
             ref outReal);
-            
+
         return new CciResult(retCode, outBegIdx, outNBElement, outReal);
     }
-
-    /// <summary>
-    /// Calculates the Commodity Channel Index (CCI) indicator with default period.
-    /// </summary>
-    /// <remarks>
-    /// This overload uses a default time period of 14.
-    /// See the main overload for a detailed description of the CCI indicator.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <param name="close">Array of closing prices.</param>
-    /// <returns>A CciResult object containing the calculated CCI values.</returns>
-    public static CciResult Cci(int startIdx, int endIdx, double[] high, double[] low, double[] close)
-        => Cci(startIdx, endIdx, high, low, close, 14);
 
     /// <summary>
     /// Calculates the Commodity Channel Index (CCI) indicator using float arrays.
@@ -79,24 +65,8 @@ public static partial class TAMath
     /// <param name="high">Array of high prices.</param>
     /// <param name="low">Array of low prices.</param>
     /// <param name="close">Array of closing prices.</param>
-    /// <param name="timePeriod">The number of periods to use in the calculation.</param>
+    /// <param name="timePeriod">The number of periods to use in the calculation (default: 14).</param>
     /// <returns>A CciResult object containing the calculated CCI values.</returns>
-    public static CciResult Cci(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod)
-        => Cci(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), timePeriod);
-
-    /// <summary>
-    /// Calculates the Commodity Channel Index (CCI) indicator using float arrays with default period.
-    /// </summary>
-    /// <remarks>
-    /// This is a float overload that converts input arrays to double arrays before processing.
-    /// Uses a default time period of 14.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <param name="close">Array of closing prices.</param>
-    /// <returns>A CciResult object containing the calculated CCI values.</returns>
-    public static CciResult Cci(int startIdx, int endIdx, float[] high, float[] low, float[] close)
-        => Cci(startIdx, endIdx, high, low, close, 14);
+    public static CciResult Cci(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod = 14)
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, close, (s, e, h, l, c) => Cci(s, e, h, l, c, timePeriod));
 }

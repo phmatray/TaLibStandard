@@ -5,48 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [Rsi\(int, int, double\[\]\)](TAMath.Rsi.md#TechnicalAnalysis.Functions.TAMath.Rsi(int,int,double[]) 'TechnicalAnalysis\.Functions\.TAMath\.Rsi\(int, int, double\[\]\)') | Calculates the Relative Strength Index \(RSI\) for the input price data using the default period of 14\. |
 | [Rsi\(int, int, double\[\], int\)](TAMath.Rsi.md#TechnicalAnalysis.Functions.TAMath.Rsi(int,int,double[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Rsi\(int, int, double\[\], int\)') | Calculates the Relative Strength Index \(RSI\) for the input price data\. |
-| [Rsi\(int, int, float\[\]\)](TAMath.Rsi.md#TechnicalAnalysis.Functions.TAMath.Rsi(int,int,float[]) 'TechnicalAnalysis\.Functions\.TAMath\.Rsi\(int, int, float\[\]\)') | Calculates the Relative Strength Index \(RSI\) for the input price data using the default period of 14\. |
-| [Rsi\(int, int, float\[\], int\)](TAMath.Rsi.md#TechnicalAnalysis.Functions.TAMath.Rsi(int,int,float[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Rsi\(int, int, float\[\], int\)') | Calculates the Relative Strength Index \(RSI\) for the input price data\. |
-
-<a name='TechnicalAnalysis.Functions.TAMath.Rsi(int,int,double[])'></a>
-
-## TAMath\.Rsi\(int, int, double\[\]\) Method
-
-Calculates the Relative Strength Index \(RSI\) for the input price data using the default period of 14\.
-
-```csharp
-public static TechnicalAnalysis.Functions.RsiResult Rsi(int startIdx, int endIdx, double[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Rsi(int,int,double[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation within the array\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Rsi(int,int,double[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation within the array\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Rsi(int,int,double[]).real'></a>
-
-`real` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-An array of real values \(typically closing prices\) to calculate the RSI for\.
-
-#### Returns
-[RsiResult](RsiResult.md 'TechnicalAnalysis\.Functions\.RsiResult')  
-A [RsiResult](RsiResult.md 'TechnicalAnalysis\.Functions\.RsiResult') containing the calculated RSI values, 
-along with the starting index of the result and the number of elements generated\.
-
-### Remarks
-This overload uses the standard 14\-period RSI calculation, which is the most commonly used setting
-in technical analysis\.
+| [Rsi\(int, int, float\[\], int\)](TAMath.Rsi.md#TechnicalAnalysis.Functions.TAMath.Rsi(int,int,float[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Rsi\(int, int, float\[\], int\)') | Calculates the Relative Strength Index \(RSI\) for float input data\. |
 
 <a name='TechnicalAnalysis.Functions.TAMath.Rsi(int,int,double[],int)'></a>
 
@@ -55,7 +15,7 @@ in technical analysis\.
 Calculates the Relative Strength Index \(RSI\) for the input price data\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.RsiResult Rsi(int startIdx, int endIdx, double[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.RsiResult Rsi(int startIdx, int endIdx, double[] real, int timePeriod=14);
 ```
 #### Parameters
 
@@ -81,11 +41,11 @@ An array of real values \(typically closing prices\) to calculate the RSI for\.
 
 `timePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The number of periods to use in the RSI calculation \(commonly 14\)\.
+The number of periods to use in the RSI calculation\. Default is 14\.
 
 #### Returns
 [RsiResult](RsiResult.md 'TechnicalAnalysis\.Functions\.RsiResult')  
-A [RsiResult](RsiResult.md 'TechnicalAnalysis\.Functions\.RsiResult') containing the calculated RSI values, 
+A [RsiResult](RsiResult.md 'TechnicalAnalysis\.Functions\.RsiResult') containing the calculated RSI values,
 along with the starting index of the result and the number of elements generated\.
 
 ### Remarks
@@ -94,52 +54,14 @@ It oscillates between 0 and 100, with traditional overbought levels at 70 and ov
 The RSI is calculated using the average gains and losses over the specified time period\.
 Higher time periods result in a smoother RSI line with fewer signals\.
 
-<a name='TechnicalAnalysis.Functions.TAMath.Rsi(int,int,float[])'></a>
-
-## TAMath\.Rsi\(int, int, float\[\]\) Method
-
-Calculates the Relative Strength Index \(RSI\) for the input price data using the default period of 14\.
-
-```csharp
-public static TechnicalAnalysis.Functions.RsiResult Rsi(int startIdx, int endIdx, float[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Rsi(int,int,float[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation within the array\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Rsi(int,int,float[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation within the array\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Rsi(int,int,float[]).real'></a>
-
-`real` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-An array of real values \(typically closing prices\) to calculate the RSI for\.
-
-#### Returns
-[RsiResult](RsiResult.md 'TechnicalAnalysis\.Functions\.RsiResult')  
-A [RsiResult](RsiResult.md 'TechnicalAnalysis\.Functions\.RsiResult') containing the calculated RSI values, 
-along with the starting index of the result and the number of elements generated\.
-
-### Remarks
-This overload accepts float values and uses the standard 14\-period RSI calculation\.
-The values are internally converted to double precision before performing the calculation\.
-
 <a name='TechnicalAnalysis.Functions.TAMath.Rsi(int,int,float[],int)'></a>
 
 ## TAMath\.Rsi\(int, int, float\[\], int\) Method
 
-Calculates the Relative Strength Index \(RSI\) for the input price data\.
+Calculates the Relative Strength Index \(RSI\) for float input data\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.RsiResult Rsi(int startIdx, int endIdx, float[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.RsiResult Rsi(int startIdx, int endIdx, float[] real, int timePeriod=14);
 ```
 #### Parameters
 
@@ -165,14 +87,14 @@ An array of real values \(typically closing prices\) to calculate the RSI for\.
 
 `timePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The number of periods to use in the RSI calculation \(commonly 14\)\.
+The number of periods to use in the RSI calculation\. Default is 14\.
 
 #### Returns
 [RsiResult](RsiResult.md 'TechnicalAnalysis\.Functions\.RsiResult')  
-A [RsiResult](RsiResult.md 'TechnicalAnalysis\.Functions\.RsiResult') containing the calculated RSI values, 
+A [RsiResult](RsiResult.md 'TechnicalAnalysis\.Functions\.RsiResult') containing the calculated RSI values,
 along with the starting index of the result and the number of elements generated\.
 
 ### Remarks
 This overload accepts float values for convenience and internally converts them to double precision
-before performing the calculation\. This may result in minor precision differences compared to 
+before performing the calculation\. This may result in minor precision differences compared to
 using double values directly\.

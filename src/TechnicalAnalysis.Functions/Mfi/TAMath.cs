@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -37,7 +39,7 @@ public static partial class TAMath
         double[] low,
         double[] close,
         double[] volume,
-        int timePeriod)
+        int timePeriod = 14)
     {
         int outBegIdx = 0;
         int outNBElement = 0;
@@ -54,26 +56,9 @@ public static partial class TAMath
             ref outBegIdx,
             ref outNBElement,
             ref outReal);
-            
+
         return new MfiResult(retCode, outBegIdx, outNBElement, outReal);
     }
-
-    /// <summary>
-    /// Calculates the Money Flow Index (MFI) indicator with default period.
-    /// </summary>
-    /// <remarks>
-    /// This overload uses a default time period of 14.
-    /// See the main overload for a detailed description of the MFI indicator.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <param name="close">Array of closing prices.</param>
-    /// <param name="volume">Array of trading volumes.</param>
-    /// <returns>An MfiResult object containing the calculated MFI values.</returns>
-    public static MfiResult Mfi(int startIdx, int endIdx, double[] high, double[] low, double[] close, double[] volume)
-        => Mfi(startIdx, endIdx, high, low, close, volume, 14);
 
     /// <summary>
     /// Calculates the Money Flow Index (MFI) indicator using float arrays.
@@ -88,7 +73,7 @@ public static partial class TAMath
     /// <param name="low">Array of low prices.</param>
     /// <param name="close">Array of closing prices.</param>
     /// <param name="volume">Array of trading volumes.</param>
-    /// <param name="timePeriod">The number of periods to use in the calculation.</param>
+    /// <param name="timePeriod">The number of periods to use in the calculation (default: 14).</param>
     /// <returns>An MfiResult object containing the calculated MFI values.</returns>
     public static MfiResult Mfi(
         int startIdx,
@@ -97,23 +82,7 @@ public static partial class TAMath
         float[] low,
         float[] close,
         float[] volume,
-        int timePeriod)
-        => Mfi(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), volume.ToDouble(), timePeriod);
-        
-    /// <summary>
-    /// Calculates the Money Flow Index (MFI) indicator using float arrays with default period.
-    /// </summary>
-    /// <remarks>
-    /// This is a float overload that converts input arrays to double arrays before processing.
-    /// Uses a default time period of 14.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <param name="close">Array of closing prices.</param>
-    /// <param name="volume">Array of trading volumes.</param>
-    /// <returns>An MfiResult object containing the calculated MFI values.</returns>
-    public static MfiResult Mfi(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume)
-        => Mfi(startIdx, endIdx, high, low, close, volume, 14);
+        int timePeriod = 14)
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, close, volume,
+            (s, e, h, l, c, v) => Mfi(s, e, h, l, c, v, timePeriod));
 }

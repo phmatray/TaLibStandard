@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -22,26 +24,16 @@ public static partial class TAMath
     /// price n periods ago) * 100. This momentum oscillator is useful for identifying overbought and
     /// oversold conditions, as well as confirming price trends and spotting divergences.
     /// </remarks>
-    public static RocResult Roc(int startIdx, int endIdx, double[] real, int timePeriod)
+    public static RocResult Roc(int startIdx, int endIdx, double[] real, int timePeriod = 10)
     {
         int outBegIdx = 0;
         int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.Roc(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
-            
+
         return new RocResult(retCode, outBegIdx, outNBElement, outReal);
     }
-
-    /// <summary>
-    /// Calculates the Rate of Change (ROC) indicator using a default period of 10.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">The input data array containing price values.</param>
-    /// <returns>A RocResult object containing the calculated values and metadata.</returns>
-    public static RocResult Roc(int startIdx, int endIdx, double[] real)
-        => Roc(startIdx, endIdx, real, 10);
 
     /// <summary>
     /// Calculates the Rate of Change (ROC) indicator for float input data.
@@ -49,26 +41,12 @@ public static partial class TAMath
     /// <param name="startIdx">The starting index for the calculation range.</param>
     /// <param name="endIdx">The ending index for the calculation range.</param>
     /// <param name="real">The input data array containing price values as floats.</param>
-    /// <param name="timePeriod">The number of periods to use in the ROC calculation.</param>
+    /// <param name="timePeriod">The number of periods to use in the ROC calculation. Default is 10.</param>
     /// <returns>A RocResult object containing the calculated values and metadata.</returns>
     /// <remarks>
     /// This overload converts the float array to double array before performing the calculation,
     /// as the underlying TAFunc library operates on double precision values.
     /// </remarks>
-    public static RocResult Roc(int startIdx, int endIdx, float[] real, int timePeriod)
-        => Roc(startIdx, endIdx, real.ToDouble(), timePeriod);
-        
-    /// <summary>
-    /// Calculates the Rate of Change (ROC) indicator for float input data using a default period of 10.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">The input data array containing price values as floats.</param>
-    /// <returns>A RocResult object containing the calculated values and metadata.</returns>
-    /// <remarks>
-    /// This overload converts the float array to double array before performing the calculation,
-    /// as the underlying TAFunc library operates on double precision values.
-    /// </remarks>
-    public static RocResult Roc(int startIdx, int endIdx, float[] real)
-        => Roc(startIdx, endIdx, real, 10);
+    public static RocResult Roc(int startIdx, int endIdx, float[] real, int timePeriod = 10)
+        => TAMathHelper.Execute(startIdx, endIdx, real, (s, e, r) => Roc(s, e, r, timePeriod));
 }

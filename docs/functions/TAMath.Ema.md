@@ -5,43 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [Ema\(int, int, double\[\]\)](TAMath.Ema.md#TechnicalAnalysis.Functions.TAMath.Ema(int,int,double[]) 'TechnicalAnalysis\.Functions\.TAMath\.Ema\(int, int, double\[\]\)') | Calculates the Exponential Moving Average \(EMA\) using a default period of 30\. |
 | [Ema\(int, int, double\[\], int\)](TAMath.Ema.md#TechnicalAnalysis.Functions.TAMath.Ema(int,int,double[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Ema\(int, int, double\[\], int\)') | Calculates the Exponential Moving Average \(EMA\) for the specified range of data\. |
-| [Ema\(int, int, float\[\]\)](TAMath.Ema.md#TechnicalAnalysis.Functions.TAMath.Ema(int,int,float[]) 'TechnicalAnalysis\.Functions\.TAMath\.Ema\(int, int, float\[\]\)') | Calculates the Exponential Moving Average \(EMA\) for float input data using a default period of 30\. |
 | [Ema\(int, int, float\[\], int\)](TAMath.Ema.md#TechnicalAnalysis.Functions.TAMath.Ema(int,int,float[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Ema\(int, int, float\[\], int\)') | Calculates the Exponential Moving Average \(EMA\) for float input data\. |
-
-<a name='TechnicalAnalysis.Functions.TAMath.Ema(int,int,double[])'></a>
-
-## TAMath\.Ema\(int, int, double\[\]\) Method
-
-Calculates the Exponential Moving Average \(EMA\) using a default period of 30\.
-
-```csharp
-public static TechnicalAnalysis.Functions.EmaResult Ema(int startIdx, int endIdx, double[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Ema(int,int,double[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Ema(int,int,double[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Ema(int,int,double[]).real'></a>
-
-`real` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-The input data array containing price values\.
-
-#### Returns
-[EmaResult](EmaResult.md 'TechnicalAnalysis\.Functions\.EmaResult')  
-An EmaResult object containing the calculated values and metadata\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Ema(int,int,double[],int)'></a>
 
@@ -50,7 +15,7 @@ An EmaResult object containing the calculated values and metadata\.
 Calculates the Exponential Moving Average \(EMA\) for the specified range of data\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.EmaResult Ema(int startIdx, int endIdx, double[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.EmaResult Ema(int startIdx, int endIdx, double[] real, int timePeriod=30);
 ```
 #### Parameters
 
@@ -87,43 +52,6 @@ The Exponential Moving Average gives more weight to recent prices, making it mor
 to new information compared to the Simple Moving Average\. The EMA is calculated using a
 smoothing factor of 2/\(timePeriod \+ 1\)\.
 
-<a name='TechnicalAnalysis.Functions.TAMath.Ema(int,int,float[])'></a>
-
-## TAMath\.Ema\(int, int, float\[\]\) Method
-
-Calculates the Exponential Moving Average \(EMA\) for float input data using a default period of 30\.
-
-```csharp
-public static TechnicalAnalysis.Functions.EmaResult Ema(int startIdx, int endIdx, float[] real);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Ema(int,int,float[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Ema(int,int,float[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Ema(int,int,float[]).real'></a>
-
-`real` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-The input data array containing price values as floats\.
-
-#### Returns
-[EmaResult](EmaResult.md 'TechnicalAnalysis\.Functions\.EmaResult')  
-An EmaResult object containing the calculated values and metadata\.
-
-### Remarks
-This overload converts the float array to double array before performing the calculation,
-as the underlying TAFunc library operates on double precision values\.
-
 <a name='TechnicalAnalysis.Functions.TAMath.Ema(int,int,float[],int)'></a>
 
 ## TAMath\.Ema\(int, int, float\[\], int\) Method
@@ -131,7 +59,7 @@ as the underlying TAFunc library operates on double precision values\.
 Calculates the Exponential Moving Average \(EMA\) for float input data\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.EmaResult Ema(int startIdx, int endIdx, float[] real, int timePeriod);
+public static TechnicalAnalysis.Functions.EmaResult Ema(int startIdx, int endIdx, float[] real, int timePeriod=30);
 ```
 #### Parameters
 
@@ -157,7 +85,7 @@ The input data array containing price values as floats\.
 
 `timePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The number of periods to use in the EMA calculation\.
+The number of periods to use in the EMA calculation\. Default is 30\.
 
 #### Returns
 [EmaResult](EmaResult.md 'TechnicalAnalysis\.Functions\.EmaResult')  
