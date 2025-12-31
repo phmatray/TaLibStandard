@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -52,5 +54,5 @@ public static partial class TAMath
     /// and associated metadata.
     /// </returns>
     public static MedPriceResult MedPrice(int startIdx, int endIdx, float[] high, float[] low)
-        => MedPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble());
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, MedPrice);
 }

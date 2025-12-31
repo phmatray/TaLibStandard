@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -33,9 +35,9 @@ public static partial class TAMath
         double[] high,
         double[] low,
         double[] close,
-        int fastKPeriod,
-        int fastDPeriod,
-        MAType fastDMAType)
+        int fastKPeriod = 5,
+        int fastDPeriod = 3,
+        MAType fastDMAType = MAType.Sma)
     {
         int outBegIdx = 0;
         int outNBElement = 0;
@@ -60,21 +62,6 @@ public static partial class TAMath
     }
 
     /// <summary>
-    /// Calculates the Fast Stochastic using default parameters.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <param name="close">Array of closing prices.</param>
-    /// <returns>A StochFResult containing the Fast %K and Fast %D values.</returns>
-    /// <remarks>
-    /// Uses default values: fastKPeriod=5, fastDPeriod=3, fastDMAType=Simple Moving Average.
-    /// </remarks>
-    public static StochFResult StochF(int startIdx, int endIdx, double[] high, double[] low, double[] close)
-        => StochF(startIdx, endIdx, high, low, close, 5, 3, MAType.Sma);
-
-    /// <summary>
     /// Calculates the Fast Stochastic (STOCHF) which provides a more responsive version of the stochastic oscillator.
     /// </summary>
     /// <param name="startIdx">The starting index for the calculation range.</param>
@@ -82,9 +69,9 @@ public static partial class TAMath
     /// <param name="high">Array of high prices.</param>
     /// <param name="low">Array of low prices.</param>
     /// <param name="close">Array of closing prices.</param>
-    /// <param name="fastKPeriod">The number of periods for Fast %K calculation.</param>
-    /// <param name="fastDPeriod">The smoothing period for Fast %K to get Fast %D.</param>
-    /// <param name="fastDMAType">The type of moving average for Fast %D calculation.</param>
+    /// <param name="fastKPeriod">The number of periods for Fast %K calculation (default: 5).</param>
+    /// <param name="fastDPeriod">The smoothing period for Fast %K to get Fast %D (default: 3).</param>
+    /// <param name="fastDMAType">The type of moving average for Fast %D calculation (default: Simple MA).</param>
     /// <returns>A StochFResult containing the Fast %K and Fast %D values.</returns>
     /// <remarks>
     /// This overload accepts float arrays and converts them to double arrays for calculation.
@@ -95,32 +82,9 @@ public static partial class TAMath
         float[] high,
         float[] low,
         float[] close,
-        int fastKPeriod,
-        int fastDPeriod,
-        MAType fastDMAType)
-        => StochF(
-            startIdx,
-            endIdx,
-            high.ToDouble(),
-            low.ToDouble(),
-            close.ToDouble(),
-            fastKPeriod,
-            fastDPeriod,
-            fastDMAType);
-        
-    /// <summary>
-    /// Calculates the Fast Stochastic using default parameters.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <param name="close">Array of closing prices.</param>
-    /// <returns>A StochFResult containing the Fast %K and Fast %D values.</returns>
-    /// <remarks>
-    /// This overload accepts float arrays and converts them to double arrays for calculation.
-    /// Uses default values: fastKPeriod=5, fastDPeriod=3, fastDMAType=Simple Moving Average.
-    /// </remarks>
-    public static StochFResult StochF(int startIdx, int endIdx, float[] high, float[] low, float[] close)
-        => StochF(startIdx, endIdx, high, low, close, 5, 3, MAType.Sma);
+        int fastKPeriod = 5,
+        int fastDPeriod = 3,
+        MAType fastDMAType = MAType.Sma)
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, close, (s, e, h, l, c) =>
+            StochF(s, e, h, l, c, fastKPeriod, fastDPeriod, fastDMAType));
 }

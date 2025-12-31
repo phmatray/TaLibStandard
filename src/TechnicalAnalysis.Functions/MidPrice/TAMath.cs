@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -22,7 +24,7 @@ public static partial class TAMath
     /// (Highest High + Lowest Low) / 2. This indicator is commonly used in trading systems to identify the center
     /// of the price range and can help determine trend direction and support/resistance levels.
     /// </remarks>
-    public static MidPriceResult MidPrice(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
+    public static MidPriceResult MidPrice(int startIdx, int endIdx, double[] high, double[] low, int timePeriod = 14)
     {
         int outBegIdx = 0;
         int outNBElement = 0;
@@ -52,37 +54,6 @@ public static partial class TAMath
     /// <remarks>
     /// This overload uses a default time period of 14.
     /// </remarks>
-    public static MidPriceResult MidPrice(int startIdx, int endIdx, double[] high, double[] low)
-        => MidPrice(startIdx, endIdx, high, low, 14);
-
-    /// <summary>
-    /// Calculates the midpoint price over a specified time period (MIDPRICE) using float arrays.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <param name="timePeriod">The number of periods to look back for calculating the midprice.</param>
-    /// <returns>A MidPriceResult containing the midprice values over each rolling window.</returns>
-    /// <remarks>
-    /// This overload accepts float arrays and converts them to double arrays before processing.
-    /// The conversion may result in minor precision differences.
-    /// </remarks>
-    public static MidPriceResult MidPrice(int startIdx, int endIdx, float[] high, float[] low, int timePeriod)
-        => MidPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble(), timePeriod);
-        
-    /// <summary>
-    /// Calculates the midpoint price over a specified time period (MIDPRICE) using float arrays and default period.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <returns>A MidPriceResult containing the midprice values over each rolling window.</returns>
-    /// <remarks>
-    /// This overload accepts float arrays and converts them to double arrays before processing.
-    /// Uses a default time period of 14.
-    /// </remarks>
-    public static MidPriceResult MidPrice(int startIdx, int endIdx, float[] high, float[] low)
-        => MidPrice(startIdx, endIdx, high, low, 14);
+    public static MidPriceResult MidPrice(int startIdx, int endIdx, float[] high, float[] low, int timePeriod = 14)
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, (s, e, h, l) => MidPrice(s, e, h, l, timePeriod));
 }

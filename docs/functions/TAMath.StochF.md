@@ -5,58 +5,8 @@
 
 | Overloads | |
 | :--- | :--- |
-| [StochF\(int, int, double\[\], double\[\], double\[\]\)](TAMath.StochF.md#TechnicalAnalysis.Functions.TAMath.StochF(int,int,double[],double[],double[]) 'TechnicalAnalysis\.Functions\.TAMath\.StochF\(int, int, double\[\], double\[\], double\[\]\)') | Calculates the Fast Stochastic using default parameters\. |
 | [StochF\(int, int, double\[\], double\[\], double\[\], int, int, MAType\)](TAMath.StochF.md#TechnicalAnalysis.Functions.TAMath.StochF(int,int,double[],double[],double[],int,int,TechnicalAnalysis.Common.MAType) 'TechnicalAnalysis\.Functions\.TAMath\.StochF\(int, int, double\[\], double\[\], double\[\], int, int, TechnicalAnalysis\.Common\.MAType\)') | Calculates the Fast Stochastic \(STOCHF\) which provides a more responsive version of the stochastic oscillator\. |
-| [StochF\(int, int, float\[\], float\[\], float\[\]\)](TAMath.StochF.md#TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[]) 'TechnicalAnalysis\.Functions\.TAMath\.StochF\(int, int, float\[\], float\[\], float\[\]\)') | Calculates the Fast Stochastic using default parameters\. |
 | [StochF\(int, int, float\[\], float\[\], float\[\], int, int, MAType\)](TAMath.StochF.md#TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[],int,int,TechnicalAnalysis.Common.MAType) 'TechnicalAnalysis\.Functions\.TAMath\.StochF\(int, int, float\[\], float\[\], float\[\], int, int, TechnicalAnalysis\.Common\.MAType\)') | Calculates the Fast Stochastic \(STOCHF\) which provides a more responsive version of the stochastic oscillator\. |
-
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,double[],double[],double[])'></a>
-
-## TAMath\.StochF\(int, int, double\[\], double\[\], double\[\]\) Method
-
-Calculates the Fast Stochastic using default parameters\.
-
-```csharp
-public static TechnicalAnalysis.Functions.StochFResult StochF(int startIdx, int endIdx, double[] high, double[] low, double[] close);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,double[],double[],double[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,double[],double[],double[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,double[],double[],double[]).high'></a>
-
-`high` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of high prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,double[],double[],double[]).low'></a>
-
-`low` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of low prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,double[],double[],double[]).close'></a>
-
-`close` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of closing prices\.
-
-#### Returns
-[StochFResult](StochFResult.md 'TechnicalAnalysis\.Functions\.StochFResult')  
-A StochFResult containing the Fast %K and Fast %D values\.
-
-### Remarks
-Uses default values: fastKPeriod=5, fastDPeriod=3, fastDMAType=Simple Moving Average\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,double[],double[],double[],int,int,TechnicalAnalysis.Common.MAType)'></a>
 
@@ -65,7 +15,7 @@ Uses default values: fastKPeriod=5, fastDPeriod=3, fastDMAType=Simple Moving Ave
 Calculates the Fast Stochastic \(STOCHF\) which provides a more responsive version of the stochastic oscillator\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.StochFResult StochF(int startIdx, int endIdx, double[] high, double[] low, double[] close, int fastKPeriod, int fastDPeriod, TechnicalAnalysis.Common.MAType fastDMAType);
+public static TechnicalAnalysis.Functions.StochFResult StochF(int startIdx, int endIdx, double[] high, double[] low, double[] close, int fastKPeriod=5, int fastDPeriod=3, TechnicalAnalysis.Common.MAType fastDMAType=TechnicalAnalysis.Common.MAType.Sma);
 ```
 #### Parameters
 
@@ -128,55 +78,6 @@ It uses unsmoothed %K line and a smoothed %D line:
 \- Fast %D: Moving average of Fast %K
 This indicator is useful for short\-term trading but can be more prone to false signals\.
 
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[])'></a>
-
-## TAMath\.StochF\(int, int, float\[\], float\[\], float\[\]\) Method
-
-Calculates the Fast Stochastic using default parameters\.
-
-```csharp
-public static TechnicalAnalysis.Functions.StochFResult StochF(int startIdx, int endIdx, float[] high, float[] low, float[] close);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The starting index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
-
-The ending index for the calculation range\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[]).high'></a>
-
-`high` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of high prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[]).low'></a>
-
-`low` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of low prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[]).close'></a>
-
-`close` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
-
-Array of closing prices\.
-
-#### Returns
-[StochFResult](StochFResult.md 'TechnicalAnalysis\.Functions\.StochFResult')  
-A StochFResult containing the Fast %K and Fast %D values\.
-
-### Remarks
-This overload accepts float arrays and converts them to double arrays for calculation\.
-Uses default values: fastKPeriod=5, fastDPeriod=3, fastDMAType=Simple Moving Average\.
-
 <a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[],int,int,TechnicalAnalysis.Common.MAType)'></a>
 
 ## TAMath\.StochF\(int, int, float\[\], float\[\], float\[\], int, int, MAType\) Method
@@ -184,7 +85,7 @@ Uses default values: fastKPeriod=5, fastDPeriod=3, fastDMAType=Simple Moving Ave
 Calculates the Fast Stochastic \(STOCHF\) which provides a more responsive version of the stochastic oscillator\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.StochFResult StochF(int startIdx, int endIdx, float[] high, float[] low, float[] close, int fastKPeriod, int fastDPeriod, TechnicalAnalysis.Common.MAType fastDMAType);
+public static TechnicalAnalysis.Functions.StochFResult StochF(int startIdx, int endIdx, float[] high, float[] low, float[] close, int fastKPeriod=5, int fastDPeriod=3, TechnicalAnalysis.Common.MAType fastDMAType=TechnicalAnalysis.Common.MAType.Sma);
 ```
 #### Parameters
 
@@ -222,19 +123,19 @@ Array of closing prices\.
 
 `fastKPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The number of periods for Fast %K calculation\.
+The number of periods for Fast %K calculation \(default: 5\)\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[],int,int,TechnicalAnalysis.Common.MAType).fastDPeriod'></a>
 
 `fastDPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The smoothing period for Fast %K to get Fast %D\.
+The smoothing period for Fast %K to get Fast %D \(default: 3\)\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.StochF(int,int,float[],float[],float[],int,int,TechnicalAnalysis.Common.MAType).fastDMAType'></a>
 
 `fastDMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
-The type of moving average for Fast %D calculation\.
+The type of moving average for Fast %D calculation \(default: Simple MA\)\.
 
 #### Returns
 [StochFResult](StochFResult.md 'TechnicalAnalysis\.Functions\.StochFResult')  
