@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,9 +16,8 @@ namespace TechnicalAnalysis.Functions;
 /// The hyperbolic sine is defined as sinh(x) = (e^x - e^(-x)) / 2.
 /// Unlike the regular sine function, hyperbolic sine can produce values outside the range [-1, 1].
 /// </remarks>
-public record SinhResult : IndicatorResult
+public record SinhResult : SingleOutputResult
 {
-    /// <summary>
     /// Initializes a new instance of the <see cref="SinhResult"/> class.
     /// </summary>
     /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
@@ -24,17 +25,8 @@ public record SinhResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the hyperbolic sine values.</param>
     public SinhResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
-    /// <summary>
-    /// Gets the array of hyperbolic sine values resulting from the SINH operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the hyperbolic sine
-    /// of the corresponding element from the input array.
-    /// </value>
-    public double[] Real { get; }
 }

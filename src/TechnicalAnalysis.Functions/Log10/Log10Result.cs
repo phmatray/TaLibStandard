@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,9 +16,8 @@ namespace TechnicalAnalysis.Functions;
 /// The base-10 logarithm answers the question: "10 to what power equals this number?".
 /// Input values must be positive. For example, log10(100) = 2, log10(10) = 1, log10(1) = 0.
 /// </remarks>
-public record Log10Result : IndicatorResult
+public record Log10Result : SingleOutputResult
 {
-    /// <summary>
     /// Initializes a new instance of the <see cref="Log10Result"/> class.
     /// </summary>
     /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
@@ -24,17 +25,8 @@ public record Log10Result : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the base-10 logarithm values.</param>
     public Log10Result(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
-    /// <summary>
-    /// Gets the array of base-10 logarithm values resulting from the LOG10 operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the base-10 logarithm
-    /// of the corresponding element from the input array.
-    /// </value>
-    public double[] Real { get; }
 }

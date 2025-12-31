@@ -4,12 +4,14 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
 /// Represents the result of an Acos (Arc Cosine) calculation.
 /// </summary>
-public record AcosResult : IndicatorResult
+public record AcosResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the AcosResult record.
@@ -19,13 +21,7 @@ public record AcosResult : IndicatorResult
     /// <param name="nbElement">The number of valid output elements.</param>
     /// <param name="real">The array of calculated arc cosine values in radians.</param>
     public AcosResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of calculated arc cosine values in radians.
-    /// </summary>
-    public double[] Real { get; }
 }

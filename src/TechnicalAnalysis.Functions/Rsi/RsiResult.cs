@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,9 +16,8 @@ namespace TechnicalAnalysis.Functions;
 /// It oscillates between 0 and 100, helping identify overbought and oversold conditions.
 /// Values above 70 typically indicate overbought conditions, while values below 30 indicate oversold conditions.
 /// </remarks>
-public record RsiResult : IndicatorResult
+public record RsiResult : SingleOutputResult
 {
-    /// <summary>
     /// Initializes a new instance of the <see cref="RsiResult"/> class.
     /// </summary>
     /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
@@ -24,18 +25,8 @@ public record RsiResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of RSI values, typically ranging from 0 to 100.</param>
     public RsiResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
-    /// <summary>
-    /// Gets the array of RSI values.
-    /// </summary>
-    /// <value>
-    /// An array of double values representing the Relative Strength Index at each data point.
-    /// Values typically range from 0 to 100, where values above 70 suggest overbought conditions
-    /// and values below 30 suggest oversold conditions.
-    /// </value>
-    public double[] Real { get; }
 }

@@ -6,10 +6,10 @@
 Represents the result of the vector arctangent operation \(ATAN function\)\.
 
 ```csharp
-public record AtanResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.AtanResult>
+public record AtanResult : TechnicalAnalysis.Common.Abstractions.SingleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.AtanResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; AtanResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.abstractions.singleoutputresult 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult') &#129106; AtanResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[AtanResult](AtanResult.md 'TechnicalAnalysis\.Functions\.AtanResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
@@ -21,7 +21,3 @@ of the corresponding input value\. The output range is \(\-π/2, π/2\)\.
 | Constructors | |
 | :--- | :--- |
 | [AtanResult\(RetCode, int, int, double\[\]\)](AtanResult.AtanResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.AtanResult\.AtanResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [AtanResult](AtanResult.md 'TechnicalAnalysis\.Functions\.AtanResult') class\. |
-
-| Properties | |
-| :--- | :--- |
-| [Real](AtanResult.Real.md 'TechnicalAnalysis\.Functions\.AtanResult\.Real') | Gets the array of arctangent values resulting from the ATAN operation\. |

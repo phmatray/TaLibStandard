@@ -6,10 +6,10 @@
 Represents the result of the vector cosine operation \(COS function\)\.
 
 ```csharp
-public record CosResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.CosResult>
+public record CosResult : TechnicalAnalysis.Common.Abstractions.SingleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.CosResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; CosResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.abstractions.singleoutputresult 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult') &#129106; CosResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[CosResult](CosResult.md 'TechnicalAnalysis\.Functions\.CosResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
@@ -21,7 +21,3 @@ element represents the cosine of the corresponding input angle, with values in t
 | Constructors | |
 | :--- | :--- |
 | [CosResult\(RetCode, int, int, double\[\]\)](CosResult.CosResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.CosResult\.CosResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [CosResult](CosResult.md 'TechnicalAnalysis\.Functions\.CosResult') class\. |
-
-| Properties | |
-| :--- | :--- |
-| [Real](CosResult.Real.md 'TechnicalAnalysis\.Functions\.CosResult\.Real') | Gets the array of cosine values resulting from the COS operation\. |

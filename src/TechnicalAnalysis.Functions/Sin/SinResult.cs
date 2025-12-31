@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,9 +16,8 @@ namespace TechnicalAnalysis.Functions;
 /// Input values are expected to be in radians. The result is an array where each
 /// element represents the sine of the corresponding input angle, with values in the range [-1, 1].
 /// </remarks>
-public record SinResult : IndicatorResult
+public record SinResult : SingleOutputResult
 {
-    /// <summary>
     /// Initializes a new instance of the <see cref="SinResult"/> class.
     /// </summary>
     /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
@@ -24,17 +25,8 @@ public record SinResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the sine values.</param>
     public SinResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
-    /// <summary>
-    /// Gets the array of sine values resulting from the SIN operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the sine
-    /// of the corresponding element from the input array (in radians).
-    /// </value>
-    public double[] Real { get; }
 }

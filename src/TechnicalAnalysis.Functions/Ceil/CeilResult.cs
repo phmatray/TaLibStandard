@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,7 +16,7 @@ namespace TechnicalAnalysis.Functions;
 /// The ceiling of a number is the smallest integer that is greater than or equal to that number.
 /// For example, ceil(2.3) = 3, ceil(-2.3) = -2, ceil(5.0) = 5.
 /// </remarks>
-public record CeilResult : IndicatorResult
+public record CeilResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CeilResult"/> class.
@@ -24,17 +26,7 @@ public record CeilResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the ceiling values.</param>
     public CeilResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of ceiling values resulting from the CEIL operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the ceiling
-    /// of the corresponding element from the input array.
-    /// </value>
-    public double[] Real { get; }
 }

@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Common.Abstractions;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -14,9 +16,8 @@ namespace TechnicalAnalysis.Functions;
 /// producing an output array where each element is the difference between the corresponding
 /// elements from the input arrays (first array minus second array).
 /// </remarks>
-public record SubResult : IndicatorResult
+public record SubResult : SingleOutputResult
 {
-    /// <summary>
     /// Initializes a new instance of the <see cref="SubResult"/> class.
     /// </summary>
     /// <param name="retCode">The return code indicating the success or failure of the calculation.</param>
@@ -24,17 +25,8 @@ public record SubResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the difference values from the subtraction operation.</param>
     public SubResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
-    /// <summary>
-    /// Gets the array of difference values resulting from the element-wise subtraction operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the difference between the corresponding
-    /// elements from the two input arrays (first array minus second array).
-    /// </value>
-    public double[] Real { get; }
 }

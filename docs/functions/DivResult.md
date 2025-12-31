@@ -6,10 +6,10 @@
 Represents the result of the vector division operation \(DIV function\)\.
 
 ```csharp
-public record DivResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.DivResult>
+public record DivResult : TechnicalAnalysis.Common.Abstractions.SingleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.DivResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; DivResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.abstractions.singleoutputresult 'TechnicalAnalysis\.Common\.Abstractions\.SingleOutputResult') &#129106; DivResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[DivResult](DivResult.md 'TechnicalAnalysis\.Functions\.DivResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
@@ -21,7 +21,3 @@ elements from the input arrays \(first array divided by second array\)\.
 | Constructors | |
 | :--- | :--- |
 | [DivResult\(RetCode, int, int, double\[\]\)](DivResult.DivResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.DivResult\.DivResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [DivResult](DivResult.md 'TechnicalAnalysis\.Functions\.DivResult') class\. |
-
-| Properties | |
-| :--- | :--- |
-| [Real](DivResult.Real.md 'TechnicalAnalysis\.Functions\.DivResult\.Real') | Gets the array of quotient values resulting from the element\-wise division operation\. |
