@@ -41,25 +41,15 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        if (startIdx < 0)
+        RetCode validationResult = ValidationHelper.ValidateSingleInputIndicator(
+            startIdx, endIdx, inReal, outReal, optInTimePeriod);
+        if (validationResult != RetCode.Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null! ||
-            optInTimePeriod is < 2 or > 100000 ||
-            outReal == null!)
-        {
-            return BadParam;
+            return validationResult;
         }
 
         RetCode taIntSma = TA_INT_SMA(startIdx, endIdx, inReal, optInTimePeriod, ref outBegIdx, ref outNBElement, outReal);
-        
+
         return taIntSma;
     }
 
@@ -70,6 +60,7 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid SMA value can be calculated, or -1 if parameters are invalid.</returns>
     public static int SmaLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;
+        int validatedPeriod = ValidationHelper.ValidateLookbackPeriod(optInTimePeriod);
+        return validatedPeriod == -1 ? -1 : validatedPeriod - 1;
     }
 }
