@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -23,7 +25,7 @@ public static partial class TAMath
     /// current high minus the previous high is greater than the previous low minus the current low, and is
     /// positive. The +DM values are typically smoothed using Wilder's smoothing method.
     /// </remarks>
-    public static PlusDMResult PlusDM(int startIdx, int endIdx, double[] high, double[] low, int timePeriod)
+    public static PlusDMResult PlusDM(int startIdx, int endIdx, double[] high, double[] low, int timePeriod = 14)
     {
         int outBegIdx = 0;
         int outNBElement = 0;
@@ -43,17 +45,6 @@ public static partial class TAMath
     }
 
     /// <summary>
-    /// Calculates the Plus Directional Movement (+DM) using a default time period of 14.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <returns>A PlusDMResult object containing the calculated values and metadata.</returns>
-    public static PlusDMResult PlusDM(int startIdx, int endIdx, double[] high, double[] low)
-        => PlusDM(startIdx, endIdx, high, low, 14);
-
-    /// <summary>
     /// Calculates the Plus Directional Movement (+DM) for float arrays.
     /// </summary>
     /// <param name="startIdx">The starting index for the calculation.</param>
@@ -67,20 +58,6 @@ public static partial class TAMath
     /// This ensures compatibility with data sources that provide float precision while maintaining accuracy
     /// in the calculations.
     /// </remarks>
-    public static PlusDMResult PlusDM(int startIdx, int endIdx, float[] high, float[] low, int timePeriod)
-        => PlusDM(startIdx, endIdx, high.ToDouble(), low.ToDouble(), timePeriod);
-
-    /// <summary>
-    /// Calculates the Plus Directional Movement (+DM) for float arrays using a default time period of 14.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <returns>A PlusDMResult object containing the calculated values and metadata.</returns>
-    /// <remarks>
-    /// This overload accepts float arrays and converts them to double arrays before performing the calculation.
-    /// </remarks>
-    public static PlusDMResult PlusDM(int startIdx, int endIdx, float[] high, float[] low)
-        => PlusDM(startIdx, endIdx, high, low, 14);
+    public static PlusDMResult PlusDM(int startIdx, int endIdx, float[] high, float[] low, int timePeriod = 14)
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, (s, e, h, l) => PlusDM(s, e, h, l, timePeriod));
 }

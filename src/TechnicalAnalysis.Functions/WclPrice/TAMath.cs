@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -54,5 +56,5 @@ public static partial class TAMath
     /// and associated metadata.
     /// </returns>
     public static WclPriceResult WclPrice(int startIdx, int endIdx, float[] high, float[] low, float[] close)
-        => WclPrice(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble());
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, close, WclPrice);
 }
