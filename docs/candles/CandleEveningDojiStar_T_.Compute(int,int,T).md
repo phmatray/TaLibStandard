@@ -12,13 +12,13 @@ public TechnicalAnalysis.Common.CandleIndicatorResult Compute(int startIdx, int 
 
 <a name='TechnicalAnalysis.Candles.CandleEveningDojiStar_T_.Compute(int,int,T).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The start index\.
 
 <a name='TechnicalAnalysis.Candles.CandleEveningDojiStar_T_.Compute(int,int,T).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The end index\.
 
@@ -27,4 +27,4 @@ The end index\.
 `optInPenetration` [T](CandleEveningDojiStar_T_.md#TechnicalAnalysis.Candles.CandleEveningDojiStar_T_.T 'TechnicalAnalysis\.Candles\.CandleEveningDojiStar\<T\>\.T')
 
 #### Returns
-[TechnicalAnalysis\.Common\.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis\.Common\.CandleIndicatorResult')
+[TechnicalAnalysis\.Common\.CandleIndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicatorresult 'TechnicalAnalysis\.Common\.CandleIndicatorResult')

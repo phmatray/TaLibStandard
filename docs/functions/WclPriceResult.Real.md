@@ -10,7 +10,7 @@ public double[] Real { get; }
 ```
 
 #### Property Value
-[System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')  
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')  
 An array of doubles representing the weighted close price for each period, 
 calculated with double weight on the closing price\. This emphasizes the importance 
 of the closing price while still considering the full trading range, making it 

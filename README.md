@@ -48,7 +48,7 @@ A modern and robust C# Technical Analysis library based on the original open-sou
 
 ## 📚 Introduction
 
-TaLibStandard is a modern interpretation of the widely used [TA-Lib](https://ta-lib.org), reimagined in C# 12. It is designed to be reliable, efficient, and user-friendly for developers performing financial market analysis. The addition of .NET's Generic Math feature allows for a richer, more flexible library that can handle a variety of number types.
+TaLibStandard is a modern interpretation of the widely used [TA-Lib](https://ta-lib.org), reimagined in C# 14. It is designed to be reliable, efficient, and user-friendly for developers performing financial market analysis. The addition of .NET's Generic Math feature allows for a richer, more flexible library that can handle a variety of number types.
 
 ## 🎯 Goal
 
@@ -88,16 +88,16 @@ discuss it.
 
 ### 📋 Prerequisites
 
-- .NET 8.0 (supported versions: 8.x)
+- .NET 10.0 (supported versions: 10.x)
 - A C# IDE (Visual Studio, JetBrains Rider, etc.)
 - A C# compiler (dotnet CLI, etc.)
 
 ### 🚀 We use the latest C# features
 
-This library targets .NET 8.0 and uses the latest C# features. It is written in C# 12.0 and uses the new `init`
+This library targets .NET 10.0 and uses the latest C# features. It is written in C# 14.0 and uses the new `init`
 properties, `record` types, `switch` expressions, `using` declarations and more.
 
-I invite you to read the [C# 12.0 documentation](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-12) to
+I invite you to read the [C# 14.0 documentation](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14) to
 learn more about these features.
 
 ### 📦 NuGet Packages
@@ -112,9 +112,9 @@ This table is automatically updated regularly the latest developments and releas
 
 ### 🧪 Tests Specifications
 
-  * Target framework : .NET 8
-  * Language version : C# 12
-  * xUnit and FluentAssertions 
+  * Target framework : .NET 10
+  * Language version : C# 14
+  * xUnit and Shouldly 
 
 ## 💾 Installation
 
@@ -151,7 +151,8 @@ You can contact us by opening an issue on this repository.
 
 Here is a list of recent notable changes to TaLibStandard.
 
-- dotnet 8.0 support
+- .NET 10 LTS support
+- C# 14 language features
 - Generic Math support
 - .NET Exception handling
 - NuGet packages

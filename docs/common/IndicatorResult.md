@@ -9,12 +9,12 @@ Represents an abstract base class for technical indicators\.
 public abstract record IndicatorResult : System.IEquatable<TechnicalAnalysis.Common.IndicatorResult>
 ```
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; IndicatorResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; IndicatorResult
 
 Derived  
 &#8627; [CandleIndicatorResult](CandleIndicatorResult.md 'TechnicalAnalysis\.Common\.CandleIndicatorResult')
 
-Implements [System\.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')[IndicatorResult](IndicatorResult.md 'TechnicalAnalysis\.Common\.IndicatorResult')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')
+Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[IndicatorResult](IndicatorResult.md 'TechnicalAnalysis\.Common\.IndicatorResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
 | Constructors | |
 | :--- | :--- |

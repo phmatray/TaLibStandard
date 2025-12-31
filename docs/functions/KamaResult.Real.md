@@ -10,7 +10,7 @@ public double[] Real { get; }
 ```
 
 #### Property Value
-[System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')  
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')  
 An array of double values representing the Kaufman Adaptive Moving Average at each data point\.
 The values adapt to market conditions, providing faster response in trending markets
 and slower response in choppy or sideways markets\.

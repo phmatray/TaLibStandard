@@ -12,55 +12,55 @@ public static TechnicalAnalysis.Common.RetCode MidPrice(int startIdx, int endIdx
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MidPrice(int,int,double[],double[],int,int,int,double[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The start index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MidPrice(int,int,double[],double[],int,int,int,double[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The end index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MidPrice(int,int,double[],double[],int,int,int,double[]).inHigh'></a>
 
-`inHigh` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`inHigh` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The input array of high prices\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MidPrice(int,int,double[],double[],int,int,int,double[]).inLow'></a>
 
-`inLow` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`inLow` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The input array of low prices\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MidPrice(int,int,double[],double[],int,int,int,double[]).optInTimePeriod'></a>
 
-`optInTimePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The time period for the calculation\. Valid range is 2 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MidPrice(int,int,double[],double[],int,int,int,double[]).outBegIdx'></a>
 
-`outBegIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outBegIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The beginning index of the output values\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MidPrice(int,int,double[],double[],int,int,int,double[]).outNBElement'></a>
 
-`outNBElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outNBElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of elements in the output array\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MidPrice(int,int,double[],double[],int,int,int,double[]).outReal'></a>
 
-`outReal` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`outReal` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The output array containing the midpoint price values\.
 
 #### Returns
-[TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode')  
-A [TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode') indicating the success or failure of the calculation\.
+[TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode')  
+A [TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode') indicating the success or failure of the calculation\.
 
 ### Remarks
 The MidPrice function calculates the midpoint of the highest high and lowest low over the specified period\.

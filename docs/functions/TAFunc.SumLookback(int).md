@@ -12,10 +12,10 @@ public static int SumLookback(int optInTimePeriod);
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SumLookback(int).optInTimePeriod'></a>
 
-`optInTimePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for the summation\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The minimum number of data points required \(period \- 1\), or \-1 for invalid parameters\.

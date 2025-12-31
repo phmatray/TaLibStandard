@@ -12,16 +12,16 @@ public static int BollingerBandsLookback(int optInTimePeriod, TechnicalAnalysis.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBandsLookback(int,TechnicalAnalysis.Common.MAType).optInTimePeriod'></a>
 
-`optInTimePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for the moving average calculation\. Valid range: 2 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBandsLookback(int,TechnicalAnalysis.Common.MAType).optInMAType'></a>
 
-`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 Type of moving average to use \(SMA, EMA, etc\.\)\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of historical data points required before the first valid Bollinger Bands value can be calculated, or \-1 if parameters are invalid\.

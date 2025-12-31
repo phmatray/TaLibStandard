@@ -12,10 +12,10 @@ public static int MinLookback(int optInTimePeriod);
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MinLookback(int).optInTimePeriod'></a>
 
-`optInTimePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The time period over which to find the minimum value\. Valid range is 2 to 100000\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of data points required before the first valid MIN value, or \-1 if the period is invalid\.

@@ -10,7 +10,7 @@ protected virtual bool IsColorRed(int index);
 
 <a name='TechnicalAnalysis.Common.CandleIndicator_T_.IsColorRed(int).index'></a>
 
-`index` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`index` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 #### Returns
-[System\.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System\.Boolean')
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')

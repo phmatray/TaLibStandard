@@ -10,7 +10,7 @@ public static int HtTrendModeLookback();
 ```
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of historical data points required before the first valid HT\-Trend Mode value can be calculated\.
 
 ### Remarks

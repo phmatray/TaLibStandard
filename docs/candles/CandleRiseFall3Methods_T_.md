@@ -17,7 +17,7 @@ public class CandleRiseFall3Methods<T> : TechnicalAnalysis.Common.CandleIndicato
 
 The type of the array elements\.
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.CandleIndicator&lt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1')[T](CandleRiseFall3Methods_T_.md#TechnicalAnalysis.Candles.CandleRiseFall3Methods_T_.T 'TechnicalAnalysis\.Candles\.CandleRiseFall3Methods\<T\>\.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1') &#129106; CandleRiseFall3Methods\<T\>
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.CandleIndicator&lt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1')[T](CandleRiseFall3Methods_T_.md#TechnicalAnalysis.Candles.CandleRiseFall3Methods_T_.T 'TechnicalAnalysis\.Candles\.CandleRiseFall3Methods\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1') &#129106; CandleRiseFall3Methods\<T\>
 
 | Constructors | |
 | :--- | :--- |

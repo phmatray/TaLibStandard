@@ -10,7 +10,7 @@ public double[] Real { get; }
 ```
 
 #### Property Value
-[System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')  
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')  
 An array of doubles representing the MFI values, ranging from 0 to 100\. 
 Values above 80 suggest overbought conditions and potential selling opportunities, 
 values below 20 suggest oversold conditions and potential buying opportunities\. 

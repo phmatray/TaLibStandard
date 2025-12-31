@@ -12,22 +12,22 @@ public static int PpoLookback(int optInFastPeriod, int optInSlowPeriod, Technica
 
 <a name='TechnicalAnalysis.Functions.TAFunc.PpoLookback(int,int,TechnicalAnalysis.Common.MAType).optInFastPeriod'></a>
 
-`optInFastPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInFastPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for the fast moving average\. Valid range: 2 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.PpoLookback(int,int,TechnicalAnalysis.Common.MAType).optInSlowPeriod'></a>
 
-`optInSlowPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInSlowPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for the slow moving average\. Valid range: 2 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.PpoLookback(int,int,TechnicalAnalysis.Common.MAType).optInMAType'></a>
 
-`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 Type of moving average to use\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of historical data points required before the first valid PPO value can be calculated, or \-1 if parameters are invalid\.

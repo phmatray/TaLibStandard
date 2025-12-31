@@ -10,7 +10,7 @@ public double[] Real { get; }
 ```
 
 #### Property Value
-[System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')  
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')  
 An array of doubles representing the cumulative OBV values\. Rising OBV confirms 
 an uptrend, falling OBV confirms a downtrend\. When OBV moves contrary to price, 
 it may indicate a potential price reversal\.

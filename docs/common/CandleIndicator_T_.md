@@ -15,7 +15,7 @@ public abstract class CandleIndicator<T>
 
 `T`
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; CandleIndicator\<T\>
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; CandleIndicator\<T\>
 
 | Constructors | |
 | :--- | :--- |

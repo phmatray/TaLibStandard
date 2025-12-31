@@ -10,7 +10,7 @@ public double[] Real { get; }
 ```
 
 #### Property Value
-[System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')  
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')  
 An array of doubles representing the correlation values, ranging from \-1 to \+1\. 
 Values near \+1 indicate strong positive correlation, values near \-1 indicate 
 strong negative correlation, and values near 0 indicate weak or no linear relationship\. 

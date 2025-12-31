@@ -20,15 +20,15 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        dotnet-version: ['9.0.x']
+        dotnet-version: ['10.0.x']
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6.0.0
       with:
         fetch-depth: 0  # Full history for MinVer
-    
+
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
         
@@ -42,7 +42,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal --configuration Release --logger "trx;LogFileName=test-results.trx"
       
     - name: Upload test results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       if: always()
       with:
         name: test-results-${{ matrix.os }}
@@ -55,7 +55,7 @@ jobs:
     
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6.0.0
       with:
         fetch-depth: 0
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -106,9 +106,9 @@ jobs:
     
     - name: Setup .NET
       if: steps.should_release.outputs.new_release == 'true'
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: '9.0.x'
+        dotnet-version: '10.0.x'
     
     - name: Update version in csproj files
       if: steps.should_release.outputs.new_release == 'true'

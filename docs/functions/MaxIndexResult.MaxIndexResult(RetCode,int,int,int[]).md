@@ -12,25 +12,25 @@ public MaxIndexResult(TechnicalAnalysis.Common.RetCode retCode, int begIdx, int 
 
 <a name='TechnicalAnalysis.Functions.MaxIndexResult.MaxIndexResult(TechnicalAnalysis.Common.RetCode,int,int,int[]).retCode'></a>
 
-`retCode` [TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode')
+`retCode` [TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode')
 
 The return code indicating the success or failure of the calculation\.
 
 <a name='TechnicalAnalysis.Functions.MaxIndexResult.MaxIndexResult(TechnicalAnalysis.Common.RetCode,int,int,int[]).begIdx'></a>
 
-`begIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`begIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The index of the first valid data point in the output array\.
 
 <a name='TechnicalAnalysis.Functions.MaxIndexResult.MaxIndexResult(TechnicalAnalysis.Common.RetCode,int,int,int[]).nbElement'></a>
 
-`nbElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`nbElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of valid data points in the output array\.
 
 <a name='TechnicalAnalysis.Functions.MaxIndexResult.MaxIndexResult(TechnicalAnalysis.Common.RetCode,int,int,int[]).integers'></a>
 
-`integers` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`integers` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array containing the indices of maximum values\. Each element represents
             the relative position \(offset from the start of the period\) where the maximum value was found

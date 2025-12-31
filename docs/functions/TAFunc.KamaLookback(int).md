@@ -12,10 +12,10 @@ public static int KamaLookback(int optInTimePeriod);
 
 <a name='TechnicalAnalysis.Functions.TAFunc.KamaLookback(int).optInTimePeriod'></a>
 
-`optInTimePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for the efficiency ratio calculation\. Valid range: 2 to 100000\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of historical data points required before the first valid KAMA value can be calculated, or \-1 if parameters are invalid\.

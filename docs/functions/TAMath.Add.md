@@ -21,25 +21,25 @@ public static TechnicalAnalysis.Functions.AddResult Add(int startIdx, int endIdx
 
 <a name='TechnicalAnalysis.Functions.TAMath.Add(int,int,double[],double[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Add(int,int,double[],double[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Add(int,int,double[],double[]).real0'></a>
 
-`real0` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`real0` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The first input array of values\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Add(int,int,double[],double[]).real1'></a>
 
-`real1` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`real1` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The second input array of values\.
 
@@ -64,25 +64,25 @@ public static TechnicalAnalysis.Functions.AddResult Add(int startIdx, int endIdx
 
 <a name='TechnicalAnalysis.Functions.TAMath.Add(int,int,float[],float[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Add(int,int,float[],float[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Add(int,int,float[],float[]).real0'></a>
 
-`real0` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`real0` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The first input array of values\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Add(int,int,float[],float[]).real1'></a>
 
-`real1` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`real1` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The second input array of values\.
 

@@ -12,30 +12,30 @@ public HtPhasorResult(TechnicalAnalysis.Common.RetCode retCode, int begIdx, int 
 
 <a name='TechnicalAnalysis.Functions.HtPhasorResult.HtPhasorResult(TechnicalAnalysis.Common.RetCode,int,int,double[],double[]).retCode'></a>
 
-`retCode` [TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode')
+`retCode` [TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode')
 
 The return code indicating the success or failure of the calculation\.
 
 <a name='TechnicalAnalysis.Functions.HtPhasorResult.HtPhasorResult(TechnicalAnalysis.Common.RetCode,int,int,double[],double[]).begIdx'></a>
 
-`begIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`begIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The index of the first valid data point in the output arrays\.
 
 <a name='TechnicalAnalysis.Functions.HtPhasorResult.HtPhasorResult(TechnicalAnalysis.Common.RetCode,int,int,double[],double[]).nbElement'></a>
 
-`nbElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`nbElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of valid data points in the output arrays\.
 
 <a name='TechnicalAnalysis.Functions.HtPhasorResult.HtPhasorResult(TechnicalAnalysis.Common.RetCode,int,int,double[],double[]).inPhase'></a>
 
-`inPhase` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`inPhase` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The array of in\-phase component values representing the real part of the complex signal\.
 
 <a name='TechnicalAnalysis.Functions.HtPhasorResult.HtPhasorResult(TechnicalAnalysis.Common.RetCode,int,int,double[],double[]).quadrature'></a>
 
-`quadrature` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`quadrature` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The array of quadrature component values representing the imaginary part of the complex signal\.

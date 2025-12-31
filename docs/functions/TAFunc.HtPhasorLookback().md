@@ -10,7 +10,7 @@ public static int HtPhasorLookback();
 ```
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of data points required before the first valid output value\.
 
 ### Remarks

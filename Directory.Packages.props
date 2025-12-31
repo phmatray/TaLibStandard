@@ -4,29 +4,30 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- Code Analyzers -->
-    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.101" />
     <!-- Build Tools -->
-    <PackageVersion Include="DotNet.ReproducibleBuilds" Version="1.2.25" />
-    <PackageVersion Include="MinVer" Version="6.0.0" />
+    <PackageVersion Include="DotNet.ReproducibleBuilds" Version="1.2.39" />
+    <PackageVersion Include="Microsoft.DotNet.HotReload.WebAssembly.Browser" Version="10.0.101" />
+    <PackageVersion Include="MinVer" Version="6.1.0" />
     <!-- Documentation -->
-    <PackageVersion Include="DefaultDocumentation" Version="1.1.1" />
+    <PackageVersion Include="DefaultDocumentation" Version="1.2.2" />
     <!-- Testing -->
     <PackageVersion Include="AutoFixture" Version="4.18.1" />
     <PackageVersion Include="Shouldly" Version="4.3.0" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
-    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.14.2" />
-    <PackageVersion Include="xunit.v3" Version="2.0.3" />
-    <PackageVersion Include="xunit.v3.runner.console" Version="2.0.3" />
-    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.1" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.1.0" />
+    <PackageVersion Include="xunit.v3" Version="3.2.1" />
+    <PackageVersion Include="xunit.v3.runner.console" Version="3.2.1" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
     <!-- Demo Dependencies -->
     <PackageVersion Include="YahooFinanceApi" Version="2.3.3" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.6" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
     <!-- Blazor Demo Dependencies -->
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.6" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.6" />
-    <PackageVersion Include="MudBlazor" Version="8.8.0" />
-    <PackageVersion Include="System.Text.Json" Version="9.0.6" />
-    <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.1" />
+    <PackageVersion Include="MudBlazor" Version="8.15.0" />
+    <PackageVersion Include="System.Text.Json" Version="10.0.1" />
+    <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.3" />
   </ItemGroup>
 </Project>

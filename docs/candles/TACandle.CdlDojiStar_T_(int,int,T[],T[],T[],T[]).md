@@ -18,39 +18,39 @@ The type of the array elements\.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The start index\.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The end index\.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).open'></a>
 
-`open` [T](TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlDojiStar\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`open` [T](TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlDojiStar\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of open prices\.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).high'></a>
 
-`high` [T](TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlDojiStar\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`high` [T](TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlDojiStar\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of high prices\.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).low'></a>
 
-`low` [T](TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlDojiStar\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`low` [T](TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlDojiStar\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of low prices\.
 
 <a name='TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).close'></a>
 
-`close` [T](TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlDojiStar\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`close` [T](TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).md#TechnicalAnalysis.Candles.TACandle.CdlDojiStar_T_(int,int,T[],T[],T[],T[]).T 'TechnicalAnalysis\.Candles\.TACandle\.CdlDojiStar\<T\>\(int, int, T\[\], T\[\], T\[\], T\[\]\)\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of close prices\.
 
 #### Returns
-[TechnicalAnalysis\.Common\.CandleIndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicatorResult 'TechnicalAnalysis\.Common\.CandleIndicatorResult')
+[TechnicalAnalysis\.Common\.CandleIndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicatorresult 'TechnicalAnalysis\.Common\.CandleIndicatorResult')

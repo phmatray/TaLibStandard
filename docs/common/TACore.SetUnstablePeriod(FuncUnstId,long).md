@@ -18,7 +18,7 @@ The identifier of the function\.
 
 <a name='TechnicalAnalysis.TACore.SetUnstablePeriod(TechnicalAnalysis.Common.FuncUnstId,long).unstablePeriod'></a>
 
-`unstablePeriod` [System\.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System\.Int64')
+`unstablePeriod` [System\.Int64](https://learn.microsoft.com/en-us/dotnet/api/system.int64 'System\.Int64')
 
 The unstable period to set\.
 

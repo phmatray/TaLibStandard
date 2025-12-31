@@ -12,24 +12,24 @@ protected CandleIndicator(T[] open, T[] high, T[] low, T[] close);
 
 <a name='TechnicalAnalysis.Common.CandleIndicator_T_.CandleIndicator(T[],T[],T[],T[]).open'></a>
 
-`open` [T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`open` [T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of open prices\.
 
 <a name='TechnicalAnalysis.Common.CandleIndicator_T_.CandleIndicator(T[],T[],T[],T[]).high'></a>
 
-`high` [T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`high` [T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of high prices\.
 
 <a name='TechnicalAnalysis.Common.CandleIndicator_T_.CandleIndicator(T[],T[],T[],T[]).low'></a>
 
-`low` [T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`low` [T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of low prices\.
 
 <a name='TechnicalAnalysis.Common.CandleIndicator_T_.CandleIndicator(T[],T[],T[],T[]).close'></a>
 
-`close` [T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`close` [T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of close prices\.

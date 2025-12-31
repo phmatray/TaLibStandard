@@ -9,7 +9,7 @@ Represents an exception that is thrown when the start index is out of range\.
 public class OutOfRangeStartIndexException : System.Exception
 ```
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; [System\.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System\.Exception') &#129106; OutOfRangeStartIndexException
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception') &#129106; OutOfRangeStartIndexException
 
 | Constructors | |
 | :--- | :--- |

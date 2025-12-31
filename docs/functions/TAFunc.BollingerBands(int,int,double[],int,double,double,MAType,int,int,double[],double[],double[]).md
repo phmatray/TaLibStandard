@@ -12,78 +12,78 @@ public static TechnicalAnalysis.Common.RetCode BollingerBands(int startIdx, int 
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation within the input array\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation within the input array\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).inReal'></a>
 
-`inReal` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`inReal` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Input array of price data \(typically closing prices\)\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).optInTimePeriod'></a>
 
-`optInTimePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for the moving average calculation\. Typical value: 20\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).optInNbDevUp'></a>
 
-`optInNbDevUp` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInNbDevUp` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Number of standard deviations for the upper band\. Typical value: 2\.0\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).optInNbDevDn'></a>
 
-`optInNbDevDn` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInNbDevDn` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Number of standard deviations for the lower band\. Typical value: 2\.0\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).optInMAType'></a>
 
-`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 Type of moving average to use \(SMA, EMA, etc\.\)\. Default: SMA\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).outBegIdx'></a>
 
-`outBegIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outBegIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The index of the first valid output value\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).outNBElement'></a>
 
-`outNBElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outNBElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of valid output elements\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).outRealUpperBand'></a>
 
-`outRealUpperBand` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`outRealUpperBand` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Output array for the upper band values\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).outRealMiddleBand'></a>
 
-`outRealMiddleBand` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`outRealMiddleBand` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Output array for the middle band \(moving average\) values\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.BollingerBands(int,int,double[],int,double,double,TechnicalAnalysis.Common.MAType,int,int,double[],double[],double[]).outRealLowerBand'></a>
 
-`outRealLowerBand` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`outRealLowerBand` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Output array for the lower band values\.
 
 #### Returns
-[TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode')  
+[TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode')  
 A RetCode indicating the success or failure of the calculation\.
 
 ### Remarks

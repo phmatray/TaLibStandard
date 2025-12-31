@@ -12,12 +12,12 @@ protected virtual void ValidateIndices(ref int startIdx, ref int endIdx);
 
 <a name='TechnicalAnalysis.Common.CandleIndicator_T_.ValidateIndices(int,int).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The start index\.
 
 <a name='TechnicalAnalysis.Common.CandleIndicator_T_.ValidateIndices(int,int).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The end index\.

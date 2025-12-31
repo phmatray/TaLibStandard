@@ -21,31 +21,31 @@ public static TechnicalAnalysis.Functions.WclPriceResult WclPrice(int startIdx, 
 
 <a name='TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,double[],double[],double[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation range\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,double[],double[],double[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation range\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,double[],double[],double[]).high'></a>
 
-`high` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`high` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of high prices\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,double[],double[],double[]).low'></a>
 
-`low` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`low` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of low prices\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,double[],double[],double[]).close'></a>
 
-`close` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`close` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of closing prices\.
 
@@ -73,31 +73,31 @@ public static TechnicalAnalysis.Functions.WclPriceResult WclPrice(int startIdx, 
 
 <a name='TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,float[],float[],float[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation range\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,float[],float[],float[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation range\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,float[],float[],float[]).high'></a>
 
-`high` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`high` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of high prices\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,float[],float[],float[]).low'></a>
 
-`low` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`low` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of low prices\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.WclPrice(int,int,float[],float[],float[]).close'></a>
 
-`close` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`close` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of closing prices\.
 

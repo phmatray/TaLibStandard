@@ -12,18 +12,18 @@ public static int MamaLookback(double optInFastLimit, double optInSlowLimit);
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MamaLookback(double,double).optInFastLimit'></a>
 
-`optInFastLimit` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInFastLimit` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Controls the maximum alpha for the fast\-moving average\. Range: 0\.01 to 0\.99\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MamaLookback(double,double).optInSlowLimit'></a>
 
-`optInSlowLimit` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInSlowLimit` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Controls the maximum alpha for the slow\-moving average\. Range: 0\.01 to 0\.99\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of historical data points needed before the first MAMA/FAMA values can be calculated, or \-1 if parameters are invalid\.
 
 ### Remarks

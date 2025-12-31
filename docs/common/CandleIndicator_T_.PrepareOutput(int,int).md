@@ -12,16 +12,16 @@ protected virtual (int outBegIdx,int outNBElement,int[] outInteger) PrepareOutpu
 
 <a name='TechnicalAnalysis.Common.CandleIndicator_T_.PrepareOutput(int,int).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The start index\.
 
 <a name='TechnicalAnalysis.Common.CandleIndicator_T_.PrepareOutput(int,int).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The end index\.
 
 #### Returns
-[&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.ValueTuple 'System\.ValueTuple')[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')[,](https://docs.microsoft.com/en-us/dotnet/api/System.ValueTuple 'System\.ValueTuple')[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')[,](https://docs.microsoft.com/en-us/dotnet/api/System.ValueTuple 'System\.ValueTuple')[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.ValueTuple 'System\.ValueTuple')  
+[&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[,](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[,](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')  
 A tuple containing the output variables\.

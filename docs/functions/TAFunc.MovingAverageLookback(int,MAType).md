@@ -12,25 +12,25 @@ public static int MovingAverageLookback(int optInTimePeriod, TechnicalAnalysis.C
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageLookback(int,TechnicalAnalysis.Common.MAType).optInTimePeriod'></a>
 
-`optInTimePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of periods for the moving average calculation\.
 Valid range: 1 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageLookback(int,TechnicalAnalysis.Common.MAType).optInMAType'></a>
 
-`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 The type of moving average to calculate the lookback for\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of data points required before the first moving average value can be calculated\.
 Returns \-1 if the time period is outside the valid range\.
 
 #### Exceptions
 
-[System\.ArgumentOutOfRangeException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentOutOfRangeException 'System\.ArgumentOutOfRangeException')  
+[System\.ArgumentOutOfRangeException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentoutofrangeexception 'System\.ArgumentOutOfRangeException')  
 Thrown when an unsupported MAType is specified\.
 
 ### Example

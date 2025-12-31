@@ -12,30 +12,30 @@ public MinMaxIndexResult(TechnicalAnalysis.Common.RetCode retCode, int begIdx, i
 
 <a name='TechnicalAnalysis.Functions.MinMaxIndexResult.MinMaxIndexResult(TechnicalAnalysis.Common.RetCode,int,int,int[],int[]).retCode'></a>
 
-`retCode` [TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode')
+`retCode` [TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode')
 
 The return code indicating the success or failure of the calculation\.
 
 <a name='TechnicalAnalysis.Functions.MinMaxIndexResult.MinMaxIndexResult(TechnicalAnalysis.Common.RetCode,int,int,int[],int[]).begIdx'></a>
 
-`begIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`begIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The index of the first valid data point in the output arrays\.
 
 <a name='TechnicalAnalysis.Functions.MinMaxIndexResult.MinMaxIndexResult(TechnicalAnalysis.Common.RetCode,int,int,int[],int[]).nbElement'></a>
 
-`nbElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`nbElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of valid data points in the output arrays\.
 
 <a name='TechnicalAnalysis.Functions.MinMaxIndexResult.MinMaxIndexResult(TechnicalAnalysis.Common.RetCode,int,int,int[],int[]).minIdx'></a>
 
-`minIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`minIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The array of indices where minimum values occur within each period\.
 
 <a name='TechnicalAnalysis.Functions.MinMaxIndexResult.MinMaxIndexResult(TechnicalAnalysis.Common.RetCode,int,int,int[],int[]).maxIdx'></a>
 
-`maxIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`maxIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The array of indices where maximum values occur within each period\.

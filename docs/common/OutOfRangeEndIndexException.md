@@ -9,7 +9,7 @@ Represents an exception that is thrown when the end index is out of range\.
 public class OutOfRangeEndIndexException : System.Exception
 ```
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; [System\.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System\.Exception') &#129106; OutOfRangeEndIndexException
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [System\.Exception](https://learn.microsoft.com/en-us/dotnet/api/system.exception 'System\.Exception') &#129106; OutOfRangeEndIndexException
 
 | Constructors | |
 | :--- | :--- |

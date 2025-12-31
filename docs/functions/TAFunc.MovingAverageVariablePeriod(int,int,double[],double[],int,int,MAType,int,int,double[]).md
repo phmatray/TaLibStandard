@@ -12,39 +12,39 @@ public static TechnicalAnalysis.Common.RetCode MovingAverageVariablePeriod(int s
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriod(int,int,double[],double[],int,int,TechnicalAnalysis.Common.MAType,int,int,double[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the input data\. Must be non\-negative\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriod(int,int,double[],double[],int,int,TechnicalAnalysis.Common.MAType,int,int,double[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the input data\. Must be greater than or equal to startIdx\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriod(int,int,double[],double[],int,int,TechnicalAnalysis.Common.MAType,int,int,double[]).inReal'></a>
 
-`inReal` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`inReal` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of input values to calculate the variable period moving average from\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriod(int,int,double[],double[],int,int,TechnicalAnalysis.Common.MAType,int,int,double[]).inPeriods'></a>
 
-`inPeriods` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`inPeriods` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of period values, one for each potential output point\. Values outside the min/max range
 will be clamped to the nearest boundary\. The array should be at least as long as the input data\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriod(int,int,double[],double[],int,int,TechnicalAnalysis.Common.MAType,int,int,double[]).optInMinPeriod'></a>
 
-`optInMinPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInMinPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The minimum allowed period value\. Must be between 2 and 100000\.
 Period values below this will be adjusted up to this minimum\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriod(int,int,double[],double[],int,int,TechnicalAnalysis.Common.MAType,int,int,double[]).optInMaxPeriod'></a>
 
-`optInMaxPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInMaxPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The maximum allowed period value\. Must be between 2 and 100000\.
 Period values above this will be adjusted down to this maximum\.
@@ -52,35 +52,35 @@ This also determines the overall lookback requirement\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriod(int,int,double[],double[],int,int,TechnicalAnalysis.Common.MAType,int,int,double[]).optInMAType'></a>
 
-`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 The type of moving average to calculate\. The same MA type is used for all periods,
 only the period length varies\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriod(int,int,double[],double[],int,int,TechnicalAnalysis.Common.MAType,int,int,double[]).outBegIdx'></a>
 
-`outBegIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outBegIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Output parameter that indicates the index in the input array corresponding to the first output value\.
 This is based on the maximum period's lookback requirement\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriod(int,int,double[],double[],int,int,TechnicalAnalysis.Common.MAType,int,int,double[]).outNBElement'></a>
 
-`outNBElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outNBElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Output parameter that indicates the number of elements written to the output array\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriod(int,int,double[],double[],int,int,TechnicalAnalysis.Common.MAType,int,int,double[]).outReal'></a>
 
-`outReal` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`outReal` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Output array containing the calculated variable period moving average values\.
 Each value is calculated using the period specified in the corresponding inPeriods element\.
 The array must be pre\-allocated with sufficient size\.
 
 #### Returns
-[TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode')  
-A [TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode') indicating the success or failure of the operation:
+[TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode')  
+A [TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode') indicating the success or failure of the operation:
 \- Success: Calculation completed successfully
 \- OutOfRangeStartIndex: startIdx is less than 0
 \- OutOfRangeEndIndex: endIdx is less than 0 or less than startIdx

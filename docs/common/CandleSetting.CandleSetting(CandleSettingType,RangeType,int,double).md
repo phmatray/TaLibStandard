@@ -24,12 +24,12 @@ The type of the range to consider for the setting\.
 
 <a name='TechnicalAnalysis.Common.CandleSetting.CandleSetting(TechnicalAnalysis.Common.CandleSettingType,TechnicalAnalysis.Common.RangeType,int,double).avgPeriod'></a>
 
-`avgPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`avgPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The average period to consider for the setting\.
 
 <a name='TechnicalAnalysis.Common.CandleSetting.CandleSetting(TechnicalAnalysis.Common.CandleSettingType,TechnicalAnalysis.Common.RangeType,int,double).factor'></a>
 
-`factor` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`factor` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 The factor to consider for the setting\.

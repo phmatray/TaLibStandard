@@ -12,96 +12,96 @@ public static TechnicalAnalysis.Common.RetCode SarExt(int startIdx, int endIdx, 
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation within the input arrays\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation within the input arrays\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).inHigh'></a>
 
-`inHigh` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`inHigh` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Input array of high prices\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).inLow'></a>
 
-`inLow` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`inLow` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Input array of low prices\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).optInStartValue'></a>
 
-`optInStartValue` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInStartValue` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Initial SAR value\. Use 0 for automatic, positive for long, negative for short\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).optInOffsetOnReverse'></a>
 
-`optInOffsetOnReverse` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInOffsetOnReverse` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Percentage offset added when SAR reverses\. Typical value: 0\.0\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).optInAccelerationInitLong'></a>
 
-`optInAccelerationInitLong` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInAccelerationInitLong` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Initial acceleration factor for long positions\. Typical value: 0\.02\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).optInAccelerationLong'></a>
 
-`optInAccelerationLong` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInAccelerationLong` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Acceleration increment for long positions\. Typical value: 0\.02\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).optInAccelerationMaxLong'></a>
 
-`optInAccelerationMaxLong` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInAccelerationMaxLong` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Maximum acceleration factor for long positions\. Typical value: 0\.20\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).optInAccelerationInitShort'></a>
 
-`optInAccelerationInitShort` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInAccelerationInitShort` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Initial acceleration factor for short positions\. Typical value: 0\.02\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).optInAccelerationShort'></a>
 
-`optInAccelerationShort` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInAccelerationShort` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Acceleration increment for short positions\. Typical value: 0\.02\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).optInAccelerationMaxShort'></a>
 
-`optInAccelerationMaxShort` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInAccelerationMaxShort` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Maximum acceleration factor for short positions\. Typical value: 0\.20\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).outBegIdx'></a>
 
-`outBegIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outBegIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The index of the first valid output value\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).outNBElement'></a>
 
-`outNBElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outNBElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of valid output elements\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarExt(int,int,double[],double[],double,double,double,double,double,double,double,double,int,int,double[]).outReal'></a>
 
-`outReal` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`outReal` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Output array for the SAR values \(negative values indicate short position\)\.
 
 #### Returns
-[TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode')  
+[TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode')  
 A RetCode indicating the success or failure of the calculation\.
 
 ### Remarks

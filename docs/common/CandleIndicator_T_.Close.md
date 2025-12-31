@@ -10,4 +10,4 @@ protected T[] Close { protected get; }
 ```
 
 #### Property Value
-[T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+[T](CandleIndicator_T_.md#TechnicalAnalysis.Common.CandleIndicator_T_.T 'TechnicalAnalysis\.Common\.CandleIndicator\<T\>\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')

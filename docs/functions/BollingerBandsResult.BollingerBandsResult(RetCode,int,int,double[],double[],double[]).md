@@ -12,36 +12,36 @@ public BollingerBandsResult(TechnicalAnalysis.Common.RetCode retCode, int begIdx
 
 <a name='TechnicalAnalysis.Functions.BollingerBandsResult.BollingerBandsResult(TechnicalAnalysis.Common.RetCode,int,int,double[],double[],double[]).retCode'></a>
 
-`retCode` [TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode')
+`retCode` [TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode')
 
 The return code indicating the success or failure of the calculation\.
 
 <a name='TechnicalAnalysis.Functions.BollingerBandsResult.BollingerBandsResult(TechnicalAnalysis.Common.RetCode,int,int,double[],double[],double[]).begIdx'></a>
 
-`begIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`begIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The index of the first valid data point in the output arrays\.
 
 <a name='TechnicalAnalysis.Functions.BollingerBandsResult.BollingerBandsResult(TechnicalAnalysis.Common.RetCode,int,int,double[],double[],double[]).nbElement'></a>
 
-`nbElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`nbElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of valid data points in the output arrays\.
 
 <a name='TechnicalAnalysis.Functions.BollingerBandsResult.BollingerBandsResult(TechnicalAnalysis.Common.RetCode,int,int,double[],double[],double[]).realUpperBand'></a>
 
-`realUpperBand` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`realUpperBand` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The array containing the upper band values\.
 
 <a name='TechnicalAnalysis.Functions.BollingerBandsResult.BollingerBandsResult(TechnicalAnalysis.Common.RetCode,int,int,double[],double[],double[]).realMiddleBand'></a>
 
-`realMiddleBand` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`realMiddleBand` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The array containing the middle band \(SMA\) values\.
 
 <a name='TechnicalAnalysis.Functions.BollingerBandsResult.BollingerBandsResult(TechnicalAnalysis.Common.RetCode,int,int,double[],double[],double[]).realLowerBand'></a>
 
-`realLowerBand` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`realLowerBand` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 The array containing the lower band values\.

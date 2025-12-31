@@ -10,6 +10,6 @@ public double[] MacdValue { get; }
 ```
 
 #### Property Value
-[System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')  
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')  
 An array of double values representing the MACD line, calculated as the difference
 between the fast EMA \(typically 12 periods\) and the slow EMA \(typically 26 periods\)\.

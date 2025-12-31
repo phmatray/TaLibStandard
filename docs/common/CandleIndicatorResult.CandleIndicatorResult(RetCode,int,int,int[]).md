@@ -18,18 +18,18 @@ The return code of the indicator calculation\.
 
 <a name='TechnicalAnalysis.Common.CandleIndicatorResult.CandleIndicatorResult(TechnicalAnalysis.Common.RetCode,int,int,int[]).begIdx'></a>
 
-`begIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`begIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The index of the first element in the result\.
 
 <a name='TechnicalAnalysis.Common.CandleIndicatorResult.CandleIndicatorResult(TechnicalAnalysis.Common.RetCode,int,int,int[]).nbElement'></a>
 
-`nbElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`nbElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of elements in the result\.
 
 <a name='TechnicalAnalysis.Common.CandleIndicatorResult.CandleIndicatorResult(TechnicalAnalysis.Common.RetCode,int,int,int[]).integers'></a>
 
-`integers` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`integers` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of integers indicating the presence of the pattern\. \(values are \-100, 0 or 100\)
