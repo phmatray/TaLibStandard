@@ -44,25 +44,14 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        RetCode validationResult = ValidationHelper.ValidateSingleInputIndicator(
-            startIdx, endIdx, inReal, outReal);
-        if (validationResult != Success)
-        {
-            return validationResult;
-        }
-
-        int i = startIdx;
-        int outIdx = 0;
-        while (i <= endIdx)
-        {
-            outReal[outIdx] = Math.Acos(inReal[i]);
-            i++;
-            outIdx++;
-        }
-
-        outNBElement = outIdx;
-        outBegIdx = startIdx;
-        return Success;
+        return MathHelper.ApplyMathFunction(
+            startIdx,
+            endIdx,
+            inReal,
+            ref outBegIdx,
+            ref outNBElement,
+            ref outReal,
+            Math.Acos);
     }
 
     /// <summary>
