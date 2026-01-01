@@ -165,6 +165,6 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid NATR value can be calculated, or -1 if parameters are invalid.</returns>
     public static int NatrLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Natr];
+        return ValidationHelper.ValidateLookback(optInTimePeriod, minPeriod: 1, unstablePeriod: FuncUnstId.Natr);
     }
 }

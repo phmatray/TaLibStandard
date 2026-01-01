@@ -99,6 +99,6 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid ROC value can be calculated, or -1 if parameters are invalid.</returns>
     public static int RocLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod;
+        return ValidationHelper.ValidateLookback(optInTimePeriod, minPeriod: 1);
     }
 }

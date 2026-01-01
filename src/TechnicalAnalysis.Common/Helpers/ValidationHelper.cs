@@ -17,6 +17,15 @@ namespace TechnicalAnalysis.Common;
 public static class ValidationHelper
 {
     /// <summary>
+    /// The minimum allowed period for most indicators.
+    /// </summary>
+    public const int MinPeriod = 2;
+
+    /// <summary>
+    /// The maximum allowed period for all indicators.
+    /// </summary>
+    public const int MaxPeriod = 100000;
+    /// <summary>
     /// Validates the index range for indicator calculations.
     /// </summary>
     /// <param name="startIdx">The starting index for the calculation.</param>
@@ -234,6 +243,65 @@ public static class ValidationHelper
     }
 
     /// <summary>
+    /// Validates a lookback period and returns the adjusted lookback value with optional modifications.
+    /// </summary>
+    /// <param name="period">The time period to validate.</param>
+    /// <param name="adjustment">Value to add to the period (e.g., -1 for period-1 lookback). Default: 0.</param>
+    /// <param name="minPeriod">The minimum allowed period. Default: <see cref="MinPeriod"/> (2).</param>
+    /// <param name="maxPeriod">The maximum allowed period. Default: <see cref="MaxPeriod"/> (100000).</param>
+    /// <param name="unstablePeriod">Optional unstable period function ID to add to the result.</param>
+    /// <returns>
+    /// -1 if the period is out of range;
+    /// the validated and adjusted lookback value otherwise.
+    /// </returns>
+    /// <remarks>
+    /// This method consolidates the common lookback validation pattern used across 40+ indicators.
+    /// It handles several common cases:
+    /// - Simple period validation: ValidateLookback(period)
+    /// - With adjustment: ValidateLookback(period, adjustment: -1)
+    /// - With min period: ValidateLookback(period, minPeriod: 1)
+    /// - With unstable period: ValidateLookback(period, unstablePeriod: FuncUnstId.Ema)
+    /// - Complex: ValidateLookback(period, adjustment: -1, unstablePeriod: FuncUnstId.Ema)
+    ///
+    /// Examples:
+    /// <code>
+    /// // CCI: period - 1
+    /// public static int CciLookback(int optInTimePeriod) =>
+    ///     ValidationHelper.ValidateLookback(optInTimePeriod, adjustment: -1);
+    ///
+    /// // SMA: period (no adjustment)
+    ///public static int SmaLookback(int optInTimePeriod) =>
+    ///     ValidationHelper.ValidateLookback(optInTimePeriod, minPeriod: 1);
+    ///
+    /// // EMA: period - 1 + unstable period
+    /// public static int EmaLookback(int optInTimePeriod) =>
+    ///     ValidationHelper.ValidateLookback(optInTimePeriod, adjustment: -1,
+    ///         unstablePeriod: FuncUnstId.Ema);
+    /// </code>
+    /// </remarks>
+    public static int ValidateLookback(
+        int period,
+        int adjustment = 0,
+        int minPeriod = MinPeriod,
+        int maxPeriod = MaxPeriod,
+        FuncUnstId? unstablePeriod = null)
+    {
+        if (period < minPeriod || period > maxPeriod)
+        {
+            return -1;
+        }
+
+        int result = period + adjustment;
+
+        if (unstablePeriod.HasValue)
+        {
+            result += (int)TACore.Globals.UnstablePeriod[unstablePeriod.Value];
+        }
+
+        return result;
+    }
+
+    /// <summary>
     /// Validates a lookback period parameter and returns the adjusted lookback value.
     /// </summary>
     /// <param name="period">The time period to validate.</param>
@@ -243,6 +311,7 @@ public static class ValidationHelper
     /// -1 if the period is out of range;
     /// the validated period value otherwise.
     /// </returns>
+    [Obsolete("Use ValidateLookback() instead for better flexibility and consistency.")]
     public static int ValidateLookbackPeriod(int period, int minPeriod = 2, int maxPeriod = 100000)
     {
         return period < minPeriod || period > maxPeriod ? -1 : period;

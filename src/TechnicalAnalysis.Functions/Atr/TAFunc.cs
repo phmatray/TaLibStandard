@@ -153,6 +153,6 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid ATR value can be calculated, or -1 if parameters are invalid.</returns>
     public static int AtrLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Atr];
+        return ValidationHelper.ValidateLookback(optInTimePeriod, minPeriod: 1, unstablePeriod: FuncUnstId.Atr);
     }
 }

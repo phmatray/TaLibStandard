@@ -113,6 +113,6 @@ public static partial class TAFunc
     /// </returns>
     public static int RocRLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod;
+        return ValidationHelper.ValidateLookback(optInTimePeriod, minPeriod: 1);
     }
 }

@@ -107,6 +107,6 @@ public static partial class TAFunc
     /// <returns>The minimum number of data points required (period - 1), or -1 for invalid parameters.</returns>
     public static int SumLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;
+        return ValidationHelper.ValidateLookback(optInTimePeriod, adjustment: -1);
     }
 }

@@ -101,6 +101,6 @@ public static partial class TAFunc
     /// <returns>The number of data points required before the first valid MIN value, or -1 if the period is invalid.</returns>
     public static int MinLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;
+        return ValidationHelper.ValidateLookback(optInTimePeriod, adjustment: -1);
     }
 }

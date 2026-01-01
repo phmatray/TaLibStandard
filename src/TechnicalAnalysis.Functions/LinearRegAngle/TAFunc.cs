@@ -119,6 +119,6 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid Linear Regression Angle value can be calculated, or -1 if parameters are invalid.</returns>
     public static int LinearRegAngleLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;
+        return ValidationHelper.ValidateLookback(optInTimePeriod, adjustment: -1);
     }
 }
