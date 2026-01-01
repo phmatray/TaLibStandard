@@ -32,21 +32,14 @@ public static partial class TAFunc
         ref int outNBElement,
         ref int[] outInteger)
     {
-        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
-        if (indexCheck != Success)
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => inReal == null! || outInteger == null! ? BadParam : Success,
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod)
+        );
+        if (validation != Success)
         {
-            return indexCheck;
-        }
-
-        if (inReal == null! || outInteger == null!)
-        {
-            return BadParam;
-        }
-
-        RetCode periodCheck = ValidationHelper.ValidatePeriodRange(optInTimePeriod);
-        if (periodCheck != Success)
-        {
-            return periodCheck;
+            return validation;
         }
 
         int nbInitialElementNeeded = optInTimePeriod - 1;

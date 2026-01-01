@@ -44,16 +44,13 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
-        if (indexCheck != Success)
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inReal, inVolume, outReal)
+        );
+        if (validation != Success)
         {
-            return indexCheck;
-        }
-
-        RetCode arrayCheck = ValidationHelper.ValidateArrays(inReal, inVolume, outReal);
-        if (arrayCheck != Success)
-        {
-            return arrayCheck;
+            return validation;
         }
 
         double prevOBV = inVolume[startIdx];

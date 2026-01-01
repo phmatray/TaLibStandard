@@ -70,34 +70,16 @@ public static partial class TAFunc
         int[] usedFlag = new int[3];
         int[] periods = new int[3];
         int[] sortedPeriods = new int[3];
-        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
-        if (indexCheck != Success)
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outReal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod1, 1),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod2, 1),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod3, 1)
+        );
+        if (validation != Success)
         {
-            return indexCheck;
-        }
-
-        RetCode arrayCheck = ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outReal);
-        if (arrayCheck != Success)
-        {
-            return arrayCheck;
-        }
-
-        RetCode period1Check = ValidationHelper.ValidatePeriodRange(optInTimePeriod1, 1);
-        if (period1Check != Success)
-        {
-            return period1Check;
-        }
-
-        RetCode period2Check = ValidationHelper.ValidatePeriodRange(optInTimePeriod2, 1);
-        if (period2Check != Success)
-        {
-            return period2Check;
-        }
-
-        RetCode period3Check = ValidationHelper.ValidatePeriodRange(optInTimePeriod3, 1);
-        if (period3Check != Success)
-        {
-            return period3Check;
+            return validation;
         }
 
         outBegIdx = 0;

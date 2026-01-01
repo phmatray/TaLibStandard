@@ -78,16 +78,13 @@ public static partial class TAFunc
         double[] jQEven = new double[3];
         int smoothPriceIdx = 0;
         int maxIdxSmoothPrice = 49;
-        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
-        if (indexCheck != Success)
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inReal, outSine, outLeadSine)
+        );
+        if (validation != Success)
         {
-            return indexCheck;
-        }
-
-        RetCode arrayCheck = ValidationHelper.ValidateArrays(inReal, outSine, outLeadSine);
-        if (arrayCheck != Success)
-        {
-            return arrayCheck;
+            return validation;
         }
 
         double[] smoothPrice = new double[maxIdxSmoothPrice + 1];

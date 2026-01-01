@@ -53,22 +53,14 @@ public static partial class TAFunc
         ref double[] outMACDSignal,
         ref double[] outMACDHist)
     {
-        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
-        if (indexCheck != Success)
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inReal, outMACD, outMACDSignal, outMACDHist),
+            () => ValidationHelper.ValidatePeriodRange(optInSignalPeriod, 1)
+        );
+        if (validation != Success)
         {
-            return indexCheck;
-        }
-
-        RetCode arrayCheck = ValidationHelper.ValidateArrays(inReal, outMACD, outMACDSignal, outMACDHist);
-        if (arrayCheck != Success)
-        {
-            return arrayCheck;
-        }
-
-        RetCode periodCheck = ValidationHelper.ValidatePeriodRange(optInSignalPeriod, 1);
-        if (periodCheck != Success)
-        {
-            return periodCheck;
+            return validation;
         }
 
         RetCode taIntMACD = TA_INT_MACD(

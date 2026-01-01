@@ -48,28 +48,15 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
-        if (indexCheck != Success)
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inReal, outReal),
+            () => ValidationHelper.ValidatePeriodRange(optInFastPeriod),
+            () => ValidationHelper.ValidatePeriodRange(optInSlowPeriod)
+        );
+        if (validation != Success)
         {
-            return indexCheck;
-        }
-
-        RetCode arrayCheck = ValidationHelper.ValidateArrays(inReal, outReal);
-        if (arrayCheck != Success)
-        {
-            return arrayCheck;
-        }
-
-        RetCode fastPeriodCheck = ValidationHelper.ValidatePeriodRange(optInFastPeriod);
-        if (fastPeriodCheck != Success)
-        {
-            return fastPeriodCheck;
-        }
-
-        RetCode slowPeriodCheck = ValidationHelper.ValidatePeriodRange(optInSlowPeriod);
-        if (slowPeriodCheck != Success)
-        {
-            return slowPeriodCheck;
+            return validation;
         }
 
         double[] tempBuffer = new double[endIdx - startIdx + 1];

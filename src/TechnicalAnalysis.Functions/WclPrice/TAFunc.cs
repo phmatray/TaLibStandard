@@ -53,16 +53,13 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
-        if (indexCheck != Success)
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outReal)
+        );
+        if (validation != Success)
         {
-            return indexCheck;
-        }
-
-        RetCode arrayCheck = ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outReal);
-        if (arrayCheck != Success)
-        {
-            return arrayCheck;
+            return validation;
         }
 
         int outIdx = 0;

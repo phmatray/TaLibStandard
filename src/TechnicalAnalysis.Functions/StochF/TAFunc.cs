@@ -66,28 +66,15 @@ public static partial class TAFunc
         ref double[] outFastD)
     {
         double[] tempBuffer;
-        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
-        if (indexCheck != Success)
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outFastK, outFastD),
+            () => ValidationHelper.ValidatePeriodRange(optInFastKPeriod, 1),
+            () => ValidationHelper.ValidatePeriodRange(optInFastDPeriod, 1)
+        );
+        if (validation != Success)
         {
-            return indexCheck;
-        }
-
-        RetCode arrayCheck = ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outFastK, outFastD);
-        if (arrayCheck != Success)
-        {
-            return arrayCheck;
-        }
-
-        RetCode kPeriodCheck = ValidationHelper.ValidatePeriodRange(optInFastKPeriod, 1);
-        if (kPeriodCheck != Success)
-        {
-            return kPeriodCheck;
-        }
-
-        RetCode dPeriodCheck = ValidationHelper.ValidatePeriodRange(optInFastDPeriod, 1);
-        if (dPeriodCheck != Success)
-        {
-            return dPeriodCheck;
+            return validation;
         }
 
         int lookbackK = optInFastKPeriod - 1;

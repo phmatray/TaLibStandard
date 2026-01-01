@@ -40,21 +40,14 @@ public static partial class TAFunc
         ref int[] outMaxIdx)
     {
         int i;
-        RetCode indexCheck = ValidationHelper.ValidateIndexRange(startIdx, endIdx);
-        if (indexCheck != Success)
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => inReal == null! || outMinIdx == null! || outMaxIdx == null! ? BadParam : Success,
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod)
+        );
+        if (validation != Success)
         {
-            return indexCheck;
-        }
-
-        if (inReal == null! || outMinIdx == null! || outMaxIdx == null!)
-        {
-            return BadParam;
-        }
-
-        RetCode periodCheck = ValidationHelper.ValidatePeriodRange(optInTimePeriod);
-        if (periodCheck != Success)
-        {
-            return periodCheck;
+            return validation;
         }
 
         int nbInitialElementNeeded = optInTimePeriod - 1;
