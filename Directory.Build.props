@@ -12,7 +12,7 @@
     <Authors>Philippe Matray</Authors>
     <!-- MinVer Configuration for all projects -->
     <MinVerTagPrefix>v</MinVerTagPrefix>
-    <MinVerSkip Condition="'$(Configuration)' == 'Debug'">true</MinVerSkip>
+    <MinVerSkip Condition="'$(Configuration)' == 'Debug' or '$(Version)' != ''">true</MinVerSkip>
   </PropertyGroup>
 
   <!-- Code Analysis Settings -->
