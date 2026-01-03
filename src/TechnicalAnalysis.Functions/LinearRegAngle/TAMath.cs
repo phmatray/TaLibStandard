@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -23,10 +25,10 @@ public static partial class TAMath
     /// The steeper the angle, the stronger the trend. This indicator can be used to quantify
     /// trend strength and identify potential trend changes when the angle crosses through zero.
     /// </remarks>
-    public static LinearRegAngleResult LinearRegAngle(int startIdx, int endIdx, double[] real, int timePeriod)
+    public static LinearRegAngleResult LinearRegAngle(int startIdx, int endIdx, double[] real, int timePeriod = 14)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.LinearRegAngle(
@@ -37,20 +39,9 @@ public static partial class TAMath
             ref outBegIdx,
             ref outNBElement,
             ref outReal);
-            
+
         return new LinearRegAngleResult(retCode, outBegIdx, outNBElement, outReal);
     }
-
-    /// <summary>
-    /// Calculates the Linear Regression Angle (LINEARREG_ANGLE) indicator using the default time period.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="real">An array of real values (typically closing prices).</param>
-    /// <returns>A LinearRegAngleResult object containing the calculated angle values in degrees.</returns>
-    /// <remarks>Uses the default time period of 14.</remarks>
-    public static LinearRegAngleResult LinearRegAngle(int startIdx, int endIdx, double[] real)
-        => LinearRegAngle(startIdx, endIdx, real, 14);
 
     /// <summary>
     /// Calculates the Linear Regression Angle (LINEARREG_ANGLE) indicator using float arrays.
@@ -58,25 +49,12 @@ public static partial class TAMath
     /// <param name="startIdx">The starting index for the calculation.</param>
     /// <param name="endIdx">The ending index for the calculation.</param>
     /// <param name="real">An array of real values (typically closing prices).</param>
-    /// <param name="timePeriod">The number of periods for the linear regression.</param>
+    /// <param name="timePeriod">The number of periods for the linear regression (default: 14).</param>
     /// <returns>A LinearRegAngleResult object containing the calculated angle values in degrees.</returns>
     /// <remarks>
     /// This overload accepts float arrays and converts them to double arrays before processing.
     /// This may result in a minor performance overhead due to the conversion process.
     /// </remarks>
-    public static LinearRegAngleResult LinearRegAngle(int startIdx, int endIdx, float[] real, int timePeriod)
-        => LinearRegAngle(startIdx, endIdx, real.ToDouble(), timePeriod);
-        
-    /// <summary>
-    /// Calculates the Linear Regression Angle (LINEARREG_ANGLE) indicator using float arrays and the default time period.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="real">An array of real values (typically closing prices).</param>
-    /// <returns>A LinearRegAngleResult object containing the calculated angle values in degrees.</returns>
-    /// <remarks>
-    /// Uses the default time period of 14. This overload accepts float arrays and converts them to double arrays.
-    /// </remarks>
-    public static LinearRegAngleResult LinearRegAngle(int startIdx, int endIdx, float[] real)
-        => LinearRegAngle(startIdx, endIdx, real, 14);
+    public static LinearRegAngleResult LinearRegAngle(int startIdx, int endIdx, float[] real, int timePeriod = 14)
+        => TAMathHelper.Execute(startIdx, endIdx, real, (s, e, r) => LinearRegAngle(s, e, r, timePeriod));
 }

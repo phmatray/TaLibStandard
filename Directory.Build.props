@@ -3,8 +3,8 @@
   
   <!-- Common Project Settings -->
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <LangVersion>13</LangVersion>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>14</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <NullableReferenceTypes>true</NullableReferenceTypes>
@@ -12,13 +12,14 @@
     <Authors>Philippe Matray</Authors>
     <!-- MinVer Configuration for all projects -->
     <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerSkip Condition="'$(Configuration)' == 'Debug'">true</MinVerSkip>
   </PropertyGroup>
 
   <!-- Code Analysis Settings -->
   <PropertyGroup>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    <AnalysisLevel>9.0-recommended</AnalysisLevel>
+    <AnalysisLevel>10.0-recommended</AnalysisLevel>
     <AnalysisModeDesign>All</AnalysisModeDesign>
     <AnalysisModeDocumentation>All</AnalysisModeDocumentation>
     <AnalysisModeGlobalization>All</AnalysisModeGlobalization>
@@ -37,7 +38,7 @@
   <PropertyGroup Condition="'$(IsTestProject)' != 'true' and '$(MSBuildProjectDirectory.Contains(`src`))' == 'true'">
     <Description>
       TaLibStandard is a modern interpretation of the widely used TA-Lib,
-      reimagined in C# 13. It is designed to be reliable, efficient, and user-friendly for developers
+      reimagined in C# 14. It is designed to be reliable, efficient, and user-friendly for developers
       performing financial market analysis.
     </Description>
     <PackageProjectUrl>https://github.com/phmatray/TaLibStandard</PackageProjectUrl>
@@ -56,10 +57,6 @@
   <PropertyGroup Condition="'$(IsTestProject)' == 'true' or '$(MSBuildProjectDirectory.Contains(`tests`))' == 'true'">
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <OutputType>Exe</OutputType>
-    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
-    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
-    <TestingPlatformCaptureOutput>true</TestingPlatformCaptureOutput>
   </PropertyGroup>
   
   <!-- Demo Project Settings -->

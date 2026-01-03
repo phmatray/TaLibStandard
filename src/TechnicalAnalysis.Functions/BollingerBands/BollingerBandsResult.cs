@@ -10,7 +10,7 @@ namespace TechnicalAnalysis.Functions;
 /// Represents the result of the Bollinger Bands indicator calculation.
 /// Bollinger Bands consist of a middle band (SMA) and two outer bands that represent standard deviations from the middle band, used to measure volatility and identify overbought/oversold conditions.
 /// </summary>
-public record BollingerBandsResult : IndicatorResult
+public record BollingerBandsResult : TripleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="BollingerBandsResult"/> class.
@@ -28,11 +28,8 @@ public record BollingerBandsResult : IndicatorResult
         double[] realUpperBand,
         double[] realMiddleBand,
         double[] realLowerBand)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, realUpperBand, realMiddleBand, realLowerBand)
     {
-        RealUpperBand = realUpperBand;
-        RealMiddleBand = realMiddleBand;
-        RealLowerBand = realLowerBand;
     }
 
     /// <summary>
@@ -40,19 +37,19 @@ public record BollingerBandsResult : IndicatorResult
     /// The lower band is typically calculated as the middle band minus (n × standard deviation).
     /// Prices near or below this band may indicate oversold conditions.
     /// </summary>
-    public double[] RealLowerBand { get; }
+    public double[] RealLowerBand => Real2;
 
     /// <summary>
     /// Gets the array of middle band values.
     /// The middle band is a simple moving average of the specified period.
     /// This band represents the intermediate trend of the price.
     /// </summary>
-    public double[] RealMiddleBand { get; }
+    public double[] RealMiddleBand => Real1;
 
     /// <summary>
     /// Gets the array of upper band values.
     /// The upper band is typically calculated as the middle band plus (n × standard deviation).
     /// Prices near or above this band may indicate overbought conditions.
     /// </summary>
-    public double[] RealUpperBand { get; }
+    public double[] RealUpperBand => Real0;
 }

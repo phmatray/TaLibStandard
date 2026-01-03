@@ -63,49 +63,21 @@ public static partial class TAFunc
         int outNbElement2 = 0;
         int outBegIdx2 = 0;
         int outBegIdx1 = 0;
-        if (startIdx < 0)
+        double[] inRealLocal = inReal;
+        double[] outMACDLocal = outMACD;
+        double[] outMACDHistLocal = outMACDHist;
+        double[] outMACDSignalLocal = outMACDSignal;
+        int optInSignalPeriodLocal = optInSignalPeriod;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inRealLocal, outMACDLocal, outMACDSignalLocal, outMACDHistLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInFastPeriod),
+            () => ValidationHelper.ValidatePeriodRange(optInSlowPeriod),
+            () => ValidationHelper.ValidatePeriodRange(optInSignalPeriodLocal, 1)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInFastPeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (optInSlowPeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (optInSignalPeriod is < 1 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outMACD == null!)
-        {
-            return BadParam;
-        }
-
-        if (outMACDSignal == null!)
-        {
-            return BadParam;
-        }
-
-        if (outMACDHist == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         int tempInteger;

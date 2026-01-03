@@ -11,7 +11,7 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator measures the phase angle of the dominant market cycle using Hilbert Transform techniques,
 /// helping to identify the current position within a price cycle.
 /// </summary>
-public record HtDcPhaseResult : IndicatorResult
+public record HtDcPhaseResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="HtDcPhaseResult"/> class.
@@ -21,9 +21,8 @@ public record HtDcPhaseResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of phase angle values in degrees, indicating the current position within the dominant cycle.</param>
     public HtDcPhaseResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
     /// <summary>
@@ -31,5 +30,4 @@ public record HtDcPhaseResult : IndicatorResult
     /// Each value represents the phase angle in degrees (-180 to +180) of the dominant cycle.
     /// Positive values indicate the cycle is in an upward phase, while negative values indicate a downward phase.
     /// </summary>
-    public double[] Real { get; }
 }

@@ -11,7 +11,7 @@ namespace TechnicalAnalysis.Functions;
 /// This is an enhanced version of the standard SAR indicator with additional customization options
 /// for acceleration factors and other parameters, providing more flexibility in trend following.
 /// </summary>
-public record SarExtResult : IndicatorResult
+public record SarExtResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="SarExtResult"/> class.
@@ -21,15 +21,7 @@ public record SarExtResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of extended SAR values with customized parameters for stop-loss levels.</param>
     public SarExtResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Parabolic SAR Extended values.
-    /// Similar to standard SAR but with additional control over acceleration behavior,
-    /// allowing for more aggressive or conservative trailing stop strategies.
-    /// </summary>
-    public double[] Real { get; }
 }

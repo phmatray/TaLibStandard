@@ -68,8 +68,8 @@ public static partial class TAFunc
         ref int[] outInteger)
     {
         double smoothedValue;
-        const double A = 0.0962;
-        const double B = 0.5769;
+        const double A = HilbertTransformConstants.A;
+        const double B = HilbertTransformConstants.B;
         double[] detrender_Odd = new double[3];
         double[] detrender_Even = new double[3];
         double[] Q1_Odd = new double[3];
@@ -80,22 +80,15 @@ public static partial class TAFunc
         double[] jQ_Even = new double[3];
         int smoothPrice_Idx = 0;
         int maxIdx_smoothPrice = 49;
-        if (startIdx < 0)
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
+            return validation;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null!)
-        {
-            return BadParam;
-        }
-
-        if (outInteger == null)
+        if (inReal == null! || outInteger == null!)
         {
             return BadParam;
         }

@@ -12,22 +12,22 @@ public static int StochFLookback(int optInFastKPeriod, int optInFastDPeriod, Tec
 
 <a name='TechnicalAnalysis.Functions.TAFunc.StochFLookback(int,int,TechnicalAnalysis.Common.MAType).optInFastKPeriod'></a>
 
-`optInFastKPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInFastKPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for Fast %K calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.StochFLookback(int,int,TechnicalAnalysis.Common.MAType).optInFastDPeriod'></a>
 
-`optInFastDPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInFastDPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for Fast %D calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.StochFLookback(int,int,TechnicalAnalysis.Common.MAType).optInFastDMAType'></a>
 
-`optInFastDMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInFastDMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 Moving average type for Fast %D calculation\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The minimum number of data points required, or \-1 for invalid parameters\.

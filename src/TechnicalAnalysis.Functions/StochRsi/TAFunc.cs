@@ -67,24 +67,22 @@ public static partial class TAFunc
         int outNbElement1 = 0;
         int outBegIdx2 = 0;
         int outBegIdx1 = 0;
-        if (startIdx < 0)
+        double[] inRealLocal = inReal;
+        double[] outFastDLocal = outFastD;
+        double[] outFastKLocal = outFastK;
+        int optInFastDPeriodLocal = optInFastDPeriod;
+        int optInFastKPeriodLocal = optInFastKPeriod;
+        int optInTimePeriodLocal = optInTimePeriod;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inRealLocal, outFastKLocal, outFastDLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInFastKPeriodLocal, 1),
+            () => ValidationHelper.ValidatePeriodRange(optInFastDPeriodLocal, 1)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null! ||
-            optInTimePeriod is < 2 or > 100000 ||
-            optInFastKPeriod is < 1 or > 100000 ||
-            optInFastDPeriod is < 1 or > 100000 ||
-            outFastK == null! ||
-            outFastD == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         outNBElement = 0;

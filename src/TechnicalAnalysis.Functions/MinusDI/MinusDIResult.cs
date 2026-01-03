@@ -10,7 +10,7 @@ namespace TechnicalAnalysis.Functions;
 /// Represents the result of the Minus Directional Indicator (-DI) calculation.
 /// -DI is part of the Directional Movement System and measures the strength of downward price movements.
 /// </summary>
-public record MinusDIResult : IndicatorResult
+public record MinusDIResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MinusDIResult"/> class.
@@ -20,15 +20,7 @@ public record MinusDIResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the calculated -DI values.</param>
     public MinusDIResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Minus Directional Indicator values.
-    /// Values range from 0 to 100, representing the strength of downward price movement.
-    /// When -DI is above +DI, it suggests a downtrend; the wider the gap, the stronger the trend.
-    /// </summary>
-    public double[] Real { get; }
 }

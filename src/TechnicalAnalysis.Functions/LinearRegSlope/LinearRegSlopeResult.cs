@@ -11,7 +11,7 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator calculates the slope of the linear regression line, indicating the rate of change
 /// in price over the specified period.
 /// </summary>
-public record LinearRegSlopeResult : IndicatorResult
+public record LinearRegSlopeResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="LinearRegSlopeResult"/> class.
@@ -21,9 +21,8 @@ public record LinearRegSlopeResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of slope values representing the rate of change of the regression line.</param>
     public LinearRegSlopeResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
     /// <summary>
@@ -31,5 +30,4 @@ public record LinearRegSlopeResult : IndicatorResult
     /// Each value represents the slope (rate of change per bar) of the regression line.
     /// Positive values indicate rising prices, negative values indicate falling prices.
     /// </summary>
-    public double[] Real { get; }
 }

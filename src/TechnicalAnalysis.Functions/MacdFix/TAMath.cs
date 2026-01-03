@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -21,10 +23,10 @@ public static partial class TAMath
     /// only allowing customization of the signal line period. This maintains the traditional
     /// MACD configuration while providing some flexibility for the signal line smoothing.
     /// </remarks>
-    public static MacdFixResult MacdFix(int startIdx, int endIdx, double[] real, int signalPeriod)
+    public static MacdFixResult MacdFix(int startIdx, int endIdx, double[] real, int signalPeriod = 9)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outMACD = new double[endIdx - startIdx + 1];
         double[] outMACDSignal = new double[endIdx - startIdx + 1];
         double[] outMACDHist = new double[endIdx - startIdx + 1];
@@ -53,34 +55,6 @@ public static partial class TAMath
     /// <remarks>
     /// Uses fixed values: fastPeriod=12, slowPeriod=26, signalPeriod=9.
     /// </remarks>
-    public static MacdFixResult MacdFix(int startIdx, int endIdx, double[] real)
-        => MacdFix(startIdx, endIdx, real, 9);
-
-    /// <summary>
-    /// Calculates the Fixed MACD indicator using the standard 12/26 period configuration.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">Array of input values (usually closing prices).</param>
-    /// <param name="signalPeriod">The number of periods for the signal line EMA.</param>
-    /// <returns>A MacdFixResult containing the MACD line, signal line, and histogram values.</returns>
-    /// <remarks>
-    /// This overload accepts float arrays and converts them to double arrays for calculation.
-    /// </remarks>
-    public static MacdFixResult MacdFix(int startIdx, int endIdx, float[] real, int signalPeriod)
-        => MacdFix(startIdx, endIdx, real.ToDouble(), signalPeriod);
-        
-    /// <summary>
-    /// Calculates the Fixed MACD indicator using default signal period.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">Array of input values (usually closing prices).</param>
-    /// <returns>A MacdFixResult containing the MACD line, signal line, and histogram values.</returns>
-    /// <remarks>
-    /// This overload accepts float arrays and converts them to double arrays for calculation.
-    /// Uses fixed values: fastPeriod=12, slowPeriod=26, signalPeriod=9.
-    /// </remarks>
-    public static MacdFixResult MacdFix(int startIdx, int endIdx, float[] real)
-        => MacdFix(startIdx, endIdx, real, 9);
+    public static MacdFixResult MacdFix(int startIdx, int endIdx, float[] real, int signalPeriod = 9)
+        => TAMathHelper.Execute(startIdx, endIdx, real, (s, e, r) => MacdFix(s, e, r, signalPeriod));
 }

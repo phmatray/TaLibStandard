@@ -6,9 +6,7 @@
 | Overloads | |
 | :--- | :--- |
 | [Mfi\(int, int, double\[\], double\[\], double\[\], double\[\], int\)](TAMath.Mfi.md#TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Mfi\(int, int, double\[\], double\[\], double\[\], double\[\], int\)') | Calculates the Money Flow Index \(MFI\) indicator\. |
-| [Mfi\(int, int, double\[\], double\[\], double\[\], double\[\]\)](TAMath.Mfi.md#TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[]) 'TechnicalAnalysis\.Functions\.TAMath\.Mfi\(int, int, double\[\], double\[\], double\[\], double\[\]\)') | Calculates the Money Flow Index \(MFI\) indicator with default period\. |
 | [Mfi\(int, int, float\[\], float\[\], float\[\], float\[\], int\)](TAMath.Mfi.md#TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[],int) 'TechnicalAnalysis\.Functions\.TAMath\.Mfi\(int, int, float\[\], float\[\], float\[\], float\[\], int\)') | Calculates the Money Flow Index \(MFI\) indicator using float arrays\. |
-| [Mfi\(int, int, float\[\], float\[\], float\[\], float\[\]\)](TAMath.Mfi.md#TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[]) 'TechnicalAnalysis\.Functions\.TAMath\.Mfi\(int, int, float\[\], float\[\], float\[\], float\[\]\)') | Calculates the Money Flow Index \(MFI\) indicator using float arrays with default period\. |
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[],int)'></a>
 
@@ -17,49 +15,49 @@
 Calculates the Money Flow Index \(MFI\) indicator\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.MfiResult Mfi(int startIdx, int endIdx, double[] high, double[] low, double[] close, double[] volume, int timePeriod);
+public static TechnicalAnalysis.Functions.MfiResult Mfi(int startIdx, int endIdx, double[] high, double[] low, double[] close, double[] volume, int timePeriod=14);
 ```
 #### Parameters
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[],int).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[],int).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[],int).high'></a>
 
-`high` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`high` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of high prices\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[],int).low'></a>
 
-`low` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`low` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of low prices\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[],int).close'></a>
 
-`close` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`close` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of closing prices\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[],int).volume'></a>
 
-`volume` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`volume` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of trading volumes\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[],int).timePeriod'></a>
 
-`timePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`timePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of periods to use in the calculation \(default: 14\)\.
 
@@ -78,61 +76,6 @@ The MFI is interpreted similarly to the RSI: readings below 20 indicate oversold
 readings above 80 indicate overbought conditions\. Divergences between the indicator and price action 
 are also significant and can signal potential reversals\.
 
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[])'></a>
-
-## TAMath\.Mfi\(int, int, double\[\], double\[\], double\[\], double\[\]\) Method
-
-Calculates the Money Flow Index \(MFI\) indicator with default period\.
-
-```csharp
-public static TechnicalAnalysis.Functions.MfiResult Mfi(int startIdx, int endIdx, double[] high, double[] low, double[] close, double[] volume);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
-
-The starting index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
-
-The ending index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[]).high'></a>
-
-`high` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
-
-Array of high prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[]).low'></a>
-
-`low` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
-
-Array of low prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[]).close'></a>
-
-`close` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
-
-Array of closing prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,double[],double[],double[],double[]).volume'></a>
-
-`volume` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
-
-Array of trading volumes\.
-
-#### Returns
-[MfiResult](MfiResult.md 'TechnicalAnalysis\.Functions\.MfiResult')  
-An MfiResult object containing the calculated MFI values\.
-
-### Remarks
-This overload uses a default time period of 14\.
-See the main overload for a detailed description of the MFI indicator\.
-
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[],int)'></a>
 
 ## TAMath\.Mfi\(int, int, float\[\], float\[\], float\[\], float\[\], int\) Method
@@ -140,51 +83,51 @@ See the main overload for a detailed description of the MFI indicator\.
 Calculates the Money Flow Index \(MFI\) indicator using float arrays\.
 
 ```csharp
-public static TechnicalAnalysis.Functions.MfiResult Mfi(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume, int timePeriod);
+public static TechnicalAnalysis.Functions.MfiResult Mfi(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume, int timePeriod=14);
 ```
 #### Parameters
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[],int).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[],int).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[],int).high'></a>
 
-`high` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`high` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of high prices\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[],int).low'></a>
 
-`low` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`low` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of low prices\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[],int).close'></a>
 
-`close` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`close` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of closing prices\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[],int).volume'></a>
 
-`volume` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`volume` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of trading volumes\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[],int).timePeriod'></a>
 
-`timePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`timePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
-The number of periods to use in the calculation\.
+The number of periods to use in the calculation \(default: 14\)\.
 
 #### Returns
 [MfiResult](MfiResult.md 'TechnicalAnalysis\.Functions\.MfiResult')  
@@ -193,58 +136,3 @@ An MfiResult object containing the calculated MFI values\.
 ### Remarks
 This is a float overload that converts input arrays to double arrays before processing\.
 See the double array overload for a detailed description of the MFI indicator\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[])'></a>
-
-## TAMath\.Mfi\(int, int, float\[\], float\[\], float\[\], float\[\]\) Method
-
-Calculates the Money Flow Index \(MFI\) indicator using float arrays with default period\.
-
-```csharp
-public static TechnicalAnalysis.Functions.MfiResult Mfi(int startIdx, int endIdx, float[] high, float[] low, float[] close, float[] volume);
-```
-#### Parameters
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[]).startIdx'></a>
-
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
-
-The starting index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[]).endIdx'></a>
-
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
-
-The ending index for the calculation\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[]).high'></a>
-
-`high` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
-
-Array of high prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[]).low'></a>
-
-`low` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
-
-Array of low prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[]).close'></a>
-
-`close` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
-
-Array of closing prices\.
-
-<a name='TechnicalAnalysis.Functions.TAMath.Mfi(int,int,float[],float[],float[],float[]).volume'></a>
-
-`volume` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
-
-Array of trading volumes\.
-
-#### Returns
-[MfiResult](MfiResult.md 'TechnicalAnalysis\.Functions\.MfiResult')  
-An MfiResult object containing the calculated MFI values\.
-
-### Remarks
-This is a float overload that converts input arrays to double arrays before processing\.
-Uses a default time period of 14\.

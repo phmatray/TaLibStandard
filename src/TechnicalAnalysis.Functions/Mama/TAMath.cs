@@ -26,8 +26,8 @@ public static partial class TAMath
     /// </remarks>
     public static MamaResult Mama(int startIdx, int endIdx, double[] real, double fastLimit, double slowLimit)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outMAMA = new double[endIdx - startIdx + 1];
         double[] outFAMA = new double[endIdx - startIdx + 1];
 

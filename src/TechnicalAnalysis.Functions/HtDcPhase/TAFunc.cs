@@ -55,8 +55,8 @@ public static partial class TAFunc
         ref double[] outReal)
     {
         double smoothedValue;
-        const double A = 0.0962;
-        const double B = 0.5769;
+        const double A = HilbertTransformConstants.A;
+        const double B = HilbertTransformConstants.B;
         double[] detrenderOdd = new double[3];
         double[] detrenderEven = new double[3];
         double[] q1Odd = new double[3];
@@ -67,24 +67,11 @@ public static partial class TAFunc
         double[] jQEven = new double[3];
         int smoothPriceIdx = 0;
         int maxIdxSmoothPrice = 49;
-        if (startIdx < 0)
+        RetCode validationResult = ValidationHelper.ValidateSingleInputIndicator(
+            startIdx, endIdx, inReal, outReal);
+        if (validationResult != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null!)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
+            return validationResult;
         }
 
         double[] smoothPrice = new double[maxIdxSmoothPrice + 1];
@@ -419,8 +406,8 @@ public static partial class TAFunc
     /// <remarks>
     /// The lookback period for HtDcPhase consists of:
     /// - A fixed component of 63 bars for the Hilbert Transform calculations
-    /// - An additional unstable period that can be configured via TACore.SetUnstablePeriod()
-    /// 
+    /// - An additional unstable period that can be configured via TACore.Globals.UnstablePeriod[FuncUnstId.HtDcPhase]
+    ///
     /// The default lookback is 63 bars, but this can be increased if you require more stable results
     /// by setting a larger unstable period for the HtDcPhase function.
     /// </remarks>

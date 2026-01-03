@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// The result is an array of angles in radians, where each element represents the arcsine
 /// of the corresponding input value. Input values must be in the range [-1, 1].
 /// </remarks>
-public record AsinResult : IndicatorResult
+public record AsinResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AsinResult"/> class.
@@ -24,17 +24,7 @@ public record AsinResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the arcsine values in radians.</param>
     public AsinResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of arcsine values resulting from the ASIN operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the arcsine (in radians)
-    /// of the corresponding element from the input array.
-    /// </value>
-    public double[] Real { get; }
 }

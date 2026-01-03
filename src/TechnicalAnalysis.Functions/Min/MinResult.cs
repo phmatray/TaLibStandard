@@ -10,7 +10,7 @@ namespace TechnicalAnalysis.Functions;
 /// Represents the result of calculating the lowest values over a specified period.
 /// The MIN function identifies the minimum value within a rolling window of data points.
 /// </summary>
-public record MinResult : IndicatorResult
+public record MinResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MinResult"/> class.
@@ -21,14 +21,7 @@ public record MinResult : IndicatorResult
     /// <param name="real">An array containing the minimum values. Each element represents
     /// the lowest value found within the specified period ending at that index.</param>
     public MinResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of minimum values.
-    /// Each value represents the lowest data point within the specified rolling period.
-    /// </summary>
-    public double[] Real { get; }
 }

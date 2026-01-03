@@ -47,7 +47,7 @@
                 </MudGrid>
                 
                 <MudExpansionPanels Elevation="0">
-                    @foreach (var group in PatternGroups)
+                    @foreach (KeyValuePair<string, List<PatternInfo>> group in PatternGroups)
                     {
                         <MudExpansionPanel MaxHeight="1000">
                             <TitleContent>

@@ -12,27 +12,27 @@ public static int MovingAverageVariablePeriodLookback(int optInMinPeriod, int op
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriodLookback(int,int,TechnicalAnalysis.Common.MAType).optInMinPeriod'></a>
 
-`optInMinPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInMinPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The minimum allowed period value\. Must be between 2 and 100000\.
 This parameter is validated but does not affect the lookback calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriodLookback(int,int,TechnicalAnalysis.Common.MAType).optInMaxPeriod'></a>
 
-`optInMaxPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInMaxPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The maximum allowed period value\. Must be between 2 and 100000\.
 This value determines the actual lookback period returned\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverageVariablePeriodLookback(int,int,TechnicalAnalysis.Common.MAType).optInMAType'></a>
 
-`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 The type of moving average for which to calculate the lookback\.
 Different MA types have different lookback requirements for the same period\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of data points required before the first variable period moving average
 value can be calculated\. This is based on the maximum period's requirements\.
 Returns \-1 if either period parameter is outside the valid range\.

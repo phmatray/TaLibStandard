@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -22,26 +24,16 @@ public static partial class TAMath
     /// Values above 1.0 indicate upward momentum, while values below 1.0 indicate downward momentum.
     /// This differs from ROC which expresses the change as a percentage.
     /// </remarks>
-    public static RocRResult RocR(int startIdx, int endIdx, double[] real, int timePeriod)
+    public static RocRResult RocR(int startIdx, int endIdx, double[] real, int timePeriod = 10)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.RocR(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
-            
+
         return new RocRResult(retCode, outBegIdx, outNBElement, outReal);
     }
-
-    /// <summary>
-    /// Calculates the Rate of Change Ratio (ROCR) using a default time period of 10.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="real">Array of input values (typically closing prices).</param>
-    /// <returns>A RocRResult object containing the calculated values and metadata.</returns>
-    public static RocRResult RocR(int startIdx, int endIdx, double[] real)
-        => RocR(startIdx, endIdx, real, 10);
 
     /// <summary>
     /// Calculates the Rate of Change Ratio (ROCR) for float arrays.
@@ -56,19 +48,6 @@ public static partial class TAMath
     /// This ensures compatibility with data sources that provide float precision while maintaining accuracy
     /// in the calculations.
     /// </remarks>
-    public static RocRResult RocR(int startIdx, int endIdx, float[] real, int timePeriod)
-        => RocR(startIdx, endIdx, real.ToDouble(), timePeriod);
-        
-    /// <summary>
-    /// Calculates the Rate of Change Ratio (ROCR) for float arrays using a default time period of 10.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="real">Array of input values (typically closing prices).</param>
-    /// <returns>A RocRResult object containing the calculated values and metadata.</returns>
-    /// <remarks>
-    /// This overload accepts float arrays and converts them to double arrays before performing the calculation.
-    /// </remarks>
-    public static RocRResult RocR(int startIdx, int endIdx, float[] real)
-        => RocR(startIdx, endIdx, real, 10);
+    public static RocRResult RocR(int startIdx, int endIdx, float[] real, int timePeriod = 10)
+        => TAMathHelper.Execute(startIdx, endIdx, real, (s, e, r) => RocR(s, e, r, timePeriod));
 }

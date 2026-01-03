@@ -8,12 +8,6 @@
 ## TechnicalAnalysis Namespace
 - **[TACore](TACore.md 'TechnicalAnalysis\.TACore')** `Class` Provides core functionalities for the Technical Analysis library\.
   - **[Globals](TACore.Globals.md 'TechnicalAnalysis\.TACore\.Globals')** `Property` Gets the global settings for the Technical Analysis library\.
-  - **[GetCompatibility\(\)](TACore.GetCompatibility().md 'TechnicalAnalysis\.TACore\.GetCompatibility\(\)')** `Method` Gets the compatibility mode of the Technical Analysis library\.
-  - **[GetUnstablePeriod\(FuncUnstId\)](TACore.GetUnstablePeriod(FuncUnstId).md 'TechnicalAnalysis\.TACore\.GetUnstablePeriod\(TechnicalAnalysis\.Common\.FuncUnstId\)')** `Method` Gets the unstable period for a given function\.
-  - **[RestoreCandleDefaultSettings\(CandleSettingType\)](TACore.RestoreCandleDefaultSettings(CandleSettingType).md 'TechnicalAnalysis\.TACore\.RestoreCandleDefaultSettings\(TechnicalAnalysis\.Common\.CandleSettingType\)')** `Method` Restores the default settings for a given candle setting type\.
-  - **[SetCandleSettings\(CandleSetting\)](TACore.SetCandleSettings(CandleSetting).md 'TechnicalAnalysis\.TACore\.SetCandleSettings\(TechnicalAnalysis\.Common\.CandleSetting\)')** `Method` Sets the candle settings for a given candle setting type\.
-  - **[SetCompatibility\(Compatibility\)](TACore.SetCompatibility(Compatibility).md 'TechnicalAnalysis\.TACore\.SetCompatibility\(TechnicalAnalysis\.Common\.Compatibility\)')** `Method` Sets the compatibility mode of the Technical Analysis library\.
-  - **[SetUnstablePeriod\(FuncUnstId, long\)](TACore.SetUnstablePeriod(FuncUnstId,long).md 'TechnicalAnalysis\.TACore\.SetUnstablePeriod\(TechnicalAnalysis\.Common\.FuncUnstId, long\)')** `Method` Sets the unstable period for a given function\.
 
 <a name='TechnicalAnalysis.Common'></a>
 
@@ -72,6 +66,10 @@
   - **[RangeType](CandleSetting.RangeType.md 'TechnicalAnalysis\.Common\.CandleSetting\.RangeType')** `Property` Gets the type of the range to consider for the setting\.
   - **[SettingType](CandleSetting.SettingType.md 'TechnicalAnalysis\.Common\.CandleSetting\.SettingType')** `Property` Gets the type of the candlestick setting\.
   - **[GetDefaultByType\(CandleSettingType\)](CandleSetting.GetDefaultByType(CandleSettingType).md 'TechnicalAnalysis\.Common\.CandleSetting\.GetDefaultByType\(TechnicalAnalysis\.Common\.CandleSettingType\)')** `Method` Gets the default setting for a given type\.
+- **[DualOutputResult](DualOutputResult.md 'TechnicalAnalysis\.Common\.DualOutputResult')** `Class` Base class for indicator results that produce two output arrays\.
+  - **[DualOutputResult\(RetCode, int, int, double\[\], double\[\]\)](DualOutputResult.DualOutputResult(RetCode,int,int,double[],double[]).md 'TechnicalAnalysis\.Common\.DualOutputResult\.DualOutputResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\], double\[\]\)')** `Constructor` Initializes a new instance of the [DualOutputResult](DualOutputResult.md 'TechnicalAnalysis\.Common\.DualOutputResult') class\.
+  - **[Real0](DualOutputResult.Real0.md 'TechnicalAnalysis\.Common\.DualOutputResult\.Real0')** `Property` Gets the first array of calculated indicator values\.
+  - **[Real1](DualOutputResult.Real1.md 'TechnicalAnalysis\.Common\.DualOutputResult\.Real1')** `Property` Gets the second array of calculated indicator values\.
 - **[GlobalsType](GlobalsType.md 'TechnicalAnalysis\.Common\.GlobalsType')** `Class` Represents the global settings for the Technical Analysis library\.
   - **[GlobalsType\(\)](GlobalsType.GlobalsType().md 'TechnicalAnalysis\.Common\.GlobalsType\.GlobalsType\(\)')** `Constructor` Initializes a new instance of the [GlobalsType](GlobalsType.md 'TechnicalAnalysis\.Common\.GlobalsType') class with default settings\.
   - **[CandleSettings](GlobalsType.CandleSettings.md 'TechnicalAnalysis\.Common\.GlobalsType\.CandleSettings')** `Property` Gets the candle settings for all candle setting types\.
@@ -82,13 +80,32 @@
   - **[BegIdx](IndicatorResult.BegIdx.md 'TechnicalAnalysis\.Common\.IndicatorResult\.BegIdx')** `Property` Gets the beginning index of the calculated output series\.
   - **[NBElement](IndicatorResult.NBElement.md 'TechnicalAnalysis\.Common\.IndicatorResult\.NBElement')** `Property` Gets the number of elements in the calculated output series\.
   - **[RetCode](IndicatorResult.RetCode.md 'TechnicalAnalysis\.Common\.IndicatorResult\.RetCode')** `Property` Gets the return code indicating the status of the indicator calculation\.
+- **[MathHelper](MathHelper.md 'TechnicalAnalysis\.Common\.MathHelper')** `Class` Provides helper methods for mathematical function indicators\.
+  - **[ApplyMathFunction\(int, int, double\[\], int, int, double\[\], Func&lt;double,double&gt;\)](MathHelper.ApplyMathFunction(int,int,double[],int,int,double[],Func_double,double_).md 'TechnicalAnalysis\.Common\.MathHelper\.ApplyMathFunction\(int, int, double\[\], int, int, double\[\], System\.Func\<double,double\>\)')** `Method` Applies a mathematical function element\-wise to an input array\.
 - **[MoneyFlow](MoneyFlow.md 'TechnicalAnalysis\.Common\.MoneyFlow')** `Class`
   - **[Negative](MoneyFlow.Negative.md 'TechnicalAnalysis\.Common\.MoneyFlow\.Negative')** `Property`
   - **[Positive](MoneyFlow.Positive.md 'TechnicalAnalysis\.Common\.MoneyFlow\.Positive')** `Property`
-- **[OutOfRangeEndIndexException](OutOfRangeEndIndexException.md 'TechnicalAnalysis\.Common\.OutOfRangeEndIndexException')** `Class` Represents an exception that is thrown when the end index is out of range\.
-  - **[OutOfRangeEndIndexException\(\)](OutOfRangeEndIndexException.OutOfRangeEndIndexException().md 'TechnicalAnalysis\.Common\.OutOfRangeEndIndexException\.OutOfRangeEndIndexException\(\)')** `Constructor` Initializes a new instance of the [OutOfRangeEndIndexException](OutOfRangeEndIndexException.md 'TechnicalAnalysis\.Common\.OutOfRangeEndIndexException') class\.
-- **[OutOfRangeStartIndexException](OutOfRangeStartIndexException.md 'TechnicalAnalysis\.Common\.OutOfRangeStartIndexException')** `Class` Represents an exception that is thrown when the start index is out of range\.
-  - **[OutOfRangeStartIndexException\(\)](OutOfRangeStartIndexException.OutOfRangeStartIndexException().md 'TechnicalAnalysis\.Common\.OutOfRangeStartIndexException\.OutOfRangeStartIndexException\(\)')** `Constructor` Initializes a new instance of the [OutOfRangeStartIndexException](OutOfRangeStartIndexException.md 'TechnicalAnalysis\.Common\.OutOfRangeStartIndexException') class\.
+- **[SingleOutputResult](SingleOutputResult.md 'TechnicalAnalysis\.Common\.SingleOutputResult')** `Class` Base class for indicator results that produce a single output array\.
+  - **[SingleOutputResult\(RetCode, int, int, double\[\]\)](SingleOutputResult.SingleOutputResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Common\.SingleOutputResult\.SingleOutputResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)')** `Constructor` Initializes a new instance of the [SingleOutputResult](SingleOutputResult.md 'TechnicalAnalysis\.Common\.SingleOutputResult') class\.
+  - **[Real](SingleOutputResult.Real.md 'TechnicalAnalysis\.Common\.SingleOutputResult\.Real')** `Property` Gets the array of calculated indicator values\.
+- **[TripleOutputResult](TripleOutputResult.md 'TechnicalAnalysis\.Common\.TripleOutputResult')** `Class` Base class for indicator results that produce three output arrays\.
+  - **[TripleOutputResult\(RetCode, int, int, double\[\], double\[\], double\[\]\)](TripleOutputResult.TripleOutputResult(RetCode,int,int,double[],double[],double[]).md 'TechnicalAnalysis\.Common\.TripleOutputResult\.TripleOutputResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\], double\[\], double\[\]\)')** `Constructor` Initializes a new instance of the [TripleOutputResult](TripleOutputResult.md 'TechnicalAnalysis\.Common\.TripleOutputResult') class\.
+  - **[Real0](TripleOutputResult.Real0.md 'TechnicalAnalysis\.Common\.TripleOutputResult\.Real0')** `Property` Gets the first array of calculated indicator values\.
+  - **[Real1](TripleOutputResult.Real1.md 'TechnicalAnalysis\.Common\.TripleOutputResult\.Real1')** `Property` Gets the second array of calculated indicator values\.
+  - **[Real2](TripleOutputResult.Real2.md 'TechnicalAnalysis\.Common\.TripleOutputResult\.Real2')** `Property` Gets the third array of calculated indicator values\.
+- **[ValidationHelper](ValidationHelper.md 'TechnicalAnalysis\.Common\.ValidationHelper')** `Class` Provides centralized validation methods for technical analysis indicators\.
+  - **[MaxPeriod](ValidationHelper.MaxPeriod.md 'TechnicalAnalysis\.Common\.ValidationHelper\.MaxPeriod')** `Field` The maximum allowed period for all indicators\.
+  - **[MinPeriod](ValidationHelper.MinPeriod.md 'TechnicalAnalysis\.Common\.ValidationHelper\.MinPeriod')** `Field` The minimum allowed period for most indicators\.
+  - **[PrepareCalculationRange\(int, int, int, int, int\)](ValidationHelper.PrepareCalculationRange(int,int,int,int,int).md 'TechnicalAnalysis\.Common\.ValidationHelper\.PrepareCalculationRange\(int, int, int, int, int\)')** `Method` Adjusts the start index based on lookback period and validates the calculation range\.
+  - **[ValidateAll\(Func&lt;RetCode&gt;\[\]\)](ValidationHelper.ValidateAll(Func_RetCode_[]).md 'TechnicalAnalysis\.Common\.ValidationHelper\.ValidateAll\(System\.Func\<TechnicalAnalysis\.Common\.RetCode\>\[\]\)')** `Method` Executes multiple validation functions sequentially, returning the first error encountered\.
+  - **[ValidateArrays\(double\[\]\[\]\)](ValidationHelper.ValidateArrays(double[][]).md 'TechnicalAnalysis\.Common\.ValidationHelper\.ValidateArrays\(double\[\]\[\]\)')** `Method` Validates that input and output arrays are not null\.
+  - **[ValidateIndexRange\(int, int\)](ValidationHelper.ValidateIndexRange(int,int).md 'TechnicalAnalysis\.Common\.ValidationHelper\.ValidateIndexRange\(int, int\)')** `Method` Validates the index range for indicator calculations\.
+  - **[ValidateLookback\(int, int, int, int, Nullable&lt;FuncUnstId&gt;\)](ValidationHelper.ValidateLookback(int,int,int,int,Nullable_FuncUnstId_).md 'TechnicalAnalysis\.Common\.ValidationHelper\.ValidateLookback\(int, int, int, int, System\.Nullable\<TechnicalAnalysis\.Common\.FuncUnstId\>\)')** `Method` Validates a lookback period and returns the adjusted lookback value with optional modifications\.
+  - **[ValidateLookbackPeriod\(int, int, int\)](ValidationHelper.ValidateLookbackPeriod(int,int,int).md 'TechnicalAnalysis\.Common\.ValidationHelper\.ValidateLookbackPeriod\(int, int, int\)')** `Method` Validates a lookback period parameter and returns the adjusted lookback value\.
+  - **[ValidateOhlcArrays\(double\[\], double\[\], double\[\], double\[\]\)](ValidationHelper.ValidateOhlcArrays(double[],double[],double[],double[]).md 'TechnicalAnalysis\.Common\.ValidationHelper\.ValidateOhlcArrays\(double\[\], double\[\], double\[\], double\[\]\)')** `Method` Validates OHLC \(Open, High, Low, Close\) input arrays for candle\-based indicators\.
+  - **[ValidateOhlcvArrays\(double\[\], double\[\], double\[\], double\[\], double\[\]\)](ValidationHelper.ValidateOhlcvArrays(double[],double[],double[],double[],double[]).md 'TechnicalAnalysis\.Common\.ValidationHelper\.ValidateOhlcvArrays\(double\[\], double\[\], double\[\], double\[\], double\[\]\)')** `Method` Validates OHLCV \(Open, High, Low, Close, Volume\) input arrays\.
+  - **[ValidatePeriodRange\(int, int, int\)](ValidationHelper.ValidatePeriodRange(int,int,int).md 'TechnicalAnalysis\.Common\.ValidationHelper\.ValidatePeriodRange\(int, int, int\)')** `Method` Validates a time period parameter is within acceptable range\.
+  - **[ValidateSingleInputIndicator\(int, int, double\[\], double\[\], Nullable&lt;int&gt;, int, int\)](ValidationHelper.ValidateSingleInputIndicator(int,int,double[],double[],Nullable_int_,int,int).md 'TechnicalAnalysis\.Common\.ValidationHelper\.ValidateSingleInputIndicator\(int, int, double\[\], double\[\], System\.Nullable\<int\>, int, int\)')** `Method` Performs comprehensive validation for single\-input indicators\.
 - **[CandleColor](CandleColor.md 'TechnicalAnalysis\.Common\.CandleColor')** `Enum` Represents the color of a candle\.
   - **[Green](CandleColor.md#TechnicalAnalysis.Common.CandleColor.Green 'TechnicalAnalysis\.Common\.CandleColor\.Green')** `Field` Green candle \(bullish\)\.
   - **[Red](CandleColor.md#TechnicalAnalysis.Common.CandleColor.Red 'TechnicalAnalysis\.Common\.CandleColor\.Red')** `Field` Red candle \(bearish\)\.
@@ -149,22 +166,8 @@
   - **[RealBody](RangeType.md#TechnicalAnalysis.Common.RangeType.RealBody 'TechnicalAnalysis\.Common\.RangeType\.RealBody')** `Field` Represents the range between the open and close prices of a candlestick\.
   - **[Shadows](RangeType.md#TechnicalAnalysis.Common.RangeType.Shadows 'TechnicalAnalysis\.Common\.RangeType\.Shadows')** `Field` Represents the range of the shadows \(upper and lower wicks\) of a candlestick\.
 - **[RetCode](RetCode.md 'TechnicalAnalysis\.Common\.RetCode')** `Enum` Represents the return codes for various functions in the TechnicalAnalysis library\.
-  - **[AllocErr](RetCode.md#TechnicalAnalysis.Common.RetCode.AllocErr 'TechnicalAnalysis\.Common\.RetCode\.AllocErr')** `Field` Memory allocation error\.
-  - **[BadObject](RetCode.md#TechnicalAnalysis.Common.RetCode.BadObject 'TechnicalAnalysis\.Common\.RetCode\.BadObject')** `Field` Bad object encountered\.
   - **[BadParam](RetCode.md#TechnicalAnalysis.Common.RetCode.BadParam 'TechnicalAnalysis\.Common\.RetCode\.BadParam')** `Field` Bad parameter provided\.
-  - **[FuncNotFound](RetCode.md#TechnicalAnalysis.Common.RetCode.FuncNotFound 'TechnicalAnalysis\.Common\.RetCode\.FuncNotFound')** `Field` Function not found\.
-  - **[GroupNotFound](RetCode.md#TechnicalAnalysis.Common.RetCode.GroupNotFound 'TechnicalAnalysis\.Common\.RetCode\.GroupNotFound')** `Field` Group not found\.
-  - **[InputNotAllInitialize](RetCode.md#TechnicalAnalysis.Common.RetCode.InputNotAllInitialize 'TechnicalAnalysis\.Common\.RetCode\.InputNotAllInitialize')** `Field` Not all input values are initialized\.
   - **[InternalError](RetCode.md#TechnicalAnalysis.Common.RetCode.InternalError 'TechnicalAnalysis\.Common\.RetCode\.InternalError')** `Field` Internal error occurred\.
-  - **[InvalidHandle](RetCode.md#TechnicalAnalysis.Common.RetCode.InvalidHandle 'TechnicalAnalysis\.Common\.RetCode\.InvalidHandle')** `Field` Invalid handle encountered\.
-  - **[InvalidListType](RetCode.md#TechnicalAnalysis.Common.RetCode.InvalidListType 'TechnicalAnalysis\.Common\.RetCode\.InvalidListType')** `Field` Invalid list type encountered\.
-  - **[InvalidParamFunction](RetCode.md#TechnicalAnalysis.Common.RetCode.InvalidParamFunction 'TechnicalAnalysis\.Common\.RetCode\.InvalidParamFunction')** `Field` Invalid parameter function encountered\.
-  - **[InvalidParamHolder](RetCode.md#TechnicalAnalysis.Common.RetCode.InvalidParamHolder 'TechnicalAnalysis\.Common\.RetCode\.InvalidParamHolder')** `Field` Invalid parameter holder encountered\.
-  - **[InvalidParamHolderType](RetCode.md#TechnicalAnalysis.Common.RetCode.InvalidParamHolderType 'TechnicalAnalysis\.Common\.RetCode\.InvalidParamHolderType')** `Field` Invalid parameter holder type encountered\.
-  - **[LibNotInitialize](RetCode.md#TechnicalAnalysis.Common.RetCode.LibNotInitialize 'TechnicalAnalysis\.Common\.RetCode\.LibNotInitialize')** `Field` Library not initialized\.
-  - **[NotSupported](RetCode.md#TechnicalAnalysis.Common.RetCode.NotSupported 'TechnicalAnalysis\.Common\.RetCode\.NotSupported')** `Field` Feature not supported\.
   - **[OutOfRangeEndIndex](RetCode.md#TechnicalAnalysis.Common.RetCode.OutOfRangeEndIndex 'TechnicalAnalysis\.Common\.RetCode\.OutOfRangeEndIndex')** `Field` End index is out of range\.
   - **[OutOfRangeStartIndex](RetCode.md#TechnicalAnalysis.Common.RetCode.OutOfRangeStartIndex 'TechnicalAnalysis\.Common\.RetCode\.OutOfRangeStartIndex')** `Field` Start index is out of range\.
-  - **[OutputNotAllInitialize](RetCode.md#TechnicalAnalysis.Common.RetCode.OutputNotAllInitialize 'TechnicalAnalysis\.Common\.RetCode\.OutputNotAllInitialize')** `Field` Not all output values are initialized\.
   - **[Success](RetCode.md#TechnicalAnalysis.Common.RetCode.Success 'TechnicalAnalysis\.Common\.RetCode\.Success')** `Field` Operation completed successfully\.
-  - **[UnknownErr](RetCode.md#TechnicalAnalysis.Common.RetCode.UnknownErr 'TechnicalAnalysis\.Common\.RetCode\.UnknownErr')** `Field` Unknown error encountered\.

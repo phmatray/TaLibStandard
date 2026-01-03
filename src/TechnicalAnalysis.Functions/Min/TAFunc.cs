@@ -32,29 +32,11 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        if (startIdx < 0)
+        RetCode validationResult = ValidationHelper.ValidateSingleInputIndicator(
+            startIdx, endIdx, inReal, outReal, optInTimePeriod);
+        if (validationResult != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInTimePeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
+            return validationResult;
         }
 
         int nbInitialElementNeeded = optInTimePeriod - 1;
@@ -119,6 +101,6 @@ public static partial class TAFunc
     /// <returns>The number of data points required before the first valid MIN value, or -1 if the period is invalid.</returns>
     public static int MinLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;
+        return ValidationHelper.ValidateLookback(optInTimePeriod, adjustment: -1);
     }
 }

@@ -17,5 +17,5 @@ protected virtual int GetCandleAvgPeriod(TechnicalAnalysis.Common.CandleSettingT
 The candle setting type to get the average period for\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 An integer representing the average period\.

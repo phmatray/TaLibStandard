@@ -53,8 +53,8 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        const double A = 0.0962;
-        const double B = 0.5769;
+        const double A = HilbertTransformConstants.A;
+        const double B = HilbertTransformConstants.B;
         double[] detrenderOdd = new double[3];
         double[] detrenderEven = new double[3];
         double[] q1Odd = new double[3];
@@ -63,20 +63,11 @@ public static partial class TAFunc
         double[] jIEven = new double[3];
         double[] jQOdd = new double[3];
         double[] jQEven = new double[3];
-        if (startIdx < 0)
+        RetCode validationResult = ValidationHelper.ValidateSingleInputIndicator(
+            startIdx, endIdx, inReal, outReal);
+        if (validationResult != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null! ||
-            outReal == null!)
-        {
-            return BadParam;
+            return validationResult;
         }
 
         double rad2Deg = 180.0 / (4.0 * Math.Atan(1.0));

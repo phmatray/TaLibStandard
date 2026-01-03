@@ -48,24 +48,18 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        if (startIdx < 0)
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] inVolumeLocal = inVolume;
+        double[] outRealLocal = outReal;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, inVolumeLocal, outRealLocal)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! || inLow == null! || inClose == null! || inVolume == null!)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         int nbBar = endIdx - startIdx + 1;

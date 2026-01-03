@@ -11,7 +11,7 @@ namespace TechnicalAnalysis.Functions;
 /// The ADXR is a smoothed version of the ADX indicator, providing a more stable measure
 /// of trend strength by averaging the current ADX value with a previous ADX value.
 /// </summary>
-public record AdxrResult : IndicatorResult
+public record AdxrResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AdxrResult"/> class.
@@ -23,15 +23,7 @@ public record AdxrResult : IndicatorResult
     /// the smoothed average directional movement index rating, typically ranging from 0 to 100,
     /// where higher values indicate stronger trend strength.</param>
     public AdxrResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of calculated ADXR values.
-    /// Each value represents the Average Directional Movement Index Rating,
-    /// providing a smoothed measure of trend strength.
-    /// </summary>
-    public double[] Real { get; }
 }

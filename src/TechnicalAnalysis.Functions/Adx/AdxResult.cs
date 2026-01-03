@@ -9,7 +9,7 @@ namespace TechnicalAnalysis.Functions;
 /// <summary>
 /// Represents the result of an ADX (Average Directional Index) calculation.
 /// </summary>
-public record AdxResult : IndicatorResult
+public record AdxResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the AdxResult record.
@@ -19,20 +19,7 @@ public record AdxResult : IndicatorResult
     /// <param name="nbElement">The number of valid values in the output array.</param>
     /// <param name="real">The array containing the calculated ADX values.</param>
     public AdxResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of calculated ADX values.
-    /// </summary>
-    /// <remarks>
-    /// ADX values range from 0 to 100, where:
-    /// - Values below 20 indicate a weak trend
-    /// - Values between 20-25 indicate the beginning of a trend
-    /// - Values above 25 indicate a strong trend
-    /// - Values above 40 indicate a very strong trend
-    /// </remarks>
-    public double[] Real { get; }
 }

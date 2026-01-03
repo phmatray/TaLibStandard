@@ -46,21 +46,11 @@ public static partial class TAFunc
     {
         int i;
         double tempReal;
-        if (startIdx < 0)
+        RetCode validationResult = ValidationHelper.ValidateSingleInputIndicator(
+            startIdx, endIdx, inReal, outReal, optInTimePeriod);
+        if (validationResult != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null! ||
-            optInTimePeriod is < 2 or > 100000 ||
-            outReal == null!)
-        {
-            return BadParam;
+            return validationResult;
         }
 
         RetCode retCode = TA_INT_VAR(

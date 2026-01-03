@@ -11,7 +11,7 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator decomposes price data into its in-phase and quadrature components using Hilbert Transform,
 /// providing a complex representation of market cycles for advanced signal processing.
 /// </summary>
-public record HtPhasorResult : IndicatorResult
+public record HtPhasorResult : DualOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="HtPhasorResult"/> class.
@@ -22,10 +22,8 @@ public record HtPhasorResult : IndicatorResult
     /// <param name="inPhase">The array of in-phase component values representing the real part of the complex signal.</param>
     /// <param name="quadrature">The array of quadrature component values representing the imaginary part of the complex signal.</param>
     public HtPhasorResult(RetCode retCode, int begIdx, int nbElement, double[] inPhase, double[] quadrature)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, inPhase, quadrature)
     {
-        InPhase = inPhase;
-        Quadrature = quadrature;
     }
 
     /// <summary>
@@ -33,12 +31,12 @@ public record HtPhasorResult : IndicatorResult
     /// The in-phase component represents the real part of the Hilbert Transform output,
     /// aligned with the original signal's phase.
     /// </summary>
-    public double[] InPhase { get; }
+    public double[] InPhase => Real0;
 
     /// <summary>
     /// Gets the array of quadrature component values.
     /// The quadrature component represents the imaginary part of the Hilbert Transform output,
     /// phase-shifted by 90 degrees from the original signal.
     /// </summary>
-    public double[] Quadrature { get; }
+    public double[] Quadrature => Real1;
 }

@@ -53,8 +53,8 @@ public static partial class TAFunc
         ref double[] outMAMA,
         ref double[] outFAMA)
     {
-        const double A = 0.0962;
-        const double B = 0.5769;
+        const double A = HilbertTransformConstants.A;
+        const double B = HilbertTransformConstants.B;
         double[] detrenderOdd = new double[3];
         double[] detrenderEven = new double[3];
         double[] q1Odd = new double[3];
@@ -63,21 +63,19 @@ public static partial class TAFunc
         double[] jIEven = new double[3];
         double[] jQOdd = new double[3];
         double[] jQEven = new double[3];
-        if (startIdx < 0)
+        double[] inRealLocal = inReal;
+        double[] outFAMALocal = outFAMA;
+        double[] outMAMALocal = outMAMA;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inRealLocal, outMAMALocal, outFAMALocal)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
+            return validation;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null! ||
-            optInFastLimit is < 0.01 or > 0.99 ||
-            optInSlowLimit is < 0.01 or > 0.99 ||
-            outMAMA == null! ||
-            outFAMA == null!)
+        if (optInFastLimit is < 0.01 or > 0.99 || optInSlowLimit is < 0.01 or > 0.99)
         {
             return BadParam;
         }

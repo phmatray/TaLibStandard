@@ -6,12 +6,12 @@
 Represents the result of calculating the Ultimate Oscillator \(UltOsc\) indicator\.
 
 ```csharp
-public record UltOscResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.UltOscResult>
+public record UltOscResult : TechnicalAnalysis.Common.SingleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.UltOscResult>
 ```
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.IndicatorResult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; UltOscResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.SingleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.singleoutputresult 'TechnicalAnalysis\.Common\.SingleOutputResult') &#129106; UltOscResult
 
-Implements [System\.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')[UltOscResult](UltOscResult.md 'TechnicalAnalysis\.Functions\.UltOscResult')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')
+Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[UltOscResult](UltOscResult.md 'TechnicalAnalysis\.Functions\.UltOscResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
 ### Remarks
 The Ultimate Oscillator is a momentum oscillator designed to capture momentum across three different timeframes\.
@@ -21,7 +21,3 @@ to reduce false signals and provide more reliable overbought/oversold readings\.
 | Constructors | |
 | :--- | :--- |
 | [UltOscResult\(RetCode, int, int, double\[\]\)](UltOscResult.UltOscResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.UltOscResult\.UltOscResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [UltOscResult](UltOscResult.md 'TechnicalAnalysis\.Functions\.UltOscResult') class\. |
-
-| Properties | |
-| :--- | :--- |
-| [Real](UltOscResult.Real.md 'TechnicalAnalysis\.Functions\.UltOscResult\.Real') | Gets the array of Ultimate Oscillator values\. |

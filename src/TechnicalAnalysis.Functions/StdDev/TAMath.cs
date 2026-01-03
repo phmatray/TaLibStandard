@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -26,10 +28,10 @@ public static partial class TAMath
     /// A <see cref="StdDevResult"/> object containing the calculated standard deviation values
     /// and associated metadata.
     /// </returns>
-    public static StdDevResult StdDev(int startIdx, int endIdx, double[] real, int timePeriod, double nbDev)
+    public static StdDevResult StdDev(int startIdx, int endIdx, double[] real, int timePeriod = 5, double nbDev = 1.0)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.StdDev(
@@ -41,26 +43,9 @@ public static partial class TAMath
             ref outBegIdx,
             ref outNBElement,
             ref outReal);
-            
+
         return new StdDevResult(retCode, outBegIdx, outNBElement, outReal);
     }
-
-    /// <summary>
-    /// Calculates the standard deviation of a price series using default parameters.
-    /// </summary>
-    /// <remarks>
-    /// This overload uses a default time period of 5 and nbDev of 1.0. Standard deviation
-    /// measures the dispersion of values and is commonly used as a volatility indicator.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">Array of price values.</param>
-    /// <returns>
-    /// A <see cref="StdDevResult"/> object containing the calculated standard deviation values
-    /// and associated metadata.
-    /// </returns>
-    public static StdDevResult StdDev(int startIdx, int endIdx, double[] real)
-        => StdDev(startIdx, endIdx, real, 5, 1.0);
 
     /// <summary>
     /// Calculates the standard deviation of a price series using float arrays.
@@ -72,29 +57,12 @@ public static partial class TAMath
     /// <param name="startIdx">The starting index for the calculation range.</param>
     /// <param name="endIdx">The ending index for the calculation range.</param>
     /// <param name="real">Array of price values.</param>
-    /// <param name="timePeriod">The number of periods to use in the calculation.</param>
-    /// <param name="nbDev">The number of standard deviations to scale the output by.</param>
+    /// <param name="timePeriod">The number of periods to use in the calculation (default: 5).</param>
+    /// <param name="nbDev">The number of standard deviations to scale the output by (default: 1.0).</param>
     /// <returns>
     /// A <see cref="StdDevResult"/> object containing the calculated standard deviation values
     /// and associated metadata.
     /// </returns>
-    public static StdDevResult StdDev(int startIdx, int endIdx, float[] real, int timePeriod, double nbDev)
-        => StdDev(startIdx, endIdx, real.ToDouble(), timePeriod, nbDev);
-        
-    /// <summary>
-    /// Calculates the standard deviation of a price series using float arrays with default parameters.
-    /// </summary>
-    /// <remarks>
-    /// This overload accepts float arrays and uses default values of time period 5 and nbDev 1.0.
-    /// The arrays are converted to double arrays before performing the calculation.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">Array of price values.</param>
-    /// <returns>
-    /// A <see cref="StdDevResult"/> object containing the calculated standard deviation values
-    /// and associated metadata.
-    /// </returns>
-    public static StdDevResult StdDev(int startIdx, int endIdx, float[] real)
-        => StdDev(startIdx, endIdx, real, 5, 1.0);
+    public static StdDevResult StdDev(int startIdx, int endIdx, float[] real, int timePeriod = 5, double nbDev = 1.0)
+        => TAMathHelper.Execute(startIdx, endIdx, real, (s, e, r) => StdDev(s, e, r, timePeriod, nbDev));
 }

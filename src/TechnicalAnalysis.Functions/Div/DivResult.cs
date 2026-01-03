@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// producing an output array where each element is the quotient of the corresponding
 /// elements from the input arrays (first array divided by second array).
 /// </remarks>
-public record DivResult : IndicatorResult
+public record DivResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="DivResult"/> class.
@@ -24,17 +24,7 @@ public record DivResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the quotient values from the division operation.</param>
     public DivResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of quotient values resulting from the element-wise division operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the quotient of the corresponding
-    /// elements from the two input arrays (first array divided by second array).
-    /// </value>
-    public double[] Real { get; }
 }

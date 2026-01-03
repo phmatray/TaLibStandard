@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// The hyperbolic tangent is defined as tanh(x) = sinh(x)/cosh(x) = (e^x - e^(-x))/(e^x + e^(-x)).
 /// The output values are always in the range (-1, 1), making it useful for normalization.
 /// </remarks>
-public record TanhResult : IndicatorResult
+public record TanhResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="TanhResult"/> class.
@@ -24,17 +24,7 @@ public record TanhResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the hyperbolic tangent values.</param>
     public TanhResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of hyperbolic tangent values resulting from the TANH operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the hyperbolic tangent
-    /// of the corresponding element from the input array, with values in the range (-1, 1).
-    /// </value>
-    public double[] Real { get; }
 }

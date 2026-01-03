@@ -42,29 +42,11 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        if (startIdx < 0)
+        RetCode validationResult = ValidationHelper.ValidateSingleInputIndicator(
+            startIdx, endIdx, inReal, outReal, optInTimePeriod, 1);
+        if (validationResult != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInTimePeriod is < 1 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
+            return validationResult;
         }
 
         if (startIdx < optInTimePeriod)
@@ -117,6 +99,6 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid ROCP value can be calculated, or -1 if parameters are invalid.</returns>
     public static int RocPLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod;
+        return ValidationHelper.ValidateLookback(optInTimePeriod, minPeriod: 1);
     }
 }

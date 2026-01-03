@@ -18,12 +18,12 @@ The return code indicating the status of the indicator calculation\.
 
 <a name='TechnicalAnalysis.Common.IndicatorResult.IndicatorResult(TechnicalAnalysis.Common.RetCode,int,int).begIdx'></a>
 
-`begIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`begIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The beginning index of the calculated output series\.
 
 <a name='TechnicalAnalysis.Common.IndicatorResult.IndicatorResult(TechnicalAnalysis.Common.RetCode,int,int).nbElement'></a>
 
-`nbElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`nbElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of elements in the calculated output series\.

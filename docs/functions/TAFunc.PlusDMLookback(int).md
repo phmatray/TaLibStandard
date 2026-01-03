@@ -12,12 +12,12 @@ public static int PlusDMLookback(int optInTimePeriod);
 
 <a name='TechnicalAnalysis.Functions.TAFunc.PlusDMLookback(int).optInTimePeriod'></a>
 
-`optInTimePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The time period for the calculation\. Valid range: 1 to 100000\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of historical data points required before the first valid \+DM value, or \-1 if parameters are invalid\.
 
 ### Remarks

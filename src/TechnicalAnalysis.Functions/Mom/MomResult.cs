@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// It is calculated by subtracting the price n periods ago from the current price.
 /// Positive values indicate upward momentum, while negative values indicate downward momentum.
 /// </remarks>
-public record MomResult : IndicatorResult
+public record MomResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MomResult"/> class.
@@ -24,18 +24,7 @@ public record MomResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of momentum values.</param>
     public MomResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of momentum values.
-    /// </summary>
-    /// <value>
-    /// An array of double values representing the Momentum indicator at each data point.
-    /// Each value is the difference between the current price and the price n periods ago,
-    /// indicating the strength and direction of price movement.
-    /// </value>
-    public double[] Real { get; }
 }

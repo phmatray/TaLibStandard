@@ -32,84 +32,16 @@ public static partial class TAFunc
         ref int outNBElement,
         ref int[] outInteger)
     {
-        if (startIdx < 0)
-        {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInTimePeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outInteger == null!)
-        {
-            return BadParam;
-        }
-
-        int nbInitialElementNeeded = optInTimePeriod - 1;
-        if (startIdx < nbInitialElementNeeded)
-        {
-            startIdx = nbInitialElementNeeded;
-        }
-
-        if (startIdx > endIdx)
-        {
-            outBegIdx = 0;
-            outNBElement = 0;
-            return Success;
-        }
-
-        int outIdx = 0;
-        int today = startIdx;
-        int trailingIdx = startIdx - nbInitialElementNeeded;
-        int lowestIdx = -1;
-        double lowest = 0.0;
-        
-        while (today <= endIdx)
-        {
-            double tmp = inReal[today];
-            if (lowestIdx < trailingIdx)
-            {
-                lowestIdx = trailingIdx;
-                lowest = inReal[lowestIdx];
-                int i = lowestIdx;
-                while (i <= today)
-                {
-                    tmp = inReal[i];
-                    if (tmp < lowest)
-                    {
-                        lowestIdx = i;
-                        lowest = tmp;
-                    }
-                    i++;
-                }
-            }
-            else if (tmp <= lowest)
-            {
-                lowestIdx = today;
-                lowest = tmp;
-            }
-
-            outInteger[outIdx] = lowestIdx;
-            outIdx++;
-            trailingIdx++;
-            today++;
-        }
-        
-        outBegIdx = startIdx;
-        outNBElement = outIdx;
-        return Success;
+        return TA_INT_ExtremeIndex(
+            startIdx,
+            endIdx,
+            inReal,
+            optInTimePeriod,
+            ref outBegIdx,
+            ref outNBElement,
+            ref outInteger,
+            (a, b) => a < b,   // comparer: true if a is less than b (minimum)
+            (a, b) => a <= b); // comparerOrEqual: true if a is less than or equal to b
     }
 
     /// <summary>
@@ -119,6 +51,6 @@ public static partial class TAFunc
     /// <returns>The number of data points required before the first valid MININDEX value, or -1 if the period is invalid.</returns>
     public static int MinIndexLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;
+        return ValidationHelper.ValidateLookback(optInTimePeriod, adjustment: -1);
     }
 }

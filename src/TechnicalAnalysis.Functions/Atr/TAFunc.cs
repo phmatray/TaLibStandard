@@ -47,27 +47,24 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outRealLocal = outReal;
+        int optInTimePeriodLocal = optInTimePeriod;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, outRealLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal, 1)
+        );
+        if (validation != Success)
+        {
+            return validation;
+        }
+
         int outNbElement1 = 0;
         int outBegIdx1 = 0;
         double[] prevATRTemp = new double[1];
-        if (startIdx < 0)
-        {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! ||
-            inLow == null! ||
-            inClose == null! ||
-            optInTimePeriod is < 1 or > 100000 ||
-            outReal == null!)
-        {
-            return BadParam;
-        }
 
         outBegIdx = 0;
         outNBElement = 0;
@@ -161,6 +158,6 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid ATR value can be calculated, or -1 if parameters are invalid.</returns>
     public static int AtrLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Atr];
+        return ValidationHelper.ValidateLookback(optInTimePeriod, minPeriod: 1, unstablePeriod: FuncUnstId.Atr);
     }
 }

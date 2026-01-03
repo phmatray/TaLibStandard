@@ -11,7 +11,7 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator applies the Stochastic oscillator formula to RSI values, creating a more sensitive
 /// momentum oscillator that combines the benefits of both indicators.
 /// </summary>
-public record StochRsiResult : IndicatorResult
+public record StochRsiResult : DualOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="StochRsiResult"/> class.
@@ -22,10 +22,8 @@ public record StochRsiResult : IndicatorResult
     /// <param name="fastK">The array of %K values representing the raw stochastic of RSI.</param>
     /// <param name="fastD">The array of %D values representing the smoothed %K line.</param>
     public StochRsiResult(RetCode retCode, int begIdx, int nbElement, double[] fastK, double[] fastD)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, fastK, fastD)
     {
-        FastK = fastK;
-        FastD = fastD;
     }
 
     /// <summary>
@@ -33,12 +31,12 @@ public record StochRsiResult : IndicatorResult
     /// This is typically a 3-period moving average of %K, providing a smoother signal line.
     /// Values range from 0 to 100, with readings above 80 indicating overbought and below 20 indicating oversold.
     /// </summary>
-    public double[] FastD { get; }
+    public double[] FastD => Real1;
 
     /// <summary>
     /// Gets the array of %K values (raw StochRSI).
     /// This represents the position of the current RSI relative to its range over the lookback period.
     /// Values range from 0 to 100, with extreme readings suggesting potential reversal points.
     /// </summary>
-    public double[] FastK { get; }
+    public double[] FastK => Real0;
 }

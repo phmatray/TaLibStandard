@@ -12,28 +12,28 @@ public static int StochRsiLookback(int optInTimePeriod, int optInFastKPeriod, in
 
 <a name='TechnicalAnalysis.Functions.TAFunc.StochRsiLookback(int,int,int,TechnicalAnalysis.Common.MAType).optInTimePeriod'></a>
 
-`optInTimePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for RSI calculation\. Valid range: 2 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.StochRsiLookback(int,int,int,TechnicalAnalysis.Common.MAType).optInFastKPeriod'></a>
 
-`optInFastKPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInFastKPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for Stochastic %K\. Valid range: 1 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.StochRsiLookback(int,int,int,TechnicalAnalysis.Common.MAType).optInFastDPeriod'></a>
 
-`optInFastDPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInFastDPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for Stochastic %D smoothing\. Valid range: 1 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.StochRsiLookback(int,int,int,TechnicalAnalysis.Common.MAType).optInFastDMAType'></a>
 
-`optInFastDMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInFastDMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 Moving average type for %D line smoothing\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of historical data points required before the first valid StochRSI value can be calculated, or \-1 if parameters are invalid\.

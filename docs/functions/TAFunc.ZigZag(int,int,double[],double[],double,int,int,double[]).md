@@ -12,54 +12,54 @@ public static TechnicalAnalysis.Common.RetCode ZigZag(int startIdx, int endIdx, 
 
 <a name='TechnicalAnalysis.Functions.TAFunc.ZigZag(int,int,double[],double[],double,int,int,double[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation within the input arrays\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.ZigZag(int,int,double[],double[],double,int,int,double[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation within the input arrays\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.ZigZag(int,int,double[],double[],double,int,int,double[]).inHigh'></a>
 
-`inHigh` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`inHigh` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Input array of high prices\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.ZigZag(int,int,double[],double[],double,int,int,double[]).inLow'></a>
 
-`inLow` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`inLow` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Input array of low prices\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.ZigZag(int,int,double[],double[],double,int,int,double[]).optInDeviation'></a>
 
-`optInDeviation` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInDeviation` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Minimum percentage price movement required for a reversal \(0\.0 to 100\.0\)\. Typical value: 5\.0\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.ZigZag(int,int,double[],double[],double,int,int,double[]).outBegIdx'></a>
 
-`outBegIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outBegIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The index of the first valid output value\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.ZigZag(int,int,double[],double[],double,int,int,double[]).outNBElement'></a>
 
-`outNBElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outNBElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of valid output elements\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.ZigZag(int,int,double[],double[],double,int,int,double[]).outZigZag'></a>
 
-`outZigZag` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`outZigZag` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Output array containing the ZigZag values \(0\.0 for non\-pivot points\)\.
 
 #### Returns
-[TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode')  
+[TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode')  
 A RetCode indicating the success or failure of the calculation\.
 
 ### Remarks

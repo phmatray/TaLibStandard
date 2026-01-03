@@ -11,7 +11,7 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator calculates the angle of the linear regression line in degrees, providing insight
 /// into the strength and direction of the trend over a specified period.
 /// </summary>
-public record LinearRegAngleResult : IndicatorResult
+public record LinearRegAngleResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="LinearRegAngleResult"/> class.
@@ -21,9 +21,8 @@ public record LinearRegAngleResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of angle values in degrees representing the slope of the linear regression line.</param>
     public LinearRegAngleResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
     /// <summary>
@@ -31,5 +30,4 @@ public record LinearRegAngleResult : IndicatorResult
     /// Positive angles indicate an upward trend, negative angles indicate a downward trend.
     /// The magnitude of the angle reflects the steepness of the trend.
     /// </summary>
-    public double[] Real { get; }
 }

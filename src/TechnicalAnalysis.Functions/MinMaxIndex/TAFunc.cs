@@ -40,34 +40,18 @@ public static partial class TAFunc
         ref int[] outMaxIdx)
     {
         int i;
-        if (startIdx < 0)
+        double[]? inRealLocal = inReal;
+        int optInTimePeriodLocal = optInTimePeriod;
+        int[]? outMaxIdxLocal = outMaxIdx;
+        int[]? outMinIdxLocal = outMinIdx;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => inRealLocal == null! || outMinIdxLocal == null! || outMaxIdxLocal == null! ? BadParam : Success,
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInTimePeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outMinIdx == null!)
-        {
-            return BadParam;
-        }
-
-        if (outMaxIdx == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         int nbInitialElementNeeded = optInTimePeriod - 1;
@@ -159,6 +143,6 @@ public static partial class TAFunc
     /// <returns>The number of elements needed before the first valid value, or -1 if the period is invalid.</returns>
     public static int MinMaxIndexLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;
+        return ValidationHelper.ValidateLookback(optInTimePeriod, adjustment: -1);
     }
 }

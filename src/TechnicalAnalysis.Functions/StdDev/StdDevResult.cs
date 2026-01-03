@@ -10,7 +10,7 @@ namespace TechnicalAnalysis.Functions;
 /// Represents the result of the Standard Deviation (StdDev) indicator calculation.
 /// Standard Deviation is a statistical measure of volatility that shows how much variation exists from the average (mean) price.
 /// </summary>
-public record StdDevResult : IndicatorResult
+public record StdDevResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="StdDevResult"/> class.
@@ -20,15 +20,7 @@ public record StdDevResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the calculated standard deviation values.</param>
     public StdDevResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Standard Deviation values.
-    /// Higher values indicate greater price volatility and dispersion from the mean.
-    /// Lower values suggest prices are staying close to the average with less volatility.
-    /// </summary>
-    public double[] Real { get; }
 }

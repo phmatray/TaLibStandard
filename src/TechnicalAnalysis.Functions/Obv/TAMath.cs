@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -27,8 +29,8 @@ public static partial class TAMath
     /// <returns>An ObvResult object containing the calculated OBV values.</returns>
     public static ObvResult Obv(int startIdx, int endIdx, double[] real, double[] volume)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.Obv(startIdx, endIdx, real, volume, ref outBegIdx, ref outNBElement, ref outReal);
@@ -49,5 +51,5 @@ public static partial class TAMath
     /// <param name="volume">Array of trading volumes.</param>
     /// <returns>An ObvResult object containing the calculated OBV values.</returns>
     public static ObvResult Obv(int startIdx, int endIdx, float[] real, float[] volume)
-        => Obv(startIdx, endIdx, real.ToDouble(), volume.ToDouble());
+        => TAMathHelper.Execute(startIdx, endIdx, real, volume, Obv);
 }

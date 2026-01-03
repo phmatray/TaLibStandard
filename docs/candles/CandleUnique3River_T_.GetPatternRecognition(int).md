@@ -12,10 +12,10 @@ public override bool GetPatternRecognition(int i);
 
 <a name='TechnicalAnalysis.Candles.CandleUnique3River_T_.GetPatternRecognition(int).i'></a>
 
-`i` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`i` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The index to check for pattern recognition\.
 
 #### Returns
-[System\.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System\.Boolean')  
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the pattern is recognized, false otherwise\.

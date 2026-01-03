@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// over a specified number of periods. It smooths out price data to help identify trends
 /// by filtering out short-term price fluctuations.
 /// </remarks>
-public record SmaResult : IndicatorResult
+public record SmaResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="SmaResult"/> class.
@@ -24,17 +24,7 @@ public record SmaResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of simple moving average values.</param>
     public SmaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of simple moving average values.
-    /// </summary>
-    /// <value>
-    /// An array of double values representing the Simple Moving Average at each data point.
-    /// Each value is the arithmetic mean of the specified number of previous periods.
-    /// </value>
-    public double[] Real { get; }
 }

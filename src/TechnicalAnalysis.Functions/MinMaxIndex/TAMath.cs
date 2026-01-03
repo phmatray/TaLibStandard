@@ -23,8 +23,8 @@ public static partial class TAMath
     /// </remarks>
     public static MinMaxIndexResult MinMaxIndex(int startIdx, int endIdx, double[] real, int timePeriod)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         int[] outMinIdx = new int[endIdx - startIdx + 1];
         int[] outMaxIdx = new int[endIdx - startIdx + 1];
 

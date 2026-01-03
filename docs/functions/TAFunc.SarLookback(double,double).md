@@ -12,16 +12,16 @@ public static int SarLookback(double optInAcceleration, double optInMaximum);
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarLookback(double,double).optInAcceleration'></a>
 
-`optInAcceleration` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInAcceleration` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Acceleration factor increment\. Must be non\-negative\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.SarLookback(double,double).optInMaximum'></a>
 
-`optInMaximum` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')
+`optInMaximum` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 Maximum acceleration factor\. Must be non\-negative\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 Always returns 1 if parameters are valid, or \-1 if parameters are invalid\.

@@ -57,34 +57,18 @@ public static partial class TAFunc
         double sXY = 0.0;
         double sX = 0.0;
         double sY = 0.0;
-        if (startIdx < 0)
+        double[] inReal0Local = inReal0;
+        double[] inReal1Local = inReal1;
+        double[] outRealLocal = outReal;
+        int optInTimePeriodLocal = optInTimePeriod;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inReal0Local, inReal1Local, outRealLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal, 1)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal0 == null!)
-        {
-            return BadParam;
-        }
-
-        if (inReal1 == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInTimePeriod is < 1 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         int nbInitialElementNeeded = optInTimePeriod;
@@ -179,6 +163,6 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid Beta value can be calculated, or -1 if parameters are invalid.</returns>
     public static int BetaLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 1 or > 100000 ? -1 : optInTimePeriod;
+        return ValidationHelper.ValidateLookback(optInTimePeriod, minPeriod: 1);
     }
 }

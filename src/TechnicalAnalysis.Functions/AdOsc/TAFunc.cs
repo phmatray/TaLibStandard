@@ -54,34 +54,22 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        if (startIdx < 0)
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] inVolumeLocal = inVolume;
+        double[] outRealLocal = outReal;
+        int optInFastPeriodLocal = optInFastPeriod;
+        int optInSlowPeriodLocal = optInSlowPeriod;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, inVolumeLocal, outRealLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInFastPeriodLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInSlowPeriodLocal)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! || inLow == null! || inClose == null! || inVolume == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInFastPeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (optInSlowPeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         int slowestPeriod = optInFastPeriod < optInSlowPeriod

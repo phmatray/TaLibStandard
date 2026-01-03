@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// middle of the period. It creates a smoother line than a simple moving average,
 /// making it useful for identifying longer-term trends while filtering out short-term noise.
 /// </remarks>
-public record TrimaResult : IndicatorResult
+public record TrimaResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="TrimaResult"/> class.
@@ -24,18 +24,7 @@ public record TrimaResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of triangular moving average values.</param>
     public TrimaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of triangular moving average values.
-    /// </summary>
-    /// <value>
-    /// An array of double values representing the Triangular Moving Average at each data point.
-    /// Each value is calculated by averaging a simple moving average, which creates a
-    /// double-smoothed result with emphasis on the middle values of the period.
-    /// </value>
-    public double[] Real { get; }
 }

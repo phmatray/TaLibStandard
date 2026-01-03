@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -29,10 +31,10 @@ public static partial class TAMath
         int startIdx,
         int endIdx,
         double[] real,
-        int timePeriod,
-        int fastKPeriod,
-        int fastDPeriod,
-        MAType fastDMAType)
+        int timePeriod = 14,
+        int fastKPeriod = 5,
+        int fastDPeriod = 3,
+        MAType fastDMAType = MAType.Sma)
     {
         int outBegIdx = 0;
         int outNBElement = 0;
@@ -56,28 +58,15 @@ public static partial class TAMath
     }
 
     /// <summary>
-    /// Calculates the Stochastic RSI using default parameters.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">Array of input values (usually closing prices).</param>
-    /// <returns>A StochRsiResult containing the Stochastic RSI %K and %D values.</returns>
-    /// <remarks>
-    /// Uses default values: timePeriod=14, fastKPeriod=5, fastDPeriod=3, fastDMAType=Simple Moving Average.
-    /// </remarks>
-    public static StochRsiResult StochRsi(int startIdx, int endIdx, double[] real)
-        => StochRsi(startIdx, endIdx, real, 14, 5, 3, MAType.Sma);
-
-    /// <summary>
     /// Calculates the Stochastic RSI (STOCHRSI) which applies stochastic calculations to RSI values.
     /// </summary>
     /// <param name="startIdx">The starting index for the calculation range.</param>
     /// <param name="endIdx">The ending index for the calculation range.</param>
     /// <param name="real">Array of input values (usually closing prices).</param>
-    /// <param name="timePeriod">The number of periods for RSI calculation.</param>
-    /// <param name="fastKPeriod">The number of periods for stochastic %K calculation.</param>
-    /// <param name="fastDPeriod">The smoothing period for %K to get %D.</param>
-    /// <param name="fastDMAType">The type of moving average for %D calculation.</param>
+    /// <param name="timePeriod">The number of periods for RSI calculation (default: 14).</param>
+    /// <param name="fastKPeriod">The number of periods for stochastic %K calculation (default: 5).</param>
+    /// <param name="fastDPeriod">The smoothing period for %K to get %D (default: 3).</param>
+    /// <param name="fastDMAType">The type of moving average for %D calculation (default: Simple MA).</param>
     /// <returns>A StochRsiResult containing the Stochastic RSI %K and %D values.</returns>
     /// <remarks>
     /// This overload accepts float arrays and converts them to double arrays for calculation.
@@ -86,23 +75,10 @@ public static partial class TAMath
         int startIdx,
         int endIdx,
         float[] real,
-        int timePeriod,
-        int fastKPeriod,
-        int fastDPeriod,
-        MAType fastDMAType)
-        => StochRsi(startIdx, endIdx, real.ToDouble(), timePeriod, fastKPeriod, fastDPeriod, fastDMAType);
-        
-    /// <summary>
-    /// Calculates the Stochastic RSI using default parameters.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">Array of input values (usually closing prices).</param>
-    /// <returns>A StochRsiResult containing the Stochastic RSI %K and %D values.</returns>
-    /// <remarks>
-    /// This overload accepts float arrays and converts them to double arrays for calculation.
-    /// Uses default values: timePeriod=14, fastKPeriod=5, fastDPeriod=3, fastDMAType=Simple Moving Average.
-    /// </remarks>
-    public static StochRsiResult StochRsi(int startIdx, int endIdx, float[] real)
-        => StochRsi(startIdx, endIdx, real, 14, 5, 3, MAType.Sma);
+        int timePeriod = 14,
+        int fastKPeriod = 5,
+        int fastDPeriod = 3,
+        MAType fastDMAType = MAType.Sma)
+        => TAMathHelper.Execute(startIdx, endIdx, real, (s, e, r) =>
+            StochRsi(s, e, r, timePeriod, fastKPeriod, fastDPeriod, fastDMAType));
 }

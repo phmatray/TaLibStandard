@@ -55,23 +55,19 @@ public static partial class TAFunc
         ref double[] outReal)
     {
         int today;
-        if (startIdx < 0)
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outRealLocal = outReal;
+        int optInTimePeriodLocal = optInTimePeriod;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, outRealLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal, 1)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! ||
-            inLow == null! ||
-            inClose == null!  ||
-            optInTimePeriod is < 1 or > 100000 ||
-            outReal == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         int lookbackTotal = optInTimePeriod > 1 ? optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.MinusDI] : 1;

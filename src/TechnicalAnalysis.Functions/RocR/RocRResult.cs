@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// Unlike the standard ROC which shows percentage change, ROCR shows the price ratio, making it useful
 /// for comparing relative strength and identifying momentum changes in price movements.
 /// </remarks>
-public record RocRResult : IndicatorResult
+public record RocRResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="RocRResult"/> class.
@@ -24,20 +24,7 @@ public record RocRResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of Rate of Change Ratio values.</param>
     public RocRResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Rate of Change Ratio values.
-    /// </summary>
-    /// <remarks>
-    /// Values represent the ratio of current price to past price:
-    /// - Values above 1.0 indicate the current price is higher than n periods ago
-    /// - Values below 1.0 indicate the current price is lower than n periods ago
-    /// - A value of 1.0 indicates no change in price
-    /// - The further from 1.0, the greater the momentum
-    /// </remarks>
-    public double[] Real { get; }
 }

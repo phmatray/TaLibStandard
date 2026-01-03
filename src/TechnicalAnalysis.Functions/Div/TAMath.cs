@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -23,8 +25,8 @@ public static partial class TAMath
     /// </remarks>
     public static DivResult Div(int startIdx, int endIdx, double[] real0, double[] real1)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.Div(startIdx, endIdx, real0, real1, ref outBegIdx, ref outNBElement, ref outReal);
@@ -45,5 +47,5 @@ public static partial class TAMath
     /// This may result in a minor performance overhead due to the conversion process.
     /// </remarks>
     public static DivResult Div(int startIdx, int endIdx, float[] real0, float[] real1)
-        => Div(startIdx, endIdx, real0.ToDouble(), real1.ToDouble());
+        => TAMathHelper.Execute(startIdx, endIdx, real0, real1, Div);
 }

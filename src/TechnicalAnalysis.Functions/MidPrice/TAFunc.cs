@@ -36,22 +36,17 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        if (startIdx < 0)
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outRealLocal = outReal;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, outRealLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! ||
-            inLow == null! ||
-            optInTimePeriod is < 2 or > 100000 ||
-            outReal == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         int nbInitialElementNeeded = optInTimePeriod - 1;
@@ -110,6 +105,6 @@ public static partial class TAFunc
     /// <returns>The number of elements needed before the first valid value, or -1 if the period is invalid.</returns>
     public static int MidPriceLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod - 1;
+        return ValidationHelper.ValidateLookback(optInTimePeriod, adjustment: -1);
     }
 }

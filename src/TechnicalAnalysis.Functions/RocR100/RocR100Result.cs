@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// between the current price and the price n periods ago, scaled to oscillate around 100.
 /// This scaling makes it easier to identify overbought and oversold conditions.
 /// </remarks>
-public record RocR100Result : IndicatorResult
+public record RocR100Result : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="RocR100Result"/> class.
@@ -24,20 +24,7 @@ public record RocR100Result : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of Rate of Change Ratio 100 scale values.</param>
     public RocR100Result(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Rate of Change Ratio 100 scale values.
-    /// </summary>
-    /// <remarks>
-    /// Values oscillate around 100:
-    /// - Values above 100 indicate the current price is higher than n periods ago
-    /// - Values below 100 indicate the current price is lower than n periods ago
-    /// - A value of 100 indicates no change in price
-    /// - For example, a value of 110 means the price has increased by 10%
-    /// </remarks>
-    public double[] Real { get; }
 }

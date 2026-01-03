@@ -11,7 +11,7 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator identifies the dominant cycle period of market data using Hilbert Transform techniques,
 /// providing insight into the cyclical nature of price movements.
 /// </summary>
-public record HtDcPeriodResult : IndicatorResult
+public record HtDcPeriodResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="HtDcPeriodResult"/> class.
@@ -21,9 +21,8 @@ public record HtDcPeriodResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of dominant cycle period values in bars, representing the length of the identified market cycles.</param>
     public HtDcPeriodResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
 
     /// <summary>
@@ -31,5 +30,4 @@ public record HtDcPeriodResult : IndicatorResult
     /// Each value represents the period (in bars) of the dominant market cycle at that point in time.
     /// Values typically range from 10 to 50 bars, depending on market conditions.
     /// </summary>
-    public double[] Real { get; }
 }

@@ -35,29 +35,11 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        if (startIdx < 0)
+        RetCode validationResult = ValidationHelper.ValidateSingleInputIndicator(
+            startIdx, endIdx, inReal, outReal, optInTimePeriod);
+        if (validationResult != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInTimePeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
+            return validationResult;
         }
 
         outBegIdx = 0;
@@ -214,12 +196,13 @@ public static partial class TAFunc
     /// <returns>The number of historical data points needed before the first RSI value can be calculated, or -1 if the period is invalid.</returns>
     public static int RsiLookback(int optInTimePeriod)
     {
-        if (optInTimePeriod is < 2 or > 100000)
+        int validatedPeriod = ValidationHelper.ValidateLookback(optInTimePeriod);
+        if (validatedPeriod == -1)
         {
             return -1;
         }
 
-        int retValue = optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Rsi];
+        int retValue = validatedPeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Rsi];
         if (TACore.Globals.Compatibility == Compatibility.Metastock)
         {
             retValue--;

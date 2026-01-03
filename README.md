@@ -48,7 +48,7 @@ A modern and robust C# Technical Analysis library based on the original open-sou
 
 ## 📚 Introduction
 
-TaLibStandard is a modern interpretation of the widely used [TA-Lib](https://ta-lib.org), reimagined in C# 12. It is designed to be reliable, efficient, and user-friendly for developers performing financial market analysis. The addition of .NET's Generic Math feature allows for a richer, more flexible library that can handle a variety of number types.
+TaLibStandard is a modern interpretation of the widely used [TA-Lib](https://ta-lib.org), reimagined in C# 14. It is designed to be reliable, efficient, and user-friendly for developers performing financial market analysis. The addition of .NET's Generic Math feature allows for a richer, more flexible library that can handle a variety of number types.
 
 ## 🎯 Goal
 
@@ -88,16 +88,16 @@ discuss it.
 
 ### 📋 Prerequisites
 
-- .NET 8.0 (supported versions: 8.x)
+- .NET 10.0 (supported versions: 10.x)
 - A C# IDE (Visual Studio, JetBrains Rider, etc.)
 - A C# compiler (dotnet CLI, etc.)
 
 ### 🚀 We use the latest C# features
 
-This library targets .NET 8.0 and uses the latest C# features. It is written in C# 12.0 and uses the new `init`
+This library targets .NET 10.0 and uses the latest C# features. It is written in C# 14.0 and uses the new `init`
 properties, `record` types, `switch` expressions, `using` declarations and more.
 
-I invite you to read the [C# 12.0 documentation](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-12) to
+I invite you to read the [C# 14.0 documentation](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14) to
 learn more about these features.
 
 ### 📦 NuGet Packages
@@ -112,9 +112,9 @@ This table is automatically updated regularly the latest developments and releas
 
 ### 🧪 Tests Specifications
 
-  * Target framework : .NET 8
-  * Language version : C# 12
-  * xUnit and FluentAssertions 
+  * Target framework : .NET 10
+  * Language version : C# 14
+  * xUnit and Shouldly 
 
 ## 💾 Installation
 
@@ -149,12 +149,73 @@ You can contact us by opening an issue on this repository.
 
 ## 📝 Release notes
 
-Here is a list of recent notable changes to TaLibStandard.
+### v3.0.0 (January 2026) - .NET 10 LTS Release 🎉
 
-- dotnet 8.0 support
-- Generic Math support
-- .NET Exception handling
-- NuGet packages
+**Breaking Changes:**
+- **Upgraded to .NET 10 LTS** - Framework support extended until November 2028
+- **C# 14 Language Features** - Utilizing the latest C# capabilities
+- **Updated Dependencies** - All major packages updated to .NET 10 compatible versions
+- **Minimum .NET Version:** Now requires .NET 10.0 SDK
+
+**Major Improvements:**
+- **Code Quality:** Extensive refactoring eliminated ~1,200 lines of duplicated code
+- **Validation Consolidation:** Unified validation patterns across 99 indicators
+- **Result Classes:** Consolidated result types with inheritance hierarchy
+- **Mathematical Functions:** Template-based approach for 60+ math indicators
+- **Lookback Validation:** Standardized lookback calculations for 87 indicators
+- **Code Cleanup:** Removed unused code and consolidated common patterns
+
+**Performance:**
+- All 898 tests passing
+- No performance degradation
+- Maintained backward compatibility in algorithms
+
+**Documentation:**
+- Auto-generated API documentation updated
+- All function and candle pattern docs regenerated
+
+For migration guide from v2.x to v3.0, see [Migration from v2 to v3](#migration-from-v2-to-v3).
+
+### Previous Releases
+
+- v2.0.0 (June 2025) - Major release with .NET Exception handling
+- v1.0.0 (June 2025) - First stable release
+- v0.4.0 (June 2025) - Generic Math support
+- v0.3.1 (June 2025) - Bug fixes and improvements
+- v0.3.0 (June 2025) - Enhanced functionality
+- v0.2.0 (June 2025) - Additional indicators
+- v0.1.0 (November 2023) - Initial release
+
+## Migration from v2 to v3
+
+### Prerequisites
+- **Update to .NET 10 SDK:** Download from [dotnet.microsoft.com](https://dotnet.microsoft.com/download)
+- **Update project target framework:**
+  ```xml
+  <TargetFramework>net10.0</TargetFramework>
+  ```
+
+### Breaking Changes
+
+1. **Framework Requirement**
+   - Minimum version: .NET 10.0
+   - Projects targeting .NET 9 or earlier must upgrade
+
+2. **Package Dependencies**
+   - If you reference TaLibStandard packages, ensure your project can target .NET 10.0
+   - Update any conflicting package versions
+
+### API Compatibility
+- **No API breaking changes** - All public method signatures remain the same
+- **No behavioral changes** - All algorithms produce identical results
+- Code that worked with v2.x will work with v3.0 after framework upgrade
+
+### Testing Your Migration
+```csharp
+// No code changes needed - same API as v2.x
+var rsiResult = TAFunc.Rsi(0, closePrices.Length - 1, closePrices, 14,
+    ref outBegIdx, ref outNBElement, ref rsiValues);
+```
 
 ## 📜 License
 

@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -20,10 +22,10 @@ public static partial class TAMath
     /// <param name="startIdx">The starting index for the calculation range.</param>
     /// <param name="endIdx">The ending index for the calculation range.</param>
     /// <param name="real">Array of price values (typically closing prices).</param>
-    /// <param name="timePeriod">The number of periods for the moving average calculation.</param>
-    /// <param name="nbDevUp">The number of standard deviations for the upper band.</param>
-    /// <param name="nbDevDn">The number of standard deviations for the lower band.</param>
-    /// <param name="maType">The type of moving average to use for the middle band.</param>
+    /// <param name="timePeriod">The number of periods for the moving average calculation (default: 5).</param>
+    /// <param name="nbDevUp">The number of standard deviations for the upper band (default: 2.0).</param>
+    /// <param name="nbDevDn">The number of standard deviations for the lower band (default: 2.0).</param>
+    /// <param name="maType">The type of moving average to use for the middle band (default: SMA).</param>
     /// <returns>
     /// A <see cref="BollingerBandsResult"/> object containing the upper band, middle band,
     /// lower band values, and associated metadata.
@@ -32,13 +34,13 @@ public static partial class TAMath
         int startIdx,
         int endIdx,
         double[] real,
-        int timePeriod,
-        double nbDevUp,
-        double nbDevDn,
-        MAType maType)
+        int timePeriod = 5,
+        double nbDevUp = 2.0,
+        double nbDevDn = 2.0,
+        MAType maType = MAType.Sma)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outRealUpperBand = new double[endIdx - startIdx + 1];
         double[] outRealMiddleBand = new double[endIdx - startIdx + 1];
         double[] outRealLowerBand = new double[endIdx - startIdx + 1];
@@ -65,24 +67,6 @@ public static partial class TAMath
             outRealMiddleBand,
             outRealLowerBand);
     }
-        
-    /// <summary>
-    /// Calculates Bollinger Bands for a price series using default parameters.
-    /// </summary>
-    /// <remarks>
-    /// This overload uses default values: time period of 5, 2 standard deviations for both upper
-    /// and lower bands, and Simple Moving Average (SMA) for the middle band. Bollinger Bands
-    /// are widely used for identifying volatility and potential trading opportunities.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">Array of price values (typically closing prices).</param>
-    /// <returns>
-    /// A <see cref="BollingerBandsResult"/> object containing the upper band, middle band,
-    /// lower band values, and associated metadata.
-    /// </returns>
-    public static BollingerBandsResult BollingerBands(int startIdx, int endIdx, double[] real)
-        => BollingerBands(startIdx, endIdx, real, 5, 2.0, 2.0, MAType.Sma);
 
     /// <summary>
     /// Calculates Bollinger Bands for a price series using float arrays.
@@ -95,10 +79,10 @@ public static partial class TAMath
     /// <param name="startIdx">The starting index for the calculation range.</param>
     /// <param name="endIdx">The ending index for the calculation range.</param>
     /// <param name="real">Array of price values (typically closing prices).</param>
-    /// <param name="timePeriod">The number of periods for the moving average calculation.</param>
-    /// <param name="nbDevUp">The number of standard deviations for the upper band.</param>
-    /// <param name="nbDevDn">The number of standard deviations for the lower band.</param>
-    /// <param name="maType">The type of moving average to use for the middle band.</param>
+    /// <param name="timePeriod">The number of periods for the moving average calculation (default: 5).</param>
+    /// <param name="nbDevUp">The number of standard deviations for the upper band (default: 2.0).</param>
+    /// <param name="nbDevDn">The number of standard deviations for the lower band (default: 2.0).</param>
+    /// <param name="maType">The type of moving average to use for the middle band (default: SMA).</param>
     /// <returns>
     /// A <see cref="BollingerBandsResult"/> object containing the upper band, middle band,
     /// lower band values, and associated metadata.
@@ -107,27 +91,9 @@ public static partial class TAMath
         int startIdx,
         int endIdx,
         float[] real,
-        int timePeriod,
-        double nbDevUp,
-        double nbDevDn,
-        MAType maType)
-        => BollingerBands(startIdx, endIdx, real.ToDouble(), timePeriod, nbDevUp, nbDevDn, maType);
-        
-    /// <summary>
-    /// Calculates Bollinger Bands for a price series using float arrays with default parameters.
-    /// </summary>
-    /// <remarks>
-    /// This overload accepts float arrays and uses default values: time period of 5, 2 standard
-    /// deviations for both bands, and Simple Moving Average. The arrays are converted to double
-    /// arrays before performing the calculation.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">Array of price values (typically closing prices).</param>
-    /// <returns>
-    /// A <see cref="BollingerBandsResult"/> object containing the upper band, middle band,
-    /// lower band values, and associated metadata.
-    /// </returns>
-    public static BollingerBandsResult BollingerBands(int startIdx, int endIdx, float[] real)
-        => BollingerBands(startIdx, endIdx, real, 5, 2.0, 2.0, MAType.Sma);
+        int timePeriod = 5,
+        double nbDevUp = 2.0,
+        double nbDevDn = 2.0,
+        MAType maType = MAType.Sma)
+        => TAMathHelper.Execute(startIdx, endIdx, real, (s, e, r) => BollingerBands(s, e, r, timePeriod, nbDevUp, nbDevDn, maType));
 }

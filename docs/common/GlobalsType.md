@@ -9,7 +9,7 @@ Represents the global settings for the Technical Analysis library\.
 public sealed class GlobalsType
 ```
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; GlobalsType
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; GlobalsType
 
 | Constructors | |
 | :--- | :--- |

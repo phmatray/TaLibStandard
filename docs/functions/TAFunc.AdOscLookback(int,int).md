@@ -12,16 +12,16 @@ public static int AdOscLookback(int optInFastPeriod, int optInSlowPeriod);
 
 <a name='TechnicalAnalysis.Functions.TAFunc.AdOscLookback(int,int).optInFastPeriod'></a>
 
-`optInFastPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInFastPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for the fast EMA\. Valid range: 2 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.AdOscLookback(int,int).optInSlowPeriod'></a>
 
-`optInSlowPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInSlowPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for the slow EMA\. Valid range: 2 to 100000\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of historical data points required before the first valid A/D Oscillator value can be calculated, or \-1 if parameters are invalid\.

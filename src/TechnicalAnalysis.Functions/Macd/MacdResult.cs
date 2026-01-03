@@ -15,7 +15,7 @@ namespace TechnicalAnalysis.Functions;
 /// (difference between 12 and 26 period EMAs), the signal line (9 period EMA of MACD),
 /// and the histogram (difference between MACD and signal line).
 /// </remarks>
-public record MacdResult : IndicatorResult
+public record MacdResult : TripleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MacdResult"/> class.
@@ -33,11 +33,8 @@ public record MacdResult : IndicatorResult
         double[] macdValue,
         double[] macdSignal,
         double[] macdHist)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, macdValue, macdSignal, macdHist)
     {
-        MacdValue = macdValue;
-        MacdSignal = macdSignal;
-        MacdHist = macdHist;
     }
 
     /// <summary>
@@ -47,7 +44,7 @@ public record MacdResult : IndicatorResult
     /// An array of double values representing the MACD line, calculated as the difference
     /// between the fast EMA (typically 12 periods) and the slow EMA (typically 26 periods).
     /// </value>
-    public double[] MacdValue { get; }
+    public double[] MacdValue => Real0;
 
     /// <summary>
     /// Gets the array of MACD histogram values.
@@ -57,7 +54,7 @@ public record MacdResult : IndicatorResult
     /// between the MACD line and the signal line. Positive values indicate bullish momentum,
     /// while negative values indicate bearish momentum.
     /// </value>
-    public double[] MacdHist { get; }
+    public double[] MacdHist => Real2;
 
     /// <summary>
     /// Gets the array of signal line values.
@@ -67,5 +64,5 @@ public record MacdResult : IndicatorResult
     /// EMA of the MACD line. Crossovers between the MACD line and signal line often
     /// indicate potential buy or sell signals.
     /// </value>
-    public double[] MacdSignal { get; }
+    public double[] MacdSignal => Real1;
 }

@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -23,8 +25,8 @@ public static partial class TAMath
     /// </remarks>
     public static HtDcPeriodResult HtDcPeriod(int startIdx, int endIdx, double[] real)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.HtDcPeriod(startIdx, endIdx, real, ref outBegIdx, ref outNBElement, ref outReal);
@@ -43,5 +45,5 @@ public static partial class TAMath
     /// This overload accepts float input and converts it to double for calculation.
     /// </remarks>
     public static HtDcPeriodResult HtDcPeriod(int startIdx, int endIdx, float[] real)
-        => HtDcPeriod(startIdx, endIdx, real.ToDouble());
+        => TAMathHelper.Execute(startIdx, endIdx, real, HtDcPeriod);
 }

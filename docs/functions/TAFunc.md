@@ -9,7 +9,7 @@ Provides technical analysis functions for financial market analysis\.
 public static class TAFunc
 ```
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; TAFunc
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; TAFunc
 
 ### Remarks
 This class contains a comprehensive set of technical indicators and mathematical functions

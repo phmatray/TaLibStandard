@@ -15,7 +15,7 @@ namespace TechnicalAnalysis.Functions;
 /// MAMA (the adaptive moving average) and FAMA (Following Adaptive Moving Average),
 /// which work together to identify trends with minimal lag.
 /// </remarks>
-public record MamaResult : IndicatorResult
+public record MamaResult : DualOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="MamaResult"/> class.
@@ -26,10 +26,8 @@ public record MamaResult : IndicatorResult
     /// <param name="mama">The array of MESA Adaptive Moving Average values.</param>
     /// <param name="fama">The array of Following Adaptive Moving Average values.</param>
     public MamaResult(RetCode retCode, int begIdx, int nbElement, double[] mama, double[] fama)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, mama, fama)
     {
-        MAMA = mama;
-        FAMA = fama;
     }
 
     /// <summary>
@@ -41,7 +39,7 @@ public record MamaResult : IndicatorResult
     /// - When MAMA crosses above FAMA, it may signal a buy opportunity
     /// - When MAMA crosses below FAMA, it may signal a sell opportunity
     /// </remarks>
-    public double[] FAMA { get; }
+    public double[] FAMA => Real1;
 
     /// <summary>
     /// Gets the array of MESA Adaptive Moving Average (MAMA) values.
@@ -51,5 +49,5 @@ public record MamaResult : IndicatorResult
     /// It automatically adjusts its smoothing based on the measured cycle period,
     /// providing faster response to market changes than traditional moving averages.
     /// </remarks>
-    public double[] MAMA { get; }
+    public double[] MAMA => Real0;
 }

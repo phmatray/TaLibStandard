@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// further reduce lag compared to DEMA. It is highly responsive to price changes,
 /// making it excellent for identifying short-term price movements and trend reversals.
 /// </remarks>
-public record TemaResult : IndicatorResult
+public record TemaResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="TemaResult"/> class.
@@ -24,18 +24,7 @@ public record TemaResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of triple exponential moving average values.</param>
     public TemaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of triple exponential moving average values.
-    /// </summary>
-    /// <value>
-    /// An array of double values representing the Triple Exponential Moving Average at each data point.
-    /// TEMA values are calculated using a combination of three EMAs to minimize lag while
-    /// maintaining smoothness in the indicator line.
-    /// </value>
-    public double[] Real { get; }
 }

@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// The hyperbolic cosine is defined as cosh(x) = (e^x + e^(-x)) / 2.
 /// The result values are always greater than or equal to 1.
 /// </remarks>
-public record CoshResult : IndicatorResult
+public record CoshResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CoshResult"/> class.
@@ -24,17 +24,7 @@ public record CoshResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the hyperbolic cosine values.</param>
     public CoshResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of hyperbolic cosine values resulting from the COSH operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the hyperbolic cosine
-    /// of the corresponding element from the input array.
-    /// </value>
-    public double[] Real { get; }
 }

@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// The result is an array of angles in radians, where each element represents the arctangent
 /// of the corresponding input value. The output range is (-π/2, π/2).
 /// </remarks>
-public record AtanResult : IndicatorResult
+public record AtanResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AtanResult"/> class.
@@ -24,17 +24,7 @@ public record AtanResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the arctangent values in radians.</param>
     public AtanResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of arctangent values resulting from the ATAN operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the arctangent (in radians)
-    /// of the corresponding element from the input array.
-    /// </value>
-    public double[] Real { get; }
 }

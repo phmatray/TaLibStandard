@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 /// <summary>
@@ -39,10 +41,10 @@ public static partial class TAMath
     /// <param name="close">Array of closing prices.</param>
     /// <param name="timePeriod">Number of periods for the ADX calculation (default: 14).</param>
     /// <returns>An AdxResult containing the calculated values and metadata.</returns>
-    public static AdxResult Adx(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod)
+    public static AdxResult Adx(int startIdx, int endIdx, double[] high, double[] low, double[] close, int timePeriod = 14)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.Adx(
@@ -55,25 +57,9 @@ public static partial class TAMath
             ref outBegIdx,
             ref outNBElement,
             ref outReal);
-            
+
         return new AdxResult(retCode, outBegIdx, outNBElement, outReal);
     }
-
-    /// <summary>
-    /// Calculates the Average Directional Index (ADX) using the default period of 14.
-    /// </summary>
-    /// <remarks>
-    /// This overload uses a default time period of 14.
-    /// See the main overload for a detailed description of the ADX indicator.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <param name="close">Array of closing prices.</param>
-    /// <returns>An AdxResult containing the calculated values and metadata.</returns>
-    public static AdxResult Adx(int startIdx, int endIdx, double[] high, double[] low, double[] close)
-        => Adx(startIdx, endIdx, high, low, close, 14);
 
     /// <summary>
     /// Calculates the Average Directional Index (ADX) for the specified period using float arrays.
@@ -87,24 +73,8 @@ public static partial class TAMath
     /// <param name="high">Array of high prices.</param>
     /// <param name="low">Array of low prices.</param>
     /// <param name="close">Array of closing prices.</param>
-    /// <param name="timePeriod">Number of periods for the ADX calculation.</param>
+    /// <param name="timePeriod">Number of periods for the ADX calculation (default: 14).</param>
     /// <returns>An AdxResult containing the calculated values and metadata.</returns>
-    public static AdxResult Adx(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod)
-        => Adx(startIdx, endIdx, high.ToDouble(), low.ToDouble(), close.ToDouble(), timePeriod);
-
-    /// <summary>
-    /// Calculates the Average Directional Index (ADX) using the default period of 14 with float arrays.
-    /// </summary>
-    /// <remarks>
-    /// This is a float overload that converts input arrays to double arrays before processing.
-    /// Uses a default time period of 14.
-    /// </remarks>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="high">Array of high prices.</param>
-    /// <param name="low">Array of low prices.</param>
-    /// <param name="close">Array of closing prices.</param>
-    /// <returns>An AdxResult containing the calculated values and metadata.</returns>
-    public static AdxResult Adx(int startIdx, int endIdx, float[] high, float[] low, float[] close)
-        => Adx(startIdx, endIdx, high, low, close, 14);
+    public static AdxResult Adx(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod = 14)
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, close, (s, e, h, l, c) => Adx(s, e, h, l, c, timePeriod));
 }

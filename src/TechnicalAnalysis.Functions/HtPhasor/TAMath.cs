@@ -24,8 +24,8 @@ public static partial class TAMath
     /// </remarks>
     public static HtPhasorResult HtPhasor(int startIdx, int endIdx, double[] real)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outInPhase = new double[endIdx - startIdx + 1];
         double[] outQuadrature = new double[endIdx - startIdx + 1];
 

@@ -12,59 +12,59 @@ public static TechnicalAnalysis.Common.RetCode MovingAverage(int startIdx, int e
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverage(int,int,double[],int,TechnicalAnalysis.Common.MAType,int,int,double[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the input data\. Must be non\-negative\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverage(int,int,double[],int,TechnicalAnalysis.Common.MAType,int,int,double[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the input data\. Must be greater than or equal to startIdx\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverage(int,int,double[],int,TechnicalAnalysis.Common.MAType,int,int,double[]).inReal'></a>
 
-`inReal` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`inReal` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of input values to calculate the moving average from\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverage(int,int,double[],int,TechnicalAnalysis.Common.MAType,int,int,double[]).optInTimePeriod'></a>
 
-`optInTimePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of periods to use in the moving average calculation\. 
 Valid range: 1 to 100000\. When set to 1, input values are copied directly to output\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverage(int,int,double[],int,TechnicalAnalysis.Common.MAType,int,int,double[]).optInMAType'></a>
 
-`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 The type of moving average to calculate\. Each type has different characteristics
 regarding smoothing, lag, and responsiveness to price changes\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverage(int,int,double[],int,TechnicalAnalysis.Common.MAType,int,int,double[]).outBegIdx'></a>
 
-`outBegIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outBegIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Output parameter that indicates the index in the input array corresponding to the first output value\.
 This accounts for any lookback period required by the chosen moving average type\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverage(int,int,double[],int,TechnicalAnalysis.Common.MAType,int,int,double[]).outNBElement'></a>
 
-`outNBElement` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`outNBElement` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Output parameter that indicates the number of elements written to the output array\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MovingAverage(int,int,double[],int,TechnicalAnalysis.Common.MAType,int,int,double[]).outReal'></a>
 
-`outReal` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`outReal` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Output array containing the calculated moving average values\. The array must be pre\-allocated
 with sufficient size to hold the results\.
 
 #### Returns
-[TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode')  
-A [TechnicalAnalysis\.Common\.RetCode](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.RetCode 'TechnicalAnalysis\.Common\.RetCode') indicating the success or failure of the operation:
+[TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode')  
+A [TechnicalAnalysis\.Common\.RetCode](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.retcode 'TechnicalAnalysis\.Common\.RetCode') indicating the success or failure of the operation:
 \- Success: Calculation completed successfully
 \- OutOfRangeStartIndex: startIdx is less than 0
 \- OutOfRangeEndIndex: endIdx is less than 0 or less than startIdx

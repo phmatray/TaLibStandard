@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -35,17 +37,17 @@ public static partial class TAMath
         int endIdx,
         double[] high,
         double[] low,
-        double startValue,
-        double offsetOnReverse,
-        double accelerationInitLong,
-        double accelerationLong,
-        double accelerationMaxLong,
-        double accelerationInitShort,
-        double accelerationShort,
-        double accelerationMaxShort)
+        double startValue = 0.0,
+        double offsetOnReverse = 0.0,
+        double accelerationInitLong = 0.02,
+        double accelerationLong = 0.02,
+        double accelerationMaxLong = 0.2,
+        double accelerationInitShort = 0.02,
+        double accelerationShort = 0.02,
+        double accelerationMaxShort = 0.2)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.SarExt(
@@ -69,32 +71,20 @@ public static partial class TAMath
     }
 
     /// <summary>
-    /// Calculates the Parabolic SAR Extended (SAREXT) indicator using default parameters.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">An array of high prices.</param>
-    /// <param name="low">An array of low prices.</param>
-    /// <returns>A SarExtResult object containing the calculated values.</returns>
-    /// <remarks>Uses default values for all parameters with symmetric acceleration settings for long and short positions.</remarks>
-    public static SarExtResult SarExt(int startIdx, int endIdx, double[] high, double[] low)
-        => SarExt(startIdx, endIdx, high, low, 0.0, 0.0, 0.02, 0.02, 0.2, 0.02, 0.02, 0.2);
-
-    /// <summary>
     /// Calculates the Parabolic SAR Extended (SAREXT) indicator using float arrays.
     /// </summary>
     /// <param name="startIdx">The starting index for the calculation.</param>
     /// <param name="endIdx">The ending index for the calculation.</param>
     /// <param name="high">An array of high prices.</param>
     /// <param name="low">An array of low prices.</param>
-    /// <param name="startValue">The starting value for the SAR.</param>
-    /// <param name="offsetOnReverse">The offset on reverse.</param>
-    /// <param name="accelerationInitLong">The initial acceleration for long positions.</param>
-    /// <param name="accelerationLong">The acceleration increment for long positions.</param>
-    /// <param name="accelerationMaxLong">The maximum acceleration for long positions.</param>
-    /// <param name="accelerationInitShort">The initial acceleration for short positions.</param>
-    /// <param name="accelerationShort">The acceleration increment for short positions.</param>
-    /// <param name="accelerationMaxShort">The maximum acceleration for short positions.</param>
+    /// <param name="startValue">The starting value for the SAR (default: 0.0).</param>
+    /// <param name="offsetOnReverse">The offset on reverse (default: 0.0).</param>
+    /// <param name="accelerationInitLong">The initial acceleration for long positions (default: 0.02).</param>
+    /// <param name="accelerationLong">The acceleration increment for long positions (default: 0.02).</param>
+    /// <param name="accelerationMaxLong">The maximum acceleration for long positions (default: 0.2).</param>
+    /// <param name="accelerationInitShort">The initial acceleration for short positions (default: 0.02).</param>
+    /// <param name="accelerationShort">The acceleration increment for short positions (default: 0.02).</param>
+    /// <param name="accelerationMaxShort">The maximum acceleration for short positions (default: 0.2).</param>
     /// <returns>A SarExtResult object containing the calculated values.</returns>
     /// <remarks>
     /// This overload accepts float arrays and converts them to double arrays before processing.
@@ -105,40 +95,15 @@ public static partial class TAMath
         int endIdx,
         float[] high,
         float[] low,
-        double startValue,
-        double offsetOnReverse,
-        double accelerationInitLong,
-        double accelerationLong,
-        double accelerationMaxLong,
-        double accelerationInitShort,
-        double accelerationShort,
-        double accelerationMaxShort)
-        => SarExt(
-            startIdx,
-            endIdx,
-            high.ToDouble(),
-            low.ToDouble(),
-            startValue,
-            offsetOnReverse,
-            accelerationInitLong,
-            accelerationLong,
-            accelerationMaxLong,
-            accelerationInitShort,
-            accelerationShort,
-            accelerationMaxShort);
-        
-    /// <summary>
-    /// Calculates the Parabolic SAR Extended (SAREXT) indicator using float arrays and default parameters.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="high">An array of high prices.</param>
-    /// <param name="low">An array of low prices.</param>
-    /// <returns>A SarExtResult object containing the calculated values.</returns>
-    /// <remarks>
-    /// Uses default values for all parameters with symmetric acceleration settings.
-    /// This overload accepts float arrays and converts them to double arrays.
-    /// </remarks>
-    public static SarExtResult SarExt(int startIdx, int endIdx, float[] high, float[] low)
-        => SarExt(startIdx, endIdx, high, low, 0.0, 0.0, 0.02, 0.02, 0.2, 0.02, 0.02, 0.2);
+        double startValue = 0.0,
+        double offsetOnReverse = 0.0,
+        double accelerationInitLong = 0.02,
+        double accelerationLong = 0.02,
+        double accelerationMaxLong = 0.2,
+        double accelerationInitShort = 0.02,
+        double accelerationShort = 0.02,
+        double accelerationMaxShort = 0.2)
+        => TAMathHelper.Execute(startIdx, endIdx, high, low, (s, e, h, l) =>
+            SarExt(s, e, h, l, startValue, offsetOnReverse, accelerationInitLong, accelerationLong,
+                   accelerationMaxLong, accelerationInitShort, accelerationShort, accelerationMaxShort));
 }

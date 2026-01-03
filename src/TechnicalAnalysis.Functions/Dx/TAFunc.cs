@@ -66,23 +66,19 @@ public static partial class TAFunc
         double plusDI;
         double minusDI;
         int lookbackTotal;
-        if (startIdx < 0)
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outRealLocal = outReal;
+        int optInTimePeriodLocal = optInTimePeriod;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, outRealLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! ||
-            inLow == null! ||
-            inClose == null! ||
-            optInTimePeriod is < 2 or > 100000 ||
-            outReal == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         lookbackTotal = optInTimePeriod > 1 ? optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Dx] : 2;
@@ -259,6 +255,6 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid DX value can be calculated, or -1 if parameters are invalid.</returns>
     public static int DxLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Dx];
+        return ValidationHelper.ValidateLookback(optInTimePeriod, unstablePeriod: FuncUnstId.Dx);
     }
 }

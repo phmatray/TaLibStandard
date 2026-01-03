@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// The floor of a number is the largest integer that is less than or equal to that number.
 /// For example, floor(2.3) = 2, floor(-2.3) = -3, floor(5.0) = 5.
 /// </remarks>
-public record FloorResult : IndicatorResult
+public record FloorResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="FloorResult"/> class.
@@ -24,17 +24,7 @@ public record FloorResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the floor values.</param>
     public FloorResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of floor values resulting from the FLOOR operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the floor
-    /// of the corresponding element from the input array.
-    /// </value>
-    public double[] Real { get; }
 }

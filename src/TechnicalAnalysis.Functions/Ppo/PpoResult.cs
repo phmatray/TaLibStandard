@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// This makes it easier to compare momentum across different securities or time periods,
 /// as the values are normalized. It is similar to MACD but expressed as a percentage.
 /// </remarks>
-public record PpoResult : IndicatorResult
+public record PpoResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="PpoResult"/> class.
@@ -24,18 +24,7 @@ public record PpoResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of percentage price oscillator values.</param>
     public PpoResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of percentage price oscillator values.
-    /// </summary>
-    /// <value>
-    /// An array of double values representing the Percentage Price Oscillator at each data point.
-    /// Values are expressed as percentages, where positive values indicate the fast MA is above
-    /// the slow MA, and negative values indicate the fast MA is below the slow MA.
-    /// </value>
-    public double[] Real { get; }
 }

@@ -75,26 +75,25 @@ public static partial class TAFunc
         double ep;
         int isLong;
         double[] epTemp = new double[1];
-        if (startIdx < 0)
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outRealLocal = outReal;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, outRealLocal)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
+            return validation;
         }
 
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! || 
-            inLow == null! ||
-            optInOffsetOnReverse < 0.0 ||
+        if (optInOffsetOnReverse < 0.0 ||
             optInAccelerationInitLong < 0.0 ||
             optInAccelerationLong < 0.0 ||
             optInAccelerationMaxLong < 0.0 ||
             optInAccelerationInitShort < 0.0 ||
             optInAccelerationShort < 0.0 ||
-            optInAccelerationMaxShort < 0.0 ||
-            outReal == null!)
+            optInAccelerationMaxShort < 0.0)
         {
             return BadParam;
         }

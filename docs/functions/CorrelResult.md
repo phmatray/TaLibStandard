@@ -6,12 +6,12 @@
 Represents the result of the Pearson Correlation Coefficient calculation\.
 
 ```csharp
-public record CorrelResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.CorrelResult>
+public record CorrelResult : TechnicalAnalysis.Common.SingleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.CorrelResult>
 ```
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.IndicatorResult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; CorrelResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.SingleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.singleoutputresult 'TechnicalAnalysis\.Common\.SingleOutputResult') &#129106; CorrelResult
 
-Implements [System\.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')[CorrelResult](CorrelResult.md 'TechnicalAnalysis\.Functions\.CorrelResult')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')
+Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[CorrelResult](CorrelResult.md 'TechnicalAnalysis\.Functions\.CorrelResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
 ### Remarks
 The Correlation Coefficient measures the linear relationship between two data series, 
@@ -24,7 +24,3 @@ pairs trading strategies, and understanding market relationships\.
 | Constructors | |
 | :--- | :--- |
 | [CorrelResult\(RetCode, int, int, double\[\]\)](CorrelResult.CorrelResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.CorrelResult\.CorrelResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [CorrelResult](CorrelResult.md 'TechnicalAnalysis\.Functions\.CorrelResult') class\. |
-
-| Properties | |
-| :--- | :--- |
-| [Real](CorrelResult.Real.md 'TechnicalAnalysis\.Functions\.CorrelResult\.Real') | Gets the array of correlation coefficient values\. |

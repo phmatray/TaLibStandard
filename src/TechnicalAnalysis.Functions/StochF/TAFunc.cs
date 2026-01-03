@@ -66,25 +66,22 @@ public static partial class TAFunc
         ref double[] outFastD)
     {
         double[] tempBuffer;
-        if (startIdx < 0)
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outFastDLocal = outFastD;
+        double[] outFastKLocal = outFastK;
+        int optInFastDPeriodLocal = optInFastDPeriod;
+        int optInFastKPeriodLocal = optInFastKPeriod;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, outFastKLocal, outFastDLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInFastKPeriodLocal, 1),
+            () => ValidationHelper.ValidatePeriodRange(optInFastDPeriodLocal, 1)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! ||
-            inLow == null! ||
-            inClose == null! ||
-            optInFastKPeriod is < 1 or > 100000 ||
-            optInFastDPeriod is < 1 or > 100000 ||
-            outFastK == null! ||
-            outFastD == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         int lookbackK = optInFastKPeriod - 1;

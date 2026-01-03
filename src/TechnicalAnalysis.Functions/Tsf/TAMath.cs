@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -22,27 +24,16 @@ public static partial class TAMath
     /// TSF can be used to identify the underlying trend and potential support/resistance levels.
     /// The indicator attempts to predict future values based on historical linear regression analysis.
     /// </remarks>
-    public static TsfResult Tsf(int startIdx, int endIdx, double[] real, int timePeriod)
+    public static TsfResult Tsf(int startIdx, int endIdx, double[] real, int timePeriod = 14)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.Tsf(startIdx, endIdx, real, timePeriod, ref outBegIdx, ref outNBElement, ref outReal);
-            
+
         return new TsfResult(retCode, outBegIdx, outNBElement, outReal);
     }
-
-    /// <summary>
-    /// Calculates the Time Series Forecast (TSF) indicator using the default time period.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="real">An array of real values (typically closing prices).</param>
-    /// <returns>A TsfResult object containing the calculated values.</returns>
-    /// <remarks>Uses the default time period of 14.</remarks>
-    public static TsfResult Tsf(int startIdx, int endIdx, double[] real)
-        => Tsf(startIdx, endIdx, real, 14);
 
     /// <summary>
     /// Calculates the Time Series Forecast (TSF) indicator using float arrays.
@@ -50,25 +41,12 @@ public static partial class TAMath
     /// <param name="startIdx">The starting index for the calculation.</param>
     /// <param name="endIdx">The ending index for the calculation.</param>
     /// <param name="real">An array of real values (typically closing prices).</param>
-    /// <param name="timePeriod">The number of periods for the linear regression.</param>
+    /// <param name="timePeriod">The number of periods for the linear regression (default: 14).</param>
     /// <returns>A TsfResult object containing the calculated values.</returns>
     /// <remarks>
     /// This overload accepts float arrays and converts them to double arrays before processing.
     /// This may result in a minor performance overhead due to the conversion process.
     /// </remarks>
-    public static TsfResult Tsf(int startIdx, int endIdx, float[] real, int timePeriod)
-        => Tsf(startIdx, endIdx, real.ToDouble(), timePeriod);
-            
-    /// <summary>
-    /// Calculates the Time Series Forecast (TSF) indicator using float arrays and the default time period.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation.</param>
-    /// <param name="endIdx">The ending index for the calculation.</param>
-    /// <param name="real">An array of real values (typically closing prices).</param>
-    /// <returns>A TsfResult object containing the calculated values.</returns>
-    /// <remarks>
-    /// Uses the default time period of 14. This overload accepts float arrays and converts them to double arrays.
-    /// </remarks>
-    public static TsfResult Tsf(int startIdx, int endIdx, float[] real)
-        => Tsf(startIdx, endIdx, real, 14);
+    public static TsfResult Tsf(int startIdx, int endIdx, float[] real, int timePeriod = 14)
+        => TAMathHelper.Execute(startIdx, endIdx, real, (s, e, r) => Tsf(s, e, r, timePeriod));
 }

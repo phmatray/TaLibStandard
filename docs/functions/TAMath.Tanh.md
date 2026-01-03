@@ -21,19 +21,19 @@ public static TechnicalAnalysis.Functions.TanhResult Tanh(int startIdx, int endI
 
 <a name='TechnicalAnalysis.Functions.TAMath.Tanh(int,int,double[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation within the array\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Tanh(int,int,double[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation within the array\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Tanh(int,int,double[]).real'></a>
 
-`real` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`real` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of real values to calculate the hyperbolic tangent for\.
 
@@ -61,19 +61,19 @@ public static TechnicalAnalysis.Functions.TanhResult Tanh(int startIdx, int endI
 
 <a name='TechnicalAnalysis.Functions.TAMath.Tanh(int,int,float[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation within the array\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Tanh(int,int,float[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation within the array\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Tanh(int,int,float[]).real'></a>
 
-`real` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`real` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of real values to calculate the hyperbolic tangent for\.
 

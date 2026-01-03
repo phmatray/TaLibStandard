@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// producing an output array where each element is the sum of the corresponding
 /// elements from the input arrays.
 /// </remarks>
-public record AddResult : IndicatorResult
+public record AddResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AddResult"/> class.
@@ -24,17 +24,7 @@ public record AddResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the sum values from the addition operation.</param>
     public AddResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of sum values resulting from the element-wise addition operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the sum of the corresponding
-    /// elements from the two input arrays.
-    /// </value>
-    public double[] Real { get; }
 }

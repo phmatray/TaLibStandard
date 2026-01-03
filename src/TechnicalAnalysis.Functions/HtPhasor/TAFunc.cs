@@ -64,8 +64,8 @@ public static partial class TAFunc
         ref double[] outQuadrature)
     {
         double smoothedValue;
-        const double A = 0.0962;
-        const double B = 0.5769;
+        const double A = HilbertTransformConstants.A;
+        const double B = HilbertTransformConstants.B;
         double[] detrenderOdd = new double[3];
         double[] detrenderEven = new double[3];
         double[] q1Odd = new double[3];
@@ -74,21 +74,16 @@ public static partial class TAFunc
         double[] jIEven = new double[3];
         double[] jQOdd = new double[3];
         double[] jQEven = new double[3];
-        if (startIdx < 0)
+        double[] inRealLocal = inReal;
+        double[] outInPhaseLocal = outInPhase;
+        double[] outQuadratureLocal = outQuadrature;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inRealLocal, outInPhaseLocal, outQuadratureLocal)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null! ||
-            outInPhase == null! ||
-            outQuadrature == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         double rad2Deg = 180.0 / (4.0 * Math.Atan(1.0));
@@ -363,8 +358,8 @@ public static partial class TAFunc
     /// The lookback period consists of:
     /// - A fixed period of 32 bars for the Hilbert Transform calculation
     /// - Plus any additional unstable period configured for this function
-    /// 
-    /// The unstable period can be configured using TACore.SetUnstablePeriod() to adjust
+    ///
+    /// The unstable period can be configured by modifying TACore.Globals.UnstablePeriod[FuncUnstId.HtPhasor] to adjust
     /// how many additional bars are needed for the algorithm to stabilize. By default,
     /// the unstable period is 0, making the total lookback period 32 bars.
     /// 

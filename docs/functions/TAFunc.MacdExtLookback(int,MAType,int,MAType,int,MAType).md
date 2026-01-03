@@ -12,42 +12,42 @@ public static int MacdExtLookback(int optInFastPeriod, TechnicalAnalysis.Common.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MacdExtLookback(int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType).optInFastPeriod'></a>
 
-`optInFastPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInFastPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for the fast moving average\. Valid range: 2 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MacdExtLookback(int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType).optInFastMAType'></a>
 
-`optInFastMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInFastMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 Type of moving average to use for the fast MA\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MacdExtLookback(int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType).optInSlowPeriod'></a>
 
-`optInSlowPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInSlowPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for the slow moving average\. Valid range: 2 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MacdExtLookback(int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType).optInSlowMAType'></a>
 
-`optInSlowMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInSlowMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 Type of moving average to use for the slow MA\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MacdExtLookback(int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType).optInSignalPeriod'></a>
 
-`optInSignalPeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInSignalPeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Number of periods for the signal line moving average\. Valid range: 1 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.MacdExtLookback(int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType,int,TechnicalAnalysis.Common.MAType).optInSignalMAType'></a>
 
-`optInSignalMAType` [TechnicalAnalysis\.Common\.MAType](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.MAType 'TechnicalAnalysis\.Common\.MAType')
+`optInSignalMAType` [TechnicalAnalysis\.Common\.MAType](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.matype 'TechnicalAnalysis\.Common\.MAType')
 
 Type of moving average to use for the signal line\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of historical data points required before the first valid MACD Extended value can be calculated, or \-1 if parameters are invalid\.
 
 ### Remarks

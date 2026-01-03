@@ -51,34 +51,19 @@ public static partial class TAFunc
         ref double[] outAroonUp)
     {
         int i;
-        if (startIdx < 0)
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outAroonDownLocal = outAroonDown;
+        double[] outAroonUpLocal = outAroonUp;
+        int optInTimePeriodLocal = optInTimePeriod;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, outAroonDownLocal, outAroonUpLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! || inLow == null!)
-        {
-            return BadParam;
-        }
-
-        if (optInTimePeriod is < 2 or > 100000)
-        {
-            return BadParam;
-        }
-
-        if (outAroonDown == null!)
-        {
-            return BadParam;
-        }
-
-        if (outAroonUp == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         if (startIdx < optInTimePeriod)
@@ -170,6 +155,6 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid Aroon values can be calculated, or -1 if parameters are invalid.</returns>
     public static int AroonLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod;
+        return ValidationHelper.ValidateLookback(optInTimePeriod);
     }
 }

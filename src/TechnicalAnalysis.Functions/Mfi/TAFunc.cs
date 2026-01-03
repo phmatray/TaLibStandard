@@ -53,24 +53,20 @@ public static partial class TAFunc
     {
         int moneyFlowIdx = 0;
         int maxIdxMoneyFlow = 49;
-        if (startIdx < 0)
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] inVolumeLocal = inVolume;
+        double[] outRealLocal = outReal;
+        int optInTimePeriodLocal = optInTimePeriod;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, inVolumeLocal, outRealLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! || 
-            inLow == null! ||
-            inClose == null! ||
-            inVolume == null! ||
-            optInTimePeriod is < 2 or > 100000 ||
-            outReal == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         MoneyFlow[] moneyFlow = new MoneyFlow[optInTimePeriod];
@@ -233,6 +229,6 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid MFI value can be calculated, or -1 if parameters are invalid.</returns>
     public static int MfiLookback(int optInTimePeriod)
     {
-        return optInTimePeriod is < 2 or > 100000 ? -1 : optInTimePeriod + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Mfi];
+        return ValidationHelper.ValidateLookback(optInTimePeriod, unstablePeriod: FuncUnstId.Mfi);
     }
 }

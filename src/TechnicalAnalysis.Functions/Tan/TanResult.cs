@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// Input values are expected to be in radians. The tangent is defined as sin(x)/cos(x).
 /// Note that tangent has vertical asymptotes at odd multiples of π/2, where the function is undefined.
 /// </remarks>
-public record TanResult : IndicatorResult
+public record TanResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="TanResult"/> class.
@@ -24,17 +24,7 @@ public record TanResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the tangent values.</param>
     public TanResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of tangent values resulting from the TAN operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the tangent
-    /// of the corresponding element from the input array (in radians).
-    /// </value>
-    public double[] Real { get; }
 }

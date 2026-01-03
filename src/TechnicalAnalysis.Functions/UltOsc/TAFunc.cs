@@ -70,25 +70,20 @@ public static partial class TAFunc
         int[] usedFlag = new int[3];
         int[] periods = new int[3];
         int[] sortedPeriods = new int[3];
-        if (startIdx < 0)
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outRealLocal = outReal;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, outRealLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod1, 1),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod2, 1),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod3, 1)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inHigh == null! ||
-            inLow == null! ||
-            inClose == null! ||
-            optInTimePeriod1 is < 1 or > 100000 ||
-            optInTimePeriod2 is < 1 or > 100000 ||
-            optInTimePeriod3 is < 1 or > 100000 ||
-            outReal == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         outBegIdx = 0;

@@ -39,21 +39,16 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        if (startIdx < 0)
+        double[] inReal0Local = inReal0;
+        double[] inReal1Local = inReal1;
+        double[] outRealLocal = outReal;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inReal0Local, inReal1Local, outRealLocal)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal0 == null! ||
-            inReal1 == null! ||
-            outReal == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         int i = startIdx;

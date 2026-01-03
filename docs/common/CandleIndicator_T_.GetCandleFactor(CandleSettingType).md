@@ -17,5 +17,5 @@ protected virtual double GetCandleFactor(TechnicalAnalysis.Common.CandleSettingT
 The candle setting type to get the factor for\.
 
 #### Returns
-[System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')  
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
 A double representing the factor\.

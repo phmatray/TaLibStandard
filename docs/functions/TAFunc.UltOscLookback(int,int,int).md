@@ -12,22 +12,22 @@ public static int UltOscLookback(int optInTimePeriod1, int optInTimePeriod2, int
 
 <a name='TechnicalAnalysis.Functions.TAFunc.UltOscLookback(int,int,int).optInTimePeriod1'></a>
 
-`optInTimePeriod1` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod1` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 First time period\. Valid range: 1 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.UltOscLookback(int,int,int).optInTimePeriod2'></a>
 
-`optInTimePeriod2` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod2` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Second time period\. Valid range: 1 to 100000\.
 
 <a name='TechnicalAnalysis.Functions.TAFunc.UltOscLookback(int,int,int).optInTimePeriod3'></a>
 
-`optInTimePeriod3` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod3` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 Third time period\. Valid range: 1 to 100000\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of historical data points required before the first valid Ultimate Oscillator value can be calculated, or \-1 if parameters are invalid\.

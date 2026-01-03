@@ -17,7 +17,7 @@ public class Candle3WhiteSoldiers<T> : TechnicalAnalysis.Common.CandleIndicator<
 
 The type of the array elements\.
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.CandleIndicator&lt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1')[T](Candle3WhiteSoldiers_T_.md#TechnicalAnalysis.Candles.Candle3WhiteSoldiers_T_.T 'TechnicalAnalysis\.Candles\.Candle3WhiteSoldiers\<T\>\.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.CandleIndicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1') &#129106; Candle3WhiteSoldiers\<T\>
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.CandleIndicator&lt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1')[T](Candle3WhiteSoldiers_T_.md#TechnicalAnalysis.Candles.Candle3WhiteSoldiers_T_.T 'TechnicalAnalysis\.Candles\.Candle3WhiteSoldiers\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1') &#129106; Candle3WhiteSoldiers\<T\>
 
 | Constructors | |
 | :--- | :--- |

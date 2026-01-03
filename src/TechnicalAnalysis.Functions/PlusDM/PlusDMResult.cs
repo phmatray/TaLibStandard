@@ -10,7 +10,7 @@ namespace TechnicalAnalysis.Functions;
 /// Represents the result of the Plus Directional Movement (+DM) indicator calculation.
 /// +DM measures upward price movement and is used as a component in calculating the Directional Movement System indicators.
 /// </summary>
-public record PlusDMResult : IndicatorResult
+public record PlusDMResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="PlusDMResult"/> class.
@@ -20,15 +20,7 @@ public record PlusDMResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the calculated +DM values.</param>
     public PlusDMResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Plus Directional Movement values.
-    /// Each value represents the positive (upward) directional movement for the period.
-    /// Calculated as the difference between current high and previous high when it's positive and greater than the downward movement.
-    /// </summary>
-    public double[] Real { get; }
 }

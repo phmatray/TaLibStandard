@@ -376,7 +376,7 @@
         // Pattern signals
         if (_patterns != null)
         {
-            var recentPatterns = _patterns.TakeLast(5);
+            IEnumerable<CandlePatternResult> recentPatterns = _patterns.TakeLast(5);
             bullishSignals += recentPatterns.Count(p => p.Value > 0);
             bearishSignals += recentPatterns.Count(p => p.Value < 0);
         }

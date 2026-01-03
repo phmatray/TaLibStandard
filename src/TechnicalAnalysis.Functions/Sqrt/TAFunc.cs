@@ -39,38 +39,14 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        if (startIdx < 0)
-        {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null!)
-        {
-            return BadParam;
-        }
-
-        if (outReal == null!)
-        {
-            return BadParam;
-        }
-
-        int i = startIdx;
-        int outIdx = 0;
-        while (i <= endIdx)
-        {
-            outReal[outIdx] = Math.Sqrt(inReal[i]);
-            i++;
-            outIdx++;
-        }
-
-        outNBElement = outIdx;
-        outBegIdx = startIdx;
-        return Success;
+        return MathHelper.ApplyMathFunction(
+            startIdx,
+            endIdx,
+            inReal,
+            ref outBegIdx,
+            ref outNBElement,
+            ref outReal,
+            Math.Sqrt);
     }
 
     /// <summary>

@@ -12,24 +12,24 @@ public CandleIdentical3Crows(in T[] open, in T[] high, in T[] low, in T[] close)
 
 <a name='TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.CandleIdentical3Crows(T[],T[],T[],T[]).open'></a>
 
-`open` [T](CandleIdentical3Crows_T_.md#TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.T 'TechnicalAnalysis\.Candles\.CandleIdentical3Crows\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`open` [T](CandleIdentical3Crows_T_.md#TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.T 'TechnicalAnalysis\.Candles\.CandleIdentical3Crows\<T\>\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of open prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.CandleIdentical3Crows(T[],T[],T[],T[]).high'></a>
 
-`high` [T](CandleIdentical3Crows_T_.md#TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.T 'TechnicalAnalysis\.Candles\.CandleIdentical3Crows\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`high` [T](CandleIdentical3Crows_T_.md#TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.T 'TechnicalAnalysis\.Candles\.CandleIdentical3Crows\<T\>\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of high prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.CandleIdentical3Crows(T[],T[],T[],T[]).low'></a>
 
-`low` [T](CandleIdentical3Crows_T_.md#TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.T 'TechnicalAnalysis\.Candles\.CandleIdentical3Crows\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`low` [T](CandleIdentical3Crows_T_.md#TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.T 'TechnicalAnalysis\.Candles\.CandleIdentical3Crows\<T\>\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of low prices\.
 
 <a name='TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.CandleIdentical3Crows(T[],T[],T[],T[]).close'></a>
 
-`close` [T](CandleIdentical3Crows_T_.md#TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.T 'TechnicalAnalysis\.Candles\.CandleIdentical3Crows\<T\>\.T')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`close` [T](CandleIdentical3Crows_T_.md#TechnicalAnalysis.Candles.CandleIdentical3Crows_T_.T 'TechnicalAnalysis\.Candles\.CandleIdentical3Crows\<T\>\.T')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 An array of close prices\.

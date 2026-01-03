@@ -12,12 +12,12 @@ public static int RocR100Lookback(int optInTimePeriod);
 
 <a name='TechnicalAnalysis.Functions.TAFunc.RocR100Lookback(int).optInTimePeriod'></a>
 
-`optInTimePeriod` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`optInTimePeriod` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The number of periods used in the RocR100 calculation \(valid range: 1\-100000\)\.
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of data points required before the first valid RocR100 value can be calculated\.
 Returns \-1 if the time period is outside the valid range\.
 

@@ -6,12 +6,12 @@
 Represents the result of calculating the Rate of Change Ratio \(ROCR\) indicator\.
 
 ```csharp
-public record RocRResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Functions.RocRResult>
+public record RocRResult : TechnicalAnalysis.Common.SingleOutputResult, System.IEquatable<TechnicalAnalysis.Functions.RocRResult>
 ```
 
-Inheritance [System\.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://docs.microsoft.com/en-us/dotnet/api/TechnicalAnalysis.Common.IndicatorResult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; RocRResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.IndicatorResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.indicatorresult 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; [TechnicalAnalysis\.Common\.SingleOutputResult](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.singleoutputresult 'TechnicalAnalysis\.Common\.SingleOutputResult') &#129106; RocRResult
 
-Implements [System\.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')[RocRResult](RocRResult.md 'TechnicalAnalysis\.Functions\.RocRResult')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System\.IEquatable\`1')
+Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[RocRResult](RocRResult.md 'TechnicalAnalysis\.Functions\.RocRResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 
 ### Remarks
 The Rate of Change Ratio measures the ratio between the current price and the price n periods ago\.
@@ -21,7 +21,3 @@ for comparing relative strength and identifying momentum changes in price moveme
 | Constructors | |
 | :--- | :--- |
 | [RocRResult\(RetCode, int, int, double\[\]\)](RocRResult.RocRResult(RetCode,int,int,double[]).md 'TechnicalAnalysis\.Functions\.RocRResult\.RocRResult\(TechnicalAnalysis\.Common\.RetCode, int, int, double\[\]\)') | Initializes a new instance of the [RocRResult](RocRResult.md 'TechnicalAnalysis\.Functions\.RocRResult') class\. |
-
-| Properties | |
-| :--- | :--- |
-| [Real](RocRResult.Real.md 'TechnicalAnalysis\.Functions\.RocRResult\.Real') | Gets the array of Rate of Change Ratio values\. |

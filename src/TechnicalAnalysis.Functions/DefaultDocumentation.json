@@ -10,6 +10,6 @@
       "summary",
       "TableOfContents"
     ],
-    "Markdown.TableOfContentsModes": "IncludeKind,IncludeSummary",
+    "Markdown.TableOfContentsModes": "IncludeKind,IncludeSummary"
   }
 }

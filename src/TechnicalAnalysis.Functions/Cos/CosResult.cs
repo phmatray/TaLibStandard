@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// Input values are expected to be in radians. The result is an array where each
 /// element represents the cosine of the corresponding input angle, with values in the range [-1, 1].
 /// </remarks>
-public record CosResult : IndicatorResult
+public record CosResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CosResult"/> class.
@@ -24,17 +24,7 @@ public record CosResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the cosine values.</param>
     public CosResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of cosine values resulting from the COS operation.
-    /// </summary>
-    /// <value>
-    /// An array of doubles where each element represents the cosine
-    /// of the corresponding element from the input array (in radians).
-    /// </value>
-    public double[] Real { get; }
 }

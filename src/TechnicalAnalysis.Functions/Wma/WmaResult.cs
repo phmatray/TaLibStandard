@@ -14,7 +14,7 @@ namespace TechnicalAnalysis.Functions;
 /// to recent prices. Unlike the SMA which treats all periods equally, the WMA provides
 /// a middle ground between the responsiveness of the EMA and the smoothness of the SMA.
 /// </remarks>
-public record WmaResult : IndicatorResult
+public record WmaResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="WmaResult"/> class.
@@ -24,18 +24,7 @@ public record WmaResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of weighted moving average values.</param>
     public WmaResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of weighted moving average values.
-    /// </summary>
-    /// <value>
-    /// An array of double values representing the Weighted Moving Average at each data point.
-    /// Each value is calculated using linearly decreasing weights, where the most recent
-    /// period has the highest weight.
-    /// </value>
-    public double[] Real { get; }
 }

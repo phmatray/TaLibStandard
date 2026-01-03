@@ -10,7 +10,7 @@ namespace TechnicalAnalysis.Functions;
 /// Represents the result of the Variance indicator calculation.
 /// Variance is a statistical measure of volatility that represents the squared deviations from the mean price.
 /// </summary>
-public record VarianceResult : IndicatorResult
+public record VarianceResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="VarianceResult"/> class.
@@ -20,15 +20,7 @@ public record VarianceResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array containing the calculated variance values.</param>
     public VarianceResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Variance values.
-    /// Each value represents the average of the squared differences from the mean.
-    /// Variance is the square of standard deviation and provides a measure of price dispersion.
-    /// </summary>
-    public double[] Real { get; }
 }

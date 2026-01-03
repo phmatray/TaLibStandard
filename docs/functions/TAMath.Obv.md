@@ -21,25 +21,25 @@ public static TechnicalAnalysis.Functions.ObvResult Obv(int startIdx, int endIdx
 
 <a name='TechnicalAnalysis.Functions.TAMath.Obv(int,int,double[],double[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Obv(int,int,double[],double[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Obv(int,int,double[],double[]).real'></a>
 
-`real` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`real` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of prices \(typically closing prices\)\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Obv(int,int,double[],double[]).volume'></a>
 
-`volume` [System\.Double](https://docs.microsoft.com/en-us/dotnet/api/System.Double 'System\.Double')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`volume` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of trading volumes\.
 
@@ -69,25 +69,25 @@ public static TechnicalAnalysis.Functions.ObvResult Obv(int startIdx, int endIdx
 
 <a name='TechnicalAnalysis.Functions.TAMath.Obv(int,int,float[],float[]).startIdx'></a>
 
-`startIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`startIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The starting index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Obv(int,int,float[],float[]).endIdx'></a>
 
-`endIdx` [System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')
+`endIdx` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
 The ending index for the calculation\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Obv(int,int,float[],float[]).real'></a>
 
-`real` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`real` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of prices \(typically closing prices\)\.
 
 <a name='TechnicalAnalysis.Functions.TAMath.Obv(int,int,float[],float[]).volume'></a>
 
-`volume` [System\.Single](https://docs.microsoft.com/en-us/dotnet/api/System.Single 'System\.Single')[\[\]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System\.Array')
+`volume` [System\.Single](https://learn.microsoft.com/en-us/dotnet/api/system.single 'System\.Single')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 Array of trading volumes\.
 

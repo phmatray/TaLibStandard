@@ -11,7 +11,7 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator measures momentum by calculating the difference between the sum of gains and losses
 /// over a specified period, normalized to oscillate between -100 and +100.
 /// </summary>
-public record CmoResult : IndicatorResult
+public record CmoResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="CmoResult"/> class.
@@ -21,15 +21,7 @@ public record CmoResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of CMO values ranging from -100 to +100.</param>
     public CmoResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Chande Momentum Oscillator values.
-    /// Values range from -100 to +100, where positive values indicate upward momentum and negative values
-    /// indicate downward momentum. Readings above +50 or below -50 suggest strong momentum.
-    /// </summary>
-    public double[] Real { get; }
 }

@@ -4,6 +4,8 @@
 // See the LICENSE file in the project root for the full license text.
 // For more information, visit https://github.com/phmatray/TaLibStandard.
 
+using TechnicalAnalysis.Functions.Internal;
+
 namespace TechnicalAnalysis.Functions;
 
 public static partial class TAMath
@@ -33,11 +35,11 @@ public static partial class TAMath
         int startIdx,
         int endIdx,
         double[] real,
-        int timePeriod,
-        MAType maType)
+        int timePeriod = 30,
+        MAType maType = MAType.Sma)
     {
-        int outBegIdx = default;
-        int outNBElement = default;
+        int outBegIdx = 0;
+        int outNBElement = 0;
         double[] outReal = new double[endIdx - startIdx + 1];
 
         RetCode retCode = TAFunc.MovingAverage(
@@ -54,40 +56,17 @@ public static partial class TAMath
     }
 
     /// <summary>
-    /// Calculates a Simple Moving Average using default parameters.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">The input price data.</param>
-    /// <returns>A MovingAverageResult containing the calculated moving average values.</returns>
-    public static MovingAverageResult MovingAverage(int startIdx, int endIdx, double[] real)
-        => MovingAverage(startIdx, endIdx, real, 30, MAType.Sma);
-
-    /// <summary>
     /// Calculates a Moving Average of the specified type for the input price data.
     /// </summary>
     /// <param name="startIdx">The starting index for the calculation range.</param>
     /// <param name="endIdx">The ending index for the calculation range.</param>
     /// <param name="real">The input price data.</param>
-    /// <param name="timePeriod">The number of periods to use in the calculation.</param>
-    /// <param name="maType">The type of moving average to calculate.</param>
+    /// <param name="timePeriod">The number of periods to use in the calculation (default: 30).</param>
+    /// <param name="maType">The type of moving average to calculate (default: SMA).</param>
     /// <returns>A MovingAverageResult containing the calculated moving average values.</returns>
     /// <remarks>
     /// This overload accepts float input and converts it to double for calculation.
     /// </remarks>
-    public static MovingAverageResult MovingAverage(int startIdx, int endIdx, float[] real, int timePeriod, MAType maType)
-        => MovingAverage(startIdx, endIdx, real.ToDouble(), timePeriod, maType);
-
-    /// <summary>
-    /// Calculates a Simple Moving Average using default parameters.
-    /// </summary>
-    /// <param name="startIdx">The starting index for the calculation range.</param>
-    /// <param name="endIdx">The ending index for the calculation range.</param>
-    /// <param name="real">The input price data.</param>
-    /// <returns>A MovingAverageResult containing the calculated moving average values.</returns>
-    /// <remarks>
-    /// This overload accepts float input and converts it to double for calculation.
-    /// </remarks>
-    public static MovingAverageResult MovingAverage(int startIdx, int endIdx, float[] real)
-        => MovingAverage(startIdx, endIdx, real, 30, MAType.Sma);
+    public static MovingAverageResult MovingAverage(int startIdx, int endIdx, float[] real, int timePeriod = 30, MAType maType = MAType.Sma)
+        => TAMathHelper.Execute(startIdx, endIdx, real, (s, e, r) => MovingAverage(s, e, r, timePeriod, maType));
 }

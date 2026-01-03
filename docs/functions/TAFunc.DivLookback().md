@@ -10,5 +10,5 @@ public static int DivLookback();
 ```
 
 #### Returns
-[System\.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System\.Int32')  
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 Always returns 0 as division requires no historical data\.

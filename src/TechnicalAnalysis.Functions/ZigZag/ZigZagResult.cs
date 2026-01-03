@@ -15,7 +15,7 @@ namespace TechnicalAnalysis.Functions;
 /// reversals and eliminates random price fluctuations, making it easier to see the underlying
 /// price structure and major support/resistance levels.
 /// </remarks>
-public record ZigZagResult : IndicatorResult
+public record ZigZagResult : SingleOutputResult
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ZigZagResult"/> class.
@@ -25,19 +25,7 @@ public record ZigZagResult : IndicatorResult
     /// <param name="nbElement">The number of valid data points in the output array.</param>
     /// <param name="real">The array of Zig Zag values at reversal points.</param>
     public ZigZagResult(RetCode retCode, int begIdx, int nbElement, double[] real)
-        : base(retCode, begIdx, nbElement)
+        : base(retCode, begIdx, nbElement, real)
     {
-        Real = real;
     }
-
-    /// <summary>
-    /// Gets the array of Zig Zag values.
-    /// </summary>
-    /// <remarks>
-    /// The array contains values only at significant reversal points (peaks and troughs).
-    /// Intermediate values may be zero or interpolated depending on the implementation.
-    /// Note that the Zig Zag indicator repaints - the last leg can change as new data arrives,
-    /// making it unsuitable for real-time trading signals but useful for historical analysis.
-    /// </remarks>
-    public double[] Real { get; }
 }

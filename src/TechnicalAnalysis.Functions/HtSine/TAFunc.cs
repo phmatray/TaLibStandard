@@ -66,8 +66,8 @@ public static partial class TAFunc
         ref double[] outLeadSine)
     {
         double smoothedValue;
-        const double A = 0.0962;
-        const double B = 0.5769;
+        const double A = HilbertTransformConstants.A;
+        const double B = HilbertTransformConstants.B;
         double[] detrenderOdd = new double[3];
         double[] detrenderEven = new double[3];
         double[] q1Odd = new double[3];
@@ -78,21 +78,16 @@ public static partial class TAFunc
         double[] jQEven = new double[3];
         int smoothPriceIdx = 0;
         int maxIdxSmoothPrice = 49;
-        if (startIdx < 0)
+        double[] inRealLocal = inReal;
+        double[] outLeadSineLocal = outLeadSine;
+        double[] outSineLocal = outSine;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => ValidationHelper.ValidateArrays(inRealLocal, outSineLocal, outLeadSineLocal)
+        );
+        if (validation != Success)
         {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        if (inReal == null! ||
-            outSine == null! ||
-            outLeadSine == null!)
-        {
-            return BadParam;
+            return validation;
         }
 
         double[] smoothPrice = new double[maxIdxSmoothPrice + 1];
