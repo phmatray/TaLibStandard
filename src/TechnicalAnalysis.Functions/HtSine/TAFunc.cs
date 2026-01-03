@@ -78,9 +78,9 @@ public static partial class TAFunc
         double[] jQEven = new double[3];
         int smoothPriceIdx = 0;
         int maxIdxSmoothPrice = 49;
-        var inRealLocal = inReal;
-        var outLeadSineLocal = outLeadSine;
-        var outSineLocal = outSine;
+        double[] inRealLocal = inReal;
+        double[] outLeadSineLocal = outLeadSine;
+        double[] outSineLocal = outSine;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inRealLocal, outSineLocal, outLeadSineLocal)

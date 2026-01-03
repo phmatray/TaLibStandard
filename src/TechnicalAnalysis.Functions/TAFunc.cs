@@ -550,9 +550,9 @@ public static partial class TAFunc
         Func<double, double, bool> comparer,
         Func<double, double, bool> comparerOrEqual)
     {
-        var inRealLocal = inReal;
-        var optInTimePeriodLocal = optInTimePeriod;
-        var outIntegerLocal = outInteger;
+        double[]? inRealLocal = inReal;
+        int optInTimePeriodLocal = optInTimePeriod;
+        int[]? outIntegerLocal = outInteger;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => inRealLocal == null! || outIntegerLocal == null! ? BadParam : Success,

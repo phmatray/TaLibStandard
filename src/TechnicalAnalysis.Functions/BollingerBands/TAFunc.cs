@@ -49,11 +49,11 @@ public static partial class TAFunc
         ref double[] outRealMiddleBand,
         ref double[] outRealLowerBand)
     {
-        var inRealLocal = inReal;
-        var outRealLowerBandLocal = outRealLowerBand;
-        var outRealMiddleBandLocal = outRealMiddleBand;
-        var outRealUpperBandLocal = outRealUpperBand;
-        var optInTimePeriodLocal = optInTimePeriod;
+        double[] inRealLocal = inReal;
+        double[] outRealLowerBandLocal = outRealLowerBand;
+        double[] outRealMiddleBandLocal = outRealMiddleBand;
+        double[] outRealUpperBandLocal = outRealUpperBand;
+        int optInTimePeriodLocal = optInTimePeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inRealLocal, outRealUpperBandLocal, outRealMiddleBandLocal, outRealLowerBandLocal),

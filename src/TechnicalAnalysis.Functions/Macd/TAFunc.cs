@@ -48,13 +48,13 @@ public static partial class TAFunc
         ref double[] outMACDSignal,
         ref double[] outMACDHist)
     {
-        var inRealLocal = inReal;
-        var outMACDLocal = outMACD;
-        var outMACDHistLocal = outMACDHist;
-        var outMACDSignalLocal = outMACDSignal;
-        var optInFastPeriodLocal = optInFastPeriod;
-        var optInSignalPeriodLocal = optInSignalPeriod;
-        var optInSlowPeriodLocal = optInSlowPeriod;
+        double[] inRealLocal = inReal;
+        double[] outMACDLocal = outMACD;
+        double[] outMACDHistLocal = outMACDHist;
+        double[] outMACDSignalLocal = outMACDSignal;
+        int optInFastPeriodLocal = optInFastPeriod;
+        int optInSignalPeriodLocal = optInSignalPeriod;
+        int optInSlowPeriodLocal = optInSlowPeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inRealLocal, outMACDLocal, outMACDSignalLocal, outMACDHistLocal),

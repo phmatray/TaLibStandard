@@ -57,11 +57,11 @@ public static partial class TAFunc
         int outNbElement1 = 0;
         int outBegIdx1 = 0;
         double[] prevATRTemp = new double[1];
-        var inCloseLocal = inClose;
-        var inHighLocal = inHigh;
-        var inLowLocal = inLow;
-        var outRealLocal = outReal;
-        var optInTimePeriodLocal = optInTimePeriod;
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outRealLocal = outReal;
+        int optInTimePeriodLocal = optInTimePeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, outRealLocal),

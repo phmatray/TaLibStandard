@@ -196,7 +196,7 @@ public static class ValidationHelper
     /// </remarks>
     public static RetCode ValidateAll(params Func<RetCode>[] validations)
     {
-        foreach (var validate in validations)
+        foreach (Func<RetCode> validate in validations)
         {
             RetCode result = validate();
             if (result != Success)

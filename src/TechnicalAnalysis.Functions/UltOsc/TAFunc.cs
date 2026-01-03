@@ -70,10 +70,10 @@ public static partial class TAFunc
         int[] usedFlag = new int[3];
         int[] periods = new int[3];
         int[] sortedPeriods = new int[3];
-        var inCloseLocal = inClose;
-        var inHighLocal = inHigh;
-        var inLowLocal = inLow;
-        var outRealLocal = outReal;
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outRealLocal = outReal;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, outRealLocal),

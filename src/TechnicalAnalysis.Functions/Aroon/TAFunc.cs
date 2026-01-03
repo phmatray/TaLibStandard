@@ -51,11 +51,11 @@ public static partial class TAFunc
         ref double[] outAroonUp)
     {
         int i;
-        var inHighLocal = inHigh;
-        var inLowLocal = inLow;
-        var outAroonDownLocal = outAroonDown;
-        var outAroonUpLocal = outAroonUp;
-        var optInTimePeriodLocal = optInTimePeriod;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outAroonDownLocal = outAroonDown;
+        double[] outAroonUpLocal = outAroonUp;
+        int optInTimePeriodLocal = optInTimePeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, outAroonDownLocal, outAroonUpLocal),

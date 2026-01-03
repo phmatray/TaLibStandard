@@ -10,7 +10,7 @@ namespace TechnicalAnalysis;
 /// <summary>
 /// Provides core functionalities for the Technical Analysis library.
 /// </summary>
-public static partial class TACore
+public static class TACore
 {
     /// <summary>
     /// Gets the global settings for the Technical Analysis library.

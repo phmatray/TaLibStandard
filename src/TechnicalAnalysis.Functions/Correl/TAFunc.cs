@@ -59,10 +59,10 @@ public static partial class TAFunc
     {
         double y;
         double x;
-        var inReal0Local = inReal0;
-        var inReal1Local = inReal1;
-        var outRealLocal = outReal;
-        var optInTimePeriodLocal = optInTimePeriod;
+        double[] inReal0Local = inReal0;
+        double[] inReal1Local = inReal1;
+        double[] outRealLocal = outReal;
+        int optInTimePeriodLocal = optInTimePeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inReal0Local, inReal1Local, outRealLocal),

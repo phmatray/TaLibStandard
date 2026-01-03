@@ -30,19 +30,19 @@ public class TaIndicatorResult
     public RetCode RetCode { get; set; }
     public int BegIdx { get; set; }
     public int NBElement { get; set; }
-    public double[] Values { get; set; } = Array.Empty<double>();
+    public double[] Values { get; set; } = [];
 }
 
 public class MacdResult : TaIndicatorResult
 {
-    public double[] Signal { get; set; } = Array.Empty<double>();
-    public double[] Histogram { get; set; } = Array.Empty<double>();
+    public double[] Signal { get; set; } = [];
+    public double[] Histogram { get; set; } = [];
 }
 
 public class BollingerBandsResult : TaIndicatorResult
 {
-    public double[] UpperBand { get; set; } = Array.Empty<double>();
-    public double[] LowerBand { get; set; } = Array.Empty<double>();
+    public double[] UpperBand { get; set; } = [];
+    public double[] LowerBand { get; set; } = [];
 }
 
 public class AtrResult : TaIndicatorResult

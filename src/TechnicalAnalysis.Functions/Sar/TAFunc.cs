@@ -63,9 +63,9 @@ public static partial class TAFunc
         double ep;
         int tempInt = 0;
         double[] epTemp = new double[1];
-        var inHighLocal = inHigh;
-        var inLowLocal = inLow;
-        var outRealLocal = outReal;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outRealLocal = outReal;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, outRealLocal)

@@ -48,11 +48,11 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        var inCloseLocal = inClose;
-        var inHighLocal = inHigh;
-        var inLowLocal = inLow;
-        var inVolumeLocal = inVolume;
-        var outRealLocal = outReal;
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] inVolumeLocal = inVolume;
+        double[] outRealLocal = outReal;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, inVolumeLocal, outRealLocal)

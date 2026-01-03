@@ -46,9 +46,9 @@ public static partial class TAFunc
         ref double[] outZigZag)
     {
         // Validate parameters
-        var inHighLocal = inHigh;
-        var inLowLocal = inLow;
-        var outZigZagLocal = outZigZag;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outZigZagLocal = outZigZag;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, outZigZagLocal)

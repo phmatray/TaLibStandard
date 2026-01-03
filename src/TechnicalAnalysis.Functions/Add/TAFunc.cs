@@ -38,9 +38,9 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        var inReal0Local = inReal0;
-        var inReal1Local = inReal1;
-        var outRealLocal = outReal;
+        double[] inReal0Local = inReal0;
+        double[] inReal1Local = inReal1;
+        double[] outRealLocal = outReal;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inReal0Local, inReal1Local, outRealLocal)

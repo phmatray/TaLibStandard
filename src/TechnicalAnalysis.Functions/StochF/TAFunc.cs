@@ -66,13 +66,13 @@ public static partial class TAFunc
         ref double[] outFastD)
     {
         double[] tempBuffer;
-        var inCloseLocal = inClose;
-        var inHighLocal = inHigh;
-        var inLowLocal = inLow;
-        var outFastDLocal = outFastD;
-        var outFastKLocal = outFastK;
-        var optInFastDPeriodLocal = optInFastDPeriod;
-        var optInFastKPeriodLocal = optInFastKPeriod;
+        double[] inCloseLocal = inClose;
+        double[] inHighLocal = inHigh;
+        double[] inLowLocal = inLow;
+        double[] outFastDLocal = outFastD;
+        double[] outFastKLocal = outFastK;
+        int optInFastDPeriodLocal = optInFastDPeriod;
+        int optInFastKPeriodLocal = optInFastKPeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, outFastKLocal, outFastDLocal),

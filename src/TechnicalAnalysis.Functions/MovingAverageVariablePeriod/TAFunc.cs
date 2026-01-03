@@ -107,11 +107,11 @@ public static partial class TAFunc
         ref double[] outReal)
     {
         int i;
-        var inPeriodsLocal = inPeriods;
-        var inRealLocal = inReal;
-        var outRealLocal = outReal;
-        var optInMaxPeriodLocal = optInMaxPeriod;
-        var optInMinPeriodLocal = optInMinPeriod;
+        double[] inPeriodsLocal = inPeriods;
+        double[] inRealLocal = inReal;
+        double[] outRealLocal = outReal;
+        int optInMaxPeriodLocal = optInMaxPeriod;
+        int optInMinPeriodLocal = optInMinPeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inRealLocal, inPeriodsLocal, outRealLocal),

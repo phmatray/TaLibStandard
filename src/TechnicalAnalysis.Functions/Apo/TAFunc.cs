@@ -48,10 +48,10 @@ public static partial class TAFunc
         ref int outNBElement,
         ref double[] outReal)
     {
-        var inRealLocal = inReal;
-        var outRealLocal = outReal;
-        var optInFastPeriodLocal = optInFastPeriod;
-        var optInSlowPeriodLocal = optInSlowPeriod;
+        double[] inRealLocal = inReal;
+        double[] outRealLocal = outReal;
+        int optInFastPeriodLocal = optInFastPeriod;
+        int optInSlowPeriodLocal = optInSlowPeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
             () => ValidationHelper.ValidateArrays(inRealLocal, outRealLocal),

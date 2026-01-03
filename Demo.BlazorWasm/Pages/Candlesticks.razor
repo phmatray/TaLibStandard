@@ -138,7 +138,7 @@
                             
                             <MudText Typo="Typo.subtitle2" Class="mb-2">Top Patterns</MudText>
                             <MudList T="string" Dense="true">
-                                @foreach (var pattern in _patterns.GroupBy(p => p.PatternName)
+                                @foreach (IGrouping<string, CandlePatternResult> pattern in _patterns.GroupBy(p => p.PatternName)
                                               .OrderByDescending(g => g.Count())
                                               .Take(5))
                                 {
@@ -368,7 +368,7 @@
         };
         
         // Initialize enabled patterns
-        foreach (var group in _patternGroups.Values)
+        foreach (List<PatternSelectionDrawer.PatternInfo> group in _patternGroups.Values)
         {
             foreach (var pattern in group.Where(p => p.IsEnabled))
             {
