@@ -67,7 +67,6 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid EMA value can be calculated, or -1 if parameters are invalid.</returns>
     public static int EmaLookback(int optInTimePeriod)
     {
-        int validatedPeriod = ValidationHelper.ValidateLookbackPeriod(optInTimePeriod);
-        return validatedPeriod == -1 ? -1 : validatedPeriod - 1 + (int)TACore.Globals.UnstablePeriod[FuncUnstId.Ema];
+        return ValidationHelper.ValidateLookback(optInTimePeriod, adjustment: -1, unstablePeriod: FuncUnstId.Ema);
     }
 }

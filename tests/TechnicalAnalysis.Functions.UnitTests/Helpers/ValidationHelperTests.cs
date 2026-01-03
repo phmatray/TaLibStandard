@@ -458,7 +458,7 @@ public class ValidationHelperTests
         const int period = 14;
 
         // Act
-        int result = ValidationHelper.ValidateLookbackPeriod(period);
+        int result = ValidationHelper.ValidateLookback(period);
 
         // Assert
         result.ShouldBe(14);
@@ -471,7 +471,7 @@ public class ValidationHelperTests
         const int period = 1;
 
         // Act
-        int result = ValidationHelper.ValidateLookbackPeriod(period);
+        int result = ValidationHelper.ValidateLookback(period);
 
         // Assert
         result.ShouldBe(-1);
@@ -484,7 +484,7 @@ public class ValidationHelperTests
         const int period = 100001;
 
         // Act
-        int result = ValidationHelper.ValidateLookbackPeriod(period);
+        int result = ValidationHelper.ValidateLookback(period);
 
         // Assert
         result.ShouldBe(-1);
@@ -499,7 +499,7 @@ public class ValidationHelperTests
         const int maxPeriod = 50;
 
         // Act
-        int result = ValidationHelper.ValidateLookbackPeriod(period, minPeriod, maxPeriod);
+        int result = ValidationHelper.ValidateLookback(period, minPeriod: minPeriod, maxPeriod: maxPeriod);
 
         // Assert
         result.ShouldBe(5);

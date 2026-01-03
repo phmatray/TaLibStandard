@@ -520,4 +520,101 @@ public static partial class TAFunc
         outBegIdx = startIdx;
         return Success;
     }
+
+    /// <summary>
+    /// Internal implementation for finding the index of extreme values (min or max) over a rolling window.
+    /// </summary>
+    /// <param name="startIdx">The starting index for the calculation.</param>
+    /// <param name="endIdx">The ending index for the calculation.</param>
+    /// <param name="inReal">Input array of values.</param>
+    /// <param name="optInTimePeriod">The period for the rolling window.</param>
+    /// <param name="outBegIdx">The index of the first valid output value.</param>
+    /// <param name="outNBElement">The number of valid output elements.</param>
+    /// <param name="outInteger">Output array for the indices of extreme values.</param>
+    /// <param name="comparer">Comparison function: returns true if first value is more extreme than second.</param>
+    /// <param name="comparerOrEqual">Comparison function with equality: returns true if first value is more extreme or equal to second.</param>
+    /// <returns>A RetCode indicating the success or failure of the calculation.</returns>
+    /// <remarks>
+    /// This method implements an efficient trailing window algorithm to find the index
+    /// of extreme values (minimum or maximum) within a rolling period.
+    /// The comparer functions determine whether to find minimum or maximum values.
+    /// </remarks>
+    private static RetCode TA_INT_ExtremeIndex(
+        int startIdx,
+        int endIdx,
+        in double[] inReal,
+        in int optInTimePeriod,
+        ref int outBegIdx,
+        ref int outNBElement,
+        ref int[] outInteger,
+        Func<double, double, bool> comparer,
+        Func<double, double, bool> comparerOrEqual)
+    {
+        var inRealLocal = inReal;
+        var optInTimePeriodLocal = optInTimePeriod;
+        var outIntegerLocal = outInteger;
+        RetCode validation = ValidationHelper.ValidateAll(
+            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
+            () => inRealLocal == null! || outIntegerLocal == null! ? BadParam : Success,
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal)
+        );
+        if (validation != Success)
+        {
+            return validation;
+        }
+
+        int nbInitialElementNeeded = optInTimePeriod - 1;
+        if (startIdx < nbInitialElementNeeded)
+        {
+            startIdx = nbInitialElementNeeded;
+        }
+
+        if (startIdx > endIdx)
+        {
+            outBegIdx = 0;
+            outNBElement = 0;
+            return Success;
+        }
+
+        int outIdx = 0;
+        int today = startIdx;
+        int trailingIdx = startIdx - nbInitialElementNeeded;
+        int extremeIdx = -1;
+        double extreme = 0.0;
+
+        while (today <= endIdx)
+        {
+            double tmp = inReal[today];
+            if (extremeIdx < trailingIdx)
+            {
+                extremeIdx = trailingIdx;
+                extreme = inReal[extremeIdx];
+                int i = extremeIdx;
+                while (i <= today)
+                {
+                    tmp = inReal[i];
+                    if (comparer(tmp, extreme))
+                    {
+                        extremeIdx = i;
+                        extreme = tmp;
+                    }
+                    i++;
+                }
+            }
+            else if (comparerOrEqual(tmp, extreme))
+            {
+                extremeIdx = today;
+                extreme = tmp;
+            }
+
+            outInteger[outIdx] = extremeIdx;
+            outIdx++;
+            trailingIdx++;
+            today++;
+        }
+
+        outBegIdx = startIdx;
+        outNBElement = outIdx;
+        return Success;
+    }
 }

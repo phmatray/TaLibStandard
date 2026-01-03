@@ -92,9 +92,9 @@ public static partial class TAFunc
     /// <returns>The number of historical data points required before the first valid MACD value can be calculated, or -1 if parameters are invalid.</returns>
     public static int MacdLookback(int optInFastPeriod, int optInSlowPeriod, int optInSignalPeriod)
     {
-        int validatedFastPeriod = ValidationHelper.ValidateLookbackPeriod(optInFastPeriod);
-        int validatedSlowPeriod = ValidationHelper.ValidateLookbackPeriod(optInSlowPeriod);
-        int validatedSignalPeriod = ValidationHelper.ValidateLookbackPeriod(optInSignalPeriod, 1);
+        int validatedFastPeriod = ValidationHelper.ValidateLookback(optInFastPeriod);
+        int validatedSlowPeriod = ValidationHelper.ValidateLookback(optInSlowPeriod);
+        int validatedSignalPeriod = ValidationHelper.ValidateLookback(optInSignalPeriod, minPeriod: 1);
 
         if (validatedFastPeriod == -1 || validatedSlowPeriod == -1 || validatedSignalPeriod == -1)
         {

@@ -196,7 +196,7 @@ public static partial class TAFunc
     /// <returns>The number of historical data points needed before the first RSI value can be calculated, or -1 if the period is invalid.</returns>
     public static int RsiLookback(int optInTimePeriod)
     {
-        int validatedPeriod = ValidationHelper.ValidateLookbackPeriod(optInTimePeriod);
+        int validatedPeriod = ValidationHelper.ValidateLookback(optInTimePeriod);
         if (validatedPeriod == -1)
         {
             return -1;

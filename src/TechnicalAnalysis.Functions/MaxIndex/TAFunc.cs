@@ -32,72 +32,16 @@ public static partial class TAFunc
         ref int outNBElement,
         ref int[] outInteger)
     {
-        var inRealLocal = inReal;
-        var optInTimePeriodLocal = optInTimePeriod;
-        var outIntegerLocal = outInteger;
-        RetCode validation = ValidationHelper.ValidateAll(
-            () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
-            () => inRealLocal == null! || outIntegerLocal == null! ? BadParam : Success,
-            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal)
-        );
-        if (validation != Success)
-        {
-            return validation;
-        }
-
-        int nbInitialElementNeeded = optInTimePeriod - 1;
-        if (startIdx < nbInitialElementNeeded)
-        {
-            startIdx = nbInitialElementNeeded;
-        }
-
-        if (startIdx > endIdx)
-        {
-            outBegIdx = 0;
-            outNBElement = 0;
-            return Success;
-        }
-
-        int outIdx = 0;
-        int today = startIdx;
-        int trailingIdx = startIdx - nbInitialElementNeeded;
-        int highestIdx = -1;
-        double highest = 0.0;
-        
-        while (today <= endIdx)
-        {
-            double tmp = inReal[today];
-            if (highestIdx < trailingIdx)
-            {
-                highestIdx = trailingIdx;
-                highest = inReal[highestIdx];
-                int i = highestIdx;
-                while (i <= today)
-                {
-                    tmp = inReal[i];
-                    if (tmp > highest)
-                    {
-                        highestIdx = i;
-                        highest = tmp;
-                    }
-                    i++;
-                }
-            }
-            else if (tmp >= highest)
-            {
-                highestIdx = today;
-                highest = tmp;
-            }
-
-            outInteger[outIdx] = highestIdx;
-            outIdx++;
-            trailingIdx++;
-            today++;
-        }
-        
-        outBegIdx = startIdx;
-        outNBElement = outIdx;
-        return Success;
+        return TA_INT_ExtremeIndex(
+            startIdx,
+            endIdx,
+            inReal,
+            optInTimePeriod,
+            ref outBegIdx,
+            ref outNBElement,
+            ref outInteger,
+            (a, b) => a > b,   // comparer: true if a is greater than b (maximum)
+            (a, b) => a >= b); // comparerOrEqual: true if a is greater than or equal to b
     }
 
     /// <summary>
@@ -106,7 +50,7 @@ public static partial class TAFunc
     /// <param name="optInTimePeriod">The time period over which to find the maximum value index. Valid range is 2 to 100000.</param>
     /// <returns>The number of data points required before the first valid MAXINDEX value, or -1 if the period is invalid.</returns>
     public static int MaxIndexLookback(int optInTimePeriod)
-        => optInTimePeriod is < 2 or > 100000
-            ? -1
-            : optInTimePeriod - 1;
+    {
+        return ValidationHelper.ValidateLookback(optInTimePeriod, adjustment: -1);
+    }
 }
