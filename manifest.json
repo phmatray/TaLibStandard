@@ -1,0 +1,22 @@
+{
+  "name": "TaLibStandard Technical Analysis Demo",
+  "short_name": "TaLib Demo",
+  "description": "A Blazor WebAssembly demo application for technical analysis using TaLibStandard library",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1e1e2e",
+  "theme_color": "#7e57c2",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
