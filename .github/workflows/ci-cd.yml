@@ -82,7 +82,9 @@ jobs:
         default_bump: ${{ steps.check_tags.outputs.has_tags == 'false' && 'major' || 'false' }}
         custom_release_rules: |
           breaking:major,
+          feat!:major,
           feat:minor,
+          fix!:major,
           fix:patch,
           perf:patch,
           revert:patch,
@@ -142,9 +144,10 @@ jobs:
     - name: Pack NuGet packages
       if: steps.should_release.outputs.new_release == 'true'
       run: |
-        dotnet pack src/TechnicalAnalysis.Common/TechnicalAnalysis.Common.csproj --configuration Release --no-build --output ./artifacts
-        dotnet pack src/TechnicalAnalysis.Functions/TechnicalAnalysis.Functions.csproj --configuration Release --no-build --output ./artifacts
-        dotnet pack src/TechnicalAnalysis.Candles/TechnicalAnalysis.Candles.csproj --configuration Release --no-build --output ./artifacts
+        VERSION=${{ steps.get_version.outputs.new_version }}
+        dotnet pack src/TechnicalAnalysis.Common/TechnicalAnalysis.Common.csproj --configuration Release --no-build --output ./artifacts -p:Version=$VERSION
+        dotnet pack src/TechnicalAnalysis.Functions/TechnicalAnalysis.Functions.csproj --configuration Release --no-build --output ./artifacts -p:Version=$VERSION
+        dotnet pack src/TechnicalAnalysis.Candles/TechnicalAnalysis.Candles.csproj --configuration Release --no-build --output ./artifacts -p:Version=$VERSION
     
     - name: Install NuGet validator
       if: steps.should_release.outputs.new_release == 'true'
