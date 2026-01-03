@@ -53,10 +53,16 @@ public static partial class TAFunc
     {
         int moneyFlowIdx = 0;
         int maxIdxMoneyFlow = 49;
+        var inCloseLocal = inClose;
+        var inHighLocal = inHigh;
+        var inLowLocal = inLow;
+        var inVolumeLocal = inVolume;
+        var outRealLocal = outReal;
+        var optInTimePeriodLocal = optInTimePeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
-            () => ValidationHelper.ValidateArrays(inHigh, inLow, inClose, inVolume, outReal),
-            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod)
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, inVolumeLocal, outRealLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal)
         );
         if (validation != Success)
         {

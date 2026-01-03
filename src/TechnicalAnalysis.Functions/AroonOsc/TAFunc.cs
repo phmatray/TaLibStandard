@@ -51,10 +51,14 @@ public static partial class TAFunc
         ref double[] outReal)
     {
         int i;
+        var inHighLocal = inHigh;
+        var inLowLocal = inLow;
+        var outRealLocal = outReal;
+        var optInTimePeriodLocal = optInTimePeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
-            () => ValidationHelper.ValidateArrays(inHigh, inLow, outReal),
-            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod)
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, outRealLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal)
         );
         if (validation != Success)
         {

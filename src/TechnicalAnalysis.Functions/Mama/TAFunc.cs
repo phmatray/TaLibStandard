@@ -63,9 +63,12 @@ public static partial class TAFunc
         double[] jIEven = new double[3];
         double[] jQOdd = new double[3];
         double[] jQEven = new double[3];
+        var inRealLocal = inReal;
+        var outFAMALocal = outFAMA;
+        var outMAMALocal = outMAMA;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
-            () => ValidationHelper.ValidateArrays(inReal, outMAMA, outFAMA)
+            () => ValidationHelper.ValidateArrays(inRealLocal, outMAMALocal, outFAMALocal)
         );
         if (validation != Success)
         {

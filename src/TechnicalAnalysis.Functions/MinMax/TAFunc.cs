@@ -39,10 +39,14 @@ public static partial class TAFunc
         ref double[] outMax)
     {
         int i;
+        var inRealLocal = inReal;
+        var outMaxLocal = outMax;
+        var outMinLocal = outMin;
+        var optInTimePeriodLocal = optInTimePeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
-            () => inReal == null! || outMin == null! || outMax == null! ? BadParam : Success,
-            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod)
+            () => inRealLocal == null! || outMinLocal == null! || outMaxLocal == null! ? BadParam : Success,
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal)
         );
         if (validation != Success)
         {

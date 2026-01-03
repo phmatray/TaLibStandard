@@ -55,10 +55,15 @@ public static partial class TAFunc
         ref double[] outReal)
     {
         int today;
+        var inCloseLocal = inClose;
+        var inHighLocal = inHigh;
+        var inLowLocal = inLow;
+        var outRealLocal = outReal;
+        var optInTimePeriodLocal = optInTimePeriod;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
-            () => ValidationHelper.ValidateArrays(inHigh, inLow, inClose, outReal),
-            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod, 1)
+            () => ValidationHelper.ValidateArrays(inHighLocal, inLowLocal, inCloseLocal, outRealLocal),
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal, 1)
         );
         if (validation != Success)
         {

@@ -32,10 +32,13 @@ public static partial class TAFunc
         ref int outNBElement,
         ref int[] outInteger)
     {
+        var inRealLocal = inReal;
+        var optInTimePeriodLocal = optInTimePeriod;
+        var outIntegerLocal = outInteger;
         RetCode validation = ValidationHelper.ValidateAll(
             () => ValidationHelper.ValidateIndexRange(startIdx, endIdx),
-            () => inReal == null! || outInteger == null! ? BadParam : Success,
-            () => ValidationHelper.ValidatePeriodRange(optInTimePeriod)
+            () => inRealLocal == null! || outIntegerLocal == null! ? BadParam : Success,
+            () => ValidationHelper.ValidatePeriodRange(optInTimePeriodLocal)
         );
         if (validation != Success)
         {
