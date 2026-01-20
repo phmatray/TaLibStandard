@@ -12,9 +12,14 @@ public abstract record AnalysisResult
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [System\.IEquatable](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable 'System\.IEquatable') &#129106; AnalysisResult
 
 Derived  
+&#8627; [MomentumMacdResult](MomentumMacdResult.md 'TechnicalAnalysis\.Functions\.MomentumMacdResult')  
+&#8627; [MomentumRsiResult](MomentumRsiResult.md 'TechnicalAnalysis\.Functions\.MomentumRsiResult')  
+&#8627; [MomentumStochResult](MomentumStochResult.md 'TechnicalAnalysis\.Functions\.MomentumStochResult')  
 &#8627; [TrendAdxResult](TrendAdxResult.md 'TechnicalAnalysis\.Functions\.TrendAdxResult')  
 &#8627; [TrendEmaResult](TrendEmaResult.md 'TechnicalAnalysis\.Functions\.TrendEmaResult')  
-&#8627; [TrendSmaResult](TrendSmaResult.md 'TechnicalAnalysis\.Functions\.TrendSmaResult')
+&#8627; [TrendSmaResult](TrendSmaResult.md 'TechnicalAnalysis\.Functions\.TrendSmaResult')  
+&#8627; [VolatilityAtrResult](VolatilityAtrResult.md 'TechnicalAnalysis\.Functions\.VolatilityAtrResult')  
+&#8627; [VolatilityBollingerBandsResult](VolatilityBollingerBandsResult.md 'TechnicalAnalysis\.Functions\.VolatilityBollingerBandsResult')
 
 | Constructors | |
 | :--- | :--- |
