@@ -1,0 +1,39 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read(./**)",
+      "Write(./**)",
+      "Edit(./**)",
+      "Glob(./**)",
+      "Grep(./**)",
+      "Read(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/worktrees/tasks/001-high-level-api-for-common-use-cases/**)",
+      "Write(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/worktrees/tasks/001-high-level-api-for-common-use-cases/**)",
+      "Edit(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/worktrees/tasks/001-high-level-api-for-common-use-cases/**)",
+      "Glob(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/worktrees/tasks/001-high-level-api-for-common-use-cases/**)",
+      "Grep(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/worktrees/tasks/001-high-level-api-for-common-use-cases/**)",
+      "Read(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/worktrees/tasks/001-high-level-api-for-common-use-cases/.auto-claude/specs/001-high-level-api-for-common-use-cases/**)",
+      "Write(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/worktrees/tasks/001-high-level-api-for-common-use-cases/.auto-claude/specs/001-high-level-api-for-common-use-cases/**)",
+      "Edit(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/worktrees/tasks/001-high-level-api-for-common-use-cases/.auto-claude/specs/001-high-level-api-for-common-use-cases/**)",
+      "Read(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/**)",
+      "Write(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/**)",
+      "Edit(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/**)",
+      "Glob(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/**)",
+      "Grep(/Users/phmatray/Repositories/github-phm/TaLibStandard/.auto-claude/**)",
+      "Bash(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__context7__resolve-library-id(*)",
+      "mcp__context7__get-library-docs(*)",
+      "mcp__graphiti-memory__search_nodes(*)",
+      "mcp__graphiti-memory__search_facts(*)",
+      "mcp__graphiti-memory__add_episode(*)",
+      "mcp__graphiti-memory__get_episodes(*)",
+      "mcp__graphiti-memory__get_entity_edge(*)"
+    ]
+  }
+}

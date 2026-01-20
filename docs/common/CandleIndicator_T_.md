@@ -7,7 +7,7 @@ Represents an abstract base class for candlestick pattern recognition indicators
 
 ```csharp
 public abstract class CandleIndicator<T>
-    where T : System.Numerics.IFloatingPoint<T>
+    where T : IFloatingPoint<T>
 ```
 #### Type parameters
 

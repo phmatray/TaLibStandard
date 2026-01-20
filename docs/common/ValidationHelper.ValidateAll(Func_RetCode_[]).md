@@ -6,13 +6,13 @@
 Executes multiple validation functions sequentially, returning the first error encountered\.
 
 ```csharp
-public static TechnicalAnalysis.Common.RetCode ValidateAll(params System.Func<TechnicalAnalysis.Common.RetCode>[] validations);
+public static TechnicalAnalysis.Common.RetCode ValidateAll(params Func<TechnicalAnalysis.Common.RetCode>[] validations);
 ```
 #### Parameters
 
-<a name='TechnicalAnalysis.Common.ValidationHelper.ValidateAll(System.Func_TechnicalAnalysis.Common.RetCode_[]).validations'></a>
+<a name='TechnicalAnalysis.Common.ValidationHelper.ValidateAll(Func_TechnicalAnalysis.Common.RetCode_[]).validations'></a>
 
-`validations` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-1 'System\.Func\`1')[RetCode](RetCode.md 'TechnicalAnalysis\.Common\.RetCode')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-1 'System\.Func\`1')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
+`validations` [System\.Func](https://learn.microsoft.com/en-us/dotnet/api/system.func 'System\.Func')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
 One or more validation functions that return RetCode\.
 

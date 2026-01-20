@@ -6,7 +6,7 @@
 Prepares the output variables\.
 
 ```csharp
-protected virtual (int outBegIdx,int outNBElement,int[] outInteger) PrepareOutput(int startIdx, int endIdx);
+protected virtual ValueTuple<int,int,int[]> PrepareOutput(int startIdx, int endIdx);
 ```
 #### Parameters
 
@@ -23,5 +23,5 @@ The start index\.
 The end index\.
 
 #### Returns
-[&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[,](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[,](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')  
+[System\.ValueTuple](https://learn.microsoft.com/en-us/dotnet/api/system.valuetuple 'System\.ValueTuple')  
 A tuple containing the output variables\.

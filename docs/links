@@ -467,6 +467,17 @@ M:TechnicalAnalysis.Functions.ExpResult.#ctor(TechnicalAnalysis.Common.RetCode,S
 T:TechnicalAnalysis.Functions.ExpResult|ExpResult.md|ExpResult
 M:TechnicalAnalysis.Functions.FloorResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|FloorResult.FloorResult(RetCode,int,int,double[]).md|FloorResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.FloorResult|FloorResult.md|FloorResult
+P:TechnicalAnalysis.Functions.PriceData.Open|PriceData.Open.md|Open
+P:TechnicalAnalysis.Functions.PriceData.High|PriceData.High.md|High
+P:TechnicalAnalysis.Functions.PriceData.Low|PriceData.Low.md|Low
+P:TechnicalAnalysis.Functions.PriceData.Close|PriceData.Close.md|Close
+P:TechnicalAnalysis.Functions.PriceData.Volume|PriceData.Volume.md|Volume
+P:TechnicalAnalysis.Functions.PriceData.Length|PriceData.Length.md|Length
+M:TechnicalAnalysis.Functions.PriceData.#ctor(System.Double[],System.Double[],System.Double[],System.Double[],System.Double[])|PriceData.PriceData(double[],double[],double[],double[],double[]).md|PriceData(double[], double[], double[], double[], double[])
+M:TechnicalAnalysis.Functions.PriceData.FromClose(System.Double[])|PriceData.FromClose(double[]).md|FromClose(double[])
+M:TechnicalAnalysis.Functions.PriceData.FromOHLCV(System.Double[],System.Double[],System.Double[],System.Double[],System.Double[])|PriceData.FromOHLCV(double[],double[],double[],double[],double[]).md|FromOHLCV(double[], double[], double[], double[], double[])
+M:TechnicalAnalysis.Functions.PriceData.FromOHLC(System.Double[],System.Double[],System.Double[],System.Double[])|PriceData.FromOHLC(double[],double[],double[],double[]).md|FromOHLC(double[], double[], double[], double[])
+T:TechnicalAnalysis.Functions.PriceData|PriceData.md|PriceData
 M:TechnicalAnalysis.Functions.HtDcPeriodResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|HtDcPeriodResult.HtDcPeriodResult(RetCode,int,int,double[]).md|HtDcPeriodResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.HtDcPeriodResult|HtDcPeriodResult.md|HtDcPeriodResult
 M:TechnicalAnalysis.Functions.HtDcPhaseResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|HtDcPhaseResult.HtDcPhaseResult(RetCode,int,int,double[]).md|HtDcPhaseResult(RetCode, int, int, double[])

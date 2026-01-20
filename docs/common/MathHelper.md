@@ -18,4 +18,4 @@ a single mathematical function to each input element without requiring historica
 
 | Methods | |
 | :--- | :--- |
-| [ApplyMathFunction\(int, int, double\[\], int, int, double\[\], Func&lt;double,double&gt;\)](MathHelper.ApplyMathFunction(int,int,double[],int,int,double[],Func_double,double_).md 'TechnicalAnalysis\.Common\.MathHelper\.ApplyMathFunction\(int, int, double\[\], int, int, double\[\], System\.Func\<double,double\>\)') | Applies a mathematical function element\-wise to an input array\. |
+| [ApplyMathFunction\(int, int, double\[\], int, int, double\[\], Func&lt;double,double&gt;\)](MathHelper.ApplyMathFunction(int,int,double[],int,int,double[],Func_double,double_).md 'TechnicalAnalysis\.Common\.MathHelper\.ApplyMathFunction\(int, int, double\[\], int, int, double\[\], Func\<double,double\>\)') | Applies a mathematical function element\-wise to an input array\. |

@@ -287,3 +287,6 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 .DS_Store
+
+# Auto Claude data directory
+.auto-claude/
