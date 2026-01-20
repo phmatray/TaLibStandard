@@ -467,6 +467,11 @@ M:TechnicalAnalysis.Functions.ExpResult.#ctor(TechnicalAnalysis.Common.RetCode,S
 T:TechnicalAnalysis.Functions.ExpResult|ExpResult.md|ExpResult
 M:TechnicalAnalysis.Functions.FloorResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|FloorResult.FloorResult(RetCode,int,int,double[]).md|FloorResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.FloorResult|FloorResult.md|FloorResult
+P:TechnicalAnalysis.Functions.AnalysisResult.RetCode|AnalysisResult.RetCode.md|RetCode
+P:TechnicalAnalysis.Functions.AnalysisResult.BegIdx|AnalysisResult.BegIdx.md|BegIdx
+P:TechnicalAnalysis.Functions.AnalysisResult.NBElement|AnalysisResult.NBElement.md|NBElement
+M:TechnicalAnalysis.Functions.AnalysisResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32)|AnalysisResult.AnalysisResult(RetCode,int,int).md|AnalysisResult(RetCode, int, int)
+T:TechnicalAnalysis.Functions.AnalysisResult|AnalysisResult.md|AnalysisResult
 P:TechnicalAnalysis.Functions.PriceData.Open|PriceData.Open.md|Open
 P:TechnicalAnalysis.Functions.PriceData.High|PriceData.High.md|High
 P:TechnicalAnalysis.Functions.PriceData.Low|PriceData.Low.md|Low
