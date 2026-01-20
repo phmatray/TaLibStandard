@@ -11,6 +11,11 @@ public abstract record AnalysisResult
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [System\.IEquatable](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable 'System\.IEquatable') &#129106; AnalysisResult
 
+Derived  
+&#8627; [TrendAdxResult](TrendAdxResult.md 'TechnicalAnalysis\.Functions\.TrendAdxResult')  
+&#8627; [TrendEmaResult](TrendEmaResult.md 'TechnicalAnalysis\.Functions\.TrendEmaResult')  
+&#8627; [TrendSmaResult](TrendSmaResult.md 'TechnicalAnalysis\.Functions\.TrendSmaResult')
+
 | Constructors | |
 | :--- | :--- |
 | [AnalysisResult\(RetCode, int, int\)](AnalysisResult.AnalysisResult(RetCode,int,int).md 'TechnicalAnalysis\.Functions\.AnalysisResult\.AnalysisResult\(TechnicalAnalysis\.Common\.RetCode, int, int\)') | Initializes a new instance of the AnalysisResult class\. |

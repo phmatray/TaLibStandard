@@ -483,6 +483,36 @@ M:TechnicalAnalysis.Functions.PriceData.FromClose(System.Double[])|PriceData.Fro
 M:TechnicalAnalysis.Functions.PriceData.FromOHLCV(System.Double[],System.Double[],System.Double[],System.Double[],System.Double[])|PriceData.FromOHLCV(double[],double[],double[],double[],double[]).md|FromOHLCV(double[], double[], double[], double[], double[])
 M:TechnicalAnalysis.Functions.PriceData.FromOHLC(System.Double[],System.Double[],System.Double[],System.Double[])|PriceData.FromOHLC(double[],double[],double[],double[]).md|FromOHLC(double[], double[], double[], double[])
 T:TechnicalAnalysis.Functions.PriceData|PriceData.md|PriceData
+M:TechnicalAnalysis.Functions.TrendAnalysis.#ctor(TechnicalAnalysis.Functions.PriceData)|TrendAnalysis.TrendAnalysis(PriceData).md|TrendAnalysis(PriceData)
+M:TechnicalAnalysis.Functions.TrendAnalysis.Ema|TrendAnalysis.Ema.md#TechnicalAnalysis.Functions.TrendAnalysis.Ema()|Ema()
+M:TechnicalAnalysis.Functions.TrendAnalysis.Ema(System.Int32)|TrendAnalysis.Ema.md#TechnicalAnalysis.Functions.TrendAnalysis.Ema(int)|Ema(int)
+M:TechnicalAnalysis.Functions.TrendAnalysis.Sma|TrendAnalysis.Sma.md#TechnicalAnalysis.Functions.TrendAnalysis.Sma()|Sma()
+M:TechnicalAnalysis.Functions.TrendAnalysis.Sma(System.Int32)|TrendAnalysis.Sma.md#TechnicalAnalysis.Functions.TrendAnalysis.Sma(int)|Sma(int)
+M:TechnicalAnalysis.Functions.TrendAnalysis.Adx|TrendAnalysis.Adx.md#TechnicalAnalysis.Functions.TrendAnalysis.Adx()|Adx()
+M:TechnicalAnalysis.Functions.TrendAnalysis.Adx(System.Int32)|TrendAnalysis.Adx.md#TechnicalAnalysis.Functions.TrendAnalysis.Adx(int)|Adx(int)
+T:TechnicalAnalysis.Functions.TrendAnalysis|TrendAnalysis.md|TrendAnalysis
+P:TechnicalAnalysis.Functions.TrendEmaResult.Values|TrendEmaResult.Values.md|Values
+P:TechnicalAnalysis.Functions.TrendEmaResult.Period|TrendEmaResult.Period.md|Period
+P:TechnicalAnalysis.Functions.TrendEmaResult.Current|TrendEmaResult.Current.md|Current
+P:TechnicalAnalysis.Functions.TrendEmaResult.IsSuccess|TrendEmaResult.IsSuccess.md|IsSuccess
+M:TechnicalAnalysis.Functions.TrendEmaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Int32)|TrendEmaResult.TrendEmaResult(RetCode,int,int,double[],int).md|TrendEmaResult(RetCode, int, int, double[], int)
+T:TechnicalAnalysis.Functions.TrendEmaResult|TrendEmaResult.md|TrendEmaResult
+P:TechnicalAnalysis.Functions.TrendSmaResult.Values|TrendSmaResult.Values.md|Values
+P:TechnicalAnalysis.Functions.TrendSmaResult.Period|TrendSmaResult.Period.md|Period
+P:TechnicalAnalysis.Functions.TrendSmaResult.Current|TrendSmaResult.Current.md|Current
+P:TechnicalAnalysis.Functions.TrendSmaResult.IsSuccess|TrendSmaResult.IsSuccess.md|IsSuccess
+M:TechnicalAnalysis.Functions.TrendSmaResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Int32)|TrendSmaResult.TrendSmaResult(RetCode,int,int,double[],int).md|TrendSmaResult(RetCode, int, int, double[], int)
+T:TechnicalAnalysis.Functions.TrendSmaResult|TrendSmaResult.md|TrendSmaResult
+P:TechnicalAnalysis.Functions.TrendAdxResult.Values|TrendAdxResult.Values.md|Values
+P:TechnicalAnalysis.Functions.TrendAdxResult.Period|TrendAdxResult.Period.md|Period
+P:TechnicalAnalysis.Functions.TrendAdxResult.Current|TrendAdxResult.Current.md|Current
+P:TechnicalAnalysis.Functions.TrendAdxResult.IsSuccess|TrendAdxResult.IsSuccess.md|IsSuccess
+P:TechnicalAnalysis.Functions.TrendAdxResult.IsWeakTrend|TrendAdxResult.IsWeakTrend.md|IsWeakTrend
+P:TechnicalAnalysis.Functions.TrendAdxResult.IsEmergingTrend|TrendAdxResult.IsEmergingTrend.md|IsEmergingTrend
+P:TechnicalAnalysis.Functions.TrendAdxResult.IsStrongTrend|TrendAdxResult.IsStrongTrend.md|IsStrongTrend
+P:TechnicalAnalysis.Functions.TrendAdxResult.IsVeryStrongTrend|TrendAdxResult.IsVeryStrongTrend.md|IsVeryStrongTrend
+M:TechnicalAnalysis.Functions.TrendAdxResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Int32)|TrendAdxResult.TrendAdxResult(RetCode,int,int,double[],int).md|TrendAdxResult(RetCode, int, int, double[], int)
+T:TechnicalAnalysis.Functions.TrendAdxResult|TrendAdxResult.md|TrendAdxResult
 M:TechnicalAnalysis.Functions.HtDcPeriodResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|HtDcPeriodResult.HtDcPeriodResult(RetCode,int,int,double[]).md|HtDcPeriodResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.HtDcPeriodResult|HtDcPeriodResult.md|HtDcPeriodResult
 M:TechnicalAnalysis.Functions.HtDcPhaseResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|HtDcPhaseResult.HtDcPhaseResult(RetCode,int,int,double[]).md|HtDcPhaseResult(RetCode, int, int, double[])
@@ -749,3 +779,6 @@ T:TechnicalAnalysis.Functions.ZigZagResult|ZigZagResult.md|ZigZagResult
 ?:TechnicalAnalysis.Functions.TAMath.WillR|TAMath.WillR.md|WillR
 ?:TechnicalAnalysis.Functions.TAMath.Wma|TAMath.Wma.md|Wma
 ?:TechnicalAnalysis.Functions.TAMath.ZigZag|TAMath.ZigZag.md|ZigZag
+?:TechnicalAnalysis.Functions.TrendAnalysis.Ema|TrendAnalysis.Ema.md|Ema
+?:TechnicalAnalysis.Functions.TrendAnalysis.Sma|TrendAnalysis.Sma.md|Sma
+?:TechnicalAnalysis.Functions.TrendAnalysis.Adx|TrendAnalysis.Adx.md|Adx
