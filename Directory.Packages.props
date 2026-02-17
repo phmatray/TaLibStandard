@@ -6,7 +6,7 @@
     <!-- Code Analyzers -->
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.103" />
     <!-- Build Tools -->
-    <PackageVersion Include="DotNet.ReproducibleBuilds" Version="1.2.39" />
+    <PackageVersion Include="DotNet.ReproducibleBuilds" Version="2.0.2" />
     <PackageVersion Include="Microsoft.DotNet.HotReload.WebAssembly.Browser" Version="10.0.103" />
     <PackageVersion Include="MinVer" Version="6.1.0" />
     <!-- Documentation -->
