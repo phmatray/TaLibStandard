@@ -10,7 +10,7 @@
     <PackageVersion Include="Microsoft.DotNet.HotReload.WebAssembly.Browser" Version="10.0.103" />
     <PackageVersion Include="MinVer" Version="7.0.0" />
     <!-- Documentation -->
-    <PackageVersion Include="DefaultDocumentation" Version="1.2.2" />
+    <PackageVersion Include="DefaultDocumentation" Version="1.2.3" />
     <!-- Testing -->
     <PackageVersion Include="AutoFixture" Version="4.18.1" />
     <PackageVersion Include="Shouldly" Version="4.3.0" />
