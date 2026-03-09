@@ -3,14 +3,71 @@
   "extends": [
     "config:recommended"
   ],
-  "platformAutomerge": true,
+  "baseBranchPatterns": [
+    "dev"
+  ],
+  "schedule": [
+    "before 9am on Saturday"
+  ],
+  "timezone": "Europe/Brussels",
+  "labels": [
+    "dependencies",
+    "renovate"
+  ],
   "packageRules": [
     {
+      "description": "Automerge minor and patch updates",
       "matchUpdateTypes": [
         "minor",
         "patch"
       ],
-      "automerge": true
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Group all NuGet minor/patch updates together",
+      "matchManagers": [
+        "nuget"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "NuGet minor/patch updates"
+    },
+    {
+      "description": "Group all NuGet major updates together",
+      "matchManagers": [
+        "nuget"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "groupName": "NuGet major updates",
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Group all npm minor/patch updates together",
+      "matchManagers": [
+        "npm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "npm minor/patch updates"
+    },
+    {
+      "description": "Group all npm major updates together",
+      "matchManagers": [
+        "npm"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "groupName": "npm major updates",
+      "dependencyDashboardApproval": true
     }
-  ]
+  ],
+  "platformAutomerge": true
 }
