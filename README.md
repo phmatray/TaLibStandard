@@ -138,6 +138,20 @@ View our Codacy metrics [here](https://app.codacy.com/gh/phmatray/TaLibStandard)
 
 For reporting bugs or suggesting new features, kindly submit these as an issue to the [TaLibStandard Repository](https://github.com/phmatray/TaLibStandard/issues). We value your contributions, but before submitting an issue, please ensure it is not a duplicate of an existing one.
 
+<!-- portfolio-techstack:start -->
+
+## Tech Stack
+
+- **.NET 10**
+- Microsoft.AspNetCore.Components.WebAssembly
+- Microsoft.AspNetCore.Components.WebAssembly.DevServer
+- Microsoft.DotNet.HotReload.WebAssembly.Browser
+- MudBlazor
+- PublishSPAforGitHubPages.Build
+- DefaultDocumentation
+
+<!-- portfolio-techstack:end -->
+
 ## 🤝 Contributing
 
 We welcome contributions from the community! If you'd like to contribute to TaLibStandard, please fork the repository and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
