@@ -1,3 +1,5 @@
+![TaLibStandard banner](.github/banner.png)
+
 # TaLibStandard
 [![Sparkline](https://stars.medv.io/phmatray/TaLibStandard.svg)](https://stars.medv.io/phmatray/TaLibStandard)
 
