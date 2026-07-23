@@ -128,6 +128,65 @@ dotnet add package Atypical.TechnicalAnalysis.Candles
 dotnet add package Atypical.TechnicalAnalysis.Functions
 ```
 
+## 🧑‍💻 Usage
+
+TaLibStandard exposes two APIs on the same indicator: a low-level `TAFunc` API that mirrors the
+original TA-Lib C signature (`ref`/`in` parameters, pre-allocated output arrays), and a higher-level
+`TAMath` API that wraps it and returns a strongly-typed result record.
+
+### High-level API (`TAMath`)
+
+```csharp
+using TechnicalAnalysis.Functions;
+
+double[] closingPrices = [.. /* your OHLCV data */];
+
+// RsiResult exposes RetCode, BegIdx, NBElement and the Real[] output array
+RsiResult rsi = TAMath.Rsi(0, closingPrices.Length - 1, closingPrices, timePeriod: 14);
+
+if (rsi.RetCode == RetCode.Success)
+{
+    double latestRsi = rsi.Real[^1]; // most recent RSI value
+}
+```
+
+### Low-level API (`TAFunc`) — original TA-Lib signature
+
+```csharp
+using TechnicalAnalysis.Functions;
+
+double[] closes = [.. data.Select(d => (double)d.Close)];
+double[] outReal = new double[closes.Length];
+int outBegIdx = 0;
+int outNbElement = 0;
+int period = 14;
+
+RetCode result = TAFunc.Rsi(
+    0, closes.Length - 1,
+    in closes,
+    in period,
+    ref outBegIdx,
+    ref outNbElement,
+    ref outReal);
+
+double[] rsiValues = outReal.Take(outNbElement).ToArray();
+```
+
+### Candlestick pattern recognition
+
+```csharp
+using TechnicalAnalysis.Candles;
+
+// Detects the "Short Line" candle pattern over the given OHLC arrays
+CandleIndicatorResult pattern = TACandle.CdlShortLine(
+    0, closes.Length - 1, opens, highs, lows, closes);
+```
+
+Both `TAFunc` and `TAMath` overloads are generic-math friendly and accept `double[]` or `float[]`
+inputs. See the [full function list](./docs/functions.md) for every available indicator and
+candlestick pattern, and the [Demo.BlazorWasm](./Demo.BlazorWasm) project for a working end-to-end
+example that charts these indicators.
+
 ## 📊 Code Quality
 
 We strive for the highest code quality in TaLibStandard, leveraging Codacy—an automated code analysis/quality tool. Codacy provides static analysis, cyclomatic complexity measures, duplication identification, and code unit test coverage changes for every commit and pull request.
