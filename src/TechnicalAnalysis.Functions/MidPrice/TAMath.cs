@@ -50,6 +50,7 @@ public static partial class TAMath
     /// <param name="endIdx">The ending index for the calculation range.</param>
     /// <param name="high">Array of high prices.</param>
     /// <param name="low">Array of low prices.</param>
+    /// <param name="timePeriod">The number of periods in each rolling window. Defaults to 14.</param>
     /// <returns>A MidPriceResult containing the midprice values over each rolling window.</returns>
     /// <remarks>
     /// This overload uses a default time period of 14.

@@ -11,6 +11,11 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator calculates the y-intercept of the linear regression line, representing where
 /// the regression line would cross the y-axis if extended backward.
 /// </summary>
+/// <remarks>
+/// The <see cref="SingleOutputResult.Real"/> array holds the linear regression intercept values.
+/// Each value represents the y-intercept of the regression line calculated over the lookback period,
+/// useful for projecting the regression line and understanding price levels.
+/// </remarks>
 public record LinearRegInterceptResult : SingleOutputResult
 {
     /// <summary>
@@ -24,10 +29,4 @@ public record LinearRegInterceptResult : SingleOutputResult
         : base(retCode, begIdx, nbElement, real)
     {
     }
-
-    /// <summary>
-    /// Gets the array of linear regression intercept values.
-    /// Each value represents the y-intercept of the regression line calculated over the lookback period,
-    /// useful for projecting the regression line and understanding price levels.
-    /// </summary>
 }

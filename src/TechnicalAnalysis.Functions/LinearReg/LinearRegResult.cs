@@ -11,6 +11,11 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator calculates the linear regression line value at each point, providing a statistical
 /// best-fit line through the price data over a specified period.
 /// </summary>
+/// <remarks>
+/// The <see cref="SingleOutputResult.Real"/> array holds the linear regression line values.
+/// Each value represents the y-coordinate of the regression line at that point in time,
+/// calculated using least squares method over the specified lookback period.
+/// </remarks>
 public record LinearRegResult : SingleOutputResult
 {
     /// <summary>
@@ -24,10 +29,4 @@ public record LinearRegResult : SingleOutputResult
         : base(retCode, begIdx, nbElement, real)
     {
     }
-
-    /// <summary>
-    /// Gets the array of linear regression line values.
-    /// Each value represents the y-coordinate of the regression line at that point in time,
-    /// calculated using least squares method over the specified lookback period.
-    /// </summary>
 }

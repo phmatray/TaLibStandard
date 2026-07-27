@@ -11,6 +11,11 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator measures the phase angle of the dominant market cycle using Hilbert Transform techniques,
 /// helping to identify the current position within a price cycle.
 /// </summary>
+/// <remarks>
+/// The <see cref="SingleOutputResult.Real"/> array holds the dominant cycle phase values.
+/// Each value represents the phase angle in degrees (-180 to +180) of the dominant cycle.
+/// Positive values indicate the cycle is in an upward phase, while negative values indicate a downward phase.
+/// </remarks>
 public record HtDcPhaseResult : SingleOutputResult
 {
     /// <summary>
@@ -24,10 +29,4 @@ public record HtDcPhaseResult : SingleOutputResult
         : base(retCode, begIdx, nbElement, real)
     {
     }
-
-    /// <summary>
-    /// Gets the array of dominant cycle phase values.
-    /// Each value represents the phase angle in degrees (-180 to +180) of the dominant cycle.
-    /// Positive values indicate the cycle is in an upward phase, while negative values indicate a downward phase.
-    /// </summary>
 }

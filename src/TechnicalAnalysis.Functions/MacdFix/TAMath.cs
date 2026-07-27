@@ -51,9 +51,10 @@ public static partial class TAMath
     /// <param name="startIdx">The starting index for the calculation range.</param>
     /// <param name="endIdx">The ending index for the calculation range.</param>
     /// <param name="real">Array of input values (usually closing prices).</param>
+    /// <param name="signalPeriod">The signal line period. Defaults to 9.</param>
     /// <returns>A MacdFixResult containing the MACD line, signal line, and histogram values.</returns>
     /// <remarks>
-    /// Uses fixed values: fastPeriod=12, slowPeriod=26, signalPeriod=9.
+    /// The fast and slow periods are fixed at 12 and 26; only the signal period is adjustable.
     /// </remarks>
     public static MacdFixResult MacdFix(int startIdx, int endIdx, float[] real, int signalPeriod = 9)
         => TAMathHelper.Execute(startIdx, endIdx, real, (s, e, r) => MacdFix(s, e, r, signalPeriod));

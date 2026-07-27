@@ -57,6 +57,7 @@ public static partial class TAMath
     /// <param name="endIdx">The ending index for the calculation.</param>
     /// <param name="high">Array of high prices.</param>
     /// <param name="low">Array of low prices.</param>
+    /// <param name="deviation">The minimum percentage move required to start a new leg. Defaults to 5.0.</param>
     /// <returns>A ZigZagResult object containing the calculated values and metadata.</returns>
     public static ZigZagResult ZigZag(int startIdx, int endIdx, float[] high, float[] low, double deviation = 5.0)
         => TAMathHelper.Execute(startIdx, endIdx, high, low, (s, e, h, l) => ZigZag(s, e, h, l, deviation));

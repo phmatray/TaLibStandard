@@ -11,6 +11,11 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator calculates the slope of the linear regression line, indicating the rate of change
 /// in price over the specified period.
 /// </summary>
+/// <remarks>
+/// The <see cref="SingleOutputResult.Real"/> array holds the linear regression slope values.
+/// Each value represents the slope (rate of change per bar) of the regression line.
+/// Positive values indicate rising prices, negative values indicate falling prices.
+/// </remarks>
 public record LinearRegSlopeResult : SingleOutputResult
 {
     /// <summary>
@@ -24,10 +29,4 @@ public record LinearRegSlopeResult : SingleOutputResult
         : base(retCode, begIdx, nbElement, real)
     {
     }
-
-    /// <summary>
-    /// Gets the array of linear regression slope values.
-    /// Each value represents the slope (rate of change per bar) of the regression line.
-    /// Positive values indicate rising prices, negative values indicate falling prices.
-    /// </summary>
 }

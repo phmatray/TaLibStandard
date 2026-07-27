@@ -37,17 +37,9 @@ public static class ValidationHelper
     /// </returns>
     public static RetCode ValidateIndexRange(int startIdx, int endIdx)
     {
-        if (startIdx < 0)
-        {
-            return OutOfRangeStartIndex;
-        }
-
-        if (endIdx < 0 || endIdx < startIdx)
-        {
-            return OutOfRangeEndIndex;
-        }
-
-        return Success;
+        return startIdx < 0 ? OutOfRangeStartIndex
+            : endIdx < 0 || endIdx < startIdx ? OutOfRangeEndIndex
+            : Success;
     }
 
     /// <summary>
@@ -151,24 +143,15 @@ public static class ValidationHelper
         int minPeriod = 2,
         int maxPeriod = 100000)
     {
-        RetCode indexCheck = ValidateIndexRange(startIdx, endIdx);
-        if (indexCheck != Success)
-        {
-            return indexCheck;
-        }
-
-        RetCode arrayCheck = ValidateArrays(inReal, outReal);
-        if (arrayCheck != Success)
-        {
-            return arrayCheck;
-        }
-
-        if (optInTimePeriod.HasValue)
-        {
-            return ValidatePeriodRange(optInTimePeriod.Value, minPeriod, maxPeriod);
-        }
-
-        return Success;
+        // ValidateAll runs these in order and stops at the first failure, which is what the
+        // hand-rolled guard chain did — but as one expression, and matching how the indicators
+        // themselves compose their validation.
+        return ValidateAll(
+            () => ValidateIndexRange(startIdx, endIdx),
+            () => ValidateArrays(inReal, outReal),
+            () => optInTimePeriod.HasValue
+                ? ValidatePeriodRange(optInTimePeriod.Value, minPeriod, maxPeriod)
+                : Success);
     }
 
     /// <summary>
