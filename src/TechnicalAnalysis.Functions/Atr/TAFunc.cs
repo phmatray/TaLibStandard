@@ -137,10 +137,16 @@ public static partial class TAFunc
                     break;
                 }
 
+                // Wilder smoothing carries the *normalised* average into the next bar. Dividing only
+                // on the way out (outReal[outIdx] = prevATR / optInTimePeriod) left the accumulator
+                // multiplied by (period - 1) every bar, so ATR diverged geometrically and reached
+                // +Infinity within a few hundred bars. The warm-up loop above and Natr both
+                // normalise the running value here; this loop has to as well.
                 prevATR *= optInTimePeriod - 1;
                 prevATR += tempBuffer[today];
                 today++;
-                outReal[outIdx] = prevATR / optInTimePeriod;
+                prevATR /= optInTimePeriod;
+                outReal[outIdx] = prevATR;
                 outIdx++;
             }
 

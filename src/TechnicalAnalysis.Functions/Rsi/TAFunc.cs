@@ -93,7 +93,7 @@ public static partial class TAFunc
                 tempValue1 = prevLoss / optInTimePeriod;
                 tempValue2 = prevGain / optInTimePeriod;
                 tempValue1 = tempValue2 + tempValue1;
-                outReal[outIdx] = 100.0 * (tempValue2 / tempValue1);
+                outReal[outIdx] = RsiFromGainAndLoss(tempValue2, tempValue1);
                 outIdx++;
 
                 if (today > endIdx)
@@ -131,7 +131,7 @@ public static partial class TAFunc
             if (today > startIdx)
             {
                 tempValue1 = prevGain + prevLoss;
-                outReal[outIdx] = 100.0 * (prevGain / tempValue1);
+                outReal[outIdx] = RsiFromGainAndLoss(prevGain, tempValue1);
                 outIdx++;
             }
             else
@@ -178,7 +178,7 @@ public static partial class TAFunc
                 prevLoss /= optInTimePeriod;
                 prevGain /= optInTimePeriod;
                 tempValue1 = prevGain + prevLoss;
-                outReal[outIdx] = 100.0 * (prevGain / tempValue1);
+                outReal[outIdx] = RsiFromGainAndLoss(prevGain, tempValue1);
                 outIdx++;
             }
 
@@ -187,6 +187,26 @@ public static partial class TAFunc
         }
 
         return Success;
+    }
+
+    /// <summary>
+    /// Converts a smoothed average gain and the sum of the smoothed average gain and loss into an RSI reading.
+    /// </summary>
+    /// <param name="averageGain">The smoothed average gain over the period.</param>
+    /// <param name="gainPlusLoss">The sum of the smoothed average gain and the smoothed average loss.</param>
+    /// <returns>
+    /// <c>100 * averageGain / gainPlusLoss</c>, or <c>0</c> when the window contains no price movement at all.
+    /// </returns>
+    /// <remarks>
+    /// A window in which every close is identical produces an average gain and an average loss of exactly zero,
+    /// so the unguarded ratio is <c>0 / 0</c> — <see cref="double.NaN"/>, returned alongside
+    /// <see cref="RetCode.Success"/> and a non-zero element count, which is indistinguishable from a real
+    /// reading until it poisons whatever consumes it. A halted instrument or any flat window reaches this.
+    /// TA-Lib C guards the same division and yields zero, so this matches upstream behaviour.
+    /// </remarks>
+    private static double RsiFromGainAndLoss(double averageGain, double gainPlusLoss)
+    {
+        return gainPlusLoss > 0.0 ? 100.0 * (averageGain / gainPlusLoss) : 0.0;
     }
 
     /// <summary>
