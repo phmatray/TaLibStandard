@@ -17,7 +17,7 @@ public class CandleDoji<T> : TechnicalAnalysis.Common.CandleIndicator<T>
 
 The type of the array elements\.
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.CandleIndicator&lt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1')[T](CandleDoji_T_.md#TechnicalAnalysis.Candles.CandleDoji_T_.T 'TechnicalAnalysis\.Candles\.CandleDoji\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1') &#129106; CandleDoji\<T\>
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [TechnicalAnalysis\.Common\.CandleIndicator&lt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1')[T](CandleDoji_T_.md#TechnicalAnalysis.Candles.CandleDoji_T_.T 'TechnicalAnalysis\.Candles\.CandleDoji\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1') → CandleDoji\<T\>
 
 | Constructors | |
 | :--- | :--- |

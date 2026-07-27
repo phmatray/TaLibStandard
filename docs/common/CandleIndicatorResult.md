@@ -9,7 +9,7 @@ Represents the result of the candlestick pattern indicator\.
 public record CandleIndicatorResult : TechnicalAnalysis.Common.IndicatorResult, System.IEquatable<TechnicalAnalysis.Common.CandleIndicatorResult>
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [IndicatorResult](IndicatorResult.md 'TechnicalAnalysis\.Common\.IndicatorResult') &#129106; CandleIndicatorResult
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [IndicatorResult](IndicatorResult.md 'TechnicalAnalysis\.Common\.IndicatorResult') → CandleIndicatorResult
 
 Implements [System\.IEquatable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')[CandleIndicatorResult](CandleIndicatorResult.md 'TechnicalAnalysis\.Common\.CandleIndicatorResult')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.iequatable-1 'System\.IEquatable\`1')
 

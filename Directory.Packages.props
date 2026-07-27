@@ -29,5 +29,9 @@
     <PackageVersion Include="MudBlazor" Version="9.7.0" />
     <PackageVersion Include="System.Text.Json" Version="10.0.10" />
     <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.3" />
+    <!-- Benchmarks -->
+    <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
+    <!-- Samples -->
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.5" />
   </ItemGroup>
 </Project>

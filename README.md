@@ -34,12 +34,16 @@ A modern and robust C# Technical Analysis library based on the original open-sou
   * [📌 Features](#-features)
     * [Roadmap (next features)](#roadmap-next-features)
   * [📄 Documentation](#-documentation)
+  * [📖 Guides](#-guides)
   * [📥 Installation](#-installation)
     * [📋 Prerequisites](#-prerequisites)
     * [🚀 We use the latest C# features](#-we-use-the-latest-c-features)
     * [📦 NuGet Packages](#-nuget-packages)
     * [🧪 Tests Specifications](#-tests-specifications)
   * [💾 Installation](#-installation-1)
+  * [🧑‍💻 Usage](#-usage)
+  * [🧩 Samples](#-samples)
+  * [⚡ Benchmarks](#-benchmarks)
   * [📊 Code Quality](#-code-quality)
   * [❓ Issues and Feature Requests](#-issues-and-feature-requests)
   * [🤝 Contributing](#-contributing)
@@ -59,7 +63,12 @@ The primary objective of TaLibStandard is to provide a comprehensive, feature-ri
 
 ## 🏁 Getting started
 
-To get started with TaLibStandard, you can clone the repository and explore the examples provided in the `examples` directory. You can also refer to the list of [available functions](./docs/functions.md) in the documentation for a comprehensive overview of the library's capabilities.
+To get started with TaLibStandard, read the [getting started guide](./docs/guides/getting-started.md) —
+it covers installation, your first indicator, and the output-alignment rule that everything else depends
+on. Then clone the repository and explore the runnable projects in the [`samples`](./samples) directory
+(see [Samples](#-samples)). For a comprehensive overview of the library's capabilities, refer to the
+[indicator catalog](./docs/indicators/README.md) or the flat list of
+[available functions](./docs/functions.md).
 
 ## 📌 Features
 
@@ -74,8 +83,8 @@ To get started with TaLibStandard, you can clone the repository and explore the 
 * [ ] Support for more data types
 * [ ] Support for more functions
 * [ ] More tests
-* [ ] More examples
-* [ ] Add a Benchmark project
+* [x] More examples — see [Samples](#-samples)
+* [x] Add a Benchmark project — see [Benchmarks](#-benchmarks)
 * [ ] Create a gRPC server to expose the library as a service
 
 ## 📄 Documentation
@@ -86,6 +95,27 @@ All summaries are written in English. If you want to help us translate the docum
 discuss it.
 
 > **Note:** The documentation is generated using [Doraku/DefaultDocumentation]() tool. It is generated automatically when the project is built.
+
+## 📖 Guides
+
+Hand-written guides live in [`docs/guides`](./docs/guides), and every public entry point is catalogued in
+[`docs/indicators`](./docs/indicators/README.md).
+
+| Guide | What it covers |
+|-------|----------------|
+| [🏁 Getting started](./docs/guides/getting-started.md) | Installation, your first indicator, and the three things that trip everyone up: `RetCode`, `BegIdx`/`NBElement` output alignment, and the `double` / `float` / `decimal` story. **Start here.** |
+| [📋 Indicator catalog](./docs/indicators/README.md) | Every `TAMath` and `TACandle` entry point, grouped by category, with signatures, defaults, outputs and links to the generated API pages. |
+| [📡 Real-time streaming](./docs/guides/real-time-streaming.md) | Ticks → bars → indicators over SignalR and raw WebSocket: architecture, message contracts, warm-up semantics and production notes. |
+| [📉 Backtesting](./docs/guides/backtesting.md) | The engine model, the structurally enforced no-look-ahead guarantee, the cost model, every metric with its formula, and how to write your own strategy. |
+| [📈 TradingView integration](./docs/guides/tradingview-integration.md) | Pine Script `ta.*` → `TAMath` mapping, parity caveats, UDF datafeed and Lightweight Charts wiring, alert-webhook security. |
+| [⚡ Benchmarks](./docs/guides/benchmarks.md) | What the benchmark suite measures, how to run it, how to read BenchmarkDotNet output, and the measured results. |
+
+> ⚠️ **Three indicators currently return wrong numbers**, quietly and with `RetCode.Success`: `Atr`
+> diverges to `+∞`, the EMA family (`Ema`, `Macd`, `Dema`, `Tema`, `T3`, `Apo`, `Ppo`, `Trix`, …) seeds
+> itself low, and `Rsi` returns `NaN` for a perfectly flat series. See
+> [Known library defects](./docs/guides/getting-started.md#10-known-library-defects) before building on
+> any of them; the [indicator catalog](./docs/indicators/README.md#known-defects) marks every affected
+> entry point.
 
 ## 📥 Installation
 
@@ -186,6 +216,53 @@ Both `TAFunc` and `TAMath` overloads are generic-math friendly and accept `doubl
 inputs. See the [full function list](./docs/functions.md) for every available indicator and
 candlestick pattern, and the [Demo.BlazorWasm](./Demo.BlazorWasm) project for a working end-to-end
 example that charts these indicators.
+
+> **One rule to internalise before anything else.** `TAMath` fills its output array from index `0`, not
+> from the input index it corresponds to. Output element `k` describes **input index `BegIdx + k`**, for
+> `k` in `[0, NBElement)`; everything from `NBElement` onwards is a meaningless zero. Getting this wrong
+> shifts every signal in time, silently. The [getting started guide](./docs/guides/getting-started.md)
+> works through it with a hand-checkable example.
+
+## 🧩 Samples
+
+Runnable projects, all completely offline — no market data provider, no API key, no network calls.
+
+| Sample | Run it | Guide |
+|--------|--------|-------|
+| [**Real-time streaming**](./samples/TechnicalAnalysis.Samples.RealTime)<br/>ASP.NET Core server: synthetic tick feed → OHLCV bars → seven indicators (eleven series) per closed bar, published over a SignalR hub *and* a raw WebSocket, plus a zero-dependency browser dashboard. | `dotnet run --project samples/TechnicalAnalysis.Samples.RealTime -c Release`<br/>then open <http://localhost:5199> | [📡 Real-time streaming](./docs/guides/real-time-streaming.md) |
+| [**Real-time console client**](./samples/TechnicalAnalysis.Samples.RealTime.Client)<br/>SignalR client for the server above; exercises both the group-push and the server-streaming paths. | `dotnet run --project samples/TechnicalAnalysis.Samples.RealTime.Client -c Release -- --symbol GLOBEX` | [📡 Real-time streaming](./docs/guides/real-time-streaming.md) |
+| [**Backtesting**](./samples/TechnicalAnalysis.Samples.Backtesting)<br/>Bar-by-bar engine with a structurally enforced no-look-ahead guarantee, a commission/slippage cost model, a full metrics suite and five strategies compared side by side. | `dotnet run --project samples/TechnicalAnalysis.Samples.Backtesting -c Release` | [📉 Backtesting](./docs/guides/backtesting.md) |
+| [**Blazor WebAssembly demo**](./Demo.BlazorWasm)<br/>Interactive browser demo charting the indicators. | `dotnet run --project Demo.BlazorWasm` | — |
+
+## ⚡ Benchmarks
+
+[`benchmarks/TechnicalAnalysis.Benchmarks`](./benchmarks/TechnicalAnalysis.Benchmarks) is a
+BenchmarkDotNet suite of **119 benchmarks** over deterministic synthetic market data at three series
+lengths (1 000 / 10 000 / 100 000), all with `[MemoryDiagnoser]`. Every indicator in the overlap,
+momentum and volatility/volume suites is measured **twice** — once through the allocation-free `TAFunc`
+API and once through the ergonomic `TAMath` API — so the cost of convenience is a number rather than a
+guess. Candlestick patterns are measured on `double`, `float` **and** `decimal` to price the
+generic-math design.
+
+```shell
+# see what is there, without running anything
+dotnet run --project benchmarks/TechnicalAnalysis.Benchmarks -c Release -- --list flat
+
+# prove every benchmark computes something valid (fast; not a measurement)
+dotnet run --project benchmarks/TechnicalAnalysis.Benchmarks -c Release -- --selfcheck
+
+# one suite
+dotnet run --project benchmarks/TechnicalAnalysis.Benchmarks -c Release -- --anyCategories Momentum
+```
+
+An optional sixth suite compares the managed port head to head against the original TA-Lib C library
+through P/Invoke, with an equivalence assertion that runs *before* anything is timed. It is enabled
+automatically when the native library is found and silently skipped when it is not, so the suite has no
+native dependency.
+
+See the [benchmarks guide](./docs/guides/benchmarks.md) for the full switch reference, the native
+install instructions per platform, how to read every output column, the measured results and the
+methodology caveats.
 
 ## 📊 Code Quality
 

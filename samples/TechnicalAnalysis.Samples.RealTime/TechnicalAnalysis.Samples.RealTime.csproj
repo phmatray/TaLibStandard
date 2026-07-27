@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>TechnicalAnalysis.Samples.RealTime</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TechnicalAnalysis.Candles\TechnicalAnalysis.Candles.csproj" />
+    <ProjectReference Include="..\..\src\TechnicalAnalysis.Functions\TechnicalAnalysis.Functions.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -287,3 +287,12 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 .DS_Store
+
+# Agent tooling scratch directories and generated state
+.auto-claude/
+.auto-claude-security.json
+.auto-claude-status
+.claude_settings.json
+.worktrees/
+.security-key
+logs/security/

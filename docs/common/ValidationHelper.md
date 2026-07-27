@@ -9,7 +9,7 @@ Provides centralized validation methods for technical analysis indicators\.
 public static class ValidationHelper
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; ValidationHelper
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → ValidationHelper
 
 ### Remarks
 This helper class consolidates repetitive validation logic that appears across

@@ -9,7 +9,7 @@ Provides mathematical wrapper functions for technical analysis calculations\.
 public static class TAMath
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; TAMath
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → TAMath
 
 ### Remarks
 This partial class provides convenient overloads for mathematical functions used in technical analysis\.

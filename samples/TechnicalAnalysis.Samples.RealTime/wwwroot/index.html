@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaLibStandard · live tape</title>
+  <style>
+    /* ---------------------------------------------------------------
+       Plotting-paper instrument. Cool paper ground, ink-blue traces,
+       ochre and plum for the two averages. Serif masthead over a mono
+       body: the serif says reference manual, the mono says instrument,
+       and monospaced digits are the reason numbers do not jitter as
+       they update. Zero external dependencies, by design.
+       --------------------------------------------------------------- */
+    :root {
+      --paper: #eef1ee;
+      --panel: #fbfcfa;
+      --ink: #16202a;
+      --ink-soft: #5f6d74;
+      --ink-faint: #93a0a4;
+      --rule: #d5ddd7;
+      --grid: #e3e9e4;
+      --price: #0e4f63;
+      --fast: #a9711a;
+      --slow: #71385f;
+      --bull: #1c6a55;
+      --bear: #96293a;
+      --warm: #a3842f;
+      --shadow: 0 1px 0 rgba(22, 32, 42, .06), 0 12px 28px -22px rgba(22, 32, 42, .5);
+      --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      --serif: "Iowan Old Style", Charter, Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 26px clamp(16px, 4vw, 48px) 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    /* --- masthead ------------------------------------------------- */
+    .masthead {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3.4vw, 34px);
+      font-weight: 600;
+      letter-spacing: -.015em;
+      margin: 0;
+    }
+
+    .wordmark em {
+      font-style: italic;
+      color: var(--ink-soft);
+      font-weight: 400;
+    }
+
+    .masthead .spacer { flex: 1 1 auto; }
+
+    .picker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    select {
+      font: inherit;
+      font-size: 13px;
+      color: var(--ink);
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      padding: 5px 9px;
+      letter-spacing: .05em;
+    }
+
+    select:focus-visible {
+      outline: 2px solid var(--price);
+      outline-offset: 2px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+
+    .status .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ink-faint);
+      box-shadow: 0 0 0 3px rgba(147, 160, 164, .18);
+    }
+
+    .status[data-state="live"] .dot { background: var(--bull); box-shadow: 0 0 0 3px rgba(28, 106, 85, .16); }
+    .status[data-state="connecting"] .dot { background: var(--warm); box-shadow: 0 0 0 3px rgba(163, 132, 47, .18); animation: breathe 1.4s ease-in-out infinite; }
+    .status[data-state="offline"] .dot { background: var(--bear); box-shadow: 0 0 0 3px rgba(150, 41, 58, .16); }
+
+    @keyframes breathe { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+
+    /* --- readout strip -------------------------------------------- */
+    .readout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .readout div {
+      background: var(--panel);
+      padding: 11px 14px 12px;
+    }
+
+    .readout .value {
+      font-size: clamp(19px, 2.3vw, 25px);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.01em;
+      margin-top: 2px;
+    }
+
+    .value.up { color: var(--bull); }
+    .value.down { color: var(--bear); }
+
+    .chip {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 3px 9px 2px;
+      border: 1px solid currentColor;
+      border-radius: 2px;
+      margin-top: 6px;
+    }
+
+    .chip[data-signal="Bullish"], .chip[data-signal="Oversold"] { color: var(--bull); }
+    .chip[data-signal="Bearish"], .chip[data-signal="Overbought"] { color: var(--bear); }
+    .chip[data-signal="Neutral"] { color: var(--ink-faint); }
+
+    /* --- body grid ------------------------------------------------ */
+    .board {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 268px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel > header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .legend {
+      display: flex;
+      gap: 14px;
+      font-size: 11px;
+      color: var(--ink-soft);
+      flex-wrap: wrap;
+    }
+
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend i { width: 14px; height: 2px; display: inline-block; }
+
+    canvas { display: block; width: 100%; }
+    #priceChart { height: 340px; }
+    #rsiChart { height: 132px; }
+
+    /* --- ledger --------------------------------------------------- */
+    .ledger dl {
+      margin: 0;
+      padding: 4px 0 6px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      gap: 10px;
+      padding: 6px 14px 5px;
+      position: relative;
+    }
+
+    .row dt {
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .row dd {
+      margin: 0;
+      font-variant-numeric: tabular-nums;
+      font-size: 14px;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .row.fresh dd { animation: ink .9s ease-out; }
+    @keyframes ink { from { background: rgba(14, 79, 99, .16); } to { background: transparent; } }
+
+    /* The signature of this page: an indicator that has not warmed up says so.
+       Hatched rule, warm ink, and a hairline that fills as bars accumulate. */
+    .row.pending dd {
+      color: var(--warm);
+      letter-spacing: .18em;
+    }
+
+    .row.pending::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 1px;
+      height: 1px;
+      background: repeating-linear-gradient(90deg, var(--warm) 0 3px, transparent 3px 6px);
+      opacity: .5;
+      transform-origin: left;
+      transform: scaleX(var(--warmth, 0));
+    }
+
+    .ledger footer {
+      border-top: 1px solid var(--rule);
+      padding: 9px 14px 11px;
+      font-size: 11px;
+      color: var(--ink-soft);
+    }
+
+    .tape {
+      list-style: none;
+      margin: 0;
+      padding: 4px 0 6px;
+      max-height: 168px;
+      overflow-y: auto;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .tape li {
+      display: grid;
+      grid-template-columns: 3.2em 1fr auto;
+      gap: 10px;
+      padding: 3px 14px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      border-left: 2px solid transparent;
+    }
+
+    .tape li:first-child { color: var(--ink); border-left-color: var(--price); }
+    .tape li b { font-weight: 600; }
+    .tape .s-Bullish, .tape .s-Oversold { color: var(--bull); }
+    .tape .s-Bearish, .tape .s-Overbought { color: var(--bear); }
+
+    .note {
+      font-size: 11px;
+      color: var(--ink-faint);
+      max-width: 68ch;
+    }
+
+    .note code {
+      color: var(--ink-soft);
+      background: rgba(22, 32, 42, .05);
+      padding: 1px 4px;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .board { grid-template-columns: minmax(0, 1fr); }
+      #priceChart { height: 264px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <h1 class="wordmark">TaLibStandard <em>live tape</em></h1>
+    <div class="spacer"></div>
+    <div class="picker">
+      <label class="eyebrow" for="symbol">Instrument</label>
+      <select id="symbol" aria-label="Instrument"></select>
+    </div>
+    <div class="status" id="status" data-state="connecting" role="status" aria-live="polite">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="statusText">connecting</span>
+    </div>
+  </header>
+
+  <section class="readout">
+    <div>
+      <div class="eyebrow">Last close</div>
+      <div class="value" id="last">—</div>
+    </div>
+    <div>
+      <div class="eyebrow">Change on window</div>
+      <div class="value" id="change">—</div>
+    </div>
+    <div>
+      <div class="eyebrow">Bar</div>
+      <div class="value" id="bar">—</div>
+    </div>
+    <div>
+      <div class="eyebrow">Signal</div>
+      <div><span class="chip" id="signal" data-signal="Neutral">waiting</span></div>
+    </div>
+  </section>
+
+  <div class="board">
+    <div style="display: grid; gap: 18px; min-width: 0;">
+      <section class="panel">
+        <header>
+          <span class="eyebrow">Price · closed bars</span>
+          <div class="legend">
+            <span><i style="background: var(--price)"></i>close</span>
+            <span><i style="background: var(--fast)"></i><span id="legendFast">SMA fast</span></span>
+            <span><i style="background: var(--slow)"></i><span id="legendSlow">SMA slow</span></span>
+          </div>
+        </header>
+        <canvas id="priceChart"></canvas>
+      </section>
+
+      <section class="panel">
+        <header>
+          <span class="eyebrow">Relative strength</span>
+          <div class="legend"><span id="legendRsi">RSI</span></div>
+        </header>
+        <canvas id="rsiChart"></canvas>
+      </section>
+    </div>
+
+    <aside style="display: grid; gap: 18px;">
+      <section class="panel ledger">
+        <header><span class="eyebrow">Latest values</span><span class="eyebrow" id="warmth">—</span></header>
+        <dl id="ledger"></dl>
+        <footer id="ledgerNote">Waiting for the first closed bar.</footer>
+      </section>
+
+      <section class="panel">
+        <header><span class="eyebrow">Tape</span><span class="eyebrow">seq · close</span></header>
+        <ul class="tape" id="tape"></ul>
+      </section>
+    </aside>
+  </div>
+
+  <p class="note">
+    Streaming over a raw WebSocket at <code>/ws/indicators</code>. The same snapshots are on SignalR at
+    <code>/hubs/indicators</code>. A dashed value has not warmed up yet: the server sends
+    <code>null</code> for it rather than a zero or a stale reading, and the hairline under the row shows
+    how much history it still needs.
+  </p>
+
+  <script>
+    'use strict';
+
+    const MAX_BARS = 240;
+    const FIELDS = [
+      { key: 'smaFast', label: 'SMA fast', digits: 2 },
+      { key: 'smaSlow', label: 'SMA slow', digits: 2 },
+      { key: 'ema', label: 'EMA', digits: 2 },
+      { key: 'rsi', label: 'RSI', digits: 1 },
+      { key: 'macd', label: 'MACD', digits: 4 },
+      { key: 'macdSignal', label: 'signal', digits: 4 },
+      { key: 'macdHistogram', label: 'histogram', digits: 4 },
+      { key: 'bollingerUpper', label: 'BB upper', digits: 2 },
+      { key: 'bollingerMiddle', label: 'BB middle', digits: 2 },
+      { key: 'bollingerLower', label: 'BB lower', digits: 2 },
+      { key: 'atr', label: 'ATR', digits: 4 }
+    ];
+
+    const css = getComputedStyle(document.documentElement);
+    const ink = css.getPropertyValue('--ink').trim();
+    const inkSoft = css.getPropertyValue('--ink-soft').trim();
+    const inkFaint = css.getPropertyValue('--ink-faint').trim();
+    const gridColor = css.getPropertyValue('--grid').trim();
+    const priceColor = css.getPropertyValue('--price').trim();
+    const fastColor = css.getPropertyValue('--fast').trim();
+    const slowColor = css.getPropertyValue('--slow').trim();
+    const warmColor = css.getPropertyValue('--warm').trim();
+
+    const el = (id) => document.getElementById(id);
+    const state = { bars: [], session: null, symbol: null, previous: {} };
+
+    /* ---------------------------------------------------------------
+       Rendering
+       --------------------------------------------------------------- */
+
+    function fitCanvas(canvas) {
+      const ratio = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      const width = Math.max(1, Math.round(rect.width * ratio));
+      const height = Math.max(1, Math.round(rect.height * ratio));
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+      }
+      const context = canvas.getContext('2d');
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+      return { context, width: rect.width, height: rect.height };
+    }
+
+    function extent(values) {
+      let min = Infinity;
+      let max = -Infinity;
+      for (const value of values) {
+        if (value === null || value === undefined || Number.isNaN(value)) continue;
+        if (value < min) min = value;
+        if (value > max) max = value;
+      }
+      if (min === Infinity) return null;
+      if (min === max) { min -= 1; max += 1; }
+      const pad = (max - min) * 0.08;
+      return { min: min - pad, max: max + pad };
+    }
+
+    function trace(context, bars, key, scaleX, scaleY, color, width) {
+      context.strokeStyle = color;
+      context.lineWidth = width;
+      context.lineJoin = 'round';
+      context.lineCap = 'round';
+      context.beginPath();
+      let drawing = false;
+      bars.forEach((bar, index) => {
+        const value = bar[key];
+        if (value === null || value === undefined) { drawing = false; return; }
+        const x = scaleX(index);
+        const y = scaleY(value);
+        if (drawing) context.lineTo(x, y);
+        else context.moveTo(x, y);
+        drawing = true;
+      });
+      context.stroke();
+    }
+
+    function drawPrice() {
+      const { context, width, height } = fitCanvas(el('priceChart'));
+      const padding = { top: 14, right: 66, bottom: 22, left: 12 };
+      context.clearRect(0, 0, width, height);
+
+      const bars = state.bars;
+      if (bars.length === 0) {
+        context.fillStyle = inkFaint;
+        context.font = '12px ' + css.getPropertyValue('--mono');
+        context.fillText('waiting for the first closed bar', padding.left + 4, height / 2);
+        return;
+      }
+
+      const range = extent(bars.flatMap((bar) => [bar.close, bar.smaFast, bar.smaSlow]));
+      const plotW = width - padding.left - padding.right;
+      const plotH = height - padding.top - padding.bottom;
+      const scaleX = (i) => padding.left + (bars.length === 1 ? plotW : (i / (bars.length - 1)) * plotW);
+      const scaleY = (v) => padding.top + plotH - ((v - range.min) / (range.max - range.min)) * plotH;
+
+      context.font = '10px ' + css.getPropertyValue('--mono');
+      context.textBaseline = 'middle';
+      for (let i = 0; i <= 4; i++) {
+        const value = range.min + ((range.max - range.min) * i) / 4;
+        const y = Math.round(scaleY(value)) + 0.5;
+        context.strokeStyle = gridColor;
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(padding.left, y);
+        context.lineTo(width - padding.right, y);
+        context.stroke();
+        context.fillStyle = inkFaint;
+        context.fillText(value.toFixed(2), width - padding.right + 8, y);
+      }
+
+      trace(context, bars, 'smaSlow', scaleX, scaleY, slowColor, 1.25);
+      trace(context, bars, 'smaFast', scaleX, scaleY, fastColor, 1.25);
+      trace(context, bars, 'close', scaleX, scaleY, priceColor, 1.75);
+
+      // Last-price flag: the one piece of chrome a terminal always earns.
+      const last = bars[bars.length - 1];
+      const y = scaleY(last.close);
+      context.fillStyle = priceColor;
+      context.beginPath();
+      context.arc(scaleX(bars.length - 1), y, 2.5, 0, Math.PI * 2);
+      context.fill();
+      context.fillRect(width - padding.right + 4, y - 8, padding.right - 8, 16);
+      context.fillStyle = '#fbfcfa';
+      context.font = '11px ' + css.getPropertyValue('--mono');
+      context.fillText(last.close.toFixed(2), width - padding.right + 8, y + 0.5);
+
+      context.fillStyle = inkFaint;
+      context.font = '10px ' + css.getPropertyValue('--mono');
+      context.textBaseline = 'alphabetic';
+      const first = bars[0];
+      context.fillText(clock(first.timestamp), padding.left, height - 6);
+      const lastLabel = clock(last.timestamp);
+      context.fillText(lastLabel, width - padding.right - context.measureText(lastLabel).width, height - 6);
+    }
+
+    function drawRsi() {
+      const { context, width, height } = fitCanvas(el('rsiChart'));
+      const padding = { top: 12, right: 66, bottom: 14, left: 12 };
+      context.clearRect(0, 0, width, height);
+
+      const bars = state.bars;
+      const plotW = width - padding.left - padding.right;
+      const plotH = height - padding.top - padding.bottom;
+      const scaleX = (i) => padding.left + (bars.length <= 1 ? plotW : (i / (bars.length - 1)) * plotW);
+      const scaleY = (v) => padding.top + plotH - (v / 100) * plotH;
+
+      // The conventional 30/70 corridor, shaded so an excursion out of it reads at a glance.
+      context.fillStyle = 'rgba(163, 132, 47, .07)';
+      context.fillRect(padding.left, scaleY(70), plotW, scaleY(30) - scaleY(70));
+
+      context.font = '10px ' + css.getPropertyValue('--mono');
+      context.textBaseline = 'middle';
+      for (const level of [30, 50, 70]) {
+        const y = Math.round(scaleY(level)) + 0.5;
+        context.strokeStyle = level === 50 ? gridColor : 'rgba(163, 132, 47, .35)';
+        context.setLineDash(level === 50 ? [] : [3, 3]);
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(padding.left, y);
+        context.lineTo(width - padding.right, y);
+        context.stroke();
+        context.setLineDash([]);
+        context.fillStyle = inkFaint;
+        context.fillText(String(level), width - padding.right + 8, y);
+      }
+
+      if (bars.length > 0) {
+        trace(context, bars, 'rsi', scaleX, scaleY, warmColor, 1.5);
+        const last = bars[bars.length - 1];
+        if (last.rsi !== null && last.rsi !== undefined) {
+          context.fillStyle = warmColor;
+          context.beginPath();
+          context.arc(scaleX(bars.length - 1), scaleY(last.rsi), 2.5, 0, Math.PI * 2);
+          context.fill();
+        }
+      }
+    }
+
+    function clock(iso) {
+      const date = new Date(iso);
+      return date.toLocaleTimeString([], { hour12: false });
+    }
+
+    function format(value, digits) {
+      if (value === null || value === undefined) return '–––';
+      if (!Number.isFinite(value)) return '—';
+      // A readout has a fixed width, so anything that would not fit switches to scientific notation
+      // rather than pushing the label off the panel.
+      return Math.abs(value) >= 1e9 ? value.toExponential(3) : value.toFixed(digits);
+    }
+
+    function renderLedger(snapshot) {
+      const ledger = el('ledger');
+      const warmth = Math.min(1, snapshot.barsInWindow / snapshot.barsRequired);
+
+      if (ledger.childElementCount === 0) {
+        ledger.innerHTML = FIELDS.map((field) =>
+          `<div class="row" data-key="${field.key}"><dt>${field.label}</dt><dd>–––</dd></div>`).join('');
+      }
+
+      for (const field of FIELDS) {
+        const row = ledger.querySelector(`[data-key="${field.key}"]`);
+        const value = snapshot[field.key];
+        const pending = value === null || value === undefined;
+        row.classList.toggle('pending', pending);
+        row.style.setProperty('--warmth', warmth.toFixed(3));
+        row.querySelector('dd').textContent = format(value, field.digits);
+
+        const wasPending = state.previous[field.key] === undefined || state.previous[field.key] === null;
+        row.classList.toggle('fresh', wasPending && !pending);
+        state.previous[field.key] = value;
+      }
+
+      el('warmth').textContent = `${snapshot.barsInWindow} / ${snapshot.barsRequired} bars`;
+      el('ledgerNote').textContent = snapshot.barsInWindow >= snapshot.barsRequired
+        ? 'Every indicator has enough history.'
+        : `${snapshot.barsRequired - snapshot.barsInWindow} more bar(s) before MACD prints.`;
+    }
+
+    function renderTape() {
+      el('tape').innerHTML = state.bars.slice(-8).reverse().map((bar) =>
+        `<li><span>${bar.sequence}</span><span>${clock(bar.timestamp)}</span>` +
+        `<b class="s-${bar.signal}">${bar.close.toFixed(2)}</b></li>`).join('');
+    }
+
+    function renderReadout(snapshot) {
+      el('last').textContent = snapshot.close.toFixed(2);
+      el('bar').textContent = clock(snapshot.timestamp);
+
+      const first = state.bars[0].close;
+      const delta = ((snapshot.close - first) / first) * 100;
+      const change = el('change');
+      change.textContent = `${delta >= 0 ? '+' : ''}${delta.toFixed(2)}%`;
+      change.classList.toggle('up', delta > 0);
+      change.classList.toggle('down', delta < 0);
+
+      const chip = el('signal');
+      chip.dataset.signal = snapshot.signal;
+      chip.textContent = snapshot.signal.toLowerCase();
+    }
+
+    function accept(snapshot) {
+      const bars = state.bars;
+      if (bars.length > 0 && bars[bars.length - 1].sequence === snapshot.sequence) return;
+      bars.push(snapshot);
+      if (bars.length > MAX_BARS) bars.shift();
+
+      renderReadout(snapshot);
+      renderLedger(snapshot);
+      renderTape();
+      drawPrice();
+      drawRsi();
+    }
+
+    /* ---------------------------------------------------------------
+       Transport: one socket, reconnecting with backoff.
+       --------------------------------------------------------------- */
+
+    let socket = null;
+    let attempt = 0;
+    let retryTimer = null;
+
+    function setStatus(stateName, text) {
+      el('status').dataset.state = stateName;
+      el('statusText').textContent = text;
+    }
+
+    function applySession(session) {
+      state.session = session;
+      const picker = el('symbol');
+      if (picker.childElementCount !== session.symbols.length) {
+        picker.innerHTML = session.symbols.map((s) => `<option value="${s}">${s}</option>`).join('');
+      }
+      picker.value = session.symbol;
+      el('legendFast').textContent = `SMA(${session.periods.smaFast})`;
+      el('legendSlow').textContent = `SMA(${session.periods.smaSlow})`;
+      el('legendRsi').textContent = `RSI(${session.periods.rsi}) · ${session.barSeconds}s bars`;
+    }
+
+    function connect() {
+      clearTimeout(retryTimer);
+      if (socket) { socket.onclose = null; socket.close(); }
+
+      const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const query = state.symbol ? `?symbol=${encodeURIComponent(state.symbol)}` : '';
+      setStatus('connecting', attempt === 0 ? 'connecting' : `retry ${attempt}`);
+
+      socket = new WebSocket(`${protocol}//${location.host}/ws/indicators${query}`);
+
+      socket.onopen = () => { attempt = 0; setStatus('live', 'streaming'); };
+
+      socket.onmessage = (event) => {
+        const message = JSON.parse(event.data);
+        if (message.type === 'session') {
+          state.symbol = message.session.symbol;
+          applySession(message.session);
+        } else if (message.type === 'snapshot') {
+          accept(message.snapshot);
+        } else if (message.type === 'error') {
+          setStatus('offline', 'rejected');
+          el('ledgerNote').textContent = message.error;
+        }
+      };
+
+      socket.onclose = () => {
+        attempt += 1;
+        const delay = Math.min(10000, 1000 * 2 ** (attempt - 1));
+        setStatus('offline', `reconnecting in ${Math.round(delay / 1000)}s`);
+        retryTimer = setTimeout(connect, delay);
+      };
+
+      socket.onerror = () => socket.close();
+    }
+
+    el('symbol').addEventListener('change', (event) => {
+      state.symbol = event.target.value;
+      state.bars = [];
+      state.previous = {};
+      attempt = 0;
+      el('tape').innerHTML = '';
+      drawPrice();
+      drawRsi();
+      connect();
+    });
+
+    window.addEventListener('resize', () => { drawPrice(); drawRsi(); });
+
+    drawPrice();
+    drawRsi();
+    connect();
+  </script>
+</body>
+</html>
