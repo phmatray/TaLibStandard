@@ -4,10 +4,32 @@
     <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>TechnicalAnalysis.Benchmarks</RootNamespace>
+    <!-- Enables IDE0005 (unnecessary usings) and validates the XML documentation on every public member. -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <!-- BenchmarkDotNet requires optimized, non-attached runs to produce meaningful numbers. -->
     <Optimize>true</Optimize>
     <ServerGarbageCollection>true</ServerGarbageCollection>
     <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--
+      Analyzer rules that fight benchmark code by design:
+      CA1031  broad catch is required so native probing can never throw
+      CA1051  visible instance fields (none left, kept for BenchmarkDotNet-generated partials)
+      CA1303  console banner literals are not localizable
+      CA1307/CA1310 ordinal string comparisons are already explicit where it matters
+      CA1707  benchmark method names use underscores on purpose (Sma_TAFunc, Sma_TAMath)
+      CA1819  OHLCV arrays are exposed directly and deliberately, copying them would defeat the benchmark
+      CA1812  benchmark classes are instantiated by BenchmarkDotNet through reflection
+      CA5394  the deterministic RNG is not, and must not be, cryptographic
+      SYSLIB1054 DllImport is kept over LibraryImport so the DllImportResolver story stays explicit
+      IDE0032 the lazily probed native-library properties cannot be auto properties
+      IDE0290 explicit constructors are kept so every parameter carries its own XML documentation
+      IDE0350 explicitly typed lambda parameters document the out-parameter shape of the equivalence invokers
+    -->
+    <NoWarn>$(NoWarn);CA1031;CA1051;CA1303;CA1307;CA1310;CA1707;CA1819;CA1812;CA5394;SYSLIB1054;IDE0032;IDE0290;IDE0350</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
