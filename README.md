@@ -79,7 +79,7 @@ on. Then clone the repository and explore the runnable projects in the [`samples
 ### Roadmap (next features)
 
 * [ ] Comprehensive API documentation that is easy to understand
-* [ ] High-Level API for common use cases
+* [x] High-Level API for common use cases — see the [fluent API guide](./docs/guides/fluent-api.md)
 * [ ] Support for more data types
 * [ ] Support for more functions
 * [ ] More tests
@@ -104,18 +104,12 @@ Hand-written guides live in [`docs/guides`](./docs/guides), and every public ent
 | Guide | What it covers |
 |-------|----------------|
 | [🏁 Getting started](./docs/guides/getting-started.md) | Installation, your first indicator, and the three things that trip everyone up: `RetCode`, `BegIdx`/`NBElement` output alignment, and the `double` / `float` / `decimal` story. **Start here.** |
+| [✨ Fluent API](./docs/guides/fluent-api.md) | `PriceSeries` in, bar-indexed `IndicatorSeries` out — the layer that does the `BegIdx`/`NBElement` arithmetic for you, with `null` for a bar that has not warmed up. Warm-up semantics, crossings, `AsOf`, the nine shipped indicators and the `Align` escape hatch to the rest. |
 | [📋 Indicator catalog](./docs/indicators/README.md) | Every `TAMath` and `TACandle` entry point, grouped by category, with signatures, defaults, outputs and links to the generated API pages. |
 | [📡 Real-time streaming](./docs/guides/real-time-streaming.md) | Ticks → bars → indicators over SignalR and raw WebSocket: architecture, message contracts, warm-up semantics and production notes. |
 | [📉 Backtesting](./docs/guides/backtesting.md) | The engine model, the structurally enforced no-look-ahead guarantee, the cost model, every metric with its formula, and how to write your own strategy. |
 | [📈 TradingView integration](./docs/guides/tradingview-integration.md) | Pine Script `ta.*` → `TAMath` mapping, parity caveats, UDF datafeed and Lightweight Charts wiring, alert-webhook security. |
 | [⚡ Benchmarks](./docs/guides/benchmarks.md) | What the benchmark suite measures, how to run it, how to read BenchmarkDotNet output, and the measured results. |
-
-> ⚠️ **Three indicators currently return wrong numbers**, quietly and with `RetCode.Success`: `Atr`
-> diverges to `+∞`, the EMA family (`Ema`, `Macd`, `Dema`, `Tema`, `T3`, `Apo`, `Ppo`, `Trix`, …) seeds
-> itself low, and `Rsi` returns `NaN` for a perfectly flat series. See
-> [Known library defects](./docs/guides/getting-started.md#10-known-library-defects) before building on
-> any of them; the [indicator catalog](./docs/indicators/README.md#known-defects) marks every affected
-> entry point.
 
 ## 📥 Installation
 
@@ -160,11 +154,31 @@ dotnet add package Atypical.TechnicalAnalysis.Functions
 
 ## 🧑‍💻 Usage
 
-TaLibStandard exposes two APIs on the same indicator: a low-level `TAFunc` API that mirrors the
-original TA-Lib C signature (`ref`/`in` parameters, pre-allocated output arrays), and a higher-level
-`TAMath` API that wraps it and returns a strongly-typed result record.
+TaLibStandard exposes three APIs over the same indicators: a **fluent** API (`PriceSeries` /
+`IndicatorSeries`) that hands you values addressed by bar index, a **`TAMath`** API that returns a
+strongly-typed result record carrying TA-Lib's raw output array and its alignment metadata, and a
+low-level **`TAFunc`** API that mirrors the original TA-Lib C signature (`ref`/`in` parameters,
+pre-allocated output arrays).
 
-### High-level API (`TAMath`)
+### Fluent API (`PriceSeries` → `IndicatorSeries`)
+
+```csharp
+using TechnicalAnalysis.Functions;
+
+PriceSeries prices = PriceSeries.FromHlc(highs, lows, closes);
+
+double? rsi = prices.Rsi(14).Latest;          // null until the indicator has warmed up
+double? atr = prices.Atr(14).Latest;
+
+IndicatorSeries fast = prices.Sma(5);
+IndicatorSeries slow = prices.Sma(20);
+bool goldenCross = fast.CrossedAbove(slow, bar: prices.BarCount - 1);
+```
+
+Every index is a **bar** index, and a bar the indicator has not reached yet is `null` — never `0.0`.
+See the [fluent API guide](./docs/guides/fluent-api.md).
+
+### `TAMath` — the raw result record
 
 ```csharp
 using TechnicalAnalysis.Functions;
@@ -174,9 +188,11 @@ double[] closingPrices = [.. /* your OHLCV data */];
 // RsiResult exposes RetCode, BegIdx, NBElement and the Real[] output array
 RsiResult rsi = TAMath.Rsi(0, closingPrices.Length - 1, closingPrices, timePeriod: 14);
 
-if (rsi.RetCode == RetCode.Success)
+if (rsi.RetCode == RetCode.Success && rsi.NBElement > 0)
 {
-    double latestRsi = rsi.Real[^1]; // most recent RSI value
+    // The newest value is at array index NBElement - 1, and it describes
+    // bar BegIdx + NBElement - 1. Those are two different numbers.
+    double latestRsi = rsi.Real[rsi.NBElement - 1];
 }
 ```
 
@@ -221,7 +237,8 @@ example that charts these indicators.
 > from the input index it corresponds to. Output element `k` describes **input index `BegIdx + k`**, for
 > `k` in `[0, NBElement)`; everything from `NBElement` onwards is a meaningless zero. Getting this wrong
 > shifts every signal in time, silently. The [getting started guide](./docs/guides/getting-started.md)
-> works through it with a hand-checkable example.
+> works through it with a hand-checkable example, and the
+> [fluent API](./docs/guides/fluent-api.md) does the arithmetic for you in one tested place.
 
 ## 🧩 Samples
 

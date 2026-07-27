@@ -16,3 +16,7 @@ global using TechnicalAnalysis.Samples.Backtesting.Reporting;
 global using TechnicalAnalysis.Samples.Backtesting.Strategies;
 global using TechnicalAnalysis.Samples.Backtesting.UnitTests.TestSupport;
 global using Xunit;
+
+// Same name collision as the sample project: pin the engine's types.
+global using IndicatorSeries = TechnicalAnalysis.Samples.Backtesting.Engine.IndicatorSeries;
+global using MacdSeries = TechnicalAnalysis.Samples.Backtesting.Engine.MacdSeries;

@@ -12,3 +12,10 @@ global using TechnicalAnalysis.Samples.Backtesting.Engine;
 global using TechnicalAnalysis.Samples.Backtesting.Metrics;
 global using TechnicalAnalysis.Samples.Backtesting.Reporting;
 global using TechnicalAnalysis.Samples.Backtesting.Strategies;
+
+// The library's fluent API introduces TechnicalAnalysis.Functions.IndicatorSeries and MacdSeries,
+// which collide by name with this sample's engine types of the same name. The sample keeps its own:
+// they are bar-window aware and clamp their metadata so a strategy cannot read a future bar. Pin
+// them explicitly rather than relying on using order.
+global using IndicatorSeries = TechnicalAnalysis.Samples.Backtesting.Engine.IndicatorSeries;
+global using MacdSeries = TechnicalAnalysis.Samples.Backtesting.Engine.MacdSeries;

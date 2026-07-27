@@ -120,6 +120,13 @@ index 0**. So:
 Getting this wrong silently shifts every signal in time. It is the single most common correctness
 bug when consuming this library, and it never throws.
 
+> **You can have this arithmetic done for you.** The [fluent API](fluent-api.md) —
+> `PriceSeries.FromClose(closes).Sma(30)` — returns an `IndicatorSeries` in which every index is a
+> *bar* index and a bar that has not warmed up yet is `null`. It owns the `BegIdx`/`NBElement`
+> conversion in one tested place, so no call site can get it wrong. Read the rest of this section
+> anyway: you need it to reach the raw layer, to debug, and to understand what the fluent layer is
+> protecting you from.
+
 ### 3.2 A fully worked example
 
 Eight daily bars, a 3-period SMA:
@@ -254,6 +261,11 @@ oscillators such as MACD or CCI that genuinely cross zero.
 
 Prefer `NaN` padding over `0.0` padding; prefer both over silently reusing `Real` as if it were
 bar-aligned.
+
+The library ships this projection so you do not have to write it:
+`IndicatorSeries.ToBarAlignedArray()` is the `NaN`-padded version above, and
+`ToBarAlignedNullableArray()` is the `double?[]` version that has no sentinel at all. See
+[the fluent API guide](fluent-api.md#projections-onto-the-bar-axis).
 
 ### 3.4 `startIdx` does not clip the input array
 
@@ -517,11 +529,9 @@ TACore.Globals.Compatibility = Compatibility.Metastock;   // default is Compatib
 `Compatibility.Metastock` seeds EMA with the first input value and shifts the RSI/CMO lookback by
 one. Only switch if you are explicitly reproducing MetaStock output.
 
-`Compatibility.Default` is *meant* to seed EMA with the simple average of the first `timePeriod`
-values, as the C library does. It does not: `TA_INT_EMA` sums `timePeriod - 1` values, divides by
-`timePeriod`, and then applies one extra smoothing step, so
-`TAMath.Ema(0, 7, [100, 102, 101, 105, 107, 106, 110, 111], timePeriod: 3)` returns `Real[0] =
-84.166667` where the C library returns `101`. See [§10](#10-known-library-defects).
+`Compatibility.Default` seeds EMA with the simple average of the first `timePeriod` values, as the C
+library does: `TAMath.Ema(0, 7, [100, 102, 101, 105, 107, 106, 110, 111], timePeriod: 3)` returns
+`Real[0] = 101`, the mean of `100`, `102` and `101`.
 
 Seeding differences decay geometrically but never vanish — see the
 [TradingView parity caveats](tradingview-integration.md#2-parity-caveats).
@@ -628,53 +638,18 @@ incremental/streaming API.
 **12. Assuming candlestick patterns work on tiny series.** Pattern lookbacks include the
 `CandleSettings` averaging window (10 bars for `BodyDoji`, for example). Feed at least ~30 bars.
 
-**13. Assuming every indicator is correct.** Three of them are not, and they fail quietly rather
-than loudly: `TAMath.Atr` diverges to `+∞`, the EMA family seeds low, and `TAMath.Rsi` returns
-`NaN` for a flat series — all with `RetCode.Success`. See [§10](#10-known-library-defects) before
-you build on any of them.
-
-**14. Charting a value without checking `double.IsFinite`.** `Success` and a non-zero `NBElement`
-do not imply a finite number. One `NaN` or `∞` in a series poisons every aggregate computed from it,
-and the two defects above both produce one.
+**13. Charting a value without checking `double.IsFinite`.** `Success` and a non-zero `NBElement`
+do not imply a finite number — a non-finite *input* propagates through every running sum and every
+recursion. One `NaN` or `∞` in a series poisons every aggregate computed from it. (The fluent API
+refuses non-finite prices at the boundary for exactly this reason; see the
+[fluent API guide](fluent-api.md#non-finite-prices-are-refused-at-the-boundary).)
 
 ---
 
-## 10. Known library defects
+## 10. Where to go next
 
-These are bugs in `src/TechnicalAnalysis.Functions`, not in your code. They are listed here because
-they are reachable from the five-line example at the top of this guide, and because a wrong number
-that looks plausible costs more than a crash.
-
-| Defect | What you get | Location |
-|---|---|---|
-| **`Atr` never divides its running average** | `TAMath.Atr` grows by a factor of `period - 1` on every bar after the second output. On a series whose true range is exactly `2.0` every bar, `Atr(…, 14)` returns `2, 2, 26.142857, 340, 4420.142857, 57462, …`; on a 1 500-bar series it is `+∞` from bar 300 onwards. `Natr` is *not* affected | `src/TechnicalAnalysis.Functions/Atr/TAFunc.cs`, main output loop |
-| **`TA_INT_EMA` seeds itself low** | The seed sums `period - 1` values and divides by `period`, then smooths once more, so `TAMath.Ema` over a constant series of `100` with `timePeriod: 20` returns `95.476190` instead of `100`. The error decays with the smoothing factor, so it distorts the bars just after warm-up rather than the steady state. Affects `Ema`, `Macd`, `MacdExt`, `MacdFix`, `Dema`, `Tema`, `T3`, `Apo`, `Ppo`, `Trix` | `src/TechnicalAnalysis.Functions/TAFunc.cs`, `TA_INT_EMA` seed loop |
-| **`Rsi` returns `NaN` on a perfectly flat series** | `RetCode.Success`, a non-zero `NBElement`, and every element `NaN` — there is no zero guard on `prevGain + prevLoss`. Trigger: a halted instrument, or any window with no price change | `src/TechnicalAnalysis.Functions/Rsi/TAFunc.cs` |
-
-Two habits make these survivable, and they are worth having regardless:
-
-```csharp
-// 1. Treat a non-finite output as "no value", never as a price.
-if (!double.IsFinite(result.Real[k]))
-{
-    continue;
-}
-```
-
-For ATR specifically, Wilder smoothing over `TAMath.TrueRange` is a dozen lines and is correct
-today; the [TradingView guide](tradingview-integration.md#21-wilder-smoothing-tarma) has the
-snippet. Raising the unstable period (§7.1) discards the bars the EMA seed contaminates, but does
-not help ATR — the divergence is unbounded, not transient.
-
-The [backtesting](backtesting.md#-limitations--read-before-believing-any-number),
-[real-time streaming](real-time-streaming.md#-known-library-defects-visible-in-this-sample) and
-[TradingView](tradingview-integration.md#0-known-library-defects) guides show what each one does to
-a running system.
-
----
-
-## 11. Where to go next
-
+- [The fluent API](fluent-api.md) — `PriceSeries` and `IndicatorSeries`, the bar-indexed layer that
+  does the `BegIdx`/`NBElement` arithmetic of §3 for you.
 - [Complete indicator reference](../indicators/README.md) — all 159 entry points with signatures,
   parameters, defaults, outputs and links to the generated API pages.
 - [TradingView integration](tradingview-integration.md) — Pine Script mapping, parity caveats,

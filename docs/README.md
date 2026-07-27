@@ -8,7 +8,7 @@ which one you want:
 | Learn the library from scratch | [Guides](#-guides) — hand-written, worked examples, prose |
 | Find an indicator and its signature | [Indicator catalog](#-indicator-catalog) — generated from the source, one table per category |
 | Look up one type or member in detail | [API reference](#-api-reference) — generated from the XML docs |
-| Know which indicators are currently broken | [Known library defects](guides/getting-started.md#10-known-library-defects) — `Atr`, the EMA family and `Rsi`, all of which fail quietly |
+| Never do `BegIdx` / `NBElement` arithmetic by hand | [Fluent API](guides/fluent-api.md) — `PriceSeries` in, bar-indexed `IndicatorSeries` out |
 
 ---
 
@@ -18,7 +18,8 @@ Hand-written and kept in `docs/guides/`. Start at the top.
 
 | Guide | What it covers |
 |-------|----------------|
-| [**Getting started**](guides/getting-started.md) | Installation, your first indicator, and the three things that trip everyone up: `RetCode`, `BegIdx`/`NBElement` output alignment, and the `double` / `float` / `decimal` story. Includes a hand-checkable worked SMA example, a lookback table, `TACore.Globals`, the low-level `TAFunc` API, fourteen common pitfalls and the known library defects. **Read this one first.** |
+| [**Getting started**](guides/getting-started.md) | Installation, your first indicator, and the three things that trip everyone up: `RetCode`, `BegIdx`/`NBElement` output alignment, and the `double` / `float` / `decimal` story. Includes a hand-checkable worked SMA example, a lookback table, `TACore.Globals`, the low-level `TAFunc` API and thirteen common pitfalls. **Read this one first.** |
+| [**Fluent API**](guides/fluent-api.md) | The bar-indexed layer over `TAMath`: `PriceSeries` factories, `IndicatorSeries` and its warm-up-is-`null` contract, crossings, `AsOf`, the nine shipped indicators with a worked example each, the `Align` escape hatch to the other 89, and error handling. |
 | [**Indicator catalog**](indicators/README.md) | Every public entry point in one place — see below. |
 | [**Real-time streaming**](guides/real-time-streaming.md) | Turning a tick feed into bars and indicators: architecture, both transports (SignalR hub and raw WebSocket), the message contracts, warm-up and null semantics, and production notes on Redis scale-out, backpressure, cancellation and when to abandon window-recompute for incremental state. |
 | [**Backtesting**](guides/backtesting.md) | The engine model and its execution timeline, the structurally enforced no-look-ahead guarantee, the commission/slippage cost model, every performance metric with its formula and annualisation assumption, a complete worked `IStrategy`, CSV input, and an honest limitations section. |

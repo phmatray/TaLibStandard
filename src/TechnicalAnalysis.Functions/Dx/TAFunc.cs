@@ -104,15 +104,14 @@ public static partial class TAFunc
         double prevHigh = inHigh[today];
         double prevLow = inLow[today];
         double prevClose = inClose[today];
+        // The reference implementation seeds with `while (i-- > 0)`, which executes the body
+        // exactly `i` times. Translating it as `while (true) { i--; if (i <= 0) break; ... }`
+        // executes it `i - 1` times, which leaves `today` short of startIdx and makes the tail
+        // loop emit that many extra values: outBegIdx + outNBElement then overruns the input.
         int i = optInTimePeriod - 1;
-        while (true)
+        while (i > 0)
         {
             i--;
-            if (i <= 0)
-            {
-                break;
-            }
-
             today++;
             tempReal = inHigh[today];
             diffP = tempReal - prevHigh;
@@ -146,15 +145,11 @@ public static partial class TAFunc
             prevClose = inClose[today];
         }
 
+        // Likewise `while (i-- != 0)`, which executes the body exactly `i` times.
         i = (int)TACore.Globals.UnstablePeriod[FuncUnstId.Dx] + 1;
-        while (true)
+        while (i != 0)
         {
             i--;
-            if (i == 0)
-            {
-                break;
-            }
-
             today++;
             tempReal = inHigh[today];
             diffP = tempReal - prevHigh;

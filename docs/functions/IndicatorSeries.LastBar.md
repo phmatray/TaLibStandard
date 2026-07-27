@@ -1,0 +1,16 @@
+#### [TechnicalAnalysis\.Functions](Atypical.TechnicalAnalysis.Functions.md 'Atypical\.TechnicalAnalysis\.Functions')
+### [TechnicalAnalysis\.Functions](Atypical.TechnicalAnalysis.Functions.md#TechnicalAnalysis.Functions 'TechnicalAnalysis\.Functions').[IndicatorSeries](IndicatorSeries.md 'TechnicalAnalysis\.Functions\.IndicatorSeries')
+
+## IndicatorSeries\.LastBar Property
+
+Gets the BAR index of the last bar that has a value, or `null` when no bar has one\.
+
+```csharp
+public System.Nullable<int> LastBar { get; }
+```
+
+#### Property Value
+[System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')  
+A bar index in `[0, BarCount)`, equal to `FirstBar + WarmCount - 1`\. Note that
+this is a bar index and `WarmCount - 1` is an array index; they are different numbers\.
+`null` if and only if [HasValues](IndicatorSeries.HasValues.md 'TechnicalAnalysis\.Functions\.IndicatorSeries\.HasValues') is `false`\.

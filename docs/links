@@ -467,6 +467,88 @@ M:TechnicalAnalysis.Functions.ExpResult.#ctor(TechnicalAnalysis.Common.RetCode,S
 T:TechnicalAnalysis.Functions.ExpResult|ExpResult.md|ExpResult
 M:TechnicalAnalysis.Functions.FloorResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|FloorResult.FloorResult(RetCode,int,int,double[]).md|FloorResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.FloorResult|FloorResult.md|FloorResult
+P:TechnicalAnalysis.Functions.BollingerBandsSeries.Upper|BollingerBandsSeries.Upper.md|Upper
+P:TechnicalAnalysis.Functions.BollingerBandsSeries.Middle|BollingerBandsSeries.Middle.md|Middle
+P:TechnicalAnalysis.Functions.BollingerBandsSeries.Lower|BollingerBandsSeries.Lower.md|Lower
+M:TechnicalAnalysis.Functions.BollingerBandsSeries.#ctor(TechnicalAnalysis.Functions.IndicatorSeries,TechnicalAnalysis.Functions.IndicatorSeries,TechnicalAnalysis.Functions.IndicatorSeries)|BollingerBandsSeries.BollingerBandsSeries(IndicatorSeries,IndicatorSeries,IndicatorSeries).md|BollingerBandsSeries(IndicatorSeries, IndicatorSeries, IndicatorSeries)
+M:TechnicalAnalysis.Functions.BollingerBandsSeries.AsOf(System.Int32)|BollingerBandsSeries.AsOf(int).md|AsOf(int)
+T:TechnicalAnalysis.Functions.BollingerBandsSeries|BollingerBandsSeries.md|BollingerBandsSeries
+M:TechnicalAnalysis.Functions.MomentumIndicators.Rsi(TechnicalAnalysis.Functions.PriceSeries,System.Int32)|MomentumIndicators.Rsi(thisPriceSeries,int).md|Rsi(this PriceSeries, int)
+M:TechnicalAnalysis.Functions.MomentumIndicators.Adx(TechnicalAnalysis.Functions.PriceSeries,System.Int32)|MomentumIndicators.Adx(thisPriceSeries,int).md|Adx(this PriceSeries, int)
+M:TechnicalAnalysis.Functions.MomentumIndicators.Macd(TechnicalAnalysis.Functions.PriceSeries,System.Int32,System.Int32,System.Int32)|MomentumIndicators.Macd(thisPriceSeries,int,int,int).md|Macd(this PriceSeries, int, int, int)
+M:TechnicalAnalysis.Functions.MomentumIndicators.Stoch(TechnicalAnalysis.Functions.PriceSeries,System.Int32,System.Int32,TechnicalAnalysis.Common.MAType,System.Int32,TechnicalAnalysis.Common.MAType)|MomentumIndicators.Stoch(thisPriceSeries,int,int,MAType,int,MAType).md|Stoch(this PriceSeries, int, int, MAType, int, MAType)
+T:TechnicalAnalysis.Functions.MomentumIndicators|MomentumIndicators.md|MomentumIndicators
+M:TechnicalAnalysis.Functions.OverlapStudyIndicators.Sma(TechnicalAnalysis.Functions.PriceSeries,System.Int32)|OverlapStudyIndicators.Sma(thisPriceSeries,int).md|Sma(this PriceSeries, int)
+M:TechnicalAnalysis.Functions.OverlapStudyIndicators.Ema(TechnicalAnalysis.Functions.PriceSeries,System.Int32)|OverlapStudyIndicators.Ema(thisPriceSeries,int).md|Ema(this PriceSeries, int)
+M:TechnicalAnalysis.Functions.OverlapStudyIndicators.BollingerBands(TechnicalAnalysis.Functions.PriceSeries,System.Int32,System.Double,System.Double,TechnicalAnalysis.Common.MAType)|OverlapStudyIndicators.BollingerBands(thisPriceSeries,int,double,double,MAType).md|BollingerBands(this PriceSeries, int, double, double, MAType)
+T:TechnicalAnalysis.Functions.OverlapStudyIndicators|OverlapStudyIndicators.md|OverlapStudyIndicators
+M:TechnicalAnalysis.Functions.VolatilityIndicators.Atr(TechnicalAnalysis.Functions.PriceSeries,System.Int32)|VolatilityIndicators.Atr(thisPriceSeries,int).md|Atr(this PriceSeries, int)
+T:TechnicalAnalysis.Functions.VolatilityIndicators|VolatilityIndicators.md|VolatilityIndicators
+M:TechnicalAnalysis.Functions.VolumeIndicators.Obv(TechnicalAnalysis.Functions.PriceSeries)|VolumeIndicators.Obv(thisPriceSeries).md|Obv(this PriceSeries)
+T:TechnicalAnalysis.Functions.VolumeIndicators|VolumeIndicators.md|VolumeIndicators
+P:TechnicalAnalysis.Functions.IndicatorSeries.RetCode|IndicatorSeries.RetCode.md|RetCode
+P:TechnicalAnalysis.Functions.IndicatorSeries.BarCount|IndicatorSeries.BarCount.md|BarCount
+P:TechnicalAnalysis.Functions.IndicatorSeries.WarmCount|IndicatorSeries.WarmCount.md|WarmCount
+P:TechnicalAnalysis.Functions.IndicatorSeries.HasValues|IndicatorSeries.HasValues.md|HasValues
+P:TechnicalAnalysis.Functions.IndicatorSeries.FirstBar|IndicatorSeries.FirstBar.md|FirstBar
+P:TechnicalAnalysis.Functions.IndicatorSeries.LastBar|IndicatorSeries.LastBar.md|LastBar
+P:TechnicalAnalysis.Functions.IndicatorSeries.Item(System.Int32)|IndicatorSeries.this[int].md|this[int]
+P:TechnicalAnalysis.Functions.IndicatorSeries.Latest|IndicatorSeries.Latest.md|Latest
+P:TechnicalAnalysis.Functions.IndicatorSeries.WarmValues|IndicatorSeries.WarmValues.md|WarmValues
+M:TechnicalAnalysis.Functions.IndicatorSeries.Empty(System.Int32)|IndicatorSeries.Empty(int).md|Empty(int)
+M:TechnicalAnalysis.Functions.IndicatorSeries.Create(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[],System.Int32)|IndicatorSeries.Create(RetCode,int,int,double[],int).md|Create(RetCode, int, int, double[], int)
+M:TechnicalAnalysis.Functions.IndicatorSeries.op_Equality(TechnicalAnalysis.Functions.IndicatorSeries,TechnicalAnalysis.Functions.IndicatorSeries)|IndicatorSeries.operator(IndicatorSeries,IndicatorSeries).md|operator ==(IndicatorSeries, IndicatorSeries)
+M:TechnicalAnalysis.Functions.IndicatorSeries.op_Inequality(TechnicalAnalysis.Functions.IndicatorSeries,TechnicalAnalysis.Functions.IndicatorSeries)|IndicatorSeries.operator!(IndicatorSeries,IndicatorSeries).md|operator !=(IndicatorSeries, IndicatorSeries)
+M:TechnicalAnalysis.Functions.IndicatorSeries.IsWarmAt(System.Int32)|IndicatorSeries.IsWarmAt(int).md|IsWarmAt(int)
+M:TechnicalAnalysis.Functions.IndicatorSeries.AsOf(System.Int32)|IndicatorSeries.AsOf(int).md|AsOf(int)
+M:TechnicalAnalysis.Functions.IndicatorSeries.CrossedAbove(System.Double,System.Int32)|IndicatorSeries.CrossedAbove.md#TechnicalAnalysis.Functions.IndicatorSeries.CrossedAbove(double,int)|CrossedAbove(double, int)
+M:TechnicalAnalysis.Functions.IndicatorSeries.CrossedBelow(System.Double,System.Int32)|IndicatorSeries.CrossedBelow.md#TechnicalAnalysis.Functions.IndicatorSeries.CrossedBelow(double,int)|CrossedBelow(double, int)
+M:TechnicalAnalysis.Functions.IndicatorSeries.CrossedAbove(TechnicalAnalysis.Functions.IndicatorSeries,System.Int32)|IndicatorSeries.CrossedAbove.md#TechnicalAnalysis.Functions.IndicatorSeries.CrossedAbove(TechnicalAnalysis.Functions.IndicatorSeries,int)|CrossedAbove(IndicatorSeries, int)
+M:TechnicalAnalysis.Functions.IndicatorSeries.CrossedBelow(TechnicalAnalysis.Functions.IndicatorSeries,System.Int32)|IndicatorSeries.CrossedBelow.md#TechnicalAnalysis.Functions.IndicatorSeries.CrossedBelow(TechnicalAnalysis.Functions.IndicatorSeries,int)|CrossedBelow(IndicatorSeries, int)
+M:TechnicalAnalysis.Functions.IndicatorSeries.ToBarAlignedArray|IndicatorSeries.ToBarAlignedArray().md|ToBarAlignedArray()
+M:TechnicalAnalysis.Functions.IndicatorSeries.ToBarAlignedNullableArray|IndicatorSeries.ToBarAlignedNullableArray().md|ToBarAlignedNullableArray()
+M:TechnicalAnalysis.Functions.IndicatorSeries.WarmValuesToArray|IndicatorSeries.WarmValuesToArray().md|WarmValuesToArray()
+M:TechnicalAnalysis.Functions.IndicatorSeries.CopyBarAligned(System.Span{System.Double})|IndicatorSeries.CopyBarAligned(Span_double_).md|CopyBarAligned(Span<double>)
+M:TechnicalAnalysis.Functions.IndicatorSeries.GetEnumerator|IndicatorSeries.GetEnumerator().md|GetEnumerator()
+M:TechnicalAnalysis.Functions.IndicatorSeries.Equals(TechnicalAnalysis.Functions.IndicatorSeries)|IndicatorSeries.Equals.md#TechnicalAnalysis.Functions.IndicatorSeries.Equals(TechnicalAnalysis.Functions.IndicatorSeries)|Equals(IndicatorSeries)
+M:TechnicalAnalysis.Functions.IndicatorSeries.Equals(System.Object)|IndicatorSeries.Equals.md#TechnicalAnalysis.Functions.IndicatorSeries.Equals(object)|Equals(object)
+M:TechnicalAnalysis.Functions.IndicatorSeries.GetHashCode|IndicatorSeries.GetHashCode().md|GetHashCode()
+T:TechnicalAnalysis.Functions.IndicatorSeries|IndicatorSeries.md|IndicatorSeries
+P:TechnicalAnalysis.Functions.MacdSeries.Line|MacdSeries.Line.md|Line
+P:TechnicalAnalysis.Functions.MacdSeries.Signal|MacdSeries.Signal.md|Signal
+P:TechnicalAnalysis.Functions.MacdSeries.Histogram|MacdSeries.Histogram.md|Histogram
+M:TechnicalAnalysis.Functions.MacdSeries.#ctor(TechnicalAnalysis.Functions.IndicatorSeries,TechnicalAnalysis.Functions.IndicatorSeries,TechnicalAnalysis.Functions.IndicatorSeries)|MacdSeries.MacdSeries(IndicatorSeries,IndicatorSeries,IndicatorSeries).md|MacdSeries(IndicatorSeries, IndicatorSeries, IndicatorSeries)
+M:TechnicalAnalysis.Functions.MacdSeries.AsOf(System.Int32)|MacdSeries.AsOf(int).md|AsOf(int)
+T:TechnicalAnalysis.Functions.MacdSeries|MacdSeries.md|MacdSeries
+P:TechnicalAnalysis.Functions.PriceSeries.Empty|PriceSeries.Empty.md|Empty
+P:TechnicalAnalysis.Functions.PriceSeries.BarCount|PriceSeries.BarCount.md|BarCount
+P:TechnicalAnalysis.Functions.PriceSeries.IsEmpty|PriceSeries.IsEmpty.md|IsEmpty
+P:TechnicalAnalysis.Functions.PriceSeries.HasOpen|PriceSeries.HasOpen.md|HasOpen
+P:TechnicalAnalysis.Functions.PriceSeries.HasHighLow|PriceSeries.HasHighLow.md|HasHighLow
+P:TechnicalAnalysis.Functions.PriceSeries.HasVolume|PriceSeries.HasVolume.md|HasVolume
+P:TechnicalAnalysis.Functions.PriceSeries.Close|PriceSeries.Close.md|Close
+P:TechnicalAnalysis.Functions.PriceSeries.Open|PriceSeries.Open.md|Open
+P:TechnicalAnalysis.Functions.PriceSeries.High|PriceSeries.High.md|High
+P:TechnicalAnalysis.Functions.PriceSeries.Low|PriceSeries.Low.md|Low
+P:TechnicalAnalysis.Functions.PriceSeries.Volume|PriceSeries.Volume.md|Volume
+M:TechnicalAnalysis.Functions.PriceSeries.FromClose(System.ReadOnlySpan{System.Double})|PriceSeries.FromClose(ReadOnlySpan_double_).md|FromClose(ReadOnlySpan<double>)
+M:TechnicalAnalysis.Functions.PriceSeries.FromHlc(System.ReadOnlySpan{System.Double},System.ReadOnlySpan{System.Double},System.ReadOnlySpan{System.Double})|PriceSeries.FromHlc(ReadOnlySpan_double_,ReadOnlySpan_double_,ReadOnlySpan_double_).md|FromHlc(ReadOnlySpan<double>, ReadOnlySpan<double>, ReadOnlySpan<double>)
+M:TechnicalAnalysis.Functions.PriceSeries.FromOhlc(System.ReadOnlySpan{System.Double},System.ReadOnlySpan{System.Double},System.ReadOnlySpan{System.Double},System.ReadOnlySpan{System.Double})|PriceSeries.FromOhlc(ReadOnlySpan_double_,ReadOnlySpan_double_,ReadOnlySpan_double_,ReadOnlySpan_double_).md|FromOhlc(ReadOnlySpan<double>, ReadOnlySpan<double>, ReadOnlySpan<double>, ReadOnlySpan<double>)
+M:TechnicalAnalysis.Functions.PriceSeries.FromOhlcv(System.ReadOnlySpan{System.Double},System.ReadOnlySpan{System.Double},System.ReadOnlySpan{System.Double},System.ReadOnlySpan{System.Double},System.ReadOnlySpan{System.Double})|PriceSeries.FromOhlcv(ReadOnlySpan_double_,ReadOnlySpan_double_,ReadOnlySpan_double_,ReadOnlySpan_double_,ReadOnlySpan_double_).md|FromOhlcv(ReadOnlySpan<double>, ReadOnlySpan<double>, ReadOnlySpan<double>, ReadOnlySpan<double>, ReadOnlySpan<double>)
+M:TechnicalAnalysis.Functions.PriceSeries.op_Equality(TechnicalAnalysis.Functions.PriceSeries,TechnicalAnalysis.Functions.PriceSeries)|PriceSeries.operator(PriceSeries,PriceSeries).md|operator ==(PriceSeries, PriceSeries)
+M:TechnicalAnalysis.Functions.PriceSeries.op_Inequality(TechnicalAnalysis.Functions.PriceSeries,TechnicalAnalysis.Functions.PriceSeries)|PriceSeries.operator!(PriceSeries,PriceSeries).md|operator !=(PriceSeries, PriceSeries)
+M:TechnicalAnalysis.Functions.PriceSeries.AsOf(System.Int32)|PriceSeries.AsOf(int).md|AsOf(int)
+M:TechnicalAnalysis.Functions.PriceSeries.Align(TechnicalAnalysis.Common.SingleOutputResult)|PriceSeries.Align.md#TechnicalAnalysis.Functions.PriceSeries.Align(TechnicalAnalysis.Common.SingleOutputResult)|Align(SingleOutputResult)
+M:TechnicalAnalysis.Functions.PriceSeries.Align``1(``0,System.Func{``0,System.Double[]})|PriceSeries.Align.md#TechnicalAnalysis.Functions.PriceSeries.Align_TResult_(TResult,System.Func_TResult,double[]_)|Align<TResult>(TResult, Func<TResult,double[]>)
+M:TechnicalAnalysis.Functions.PriceSeries.Equals(TechnicalAnalysis.Functions.PriceSeries)|PriceSeries.Equals.md#TechnicalAnalysis.Functions.PriceSeries.Equals(TechnicalAnalysis.Functions.PriceSeries)|Equals(PriceSeries)
+M:TechnicalAnalysis.Functions.PriceSeries.Equals(System.Object)|PriceSeries.Equals.md#TechnicalAnalysis.Functions.PriceSeries.Equals(object)|Equals(object)
+M:TechnicalAnalysis.Functions.PriceSeries.GetHashCode|PriceSeries.GetHashCode().md|GetHashCode()
+T:TechnicalAnalysis.Functions.PriceSeries|PriceSeries.md|PriceSeries
+P:TechnicalAnalysis.Functions.StochSeries.SlowK|StochSeries.SlowK.md|SlowK
+P:TechnicalAnalysis.Functions.StochSeries.SlowD|StochSeries.SlowD.md|SlowD
+M:TechnicalAnalysis.Functions.StochSeries.#ctor(TechnicalAnalysis.Functions.IndicatorSeries,TechnicalAnalysis.Functions.IndicatorSeries)|StochSeries.StochSeries(IndicatorSeries,IndicatorSeries).md|StochSeries(IndicatorSeries, IndicatorSeries)
+M:TechnicalAnalysis.Functions.StochSeries.AsOf(System.Int32)|StochSeries.AsOf(int).md|AsOf(int)
+T:TechnicalAnalysis.Functions.StochSeries|StochSeries.md|StochSeries
 M:TechnicalAnalysis.Functions.HtDcPeriodResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|HtDcPeriodResult.HtDcPeriodResult(RetCode,int,int,double[]).md|HtDcPeriodResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.HtDcPeriodResult|HtDcPeriodResult.md|HtDcPeriodResult
 M:TechnicalAnalysis.Functions.HtDcPhaseResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|HtDcPhaseResult.HtDcPhaseResult(RetCode,int,int,double[]).md|HtDcPhaseResult(RetCode, int, int, double[])
@@ -635,6 +717,9 @@ M:TechnicalAnalysis.Functions.WmaResult.#ctor(TechnicalAnalysis.Common.RetCode,S
 T:TechnicalAnalysis.Functions.WmaResult|WmaResult.md|WmaResult
 M:TechnicalAnalysis.Functions.ZigZagResult.#ctor(TechnicalAnalysis.Common.RetCode,System.Int32,System.Int32,System.Double[])|ZigZagResult.ZigZagResult(RetCode,int,int,double[]).md|ZigZagResult(RetCode, int, int, double[])
 T:TechnicalAnalysis.Functions.ZigZagResult|ZigZagResult.md|ZigZagResult
+P:TechnicalAnalysis.Functions.IndicatorSeries.Enumerator.Current|IndicatorSeries.Enumerator.Current.md|Current
+M:TechnicalAnalysis.Functions.IndicatorSeries.Enumerator.MoveNext|IndicatorSeries.Enumerator.MoveNext().md|MoveNext()
+T:TechnicalAnalysis.Functions.IndicatorSeries.Enumerator|IndicatorSeries.Enumerator.md|Enumerator
 ?:TechnicalAnalysis.Functions.TAMath.Acos|TAMath.Acos.md|Acos
 ?:TechnicalAnalysis.Functions.TAMath.Ad|TAMath.Ad.md|Ad
 ?:TechnicalAnalysis.Functions.TAMath.Add|TAMath.Add.md|Add
@@ -733,3 +818,8 @@ T:TechnicalAnalysis.Functions.ZigZagResult|ZigZagResult.md|ZigZagResult
 ?:TechnicalAnalysis.Functions.TAMath.WillR|TAMath.WillR.md|WillR
 ?:TechnicalAnalysis.Functions.TAMath.Wma|TAMath.Wma.md|Wma
 ?:TechnicalAnalysis.Functions.TAMath.ZigZag|TAMath.ZigZag.md|ZigZag
+?:TechnicalAnalysis.Functions.IndicatorSeries.CrossedAbove|IndicatorSeries.CrossedAbove.md|CrossedAbove
+?:TechnicalAnalysis.Functions.IndicatorSeries.CrossedBelow|IndicatorSeries.CrossedBelow.md|CrossedBelow
+?:TechnicalAnalysis.Functions.IndicatorSeries.Equals|IndicatorSeries.Equals.md|Equals
+?:TechnicalAnalysis.Functions.PriceSeries.Align|PriceSeries.Align.md|Align
+?:TechnicalAnalysis.Functions.PriceSeries.Equals|PriceSeries.Equals.md|Equals
