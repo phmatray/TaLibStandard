@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>TechnicalAnalysis.Samples.Backtesting</RootNamespace>
+    <!-- The sample documents every public type and member; generating the file keeps that enforced. -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      BarWindow.MoveTo is internal on purpose: strategy code that only ever sees IBarWindow must not be able
+      to advance the cursor and read a future bar. The unit tests drive the cursor the way the engine does,
+      so they need access to that one internal member.
+    -->
+    <InternalsVisibleTo Include="TechnicalAnalysis.Samples.Backtesting.UnitTests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TechnicalAnalysis.Candles\TechnicalAnalysis.Candles.csproj" />
+    <ProjectReference Include="..\..\src\TechnicalAnalysis.Functions\TechnicalAnalysis.Functions.csproj" />
+  </ItemGroup>
+
+</Project>

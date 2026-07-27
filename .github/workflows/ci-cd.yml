@@ -2,7 +2,7 @@ name: CI/CD
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, dev ]
   pull_request:
   workflow_dispatch:
 
@@ -76,7 +76,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         release_branches: main
-        pre_release_branches: develop
+        pre_release_branches: dev
         dry_run: true
         default_bump: ${{ steps.check_tags.outputs.has_tags == 'false' && 'major' || 'false' }}
         custom_release_rules: |

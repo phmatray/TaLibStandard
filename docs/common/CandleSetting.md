@@ -9,7 +9,7 @@ Represents a setting for a candlestick pattern in technical analysis\.
 public sealed class CandleSetting
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; CandleSetting
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → CandleSetting
 
 | Constructors | |
 | :--- | :--- |
