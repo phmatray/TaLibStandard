@@ -23,7 +23,7 @@
                 
                 <MudItem xs="12">
                     <div style="height: 400px; overflow-x: auto; overflow-y: hidden;">
-                        <svg width="@(Math.Max(800, StockData.Count * 10))" height="400" style="border: 1px solid #ddd;">
+                        <svg width="@(Math.Max(800, StockData.Count * 10))" height="400" style="border: 1px solid var(--rule);">
                             @{
                                 var minPrice = (double)StockData.Min(d => d.Low) * 0.95;
                                 var maxPrice = (double)StockData.Max(d => d.High) * 1.05;
@@ -43,7 +43,7 @@
                                     var closeY = 20 + (1 - ((double)data.Close - minPrice) / priceRange) * 360;
                                     
                                     var isGreen = data.Close > data.Open;
-                                    var color = isGreen ? "#26a69a" : "#ef5350";
+                                    var color = isGreen ? "var(--up)" : "var(--down)";
                                     var bodyTop = Math.Min(openY, closeY);
                                     var bodyHeight = Math.Abs(openY - closeY);
                                     
@@ -64,10 +64,10 @@
                                     {
                                         var markerY = pattern.Value > 0 ? highY - 15 : lowY + 15;
                                         <circle cx="@(x + candleWidth/2)" cy="@markerY" r="3" 
-                                                fill="@(pattern.Value > 0 ? "#26a69a" : "#ef5350")" />
+                                                fill="@(pattern.Value > 0 ? "var(--up)" : "var(--down)")" />
                                         <g>
                                             <text x="@(x + candleWidth/2)" y="@(markerY - 5)" 
-                                                  font-size="8" text-anchor="middle" fill="@(pattern.Value > 0 ? "#26a69a" : "#ef5350")">
+                                                  font-size="8" text-anchor="middle" fill="@(pattern.Value > 0 ? "var(--up)" : "var(--down)")">
                                                 @pattern.PatternName[0]
                                             </text>
                                         </g>
@@ -82,7 +82,7 @@
                                 var y = 20 + (i * 72);
                                 <g>
                                     <text x="@(StockData.Count * spacing + 20)" y="@y" 
-                                          font-size="10" text-anchor="start" fill="#666">
+                                          font-size="10" text-anchor="start" fill="var(--faint)">
                                         @price.ToString("F2")
                                     </text>
                                 </g>
@@ -96,7 +96,7 @@
                     <MudItem xs="12" Class="mt-4">
                         <MudText Typo="Typo.subtitle2">Volume</MudText>
                         <div style="height: 100px; overflow-x: auto; overflow-y: hidden;">
-                            <svg width="@(Math.Max(800, StockData.Count * 10))" height="100" style="border: 1px solid #ddd;">
+                            <svg width="@(Math.Max(800, StockData.Count * 10))" height="100" style="border: 1px solid var(--rule);">
                                 @{
                                     var maxVolume = (double)StockData.Max(d => d.Volume);
                                     var spacing2 = 10;
@@ -108,7 +108,7 @@
                                         var x = i * spacing2 + 5;
                                         var volumeHeight = ((double)data.Volume / maxVolume) * 80;
                                         var isGreen = data.Close > data.Open;
-                                        var color = isGreen ? "#26a69a" : "#ef5350";
+                                        var color = isGreen ? "var(--up)" : "var(--down)";
                                         
                                         <rect x="@x" y="@(90 - volumeHeight)" 
                                               width="@candleWidth2" height="@volumeHeight"

@@ -1,35 +1,101 @@
-﻿@inherits LayoutComponentBase
+@inherits LayoutComponentBase
+@using Demo.BlazorWasm.Services
+@inject IJSRuntime Js
+@inject ThemeState Theme
 
-<MudLayout>
-    <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
-        <MudText Typo="Typo.h5" Class="ml-3">TaLibStandard Demo</MudText>
-        <MudSpacer />
-        <MudIconButton Icon="@Icons.Material.Filled.Brightness4" Color="Color.Inherit" OnClick="@ToggleDarkMode" />
-        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/phmatray/TaLibStandard" Target="_blank" />
-    </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
-        <NavMenu />
-    </MudDrawer>
-    <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="my-4">
+<div class="shell">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="rail">
+        <a class="wordmark" href="/">
+            TaLib<span class="tail">Standard</span>
+            <span class="ver">v3</span>
+        </a>
+
+        <nav class="rail-nav">
+            <NavLink class="rail-link" href="" Match="NavLinkMatch.All">Overview</NavLink>
+            <NavLink class="rail-link" href="indicators">Indicators</NavLink>
+            <NavLink class="rail-link" href="candlesticks">Patterns</NavLink>
+            <NavLink class="rail-link" href="analysis">Analysis</NavLink>
+            <NavLink class="rail-link" href="math">Math</NavLink>
+            <NavLink class="rail-link" href="about">About</NavLink>
+        </nav>
+
+        <div class="rail-actions">
+            <button type="button"
+                    class="icon-btn"
+                    @onclick="ToggleTheme"
+                    title="@(_dark ? "Switch to light theme" : "Switch to dark theme")"
+                    aria-label="@(_dark ? "Switch to light theme" : "Switch to dark theme")">
+                @if (_dark)
+                {
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.2" />
+                        <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.5 1.5M17.1 17.1l1.5 1.5M18.6 5.4l-1.5 1.5M6.9 17.1l-1.5 1.5" stroke-linecap="round" />
+                    </svg>
+                }
+                else
+                {
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path d="M20.5 14.4A8.6 8.6 0 1 1 9.6 3.5a6.9 6.9 0 0 0 10.9 10.9Z" stroke-linejoin="round" />
+                    </svg>
+                }
+            </button>
+
+            <a class="icon-btn"
+               href="https://github.com/phmatray/TaLibStandard"
+               target="_blank"
+               rel="noopener"
+               title="Source on GitHub"
+               aria-label="Source on GitHub">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C16.9 4.7 17.9 5 17.9 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z" />
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="page">
             @Body
-        </MudContainer>
-    </MudMainContent>
-</MudLayout>
+        </div>
+    </main>
+
+    <footer class="foot">
+        <span>Synthetic market data, generated in your browser</span>
+        <span class="spacer"></span>
+        <a href="https://github.com/phmatray/TaLibStandard">Source</a>
+        <a href="https://www.nuget.org/packages/Atypical.TechnicalAnalysis">NuGet</a>
+        <a href="https://github.com/phmatray/TaLibStandard/blob/dev/COMMERCIAL.md">Commercial licence</a>
+        <span>GPL-3.0-or-later</span>
+    </footer>
+</div>
 
 @code {
-    private bool _drawerOpen = true;
-    private bool _isDarkMode = true;
+    private bool _dark;
 
-    private void ToggleDrawer()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        _drawerOpen = !_drawerOpen;
+        if (!firstRender)
+        {
+            return;
+        }
+
+        // Follow the operating system on first paint; the toggle takes over from there.
+        _dark = await Js.InvokeAsync<bool>("taLib.prefersDark");
+        await ApplyTheme();
+        StateHasChanged();
     }
 
-    private void ToggleDarkMode()
+    private async Task ToggleTheme()
     {
-        _isDarkMode = !_isDarkMode;
-        // In a real app, you'd update the theme provider here
+        _dark = !_dark;
+        await ApplyTheme();
+    }
+
+    private ValueTask ApplyTheme()
+    {
+        Theme.Set(_dark);
+        return Js.InvokeVoidAsync("taLib.setTheme", _dark ? "dark" : "light");
     }
 }

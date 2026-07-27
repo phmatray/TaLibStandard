@@ -10,7 +10,8 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddMudServices();
-builder.Services.AddScoped<IMarketDataService, MarketDataService>();
+builder.Services.AddScoped<IMarketDataService, SyntheticMarketDataService>();
 builder.Services.AddScoped<ITechnicalAnalysisService, TechnicalAnalysisService>();
+builder.Services.AddSingleton<ThemeState>();
 
 await builder.Build().RunAsync();

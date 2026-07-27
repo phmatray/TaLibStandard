@@ -4,13 +4,21 @@
 
 <PageTitle>Technical Indicators - TaLibStandard Demo</PageTitle>
 
-<MudText Typo="Typo.h4" GutterBottom="true">Technical Indicators</MudText>
+<div class="section-head" style="margin-top:36px">
+    <h1 style="margin:0;font-size:1.6rem;font-weight:750;letter-spacing:-0.02em">Technical indicators</h1>
+    <span class="count">Synthetic series · computed in your browser</span>
+</div>
 
 <MudGrid>
     <MudItem xs="12" md="4">
         <MudCard>
             <MudCardContent>
-                <MudTextField @bind-Value="_symbol" Label="Stock Symbol" Variant="Variant.Outlined" />
+                <MudSelect T="string" @bind-Value="_symbol" Label="Instrument" Variant="Variant.Outlined" @bind-Value:after="CalculateIndicator">
+                    @foreach (var instrument in SyntheticMarketDataService.Instruments)
+                    {
+                        <MudSelectItem Value="@instrument.Symbol">@instrument.Symbol — @instrument.Name</MudSelectItem>
+                    }
+                </MudSelect>
                 <MudSelect @bind-Value="_selectedIndicator" Label="Select Indicator" Variant="Variant.Outlined" Class="mt-4">
                     <MudSelectItem Value="@("SMA")">Simple Moving Average (SMA)</MudSelectItem>
                     <MudSelectItem Value="@("EMA")">Exponential Moving Average (EMA)</MudSelectItem>
@@ -158,16 +166,23 @@
 </MudGrid>
 
 @code {
-    private string _symbol = "AAPL";
+    private string _symbol = SyntheticMarketDataService.Instruments[0].Symbol;
     private string _selectedIndicator = "SMA";
     private int _period = 20;
     private double _stdDev = 2.0;
     private bool _isLoading;
     private bool _hasCalculated;
-    
+
     private List<StockData>? _stockData;
     private TaIndicatorResult? _lastResult;
-    
+
+    // Land on a computed chart rather than an empty panel: the page's job is to show the library
+    // working, and asking for a form submission before showing anything gets in the way of that.
+    protected override Task OnInitializedAsync()
+    {
+        return CalculateIndicator();
+    }
+
     private async Task CalculateIndicator()
     {
         _isLoading = true;

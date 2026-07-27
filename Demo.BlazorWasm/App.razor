@@ -1,4 +1,8 @@
-﻿<MudThemeProvider Theme="@_theme" IsDarkMode="@_isDarkMode" />
+@using Demo.BlazorWasm.Services
+@implements IDisposable
+@inject ThemeState Theme
+
+<MudThemeProvider Theme="@_theme" IsDarkMode="@Theme.IsDark" />
 <MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
@@ -11,33 +15,76 @@
     <NotFound>
         <PageTitle>Not found</PageTitle>
         <LayoutView Layout="@typeof(MainLayout)">
-            <MudContainer MaxWidth="MaxWidth.Medium" Class="mt-16">
-                <MudAlert Severity="Severity.Warning">
-                    <MudText Typo="Typo.h5">Page Not Found</MudText>
-                    <MudText>Sorry, there's nothing at this address.</MudText>
-                </MudAlert>
-            </MudContainer>
+            <div class="section">
+                <h1>No page at this address</h1>
+                <p class="lede">
+                    Check the address, or start from the <a href="">overview</a>.
+                </p>
+            </div>
         </LayoutView>
     </NotFound>
 </Router>
 
 @code {
-    private bool _isDarkMode = true;
-    private MudTheme _theme = new()
+    // Mirrors wwwroot/css/app.css so MudBlazor components on the inner pages sit in the same
+    // palette as the shell instead of shipping Material's defaults next to it.
+    private readonly MudTheme _theme = new()
     {
-        PaletteLight = new PaletteLight()
+        PaletteLight = new PaletteLight
         {
-            Primary = "#1976d2",
-            Secondary = "#dc004e",
-            AppbarBackground = "#1976d2",
+            Primary = "#b85c00",
+            Secondary = "#0f6b54",
+            Error = "#a32c1c",
+            Success = "#0f6b54",
+            Background = "#eef1f4",
+            Surface = "#ffffff",
+            DrawerBackground = "#ffffff",
+            AppbarBackground = "#eef1f4",
+            AppbarText = "#0d1317",
+            TextPrimary = "#0d1317",
+            TextSecondary = "#5b6a75",
+            ActionDefault = "#5b6a75",
+            Divider = "#cdd7df",
+            LinesDefault = "#cdd7df",
         },
-        PaletteDark = new PaletteDark()
+        PaletteDark = new PaletteDark
         {
-            Primary = "#90caf9",
-            Secondary = "#f48fb1",
-            AppbarBackground = "#1a1a1a",
-            Background = "#121212",
-            Surface = "#1e1e1e"
-        }
+            Primary = "#f0921f",
+            Secondary = "#2fa98a",
+            Error = "#e0563d",
+            Success = "#2fa98a",
+            Background = "#0c1115",
+            Surface = "#131b21",
+            DrawerBackground = "#131b21",
+            AppbarBackground = "#0c1115",
+            AppbarText = "#e7eef3",
+            TextPrimary = "#e7eef3",
+            TextSecondary = "#93a5b2",
+            ActionDefault = "#93a5b2",
+            Divider = "#223039",
+            LinesDefault = "#223039",
+        },
+        Typography = new Typography
+        {
+            Default = new DefaultTypography { FontFamily = ["Archivo", "Helvetica Neue", "sans-serif"] },
+            Button = new ButtonTypography { FontFamily = ["IBM Plex Mono", "monospace"], TextTransform = "none" },
+            Caption = new CaptionTypography { FontFamily = ["IBM Plex Mono", "monospace"] },
+        },
+        LayoutProperties = new LayoutProperties { DefaultBorderRadius = "7px" },
     };
+
+    protected override void OnInitialized()
+    {
+        Theme.Changed += OnThemeChanged;
+    }
+
+    private void OnThemeChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Theme.Changed -= OnThemeChanged;
+    }
 }
