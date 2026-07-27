@@ -81,18 +81,19 @@ public static partial class TAFunc
             today = startIdx - lookbackTotal;
             int i = optInTimePeriod0;
             double tempReal = 0.0;
-            while (true)
+
+            // Seeds the EMA with the simple average of the first optInTimePeriod0 values, matching
+            // TA-Lib C's `while (i-- > 0)`. Testing the counter before decrementing it (rather than
+            // after) is what keeps the final term in the sum: the earlier `i--; if (i <= 0) break;`
+            // form accumulated only optInTimePeriod0 - 1 values while still dividing by
+            // optInTimePeriod0, seeding every EMA low by a factor of (period - 1) / period.
+            while (i > 0)
             {
                 i--;
-                    
-                if (i <= 0)
-                {
-                    break;
-                }
-                    
                 tempReal += inReal0[today];
                 today++;
             }
+
             prevMA = tempReal / optInTimePeriod0;
         }
             
