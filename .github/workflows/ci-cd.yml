@@ -177,11 +177,23 @@ jobs:
         skip-commit: true
         output-file: false
 
+    # Trusted Publishing: no long-lived API key. The login step exchanges this workflow's OIDC
+    # token (permissions.id-token: write, declared at workflow level and inherited by this job) for
+    # a NuGet key valid ~1 hour, so it must stay adjacent to the push below. Requires a Trusted
+    # Publishing policy on nuget.org covering all four Atypical.TechnicalAnalysis* ids, naming this
+    # repository and ci-cd.yml, plus the NUGET_USER secret (the nuget.org profile name).
+    - name: NuGet login (OIDC -> short-lived key)
+      id: nuget-login
+      if: steps.should_release.outputs.new_release == 'true'
+      uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
+      with:
+        user: ${{ secrets.NUGET_USER }}
+
     - name: Push to NuGet
       if: steps.should_release.outputs.new_release == 'true'
       run: |
         dotnet nuget push "./artifacts/*.nupkg" \
-          --api-key "${{ secrets.NUGET_API_KEY }}" \
+          --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" \
           --source "https://api.nuget.org/v3/index.json" \
           --skip-duplicate
     
