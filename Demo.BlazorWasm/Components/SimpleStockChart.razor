@@ -5,7 +5,7 @@
         @if (StockData != null && StockData.Any())
         {
             <div style="height: @(Height)px; overflow-x: auto; overflow-y: hidden;">
-                <svg width="@(Math.Max(800, StockData.Count * 10))" height="@Height" style="border: 1px solid #ddd;">
+                <svg width="@(Math.Max(800, StockData.Count * 10))" height="@Height" style="border: 1px solid var(--rule);">
                     @{
                         var chartHeight = Height - 40;
                         var minPrice = (double)StockData.Min(d => d.Low) * 0.95;
@@ -37,7 +37,7 @@
                             return $"{(i == 0 ? "M" : "L")} {x} {y}";
                         }));
                         
-                        <path d="@pricePath" stroke="#1976d2" stroke-width="2" fill="none" />
+                        <path d="@pricePath" stroke="var(--muted)" stroke-width="2" fill="none" />
                         
                         // Draw indicator line
                         if (IndicatorData != null && IndicatorData.Any())
@@ -49,7 +49,7 @@
                                 return $"{(i == 0 ? "M" : "L")} {x} {y}";
                             }));
                             
-                            <path d="@indicatorPath" stroke="#ff6f00" stroke-width="2" fill="none" />
+                            <path d="@indicatorPath" stroke="var(--plot)" stroke-width="2" fill="none" />
                         }
                         
                         // Draw upper band
@@ -62,7 +62,7 @@
                                 return $"{(i == 0 ? "M" : "L")} {x} {y}";
                             }));
                             
-                            <path d="@upperPath" stroke="#4caf50" stroke-width="1" fill="none" stroke-dasharray="5,5" />
+                            <path d="@upperPath" stroke="var(--up)" stroke-width="1" fill="none" stroke-dasharray="5,5" />
                         }
                         
                         // Draw lower band
@@ -75,7 +75,7 @@
                                 return $"{(i == 0 ? "M" : "L")} {x} {y}";
                             }));
                             
-                            <path d="@lowerPath" stroke="#f44336" stroke-width="1" fill="none" stroke-dasharray="5,5" />
+                            <path d="@lowerPath" stroke="var(--down)" stroke-width="1" fill="none" stroke-dasharray="5,5" />
                         }
                         
                         // Y-axis labels
@@ -85,7 +85,7 @@
                             var y = 20 + (i * chartHeight / 5);
                             <g>
                                 <text x="@(StockData.Count * spacing + 20)" y="@y" 
-                                      font-size="10" text-anchor="start" fill="#666">
+                                      font-size="10" text-anchor="start" fill="var(--faint)">
                                     @price.ToString("F2")
                                 </text>
                             </g>
@@ -94,12 +94,12 @@
                     
                     <!-- Legend -->
                     <g>
-                        <text x="20" y="15" font-size="12" fill="#1976d2">Price</text>
+                        <text x="20" y="15" font-size="12" fill="var(--muted)">Price</text>
                     </g>
                     @if (!string.IsNullOrEmpty(IndicatorName))
                     {
                         <g>
-                            <text x="80" y="15" font-size="12" fill="#ff6f00">@IndicatorName</text>
+                            <text x="80" y="15" font-size="12" fill="var(--plot)">@IndicatorName</text>
                         </g>
                     }
                 </svg>
@@ -109,7 +109,7 @@
             {
                 <MudText Typo="Typo.subtitle2" Class="mt-4">@SecondaryIndicatorName</MudText>
                 <div style="height: 200px; overflow-x: auto; overflow-y: hidden;">
-                    <svg width="@(Math.Max(800, StockData.Count * 10))" height="200" style="border: 1px solid #ddd;">
+                    <svg width="@(Math.Max(800, StockData.Count * 10))" height="200" style="border: 1px solid var(--rule);">
                         @{
                             var chartHeight2 = 160;
                             var minValue = SecondaryIndicatorData.Min() * 0.95;
@@ -139,7 +139,7 @@
                                 return $"{(i == 0 ? "M" : "L")} {x} {y}";
                             }));
                             
-                            <path d="@mainPath" stroke="#1976d2" stroke-width="2" fill="none" />
+                            <path d="@mainPath" stroke="var(--muted)" stroke-width="2" fill="none" />
                             
                             // Draw signal line
                             if (SignalData != null && SignalData.Any())
@@ -151,7 +151,7 @@
                                     return $"{(i == 0 ? "M" : "L")} {x} {y}";
                                 }));
                                 
-                                <path d="@signalPath" stroke="#ff6f00" stroke-width="2" fill="none" />
+                                <path d="@signalPath" stroke="var(--plot)" stroke-width="2" fill="none" />
                             }
                             
                             // Draw histogram
@@ -166,7 +166,7 @@
                                     var y = 20 + (1 - (value - minValue) / valueRange) * chartHeight2;
                                     var barHeight = Math.Abs(y - zeroY);
                                     var barY = Math.Min(y, zeroY);
-                                    var color = value >= 0 ? "#4caf50" : "#f44336";
+                                    var color = value >= 0 ? "var(--up)" : "var(--down)";
                                     
                                     <rect x="@(x - 3)" y="@barY" width="6" height="@barHeight" 
                                           fill="@color" opacity="0.5" />
@@ -180,15 +180,15 @@
                                 var y30 = 20 + (1 - (30 - minValue) / valueRange) * chartHeight2;
                                 
                                 <line x1="0" y1="@y70" x2="@(StockData.Count * spacing2)" y2="@y70" 
-                                      stroke="#ff0000" stroke-width="1" stroke-dasharray="5,5" opacity="0.5" />
+                                      stroke="var(--down)" stroke-width="1" stroke-dasharray="5,5" opacity="0.5" />
                                 <line x1="0" y1="@y30" x2="@(StockData.Count * spacing2)" y2="@y30" 
-                                      stroke="#00ff00" stroke-width="1" stroke-dasharray="5,5" opacity="0.5" />
+                                      stroke="var(--up)" stroke-width="1" stroke-dasharray="5,5" opacity="0.5" />
                                       
                                 <g>
-                                    <text x="5" y="@(y70 - 5)" font-size="10" fill="#ff0000">70</text>
+                                    <text x="5" y="@(y70 - 5)" font-size="10" fill="var(--down)">70</text>
                                 </g>
                                 <g>
-                                    <text x="5" y="@(y30 - 5)" font-size="10" fill="#00ff00">30</text>
+                                    <text x="5" y="@(y30 - 5)" font-size="10" fill="var(--up)">30</text>
                                 </g>
                             }
                             
@@ -199,7 +199,7 @@
                                 var y = 20 + (i * chartHeight2 / 3);
                                 <g>
                                     <text x="@(StockData.Count * spacing2 + 20)" y="@y" 
-                                          font-size="10" text-anchor="start" fill="#666">
+                                          font-size="10" text-anchor="start" fill="var(--faint)">
                                         @value.ToString("F2")
                                     </text>
                                 </g>

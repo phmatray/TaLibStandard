@@ -1,0 +1,223 @@
+@using Demo.BlazorWasm.Models
+@using Demo.BlazorWasm.Services
+
+@*
+    The signature element.
+
+    Every technical-analysis site shows a price chart. This one shows the thing that actually
+    trips people up when they call the library: an indicator has no value for its first
+    `lookback` bars, and output element k describes bar BegIdx + k. Getting that mapping wrong
+    silently shifts every signal in time, which is far more expensive than a crash.
+
+    So the warm-up gap is drawn, labelled and measured rather than hidden. Price is in market
+    colours; the computed overlay is in instrument amber, matching the palette's input/output rule.
+*@
+
+<figure class="figure" style="margin:0">
+    <figcaption class="figure-head">
+        <span class="sym">@Instrument.Symbol</span>
+        <span>@Instrument.Name</span>
+        <span class="tag">@OverlayLabel</span>
+        <span class="spacer"></span>
+        @foreach (int p in Periods)
+        {
+            int period = p;
+            <button type="button"
+                    class="chip"
+                    aria-pressed="@(period == Period ? "true" : "false")"
+                    @onclick="() => SetPeriod(period)">
+                @period
+            </button>
+        }
+    </figcaption>
+
+    <div class="figure-body">
+        @if (_bars.Count > 0)
+        {
+            <svg viewBox="@($"0 0 {W} {H}")"
+                 preserveAspectRatio="none"
+                 role="img"
+                 aria-label="@AltText"
+                 style="display:block;width:100%;height:auto;aspect-ratio:@W / @H">
+
+                <defs>
+                    <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--plot)" stop-opacity="0.10" />
+                        <stop offset="100%" stop-color="var(--plot)" stop-opacity="0.01" />
+                    </linearGradient>
+                </defs>
+
+                @* horizontal grid *@
+                @foreach (double y in GridLines)
+                {
+                    <line x1="0" y1="@F(y)" x2="@W" y2="@F(y)" stroke="var(--grid)" stroke-width="1" />
+                }
+
+                @* the warm-up region: bars the indicator cannot describe yet *@
+                @if (_begIdx > 0)
+                {
+                    <rect x="0" y="0" width="@F(XOf(_begIdx))" height="@H" fill="url(#warm)" />
+                    <line x1="@F(XOf(_begIdx))" y1="0" x2="@F(XOf(_begIdx))" y2="@H"
+                          stroke="var(--plot)" stroke-width="1" stroke-dasharray="3 3" opacity="0.65" />
+                }
+
+                @* price *@
+                <path d="@_pricePath" fill="none" stroke="var(--muted)" stroke-width="1.25"
+                      stroke-linejoin="round" stroke-linecap="round" opacity="0.75" />
+
+                @* what the library computed *@
+                <path d="@_overlayPath" fill="none" stroke="var(--plot)" stroke-width="2"
+                      stroke-linejoin="round" stroke-linecap="round" />
+
+                @* the measured gap *@
+                @if (_begIdx > 0)
+                {
+                    double bx = XOf(_begIdx);
+                    <line x1="2" y1="16" x2="@F(bx - 4)" y2="16" stroke="var(--plot)" stroke-width="1" opacity="0.8" />
+                    <line x1="2" y1="12" x2="2" y2="20" stroke="var(--plot)" stroke-width="1" opacity="0.8" />
+                    <line x1="@F(bx - 4)" y1="12" x2="@F(bx - 4)" y2="20" stroke="var(--plot)" stroke-width="1" opacity="0.8" />
+                }
+            </svg>
+        }
+    </div>
+
+    @if (_begIdx > 0)
+    {
+        <p class="mono"
+           style="margin:0;padding:9px 16px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--muted)">
+            <span style="color:var(--plot)">@_begIdx bars</span> of warm-up before
+            @OverlayLabel produces its first value. Output element <em style="font-style:normal">k</em>
+            describes bar <em style="font-style:normal">BegIdx + k</em>.
+        </p>
+    }
+
+    <dl class="readout">
+        <div>
+            <dt>RetCode</dt>
+            <dd class="ok">@_retCode</dd>
+        </div>
+        <div>
+            <dt>BegIdx</dt>
+            <dd>@_begIdx</dd>
+        </div>
+        <div>
+            <dt>NBElement</dt>
+            <dd>@_nbElement</dd>
+        </div>
+        <div>
+            <dt>Latest</dt>
+            <dd>@_latest</dd>
+        </div>
+    </dl>
+</figure>
+
+@code {
+    private const int W = 720;
+    private const int H = 300;
+
+    private static readonly int[] Periods = [10, 20, 50];
+    private static readonly double[] GridLines = [40, 100, 160, 220, 280];
+
+    /// <summary>Gets or sets the instrument to chart.</summary>
+    [Parameter]
+    public SyntheticMarketDataService.Instrument Instrument { get; set; } = SyntheticMarketDataService.Resolve(null);
+
+    /// <summary>Gets or sets the moving-average period the overlay is computed with.</summary>
+    [Parameter]
+    public int Period { get; set; } = 50;
+
+    [Inject]
+    private IMarketDataService MarketData { get; set; } = default!;
+
+    [Inject]
+    private ITechnicalAnalysisService Analysis { get; set; } = default!;
+
+    private List<StockData> _bars = [];
+    private string _pricePath = string.Empty;
+    private string _overlayPath = string.Empty;
+    private string _retCode = "—";
+    private string _latest = "—";
+    private int _begIdx;
+    private int _nbElement;
+
+    private string OverlayLabel => $"SMA({Period})";
+
+    private string AltText =>
+        $"{Instrument.Symbol} close price with a {Period}-period simple moving average. " +
+        $"The average has no value for its first {_begIdx} bars.";
+
+    protected override async Task OnInitializedAsync()
+    {
+        _bars = await MarketData.GetHistoricalDataAsync(Instrument.Symbol, 180);
+        Recompute();
+    }
+
+    private void SetPeriod(int period)
+    {
+        Period = period;
+        Recompute();
+    }
+
+    private void Recompute()
+    {
+        if (_bars.Count == 0)
+        {
+            return;
+        }
+
+        TaIndicatorResult sma = Analysis.CalculateSMA(_bars, Period);
+        _retCode = sma.RetCode.ToString();
+        _begIdx = sma.BegIdx;
+        _nbElement = sma.NBElement;
+
+        double min = double.MaxValue;
+        double max = double.MinValue;
+        foreach (StockData bar in _bars)
+        {
+            min = Math.Min(min, (double)bar.Low);
+            max = Math.Max(max, (double)bar.High);
+        }
+
+        // Leave headroom so the bracket annotation never collides with the price line.
+        double pad = (max - min) * 0.16;
+        min -= pad * 0.35;
+        max += pad;
+
+        _pricePath = BuildPath(i => (double)_bars[i].Close, 0, _bars.Count, min, max);
+
+        // Output element k belongs to bar BegIdx + k. This is the whole point of the figure.
+        _overlayPath = BuildPath(i => sma.Values[i - _begIdx], _begIdx, _begIdx + _nbElement, min, max);
+
+        _latest = _nbElement > 0
+            ? sma.Values[_nbElement - 1].ToString("N2", System.Globalization.CultureInfo.InvariantCulture)
+            : "—";
+    }
+
+    private string BuildPath(Func<int, double> valueAt, int from, int toExclusive, double min, double max)
+    {
+        if (toExclusive - from < 2)
+        {
+            return string.Empty;
+        }
+
+        System.Text.StringBuilder path = new();
+        for (int i = from; i < toExclusive; i++)
+        {
+            double x = XOf(i);
+            double y = H - ((valueAt(i) - min) / (max - min) * H);
+            path.Append(i == from ? 'M' : 'L').Append(F(x)).Append(' ').Append(F(y)).Append(' ');
+        }
+
+        return path.ToString();
+    }
+
+    private double XOf(int index)
+    {
+        return _bars.Count < 2 ? 0 : (double)index / (_bars.Count - 1) * W;
+    }
+
+    private static string F(double value)
+    {
+        return value.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture);
+    }
+}

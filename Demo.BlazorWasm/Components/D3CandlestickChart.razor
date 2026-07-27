@@ -281,7 +281,7 @@
         public string Name { get; init; } = "";
         public double[]? Values { get; init; }
         public int BegIdx { get; init; }
-        public string Color { get; init; } = "#ff6f00";
+        public string Color { get; init; } = "var(--plot)";
         public int StrokeWidth { get; init; } = 2;
     }
     
@@ -291,9 +291,9 @@
         public double[]? UpperValues { get; init; }
         public double[]? LowerValues { get; init; }
         public int BegIdx { get; init; }
-        public string UpperColor { get; init; } = "#4caf50";
-        public string LowerColor { get; init; } = "#f44336";
-        public string FillColor { get; init; } = "#1976d2";
+        public string UpperColor { get; init; } = "var(--up)";
+        public string LowerColor { get; init; } = "var(--down)";
+        public string FillColor { get; init; } = "var(--muted)";
         public double FillOpacity { get; init; } = 0.1;
     }
     
@@ -304,7 +304,7 @@
         public double[]? SignalValues { get; init; }
         public double[]? HistogramValues { get; init; }
         public int BegIdx { get; init; }
-        public string Color { get; init; } = "#1976d2";
-        public string SignalColor { get; init; } = "#ff6f00";
+        public string Color { get; init; } = "var(--muted)";
+        public string SignalColor { get; init; } = "var(--plot)";
     }
 }
