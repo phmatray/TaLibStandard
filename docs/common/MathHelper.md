@@ -9,7 +9,7 @@ Provides helper methods for mathematical function indicators\.
 public static class MathHelper
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; MathHelper
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → MathHelper
 
 ### Remarks
 This helper class consolidates the common boilerplate code used by simple

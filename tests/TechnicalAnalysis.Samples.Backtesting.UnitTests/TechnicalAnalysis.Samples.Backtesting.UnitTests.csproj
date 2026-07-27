@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>TechnicalAnalysis.Samples.Backtesting.UnitTests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\samples\TechnicalAnalysis.Samples.Backtesting\TechnicalAnalysis.Samples.Backtesting.csproj" />
+  </ItemGroup>
+
+</Project>

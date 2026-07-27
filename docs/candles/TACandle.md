@@ -7,7 +7,7 @@
 public static class TACandle
 ```
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; TACandle
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → TACandle
 
 | Methods | |
 | :--- | :--- |

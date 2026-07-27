@@ -17,7 +17,7 @@ public class CandleSeparatingLines<T> : TechnicalAnalysis.Common.CandleIndicator
 
 The type of the array elements\.
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.CandleIndicator&lt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1')[T](CandleSeparatingLines_T_.md#TechnicalAnalysis.Candles.CandleSeparatingLines_T_.T 'TechnicalAnalysis\.Candles\.CandleSeparatingLines\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1') &#129106; CandleSeparatingLines\<T\>
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [TechnicalAnalysis\.Common\.CandleIndicator&lt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1')[T](CandleSeparatingLines_T_.md#TechnicalAnalysis.Candles.CandleSeparatingLines_T_.T 'TechnicalAnalysis\.Candles\.CandleSeparatingLines\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1') → CandleSeparatingLines\<T\>
 
 | Constructors | |
 | :--- | :--- |

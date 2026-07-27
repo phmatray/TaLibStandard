@@ -17,7 +17,7 @@ public class CandleXSideGap3Methods<T> : TechnicalAnalysis.Common.CandleIndicato
 
 The type of the array elements\.
 
-Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [TechnicalAnalysis\.Common\.CandleIndicator&lt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1')[T](CandleXSideGap3Methods_T_.md#TechnicalAnalysis.Candles.CandleXSideGap3Methods_T_.T 'TechnicalAnalysis\.Candles\.CandleXSideGap3Methods\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1') &#129106; CandleXSideGap3Methods\<T\>
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [TechnicalAnalysis\.Common\.CandleIndicator&lt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1')[T](CandleXSideGap3Methods_T_.md#TechnicalAnalysis.Candles.CandleXSideGap3Methods_T_.T 'TechnicalAnalysis\.Candles\.CandleXSideGap3Methods\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/technicalanalysis.common.candleindicator-1 'TechnicalAnalysis\.Common\.CandleIndicator\`1') → CandleXSideGap3Methods\<T\>
 
 | Constructors | |
 | :--- | :--- |
