@@ -10,6 +10,11 @@ namespace TechnicalAnalysis.Functions;
 /// Represents the result of the Directional Movement Index (DX) indicator calculation.
 /// DX measures the strength of a trend regardless of its direction, derived from comparing directional movements.
 /// </summary>
+/// <remarks>
+/// The <see cref="SingleOutputResult.Real"/> array holds the Directional Movement Index values.
+/// Values range from 0 to 100, where higher values indicate stronger trends (either up or down).
+/// Values below 20 typically indicate weak trends, while values above 40 suggest strong trends.
+/// </remarks>
 public record DxResult : SingleOutputResult
 {
     /// <summary>
@@ -23,10 +28,4 @@ public record DxResult : SingleOutputResult
         : base(retCode, begIdx, nbElement, real)
     {
     }
-
-    /// <summary>
-    /// Gets the array of Directional Movement Index values.
-    /// Values range from 0 to 100, where higher values indicate stronger trends (either up or down).
-    /// Values below 20 typically indicate weak trends, while values above 40 suggest strong trends.
-    /// </summary>
 }

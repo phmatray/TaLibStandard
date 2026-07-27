@@ -30,14 +30,4 @@ public record CorrelResult : SingleOutputResult
         : base(retCode, begIdx, nbElement, real)
     {
     }
-
-    /// <summary>
-    /// Gets the array of correlation coefficient values.
-    /// </summary>
-    /// <value>
-    /// An array of doubles representing the correlation values, ranging from -1 to +1. 
-    /// Values near +1 indicate strong positive correlation, values near -1 indicate 
-    /// strong negative correlation, and values near 0 indicate weak or no linear relationship. 
-    /// These values are essential for risk management and portfolio optimization.
-    /// </value>
 }

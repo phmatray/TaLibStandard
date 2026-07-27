@@ -11,6 +11,11 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator calculates the angle of the linear regression line in degrees, providing insight
 /// into the strength and direction of the trend over a specified period.
 /// </summary>
+/// <remarks>
+/// Gets the array of linear regression angle values in degrees.
+/// Positive angles indicate an upward trend, negative angles indicate a downward trend.
+/// The magnitude of the angle reflects the steepness of the trend.
+/// </remarks>
 public record LinearRegAngleResult : SingleOutputResult
 {
     /// <summary>
@@ -24,10 +29,4 @@ public record LinearRegAngleResult : SingleOutputResult
         : base(retCode, begIdx, nbElement, real)
     {
     }
-
-    /// <summary>
-    /// Gets the array of linear regression angle values in degrees.
-    /// Positive angles indicate an upward trend, negative angles indicate a downward trend.
-    /// The magnitude of the angle reflects the steepness of the trend.
-    /// </summary>
 }

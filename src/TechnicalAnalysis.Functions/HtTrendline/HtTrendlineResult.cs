@@ -11,6 +11,11 @@ namespace TechnicalAnalysis.Functions;
 /// This indicator creates a smooth trendline by removing the dominant cycle component from price data,
 /// effectively filtering out short-term fluctuations to reveal the underlying trend.
 /// </summary>
+/// <remarks>
+/// The <see cref="SingleOutputResult.Real"/> array holds the instantaneous trendline values.
+/// These values represent a smoothed version of the price with dominant cycles filtered out,
+/// providing a clear view of the underlying trend direction and strength.
+/// </remarks>
 public record HtTrendlineResult : SingleOutputResult
 {
     /// <summary>
@@ -24,10 +29,4 @@ public record HtTrendlineResult : SingleOutputResult
         : base(retCode, begIdx, nbElement, real)
     {
     }
-
-    /// <summary>
-    /// Gets the array of instantaneous trendline values.
-    /// These values represent a smoothed version of the price with dominant cycles filtered out,
-    /// providing a clear view of the underlying trend direction and strength.
-    /// </summary>
 }

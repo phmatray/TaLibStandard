@@ -55,6 +55,7 @@ public static partial class TAMath
     /// <param name="high">An array of high prices.</param>
     /// <param name="low">An array of low prices.</param>
     /// <param name="close">An array of closing prices.</param>
+    /// <param name="timePeriod">The number of periods to average over. Defaults to 14.</param>
     /// <returns>A NatrResult object containing the calculated values.</returns>
     /// <remarks>Uses the default time period of 14.</remarks>
     public static NatrResult Natr(int startIdx, int endIdx, float[] high, float[] low, float[] close, int timePeriod = 14)

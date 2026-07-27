@@ -11,44 +11,34 @@ namespace TechnicalAnalysis.Common;
 /// <summary>
 /// Represents an abstract base class for candlestick pattern recognition indicators.
 /// </summary>
-public abstract class CandleIndicator<T>
+/// <typeparam name="T">The floating-point type the price arrays are expressed in.</typeparam>
+/// <param name="open">An array of open prices.</param>
+/// <param name="high">An array of high prices.</param>
+/// <param name="low">An array of low prices.</param>
+/// <param name="close">An array of close prices.</param>
+public abstract class CandleIndicator<T>(T[] open, T[] high, T[] low, T[] close)
     where T : IFloatingPoint<T>
 {
     /// <summary>
     /// An array of open prices.
     /// </summary>
-    protected T[] Open { get; }
-        
+    protected T[] Open { get; } = open;
+
     /// <summary>
     /// An array of high prices.
     /// </summary>
-    protected T[] High { get; }
-        
+    protected T[] High { get; } = high;
+
     /// <summary>
     /// An array of low prices.
     /// </summary>
-    protected T[] Low { get; }
+    protected T[] Low { get; } = low;
         
     /// <summary>
     /// An array of close prices.
     /// </summary>
-    protected T[] Close { get; }
-        
-    /// <summary>
-    /// Initializes a new instance of the CandleIndicator class.
-    /// </summary>
-    /// <param name="open">An array of open prices.</param>
-    /// <param name="high">An array of high prices.</param>
-    /// <param name="low">An array of low prices.</param>
-    /// <param name="close">An array of close prices.</param>
-    protected CandleIndicator(T[] open, T[] high, T[] low, T[] close)
-    {
-        Open = open;
-        High = high;
-        Low = low;
-        Close = close;
-    }
-        
+    protected T[] Close { get; } = close;
+
     /// <summary>
     /// Returns the lookback period for the indicator.
     /// </summary>
