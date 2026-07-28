@@ -95,102 +95,20 @@ public static partial class TAFunc
             double prevHigh = inHigh[today];
             double prevLow = inLow[today];
             double prevClose = inClose[today];
+            double tempReal;
+            double tempReal2;
+            double diffM;
+            double diffP;
+
+            // The reference implementation seeds with `while (i-- > 0)` and then smooths with
+            // `while (i-- != 0)`; each executes its body exactly `i` times. Translating either as
+            // `while (true) { i--; if (i <= 0) break; ... }` executes it `i - 1` times, which leaves
+            // `today` short of startIdx and makes the tail loop emit that many extra values, so that
+            // outBegIdx + outNBElement overruns the input.
             int i = optInTimePeriod - 1;
-            while (true)
+            while (i > 0)
             {
                 i--;
-                double tempReal;
-                double tempReal2;
-                double diffM;
-                double diffP;
-                if (i <= 0)
-                {
-                    i = (int)TACore.Globals.UnstablePeriod[FuncUnstId.MinusDI] + 1;
-                    while (true)
-                    {
-                        i--;
-                        if (i == 0)
-                        {
-                            break;
-                        }
-
-                        today++;
-                        tempReal = inHigh[today];
-                        diffP = tempReal - prevHigh;
-                        prevHigh = tempReal;
-                        tempReal = inLow[today];
-                        diffM = prevLow - tempReal;
-                        prevLow = tempReal;
-                        if (diffM > 0.0 && diffP < diffM)
-                        {
-                            prevMinusDM = prevMinusDM - (prevMinusDM / optInTimePeriod) + diffM;
-                        }
-                        else
-                        {
-                            prevMinusDM -= prevMinusDM / optInTimePeriod;
-                        }
-
-                        tempReal = prevHigh - prevLow;
-                        tempReal2 = Math.Abs(prevHigh - prevClose);
-                        if (tempReal2 > tempReal)
-                        {
-                            tempReal = tempReal2;
-                        }
-
-                        tempReal2 = Math.Abs(prevLow - prevClose);
-                        if (tempReal2 > tempReal)
-                        {
-                            tempReal = tempReal2;
-                        }
-
-                        prevTR = prevTR - (prevTR / optInTimePeriod) + tempReal;
-                        prevClose = inClose[today];
-                    }
-
-                    outReal[0] = 100.0 * (prevMinusDM / prevTR);
-
-                    outIdx = 1;
-                    while (today < endIdx)
-                    {
-                        today++;
-                        tempReal = inHigh[today];
-                        diffP = tempReal - prevHigh;
-                        prevHigh = tempReal;
-                        tempReal = inLow[today];
-                        diffM = prevLow - tempReal;
-                        prevLow = tempReal;
-                        if (diffM > 0.0 && diffP < diffM)
-                        {
-                            prevMinusDM = prevMinusDM - (prevMinusDM / optInTimePeriod) + diffM;
-                        }
-                        else
-                        {
-                            prevMinusDM -= prevMinusDM / optInTimePeriod;
-                        }
-
-                        tempReal = prevHigh - prevLow;
-                        tempReal2 = Math.Abs(prevHigh - prevClose);
-                        if (tempReal2 > tempReal)
-                        {
-                            tempReal = tempReal2;
-                        }
-
-                        tempReal2 = Math.Abs(prevLow - prevClose);
-                        if (tempReal2 > tempReal)
-                        {
-                            tempReal = tempReal2;
-                        }
-
-                        prevTR = prevTR - (prevTR / optInTimePeriod) + tempReal;
-                        prevClose = inClose[today];
-                        outReal[outIdx] = 100.0 * (prevMinusDM / prevTR);
-                        outIdx++;
-                    }
-
-                    outNBElement = outIdx;
-                    return Success;
-                }
-
                 today++;
                 tempReal = inHigh[today];
                 diffP = tempReal - prevHigh;
@@ -219,6 +137,86 @@ public static partial class TAFunc
                 prevTR += tempReal;
                 prevClose = inClose[today];
             }
+
+            i = (int)TACore.Globals.UnstablePeriod[FuncUnstId.MinusDI] + 1;
+            while (i != 0)
+            {
+                i--;
+                today++;
+                tempReal = inHigh[today];
+                diffP = tempReal - prevHigh;
+                prevHigh = tempReal;
+                tempReal = inLow[today];
+                diffM = prevLow - tempReal;
+                prevLow = tempReal;
+                if (diffM > 0.0 && diffP < diffM)
+                {
+                    prevMinusDM = prevMinusDM - (prevMinusDM / optInTimePeriod) + diffM;
+                }
+                else
+                {
+                    prevMinusDM -= prevMinusDM / optInTimePeriod;
+                }
+
+                tempReal = prevHigh - prevLow;
+                tempReal2 = Math.Abs(prevHigh - prevClose);
+                if (tempReal2 > tempReal)
+                {
+                    tempReal = tempReal2;
+                }
+
+                tempReal2 = Math.Abs(prevLow - prevClose);
+                if (tempReal2 > tempReal)
+                {
+                    tempReal = tempReal2;
+                }
+
+                prevTR = prevTR - (prevTR / optInTimePeriod) + tempReal;
+                prevClose = inClose[today];
+            }
+
+            outReal[0] = 100.0 * (prevMinusDM / prevTR);
+
+            outIdx = 1;
+            while (today < endIdx)
+            {
+                today++;
+                tempReal = inHigh[today];
+                diffP = tempReal - prevHigh;
+                prevHigh = tempReal;
+                tempReal = inLow[today];
+                diffM = prevLow - tempReal;
+                prevLow = tempReal;
+                if (diffM > 0.0 && diffP < diffM)
+                {
+                    prevMinusDM = prevMinusDM - (prevMinusDM / optInTimePeriod) + diffM;
+                }
+                else
+                {
+                    prevMinusDM -= prevMinusDM / optInTimePeriod;
+                }
+
+                tempReal = prevHigh - prevLow;
+                tempReal2 = Math.Abs(prevHigh - prevClose);
+                if (tempReal2 > tempReal)
+                {
+                    tempReal = tempReal2;
+                }
+
+                tempReal2 = Math.Abs(prevLow - prevClose);
+                if (tempReal2 > tempReal)
+                {
+                    tempReal = tempReal2;
+                }
+
+                prevTR = prevTR - (prevTR / optInTimePeriod) + tempReal;
+                prevClose = inClose[today];
+                outReal[outIdx] = 100.0 * (prevMinusDM / prevTR);
+                outIdx++;
+            }
+
+            outNBElement = outIdx;
+            return Success;
         }
 
         outBegIdx = startIdx;
