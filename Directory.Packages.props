@@ -4,7 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- Code Analyzers -->
-    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.302" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.400" />
     <!-- Build Tools -->
     <PackageVersion Include="DotNet.ReproducibleBuilds" Version="2.0.5" />
     <PackageVersion Include="MinVer" Version="7.0.0" />
@@ -20,17 +20,17 @@
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
     <!-- Demo Dependencies -->
     <PackageVersion Include="YahooFinanceApi" Version="2.3.3" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.10" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.11" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.11" />
     <!-- Blazor Demo Dependencies -->
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.10" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.10" />
-    <PackageVersion Include="MudBlazor" Version="9.7.0" />
-    <PackageVersion Include="System.Text.Json" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.11" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.11" />
+    <PackageVersion Include="MudBlazor" Version="9.8.0" />
+    <PackageVersion Include="System.Text.Json" Version="10.0.11" />
     <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="3.0.3" />
     <!-- Benchmarks -->
     <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
     <!-- Samples -->
-    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.11" />
   </ItemGroup>
 </Project>
